@@ -4,7 +4,7 @@
 
 // pre-remplissage du chart avec des valeurs null
 $x = (time() * 1000);
-for ($i = -2500; $i < 0; $i++){  //la valeur de $i doit correspondre a celle de shift2 dans header.php
+for ($i = -2500; $i < 0; $i++){  //la valeur de $i doit correspondre a celle de la variable histo dans index.php
     $listeInit .= "[($x + $i*1000),null]," ;
 } 
 ?>
@@ -53,7 +53,7 @@ $(function() {
 			type: 'datetime',
              // minRange:1000*60*2,
              // maxRange:0,
-			dateTimeLabelFormats: { // don't display the dummy year
+			dateTimeLabelFormats: { 
 				month: '%e. %b',
 				year: '%b'
 			}
@@ -81,12 +81,6 @@ $(function() {
 			xDateFormat: '%A %e %b  %H:%M:%S',
 		 },
 		plotOptions: {
-			// line: {
-				// marker: {
-                    // radius: 0,
-					// enabled: false,
-				// },
-			// },
 			series: {
 				marker: {
                     radius: 0,
@@ -97,14 +91,14 @@ $(function() {
 
 		series: [{
 			name: 'etat',
-			color: '<?php echo $ph1_Main_Color; ?>',
+			color: '#01AEE3',
             zIndex: 1,
 			data: [<?php echo $listeInit; ?>],
 		}, {
 			name: 'T chaud',
-			color: '<?php echo $ph3_Main_Color; ?>',
+			color: '#E662CC',
             tooltip: {
-                valueSuffix: ' %',
+                valueSuffix: ' °',
             },
             zIndex: 2,
 			data: [<?php echo $listeInit; ?>],
@@ -138,24 +132,8 @@ $(function() {
 			zIndex: 0,
 			color: 'grey',
 			data: [<?php echo $listeInit; ?>],
-		}/*, {
-			name: '--',
-			zIndex: 0,
-			color: 'maroon',
-			data: []
-		}, {
-			name: '--',
-			zIndex: 0,
-			color: 'lightblue',
-			data: []
-		}, {
-			name: '--',
-			zIndex: 0,
-			color: 'white',
-			data: []
-		} */ ]
+		}]
 	});
-//****************************************************************************************************
 });
 </script>
 

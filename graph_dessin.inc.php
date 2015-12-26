@@ -59,23 +59,34 @@
 	<div id='tableau' class="hidden" >  
         <span id='gauche'>  
             <table class='TableInstant'>  
-                <tr><th>O² est</th>             <td id="Gauche1">?</td></tr>    
-                <tr><th>O² doit</th>            <td id="Gauche2">?</td></tr>    
+                <tr><th>O² Lambda</th>          <td id="Gauche1">?</td></tr>    
                 <tr><th>T° chaudière est</th>   <td id="Gauche3">?</td></tr>    
                 <tr><th>T° chaudière doit</th>  <td id="Gauche4">?</td></tr>    
                 <tr><th>T° fumée</th>           <td id="Gauche5">?</td></tr>    
+                <tr><th>T° interieur</th>       <td id="Gauche2">?</td></tr>    
                 <tr><th>T° exterieur</th>       <td id="Gauche6">?</td></tr>    
                 <tr><th>T° exterieur moy</th>   <td id="Gauche7">?</td></tr>    
                 <tr><th>T° depart ext</th>      <td id="Gauche8">?</td></tr>    
                 <tr><th>T° depart doit</th>     <td id="Gauche9">?</td></tr>    
                 <tr><th>Variable F</th>         <td id="Gauche10">?</td></tr>    
                 <tr><th>Variable K</th>         <td id="Gauche11">?</td></tr>    
-            </table>
+                <tr><th>channel 12 : TRL</th>   <td id="Gauche12">?</td></tr>    
+                <tr><th>channel 13 : TRLsoll</th><td id="Gauche13">?</td></tr>    
+                <tr><th>channel 15 : Tplat</th> <td id="Gauche14">?</td></tr>    
+                <tr><th>channel 25 : TR1</th>   <td id="Gauche15">?</td></tr>    
+                <tr><th>channel 26 : TR2</th>   <td id="Gauche16">?</td></tr>    
+                <tr><th>channel 45 : TRs_A</th> <td id="Gauche17">?</td></tr>    
+                <tr><th>channel 46 : TRs_1</th> <td id="Gauche18">?</td></tr>    
+                <tr><th>channel 58 : I Ra</th>   <td id="Gauche19">?</td></tr>    
+                <tr><th>channel 59 : I Aa</th>   <td id="Gauche20">?</td></tr>    
+                <tr><th>channel 110 : Höchste Anf</th>   <td id="Gauche21">?</td></tr>    
+                <tr><th>channel 129 : BRT</th>   <td id="Gauche22">?</td></tr>    
+           </table>
         </span>
         <span id='droite'>  
             <table class='TableInstant'>  
                 <tr><th>heures vis bois</th>        <td id="Droite1">?</td></tr>    
-                <tr><th>tps comb pour décend est</th>   <td id="Droite2">?</td></tr>  
+                <tr><th>tps comb pour décend est</th><td id="Droite2">?</td></tr>  
                 <tr><th>temps vis aspiration</th>   <td id="Droite3">?</td></tr>    
                 <tr><th>nombre décendrage</th>      <td id="Droite4">?</td></tr>  
                 <tr><th>mouvement grille</th>       <td id="Droite5">?</td></tr>    

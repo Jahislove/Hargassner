@@ -16,6 +16,7 @@
     <script src="js/solid-gauge.src.js"></script> -->
     
 <script type="text/javascript">	
+var histo = 2500;
 var id;
 var heure;
 var chart_live; 
@@ -159,7 +160,7 @@ $.ajax({
         chart_silo.series[0].points[0].update(channel[115]);
        
         // rafraichissement graphe live
-        var shift = chart_live.series[0].data.length > 2500;
+        var shift = chart_live.series[0].data.length > histo;
         chart_live.series[0].addPoint([heure, channel[0]], true, shift);
         chart_live.series[1].addPoint([heure, channel[3]], true, shift);
         chart_live.series[2].addPoint([heure, channel[53]], true, shift);
@@ -171,7 +172,7 @@ $.ajax({
             
         // rafraichissement tableau gauche et droite
         Gauche1.innerHTML = channel[1];    
-        Gauche2.innerHTML = channel[2];    
+        Gauche2.innerHTML = channel[138];    
         Gauche3.innerHTML = channel[3];    
         Gauche4.innerHTML = channel[4];    
         Gauche5.innerHTML = channel[5];    
@@ -181,6 +182,17 @@ $.ajax({
         Gauche9.innerHTML = channel[23];    
         Gauche10.innerHTML = channel[54];    
         Gauche11.innerHTML = channel[160];    
+        Gauche12.innerHTML = channel[12];    
+        Gauche13.innerHTML = channel[13];    
+        Gauche14.innerHTML = channel[15];    
+        Gauche15.innerHTML = channel[25];    
+        Gauche16.innerHTML = channel[26];    
+        Gauche17.innerHTML = channel[45];    
+        Gauche18.innerHTML = channel[46];    
+        Gauche19.innerHTML = channel[58];    
+        Gauche20.innerHTML = channel[59];    
+        Gauche21.innerHTML = channel[110];    
+        Gauche22.innerHTML = channel[129];    
 
         Droite1.innerHTML = channel[98];    
         Droite2.innerHTML = channel[111];    
@@ -247,11 +259,8 @@ function clic() {
     <nav>
         <ul class="fancyNav">
             <li id="home">   <a href="index.php" class="homeIcon">Accueil</a></li>
-            <li id="chart">  <a href="graph_highchart.php">last 12h</a></li>
-            <li id="eco">    <a href="graph_highchart2.php">2</a></li>
-            <li id="cost">   <a href="graph_highchart3.php">3</a></li>
-            <li id="spa">    <a href="graph_highchart3.php">3</a></li>
-            <li id="temp">   <a href="graph_highchart3.php">3</a></li>
+            <li id="chart">  <a href="graph_highchart.php">last 24h</a></li>
+            <li id="chart3">    <a href="graph_highchart3.php">test</a></li>
             <li id="about">  <a href="about.php">a propos</a></li>
         </ul>
     </nav>

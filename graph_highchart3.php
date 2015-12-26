@@ -9,14 +9,14 @@ require("headertest.php");
     
     $tab0 = 'chan0';
     $nom0 = 'etat';
-    $tab1 = 'c3';
-    $nom1 = 'T° chaud';
-    $tab2 = 'c53';
-    $nom2 = 'extr';
-    $tab3 = 'm56';
-    $nom3 = 'bois';
-    $tab4 = 'm134';
-    $nom4 = 'Puissance';
+    $tab1 = 'm70';
+    $nom1 = 'motor';
+    $tab2 = 'm60';
+    $nom2 = 'I sr';
+    $tab3 = 'm61';
+    $nom3 = 'I rein';
+    $tab4 = 'm110';
+    $nom4 = 'Höchste';
     
     $tab5 = 'c21';
     $nom5 = 'T° depart';
@@ -30,13 +30,17 @@ require("headertest.php");
     $nom9 = '169';
     $tab10 = 'm170';
     $nom10 = 'm170';
+    
+    $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4 FROM nanoPK
+              WHERE dateB > '2015-12-25 08:15:00' and dateB < '2015-12-26 08:30:00'
+              ";
 
     // $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4,$tab5,$tab6,$tab7,$tab8,$tab9,$tab10 FROM nanoPK
               // ORDER by id DESC LIMIT 1000";
 
-    $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4,$tab5,$tab6,$tab7,$tab8,$tab9,$tab10 FROM nanoPK
-             WHERE dateB > '2015-12-23 13:55:00' and dateB < '2015-12-23 14:15:00'
-             ";
+    // $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4,$tab5,$tab6,$tab7,$tab8,$tab9,$tab10 FROM nanoPK
+             // WHERE dateB > '2015-12-23 13:55:00' and dateB < '2015-12-23 14:15:00'
+             // ";
 
 
 	connectMaBase($hostname, $database, $username, $password);
@@ -51,12 +55,12 @@ require("headertest.php");
     $liste2 = "[" . $dateD . "," . $data[3] ."]," . $liste2;
     $liste3 = "[" . $dateD . "," . $data[4] ."]," . $liste3;
     $liste4 = "[" . $dateD . "," . $data[5] ."]," . $liste4;
-    $liste5 = "[" . $dateD . "," . $data[6] ."]," . $liste5; 
-    $liste6 = "[" . $dateD . "," . $data[7] ."]," . $liste6;
-    $liste7 = "[" . $dateD . "," . $data[8] ."]," . $liste7;
-    $liste8 = "[" . $dateD . "," . $data[9] ."]," . $liste8;
-    $liste9 = "[" . $dateD . "," . $data[10] ."]," . $liste9;
-    $liste10 = "[" . $dateD . "," . $data[11] ."]," . $liste10;
+    // $liste5 = "[" . $dateD . "," . $data[6] ."]," . $liste5; 
+    // $liste6 = "[" . $dateD . "," . $data[7] ."]," . $liste6;
+    // $liste7 = "[" . $dateD . "," . $data[8] ."]," . $liste7;
+    // $liste8 = "[" . $dateD . "," . $data[9] ."]," . $liste8;
+    // $liste9 = "[" . $dateD . "," . $data[10] ."]," . $liste9;
+    // $liste10 = "[" . $dateD . "," . $data[11] ."]," . $liste10;
 
 
     
@@ -106,7 +110,7 @@ $(function() {
 	$('#phases3').highcharts({
 		chart: {
 			type: 'line',
-			zoomType: 'x',
+			zoomType: 'xy',
 			backgroundColor: null,
 		},
 		title: {
@@ -161,12 +165,12 @@ $(function() {
 
 		series: [{
 			name: '<?php echo $nom0; ?>',
-			color: '<?php echo $ph1_Main_Color; ?>',
+			color: '#01AEE3',
 			zIndex: 1,
 			data: [<?php echo $liste0; ?>]
 		}, {
 			name: '<?php echo $nom1; ?>',
-			color: '<?php echo $ph3_Main_Color; ?>',
+			color: '#E662CC',
 			zIndex: 2,
 			data: [<?php echo $liste1; ?>]
 		}, {

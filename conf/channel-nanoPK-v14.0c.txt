@@ -75,8 +75,8 @@ j'ai simplement ajouté en francais les parametres que j'ai pu identifier
 <CHANNEL id=	55	 name=	ESRegler    	 unit=	%	regulateur bois ???
 <CHANNEL id=	56	 name=	ESsoll	         unit=	%	bois = %air(134) x %F(54) x %K(160)
 <CHANNEL id=	57	 name=	I Es	         unit=	mA	conso vis bois
-<CHANNEL id=	58	 name=	I Ra	         unit=	mA	vanne???
-<CHANNEL id=	59	 name=	I Aa	         unit=	mA	vanne???
+<CHANNEL id=	58	 name=	I Ra	         unit=	mA	vanne??? 0 ou 3
+<CHANNEL id=	59	 name=	I Aa	         unit=	mA	vanne??? 0 ou 3
 <CHANNEL id=	60	 name=	I Sr	         unit=	mA	conso nettoyeur/cendrier
 <CHANNEL id=	61	 name=	I Rein	         unit=	mA	conso nettoyeur/cendrier
 <CHANNEL id=	62	 name=	U_Lambda	     unit=	mV	conso lambda
@@ -127,7 +127,7 @@ j'ai simplement ajouté en francais les parametres que j'ai pu identifier
 <CHANNEL id=	107	 name=	Ext.HK Soll	     unit=		
 <CHANNEL id=	108	 name=	Ext.HK Soll_2	 unit=		
 <CHANNEL id=	109	 name=	Ext.HK Soll_3	 unit=		
-<CHANNEL id=	110	 name=	Höchste Anf	     unit=		??? 35/38
+<CHANNEL id=	110	 name=	Höchste Anf	     unit=		??? 35/38 30=reduit nuit
 <CHANNEL id=	111	 name=	LZ LB seit Ent.	 unit=	Min	temps combustion est 
 <CHANNEL id=	112	 name=	LZ ES seit Füll. unit=	Min	temps vis pour aspiration est 
 <CHANNEL id=	113	 name=	Anzahl Entasch.	 unit=		nombre decendrage

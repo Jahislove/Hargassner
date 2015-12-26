@@ -13,13 +13,6 @@
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     
-    
-    
-    
-  
-    
-   
-
 </head>
 
 <body>
@@ -28,7 +21,7 @@
     
 	<header>
 		<h1>
-		    <!--My Own 
+		    <!-- 
 		    <IMG SRC="img/Owl-Intuition.png" ALT="Owl intuition" WIDTH=115 HEIGHT=33 >
 		     <IMG SRC="img/Owl-Logo.png" ALT="Logo" WIDTH=30 HEIGHT=30 > -->
 		</h1>
@@ -38,14 +31,14 @@
         <ul class="fancyNav">
             <li id="home">   <a href="index.php" class="homeIcon">Accueil</a></li>
             <li id="chart">  <a href="graph_highchart.php">last 12h</a></li>
-            <li id="eco">    <a href="graph_highchart2.php">2</a></li>
-            <li id="cost">   <a href="graph_highchart3.php">3</a></li>
-            <li id="spa">    <a href="graph_highchart3.php">3</a></li>
-            <li id="temp">   <a href="graph_highchart3.php">3</a></li>
+            <li id="chart3">    <a href="graph_highchart3.php">test</a></li>
             <li id="about">  <a href="about.php">a propos</a></li>
         </ul>
 	</nav>
 
+<?php	
+    include("footer.php");
+?>
 	
 	
 

@@ -32,7 +32,7 @@ require("headertest.php");
     // $nom10 = 'etat';
 
     $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4 FROM nanoPK
-              ORDER by id DESC LIMIT 10000";
+              ORDER by id DESC LIMIT 20000";
 
     //$query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4,$tab5,$tab6,$tab7,$tab8,$tab9,$tab10 FROM nanoPK
     //          WHERE dateB > '2015-12-12 04:55:00' and dateB < '2015-12-12 09:00:00'
@@ -164,12 +164,12 @@ $(function() {
 
 		series: [{
 			name: '<?php echo $nom0; ?>',
-			color: '<?php echo $ph1_Main_Color; ?>',
+			color: '#01AEE3',
 			zIndex: 1,
 			data: [<?php echo $liste0; ?>]
 		}, {
 			name: '<?php echo $nom1; ?>',
-			color: '<?php echo $ph3_Main_Color; ?>',
+			color: '#E662CC',
 			zIndex: 2,
 			data: [<?php echo $liste1; ?>]
 		}, {
