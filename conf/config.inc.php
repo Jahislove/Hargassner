@@ -4,7 +4,7 @@
    $port = 23;
    
 // localization
-	//language = french, english;
+	//language = french, english, us;
 	$language = "french";
 
 // Homepage : name of your phase
