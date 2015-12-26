@@ -1,0 +1,164 @@
+/** mobile.css **/
+@CHARSET "UTF-8";
+
+*{
+	margin:0;
+	padding:0;
+}
+
+html{
+	background:url('../img/bg_tile.jpg') #333d43;
+}
+
+body{
+	background:url('../img/bg_head.jpg') repeat-x top center, url('../img/bg_tile.jpg') repeat-x;
+	min-height:500px;
+	font:14px/1.3 'Cabin Condensed',Arial, sans-serif;
+	color:#888;
+	padding:30px;
+}
+
+p{
+    margin: 0 0 0 250px;
+}
+
+h1,h2{
+/* 	color: #fff; */
+ 	line-height: 1;
+/*	background-color: #222; */
+	font-family: Cabin Condensed,Arial,sans-serif;
+	font-weight: normal;
+	margin: 0 auto;
+/*	position: absolute; 
+	left: 10%;
+ 	margin-left: -180px; */
+}
+
+h1{
+	font-size: 40px;
+	padding: 0px 15px 0px;
+	text-align: center;
+	top: 0px;
+	margin-top: -30px;
+}
+
+h2{
+	font-size: 14px;
+	padding: 4px 13px 9px 11px;
+	top: 51px;
+}
+
+header{
+	display:block;
+/* 	margin-top:10px; */
+	position:relative;
+}
+
+nav{
+	display: block;
+	margin: 10px auto 0;
+	text-align: center;
+	width: 900px;
+
+}
+
+footer{
+	color: #BBBBBB;
+	line-height: 1.6;
+	padding: 10px 20px 0;
+	text-align: center;
+	display:block;
+}
+
+footer b{
+	color: #888888;
+	display: block;
+	font-size: 10px;
+	font-weight: normal;
+}
+
+a, a:visited {
+	text-decoration:none;
+	outline:none;
+	color:#54a6de;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+/**************************************************************************************************/	
+/******************* tableau instantane ***********************************************************/	
+/**************************************************************************************************/	
+.TableInstant {
+	margin: auto;
+	/*width: 618px;*/
+}
+.TableInstant td{
+    /* Specifying a fallback color and we define CSS3 gradients for the major browsers: */
+    background-color: #f0f0f0;
+    background-image: -webkit-gradient(linear,left top, left bottom,from(#fefefe), color-stop(0.5,#f0f0f0), color-stop(0.51, #e6e6e6));
+    background-image: -moz-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+    background-image: -o-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+    background-image: -ms-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+    background-image: linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+    border-right: 1px solid rgba(9, 9, 9, 0.125);
+    /* Adding a 1px inset highlight for a more polished efect: */
+    box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+    -moz-box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+    -webkit-box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+    position:relative;
+    float: left;
+    list-style: none;
+}
+ /* Treating the first LI and th:after elements separately */
+.TableInstant td:first-child{
+    border-radius: 24px 0 0 24px;
+	text-align: center;
+}
+.TableInstant td:last-child{
+    border-radius: 0 24px 24px 0;
+}
+/* Styling the anchor elements */
+.TableInstant td{
+    color: #5d5d5d;
+    display: inline-block;
+    font: 40px/1 Cabin Condensed,Arial,sans-serif;
+    padding: 8px 65px 10px;
+    position: relative;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+    z-index:2;
+    text-decoration:none !important;
+    white-space:nowrap;
+	width: 50px;
+	text-align: center;
+}
+
+/*********graphe meteo*************/
+/*********graphe temps reel*********/
+#temp0 {
+    width: 500px;
+    height: 150px;
+    margin: 0 auto 60px;
+}
+	#temp1,#temp2,#temp3 {
+		width: 400px;
+		height: 400px;
+		margin: auto;
+		float: left;
+	}
+	#datetemp {
+        position: relative;
+		margin: auto  ;
+        padding: 10px 0 0 0;
+        font: 30px/1 Arial,sans-serif;
+	}
+
+div#bandeau{
+	margin: auto;
+	width: 900px;
+}
+
+div#clear{
+	clear: both;
+}

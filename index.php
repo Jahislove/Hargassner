@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>My nanoPK</title>
+    <link rel="icon" type="image/png" href="img/home.png" />
+	<link type="text/css" rel="stylesheet" href="css/main.css" />
+    <link href='http://fonts.googleapis.com/css?family=Cabin+Condensed' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- <script src="js/jquery-1.11.1.min.js"></script> -->
+    <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+ <!--    <script src="js/highstock.js"></script>
+	<script src="js/highcharts-more.js"></script>
+    <script src="js/solid-gauge.src.js"></script> -->
+    
+<script type="text/javascript">	
+var id;
+var heure;
+var chart_live; 
+var chart_silo; 
+var etat;
+
+// auto refresh des données avec ajax
+// requestData est appelée la 1ere fois par graph_live.php puis boucle toute seule
+function requestData() { 
+    call_ajax(); //appel ajax au loading
+    id = setInterval(call_ajax, 5000); ////rafraichissement en ms , ne pas descendre sous les 2000ms car le telnet de la chaudiere n'arrive plus a repondre assez vite
+    setTimeout(stop_refresh, 6000000); // 600000ms  stop rafraichissement apres 10 mn 
+};
+
+function stop_refresh() {clearInterval(id)};
+
+// appel ajax et rafraichissement des données
+function call_ajax() {
+$.ajax({
+    url: 'query_json.inc.php', 
+    cache: false,
+    success: function(channel) {
+        heure = channel[0]; // stock la date puis
+        channel.shift(); // supprime la 1ere valeur (date) pour etre synchro avec les numero de channel
+
+        // animation du dessin par chargement de class CSS
+        // + remplace valeur numerique de "etat" par un texte
+        switch(channel[0]) { 
+            case 0:
+                etat = '0';
+                break;
+            case 1:
+                etat = 'Arrêt';
+                document.getElementById('nano-D1').className = 'foyer_eteint';
+                document.getElementById('nano-D2').className = 'vis_stop';
+                document.getElementById('nano-B1').className = 'ressort_fixe';
+                break;
+            case 2:
+                etat = 'Allumage??';
+                document.getElementById('nano-D1').className = 'foyer_allumage';
+                document.getElementById('nano-D2').className = 'vis_stop';
+                document.getElementById('nano-B1').className = 'ressort_fixe';
+                break;
+            case 3:
+                etat = 'Démarrage';
+                document.getElementById('nano-D2').className = 'vis_stop';
+                document.getElementById('nano-B1').className = 'ressort_fixe';
+                break;
+            case 4:
+                etat = 'Controle allumage';
+                document.getElementById('nano-D1').className = 'foyer_reprise';
+                document.getElementById('nano-D2').className = 'vis_marche';
+                break;
+            case 5:
+                etat = '5';
+                document.getElementById('nano-D1').className = 'foyer_allumage';
+                break;
+            case 6:
+                etat = 'Démarrage combustion';
+                document.getElementById('nano-D1').className = 'foyer_reprise';
+                document.getElementById('nano-E1').className = 'cendrier_ventil';
+                document.getElementById('nano-D2').className = 'vis_marche';
+                document.getElementById('nano-B1').className = 'ressort_fumee';
+                break;
+            case 7:
+                etat = 'Combustion';
+                document.getElementById('nano-C1').className = 'coeur_combustion'; 
+                document.getElementById('nano-D1').className = 'foyer_combustion';
+                document.getElementById('nano-E1').className = 'cendrier_ventil';
+                document.getElementById('nano-D2').className = 'vis_marche';
+                document.getElementById('nano-B1').className = 'ressort_fumee';
+                break;
+            case 8:
+                etat = 'Veille';
+                document.getElementById('nano-C1').className = 'coeur_eteint';
+                document.getElementById('nano-D1').className = 'foyer_veille';
+                document.getElementById('nano-E1').className = 'cendrier_ferme';
+                document.getElementById('nano-D2').className = 'vis_stop';
+                document.getElementById('nano-B1').className = 'ressort_fixe';
+                break;
+            case 9:
+                etat = 'Décendrage dans 7mn';
+                document.getElementById('nano-C1').className = 'coeur_eteint';
+                document.getElementById('nano-D1').className = 'foyer_veille';
+                document.getElementById('nano-D2').className = 'vis_stop';
+                break;
+            case 10:
+                etat = 'Décendrage';
+                document.getElementById('nano-E1').className = 'cendrier_mouvt';
+                break;
+            case 11:
+                etat = '11';
+                break;
+            case 12:
+                etat = 'Nettoyage';
+                document.getElementById('nano-E1').className = 'cendrier_ouvert';
+                document.getElementById('nano-B1').className = 'ressort_anime';
+                break;
+            default:
+                etat = '13+';
+                break;
+        }
+        
+        // elements qui ne dependent pas d'un etat , mais de la valeur d'un channel
+        // l'extracteur de fumée 
+        if ( channel[53] > 0 ) {
+            document.getElementById('nano-A1').className = 'extr_anime'; 
+        }
+        else {
+            document.getElementById('nano-A1').className = 'extr_fixe'; 
+        }
+        
+        // aspiration RAPS
+        if ( channel[169] == 2000 ) {
+            document.getElementById('nano-A2').className = 'RAPS_anime'; 
+        }
+        else {
+            document.getElementById('nano-A2').className = 'RAPS_fixe'; 
+        }
+        
+        
+        // ######## rafraichissement des données ########################################################
+        // voir channel.txt pour les numeros de canaux
+        // ces numeros correspondent a une Nano PK v14.0 , pour une classic/HSV il y a des differences dans les numeros 
+        // il faudra donc adapter les canaux en conséquence
+        
+        // rafraichissement etat
+        document.getElementById('etat').innerHTML = etat;
+        
+        // rafraichissement des bulles
+        document.getElementById('extr-texte').innerHTML =  channel[53] + '%';
+        document.getElementById('fumee-texte').innerHTML =  channel[5] + '°C';
+        document.getElementById('Tchaud-texte').innerHTML =  channel[3] + '°C';
+        document.getElementById('puiss-texte').innerHTML =  channel[134] + '%';
+        document.getElementById('Tint-texte').innerHTML =  channel[138] + '°C';
+        document.getElementById('Text-texte').innerHTML =  channel[6] + '°C';
+        document.getElementById('depart-texte').innerHTML =  channel[21] + '°C';
+        document.getElementById('bois-texte').innerHTML =  channel[56] + '%';
+        
+        // rafraichissement graphe silo
+        chart_silo.series[0].points[0].update(channel[115]);
+       
+        // rafraichissement graphe live
+        var shift = chart_live.series[0].data.length > 2500;
+        chart_live.series[0].addPoint([heure, channel[0]], true, shift);
+        chart_live.series[1].addPoint([heure, channel[3]], true, shift);
+        chart_live.series[2].addPoint([heure, channel[53]], true, shift);
+        chart_live.series[3].addPoint([heure, channel[56]], true, shift);
+        chart_live.series[4].addPoint([heure, channel[134]], true, shift);
+        chart_live.series[5].addPoint([heure, channel[160]], true, shift);
+        chart_live.series[6].addPoint([heure, channel[55]], true, shift);
+        chart_live.series[7].addPoint([heure, channel[54]], true, shift);  
+            
+        // rafraichissement tableau gauche et droite
+        Gauche1.innerHTML = channel[1];    
+        Gauche2.innerHTML = channel[2];    
+        Gauche3.innerHTML = channel[3];    
+        Gauche4.innerHTML = channel[4];    
+        Gauche5.innerHTML = channel[5];    
+        Gauche6.innerHTML = channel[6];    
+        Gauche7.innerHTML = channel[7];    
+        Gauche8.innerHTML = channel[21];    
+        Gauche9.innerHTML = channel[23];    
+        Gauche10.innerHTML = channel[54];    
+        Gauche11.innerHTML = channel[160];    
+
+        Droite1.innerHTML = channel[98];    
+        Droite2.innerHTML = channel[111];    
+        Droite3.innerHTML = channel[112];    
+        Droite4.innerHTML = channel[113];    
+        Droite5.innerHTML = channel[114];    
+        Droite6.innerHTML = channel[99];    
+        Droite7.innerHTML = channel[115];    
+        Droite8.innerHTML = channel[155];    
+        Droite9.innerHTML = channel[156];    
+        Droite10.innerHTML = channel[157];    
+        Droite11.innerHTML = channel[158];    
+        Droite12.innerHTML = channel[159];    
+        Droite13.innerHTML = channel[162];    
+        Droite14.innerHTML = channel[163];    
+        Droite15.innerHTML = channel[164];    
+        
+        
+        // changement vitesse vis bois
+        //if (channel[56] != 0) {
+        //    document.getElementById('nano-D2-vis').style.animationDuration = (1-(channel[56]/100))*5+0.5 + "s";
+        //}
+        //else {
+        //    document.getElementById('nano-D2-vis').style.animationDuration = "0s";
+        //}
+        
+
+        },
+    });
+};
+
+// $(document).ready(function(){
+    // $('button').click(function(){
+        // $('p').toggleClass('titi');
+    // });
+// });
+
+
+
+//alterne affichage bulles/tableau
+function clic() {
+    if ( bulles.className == 'visible' ) {
+        bulles.className = 'hidden';
+        tableau.className = 'visible';
+    }
+    else {
+        bulles.className = 'visible';
+        tableau.className ='hidden';
+    }
+};
+</script>
+</head>
+
+<body>
+    <?php require_once("conf/config.inc.php");?>
+    <?php require_once("conf/connectBDD.inc.php");?>
+    
+    <header>
+        <h1>
+            <!--<IMG SRC="img/bulles.png" ALT="Hargassner Nano PK" WIDTH=115 HEIGHT=33 > -->
+        </h1>
+    </header>
+
+    <nav>
+        <ul class="fancyNav">
+            <li id="home">   <a href="index.php" class="homeIcon">Accueil</a></li>
+            <li id="chart1">  <a href="graph_highchart.php">last 12h</a></li>
+            <li id="chart2">    <a href="graph_highchart2.php">2</a></li>
+            <li id="chart3">   <a href="graph_highchart3.php">3</a></li>
+            <li id="about">  <a href="about.php">a propos</a></li>
+        </ul>
+    </nav>
+    
+    <div id="etat">?</div>
+    
+
+<?php	
+    include("graph_dessin.inc.php");
+    include("graph_silo.inc.php"); 
+    include("graph_live.php");
+    include("footer.php");
+?>
+
