@@ -1,5 +1,4 @@
-﻿
-<?php
+﻿<?php
 require("headertest.php");
 
     $liste1 = "";
@@ -79,16 +78,8 @@ require("headertest.php");
     // $liste10 = "[" . $dateD . "," . $data['c34'] ."]," . $liste10;
     }
 ?>
-<style type="text/css">
-#phases3 {
-	min-width: 400px;
-	height: 800px;
-	margin: 0 auto;
-}
-</style>
 
-<div id="phases3"></div>
-<?php //include("schema.inc.php");?>
+<div id="last24"></div>
 
 <?php require("footer.php");?>
 
@@ -106,7 +97,7 @@ $(function() {
 		}
     });
 
-	$('#phases3').highcharts({
+	$('#last24').highcharts({
 		chart: {
 			type: 'line',
 			zoomType: 'x',

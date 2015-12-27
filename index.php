@@ -9,16 +9,13 @@
     <link href='http://fonts.googleapis.com/css?family=Cabin+Condensed' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <!-- <script src="js/jquery-1.11.1.min.js"></script> -->
     <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
- <!--    <script src="js/highstock.js"></script>
-	<script src="js/highcharts-more.js"></script>
-    <script src="js/solid-gauge.src.js"></script> -->
+    
 <script type="text/javascript">	
-var histo = 2500;
-var refresh1 = parseInt(<?php echo $refresh;?>);
+var histo_live_shift = <?php echo $histo_live_shift;?>;
+var refresh = <?php echo $refresh;?>;
 var id;
 var heure;
 var chart_live; 
@@ -29,7 +26,7 @@ var etat;
 // requestData est appelée la 1ere fois par graph_live.php puis boucle toute seule
 function requestData() { 
     call_ajax(); //appel ajax au loading
-    id = setInterval(call_ajax,refresh1); 
+    id = setInterval(call_ajax,refresh*1000); 
     setTimeout(stop_refresh, 6000000); // 600000ms  stop rafraichissement apres 10 mn 
 };
 
@@ -122,6 +119,12 @@ $.ajax({
                 break;
         }
         
+        // ######## rafraichissement des données ########################################################
+        // voir channel-nanoPK-v14.0d.txt pour les numeros de canaux
+        // ces numeros correspondent a une Nano PK v14.0d , pour une classic/HSV il y a des differences dans les numeros 
+        // il faudra donc adapter les canaux en conséquence
+
+
         // elements qui ne dependent pas d'un etat , mais de la valeur d'un channel
         // l'extracteur de fumée 
         if ( channel[53] > 0 ) {
@@ -138,12 +141,6 @@ $.ajax({
         else {
             document.getElementById('nano-A2').className = 'RAPS_fixe'; 
         }
-        
-        
-        // ######## rafraichissement des données ########################################################
-        // voir channel.txt pour les numeros de canaux
-        // ces numeros correspondent a une Nano PK v14.0 , pour une classic/HSV il y a des differences dans les numeros 
-        // il faudra donc adapter les canaux en conséquence
         
         // rafraichissement etat
         document.getElementById('etat').innerHTML = etat;
@@ -162,18 +159,18 @@ $.ajax({
         chart_silo.series[0].points[0].update(channel[115]);
        
         // rafraichissement graphe live
-        var shift = chart_live.series[0].data.length > histo;
+        var shift = chart_live.series[0].data.length > histo_live_shift;
         chart_live.series[0].addPoint([heure, channel[0]], true, shift);
         chart_live.series[1].addPoint([heure, channel[3]], true, shift);
         chart_live.series[2].addPoint([heure, channel[53]], true, shift);
         chart_live.series[3].addPoint([heure, channel[56]], true, shift);
         chart_live.series[4].addPoint([heure, channel[134]], true, shift);
-        chart_live.series[5].addPoint([heure, channel[160]], true, shift);
-        chart_live.series[6].addPoint([heure, channel[55]], true, shift);
-        chart_live.series[7].addPoint([heure, channel[54]], true, shift);  
+        chart_live.series[5].addPoint([heure, channel[21]], true, shift);
+        chart_live.series[6].addPoint([heure, channel[54]], true, shift);
+        chart_live.series[7].addPoint([heure, channel[160]], true, shift);  
             
         // rafraichissement tableau gauche et droite
-        Gauche1.innerHTML = refresh1;    
+        Gauche1.innerHTML = channel[1]; 
         Gauche2.innerHTML = channel[138];    
         Gauche3.innerHTML = channel[3];    
         Gauche4.innerHTML = channel[4];    
@@ -267,12 +264,6 @@ function clic() {
     
     <div id="etat">?</div>
     
-    
-   <!--  <div class='clear'></div> -->
-
-
-    
-
 <?php	
     include("graph_dessin.inc.php");
     include("graph_silo.inc.php"); 

@@ -4,7 +4,7 @@
 
 // pre-remplissage du chart avec des valeurs null
 $x = (time() * 1000);
-for ($i = -$histo_live; $i < 0; $i++){  //la valeur de $i doit correspondre a celle de la variable histo dans index.php
+for ($i = -$histo_live_X; $i < 0; $i++){  //la valeur de $i doit correspondre a celle de la variable histo dans index.php
     $listeInit .= "[($x + $i*1000),null]," ;
 } 
 ?>
@@ -95,7 +95,7 @@ $(function() {
             zIndex: 1,
 			data: [<?php echo $listeInit; ?>],
 		}, {
-			name: 'T chaud',
+			name: 'T° eau',
 			color: '#E662CC',
             tooltip: {
                 valueSuffix: ' °',
@@ -103,32 +103,32 @@ $(function() {
             zIndex: 2,
 			data: [<?php echo $listeInit; ?>],
 		}, {
-			name: 'SZ',
+			name: 'Extraction',
 			color: 'yellow',
 			zIndex: 3,
 			data: [<?php echo $listeInit; ?>],
 		}, {
-			name: 'bois',
+			name: '% bois',
 			zIndex: 4,
 			color: 'grey',
 			data: [<?php echo $listeInit; ?>],
 		}, {
-			name: 'puiss',
+			name: 'puissance',
 			zIndex: 0,
 			color: 'red',
 			data: [<?php echo $listeInit; ?>],
 		}, {
-			name: '160 K',
+			name: 'T° départ',
 			zIndex: 0,
 			color: 'lightblue',
 			data: [<?php echo $listeInit; ?>],
 		}, {
-			name: '55 K',
+			name: 'F',
 			zIndex: 0,
 			color: 'blue',
 			data: [<?php echo $listeInit; ?>],
 		}, {
-			name: '54',
+			name: 'K',
 			zIndex: 0,
 			color: 'grey',
 			data: [<?php echo $listeInit; ?>],
