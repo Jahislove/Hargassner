@@ -6,7 +6,7 @@ site web permettant la visualisation en temps réel d'une chaudière Hargassner 
 Ce site web permet de visualiser l'état d'une chaudière à granulés Hargassner Nano PK .
 Dans sa version simple (temps réel uniquement) il ne nécessite qu'un serveur apache/php impérativement sur votre réseau local.
 Pour utiliser les menus supplémentaires et naviguer dans l'historique , il faut une base MySQL en plus.
-Pour remplir cette base il faut un script python ( en cours de dev)
+Pour remplir cette base il faut un script python ( https://github.com/Jahislove/hargassner-python)
 
 La Chaudière dialogue par telnet , ce protocole n'est pas du tout sécurisé . 
 C'est pour cette raison qu'il est nécessaire d'héberger le site web en local , afin d'éviter de diffuser le telnet sur internet.
