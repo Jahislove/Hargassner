@@ -23,13 +23,13 @@ $(function() {
                 duration: 2000
             },
             events: {
-                load:
-                    function() {
-                    this.renderer.image('./img/Silo-textile-GWTS-XXL2.png',0,0,200,200)
-                    .attr({zIndex: 10})
-                    .add();
+                // load:
+                    // function() {
+                    // this.renderer.image('./img/Silo-textile-GWTS-XXL2.png',0,0,200,200)
+                    // .attr({zIndex: 0})
+                    // .add();
                     
-                }
+                // }
             },
 		},
 	    credits: {
@@ -40,21 +40,18 @@ $(function() {
 	    },
 	    legend: {
 	        enabled: false,
-	        // itemStyle:{
-				// color: 'white',
-			// },
 	    },
 		plotOptions: {
 			series: {
                 enableMouseTracking: false,
                 borderWidth: 0,
-                pointWidth: 140,
+                pointWidth: 120,
                 dataLabels: {
                     enabled: true,
                     color: 'black',
                     inside: true,
                     formatter: function() {
-                        return '<center>' + this.y + '<br/>' + 'kg</center>'  ;
+                        return  this.y  + ' kg'  ;
                     },
                 }
 			},
@@ -67,7 +64,7 @@ $(function() {
 		},
 		yAxis: {
 			min: 0,
-            max: 4000,
+            max: <?php echo $taille_silo; ?>,
 			gridLineColor: null, 
 			labels: {
 				enabled: false,
@@ -78,17 +75,9 @@ $(function() {
 		},
 	    tooltip: {
             enabled: false,
-			//xDateFormat: '%A %e %b  %H:%M:%S',
-            backgroundColor:{
-                linearGradient:[60,0,0,0],
-                stops: [
-                    [0, '#FCFFC5'],
-                    [1, 'grey']
-                ]
-            },
 	    },
 		series: [{
-			name: '<?php echo $phase1_name; ?>',
+			name: '',
 			color: 'yellow',
 			data: [[0]],
 		}]

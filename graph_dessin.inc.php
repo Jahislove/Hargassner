@@ -11,8 +11,8 @@
 		<span id="nano-E1" class="cendrier_ferme"></span>
 		<span id="nano-E2"></span>
 	</div>
+    
 	<div id='bulles' class="visible" onclick="clic()">  
-        
         <span class='extr-bulle'>
             <span class="tooltip"><a>Puissance du ventilateur d'extraction des fumées</a></span>
             <span id="extr-texte"  class='texte-bulle'></span>
@@ -47,15 +47,15 @@
         <span id="silo-bulle" class='silo-bulle'>
             <span class="tooltip"><a>quantité de granulés restant</a></span>
             <span id="silo-texte"   class='silo-texte'></span>
+            <img id="silo" src="img/Silo-textile-GWTS-XXL2.png"></img>
         </span>
 
         <span class='bois-bulle'>
             <span class="tooltip"><a>pourcentage d'amené de la vis à granulé</a></span>
             <span id="bois-texte"   class='texte-bulle'></span>
         </span>
-        
-        
 	</div>
+
 	<div id='tableau' class="hidden" >  
         <span id='gauche'>  
             <table class='TableInstant'>  
@@ -77,10 +77,10 @@
                 <tr><th>channel 26 : TR2</th>   <td id="Gauche16">?</td></tr>    
                 <tr><th>channel 45 : TRs_A</th> <td id="Gauche17">?</td></tr>    
                 <tr><th>channel 46 : TRs_1</th> <td id="Gauche18">?</td></tr>    
-                <tr><th>channel 58 : I Ra</th>   <td id="Gauche19">?</td></tr>    
-                <tr><th>channel 59 : I Aa</th>   <td id="Gauche20">?</td></tr>    
-                <tr><th>channel 110 : Höchste Anf</th>   <td id="Gauche21">?</td></tr>    
-                <tr><th>channel 129 : BRT</th>   <td id="Gauche22">?</td></tr>    
+                <tr><th>channel 58 : I Ra</th>  <td id="Gauche19">?</td></tr>    
+                <tr><th>channel 59 : I Aa</th>  <td id="Gauche20">?</td></tr>    
+                <tr><th>channel 110 : Höchste A</th><td id="Gauche21">?</td></tr>    
+                <tr><th>channel 129 : BRT</th>  <td id="Gauche22">?</td></tr>    
            </table>
         </span>
         <span id='droite'>  

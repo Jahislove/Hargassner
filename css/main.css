@@ -342,16 +342,16 @@ a:hover{
 /******************* Bandeau CSS ******************************************************************/	
 /**************************************************************************************************/	
 
-#dessin {
-    float: left;
-}
 .clear{
 	clear: both;
 }
 /*************************************************************************************************/	
 /******** dessin chaudiere************************************************************************/	
 /*************************************************************************************************/	
-
+/* #dessin {
+    float: left;
+}
+ */
 /********tableau pour le dessin ********************************************************************/	
 #tableau_dessin {
 /*  border: 0px;
@@ -412,7 +412,7 @@ a:hover{
 
 /*********************************************************/
 /*** LIGNE A *********************************************/
-/**********************************/
+/***A1*****************************/
 .extr_fixe {
     position: absolute;
     left: 300px;
@@ -435,16 +435,7 @@ a:hover{
     from { background-position: 0%; }
     to       { background-position: 112.5%; }
 }
-/**********************************/
-#nano-A2 {
-    position: absolute;
-    left: 517px;
-	width: 256px;
-	height: 112px;
-	display: inline-block;
-	background: url("../img/nano-A2.png") no-repeat;
-    background-position: 0% ;
-}
+/***A2*****************************/
 .RAPS_fixe {
     position: absolute;
     left: 517px;
@@ -763,7 +754,7 @@ a:hover{
 .maison-bulle {
     position: absolute;
     z-index: 2;
-    left: 750px;
+    left: 700px;
 	top: -70px;
     width: 446px;
 	height: 200px;
@@ -807,12 +798,22 @@ a:hover{
 .silo-texte {
    /* float: right;*/
     position: absolute;
-    z-index: 3;
-    left: 200px;
-    top: 43px;
-    width: 200px;
-    height: 200px;
+    z-index: 0;
+    left: 230px;
+    bottom: 80px;
+    width: 140px;
+    height: 155px;
 	display: inline-block;
+  /* background: url("../img/Silo-textile-GWTS-XXL2.png") no-repeat; */
+
+}
+#silo {
+    position: absolute;
+    z-index: 0;
+    left: 220px;
+    top: 43px;
+    width: 180px;
+    height: 200px;
 }
 /*** TOOLTIP ********************************/
 .tooltip { /* zone de survol*/
@@ -822,24 +823,29 @@ a:hover{
     width: 185px;
 	height: 120px;
     z-index: 5;
-  }
+}
 .tooltip  a{
     display:none;
-    }
+}
 .tooltip:hover a{ /* tooltip */
     display : block;
+    text-decoration:none ;
+    border-radius: 20px;
     position: relative;
     text-align: center;
-    left: -5g0px;
-	top: 10px;
+    line-height: 50px;
+    color: black;
+    left: -50px;
+	top: -50px;
     width: 400px;
 	height: 50px;
-    background:url("../img/nano-E2.png") no-repeat;   
+    background: linear-gradient(white,red);
+    /* background:url("../img/nano-E2.png") no-repeat;   */
     animation: pop-tooltip 1s ; 
 }
 @keyframes pop-tooltip {
-    0%  { opacity:0   ; transform: scale(0.1); }
-    60%  { opacity:0.6 ; transform: scale(1); }
-    80%  { opacity:0.8 ; transform: scale(0.9); }
-    100%{ opacity:1   ; transform: scale(1); }
+    0%  { transform: scale(0.1); }
+    60%  { transform: scale(1); }
+    80%  { transform: scale(0.9); }
+    100%{ transform: scale(1); }
 }

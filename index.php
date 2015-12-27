@@ -1,5 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
+    <?php require_once("conf/config.inc.php");?>
+    <?php require_once("conf/connectBDD.inc.php");?>
 <head>
     <title>My nanoPK</title>
     <link rel="icon" type="image/png" href="img/home.png" />
@@ -14,9 +16,9 @@
  <!--    <script src="js/highstock.js"></script>
 	<script src="js/highcharts-more.js"></script>
     <script src="js/solid-gauge.src.js"></script> -->
-    
 <script type="text/javascript">	
 var histo = 2500;
+var refresh1 = parseInt(<?php echo $refresh;?>);
 var id;
 var heure;
 var chart_live; 
@@ -27,7 +29,7 @@ var etat;
 // requestData est appelée la 1ere fois par graph_live.php puis boucle toute seule
 function requestData() { 
     call_ajax(); //appel ajax au loading
-    id = setInterval(call_ajax, 5000); ////rafraichissement en ms , ne pas descendre sous les 2000ms car le telnet de la chaudiere n'arrive plus a repondre assez vite
+    id = setInterval(call_ajax,refresh1); 
     setTimeout(stop_refresh, 6000000); // 600000ms  stop rafraichissement apres 10 mn 
 };
 
@@ -171,7 +173,7 @@ $.ajax({
         chart_live.series[7].addPoint([heure, channel[54]], true, shift);  
             
         // rafraichissement tableau gauche et droite
-        Gauche1.innerHTML = channel[1];    
+        Gauche1.innerHTML = refresh1;    
         Gauche2.innerHTML = channel[138];    
         Gauche3.innerHTML = channel[3];    
         Gauche4.innerHTML = channel[4];    
@@ -247,8 +249,6 @@ function clic() {
 </head>
 
 <body>
-    <?php require_once("conf/config.inc.php");?>
-    <?php require_once("conf/connectBDD.inc.php");?>
     
     <header>
         <h1>
@@ -260,7 +260,7 @@ function clic() {
         <ul class="fancyNav">
             <li id="home">   <a href="index.php" class="homeIcon">Accueil</a></li>
             <li id="chart">  <a href="graph_highchart.php">last 24h</a></li>
-            <li id="chart3">    <a href="graph_highchart3.php">test</a></li>
+            <li id="chart3"> <a href="graph_highchart3.php">test</a></li>
             <li id="about">  <a href="about.php">a propos</a></li>
         </ul>
     </nav>
