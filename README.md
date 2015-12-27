@@ -16,6 +16,7 @@ les paramètres diffusés par la chaudière ne portent pas les mêmes numéros e
 le fichier qui m'a servit de réference pour la Nano PK est channel-nanoPK-v14.0d.txt situé dans /conf
 
 condition necessaire :
+
 1 - version simple (temps réel uniquement):
  - chaudiere hargassner avec regulation touchtronic branchée sur le reseau local
  - ce site web hébergé sur un serveur apache/PHP sur le meme reseau local
