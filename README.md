@@ -13,5 +13,5 @@ C'est pour cette raison qu'il est nécessaire d'héberger le site web en local ,
 
 les paramètres diffusés par la chaudière ne portent pas les mêmes numéro en fonction du modèle de chaudière.
 si vous disposez d'un modèle Classic ou HSV , des modifications légères seront à apporter.
-le fichier qui m'a servit de réference pour la Nano PK est channel-nanoPK-v14.0c.txt situé dans /conf
+le fichier qui m'a servit de réference pour la Nano PK est channel-nanoPK-v14.0d.txt situé dans /conf
 
