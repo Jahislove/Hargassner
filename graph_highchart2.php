@@ -1,44 +1,45 @@
 ﻿<?php require("header_debut.php"); ?>
 <script type="text/javascript" src="js/call_ajax_light.js">	</script>
 <?php require("header_fin.php"); ?>
-
-<div id="last24"></div>
+    
+<div id="test2"></div>
 
 <?php
     $tab0 = 'chan0';
     $nom0 = 'etat';
-    $tab1 = 'c3';
-    $nom1 = 'T° chaud';
-    $tab2 = 'c21';
-    $nom2 = 'T° depart';
-    $tab3 = 'c6';
-    $nom3 = 'T° ext';
-    $tab4 = 'm134';
-    $nom4 = 'Puissance';
+    $tab1 = 'm70';
+    $nom1 = 'motor';
+    $tab2 = 'm60';
+    $nom2 = 'I sr';
+    $tab3 = 'm61';
+    $nom3 = 'I rein';
+    $tab4 = 'm110';
+    $nom4 = 'Höchste';
     
-    // $tab5 = 'c21';
-    // $nom5 = 'T° depart';
-    // $tab6 = 'c6';
-    // $nom6 = 'T° ext';
-    // $tab7 = 'c4';
-    // $nom7 = 'etat';
-    // $tab8 = 'c55';
-    // $nom8 = 'etat';
-    // $tab9 = 'c54';
-    // $nom9 = 'etat';
-    // $tab10 = 'm160';
-    // $nom10 = 'etat';
+    $tab5 = 'c21';
+    $nom5 = 'T° depart';
+    $tab6 = 'c6';
+    $nom6 = 'T° ext';
+    $tab7 = 'm112';
+    $nom7 = 'temps pour aspi';
+    $tab8 = 'm166';
+    $nom8 = '166';
+    $tab9 = 'm169';
+    $nom9 = '169';
+    $tab10 = 'm170';
+    $nom10 = 'm170';
+    
+    // $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4 FROM nanoPK
+              // WHERE dateB > '2015-12-25 08:15:00' and dateB < '2015-12-26 08:30:00'
+              // ";
 
     $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4 FROM nanoPK
-              ORDER by id DESC LIMIT 20000";
+              ORDER by id DESC LIMIT 10";
 
-    //$query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4,$tab5,$tab6,$tab7,$tab8,$tab9,$tab10 FROM nanoPK
-    //          WHERE dateB > '2015-12-12 04:55:00' and dateB < '2015-12-12 09:00:00'
-    //          ";
-
-    // $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4 FROM nanoPK
-             // WHERE dateB > '2015-12-24 13:55:00' and dateB < '2015-12-24 14:15:00'
+    // $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4,$tab5,$tab6,$tab7,$tab8,$tab9,$tab10 FROM nanoPK
+             // WHERE dateB > '2015-12-23 13:55:00' and dateB < '2015-12-23 14:15:00'
              // ";
+
 
 	connectMaBase($hostname, $database, $username, $password);
     $req = mysql_query($query) ;
@@ -76,7 +77,10 @@
     // $liste9 = "[" . $dateD . "," . $data['c33'] ."]," . $liste9;
     // $liste10 = "[" . $dateD . "," . $data['c34'] ."]," . $liste10;
     }
+
+    $chart = "test2"
 ?>
+
 
 
 <?php require("footer.php");?>
@@ -95,10 +99,10 @@ $(function() {
 		}
     });
 
-	$('#last24').highcharts({
+	$(<?php echo $chart; ?>).highcharts({
 		chart: {
 			type: 'line',
-			zoomType: 'x',
+			zoomType: 'xy',
 			backgroundColor: null,
 			events: {
 				load: requestData // in header.php
@@ -179,7 +183,7 @@ $(function() {
 			zIndex: 0,
 			color: 'red',
 			data: [<?php echo $liste4; ?>]
-		}/*, {
+		}, {
 			name: '<?php echo $nom5; ?>',
 			zIndex: 0,
 			color: 'lightblue',
@@ -209,8 +213,7 @@ $(function() {
 			zIndex: 0,
 			color: 'black',
 			data: [<?php echo $liste10; ?>]
-		}*/
-        ] 
+		}] 
 	});
 //****************************************************************************************************
 });

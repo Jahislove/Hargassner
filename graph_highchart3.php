@@ -1,12 +1,10 @@
-﻿
-<?php
-require("headertest.php");
-
-    $liste1 = "";
-    $liste2 = "";
-    $liste3 = "";
-    $liste4 = "";
+﻿<?php require("header_debut.php"); ?>
+<script type="text/javascript" src="js/call_ajax_light.js">	</script>
+<?php require("header_fin.php"); ?>
     
+<div id="test3"></div>
+
+<?php
     $tab0 = 'chan0';
     $nom0 = 'etat';
     $tab1 = 'm70';
@@ -31,12 +29,12 @@ require("headertest.php");
     $tab10 = 'm170';
     $nom10 = 'm170';
     
-    $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4 FROM nanoPK
-              WHERE dateB > '2015-12-25 08:15:00' and dateB < '2015-12-26 08:30:00'
-              ";
+    // $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4 FROM nanoPK
+              // WHERE dateB > '2015-12-25 08:15:00' and dateB < '2015-12-26 08:30:00'
+              // ";
 
-    // $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4,$tab5,$tab6,$tab7,$tab8,$tab9,$tab10 FROM nanoPK
-              // ORDER by id DESC LIMIT 1000";
+    $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4 FROM nanoPK
+              ORDER by id DESC LIMIT 10";
 
     // $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4,$tab5,$tab6,$tab7,$tab8,$tab9,$tab10 FROM nanoPK
              // WHERE dateB > '2015-12-23 13:55:00' and dateB < '2015-12-23 14:15:00'
@@ -80,15 +78,7 @@ require("headertest.php");
     // $liste10 = "[" . $dateD . "," . $data['c34'] ."]," . $liste10;
     }
 ?>
-<style type="text/css">
-#phases3 {
-	min-width: 400px;
-	height: 800px;
-	margin: 0 auto;
-}
-</style>
 
-<div id="phases3"></div>
 
 
 <?php require("footer.php");?>
@@ -107,11 +97,14 @@ $(function() {
 		}
     });
 
-	$('#phases3').highcharts({
+	$('#test3').highcharts({
 		chart: {
 			type: 'line',
 			zoomType: 'xy',
 			backgroundColor: null,
+			events: {
+				load: requestData // in header.php
+			}
 		},
 		title: {
 			text: '',

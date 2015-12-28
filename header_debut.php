@@ -31,35 +31,3 @@
     };
     function stop_refresh() {clearInterval(id)};
 </script>
-
-<script type="text/javascript" src="js/call_ajax_light.js">	</script>
-
-
-
-</head>
-
-<body>
-    
-	<header>
-		<h1>
-		    <!-- 
-		    <IMG SRC="img/Owl-Intuition.png" ALT="Owl intuition" WIDTH=115 HEIGHT=33 >
-		     <IMG SRC="img/Owl-Logo.png" ALT="Logo" WIDTH=30 HEIGHT=30 > -->
-		</h1>
-	</header>
-
-	<nav>
-        <ul class="fancyNav">
-            <li id="home">   <a href="index.php" class="homeIcon">Accueil</a></li>
-            <li id="chart">  <a href="graph_highchart.php">last 12h</a></li>
-            <li id="chart3">    <a href="graph_highchart3.php">test</a></li>
-            <li id="about">  <a href="about.php">a propos</a></li>
-        </ul>
-	</nav>
-
-<?php	
-    include("footer.php");
-?>
-	
-	
-

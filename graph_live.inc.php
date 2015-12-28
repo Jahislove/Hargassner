@@ -1,7 +1,4 @@
-﻿
-<?php
-//require("header.php");
-
+﻿<?php
 // pre-remplissage du chart avec des valeurs null
 $x = (time() * 1000);
 for ($i = -$histo_live_X; $i < 0; $i++){  //la valeur de $i doit correspondre a celle de la variable histo dans index.php
