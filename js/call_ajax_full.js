@@ -55,7 +55,7 @@ $.ajax({
                 document.getElementById('nano-B1').className = 'ressort_fumee';
                 break;
             case 8:
-                etat = 'Veille';
+                etat = 'En veille';
                 document.getElementById('nano-C1').className = 'coeur_eteint';
                 document.getElementById('nano-D1').className = 'foyer_veille';
                 document.getElementById('nano-E1').className = 'cendrier_ferme';

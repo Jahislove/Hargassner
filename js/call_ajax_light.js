@@ -34,7 +34,7 @@ $.ajax({
                 etat = 'Combustion';
                 break;
             case 8:
-                etat = 'Veille';
+                etat = 'En veille';
                 break;
             case 9:
                 etat = 'Décendrage dans 7mn';

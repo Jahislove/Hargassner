@@ -342,15 +342,13 @@ a:hover{
 	height: 800px;
 	margin: 0 auto;
 }
-#test2 {
+.test2 {
+    display: inline-block;
 	width: 600px;
 	height: 400px;
-	margin: 0 auto;
 }
-#test3 {
-	min-width: 400px;
-	height: 800px;
-	margin: 0 auto;
+.rel {
+    width: 1206px;
 }
 
 /**************************************************************************************************/	

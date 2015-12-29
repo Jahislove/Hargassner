@@ -4,7 +4,7 @@ etat
 1   arret
 2   allumage
 3   demarrage chaudiere
-4   control allumage
+4   controle allumage
 5
 6   demarrage combustion/reduction phase allumage?
 7   combustion
@@ -15,7 +15,7 @@ etat
 12  nettoyage
 
 ces channels sont trouvables dans les fichiers de log DAQ de la chaudiere
-j'ai simplement ajouté en francais les parametres que j'ai pu identifier
+j'ai simplement mis en forme et ajouté en francais les parametres que j'ai pu identifier
 
 <CHANNEL id=	0	 name=	ZK	             unit=		etat chaudiere
 <CHANNEL id=	1	 name=	O2	             unit=	%	O2 est

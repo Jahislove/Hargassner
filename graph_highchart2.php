@@ -2,91 +2,68 @@
 <script type="text/javascript" src="js/call_ajax_light.js">	</script>
 <?php require("header_fin.php"); ?>
     
-<div id="test2"></div>
-
 <?php
-    $tab0 = 'chan0';
-    $nom0 = 'etat';
-    $tab1 = 'm70';
-    $nom1 = 'motor';
-    $tab2 = 'm60';
-    $nom2 = 'I sr';
-    $tab3 = 'm61';
-    $nom3 = 'I rein';
-    $tab4 = 'm110';
-    $nom4 = 'Höchste';
+    $chart1_name = ['T° ext','T° ext moy','T° int','T depart est','T° depart doit'];
+    $chart1_chan = "c6,c7,m138,c21,c23";
+    $chart2_name = ['Etat','Puissance','T° chaudiere','T° fumée','O² lambda'];
+    $chart2_chan = "chan0,m134,c3,c5,chan1";
+    $chart3_name = ['Aspiration','-','-',toto,titi];
+    $chart3_chan = "m169,m87,m87,m87,m87";
+    $chart4_name = ['Etat','Puissance','T° chaudiere',toto,titi];
+    $chart4_chan = "m87,m87,m87,m87,m87";
     
-    $tab5 = 'c21';
-    $nom5 = 'T° depart';
-    $tab6 = 'c6';
-    $nom6 = 'T° ext';
-    $tab7 = 'm112';
-    $nom7 = 'temps pour aspi';
-    $tab8 = 'm166';
-    $nom8 = '166';
-    $tab9 = 'm169';
-    $nom9 = '169';
-    $tab10 = 'm170';
-    $nom10 = 'm170';
-    
-    // $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4 FROM nanoPK
               // WHERE dateB > '2015-12-25 08:15:00' and dateB < '2015-12-26 08:30:00'
               // ";
 
-    $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4 FROM nanoPK
-              ORDER by id DESC LIMIT 10";
-
-    // $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4,$tab5,$tab6,$tab7,$tab8,$tab9,$tab10 FROM nanoPK
-             // WHERE dateB > '2015-12-23 13:55:00' and dateB < '2015-12-23 14:15:00'
-             // ";
-
+    $query = "SELECT dateB,$chart1_chan,$chart2_chan,$chart3_chan,$chart4_chan FROM nanoPK
+              ORDER by id DESC LIMIT 1000";
 
 	connectMaBase($hostname, $database, $username, $password);
     $req = mysql_query($query) ;
 	mysql_close();
 	
-    while($data = mysql_fetch_array($req))
-    {
-    $dateD = strtotime($data[0]) * 1000;
-    $liste0 = "[" . $dateD . "," . $data[1] ."]," . $liste0;
-    $liste1 = "[" . $dateD . "," . $data[2] ."]," . $liste1;
-    $liste2 = "[" . $dateD . "," . $data[3] ."]," . $liste2;
-    $liste3 = "[" . $dateD . "," . $data[4] ."]," . $liste3;
-    $liste4 = "[" . $dateD . "," . $data[5] ."]," . $liste4;
-    // $liste5 = "[" . $dateD . "," . $data[6] ."]," . $liste5; 
-    // $liste6 = "[" . $dateD . "," . $data[7] ."]," . $liste6;
-    // $liste7 = "[" . $dateD . "," . $data[8] ."]," . $liste7;
-    // $liste8 = "[" . $dateD . "," . $data[9] ."]," . $liste8;
-    // $liste9 = "[" . $dateD . "," . $data[10] ."]," . $liste9;
-    // $liste10 = "[" . $dateD . "," . $data[11] ."]," . $liste10;
+    while($data = mysql_fetch_array($req)){
+        $dateD = strtotime($data[0]) * 1000;
+        $chart1_data1[] = "[$dateD, $data[1]]";
+        $chart1_data2[] = "[$dateD, $data[2]]";
+        $chart1_data3[] = "[$dateD, $data[3]]";
+        $chart1_data4[] = "[$dateD, $data[4]]";
+        $chart1_data5[] = "[$dateD, $data[5]]";
 
+        $chart2_data[0] = "[" . $dateD . "," . $data[6] ."]," . $chart2_data[0];
+        $chart2_data[1] = "[" . $dateD . "," . $data[7] ."]," . $chart2_data[1];
+        $chart2_data[2] = "[" . $dateD . "," . $data[8] ."]," . $chart2_data[2];
+        $chart2_data[3] = "[" . $dateD . "," . $data[9] ."]," . $chart2_data[3];
+        $chart2_data[4] = "[" . $dateD . "," . $data[10] ."]," . $chart2_data[4];
 
-    
-    // while($data = mysql_fetch_assoc($req))
-    // {
-    // $dateD = strtotime($data['dateB']) * 1000;
-    // $liste0 = "[" . $dateD . "," . $data['chan0'] ."]," . $liste0;
-    // $liste1 = "[" . $dateD . "," . $data['c3'] ."]," . $liste1;
-    // $liste2 = "[" . $dateD . "," . $data['c53'] ."]," . $liste2;
-    // $liste3 = "[" . $dateD . "," . $data['m56'] ."]," . $liste3;
-    // $liste4 = "[" . $dateD . "," . $data['m134'] ."]," . $liste4;
-    // $liste5 = "[" . $dateD . "," . $data['c12'] ."]," . $liste5;
-    // $liste6 = "[" . $dateD . "," . $data['c13'] ."]," . $liste6;
-    // $liste7 = "[" . $dateD . "," . $data['c15'] ."]," . $liste7;
-    // $liste8 = "[" . $dateD . "," . $data['c18'] ."]," . $liste8;
-    // $liste9 = "[" . $dateD . "," . $data['c33'] ."]," . $liste9;
-    // $liste10 = "[" . $dateD . "," . $data['c34'] ."]," . $liste10;
+        $chart3_data1[] = "[$dateD, $data[11]]";
+        $chart3_data2[] = "[$dateD, $data[12]]";
+        $chart3_data3[] = "[$dateD, $data[13]]";
+        $chart3_data4[] = "[$dateD, $data[14]]";
+        $chart3_data5[] = "[$dateD, $data[15]]";
+
+        $chart4_data[0] = "[" . $dateD . "," . $data[16] ."]," . $chart4_data[0];
+        $chart4_data[1] = "[" . $dateD . "," . $data[17] ."]," . $chart4_data[1];
+        $chart4_data[2] = "[" . $dateD . "," . $data[18] ."]," . $chart4_data[2];
+        $chart4_data[3] = "[" . $dateD . "," . $data[19] ."]," . $chart4_data[3];
+        $chart4_data[4] = "[" . $dateD . "," . $data[20] ."]," . $chart4_data[4];
     }
-
-    $chart = "test2"
 ?>
 
+<div class="rel">
+    <div id="test1" class="test2"></div>
+    <div id="test2" class="test2"></div>
+    <div id="test3" class="test2"></div>
+    <div id="test4" class="test2"></div>
+</div>
 
+<div class="clear"></div>
 
 <?php require("footer.php");?>
 
 <script type="text/javascript">
 $(function() {
+    // *************set options for all charts ******************************
     Highcharts.setOptions({
 		lang: {
 			months: <?php echo $months; ?>,
@@ -96,17 +73,14 @@ $(function() {
 		},
 		global: {
 			useUTC: false
-		}
-    });
-
-	$(<?php echo $chart; ?>).highcharts({
+		},
 		chart: {
 			type: 'line',
 			zoomType: 'xy',
-			backgroundColor: null,
-			events: {
-				load: requestData // in header.php
-			}
+			backgroundColor: '#FBF8EF',
+		},
+	    credits: {
+			enabled: false,
 		},
 		title: {
 			text: '',
@@ -124,7 +98,7 @@ $(function() {
 		},
 		xAxis: {
 			type: 'datetime',
-			dateTimeLabelFormats: { // don't display the dummy year
+			dateTimeLabelFormats: { 
 				month: '%e. %b',
 				year: '%b'
 			}
@@ -157,62 +131,107 @@ $(function() {
 				},
 			}
 		},
+    });
 
+    // *************chart 1 ********************************************
+	$('#test1').highcharts({
+		// chart: {
+			// events: {
+				// load: requestData // in header_debut.php
+			// }
+        // },
 		series: [{
-			name: '<?php echo $nom0; ?>',
+			name: '<?php echo $chart1_name[0]; ?>',
 			color: '#01AEE3',
-			zIndex: 1,
-			data: [<?php echo $liste0; ?>]
+			data: [<?php echo join(',', $chart1_data1); ?>]
 		}, {
-			name: '<?php echo $nom1; ?>',
+			name: '<?php echo $chart1_name[1]; ?>',
 			color: '#E662CC',
-			zIndex: 2,
-			data: [<?php echo $liste1; ?>]
+			data: [<?php echo join(',', $chart1_data2); ?>]
 		}, {
-			name: '<?php echo $nom2; ?>',
-			color: 'yellow',
-			zIndex: 3,
-			data: [<?php echo $liste2; ?>]
-		}, {
-			name: '<?php echo $nom3; ?>',
-			zIndex: 4,
-			color: 'grey',
-			data: [<?php echo $liste3; ?>]
-		}, {
-			name: '<?php echo $nom4; ?>',
-			zIndex: 0,
-			color: 'red',
-			data: [<?php echo $liste4; ?>]
-		}, {
-			name: '<?php echo $nom5; ?>',
-			zIndex: 0,
-			color: 'lightblue',
-			data: [<?php echo $liste5; ?>]
-		}, {
-			name: '<?php echo $nom6; ?>',
-			zIndex: 0,
+			name: '<?php echo $chart1_name[2]; ?>',
 			color: 'blue',
-			data: [<?php echo $liste6; ?>]
+			data: [<?php echo join(',', $chart1_data3); ?>]
 		}, {
-			name: '<?php echo $nom7; ?>',
-			zIndex: 0,
+			name: '<?php echo $chart1_name[3]; ?>',
 			color: 'grey',
-			data: [<?php echo $liste7; ?>]
+			data: [<?php echo join(',', $chart1_data4); ?>]
 		}, {
-			name: '<?php echo $nom8; ?>',
-			zIndex: 0,
-			color: 'maroon',
-			data: [<?php echo $liste8; ?>]
+			name: '<?php echo $chart1_name[4]; ?>',
+			color: 'red',
+			data: [<?php echo join(',', $chart1_data5); ?>]
+		}] 
+	});
+    // *************chart 2 ********************************************
+	$('#test2').highcharts({
+		series: [{
+			name: '<?php echo $chart2_name[0]; ?>',
+			color: '#01AEE3',
+			data: [<?php echo $chart2_data[0]; ?>]
 		}, {
-			name: '<?php echo $nom9; ?>',
-			zIndex: 0,
-			color: 'green',
-			data: [<?php echo $liste9; ?>]
+			name: '<?php echo $chart2_name[1]; ?>',
+			color: 'red',
+			data: [<?php echo $chart2_data[1]; ?>]
 		}, {
-			name: '<?php echo $nom10; ?>',
-			zIndex: 0,
-			color: 'black',
-			data: [<?php echo $liste10; ?>]
+			name: '<?php echo $chart2_name[2]; ?>',
+			color: '#E662CC',
+			data: [<?php echo $chart2_data[2]; ?>]
+		}, {
+			name: '<?php echo $chart2_name[3]; ?>',
+			color: 'grey',
+			data: [<?php echo $chart2_data[3]; ?>]
+		}, {
+			name: '<?php echo $chart2_name[4]; ?>',
+			color: '#01DF01',
+			data: [<?php echo $chart2_data[4]; ?>]
+		}] 
+	});
+    // *************chart 3 ********************************************
+	$('#test3').highcharts({
+		series: [{
+			name: '<?php echo $chart3_name[0]; ?>',
+			color: '#01AEE3',
+			data: [<?php echo join(',', $chart3_data1); ?>]
+		}, {
+			name: '<?php echo $chart3_name[1]; ?>',
+			color: 'red',
+			data: [<?php echo join(',', $chart3_data2); ?>]
+		}, {
+			name: '<?php echo $chart3_name[2]; ?>',
+			color: '#E662CC',
+			data: [<?php echo join(',', $chart3_data3); ?>]
+		}, {
+			name: '<?php echo $chart3_name[3]; ?>',
+			color: 'grey',
+			data: [<?php echo join(',', $chart3_data4); ?>]
+		}, {
+			name: '<?php echo $chart3_name[4]; ?>',
+			color: '#01DF01',
+			data: [<?php echo join(',', $chart3_data5); ?>]
+		}] 
+	});
+    // *************chart 4 ********************************************
+	$('#test4').highcharts({
+		series: [{
+			name: '<?php echo $chart4_name[0]; ?>',
+			color: '#01AEE3',
+			data: [<?php echo $chart4_data[0]; ?>]
+		}, {
+			name: '<?php echo $chart4_name[1]; ?>',
+			color: 'red',
+			data: [<?php echo $chart4_data[1]; ?>]
+		}, {
+			name: '<?php echo $chart4_name[2]; ?>',
+			color: '#E662CC',
+			data: [<?php echo $chart4_data[2]; ?>]
+		}, {
+			name: '<?php echo $chart4_name[3]; ?>',
+			color: 'grey',
+			data: [<?php echo $chart4_data[3]; ?>]
+		}, {
+			name: '<?php echo $chart4_name[4]; ?>',
+			color: '#01DF01',
+			data: [<?php echo $chart4_data[4]; ?>]
 		}] 
 	});
 //****************************************************************************************************
