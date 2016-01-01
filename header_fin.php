@@ -12,7 +12,7 @@
 	<nav>
         <ul class="fancyNav">
             <li id="home">   <a href="index.php" class="homeIcon">Accueil</a></li>
-            <li id="chart">  <a href="graph_highchart.php">last 12h</a></li>
+            <li id="chart">  <a href="graph_highchart.php">last 24h</a></li>
             <li id="chart2"> <a href="graph_highchart2.php">2</a></li>
             <li id="chart3"> <a href="graph_highchart3.php">test</a></li>
             <li id="about">  <a href="about.php">a propos</a></li>

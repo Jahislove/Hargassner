@@ -45,7 +45,7 @@
     $req = mysql_query($query) ;
 	mysql_close();
 	
-    while($data = mysql_fetch_array($req))
+    while($data = mysql_fetch_row($req))
     {
     $dateD = strtotime($data[0]) * 1000;
     $liste0 = "[" . $dateD . "," . $data[1] ."]," . $liste0;

@@ -33,7 +33,7 @@ $(function() {
 			}
 		},
 		title: {
-			text: 'Courbes',
+			text: 'Courbes temps réel',
 			style:{
 				color: '#4572A7',
 			},
