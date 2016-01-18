@@ -28,7 +28,7 @@
     function requestData() { 
         call_ajax(); //appel ajax au loading
         id = setInterval(call_ajax,refresh*1000); 
-        setTimeout(stop_refresh, 6000000); // 600000ms  stop rafraichissement apres 10 mn 
+        setTimeout(stop_refresh, 60000000); // 600000ms  stop rafraichissement apres 10 mn 
     };
     function stop_refresh() {clearInterval(id)};
 </script>

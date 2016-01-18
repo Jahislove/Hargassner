@@ -5,16 +5,18 @@
 <div id="last24"></div>
 
 <?php
-    $tab1 = 'chan0';
-    $nom1 = 'etat';
+    $tab1 = 'c23';
+    $nom1 = 'T depart doit';
     $tab2 = 'c3';
     $nom2 = 'T° chaud';
     $tab3 = 'c21';
     $nom3 = 'T° depart';
     $tab4 = 'c6';
     $nom4 = 'T° ext';
+    $tab5 = 'm138';
+    $nom5 = 'T° int';
     
-    $query = "SELECT dateB,$tab1,$tab2,$tab3,$tab4 FROM nanoPK
+    $query = "SELECT dateB,$tab1,$tab2,$tab3,$tab4,$tab5 FROM nanoPK
               ORDER by id DESC LIMIT 20000";
 
     //$query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4,$tab5,$tab6,$tab7,$tab8,$tab9,$tab10 FROM nanoPK
@@ -36,11 +38,13 @@
         $liste2[] = "[$dateD, $data[2]]";
         $liste3[] = "[$dateD, $data[3]]";
         $liste4[] = "[$dateD, $data[4]]";
+        $liste5[] = "[$dateD, $data[5]]";
     }
    $liste1 = join(',', array_reverse($liste1));
    $liste2 = join(',', array_reverse($liste2));
    $liste3 = join(',', array_reverse($liste3));
    $liste4 = join(',', array_reverse($liste4));
+   $liste5 = join(',', array_reverse($liste5));
 ?>
 
 
@@ -92,7 +96,7 @@ $(document).ready(function(){
 			}
 		 },
 		yAxis: {
-			gridLineColor: null, 
+			gridLineColor: '#EFEFEF', 
 			labels: {
 				format: '{value}',
 				style: {
@@ -100,8 +104,13 @@ $(document).ready(function(){
 				}
 			},
 		   title: {
-				text: '',
+				text: 'Température',
 			},
+            plotBands: [{
+                color: '#E7FFFF',
+                from: 0,
+                to: -30,
+            }],
 			//min: -20
 		},
 		tooltip: {
@@ -133,14 +142,19 @@ $(document).ready(function(){
 			data: [<?php echo $liste2; ?>]
 		}, {
 			name: '<?php echo $nom3; ?>',
-			color: 'yellow',
+			color: 'green',
 			zIndex: 3,
 			data: [<?php echo $liste3; ?>]
 		}, {
 			name: '<?php echo $nom4; ?>',
 			zIndex: 4,
-			color: 'grey',
+			color: '#EA7C01',
 			data: [<?php echo $liste4; ?>]
+		}, {
+			name: '<?php echo $nom5; ?>',
+			zIndex: 4,
+			color: 'black',
+			data: [<?php echo $liste5; ?>]
 		}] 
 	});
 //****************************************************************************************************

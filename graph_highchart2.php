@@ -7,10 +7,10 @@
     $chart1_chan = "c6,c7,m138,c21,c23";
     $chart2_name = ['Etat','Puissance','T° chaudiere','T° fumée','O² lambda'];
     $chart2_chan = "chan0,m134,c3,c5,chan1";
-    $chart3_name = ['Aspiration','-','-',toto,titi];
-    $chart3_chan = "m169,m87,m87,m87,m87";
-    $chart4_name = ['Etat','Puissance','T° chaudiere',toto,titi];
-    $chart4_chan = "m87,m87,m87,m87,m87";
+    $chart3_name = ['?','?','?','?','?'];
+    $chart3_chan = "m87,m87,m87,m87,m87";
+    $chart4_name = ['Aspiration','?','?','?','?'];
+    $chart4_chan = "m169,m87,m87,m87,m87";
     
     $query = "SELECT dateB,$chart1_chan,$chart2_chan,$chart3_chan,$chart4_chan FROM nanoPK
               ORDER by id DESC LIMIT 1000";
@@ -246,7 +246,7 @@ $(document).ready(function(){
 			name: '<?php echo $chart4_name[1]; ?>',
 			color: 'red',
 			data: [<?php echo $chart4_data2; ?>]
-		}, {
+		}/*, {
 			name: '<?php echo $chart4_name[2]; ?>',
 			color: '#E662CC',
 			data: [<?php echo $chart4_data3; ?>]
@@ -258,15 +258,26 @@ $(document).ready(function(){
 			name: '<?php echo $chart4_name[4]; ?>',
 			color: '#01DF01',
 			data: [<?php echo $chart4_data5; ?>]
-		}] 
+		}*/] 
 	});
 //****************************************************************************************************
-
+// ************* chargement asynchrone des graphes****************************************************
 chart4.showLoading('loading');
 
-
-chart4.series[0].setData([<?php echo $chart4_data[0]; ?>]);
-
+ $.ajax({
+    dataType: "json",
+    url: 'json_highchart2_chart3.php',
+    //data: 'channel=<?php echo $chart3_chan; ?>',
+    data: 'channel=m169,m134',
+    cache: false,
+    success: function(data) {
+        
+        chart4.series[0].setData(data[0]);
+        chart4.series[1].setData(data[1]);
+        //chart4.redraw();
+        chart4.hideLoading();
+    }
+});
 
 
 
