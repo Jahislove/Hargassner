@@ -2,49 +2,45 @@
 <script type="text/javascript" src="js/call_ajax_light.js">	</script>
 <?php require("header_fin.php"); ?>
 
-<div id="last24"></div>
+<div id="chart_last24"></div>
 
 <?php
-    $tab1 = 'c23';
-    $nom1 = 'T depart doit';
-    $tab2 = 'c3';
-    $nom2 = 'T° chaud';
-    $tab3 = 'c21';
-    $nom3 = 'T° depart';
-    $tab4 = 'c6';
-    $nom4 = 'T° ext';
-    $tab5 = 'm138';
-    $nom5 = 'T° int';
+    $chart_last24_name = ['T° depart doit','T° depart','T° chaud','T° ext','T° int'];
+    $chart_last24_chan = 'c23,c21,c3,c6,m138';
     
-    $query = "SELECT dateB,$tab1,$tab2,$tab3,$tab4,$tab5 FROM nanoPK
-              ORDER by id DESC LIMIT 20000";
+    // $tab1 = 'c23';
+    // $nom1 = 'T depart doit';
+    // $tab2 = 'c3';
+    // $nom2 = 'T° chaud';
+    // $tab3 = 'c21';
+    // $nom3 = 'T° depart';
+    // $tab4 = 'c6';
+    // $nom4 = 'T° ext';
+    // $tab5 = 'm138';
+    // $nom5 = 'T° int';
+    
+    // $query = "SELECT dateB,$tab1,$tab2,$tab3,$tab4,$tab5 FROM nanoPK
+              // ORDER by id DESC LIMIT 20000";
 
-    //$query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4,$tab5,$tab6,$tab7,$tab8,$tab9,$tab10 FROM nanoPK
-    //          WHERE dateB > '2015-12-12 04:55:00' and dateB < '2015-12-12 09:00:00'
-    //          ";
 
-    // $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4 FROM nanoPK
-             // WHERE dateB > '2015-12-24 13:55:00' and dateB < '2015-12-24 14:15:00'
-             // ";
-
-	connectMaBase($hostname, $database, $username, $password);
-    $req = mysql_query($query) ;
-	mysql_close();
+	// connectMaBase($hostname, $database, $username, $password);
+    // $req = mysql_query($query) ;
+	// mysql_close();
 	
-    while($data = mysql_fetch_row($req))
-    {
-    $dateD = strtotime($data[0]) * 1000;
-        $liste1[] = "[$dateD, $data[1]]";
-        $liste2[] = "[$dateD, $data[2]]";
-        $liste3[] = "[$dateD, $data[3]]";
-        $liste4[] = "[$dateD, $data[4]]";
-        $liste5[] = "[$dateD, $data[5]]";
-    }
-   $liste1 = join(',', array_reverse($liste1));
-   $liste2 = join(',', array_reverse($liste2));
-   $liste3 = join(',', array_reverse($liste3));
-   $liste4 = join(',', array_reverse($liste4));
-   $liste5 = join(',', array_reverse($liste5));
+    // while($data = mysql_fetch_row($req))
+    // {
+        // $dateD = strtotime($data[0]) * 1000;
+        // $liste1[] = "[$dateD, $data[1]]";
+        // $liste2[] = "[$dateD, $data[2]]";
+        // $liste3[] = "[$dateD, $data[3]]";
+        // $liste4[] = "[$dateD, $data[4]]";
+        // $liste5[] = "[$dateD, $data[5]]";
+    // }
+   // $liste1 = join(',', array_reverse($liste1));
+   // $liste2 = join(',', array_reverse($liste2));
+   // $liste3 = join(',', array_reverse($liste3));
+   // $liste4 = join(',', array_reverse($liste4));
+   // $liste5 = join(',', array_reverse($liste5));
 ?>
 
 
@@ -64,15 +60,12 @@ $(document).ready(function(){
 		}
     });
 
-	last24 = new Highcharts.Chart({
+	chart_last24 = new Highcharts.Chart({
 		chart: {
-            renderTo: 'last24',
+            renderTo: 'chart_last24',
 			type: 'spline',
 			zoomType: 'x',
 			backgroundColor: null,
-			events: {
-				load: requestData // in header.php
-			}
 		},
 		title: {
 			text: '',
@@ -104,7 +97,7 @@ $(document).ready(function(){
 				}
 			},
 		   title: {
-				text: 'Température',
+				text: 'Températures',
 			},
             plotBands: [{
                 color: '#E7FFFF',
@@ -118,11 +111,12 @@ $(document).ready(function(){
 			crosshairs: true,
 			borderRadius: 6,
 			borderWidth: 1,
-			valueSuffix: '',
+			valueSuffix: '°C',
 			xDateFormat: '%e. %b %H:%M:%S',
 		 },
 		plotOptions: {
 			series: {
+                //lineWidth: 1,
 				marker: {
 					enabled: false,
 				},
@@ -130,62 +124,55 @@ $(document).ready(function(){
 		},
 
 		series: [{
-			name: '<?php echo $nom1; ?>',
-			color: '#01AEE3',
+			name: '<?php echo $chart_last24_name[0]; ?>',
+			color: '#F62B07',
             type: 'line',
-			zIndex: 1,
-			data: [<?php echo $liste1; ?>]
+			zIndex: 5,
+			data: []
 		}, {
-			name: '<?php echo $nom2; ?>',
+			name: '<?php echo $chart_last24_name[1]; ?>',
+			color: '#781BE1',
+			zIndex: 3,
+			data: []
+		}, {
+			name: '<?php echo $chart_last24_name[2]; ?>',
 			color: '#E662CC',
 			zIndex: 2,
-			data: [<?php echo $liste2; ?>]
+			data: []
 		}, {
-			name: '<?php echo $nom3; ?>',
-			color: 'green',
-			zIndex: 3,
-			data: [<?php echo $liste3; ?>]
-		}, {
-			name: '<?php echo $nom4; ?>',
+			name: '<?php echo $chart_last24_name[3]; ?>',
 			zIndex: 4,
 			color: '#EA7C01',
-			data: [<?php echo $liste4; ?>]
+			data: []
 		}, {
-			name: '<?php echo $nom5; ?>',
+			name: '<?php echo $chart_last24_name[4]; ?>',
 			zIndex: 4,
 			color: 'black',
-			data: [<?php echo $liste5; ?>]
+			data: []
 		}] 
 	});
 //****************************************************************************************************
-/* last24.showLoading('loading');
+//*** chargement des données en asynchrone *****************************
+    chart_last24.showLoading('loading');
 
- $.ajax({
-    dataType: "json",
-    url: 'json_last24.php',
-    data: 'channel=c6',
-    cache: false,
-    success: function(data) {
-        
-        last24.series[1].setData(data);
-        //last24.redraw();
-        //last24.hideLoading();
-    }
+    $.ajax({
+        dataType: "json",
+        url: 'json_last24.php',
+        data: 'channel=<?php echo $chart_last24_chan; ?>',
+        cache: false,
+        success: function(data) {
+            chart_last24.series[0].setData(data[0],false);
+            chart_last24.series[1].setData(data[1],false);
+            chart_last24.series[2].setData(data[2],false);
+            chart_last24.series[3].setData(data[3],false);
+            chart_last24.series[4].setData(data[4],false);
+            chart_last24.redraw();
+            chart_last24.hideLoading();
+            requestData();
+        }
+    });
+
 });
-$.ajax({
-    dataType: "json",
-    url: 'json_last24.php',
-    data: 'channel=m134',
-    cache: false,
-    success: function(data) {
-        
-        last24.series[2].setData(data);
-        //last24.redraw();
-        last24.hideLoading();
-    }
-});
- */
- });
 </script>
 
 

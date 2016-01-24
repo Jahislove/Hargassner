@@ -1,6 +1,10 @@
-    <?php require_once("conf/config.inc.php");?>
-    <?php require_once("conf/connectBDD.inc.php");?>
 <?php
+
+//    pas encore utilisé
+
+require_once("conf/config.inc.php");
+require_once("conf/connectBDD.inc.php");
+
 	header("Content-type: text/json");
 
     $channel = $_GET["channel"];

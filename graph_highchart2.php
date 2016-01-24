@@ -3,14 +3,14 @@
 <?php require("header_fin.php"); ?>
     
 <?php
-    $chart1_name = ['T° ext','T° ext moy','T° int','T depart est','T° depart doit'];
+    $chart1_name = ['T° ext','T° ext moy','T° int','T° depart est','T° depart doit'];
     $chart1_chan = "c6,c7,m138,c21,c23";
     $chart2_name = ['Etat','Puissance','T° chaudiere','T° fumée','O² lambda'];
     $chart2_chan = "chan0,m134,c3,c5,chan1";
-    $chart3_name = ['?','?','?','?','?'];
-    $chart3_chan = "m87,m87,m87,m87,m87";
-    $chart4_name = ['Aspiration','?','?','?','?'];
-    $chart4_chan = "m169,m87,m87,m87,m87";
+    $chart3_name = ['Conso','T° moy'];
+    $chart3_chan = "m99,c6";
+    $chart4_name = ['Aspiration'];
+    $chart4_chan = "m169";
     
     $query = "SELECT dateB,$chart1_chan,$chart2_chan,$chart3_chan,$chart4_chan FROM nanoPK
               ORDER by id DESC LIMIT 1000";
@@ -33,17 +33,6 @@
         $chart2_data4[] = "[$dateD, $data[9]]";
         $chart2_data5[] = "[$dateD, $data[10]]";
 
-        $chart3_data1[] = "[$dateD, $data[11]]";
-        $chart3_data2[] = "[$dateD, $data[12]]";
-        $chart3_data3[] = "[$dateD, $data[13]]";
-        $chart3_data4[] = "[$dateD, $data[14]]";
-        $chart3_data5[] = "[$dateD, $data[15]]";
-
-        $chart4_data1[] = "[$dateD, $data[16]]";
-        $chart4_data2[] = "[$dateD, $data[17]]";
-        $chart4_data3[] = "[$dateD, $data[18]]";
-        $chart4_data4[] = "[$dateD, $data[19]]";
-        $chart4_data5[] = "[$dateD, $data[20]]";
     }
 
     $chart1_data1 = join(',', array_reverse($chart1_data1));
@@ -58,24 +47,13 @@
     $chart2_data4 = join(',', array_reverse($chart2_data4));
     $chart2_data5 = join(',', array_reverse($chart2_data5));
 
-    $chart3_data1 = join(',', array_reverse($chart3_data1));
-    $chart3_data2 = join(',', array_reverse($chart3_data2));
-    $chart3_data3 = join(',', array_reverse($chart3_data3));
-    $chart3_data4 = join(',', array_reverse($chart3_data4));
-    $chart3_data5 = join(',', array_reverse($chart3_data5));
-
-    $chart4_data1 = join(',', array_reverse($chart4_data1));
-    $chart4_data2 = join(',', array_reverse($chart4_data2));
-    $chart4_data3 = join(',', array_reverse($chart4_data3));
-    $chart4_data4 = join(',', array_reverse($chart4_data4));
-    $chart4_data5 = join(',', array_reverse($chart4_data5));
     ?>
 
 <div class="rel">
-    <div id="test1" class="test2"></div>
-    <div id="test2" class="test2"></div>
-    <div id="test3" class="test2"></div>
-    <div id="test4" class="test2"></div>
+    <div id="test1" class="chart2_quad"></div>
+    <div id="test2" class="chart2_quad"></div>
+    <div id="test3" class="chart2_quad"></div>
+    <div id="test4" class="chart2_quad"></div>
 </div>
 
 <div class="clear"></div>
@@ -85,7 +63,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 //$(function() {
-    // *************set options for all charts ******************************
+    // ************* options communes a tous les charts ******************************
     Highcharts.setOptions({
 		lang: {
 			months: <?php echo $months; ?>,
@@ -159,16 +137,16 @@ $(document).ready(function(){
 	$('#test1').highcharts({
 		chart: {
 			events: {
-				load: requestData // in header_debut.php
+				//load: requestData // in header_debut.php
 			}
         },
 		series: [{
 			name: '<?php echo $chart1_name[0]; ?>',
-			color: '#01AEE3',
+			color: '#EA7C01',
 			data: [<?php echo $chart1_data1; ?>]
 		}, {
 			name: '<?php echo $chart1_name[1]; ?>',
-			color: '#E662CC',
+			color: '#72EA01',
 			data: [<?php echo $chart1_data2; ?>]
 		}, {
 			name: '<?php echo $chart1_name[2]; ?>',
@@ -176,7 +154,7 @@ $(document).ready(function(){
 			data: [<?php echo $chart1_data3; ?>]
 		}, {
 			name: '<?php echo $chart1_name[3]; ?>',
-			color: 'grey',
+			color: '781BE1',
 			data: [<?php echo $chart1_data4; ?>]
 		}, {
 			name: '<?php echo $chart1_name[4]; ?>',
@@ -209,16 +187,34 @@ $(document).ready(function(){
 		}] 
 	});
     // *************chart 3 ********************************************
-	$('#test3').highcharts({
+	chart3 = new Highcharts.Chart({
+		chart: {
+			renderTo: 'test3',
+        },
+		plotOptions: {
+			series: {
+                //lineWidth: 1,
+				marker: {
+					enabled: true,
+				},
+			},
+		},
 		series: [{
 			name: '<?php echo $chart3_name[0]; ?>',
-			color: '#01AEE3',
-			data: [<?php echo $chart3_data1; ?>]
+            type: 'column',
+			color: '#B8AD0E',
+            tooltip: {
+                valueSuffix: ' Kg',
+             },
+			data: [],
 		}, {
 			name: '<?php echo $chart3_name[1]; ?>',
-			color: 'red',
-			data: [<?php echo $chart3_data2; ?>]
-		}, {
+			color: '#72EA01',
+            tooltip: {
+                valueSuffix: ' °C',
+             },
+			data: []
+		}/*, {
 			name: '<?php echo $chart3_name[2]; ?>',
 			color: '#E662CC',
 			data: [<?php echo $chart3_data3; ?>]
@@ -230,23 +226,22 @@ $(document).ready(function(){
 			name: '<?php echo $chart3_name[4]; ?>',
 			color: '#01DF01',
 			data: [<?php echo $chart3_data5; ?>]
-		}] 
+		}*/] 
 	});
     // *************chart 4 ********************************************
 	chart4 = new Highcharts.Chart({
 		chart: {
 			renderTo: 'test4',
         },
-	//$('#test4').highcharts({
 		series: [{
 			name: '<?php echo $chart4_name[0]; ?>',
 			color: '#01AEE3',
-			data: [<?php echo $chart4_data1; ?>]
-		}, {
+			data: []
+		}/*, {
 			name: '<?php echo $chart4_name[1]; ?>',
 			color: 'red',
 			data: [<?php echo $chart4_data2; ?>]
-		}/*, {
+		}, {
 			name: '<?php echo $chart4_name[2]; ?>',
 			color: '#E662CC',
 			data: [<?php echo $chart4_data3; ?>]
@@ -262,25 +257,32 @@ $(document).ready(function(){
 	});
 //****************************************************************************************************
 // ************* chargement asynchrone des graphes****************************************************
-chart4.showLoading('loading');
+    chart3.showLoading('loading');
+    chart4.showLoading('loading');
 
- $.ajax({
-    dataType: "json",
-    url: 'json_highchart2_chart3.php',
-    //data: 'channel=<?php echo $chart3_chan; ?>',
-    data: 'channel=m169,m134',
-    cache: false,
-    success: function(data) {
-        
-        chart4.series[0].setData(data[0]);
-        chart4.series[1].setData(data[1]);
-        //chart4.redraw();
-        chart4.hideLoading();
-    }
-});
+    $.ajax({
+        dataType: "json",
+        url: 'json_conso.php',
+        cache: false,
+        success: function(data) {
+            chart3.series[0].setData(data[0],false);
+            chart3.series[1].setData(data[1],false);
+            chart3.redraw();
+            chart3.hideLoading();
+        }
+    });
 
-
-
+    $.ajax({
+        dataType: "json",
+        url: 'json_solo.php',
+        data: 'channel=<?php echo $chart4_chan; ?>',
+        cache: false,
+        success: function(data) {
+            chart4.series[0].setData(data,false);
+            chart4.redraw();
+            chart4.hideLoading();
+        }
+    });
 });
 </script>
 

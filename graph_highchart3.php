@@ -2,81 +2,27 @@
 <script type="text/javascript" src="js/call_ajax_light.js">	</script>
 <?php require("header_fin.php"); ?>
     
-<div id="test3"></div>
+<div id="conso" class="chart3_duo"></div>
+<div id="courbe" class="chart3_duo"></div>
 
 <?php
-    $tab0 = 'chan0';
-    $nom0 = 'etat';
-    $tab1 = 'm70';
-    $nom1 = 'motor';
-    $tab2 = 'm60';
-    $nom2 = 'I sr';
-    $tab3 = 'm61';
-    $nom3 = 'I rein';
-    $tab4 = 'm110';
-    $nom4 = 'Höchste';
-    
-    $tab5 = 'c21';
-    $nom5 = 'T° depart';
-    $tab6 = 'c6';
-    $nom6 = 'T° ext';
-    $tab7 = 'm112';
-    $nom7 = 'temps pour aspi';
-    $tab8 = 'm166';
-    $nom8 = '166';
-    $tab9 = 'm169';
-    $nom9 = '169';
-    $tab10 = 'm170';
-    $nom10 = 'm170';
-    
-    // $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4 FROM nanoPK
-              // WHERE dateB > '2015-12-25 08:15:00' and dateB < '2015-12-26 08:30:00'
-              // ";
+    $chart1_name = ['Conso','T° ext moy'];
+    //$chart1_chan = "m99,c6";
 
-    $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4 FROM nanoPK
-              ORDER by id DESC LIMIT 10";
-
-    // $query = "SELECT dateB,$tab0,$tab1,$tab2,$tab3,$tab4,$tab5,$tab6,$tab7,$tab8,$tab9,$tab10 FROM nanoPK
-             // WHERE dateB > '2015-12-23 13:55:00' and dateB < '2015-12-23 14:15:00'
-             // ";
-
+    $query1 = "SELECT dateB,conso,Tmoy FROM consommation ";
 
 	connectMaBase($hostname, $database, $username, $password);
-    $req = mysql_query($query) ;
+    $req = mysql_query($query1) ;
 	mysql_close();
-	
-    while($data = mysql_fetch_row($req))
-    {
-    $dateD = strtotime($data[0]) * 1000;
-    $liste0 = "[" . $dateD . "," . $data[1] ."]," . $liste0;
-    $liste1 = "[" . $dateD . "," . $data[2] ."]," . $liste1;
-    $liste2 = "[" . $dateD . "," . $data[3] ."]," . $liste2;
-    $liste3 = "[" . $dateD . "," . $data[4] ."]," . $liste3;
-    $liste4 = "[" . $dateD . "," . $data[5] ."]," . $liste4;
-    // $liste5 = "[" . $dateD . "," . $data[6] ."]," . $liste5; 
-    // $liste6 = "[" . $dateD . "," . $data[7] ."]," . $liste6;
-    // $liste7 = "[" . $dateD . "," . $data[8] ."]," . $liste7;
-    // $liste8 = "[" . $dateD . "," . $data[9] ."]," . $liste8;
-    // $liste9 = "[" . $dateD . "," . $data[10] ."]," . $liste9;
-    // $liste10 = "[" . $dateD . "," . $data[11] ."]," . $liste10;
 
-
-    
-    // while($data = mysql_fetch_assoc($req))
-    // {
-    // $dateD = strtotime($data['dateB']) * 1000;
-    // $liste0 = "[" . $dateD . "," . $data['chan0'] ."]," . $liste0;
-    // $liste1 = "[" . $dateD . "," . $data['c3'] ."]," . $liste1;
-    // $liste2 = "[" . $dateD . "," . $data['c53'] ."]," . $liste2;
-    // $liste3 = "[" . $dateD . "," . $data['m56'] ."]," . $liste3;
-    // $liste4 = "[" . $dateD . "," . $data['m134'] ."]," . $liste4;
-    // $liste5 = "[" . $dateD . "," . $data['c12'] ."]," . $liste5;
-    // $liste6 = "[" . $dateD . "," . $data['c13'] ."]," . $liste6;
-    // $liste7 = "[" . $dateD . "," . $data['c15'] ."]," . $liste7;
-    // $liste8 = "[" . $dateD . "," . $data['c18'] ."]," . $liste8;
-    // $liste9 = "[" . $dateD . "," . $data['c33'] ."]," . $liste9;
-    // $liste10 = "[" . $dateD . "," . $data['c34'] ."]," . $liste10;
+    while($data = mysql_fetch_row($req)){
+        $dateD = strtotime($data[0]) * 1000;
+        $chart1_data1[] = "[$dateD, $data[1]]";
+        $chart1_data2[] = "[$dateD, $data[2]]";
     }
+
+    $chart1_data1 = join(',', $chart1_data1);
+    $chart1_data2 = join(',', $chart1_data2);
 ?>
 
 
@@ -97,13 +43,112 @@ $(function() {
 		}
     });
 
-	$('#test3').highcharts({
+	chart1 = new Highcharts.Chart({
 		chart: {
-			type: 'line',
+			renderTo: 'conso',
 			zoomType: 'xy',
 			backgroundColor: null,
 			events: {
-				load: requestData // in header.php
+				//load: requestData // in header.php
+			}
+		},
+		title: {
+			text: '',
+			style:{
+				color: '#4572A7',
+			},
+		},
+		subtitle: {
+			text: ''
+		},
+		legend: {
+			enabled: true,
+			backgroundColor: 'white',
+			borderRadius: 14,
+		},
+		xAxis: {
+			type: 'datetime',
+			dateTimeLabelFormats: { // don't display the dummy year
+				month: '%e. %b',
+				year: '%b'
+			}
+		 },
+		yAxis: {
+			gridLineColor: null, 
+			labels: {
+				format: '{value}',
+				style: {
+					color: '#4572A7',
+				}
+			},
+		   title: {
+				text: '',
+			},
+			//min: -20
+		},
+		tooltip: {
+	        shared: true,
+			crosshairs: true,
+			borderRadius: 6,
+			borderWidth: 1,
+			valueSuffix: '',
+			//xDateFormat: '',
+		 },
+        plotOptions: {
+            series: {
+				marker: {
+					enabled: false
+				},
+                cursor: 'pointer',
+                point: {
+                    events: {
+                        click: function () {
+                            //alert('Category: ' + this.x + ', value: ' + this.y);
+                            chart2.showLoading('loading');
+                            $.ajax({
+                                dataType: "json",
+                                url: 'json_choix_jour.php',
+                                data: 'channel=' + Date(this.y*1000),
+                                cache: false,
+                                success: function(data) {
+                                    chart2.series[0].setData(data[0],false);
+                                    chart2.series[1].setData(data[1],false);
+                                    chart2.series[2].setData(data[2],false);
+                                    chart2.series[3].setData(data[3],false);
+                                    chart2.series[4].setData(data[4],false);
+                                    chart2.redraw();
+                                    chart2.hideLoading();
+                                }
+                            });
+
+                        }
+                    }
+                }
+            }
+        },
+
+		series: [{
+			name: '<?php echo $chart1_name[0]; ?>',
+			type: 'column',
+			color: '#01AEE3',
+			zIndex: 1,
+			data: [<?php echo $chart1_data1; ?>]
+		}, {
+			name: '<?php echo $chart1_name[1]; ?>',
+			type: 'line',
+			color: '#E662CC',
+			zIndex: 2,
+			data: [<?php echo $chart1_data2; ?>]
+		}] 
+	});
+//****************************************************************************************************
+	chart2 = new Highcharts.Chart({
+		chart: {
+			renderTo: 'courbe',
+			zoomType: 'xy',
+			backgroundColor: null,
+			events: {
+				//load: requestData // in header.php
 			}
 		},
 		title: {
@@ -157,63 +202,39 @@ $(function() {
 		},
 
 		series: [{
-			name: '<?php echo $nom0; ?>',
+			name: '<?php echo $chart1_name[0]; ?>',
+			type: 'line',
 			color: '#01AEE3',
 			zIndex: 1,
-			data: [<?php echo $liste0; ?>]
+			data: []
 		}, {
-			name: '<?php echo $nom1; ?>',
+			name: '<?php echo $chart1_name[1]; ?>',
+			type: 'line',
 			color: '#E662CC',
 			zIndex: 2,
-			data: [<?php echo $liste1; ?>]
+			data: []
 		}, {
-			name: '<?php echo $nom2; ?>',
-			color: 'yellow',
-			zIndex: 3,
-			data: [<?php echo $liste2; ?>]
-		}, {
-			name: '<?php echo $nom3; ?>',
-			zIndex: 4,
-			color: 'grey',
-			data: [<?php echo $liste3; ?>]
-		}, {
-			name: '<?php echo $nom4; ?>',
-			zIndex: 0,
+			name: '<?php echo $chart1_name[1]; ?>',
+			type: 'line',
 			color: 'red',
-			data: [<?php echo $liste4; ?>]
+			zIndex: 2,
+			data: []
 		}, {
-			name: '<?php echo $nom5; ?>',
-			zIndex: 0,
-			color: 'lightblue',
-			data: [<?php echo $liste5; ?>]
-		}, {
-			name: '<?php echo $nom6; ?>',
-			zIndex: 0,
-			color: 'blue',
-			data: [<?php echo $liste6; ?>]
-		}, {
-			name: '<?php echo $nom7; ?>',
-			zIndex: 0,
-			color: 'grey',
-			data: [<?php echo $liste7; ?>]
-		}, {
-			name: '<?php echo $nom8; ?>',
-			zIndex: 0,
-			color: 'maroon',
-			data: [<?php echo $liste8; ?>]
-		}, {
-			name: '<?php echo $nom9; ?>',
-			zIndex: 0,
+			name: '<?php echo $chart1_name[1]; ?>',
+			type: 'line',
 			color: 'green',
-			data: [<?php echo $liste9; ?>]
+			zIndex: 2,
+			data: []
 		}, {
-			name: '<?php echo $nom10; ?>',
-			zIndex: 0,
+			name: '<?php echo $chart1_name[1]; ?>',
+			type: 'line',
 			color: 'black',
-			data: [<?php echo $liste10; ?>]
+			zIndex: 2,
+			data: []
 		}] 
 	});
-//****************************************************************************************************
+
+    
 });
 </script>
 

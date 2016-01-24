@@ -62,7 +62,7 @@ h2{
 
 nav{
 	display: block;
-	margin: 10px auto 0;
+	margin: 30px auto 0;
 	text-align: center;
 	width: 900px;
 
@@ -337,12 +337,12 @@ a:hover{
 	height: 600px;
 	margin: 0 auto;
 }
-#last24 {
+#chart_last24 {
 	min-width: 400px;
 	height: 800px;
 	margin: 0 auto;
 }
-.test2 {
+.chart2_quad {
     display: inline-block;
 	width: 600px;
 	height: 400px;
@@ -350,7 +350,11 @@ a:hover{
 .rel {
     width: 1206px;
 }
-
+.chart3_duo {
+    display: inline-block;
+	width: 1200px;
+	height: 400px;
+}
 /**************************************************************************************************/	
 /******************* Bandeau CSS ******************************************************************/	
 /**************************************************************************************************/	
