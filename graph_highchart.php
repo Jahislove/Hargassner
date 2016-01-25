@@ -8,19 +8,8 @@
     $chart_last24_name = ['T° depart doit','T° depart','T° chaud','T° ext','T° int'];
     $chart_last24_chan = 'c23,c21,c3,c6,m138';
     
-    // $tab1 = 'c23';
-    // $nom1 = 'T depart doit';
-    // $tab2 = 'c3';
-    // $nom2 = 'T° chaud';
-    // $tab3 = 'c21';
-    // $nom3 = 'T° depart';
-    // $tab4 = 'c6';
-    // $nom4 = 'T° ext';
-    // $tab5 = 'm138';
-    // $nom5 = 'T° int';
-    
-    // $query = "SELECT dateB,$tab1,$tab2,$tab3,$tab4,$tab5 FROM nanoPK
-              // ORDER by id DESC LIMIT 20000";
+    // $query = "SELECT dateB,$chart_last24_chan FROM nanoPK
+              // ORDER by id DESC LIMIT 17280";
 
 
 	// connectMaBase($hostname, $database, $username, $password);
@@ -48,6 +37,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+//*** definition du graphe *****************************
     Highcharts.setOptions({
 		lang: {
 			months: <?php echo $months; ?>,
@@ -168,7 +158,7 @@ $(document).ready(function(){
             chart_last24.series[4].setData(data[4],false);
             chart_last24.redraw();
             chart_last24.hideLoading();
-            requestData();
+            //requestData();
         }
     });
 

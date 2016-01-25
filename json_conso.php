@@ -1,4 +1,9 @@
 <?php
+
+// pas utilise
+
+
+
 require_once("conf/config.inc.php");
 require_once("conf/connectBDD.inc.php");
 

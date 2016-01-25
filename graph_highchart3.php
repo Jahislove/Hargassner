@@ -7,12 +7,16 @@
 
 <?php
     $chart1_name = ['Conso','T° ext moy'];
+    $chart2_name = ['T° depart doit','T° depart','T° chaud','T° ext','T° int'];
     //$chart1_chan = "m99,c6";
 
-    $query1 = "SELECT dateB,conso,Tmoy FROM consommation ";
+    $query = "SELECT dateB,conso,Tmoy FROM consommation ";
+    // $query = "SELECT DATE(dateB)as dateC,MAX(m99)-MIN(m99),FORMAT(AVG(c6), 1) FROM nanoPK2
+              // GROUP BY dateC
+              // ORDER by dateC DESC LIMIT 30";
 
 	connectMaBase($hostname, $database, $username, $password);
-    $req = mysql_query($query1) ;
+    $req = mysql_query($query) ;
 	mysql_close();
 
     while($data = mysql_fetch_row($req)){
@@ -47,7 +51,10 @@ $(function() {
 		chart: {
 			renderTo: 'conso',
 			zoomType: 'xy',
-			backgroundColor: null,
+			backgroundColor: '#FBF8EF',
+            animation: {
+                duration: 5000
+            },
 			events: {
 				//load: requestData // in header.php
 			}
@@ -74,7 +81,7 @@ $(function() {
 			}
 		 },
 		yAxis: {
-			gridLineColor: null, 
+			gridLineColor: '#EFEFEF', 
 			labels: {
 				format: '{value}',
 				style: {
@@ -97,18 +104,20 @@ $(function() {
         plotOptions: {
             series: {
 				marker: {
-					enabled: false
+					enabled: true
 				},
                 cursor: 'pointer',
                 point: {
                     events: {
                         click: function () {
-                            //alert('Category: ' + this.x + ', value: ' + this.y);
+                            //alert('Category: ' + this.x );
                             chart2.showLoading('loading');
+                            var jour = new Date(this.x);
+                            chart2.setTitle({ text: jour.toLocaleDateString() });
                             $.ajax({
                                 dataType: "json",
                                 url: 'json_choix_jour.php',
-                                data: 'channel=' + Date(this.y*1000),
+                                data: 'channel=' + this.x,
                                 cache: false,
                                 success: function(data) {
                                     chart2.series[0].setData(data[0],false);
@@ -130,13 +139,19 @@ $(function() {
 		series: [{
 			name: '<?php echo $chart1_name[0]; ?>',
 			type: 'column',
-			color: '#01AEE3',
+			color: '#B8AD0E',
+            tooltip: {
+                valueSuffix: ' Kg',
+             },
 			zIndex: 1,
 			data: [<?php echo $chart1_data1; ?>]
 		}, {
 			name: '<?php echo $chart1_name[1]; ?>',
 			type: 'line',
-			color: '#E662CC',
+			color: '#72EA01',
+            tooltip: {
+                valueSuffix: ' °C',
+             },
 			zIndex: 2,
 			data: [<?php echo $chart1_data2; ?>]
 		}] 
@@ -146,7 +161,7 @@ $(function() {
 		chart: {
 			renderTo: 'courbe',
 			zoomType: 'xy',
-			backgroundColor: null,
+			backgroundColor: '#FBF8EF',
 			events: {
 				//load: requestData // in header.php
 			}
@@ -173,7 +188,7 @@ $(function() {
 			}
 		 },
 		yAxis: {
-			gridLineColor: null, 
+			gridLineColor: '#EFEFEF', 
 			labels: {
 				format: '{value}',
 				style: {
@@ -183,6 +198,11 @@ $(function() {
 		   title: {
 				text: '',
 			},
+            plotBands: [{
+                color: '#E7FFFF',
+                from: 0,
+                to: -30,
+            }],
 			//min: -20
 		},
 		tooltip: {
@@ -198,41 +218,43 @@ $(function() {
 				marker: {
 					enabled: false
 				},
+                connectNulls: false,
 			}
 		},
 
 		series: [{
-			name: '<?php echo $chart1_name[0]; ?>',
+			name: '<?php echo $chart2_name[0]; ?>',
 			type: 'line',
-			color: '#01AEE3',
+			color: '#F62B07',
 			zIndex: 1,
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[1]; ?>',
+			name: '<?php echo $chart2_name[1]; ?>',
+			type: 'line',
+			color: '#781BE1',
+			zIndex: 2,
+			data: []
+		}, {
+			name: '<?php echo $chart2_name[2]; ?>',
 			type: 'line',
 			color: '#E662CC',
 			zIndex: 2,
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[1]; ?>',
+			name: '<?php echo $chart2_name[3]; ?>',
 			type: 'line',
-			color: 'red',
+			color: '#EA7C01',
 			zIndex: 2,
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[1]; ?>',
-			type: 'line',
-			color: 'green',
-			zIndex: 2,
-			data: []
-		}, {
-			name: '<?php echo $chart1_name[1]; ?>',
+			name: '<?php echo $chart2_name[4]; ?>',
 			type: 'line',
 			color: 'black',
 			zIndex: 2,
 			data: []
 		}] 
 	});
+chart2.showLoading('Cliquez sur le graphe du haut pour afficher le détail')
 
     
 });
