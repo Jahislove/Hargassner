@@ -344,16 +344,16 @@ a:hover{
 }
 .chart2_quad {
     display: inline-block;
-	width: 600px;
-	height: 400px;
+	width: 49%;
+	height: 40%;
 }
 .rel {
-    width: 1206px;
+    width: 100%; /*1206px;*/
 }
 .chart3_duo {
     display: inline-block;
-	width: 1200px;
-	height: 400px;
+	width: 99%;
+	height: 40%;
 }
 /**************************************************************************************************/	
 /******************* Bandeau CSS ******************************************************************/	

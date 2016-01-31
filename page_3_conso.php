@@ -6,14 +6,10 @@
 <div id="courbe" class="chart3_duo"></div>
 
 <?php
-    $chart1_name = ['Conso','T° ext moy'];
-    $chart2_name = ['T° depart doit','T° depart','T° chaud','T° ext','T° int'];
-    //$chart1_chan = "m99,c6";
+    $chart1_name = ['Consommation granulés par jour','T° extérieure moyenne'];
+    $chart2_name = ['T° départ consigne','T° départ','T° chaudière','T° extérieure','T° intérieure'];
 
     $query = "SELECT dateB,conso,Tmoy FROM consommation ";
-    // $query = "SELECT DATE(dateB)as dateC,MAX(m99)-MIN(m99),FORMAT(AVG(c6), 1) FROM nanoPK2
-              // GROUP BY dateC
-              // ORDER by dateC DESC LIMIT 30";
 
 	connectMaBase($hostname, $database, $username, $password);
     $req = mysql_query($query) ;
@@ -59,8 +55,11 @@ $(function() {
 				//load: requestData // in header.php
 			}
 		},
+	    credits: {
+			enabled: false,
+		},
 		title: {
-			text: '',
+			text: 'Consommation de Granulés et température extérieure',
 			style:{
 				color: '#4572A7',
 			},
@@ -70,18 +69,23 @@ $(function() {
 		},
 		legend: {
 			enabled: true,
-			backgroundColor: 'white',
+			backgroundColor: '<?php echo $color_legend; ?>',
 			borderRadius: 14,
 		},
 		xAxis: {
 			type: 'datetime',
-			dateTimeLabelFormats: { // don't display the dummy year
-				month: '%e. %b',
-				year: '%b'
-			}
+            labels: {
+                style: {
+					color: 'black',
+				},
+			},
+            tickInterval: 24*3600*1000,
+			dateTimeLabelFormats: { 
+				day: '%d/%m',
+			},
 		 },
 		yAxis: {
-			gridLineColor: '#EFEFEF', 
+			gridLineColor: '#CACACA', 
 			labels: {
 				format: '{value}',
 				style: {
@@ -91,6 +95,11 @@ $(function() {
 		   title: {
 				text: '',
 			},
+            plotBands: {
+                color: '#E7FFFF',
+                from: 0,
+                to: -30,
+            },
 			//min: -20
 		},
 		tooltip: {
@@ -113,7 +122,7 @@ $(function() {
                             //alert('Category: ' + this.x );
                             chart2.showLoading('loading');
                             var jour = new Date(this.x);
-                            chart2.setTitle({ text: jour.toLocaleDateString() });
+                            chart2.setTitle('',{ text: jour.toLocaleDateString() });
                             $.ajax({
                                 dataType: "json",
                                 url: 'json_choix_jour.php',
@@ -139,7 +148,7 @@ $(function() {
 		series: [{
 			name: '<?php echo $chart1_name[0]; ?>',
 			type: 'column',
-			color: '#B8AD0E',
+			color: '<?php echo $color_gran; ?>',
             tooltip: {
                 valueSuffix: ' Kg',
              },
@@ -148,7 +157,7 @@ $(function() {
 		}, {
 			name: '<?php echo $chart1_name[1]; ?>',
 			type: 'line',
-			color: '#72EA01',
+			color: '<?php echo $color_TextM; ?>',
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -166,8 +175,11 @@ $(function() {
 				//load: requestData // in header.php
 			}
 		},
+	    credits: {
+			enabled: false,
+		},
 		title: {
-			text: '',
+			text: 'Courbes des températures',
 			style:{
 				color: '#4572A7',
 			},
@@ -177,7 +189,7 @@ $(function() {
 		},
 		legend: {
 			enabled: true,
-			backgroundColor: 'white',
+			backgroundColor: '<?php echo $color_legend; ?>',
 			borderRadius: 14,
 		},
 		xAxis: {
@@ -188,7 +200,7 @@ $(function() {
 			}
 		 },
 		yAxis: {
-			gridLineColor: '#EFEFEF', 
+			gridLineColor: '#CACACA', 
 			labels: {
 				format: '{value}',
 				style: {
@@ -198,11 +210,11 @@ $(function() {
 		   title: {
 				text: '',
 			},
-            plotBands: [{
+            plotBands: {
                 color: '#E7FFFF',
                 from: 0,
                 to: -30,
-            }],
+            },
 			//min: -20
 		},
 		tooltip: {
@@ -225,31 +237,31 @@ $(function() {
 		series: [{
 			name: '<?php echo $chart2_name[0]; ?>',
 			type: 'line',
-			color: '#F62B07',
+			color: '<?php echo $color_TdepD; ?>',
 			zIndex: 1,
 			data: []
 		}, {
 			name: '<?php echo $chart2_name[1]; ?>',
 			type: 'line',
-			color: '#781BE1',
+			color: '<?php echo $color_TdepE; ?>',
 			zIndex: 2,
 			data: []
 		}, {
 			name: '<?php echo $chart2_name[2]; ?>',
 			type: 'line',
-			color: '#E662CC',
+			color: '<?php echo $color_Tchaud; ?>',
 			zIndex: 2,
 			data: []
 		}, {
 			name: '<?php echo $chart2_name[3]; ?>',
 			type: 'line',
-			color: '#EA7C01',
+			color: '<?php echo $color_Text; ?>',
 			zIndex: 2,
 			data: []
 		}, {
 			name: '<?php echo $chart2_name[4]; ?>',
 			type: 'line',
-			color: 'black',
+			color: '<?php echo $color_Tint; ?>',
 			zIndex: 2,
 			data: []
 		}] 

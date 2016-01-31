@@ -9,7 +9,21 @@ $refresh = 5; //rafraichissement en sec, ne pas descendre sous les 2 car le teln
 $histo_temps = 30; //historique du graphe live en mn
 
 
+//*****couleurs ************************************************	
+$color_TdepD = '#F62B07';
+$color_TdepE = '#781BE1';
+$color_Tchaud = '#E662CC';
+$color_Text = '#EA7C01';
+$color_TextM = '#72EA01';
+$color_Tint = 'black';
+$color_etat = '#01AEE3';
+$color_puiss = 'red';
+$color_fum = 'grey';
+$color_O2 = '#01DF01';
+$color_gran = '#B8AD0E';
+$color_aspi = '#1F4AEA';
 
+$color_legend = '#65AEF8';
 
 //*****ne pas modifier ************************************************	
 $histo_live_shift = $histo_temps * 60 / $refresh; // nombre de valeur avant de shift

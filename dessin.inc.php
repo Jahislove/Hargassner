@@ -66,7 +66,7 @@
                 <tr><th>T° interieur</th>       <td id="Gauche2">?</td></tr>    
                 <tr><th>T° exterieur</th>       <td id="Gauche6">?</td></tr>    
                 <tr><th>T° exterieur moy</th>   <td id="Gauche7">?</td></tr>    
-                <tr><th>T° depart ext</th>      <td id="Gauche8">?</td></tr>    
+                <tr><th>T° depart est</th>      <td id="Gauche8">?</td></tr>    
                 <tr><th>T° depart doit</th>     <td id="Gauche9">?</td></tr>    
                 <tr><th>Variable F</th>         <td id="Gauche10">?</td></tr>    
                 <tr><th>Variable K</th>         <td id="Gauche11">?</td></tr>    

@@ -1,7 +1,7 @@
 // appel ajax et rafraichissement des données
 function call_ajax() {
 $.ajax({
-    url: 'query_json.inc.php', 
+    url: 'json_telnet.php', 
     cache: false,
     success: function(channel) {
         heure = channel[0]; // stock la date puis

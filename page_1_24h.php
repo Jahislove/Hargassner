@@ -6,30 +6,7 @@
 
 <?php
     $chart_last24_name = ['T° depart doit','T° depart','T° chaud','T° ext','T° int'];
-    $chart_last24_chan = 'c23,c21,c3,c6,m138';
-    
-    // $query = "SELECT dateB,$chart_last24_chan FROM nanoPK
-              // ORDER by id DESC LIMIT 17280";
-
-
-	// connectMaBase($hostname, $database, $username, $password);
-    // $req = mysql_query($query) ;
-	// mysql_close();
-	
-    // while($data = mysql_fetch_row($req))
-    // {
-        // $dateD = strtotime($data[0]) * 1000;
-        // $liste1[] = "[$dateD, $data[1]]";
-        // $liste2[] = "[$dateD, $data[2]]";
-        // $liste3[] = "[$dateD, $data[3]]";
-        // $liste4[] = "[$dateD, $data[4]]";
-        // $liste5[] = "[$dateD, $data[5]]";
-    // }
-   // $liste1 = join(',', array_reverse($liste1));
-   // $liste2 = join(',', array_reverse($liste2));
-   // $liste3 = join(',', array_reverse($liste3));
-   // $liste4 = join(',', array_reverse($liste4));
-   // $liste5 = join(',', array_reverse($liste5));
+    $chart_last24_chan = 'c23,c21,c3,c6,c138';
 ?>
 
 
@@ -68,7 +45,7 @@ $(document).ready(function(){
 		},
 		legend: {
 			enabled: true,
-			backgroundColor: 'white',
+			backgroundColor: '<?php echo $color_legend; ?>',
 			borderRadius: 14,
 		},
 		xAxis: {
@@ -114,30 +91,30 @@ $(document).ready(function(){
 		},
 
 		series: [{
-			name: '<?php echo $chart_last24_name[0]; ?>',
-			color: '#F62B07',
             type: 'line',
+			name: '<?php echo $chart_last24_name[0]; ?>',
+			color: '<?php echo $color_TdepD; ?>',
 			zIndex: 5,
 			data: []
 		}, {
 			name: '<?php echo $chart_last24_name[1]; ?>',
-			color: '#781BE1',
+			color: '<?php echo $color_TdepE; ?>',
 			zIndex: 3,
 			data: []
 		}, {
 			name: '<?php echo $chart_last24_name[2]; ?>',
-			color: '#E662CC',
+			color: '<?php echo $color_Tchaud; ?>',
 			zIndex: 2,
 			data: []
 		}, {
 			name: '<?php echo $chart_last24_name[3]; ?>',
+			color: '<?php echo $color_Text; ?>',
 			zIndex: 4,
-			color: '#EA7C01',
 			data: []
 		}, {
 			name: '<?php echo $chart_last24_name[4]; ?>',
+			color: '<?php echo $color_Tint; ?>',
 			zIndex: 4,
-			color: 'black',
 			data: []
 		}] 
 	});
