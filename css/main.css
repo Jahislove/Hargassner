@@ -342,7 +342,7 @@ a:hover{
 	height: 800px;
 	margin: 0 auto;
 }
-.chart2_quad {
+.page2_quad {
     display: inline-block;
 	width: 49%;
 	height: 40%;
@@ -350,10 +350,14 @@ a:hover{
 .rel {
     width: 100%; /*1206px;*/
 }
-.chart3_duo {
+.page3_duo {
     display: inline-block;
 	width: 99%;
 	height: 40%;
+}
+
+.ui-datepicker-calendar {
+    display: none;
 }
 /**************************************************************************************************/	
 /******************* Bandeau CSS ******************************************************************/	

@@ -7,8 +7,8 @@
     $chart1_chan = "c6,c7,c138,c21,c23";
     $chart2_name = ['Etat','Puissance','T° chaudiere','T° fumée','O² lambda'];
     $chart2_chan = "c0,c134,c3,c5,c1";
-    $chart3_name = ['Consommation granulés','T° exterieur moyenne'];
-    $chart3_chan = "c99,c6";
+    $chart3_name = ['Vitesse Extracteur','Variable F','% bois','Variable K','Regulateur bois'];
+    $chart3_chan = "c53,c54,c56,c160,c55";
     $chart4_name = ['Aspiration RAPS'];
     $chart4_chan = "c169";
     
@@ -16,10 +16,13 @@
               ORDER by dateB DESC LIMIT 1440";
     $query2 = "SELECT dateB,$chart2_chan FROM nanoPK
               ORDER by dateB DESC LIMIT 120";
+    $query3 = "SELECT dateB,$chart3_chan FROM nanoPK
+              ORDER by dateB DESC LIMIT 120";
 
 	connectMaBase($hostname, $database, $username, $password);
     $req1 = mysql_query($query1) ;
     $req2 = mysql_query($query2) ;
+    $req3 = mysql_query($query3) ;
 	mysql_close();
 	
     while($data = mysql_fetch_row($req1)){
@@ -38,6 +41,14 @@
         $chart2_data4[] = "[$dateD, $data[4]]";
         $chart2_data5[] = "[$dateD, $data[5]]";
     }
+    while($data = mysql_fetch_row($req3)){
+        $dateD = strtotime($data[0]) * 1000;
+        $chart3_data1[] = "[$dateD, $data[1]]";
+        $chart3_data2[] = "[$dateD, $data[2]]";
+        $chart3_data3[] = "[$dateD, $data[3]]";
+        $chart3_data4[] = "[$dateD, $data[4]]";
+        $chart3_data5[] = "[$dateD, $data[5]]";
+    }
 
     $chart1_data1 = join(',', array_reverse($chart1_data1));
     $chart1_data2 = join(',', array_reverse($chart1_data2));
@@ -51,13 +62,19 @@
     $chart2_data4 = join(',', array_reverse($chart2_data4));
     $chart2_data5 = join(',', array_reverse($chart2_data5));
 
+    $chart3_data1 = join(',', array_reverse($chart3_data1));
+    $chart3_data2 = join(',', array_reverse($chart3_data2));
+    $chart3_data3 = join(',', array_reverse($chart3_data3));
+    $chart3_data4 = join(',', array_reverse($chart3_data4));
+    $chart3_data5 = join(',', array_reverse($chart3_data5));
+
 ?>
 
 <div class="rel">
-    <div id="test1" class="chart2_quad"></div>
-    <div id="test2" class="chart2_quad"></div>
-    <div id="test3" class="chart2_quad"></div>
-    <div id="test4" class="chart2_quad"></div>
+    <div id="graphe1" class="page2_quad"></div>
+    <div id="graphe2" class="page2_quad"></div>
+    <div id="graphe4" class="page2_quad"></div>
+    <div id="graphe3" class="page2_quad"></div>
 </div>
 
 <div class="clear"></div>
@@ -80,7 +97,7 @@ $(document).ready(function(){
 		},
 		chart: {
 			type: 'line',
-			zoomType: 'xy',
+			zoomType: 'x',
 			backgroundColor: '#FBF8EF',
 		},
 	    credits: {
@@ -143,12 +160,15 @@ $(document).ready(function(){
     });
 
     // *************chart 1 ********************************************
-	$('#test1').highcharts({
+	$('#graphe1').highcharts({
 		chart: {
 			events: {
 				//load: requestData // in header_debut.php
 			}
         },
+		title: {
+			text: 'Températures',
+		},
 		series: [{
 			name: '<?php echo $chart1_name[0]; ?>',
 			color: '<?php echo $color_Text; ?>',
@@ -172,7 +192,10 @@ $(document).ready(function(){
 		}] 
 	});
     // *************chart 2 ********************************************
-	$('#test2').highcharts({
+	$('#graphe2').highcharts({
+		title: {
+			text: 'Fonctionnement',
+		},
 		xAxis: {
             tickInterval: 15*60*1000,
 		 },
@@ -201,47 +224,47 @@ $(document).ready(function(){
     // *************chart 3 ********************************************
 	chart3 = new Highcharts.Chart({
 		chart: {
-			renderTo: 'test3',
+			renderTo: 'graphe3',
         },
-		xAxis: {
-            tickInterval: 24*3600*1000,
-			dateTimeLabelFormats: { 
-				day: '%e/%m',
-			}
-		 },
-		plotOptions: {
-			series: {
-                //lineWidth: 1,
-				marker: {
-					enabled: true,
-				},
-			},
+		title: {
+			text: 'Variables',
 		},
-		tooltip: {
-			xDateFormat: '%A %e %B',
+		xAxis: {
+            tickInterval: 15*60*1000,
 		 },
 		series: [{
 			name: '<?php echo $chart3_name[0]; ?>',
-            type: 'column',
-			color: '<?php echo $color_gran; ?>',
-            tooltip: {
-                valueSuffix: ' Kg',
-             },
-			data: [],
+			color: '<?php echo $color_etat; ?>',
+			data: [<?php echo $chart3_data1; ?>]
 		}, {
 			name: '<?php echo $chart3_name[1]; ?>',
-			color: '<?php echo $color_TextM; ?>',
+			color: '<?php echo $color_puiss; ?>',
+			data: [<?php echo $chart3_data2; ?>]
+		}, {
+			name: '<?php echo $chart3_name[2]; ?>',
+			color: '<?php echo $color_Tchaud; ?>',
+			data: [<?php echo $chart3_data3; ?>]
+		}, {
+			name: '<?php echo $chart3_name[3]; ?>',
+			color: '<?php echo $color_fum; ?>',
+			data: [<?php echo $chart3_data4; ?>]
+		}, {
+			name: '<?php echo $chart3_name[4]; ?>',
+			color: '<?php echo $color_O2; ?>',
+			data: [<?php echo $chart3_data5; ?>],
             tooltip: {
                 valueSuffix: ' °C',
              },
-			data: []
 		}] 
 	});
     // *************chart 4 ********************************************
 	chart4 = new Highcharts.Chart({
 		chart: {
-			renderTo: 'test4',
+			renderTo: 'graphe4',
         },
+		title: {
+			text: 'Aspiration',
+		},
 		xAxis: {
             tickInterval: 3*3600*1000,
 		 },
@@ -253,20 +276,20 @@ $(document).ready(function(){
 	});
 //****************************************************************************************************
 // ************* chargement asynchrone des graphes****************************************************
-    chart3.showLoading('loading');
+//    chart3.showLoading('loading');
     chart4.showLoading('loading');
 
-    $.ajax({
-        dataType: "json",
-        url: 'json_conso.php',
-        cache: false,
-        success: function(data) {
-            chart3.series[0].setData(data[0],false);
-            chart3.series[1].setData(data[1],false);
-            chart3.redraw();
-            chart3.hideLoading();
-        }
-    });
+    // $.ajax({
+        // dataType: "json",
+        // url: 'json_conso.php',
+        // cache: false,
+        // success: function(data) {
+            // chart3.series[0].setData(data[0],false);
+            // chart3.series[1].setData(data[1],false);
+            // chart3.redraw();
+            // chart3.hideLoading();
+        // }
+    // });
 
     $.ajax({
         dataType: "json",

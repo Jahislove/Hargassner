@@ -11,6 +11,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+    <script src="js/jquery-ui.min-1.11.4.js"></script>
+    
     <script src="https://code.highcharts.com/highcharts.js"></script> 
     <!-- <script src="https://code.highcharts.com/stock/highstock.js"></script>-->
 

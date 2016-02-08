@@ -1,10 +1,15 @@
 <?php
+
+// recupere le mois sélectionné dans datepicker
 require_once("conf/config.inc.php");
 require_once("conf/connectBDD.inc.php");
 
 	header("Content-type: text/json");
-
-    $query = "SELECT dateB,conso,Tmoy FROM consommation ";
+    $mois =  $_GET["mois"];
+    $annee =  $_GET["annee"];
+    $query = "SELECT dateB,conso,Tmoy FROM consommation 
+            WHERE dateB BETWEEN '".$annee."-".$mois."-01' AND '".$annee."-".$mois."-31'
+            ORDER BY dateB DESC LIMIT 31";
               
 	connectMaBase($hostname, $database, $username, $password);
     $req = mysql_query($query) ;
@@ -16,6 +21,6 @@ require_once("conf/connectBDD.inc.php");
         $liste2[] = [$dateD, $data[2]];
     }
 
-    $tableau = [$liste1,$liste2];
+    $tableau = [array_reverse($liste1),array_reverse($liste2)];
     echo json_encode($tableau, JSON_NUMERIC_CHECK);
 ?>

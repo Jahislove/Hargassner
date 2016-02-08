@@ -6,7 +6,7 @@
 
 <?php
     $chart_last24_name = ['T° depart doit','T° depart','T° chaud','T° ext','T° int'];
-    $chart_last24_chan = 'c23,c21,c3,c6,c138';
+    $chart_last24_chan = 'c23,c21,c110,c6,c138';
 ?>
 
 
@@ -32,7 +32,10 @@ $(document).ready(function(){
             renderTo: 'chart_last24',
 			type: 'spline',
 			zoomType: 'x',
-			backgroundColor: null,
+			backgroundColor: '#FBF8EF',
+		},
+	    credits: {
+			enabled: false,
 		},
 		title: {
 			text: '',
@@ -56,7 +59,7 @@ $(document).ready(function(){
 			}
 		 },
 		yAxis: {
-			gridLineColor: '#EFEFEF', 
+			gridLineColor: '#CACACA', 
 			labels: {
 				format: '{value}',
 				style: {

@@ -127,7 +127,7 @@ j'ai simplement mis en forme et ajouté en francais les parametres que j'ai pu id
 <CHANNEL id=	107	 name=	Ext.HK Soll	     unit=		
 <CHANNEL id=	108	 name=	Ext.HK Soll_2	 unit=		
 <CHANNEL id=	109	 name=	Ext.HK Soll_3	 unit=		
-<CHANNEL id=	110	 name=	Höchste Anf	     unit=		??? 35/38 30=reduit nuit
+<CHANNEL id=	110	 name=	Höchste Anf	     unit=		??? identique c23 avec parfois decalage
 <CHANNEL id=	111	 name=	LZ LB seit Ent.	 unit=	Min	temps combustion est 
 <CHANNEL id=	112	 name=	LZ ES seit Füll. unit=	Min	temps vis pour aspiration est 
 <CHANNEL id=	113	 name=	Anzahl Entasch.	 unit=		nombre decendrage
