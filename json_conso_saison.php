@@ -14,19 +14,18 @@ require_once("conf/connectBDD.inc.php");
 	mysql_close();
 
 //pre-remplissage avec des null en cas d'année incomplete
-$cons = [null,null,null,null,null,null,null,null,null,null,null,null]; // [0,0,0,0,0,0,0,0,0,0,0,0]
-$Tmoy = [null,null,null,null,null,null,null,null,null,null,null,null]; // [0,0,0,0,0,0,0,0,0,0,0,0]
+$cons = [null,null,null,null,null,null,null,null,null,null,null,null]; 
+$Tmoy = [null,null,null,null,null,null,null,null,null,null,null,null]; 
 
 // decalage des mois pour debut saison en septembre    
-// "Septembre", "Octobre", "Novembre", "Decembre", "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout"
 $mois = ['09' => 0, '10' => 1, '11' => 2, '12' => 3, '1' => 4, '2' => 5, '3' => 6, '4' => 7, '5' => 8, '6' => 9, '7' => 10, '8' => 11];
 
     while($data = mysql_fetch_row($req)){
-        $annee[] = $data[0];
+        $annee = $data[0];
         $cons[$mois[$data[1]]] = $data[2];        
         $Tmoy[$mois[$data[1]]] = $data[3];        
     }
-    $saison = $annee[0]." / ".($annee[0] + 1);
+    $saison = $annee." / ".($annee + 1);
     $tableau = [$cons, $Tmoy, $saison];
     echo json_encode($tableau, JSON_NUMERIC_CHECK);
 ?>

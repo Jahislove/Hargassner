@@ -4,9 +4,9 @@
 
 <p>Date: <input type="text" id="datepicker"></p>
     
-<div id="conso" class="page3_duo"></div>
-<div id="courbe" class="page3_duo"></div>
-<div id="conso_mois" class="page3_duo"></div>
+<div id="conso" class="graphe_size"></div>
+<div id="courbe" class="graphe_size"></div>
+<div id="conso_mois" class="graphe_size"></div>
 
 <?php
     $chart1_name = ['Consommation granulés par jour','T° extérieure moyenne'];
@@ -17,7 +17,7 @@
     $query0 = "SELECT dateB,conso,Tmoy FROM consommation 
             ORDER BY dateB DESC LIMIT 60";
     // recupere la 1ere mesure dans la base pour initialiser le calendrier
-    $query1 = "SELECT YEAR(dateB),MONTH(dateB) FROM consommation 
+    $query1 = "SELECT YEAR(dateB),MONTH(dateB),FORMAT(AVG(conso),1) FROM consommation 
              LIMIT 1";
 
 	connectMaBase($hostname, $database, $username, $password);
@@ -34,7 +34,9 @@
     $chart1_data1 = join(',', array_reverse($chart1_data1));
     $chart1_data2 = join(',', array_reverse($chart1_data2));
 
-    $dateMin = mysql_fetch_row($req1);
+    $data = mysql_fetch_row($req1);
+    $dateMin = [$data[0],$data[1]];
+    $consoMoy = $data[2];
 ?>
 
 
@@ -45,7 +47,7 @@
 $(function() {
     $( "#datepicker" ).datepicker({
         monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-        monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+        monthNamesShort: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
         closeText: 'Fermer',
         prevText: 'Précédent',
         nextText: 'Suivant',
@@ -95,7 +97,15 @@ $(function() {
 		},
 		global: {
 			useUTC: false
-		}
+		},
+	    credits: {
+			enabled: false,
+		},
+		legend: {
+			enabled: true,
+			backgroundColor: '<?php echo $color_legend; ?>',
+			borderRadius: 14,
+		},
     });
 
 //****************************************************************************************************
@@ -103,16 +113,13 @@ $(function() {
 		chart: {
 			renderTo: 'conso',
 			zoomType: 'x',
-			backgroundColor: '#FBF8EF',
+			backgroundColor: null,
             animation: {
                 duration: 1000
             },
 			events: {
 				//load: requestData // in header.php
 			}
-		},
-	    credits: {
-			enabled: false,
 		},
 		title: {
 			text: 'Consommation de granulés par jour',
@@ -122,11 +129,6 @@ $(function() {
 		},
 		subtitle: {
 			text: ''
-		},
-		legend: {
-			enabled: true,
-			backgroundColor: '<?php echo $color_legend; ?>',
-			borderRadius: 14,
 		},
 		xAxis: {
 			type: 'datetime',
@@ -164,7 +166,7 @@ $(function() {
 			borderRadius: 6,
 			borderWidth: 1,
 			valueSuffix: '',
-			//xDateFormat: '',
+			xDateFormat: '%A %d %B %Y',
 		 },
         plotOptions: {
             series: {
@@ -205,6 +207,16 @@ $(function() {
 			name: '<?php echo $chart1_name[0]; ?>',
 			type: 'column',
 			color: '<?php echo $color_gran; ?>',
+            pointWidth: 18,
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                rotation: 0,
+                color: '#F0DB0B',
+                align: 'right',
+                y: 25,
+                x: 4,
+            },
             tooltip: {
                 valueSuffix: ' Kg',
              },
@@ -221,18 +233,26 @@ $(function() {
 			data: [<?php echo $chart1_data2; ?>]
 		}] 
 	});
+//****************************************
+    chart1.renderer.label('Moyenne : <?php echo $consoMoy; ?> kg/jour',300, 0, 'callout',0,0)
+        .attr({
+            fill: '#DBEDFF',
+            stroke: '#CACACA',
+            zIndex: 10,
+            r: 20,
+            padding: 8,
+            'stroke-width': 1,
+        })
+        .add();
 //****************************************************************************************************
 	chart2 = new Highcharts.Chart({
 		chart: {
 			renderTo: 'courbe',
 			zoomType: 'x',
-			backgroundColor: '#FBF8EF',
+			backgroundColor: null,
 			events: {
 				//load: requestData // in header.php
 			}
-		},
-	    credits: {
-			enabled: false,
 		},
 		title: {
 			text: 'Courbes des températures',
@@ -245,11 +265,6 @@ $(function() {
 			style:{
 				color: '#4572A7',
 			},
-		},
-		legend: {
-			enabled: true,
-			backgroundColor: '<?php echo $color_legend; ?>',
-			borderRadius: 14,
 		},
 		xAxis: {
 			type: 'datetime',
@@ -282,13 +297,19 @@ $(function() {
 			borderRadius: 6,
 			borderWidth: 1,
 			valueSuffix: '',
-			xDateFormat: '%d %B %H:%M',
+			xDateFormat: '%A %d %B %H:%M',
 		 },
 		plotOptions: {
 			series: {
+                lineWidth: 1.5,
 				marker: {
 					enabled: false
 				},
+                states: {
+                    hover: {
+                        enabled: false,
+                    }
+                },
                 connectNulls: false,
 			}
 		},
@@ -332,13 +353,10 @@ chart2.showLoading('Cliquez sur le graphe du haut pour afficher le détail')
 		chart: {
 			renderTo: 'conso_mois',
 			zoomType: 'x',
-			backgroundColor: '#FBF8EF',
+			backgroundColor: null,
 			events: {
 				//load: requestData // in header.php
 			}
-		},
-	    credits: {
-			enabled: false,
 		},
 		title: {
 			text: 'Consommation par mois',
@@ -349,19 +367,9 @@ chart2.showLoading('Cliquez sur le graphe du haut pour afficher le détail')
 		subtitle: {
 			text: ''
 		},
-		legend: {
-			enabled: true,
-			backgroundColor: '<?php echo $color_legend; ?>',
-			borderRadius: 14,
-		},
 		xAxis: {
 			type: 'category',
             categories: ['Septembre', 'Octobre', 'Novembre', 'Decembre','Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout'],
-            //categories: [],
-			dateTimeLabelFormats: { // don't display the dummy year
-				month: '%d. %b',
-				year: '%b'
-			}
 		 },
 		yAxis: [{
 			gridLineColor: '#CACACA', 
@@ -378,7 +386,6 @@ chart2.showLoading('Cliquez sur le graphe du haut pour afficher le détail')
 		},{
 			opposite: true,
             endOnTick: false,
-			//min: -20,
             max: 40,
 			labels: {
 				format: '{value} °C',
@@ -400,8 +407,6 @@ chart2.showLoading('Cliquez sur le graphe du haut pour afficher le détail')
 			crosshairs: true,
 			borderRadius: 26,
 			borderWidth: 2,
-			//valueSuffix: '',
-			//xDateFormat: '%d %B %H:%M',
 		 },
 		plotOptions: {
 			series: {

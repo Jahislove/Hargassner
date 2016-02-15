@@ -13,8 +13,8 @@
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
     <script src="js/jquery-ui.min-1.11.4.js"></script>
     
-    <script src="https://code.highcharts.com/highcharts.js"></script> 
-    <!-- <script src="https://code.highcharts.com/stock/highstock.js"></script>-->
+    <!-- <script src="https://code.highcharts.com/highcharts.js"></script>  -->
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
 
 <script type="text/javascript">	
     var histo_live_shift = <?php echo $histo_live_shift;?>;

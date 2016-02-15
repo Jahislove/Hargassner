@@ -5,8 +5,8 @@
 <div id="chart_last24"></div>
 
 <?php
-    $chart_last24_name = ['T° depart doit','T° depart','T° chaud','T° ext','T° int'];
-    $chart_last24_chan = 'c23,c21,c110,c6,c138';
+    $chart_last24_name = ['T° depart consigne','T° depart','T° chaudière','T° extérieur','T° intérieur','Puissance'];
+    $chart_last24_chan = 'c23,c21,c3,c6,c138,c134';
 ?>
 
 
@@ -32,7 +32,7 @@ $(document).ready(function(){
             renderTo: 'chart_last24',
 			type: 'spline',
 			zoomType: 'x',
-			backgroundColor: '#FBF8EF',
+			backgroundColor: null,
 		},
 	    credits: {
 			enabled: false,
@@ -58,10 +58,10 @@ $(document).ready(function(){
 				year: '%b'
 			}
 		 },
-		yAxis: {
+		yAxis: [{ //axe 0
 			gridLineColor: '#CACACA', 
 			labels: {
-				format: '{value}',
+				format: '{value} °C',
 				style: {
 					color: '#4572A7',
 				}
@@ -74,8 +74,27 @@ $(document).ready(function(){
                 from: 0,
                 to: -30,
             }],
+            height: 430,
+            top: 180,
 			//min: -20
-		},
+		},{ //axe 1
+			gridLineColor: '#CACACA', 
+			labels: {
+				format: '{value} %',
+				style: {
+					color: 'red',
+				}
+			},
+		   title: {
+				text: 'Puissance',
+			},
+            opposite: true,
+            top: 10,
+            height: 150,
+            max: 100,
+			//min: -20
+            
+        }],
 		tooltip: {
 	        shared: true,
 			crosshairs: true,
@@ -86,11 +105,16 @@ $(document).ready(function(){
 		 },
 		plotOptions: {
 			series: {
-                //lineWidth: 1,
+                lineWidth: 1.5,
 				marker: {
 					enabled: false,
 				},
-			}
+                states: {
+                    hover: {
+                        enabled: false,
+                    }
+                },
+			},
 		},
 
 		series: [{
@@ -119,6 +143,12 @@ $(document).ready(function(){
 			color: '<?php echo $color_Tint; ?>',
 			zIndex: 4,
 			data: []
+		}, {
+			name: '<?php echo $chart_last24_name[5]; ?>',
+			color: '<?php echo $color_puiss; ?>',
+			zIndex: 4,
+            yAxis: 1,
+			data: []
 		}] 
 	});
 //****************************************************************************************************
@@ -127,8 +157,8 @@ $(document).ready(function(){
 
     $.ajax({
         dataType: "json",
-        url: 'json_last24.php',
-        data: 'channel=<?php echo $chart_last24_chan; ?>',
+        url: 'json_chan-period.php',
+        data: 'channel=<?php echo $chart_last24_chan; ?>' + '&periode=1440',
         cache: false,
         success: function(data) {
             chart_last24.series[0].setData(data[0],false);
@@ -136,6 +166,7 @@ $(document).ready(function(){
             chart_last24.series[2].setData(data[2],false);
             chart_last24.series[3].setData(data[3],false);
             chart_last24.series[4].setData(data[4],false);
+            chart_last24.series[5].setData(data[5],false);
             chart_last24.redraw();
             chart_last24.hideLoading();
             //requestData();

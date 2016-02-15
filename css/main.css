@@ -339,18 +339,13 @@ a:hover{
 }
 #chart_last24 {
 	min-width: 400px;
-	height: 800px;
+	height: 700px;
 	margin: 0 auto;
-}
-.page2_quad {
-    display: inline-block;
-	width: 49%;
-	height: 40%;
 }
 .rel {
     width: 100%; /*1206px;*/
 }
-.page3_duo {
+.graphe_size {
     display: inline-block;
 	width: 99%;
 	height: 40%;
