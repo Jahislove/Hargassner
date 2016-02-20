@@ -33,6 +33,9 @@ $(document).ready(function(){
 			type: 'spline',
 			zoomType: 'x',
 			backgroundColor: null,
+			events: {
+				load: requestData // in header.php
+			},
 		},
 	    credits: {
 			enabled: false,
@@ -53,9 +56,8 @@ $(document).ready(function(){
 		},
 		xAxis: {
 			type: 'datetime',
-			dateTimeLabelFormats: { // don't display the dummy year
-				month: '%e. %b',
-				year: '%b'
+			dateTimeLabelFormats: { 
+                day: '%e %B',
 			}
 		 },
 		yAxis: [{ //axe 0
@@ -74,34 +76,34 @@ $(document).ready(function(){
                 from: 0,
                 to: -30,
             }],
-            height: 430,
-            top: 180,
-			//min: -20
+            height: 450,
+            top: 160,
 		},{ //axe 1
 			gridLineColor: '#CACACA', 
 			labels: {
 				format: '{value} %',
+                x: 55,
 				style: {
 					color: 'red',
-				}
+				},
 			},
 		   title: {
 				text: 'Puissance',
+				style: {
+					color: 'red',
+				},
 			},
-            opposite: true,
             top: 10,
-            height: 150,
+            height: 100,
             max: 100,
-			//min: -20
-            
         }],
 		tooltip: {
 	        shared: true,
 			crosshairs: true,
 			borderRadius: 6,
 			borderWidth: 1,
-			valueSuffix: '°C',
-			xDateFormat: '%e. %b %H:%M:%S',
+			valueSuffix: ' °C',
+			xDateFormat: '%e %B %H:%M:%S',
 		 },
 		plotOptions: {
 			series: {
@@ -118,7 +120,6 @@ $(document).ready(function(){
 		},
 
 		series: [{
-            type: 'line',
 			name: '<?php echo $chart_last24_name[0]; ?>',
 			color: '<?php echo $color_TdepD; ?>',
 			zIndex: 5,

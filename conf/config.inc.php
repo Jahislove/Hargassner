@@ -5,7 +5,7 @@ $port = 23; //port telnet
 
 $taille_silo = 4000; // en kg , il s'agit de la capacité max du silo
 
-$refresh = 5; //rafraichissement en sec, ne pas descendre sous les 2 car le telnet de la chaudiere n'arrive plus a repondre assez vite
+$refresh = 10; //rafraichissement en sec, ne pas descendre sous les 2 car le telnet de la chaudiere n'arrive plus a repondre assez vite
 $histo_temps = 30; //historique du graphe live en mn
 
 
@@ -22,6 +22,11 @@ $color_fum = 'grey';
 $color_O2 = '#01DF01';
 $color_gran = '#D07705';//B8AD0E
 $color_aspi = '#1F4AEA';
+$color_extrac = '#04E9A4';
+$color_varF = '#1F4AEA';
+$color_varK = '#E900BB';
+$color_regul = '#A0A0A0';
+$color_bois = '#E97E04';
 
 $color_legend = '#DBEDFF'; //65AEF8
 

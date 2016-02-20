@@ -12,69 +12,12 @@
     $chart5_name = ['T° ext','T° ext moy','T° int','T° depart est','T° depart doit'];
     $chart5_chan = "c6,c7,c138,c21,c23";
     
-    // $query1 = "SELECT dateB,$chart1_chan FROM nanoPK
-              // ORDER by dateB DESC LIMIT 720";
-    // $query2 = "SELECT dateB,$chart2_chan FROM nanoPK
-              // ORDER by dateB DESC LIMIT 720";
-    // $query5 = "SELECT dateB,$chart5_chan FROM nanoPK
-              // ORDER by dateB DESC LIMIT 1440";
-
-	// connectMaBase($hostname, $database, $username, $password);
-    //$req1 = mysql_query($query1) ;
-    // $req2 = mysql_query($query2) ;
-    // $req5 = mysql_query($query5) ;
-	// mysql_close();
-	
-    // while($data = mysql_fetch_row($req1)){
-        // $dateD = strtotime($data[0]) * 1000;
-        // $chart1_data1[] = "[$dateD, $data[1]]";
-        // $chart1_data2[] = "[$dateD, $data[2]]";
-        // $chart1_data3[] = "[$dateD, $data[3]]";
-        // $chart1_data4[] = "[$dateD, $data[4]]";
-        // $chart1_data5[] = "[$dateD, $data[5]]";
-    // }
-    // while($data = mysql_fetch_row($req2)){
-        // $dateD = strtotime($data[0]) * 1000;
-        // $chart2_data1[] = "[$dateD, $data[1]]";
-        // $chart2_data2[] = "[$dateD, $data[2]]";
-        // $chart2_data3[] = "[$dateD, $data[3]]";
-        // $chart2_data4[] = "[$dateD, $data[4]]";
-        // $chart2_data5[] = "[$dateD, $data[5]]";
-    // }
-    // while($data = mysql_fetch_row($req5)){
-        // $dateD = strtotime($data[0]) * 1000;
-        // $chart5_data1[] = "[$dateD, $data[1]]";
-        // $chart5_data2[] = "[$dateD, $data[2]]";
-        // $chart5_data3[] = "[$dateD, $data[3]]";
-        // $chart5_data4[] = "[$dateD, $data[4]]";
-        // $chart5_data5[] = "[$dateD, $data[5]]";
-    // }
-
-
-    // $chart1_data1 = join(',', array_reverse($chart1_data1));
-    // $chart1_data2 = join(',', array_reverse($chart1_data2));
-    // $chart1_data3 = join(',', array_reverse($chart1_data3));
-    // $chart1_data4 = join(',', array_reverse($chart1_data4));
-    // $chart1_data5 = join(',', array_reverse($chart1_data5));
-
-    // $chart2_data1 = join(',', array_reverse($chart2_data1));
-    // $chart2_data2 = join(',', array_reverse($chart2_data2));
-    // $chart2_data3 = join(',', array_reverse($chart2_data3));
-    // $chart2_data4 = join(',', array_reverse($chart2_data4));
-    // $chart2_data5 = join(',', array_reverse($chart2_data5));
-
-    // $chart5_data1 = join(',', array_reverse($chart5_data1));
-    // $chart5_data2 = join(',', array_reverse($chart5_data2));
-    // $chart5_data3 = join(',', array_reverse($chart5_data3));
-    // $chart5_data4 = join(',', array_reverse($chart5_data4));
-    // $chart5_data5 = join(',', array_reverse($chart5_data5));
 ?>
 
 <div class="rel">
     <div id="graphe1" class="graphe_size"></div>
     <div id="graphe2" class="graphe_size"></div>
     <div id="graphe3" class="graphe_size"></div>
-    <div id="graphe5" class="graphe_size"></div>
 </div>
 
 <div class="clear"></div>
@@ -83,7 +26,6 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-//$(function() {
     // ************* options communes a tous les charts ******************************
     Highcharts.setOptions({
 		lang: {
@@ -140,7 +82,6 @@ $(document).ready(function(){
                 from: 0,
                 to: -30,
             },
-			//min: -20
 		},
 		tooltip: {
 	        shared: true,
@@ -205,24 +146,24 @@ $(document).ready(function(){
 		 },
 		series: [{
 			name: '<?php echo $chart2_name[0]; ?>',
-			color: '<?php echo $color_etat; ?>',
-			data: [<?php echo $chart2_data1; ?>]
+			color: '<?php echo $color_extrac; ?>',
+			data: []
 		}, {
 			name: '<?php echo $chart2_name[1]; ?>',
-			color: '<?php echo $color_puiss; ?>',
-			data: [<?php echo $chart2_data2; ?>]
+			color: '<?php echo $color_varF; ?>',
+			data: []
 		}, {
 			name: '<?php echo $chart2_name[2]; ?>',
-			color: '<?php echo $color_Tchaud; ?>',
-			data: [<?php echo $chart2_data3; ?>]
+			color: '<?php echo $color_bois; ?>',
+			data: []
 		}, {
 			name: '<?php echo $chart2_name[3]; ?>',
-			color: '<?php echo $color_fum; ?>',
-			data: [<?php echo $chart2_data4; ?>]
+			color: '<?php echo $color_varK; ?>',
+			data: []
 		}, {
 			name: '<?php echo $chart2_name[4]; ?>',
-			color: '<?php echo $color_O2; ?>',
-			data: [<?php echo $chart2_data5; ?>],
+			color: '<?php echo $color_regul; ?>',
+			data: [],
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -230,10 +171,11 @@ $(document).ready(function(){
 	});
     // *************chart 3 ********************************************
 	$('#graphe3').highcharts({
-	// chart3 = new Highcharts.Chart({
-		// chart: {
-			// renderTo: 'graphe3',
-        // },
+		chart: {
+			events: {
+				load: requestData // in header_debut.php
+			}
+        },
 		title: {
 			text: 'Aspiration',
 		},
@@ -247,42 +189,43 @@ $(document).ready(function(){
 		}] 
 	});
     // *************chart 5 ********************************************
-	$('#graphe5').highcharts({
-		chart: {
-			events: {
-				//load: requestData // in header_debut.php
-			}
-        },
-		title: {
-			text: 'Températures',
-		},
-		series: [{
-			name: '<?php echo $chart5_name[0]; ?>',
-			color: '<?php echo $color_Text; ?>',
-			data: [<?php echo $chart5_data1; ?>]
-		}, {
-			name: '<?php echo $chart5_name[1]; ?>',
-			color: '<?php echo $color_TextM; ?>',
-			data: [<?php echo $chart5_data2; ?>]
-		}, {
-			name: '<?php echo $chart5_name[2]; ?>',
-			color: '<?php echo $color_Tint; ?>',
-			data: [<?php echo $chart5_data3; ?>]
-		}, {
-			name: '<?php echo $chart5_name[3]; ?>',
-			color: '<?php echo $color_TdepE; ?>',
-			data: [<?php echo $chart5_data4; ?>]
-		}, {
-			name: '<?php echo $chart5_name[4]; ?>',
-			color: '<?php echo $color_TdepD; ?>',
-			data: [<?php echo $chart5_data5; ?>]
-		}] 
-	});
+	// $('#graphe5').highcharts({
+		// chart: {
+			// events: {
+				// load: requestData // in header_debut.php
+			// }
+        // },
+		// title: {
+			// text: 'Températures',
+		// },
+		// series: [{
+			// name: '<?php echo $chart5_name[0]; ?>',
+			// color: '<?php echo $color_Text; ?>',
+			// data: []
+		// }, {
+			// name: '<?php echo $chart5_name[1]; ?>',
+			// color: '<?php echo $color_TextM; ?>',
+			// data: []
+		// }, {
+			// name: '<?php echo $chart5_name[2]; ?>',
+			// color: '<?php echo $color_Tint; ?>',
+			// data: []
+		// }, {
+			// name: '<?php echo $chart5_name[3]; ?>',
+			// color: '<?php echo $color_TdepE; ?>',
+			// data: []
+		// }, {
+			// name: '<?php echo $chart5_name[4]; ?>',
+			// color: '<?php echo $color_TdepD; ?>',
+			// data: []
+		// }] 
+	// });
 //****************************************************************************************************
 // ************* chargement asynchrone des graphes****************************************************
     var chart1 = $('#graphe1').highcharts();
     var chart2 = $('#graphe2').highcharts();
     var chart3 = $('#graphe3').highcharts();
+    // var chart5 = $('#graphe5').highcharts();
     chart1.showLoading('loading');
     chart2.showLoading('loading');
     chart3.showLoading('loading');
@@ -328,6 +271,21 @@ $(document).ready(function(){
             chart3.hideLoading();
         }
     });
+    // $.ajax({
+        // dataType: "json",
+        // url: 'json_chan-period.php',
+        // data: 'channel=<?php echo $chart5_chan; ?>' + '&periode=720',
+        // cache: false,
+        // success: function(data) {
+            // chart5.series[0].setData(data[0],false);
+            // chart5.series[1].setData(data[1],false);
+            // chart5.series[2].setData(data[2],false);
+            // chart5.series[3].setData(data[3],false);
+            // chart5.series[4].setData(data[4],false);
+            // chart5.redraw();
+            // chart5.hideLoading();
+        // }
+    // });
 });
 </script>
 
