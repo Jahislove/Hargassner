@@ -1,4 +1,5 @@
 <?php
+// appelé par ajax, reçoit 1 journée en parametre et renvoi les series de data
 require_once("conf/config.inc.php");
 require_once("conf/connectBDD.inc.php");
 
@@ -10,9 +11,6 @@ require_once("conf/connectBDD.inc.php");
 
 $query = "SELECT dateB,c23,c21,c3,c6,c138 FROM nanoPK
           WHERE dateB BETWEEN '".$jour."' AND '".$jour."' + INTERVAL 1 DAY";
-
-          //WHERE dateB BETWEEN '".$jour." 00:00:00' AND '".$jour." 23:59:59'";
-
 
     connectMaBase($hostname, $database, $username, $password);
     $req = mysql_query($query) ;

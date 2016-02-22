@@ -25,6 +25,7 @@
 <?php require("footer.php");?>
 
 <script type="text/javascript">
+
 $(document).ready(function(){
     // ************* options communes a tous les charts ******************************
     Highcharts.setOptions({
@@ -64,8 +65,8 @@ $(document).ready(function(){
             tickInterval: 3600*1000,
 			dateTimeLabelFormats: { 
 				day: '%e %b',
-			}
-		 },
+			},
+		},
 		yAxis: {
 			gridLineColor: '#CACACA', 
 			labels: {
@@ -176,7 +177,7 @@ $(document).ready(function(){
 				load: requestData // in header_debut.php
 			}
         },
-		title: {
+        title: {
 			text: 'Aspiration',
 		},
 		xAxis: {
@@ -188,44 +189,11 @@ $(document).ready(function(){
 			data: []
 		}] 
 	});
-    // *************chart 5 ********************************************
-	// $('#graphe5').highcharts({
-		// chart: {
-			// events: {
-				// load: requestData // in header_debut.php
-			// }
-        // },
-		// title: {
-			// text: 'Températures',
-		// },
-		// series: [{
-			// name: '<?php echo $chart5_name[0]; ?>',
-			// color: '<?php echo $color_Text; ?>',
-			// data: []
-		// }, {
-			// name: '<?php echo $chart5_name[1]; ?>',
-			// color: '<?php echo $color_TextM; ?>',
-			// data: []
-		// }, {
-			// name: '<?php echo $chart5_name[2]; ?>',
-			// color: '<?php echo $color_Tint; ?>',
-			// data: []
-		// }, {
-			// name: '<?php echo $chart5_name[3]; ?>',
-			// color: '<?php echo $color_TdepE; ?>',
-			// data: []
-		// }, {
-			// name: '<?php echo $chart5_name[4]; ?>',
-			// color: '<?php echo $color_TdepD; ?>',
-			// data: []
-		// }] 
-	// });
 //****************************************************************************************************
 // ************* chargement asynchrone des graphes****************************************************
     var chart1 = $('#graphe1').highcharts();
     var chart2 = $('#graphe2').highcharts();
     var chart3 = $('#graphe3').highcharts();
-    // var chart5 = $('#graphe5').highcharts();
     chart1.showLoading('loading');
     chart2.showLoading('loading');
     chart3.showLoading('loading');
@@ -271,21 +239,6 @@ $(document).ready(function(){
             chart3.hideLoading();
         }
     });
-    // $.ajax({
-        // dataType: "json",
-        // url: 'json_chan-period.php',
-        // data: 'channel=<?php echo $chart5_chan; ?>' + '&periode=720',
-        // cache: false,
-        // success: function(data) {
-            // chart5.series[0].setData(data[0],false);
-            // chart5.series[1].setData(data[1],false);
-            // chart5.series[2].setData(data[2],false);
-            // chart5.series[3].setData(data[3],false);
-            // chart5.series[4].setData(data[4],false);
-            // chart5.redraw();
-            // chart5.hideLoading();
-        // }
-    // });
 });
 </script>
 

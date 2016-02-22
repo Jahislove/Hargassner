@@ -1,4 +1,6 @@
 <?php
+// appelé par ajax, renvoi les series de data pour la saison en cours
+
 require_once("conf/config.inc.php");
 require_once("conf/connectBDD.inc.php");
 

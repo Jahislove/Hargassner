@@ -1,13 +1,6 @@
 </head>
 
 <body>
-	<header>
-		<h1>
-		    <!-- 
-		    <IMG SRC="img/Owl-Intuition.png" ALT="Owl intuition" WIDTH=115 HEIGHT=33 >
-		     <IMG SRC="img/Owl-Logo.png" ALT="Logo" WIDTH=30 HEIGHT=30 > -->
-		</h1>
-	</header>
 
 	<nav>
         <ul class="fancyNav">

@@ -1,4 +1,5 @@
 ﻿<?php
+// graphique temps reel de la page d'accueil
 // pre-remplissage du chart avec des valeurs null
 $x = (time() * 1000);
 for ($i = -$histo_live_X; $i < 0; $i++){  //la valeur de $i doit correspondre a celle de la variable histo dans index.php
@@ -48,8 +49,6 @@ $(function() {
 		},
 		xAxis: {
 			type: 'datetime',
-             // minRange:1000*60*2,
-             // maxRange:0,
 			dateTimeLabelFormats: { 
 				month: '%e. %b',
 				year: '%b'

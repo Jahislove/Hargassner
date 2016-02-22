@@ -1,3 +1,4 @@
+
 <div id="tableau_dessin">
 	<div id="image" onclick="clic()">
 		<span id="nano-A1" class="extr_fixe"></span>

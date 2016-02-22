@@ -1,6 +1,7 @@
 <?php
 
-// recupere le mois sélectionné dans datepicker
+// appelé par ajax, reçoit le mois sélectionné dans datepicker en parametre et renvoi les series de data
+
 require_once("conf/config.inc.php");
 require_once("conf/connectBDD.inc.php");
 

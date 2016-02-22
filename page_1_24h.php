@@ -14,7 +14,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-//*** definition du graphe *****************************
+//*** definition du graphe ******************************
     Highcharts.setOptions({
 		lang: {
 			months: <?php echo $months; ?>,

@@ -7,7 +7,7 @@
 <html>
 <h2>
 <p>
-    20/02/2016 :
+    22/02/2016 v1.0:
     site web permettant la visualisation en temps réel d'une chaudière à granulés Hargassner Nano PK .
 </p>
 <p>

@@ -1,4 +1,5 @@
-<script> 
+<script type="text/javascript">
+// graphique du silo de la page d'accueil 
 $(function() {
 	Highcharts.setOptions({
 		lang: {
@@ -11,7 +12,6 @@ $(function() {
 			useUTC: false
 		}
 	});
-//$(document).ready(function() {
 	chart_silo = new Highcharts.Chart({
 		chart: {
 			renderTo: 'silo-texte',
@@ -20,19 +20,13 @@ $(function() {
             animation: {
                 duration: 2000
             },
-            events: {
-                // load:
-                    // function() {
-                    // this.renderer.image('./img/Silo-textile-GWTS-XXL2.png',0,0,200,200)
-                    // .attr({zIndex: 0})
-                    // .add();
-                    
-                // }
-            },
 		},
 	    credits: {
 			enabled: false,
 		},
+        exporting: {
+            enabled: false,
+        },
 	    title: {
 	        text: null,
 	    },
@@ -80,6 +74,5 @@ $(function() {
 			data: [[0]],
 		}]
 	});	
-//chart_silo.renderer.circle(50,50,20).attr({zIndex: 10}).add();	
 });
 </script>

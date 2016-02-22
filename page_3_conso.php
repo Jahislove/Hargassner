@@ -52,7 +52,7 @@ $(function() {
     $( ".input-group.date" ).datepicker({
         format: "MM yyyy",
         startDate: new Date(<?php echo $dateMin[0]; ?>,<?php echo $dateMin[1]; ?> - 1,1),
-        endDate: "31/12/2016",
+        endDate: "31/12/2099",
         minViewMode: 1,
         language: "fr",
         autoclose: true    
@@ -103,6 +103,7 @@ $(function() {
 			backgroundColor: '<?php echo $color_legend; ?>',
 			borderRadius: 14,
             align: 'right',
+            x: -30,
 			verticalAlign: 'top',
             shadow: true,
 			itemStyle: {
@@ -372,7 +373,7 @@ $(function() {
 			labels: {
 				format: '{value} Kg',
 				style: {
-					color: '#B8AD0E',
+					color: '<?php echo $color_gran; ?>',
 				}
 			},
 		   title: {
@@ -425,7 +426,7 @@ $(function() {
                 rotation: 0,
                 color: '#F0DB0B',
                 align: 'center',
-                y: 25,
+                y: 35,
             },
             tooltip: {
                 valueSuffix: ' Kg',
@@ -447,7 +448,7 @@ $(function() {
                 rotation: 0,
                 color: '<?php echo $color_TextM; ?>',
                 align: 'center',
-                y: 25,
+                y: 0,
             },
             tooltip: {
                 valueSuffix: ' °C',
@@ -462,6 +463,7 @@ $(function() {
 			renderTo: 'conso_annees',
 			type: 'column',
 		},
+		colors: ['#108BE0','#19AF09','#04E9A4','#D07705','#E900BB','#E662CC','#1F4AEA','#EA7C01','#11C4F0','#781BE1'],
 		title: {
 			text: 'Comparaison années précédentes',
 	        align: 'left',
@@ -485,7 +487,7 @@ $(function() {
 			labels: {
 				format: '{value} Kg',
 				style: {
-					color: '#B8AD0E',
+					color: '<?php echo $color_gran; ?>',
 				}
 			},
 		   title: {
@@ -509,6 +511,7 @@ $(function() {
                 pointPadding: 0,
                 groupPadding: 0.05,
                 borderWidth: 0,
+                maxPointWidth: 45,
 			}
 		},
 
