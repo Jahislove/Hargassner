@@ -4,7 +4,7 @@
     <?php require_once("conf/connectBDD.inc.php");?>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>My nanoPK</title>
+    <title>My NanoPK</title>
     <link rel="icon" type="image/png" href="img/logo.png" />
 
     <link rel="stylesheet" href="js/bootstrap/css/bootstrap.css" /> <!-- utilisé uniquement pour le datepicker -->
