@@ -9,7 +9,7 @@ require_once("conf/connectBDD.inc.php");
     $channel = $_GET["channel"];
     $periode = $_GET["periode"];
  
-    $query = "SELECT dateB,$channel FROM data
+    $query = "SELECT dateB,$channel FROM nanoPK
               ORDER by dateB DESC LIMIT $periode";
               
 	connectMaBase($hostname, $database, $username, $password);
