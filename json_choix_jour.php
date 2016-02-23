@@ -9,7 +9,7 @@ require_once("conf/connectBDD.inc.php");
     $jour = date('Y-m-d', $param/1000); # /1000 car le timestamp php est en seconde et javascript en ms
     
 
-$query = "SELECT dateB,c23,c21,c3,c6,c138 FROM nanoPK
+$query = "SELECT dateB,c23,c21,c3,c6,c138 FROM data
           WHERE dateB BETWEEN '".$jour."' AND '".$jour."' + INTERVAL 1 DAY";
 
     connectMaBase($hostname, $database, $username, $password);

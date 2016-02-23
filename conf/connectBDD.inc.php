@@ -3,7 +3,7 @@
     $hostname = "localhost"; //localhost si la BDD est sur la meme machine que le serveur web , sinon IP
     $database = "Hargassner"; // nom de la BDD
     $username = "hargassner"; // utilisateur mysql
-    $password = "******";
+    $password = "ttp2570";
 
 	
 // *****************************do not modify below***************************************
