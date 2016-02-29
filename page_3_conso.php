@@ -16,7 +16,7 @@
 
 <?php
     $chart1_name = ['Consommation granulés par jour','T° extérieure moyenne'];
-    $chart2_name = ['T° départ consigne','T° départ','T° chaudière','T° extérieure','T° intérieure'];
+    $chart2_name = ['T° départ consigne','T° départ','T° chaudière','T° extérieure','T° intérieure','Puissance'];
     $chart3_name = ['Consommation granulés par mois','T° extérieure moyenne'];
 
     // requete
@@ -158,7 +158,6 @@ $(function() {
                 from: 0,
                 to: -30,
             },
-			//min: -20
 		},
 		tooltip: {
 	        shared: true,
@@ -192,6 +191,7 @@ $(function() {
                                     chart2.series[2].setData(data[2],false);
                                     chart2.series[3].setData(data[3],false);
                                     chart2.series[4].setData(data[4],false);
+                                    chart2.series[5].setData(data[5],false);
                                     chart2.redraw();
                                     chart2.hideLoading();
                                 }
@@ -207,7 +207,8 @@ $(function() {
 			name: '<?php echo $chart1_name[0]; ?>',
 			type: 'column',
 			color: '<?php echo $color_gran; ?>',
-            pointWidth: 18,
+            pointPadding: 0,
+            groupPadding: 0.05,
             borderWidth: 0,
             dataLabels: {
                 enabled: true,
@@ -287,7 +288,7 @@ $(function() {
                 from: 0,
                 to: -30,
             },
-			//min: -20
+			max: 100,
 		},
 		tooltip: {
 	        shared: true,
@@ -340,6 +341,12 @@ $(function() {
 			name: '<?php echo $chart2_name[4]; ?>',
 			type: 'line',
 			color: '<?php echo $color_Tint; ?>',
+			zIndex: 2,
+			data: []
+		}, {
+			name: '<?php echo $chart2_name[5]; ?>',
+			type: 'line',
+			color: '<?php echo $color_puiss; ?>',
 			zIndex: 2,
 			data: []
 		}] 
@@ -555,7 +562,8 @@ $(function() {
         url: 'json_conso_annees.php',
         cache: false,
         success: function(data) {
-            for (var i = 0, len = data.length; i < len; i++){
+            //for (var i = 0, len = data.length; i < len; i++){
+            for (var i = 0; i < data.length; i++){
                 chart4.addSeries(data[i],false);
             }
             chart4.redraw();

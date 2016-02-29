@@ -5,18 +5,18 @@ etat
 2   allumage
 3   demarrage chaudiere
 4   controle allumage
-5
+5   allumeur ?
 6   demarrage combustion/reduction phase allumage?
 7   combustion
 8   veille
 9   decendrage dans 7 mn
 10  decendrage
-11  
+11  refroidissement ?
 12  nettoyage
 
 ces channels sont trouvables dans les fichiers de log DAQ de la chaudiere
 j'ai simplement mis en forme et ajouté en francais les parametres que j'ai pu identifier
-
+premier parametre = pm
 <CHANNEL id=	0	 name=	ZK	             unit=		etat chaudiere
 <CHANNEL id=	1	 name=	O2	             unit=	%	O2 est
 <CHANNEL id=	2	 name=	O2soll	         unit=	%	O2 doit                              
@@ -63,7 +63,7 @@ j'ai simplement mis en forme et ajouté en francais les parametres que j'ai pu id
 <CHANNEL id=	43	 name=	TB3	             unit=	°C	
 <CHANNEL id=	44	 name=	TBs_3	         unit=	°C	
 <CHANNEL id=	45	 name=	TRs_A	         unit=	°C	??? 20
-<CHANNEL id=	46	 name=	TRs_1	         unit=	°C	??? 22
+<CHANNEL id=	46	 name=	TRs_1	         unit=	°C	??? 22 temp int consigne??
 <CHANNEL id=	47	 name=	TRs_2	         unit=	°C	
 <CHANNEL id=	48	 name=	TRs_3	         unit=	°C	
 <CHANNEL id=	49	 name=	TRs_4	         unit=	°C	
@@ -102,7 +102,7 @@ j'ai simplement mis en forme et ajouté en francais les parametres que j'ai pu id
 <CHANNEL id=	82	 name=	UseMotSoll	     unit=	mm	
 <CHANNEL id=	83	 name=	UseMotIst	     unit=	mm	
 <CHANNEL id=	84	 name=	HKZustand_A	     unit=		
-<CHANNEL id=	85	 name=	HKZustand_1	     unit=		??? 1
+<CHANNEL id=	85	 name=	HKZustand_1	     unit=		??? 1 en marche /4 a l'arret
 <CHANNEL id=	86	 name=	HKZustand_2	     unit=		
 <CHANNEL id=	87	 name=	HKZustand_3	     unit=		
 <CHANNEL id=	88	 name=	HKZustand_4	     unit=		
@@ -146,7 +146,7 @@ j'ai simplement mis en forme et ajouté en francais les parametres que j'ai pu id
 <CHANNEL id=	126	 name=	Kask LZLeist_3	 unit=	h	
 <CHANNEL id=	127	 name=	Kask LZLeist_4	 unit=	h	
 <CHANNEL id=	128	 name=	AIN17	         unit=	V	
-<CHANNEL id=	129	 name=	BRT	             unit=	°C	??? 110
+<CHANNEL id=	129	 name=	BRT	             unit=	°C	??? 98 a l'arret => 110
 <CHANNEL id=	130	 name=	IO32 522	     unit=	mV	
 <CHANNEL id=	131	 name=	IO32 509	     unit=	mV	
 <CHANNEL id=	132	 name=	IO32 510	     unit=	mV	
@@ -179,19 +179,19 @@ j'ai simplement mis en forme et ajouté en francais les parametres que j'ai pu id
 <CHANNEL id=	159	 name=	BSZ_AUSTRAG	     unit=	h	heures extracteur silo
 <CHANNEL id=	160	 name=	Regler K	     unit=		regulateur : K
 <CHANNEL id=	161	 name=	BSZ_HEIZUNG_UPD	 unit=	h	heures chauffage upd
-<CHANNEL id=	162	 name=	BSZ_ZUENDUNGEN	 unit=		nbre allumages
+<CHANNEL id=	162	 name=	BSZ_ZUENDUNGEN	 unit=		50 a l'arret / env 10 en marche
 <CHANNEL id=	163	 name=	BSZ_LEIST_90	 unit=	h	heure puissance > 90%
 <CHANNEL id=	164	 name=	BSZ_GLUTERH	     unit=	h	veille /conservation braise ?
 </DIGITAL>
-<CHANNEL id=	0	 bit=	0	 name=	Stb	            <channel 165> ???
+<CHANNEL id=	0	 bit=	0	 name=	Stb	            <channel 165> ??? (alphanum)
 <CHANNEL id=	0	 bit=	1	 name=	Fuellstand	    <channel 166> ??? synchro avec bois
 <CHANNEL id=	0	 bit=	3	 name=	Es Rein Endl	<channel 167> ???
 <CHANNEL id=	0	 bit=	4	 name=	HKPA	        <channel 168>
 <CHANNEL id=	0	 bit=	5	 name=	MAA	            <channel 169> Aspiration RAPS 0/2000
+<CHANNEL id=	0	 bit=	6	 name=	MAZ		        <channel 170> 
+<CHANNEL id=	0	 bit=	7	 name=	HKP1	        <channel 171>	
+<CHANNEL id=	0	 bit=	8	 name=	M1A	            <channel 172>	
 -------------------fin de transmission telnet----------------------------------------------
-<CHANNEL id=	0	 bit=	6	 name=	MAZ	
-<CHANNEL id=	0	 bit=	7	 name=	HKP1	
-<CHANNEL id=	0	 bit=	8	 name=	M1A	
 <CHANNEL id=	0	 bit=	9	 name=	M1Z	
 <CHANNEL id=	0	 bit=	10	 name=	HKP2	
 <CHANNEL id=	0	 bit=	11	 name=	M2A	

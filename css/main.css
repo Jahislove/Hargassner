@@ -350,6 +350,11 @@ a:hover{
 	width: 99%;
 	height: 40%;
 }
+.graphe_size2 {
+    display: inline-block;
+	width: 99%;
+	height: 600px;
+}
 .calendar {
     width: 200px;
 }
