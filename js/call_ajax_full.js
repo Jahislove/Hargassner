@@ -20,7 +20,7 @@ $.ajax({
                 document.getElementById('nano-B1').className = 'ressort_fixe';
                 break;
             case 2:
-                etat = 'Allumage??';
+                etat = 'Allumage';
                 document.getElementById('nano-D1').className = 'foyer_allumage';
                 document.getElementById('nano-D2').className = 'vis_stop';
                 document.getElementById('nano-B1').className = 'ressort_fixe';
@@ -36,7 +36,7 @@ $.ajax({
                 document.getElementById('nano-D2').className = 'vis_marche';
                 break;
             case 5:
-                etat = '5';
+                etat = 'Allumage électrique';
                 document.getElementById('nano-D1').className = 'foyer_allumage';
                 break;
             case 6:
@@ -63,7 +63,7 @@ $.ajax({
                 document.getElementById('nano-B1').className = 'ressort_fixe';
                 break;
             case 9:
-                etat = 'Décendrage dans 7mn';
+                etat = 'Arrêt pour décendrage';
                 document.getElementById('nano-C1').className = 'coeur_eteint';
                 document.getElementById('nano-D1').className = 'foyer_veille';
                 document.getElementById('nano-D2').className = 'vis_stop';
@@ -73,7 +73,7 @@ $.ajax({
                 document.getElementById('nano-E1').className = 'cendrier_mouvt';
                 break;
             case 11:
-                etat = '11';
+                etat = 'Refroidissement sécurité';
                 break;
             case 12:
                 etat = 'Nettoyage';
@@ -81,7 +81,7 @@ $.ajax({
                 document.getElementById('nano-B1').className = 'ressort_anime';
                 break;
             default:
-                etat = '13+';
+                etat = 'inconnu';
                 break;
         }
         

@@ -3,10 +3,10 @@
 <?php require("header_fin.php"); ?>
     
 <?php
-    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere<br/>est','T° chaudiere<br/>doit','T° fumée','O²','O² doit']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
-    $chart1_chan = "c0,c134,c3,c4,c5,c1,c2,c53,c54,c56,c160,c55"; // la 2 eme valeur (decendrage) est calculé d'apres c0
-    $chart2_name = ['Vitesse<br/>Extracteur','Variable F','% bois','Variable K','Regulateur<br/>bois'];
-    $chart2_chan = "c53,c54,c56,c160,c55";
+    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','Variable F','% bois','Variable K','Regulateur bois']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
+    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c54,c56,c160,c55"; // la 2 eme valeur (decendrage) est calculé d'apres c0
+    //$chart2_name = ['Vitesse<br/>Extracteur','Variable F','% bois','Variable K','Regulateur<br/>bois'];
+    //$chart2_chan = "c53,c54,c56,c160,c55";
     $chart3_name = ['Aspiration RAPS'];
     $chart3_chan = "c169";
     $chart4_name = ['allumage electrique','-','-','-','-'];
@@ -60,7 +60,6 @@ $(document).ready(function(){
 			enabled: true,
 			backgroundColor: '<?php echo $color_legend; ?>',
 			borderRadius: 14,
-            itemDistance: 10,
 		},
 		xAxis: {
 			type: 'datetime',
@@ -113,12 +112,23 @@ $(document).ready(function(){
 		title: {
 			text: 'Fonctionnement',
 		},
+		legend: {
+			enabled: true,
+			backgroundColor: '<?php echo $color_legend; ?>',
+			borderRadius: 14,
+            itemDistance: 10,
+            itemMarginBottom: 5,
+            itemMarginTop: 5,
+            itemWidth: 150,
+            width: 1100,
+		},
 		xAxis: {
             tickInterval: 15*60*1000,
 		 },
 		series: [{
 			name: '<?php echo $chart1_name[0]; ?>',
 			color: '<?php echo $color_etat; ?>',
+            legendIndex: 0,
             tooltip: {
                 pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.valeur}</b><br/>',		
             },
@@ -126,11 +136,12 @@ $(document).ready(function(){
 		}, {
 			name: '<?php echo $chart1_name[1]; ?>',
 			color: '<?php echo $color_decend; ?>',
-            type: 'column',
+            legendIndex: 7,
+            type: 'area',
             zIndex: -1,
-            pointPadding: 0,
-            groupPadding: 0,
-            borderWidth: 0,
+            // pointPadding: 0,
+            // groupPadding: 0,
+            // borderWidth: 0,
             tooltip: {
                 pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.valeur}</b><br/>',		
             },
@@ -138,6 +149,8 @@ $(document).ready(function(){
 		}, {
 			name: '<?php echo $chart1_name[2]; ?>',
 			color: '<?php echo $color_puiss; ?>',
+            lineWidth: 1,
+            legendIndex: 2,
             tooltip: {
                 valueSuffix: ' %',
              },
@@ -145,6 +158,7 @@ $(document).ready(function(){
 		}, {
 			name: '<?php echo $chart1_name[3]; ?>',
 			color: '<?php echo $color_Tchaud; ?>',
+            legendIndex: 6,
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -152,6 +166,7 @@ $(document).ready(function(){
 		}, {
 			name: '<?php echo $chart1_name[4]; ?>',
 			color: '<?php echo $color_Tchauddoit; ?>',
+            legendIndex: 13,
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -159,47 +174,62 @@ $(document).ready(function(){
 		}, {
 			name: '<?php echo $chart1_name[5]; ?>',
 			color: '<?php echo $color_fum; ?>',
+            legendIndex: 5,
             tooltip: {
                 valueSuffix: ' °C',
              },
 			data: [],
 		}, {
 			name: '<?php echo $chart1_name[6]; ?>',
+			color: '<?php echo $color_Text; ?>',
+            legendIndex: 11,
+            visible: false,
+			data: []
+		}, {
+			name: '<?php echo $chart1_name[7]; ?>',
 			color: '<?php echo $color_O2; ?>',
+            legendIndex: 1,
             tooltip: {
                 valueSuffix: ' %',
              },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[7]; ?>',
+			name: '<?php echo $chart1_name[8]; ?>',
 			color: '<?php echo $color_O2doit; ?>',
+            legendIndex: 8,
+            visible: false,
             tooltip: {
                 valueSuffix: ' %',
              },
 			data: [],
-		},{
-			name: '<?php echo $chart2_name[0]; ?>',
+		}, {
+			name: '<?php echo $chart1_name[9]; ?>',
 			color: '<?php echo $color_extrac; ?>',
+            legendIndex: 9,
             visible: false,
 			data: []
 		}, {
-			name: '<?php echo $chart2_name[1]; ?>',
+			name: '<?php echo $chart1_name[10]; ?>',
 			color: '<?php echo $color_varF; ?>',
+            legendIndex: 3,
             visible: false,
 			data: []
 		}, {
-			name: '<?php echo $chart2_name[2]; ?>',
+			name: '<?php echo $chart1_name[11]; ?>',
 			color: '<?php echo $color_bois; ?>',
+            legendIndex: 5,
             visible: false,
 			data: []
 		}, {
-			name: '<?php echo $chart2_name[3]; ?>',
+			name: '<?php echo $chart1_name[12]; ?>',
 			color: '<?php echo $color_varK; ?>',
+            legendIndex: 10,
             visible: false,
 			data: []
 		}, {
-			name: '<?php echo $chart2_name[4]; ?>',
+			name: '<?php echo $chart1_name[13]; ?>',
 			color: '<?php echo $color_regul; ?>',
+            legendIndex: 12,
             visible: false,
 			data: [],
 		}] 
@@ -310,6 +340,7 @@ $(document).ready(function(){
             chart1.series[10].setData(data[10],false);
             chart1.series[11].setData(data[11],false);
             chart1.series[12].setData(data[12],false);
+            chart1.series[13].setData(data[13],false);
             chart1.redraw();
             chart1.hideLoading();
         }

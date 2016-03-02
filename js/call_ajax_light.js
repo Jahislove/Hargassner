@@ -16,7 +16,7 @@ $.ajax({
                 etat = 'Arrêt';
                 break;
             case 2:
-                etat = 'Allumage??';
+                etat = 'Allumage';
                 break;
             case 3:
                 etat = 'Démarrage';
@@ -25,7 +25,7 @@ $.ajax({
                 etat = 'Controle allumage';
                 break;
             case 5:
-                etat = '5';
+                etat = 'Allumage électrique';
                 break;
             case 6:
                 etat = 'Démarrage combustion';
@@ -37,19 +37,19 @@ $.ajax({
                 etat = 'En veille';
                 break;
             case 9:
-                etat = 'Décendrage dans 7mn';
+                etat = 'Arrêt pour décendrage';
                 break;
             case 10:
                 etat = 'Décendrage';
                 break;
             case 11:
-                etat = '11';
+                etat = 'Refroidissement sécurité';
                 break;
             case 12:
                 etat = 'Nettoyage';
                 break;
             default:
-                etat = '13+';
+                etat = 'inconnu';
                 break;
         }
         document.getElementById('etat').innerHTML = etat;

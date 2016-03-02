@@ -22,18 +22,19 @@ require_once("conf/connectBDD.inc.php");
     while($data = mysql_fetch_row($req)){
         $dateD = strtotime($data[0]) * 1000;
         $liste0['data'][] = [x => $dateD, y => $data[1],valeur => $dict[$data[1]] ];
-        $liste1['data'][] = [x => $dateD, y => $dict2[$data[1]],valeur => $dict3[$data[1]] ];
-        $liste2[] = [$dateD, $data[2]];
-        $liste3[] = [$dateD, $data[3]];
-        $liste4[] = [$dateD, $data[4]];
-        $liste5[] = [$dateD, $data[5]];
-        $liste6[] = [$dateD, $data[6]];
-        $liste7[] = [$dateD, $data[7]];
-        $liste8[] = [$dateD, $data[8]];
-        $liste9[] = [$dateD, $data[9]];
-        $liste10[] = [$dateD, $data[10]];
-        $liste11[] = [$dateD, $data[11]];
-        $liste12[] = [$dateD, $data[12]];
+        $liste1['data'][] = [x => $dateD, y => $dict2[$data[2]],valeur => $dict3[$data[2]] ];
+        $liste2[] = [$dateD, $data[3]];
+        $liste3[] = [$dateD, $data[4]];
+        $liste4[] = [$dateD, $data[5]];
+        $liste5[] = [$dateD, $data[6]];
+        $liste6[] = [$dateD, $data[7]];
+        $liste7[] = [$dateD, $data[8]];
+        $liste8[] = [$dateD, $data[9]];
+        $liste9[] = [$dateD, $data[10]];
+        $liste10[] = [$dateD, $data[11]];
+        $liste11[] = [$dateD, $data[12]];
+        $liste12[] = [$dateD, $data[13]];
+        $liste13[] = [$dateD, $data[14]];
     }
 
 //    $liste0['name'] = 'Etat';  // a utiliser avec un update() en plus du setdata()
@@ -51,6 +52,7 @@ require_once("conf/connectBDD.inc.php");
     $liste10 = array_reverse($liste10);
     $liste11 = array_reverse($liste11);
     $liste12 = array_reverse($liste12);
-    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12];
+    $liste13 = array_reverse($liste13);
+    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13];
     echo json_encode($tableau, JSON_NUMERIC_CHECK);
 ?>

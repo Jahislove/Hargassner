@@ -212,6 +212,9 @@ $(function() {
             borderWidth: 0,
             dataLabels: {
                 enabled: true,
+                style: {
+                    fontSize: '8px',
+                },
                 rotation: 0,
                 color: '#F0DB0B',
                 align: 'center',
@@ -346,6 +349,7 @@ $(function() {
 		}, {
 			name: '<?php echo $chart2_name[5]; ?>',
 			type: 'line',
+            lineWidth: 1,
 			color: '<?php echo $color_puiss; ?>',
 			zIndex: 2,
 			data: []
