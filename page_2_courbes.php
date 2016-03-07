@@ -2,22 +2,34 @@
 <script type="text/javascript" src="js/call_ajax_light.js">	</script>
 <?php require("header_fin.php"); ?>
     
+<div class="calendar">
+    <div class="input-group date">
+        <input type="text" class="form-control" placeholder="12 dernieres heures">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+    </div>
+</div>
+
 <?php
     $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','Variable F','% bois','Variable K','Regulateur bois']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
     $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c54,c56,c160,c55"; // la 2 eme valeur (decendrage) est calculé d'apres c0
-    //$chart2_name = ['Vitesse<br/>Extracteur','Variable F','% bois','Variable K','Regulateur<br/>bois'];
-    //$chart2_chan = "c53,c54,c56,c160,c55";
+    $chart2_name = ['allumage electrique','-','-','-','-'];
+    $chart2_chan = "c157,c0,c53,c134,c129";
     $chart3_name = ['Aspiration RAPS'];
     $chart3_chan = "c169";
-    $chart4_name = ['allumage electrique','-','-','-','-'];
-    $chart4_chan = "c157,c0,c53,c134,c129";
     
+    $query1 = "SELECT YEAR(dateB),MONTH(dateB),DAY(dateB) FROM consommation 
+             LIMIT 1";
+	connectMaBase($hostname, $database, $username, $password);
+    $req1 = mysql_query($query1) ;
+	mysql_close();
+
+    $data = mysql_fetch_row($req1);
+    $dateMin = [$data[0],$data[1],$data[2]];
 ?>
 
 <div class="rel">
     <div id="graphe1" class="graphe_size2"></div>
-    <!--<div id="graphe2" class="graphe_size"></div>-->
-    <div id="graphe4" class="graphe_size"></div>
+    <div id="graphe2" class="graphe_size"></div>
     <div id="graphe3" class="graphe_size"></div>
 </div>
 
@@ -26,8 +38,52 @@
 <?php require("footer.php");?>
 
 <script type="text/javascript">
+//*****************Calendrier pickup********************************************************
+$(function() {
+    $( ".input-group.date" ).datepicker({
+        format: "DD dd MM yyyy",
+        startDate: new Date(<?php echo $dateMin[0]; ?>,<?php echo $dateMin[1]; ?> - 1,<?php echo $dateMin[2]; ?>),
+        endDate: new Date(),
+        minViewMode: 0,
+        daysOfWeekHighlighted: "6,0",
+        todayBtn: 'linked',
+        language: "fr",
+        autoclose: true    
+    })
+    .on('changeDate', function(e){
+            chart1.showLoading('loading');
+            annee = e.format('yyyy');
+            mois = e.format('mm');
+            jour = e.format('dd');
+            $.ajax({
+                dataType: "json",
+                url: 'json_chan-period-2.php',
+                data: 'channel=<?php echo $chart1_chan; ?>' + '&annee=' + annee + '&mois=' + mois + '&jour=' + jour + '&periode=1440',
+                cache: false,
+                success: function(data) {
+                    chart1.series[0].setData(data[0].data,false); //objet
+                    chart1.series[1].setData(data[1].data,false); 
+                    chart1.series[2].setData(data[2],false);// array
+                    chart1.series[3].setData(data[3],false);
+                    chart1.series[4].setData(data[4],false);
+                    chart1.series[5].setData(data[5],false);
+                    chart1.series[6].setData(data[6],false);
+                    chart1.series[7].setData(data[7],false);
+                    chart1.series[8].setData(data[8],false);
+                    chart1.series[9].setData(data[9],false);
+                    chart1.series[10].setData(data[10],false);
+                    chart1.series[11].setData(data[11],false);
+                    chart1.series[12].setData(data[12],false);
+                    chart1.series[13].setData(data[13],false);
+                    chart1.redraw();
+                    chart1.hideLoading();
+                }
+            });
+    });
+});
 
-$(document).ready(function(){
+//$(document).ready(function(){
+$(function() {
     // ************* options communes a tous les charts ******************************
     Highcharts.setOptions({
 		lang: {
@@ -90,7 +146,7 @@ $(document).ready(function(){
 			borderRadius: 26,
 			borderWidth: 1,
             pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.y}</b><br/>',		
-			xDateFormat: '%H:%M:%S',
+			xDateFormat: '%A %d %b %H:%M:%S',
         },
 		plotOptions: {
 			series: {
@@ -108,7 +164,10 @@ $(document).ready(function(){
     });
 
     // *************chart 1 ********************************************
-	$('#graphe1').highcharts({
+	chart1 = new Highcharts.Chart({
+		chart: {
+			renderTo: 'graphe1',
+		},
 		title: {
 			text: 'Fonctionnement',
 		},
@@ -129,6 +188,7 @@ $(document).ready(function(){
 			name: '<?php echo $chart1_name[0]; ?>',
 			color: '<?php echo $color_etat; ?>',
             legendIndex: 0,
+            turboThreshold: 1500, // necessaire car serie 1 et 2 sont des objets et pas des array
             tooltip: {
                 pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.valeur}</b><br/>',		
             },
@@ -137,6 +197,7 @@ $(document).ready(function(){
 			name: '<?php echo $chart1_name[1]; ?>',
 			color: '<?php echo $color_decend; ?>',
             legendIndex: 7,
+            turboThreshold: 1500,
             type: 'area',
             zIndex: -1,
             // pointPadding: 0,
@@ -235,38 +296,28 @@ $(document).ready(function(){
 		}] 
 	});
     // *************chart 2 ********************************************
-	// $('#graphe2').highcharts({
-		// title: {
-			// text: 'Variables',
-		// },
-		// xAxis: {
-            // tickInterval: 15*60*1000,
-		 // },
-            // tooltip: {
-                // valueSuffix: ' %',
-             // },
-		// series: [{
-			// name: '<?php echo $chart2_name[0]; ?>',
-			// color: '<?php echo $color_extrac; ?>',
-			// data: []
-		// }, {
-			// name: '<?php echo $chart2_name[1]; ?>',
-			// color: '<?php echo $color_varF; ?>',
-			// data: []
-		// }, {
-			// name: '<?php echo $chart2_name[2]; ?>',
-			// color: '<?php echo $color_bois; ?>',
-			// data: []
-		// }, {
-			// name: '<?php echo $chart2_name[3]; ?>',
-			// color: '<?php echo $color_varK; ?>',
-			// data: []
-		// }, {
-			// name: '<?php echo $chart2_name[4]; ?>',
-			// color: '<?php echo $color_regul; ?>',
-			// data: [],
-		// }] 
-	// });
+	$('#graphe2').highcharts({
+		title: {
+			text: 'allumeur electrique',
+		},
+		xAxis: {
+            tickInterval: 24*3600*1000,
+		 },
+		series: [{
+			name: '<?php echo $chart2_name[0]; ?>',
+			color: '<?php echo $color_extrac; ?>',
+            type: 'column',
+            tooltip: {
+                shared: true,
+                crosshairs: true,
+                borderRadius: 26,
+                borderWidth: 1,
+                valueSuffix: '',
+                xDateFormat: '%d %B',
+            },
+			data: []
+		}] 
+	});
     // *************chart 3 ********************************************
 	$('#graphe3').highcharts({
 		chart: {
@@ -286,45 +337,21 @@ $(document).ready(function(){
 			data: []
 		}] 
 	});
-    // *************chart 4 ********************************************
-	$('#graphe4').highcharts({
-		title: {
-			text: 'allumeur electrique',
-		},
-		xAxis: {
-            tickInterval: 24*3600*1000,
-		 },
-		series: [{
-			name: '<?php echo $chart4_name[0]; ?>',
-			color: '<?php echo $color_extrac; ?>',
-            type: 'column',
-            tooltip: {
-                shared: true,
-                crosshairs: true,
-                borderRadius: 26,
-                borderWidth: 1,
-                valueSuffix: '',
-                xDateFormat: '%d %B',
-            },
-			data: []
-		}] 
-	});
 //****************************************************************************************************
 //****************************************************************************************************
 // ************* chargement asynchrone des graphes****************************************************
-    var chart1 = $('#graphe1').highcharts();
-    //var chart2 = $('#graphe2').highcharts();
+    var chart2 = $('#graphe2').highcharts();
     var chart3 = $('#graphe3').highcharts();
-    var chart4 = $('#graphe4').highcharts();
     chart1.showLoading('loading');
-    //chart2.showLoading('loading');
+    chart2.showLoading('loading');
     chart3.showLoading('loading');
-    chart4.showLoading('loading');
 
+    var d = new Date();
     $.ajax({
         dataType: "json",
         url: 'json_chan-period-2.php',
-        data: 'channel=<?php echo $chart1_chan; ?>' + '&periode=720',
+        data: 'channel=<?php echo $chart1_chan; ?>' + '&annee=' + d.getFullYear() + '&mois=' + (d.getMonth()+1) + '&jour=' + d.getDate() + '&periode=720',
+        // data: 'channel=<?php echo $chart1_chan; ?>' + '&periode=720',
         cache: false,
         success: function(data) {
             chart1.series[0].setData(data[0].data,false); //objet
@@ -346,27 +373,17 @@ $(document).ready(function(){
         }
     });
     
-/*     $.ajax({
+    $.ajax({
         dataType: "json",
-        url: 'json_chan-period.php',
-        data: 'channel=<?php echo $chart2_chan; ?>' + '&periode=720',
+        url: 'json_allumeur.php',
         cache: false,
         success: function(data) {
-            // chart1.series[0].setData(data[0],false);
-            // chart1.series[1].setData(data[1],false);
-            // chart1.series[2].setData(data[2],false);
-            // chart1.series[3].setData(data[3],false);
-            // chart1.series[4].setData(data[4],false);
-            chart1.series[8].setData(data[0],false);
-            chart1.series[9].setData(data[1],false);
-            chart1.series[10].setData(data[2],false);
-            chart1.series[11].setData(data[3],false);
-            chart1.series[12].setData(data[4],false);
-            chart1.redraw();
-            chart1.hideLoading();
+            chart2.series[0].setData(data,false);
+            chart2.redraw();
+            chart2.hideLoading();
         }
     });
- */    
+
     $.ajax({
         dataType: "json",
         url: 'json_solo.php',
@@ -379,16 +396,6 @@ $(document).ready(function(){
         }
     });
     
-    $.ajax({
-        dataType: "json",
-        url: 'json_allumeur.php',
-        cache: false,
-        success: function(data) {
-            chart4.series[0].setData(data,false);
-            chart4.redraw();
-            chart4.hideLoading();
-        }
-    });
     
 });
 </script>

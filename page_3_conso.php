@@ -52,7 +52,7 @@ $(function() {
     $( ".input-group.date" ).datepicker({
         format: "MM yyyy",
         startDate: new Date(<?php echo $dateMin[0]; ?>,<?php echo $dateMin[1]; ?> - 1,1),
-        endDate: "31/12/2099",
+        endDate: new Date(),
         minViewMode: 1,
         language: "fr",
         autoclose: true    

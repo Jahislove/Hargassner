@@ -7,10 +7,16 @@ require_once("conf/connectBDD.inc.php");
 	header("Content-type: text/json");
 
     $channel = $_GET["channel"];
+    $mois =  $_GET["mois"];
+    $annee =  $_GET["annee"];
+    $jour =  $_GET["jour"];
     $periode = $_GET["periode"];
  
+    // $query = "SELECT dateB,$channel FROM data
+              // ORDER by dateB DESC LIMIT $periode";
     $query = "SELECT dateB,$channel FROM data
-              ORDER by dateB DESC LIMIT $periode";
+            WHERE dateB BETWEEN '".$annee."-".$mois."-".$jour." 00:00:00' AND '".$annee."-".$mois."-".$jour." 23:59:59'
+            ORDER BY dateB DESC LIMIT ".$periode;
               
 	connectMaBase($hostname, $database, $username, $password);
     $req = mysql_query($query) ;
