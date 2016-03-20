@@ -6,7 +6,7 @@
 
 <html>
     <?php
-    require_once("conf/config.inc.php");
+    require_once("conf/version.php");
     ?>
 
 <h2>
