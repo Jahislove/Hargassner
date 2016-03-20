@@ -102,17 +102,21 @@ function installation() {
 }
 
 /************enchainement des actions **************************/
-    if (!is_dir("update")) {
-        mkdir("update");
-    }
+if (!is_dir("update")) {
+    mkdir("update");
+}
+if (!is_dir("update/backup")) {
+    mkdir("update/backup");
+}
+
+unlinkRecursive ("update/Hargassner-master",true);
+unlink("update/master.zip");
 
 if (download($github)){
     if (unzip()){ 
         if (purge()){
             if (backup()){
                 installation();
-                unlinkRecursive ("update/Hargassner-master",true);
-                unlink("update/master.zip");
             }
         }
     }

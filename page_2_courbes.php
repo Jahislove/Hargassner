@@ -14,8 +14,6 @@
     $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c54,c56,c160,c55"; // la 2 eme valeur (decendrage) est calculé d'apres c0
     $chart2_name = ['allumage electrique','-','-','-','-'];
     $chart2_chan = "c157,c0,c53,c134,c129";
-    $chart3_name = ['Aspiration RAPS'];
-    $chart3_chan = "c169";
     
     $query1 = "SELECT YEAR(dateB),MONTH(dateB),DAY(dateB) FROM consommation 
              LIMIT 1";
@@ -30,7 +28,6 @@
 <div class="rel">
     <div id="graphe1" class="graphe_size2"></div>
     <div id="graphe2" class="graphe_size"></div>
-    <div id="graphe3" class="graphe_size"></div>
 </div>
 
 <div class="clear"></div>
@@ -318,33 +315,12 @@ $(function() {
 			data: []
 		}] 
 	});
-    // *************chart 3 ********************************************
-	$('#graphe3').highcharts({
-		chart: {
-			events: {
-				load: requestData // in header_debut.php
-			}
-        },
-        title: {
-			text: 'Aspiration',
-		},
-		xAxis: {
-            tickInterval: 3*3600*1000,
-		 },
-		series: [{
-			name: '<?php echo $chart3_name[0]; ?>',
-			color: '<?php echo $color_aspi; ?>',
-			data: []
-		}] 
-	});
 //****************************************************************************************************
 //****************************************************************************************************
 // ************* chargement asynchrone des graphes****************************************************
     var chart2 = $('#graphe2').highcharts();
-    var chart3 = $('#graphe3').highcharts();
     chart1.showLoading('loading');
     chart2.showLoading('loading');
-    chart3.showLoading('loading');
 
     var d = new Date();
     $.ajax({
@@ -383,20 +359,6 @@ $(function() {
             chart2.hideLoading();
         }
     });
-
-    $.ajax({
-        dataType: "json",
-        url: 'json_solo.php',
-        data: 'channel=<?php echo $chart3_chan; ?>',
-        cache: false,
-        success: function(data) {
-            chart3.series[0].setData(data,false);
-            chart3.redraw();
-            chart3.hideLoading();
-        }
-    });
-    
-    
 });
 </script>
 

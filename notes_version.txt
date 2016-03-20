@@ -4,12 +4,14 @@
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
 
-v1.2	20/03/2016
+v1.3	20/03/2016
+	suppression graphique aspiration
+
+v1.2	19/03/2016
 	ajout detection automatique de nouvelle version
 	ajout installation nouvelle version automatique
-    suppression connectBDD.inc.php
-    suppression graphique aspiration
-
+	suppression connectBDD.inc.php
+	
 v1.1 	01/03/2016
 	amélioration lisibilité des graphiques 'variables'
 	ajout calendrier pickup pour remonter dans le temps dans la page 'variables'
