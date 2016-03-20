@@ -3,10 +3,10 @@
 <body>
     <?php
     // **********recherche nouvelle version******************************
-    require_once("conf/config.inc.php");
+    require_once("conf/version.php");
     // $version = 1.0;// debug
-    $config_github = fopen('conf/config.inc.php', 'r'); //debug
-    // $config_github = fopen('https://raw.githubusercontent.com/Jahislove/Hargassner/master/conf/config.inc.php', 'r'); 
+    // $config_github = fopen('conf/config.inc.php', 'r'); //debug
+    $config_github = fopen('https://raw.githubusercontent.com/Jahislove/Hargassner/master/conf/config.inc.php', 'r'); 
     if ($config_github) {
         while (!feof($config_github)) {
             $ligne = fgets($config_github); //lit chaque ligne du fichier

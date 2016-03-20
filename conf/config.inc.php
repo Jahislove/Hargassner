@@ -1,5 +1,4 @@
 <?php
-$version = 1.3;
 //****vos parametres **************************************************** 	
 $IPchaudiere = "192.168.0.198"; // indiquez l'IP de votre chaudiere
 $port = 23; //port telnet, ne pas modifier
