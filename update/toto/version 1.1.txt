@@ -1,6 +1,0 @@
-/************************************************************************
-*** Supervision chaudiere Hargassner avec touchtronic
-*** Auteur : Jahislove
-*** version 1.1
-*** Utilisation commerciale interdite sans mon accord
-************************************************************************/

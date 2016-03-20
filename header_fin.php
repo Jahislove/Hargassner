@@ -4,8 +4,6 @@
     <?php
     // **********recherche nouvelle version******************************
     require_once("conf/version.php");
-    // $version = 1.0;// debug
-    // $config_github = fopen('conf/config.inc.php', 'r'); //debug
     $config_github = fopen('https://raw.githubusercontent.com/Jahislove/Hargassner/master/conf/version.php', 'r'); 
     if ($config_github) {
         while (!feof($config_github)) {
