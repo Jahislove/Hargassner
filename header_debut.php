@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
     <?php require_once("conf/config.inc.php");?>
-    <?php require_once("conf/connectBDD.inc.php");?>
+    <?php  ?>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>My NanoPK</title>
+    <title>My Hargassner</title>
     <link rel="icon" type="image/png" href="img/logo.png" />
 
     <link rel="stylesheet" href="js/bootstrap/css/bootstrap.css" /> <!-- utilisé uniquement pour le datepicker -->

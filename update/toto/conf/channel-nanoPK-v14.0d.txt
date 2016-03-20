@@ -1,0 +1,272 @@
+
+etat
+
+1   arret
+2   allumage
+3   demarrage chaudiere
+4   controle allumage
+5   allumeur ?
+6   demarrage combustion/reduction phase allumage?
+7   combustion
+8   veille
+9   decendrage dans 7 mn
+10  decendrage
+11  refroidissement ?
+12  nettoyage
+
+ces channels sont trouvables dans les fichiers de log DAQ de la chaudiere
+j'ai simplement mis en forme et ajouté en francais les parametres que j'ai pu identifier
+premier parametre = pm
+<CHANNEL id=	0	 name=	ZK	             unit=		etat chaudiere
+<CHANNEL id=	1	 name=	O2	             unit=	%	O2 est
+<CHANNEL id=	2	 name=	O2soll	         unit=	%	O2 doit                              
+<CHANNEL id=	3	 name=	TK	             unit=	°C	temperature chaudiere est 
+<CHANNEL id=	4	 name=	TKsoll	         unit=	°C	temperature chaudiere doit
+<CHANNEL id=	5	 name=	TRG	             unit=	°C	temperature fumees
+<CHANNEL id=	6	 name=	Taus	         unit=	°C	temperature exterieur
+<CHANNEL id=	7	 name=	TA Gem.	         unit=	°C	temperature exterieur moyenne
+<CHANNEL id=	8	 name=	TPo	             unit=	°C	
+<CHANNEL id=	9	 name=	TPm	             unit=	°C	
+<CHANNEL id=	10	 name=	TPu	             unit=	°C	
+<CHANNEL id=	11	 name=	TFW	             unit=	°C	
+<CHANNEL id=	12	 name=	TRL	             unit=	°C	???
+<CHANNEL id=	13	 name=	TRLsoll     	 unit=	°C	??? doit 
+<CHANNEL id=	14	 name=	RLP	             unit=	%	
+<CHANNEL id=	15	 name=	Tplat	         unit=	°C	Temp platine???
+<CHANNEL id=	16	 name=	TVL_A	         unit=	°C	
+<CHANNEL id=	17	 name=	TVLs_A	         unit=	°C	
+<CHANNEL id=	18	 name=	TRA	             unit=	°C	
+<CHANNEL id=	19	 name=	TBA	             unit=	°C	
+<CHANNEL id=	20	 name=	TBs_A	         unit=	°C	
+<CHANNEL id=	21	 name=	TVL_1	         unit=	°C	temperature depart est 
+<CHANNEL id=	22	 name=	TVL_2	         unit=	°C	
+<CHANNEL id=	23	 name=	TVLs_1	         unit=	°C	temperature depart doit 
+<CHANNEL id=	24	 name=	TVLs_2	         unit=	°C	
+<CHANNEL id=	25	 name=	TR1	             unit=	°C	??? 18
+<CHANNEL id=	26	 name=	TR2	             unit=	°C	??? 20
+<CHANNEL id=	27	 name=	TB1	             unit=	°C	
+<CHANNEL id=	28	 name=	TBs_1	         unit=	°C	
+<CHANNEL id=	29	 name=	TVL_3	         unit=	°C	
+<CHANNEL id=	30	 name=	TVL_4	         unit=	°C	
+<CHANNEL id=	31	 name=	TVLs_3	         unit=	°C	
+<CHANNEL id=	32	 name=	TVLs_4	         unit=	°C	
+<CHANNEL id=	33	 name=	TR3	             unit=	°C	
+<CHANNEL id=	34	 name=	TR4	             unit=	°C	
+<CHANNEL id=	35	 name=	TB2	             unit=	°C	
+<CHANNEL id=	36	 name=	TBs_2	         unit=	°C	
+<CHANNEL id=	37	 name=	TVL_5	         unit=	°C	
+<CHANNEL id=	38	 name=	TVL_6	         unit=	°C	
+<CHANNEL id=	39	 name=	TVLs_5	         unit=	°C	
+<CHANNEL id=	40	 name=	TVLs_6	         unit=	°C	
+<CHANNEL id=	41	 name=	TR5	             unit=	°C	
+<CHANNEL id=	42	 name=	TR6	             unit=	°C	
+<CHANNEL id=	43	 name=	TB3	             unit=	°C	
+<CHANNEL id=	44	 name=	TBs_3	         unit=	°C	
+<CHANNEL id=	45	 name=	TRs_A	         unit=	°C	??? 20
+<CHANNEL id=	46	 name=	TRs_1	         unit=	°C	??? 22 temp int consigne??
+<CHANNEL id=	47	 name=	TRs_2	         unit=	°C	
+<CHANNEL id=	48	 name=	TRs_3	         unit=	°C	
+<CHANNEL id=	49	 name=	TRs_4	         unit=	°C	
+<CHANNEL id=	50	 name=	TRs_5	         unit=	°C	
+<CHANNEL id=	51	 name=	TRs_6	         unit=	°C	
+<CHANNEL id=	52	 name=	SZs	             unit=	%	vitesse extracteur doit
+<CHANNEL id=	53	 name=	SZ	             unit=	%	vitesse extracteur
+<CHANNEL id=	54	 name=	KeBrstScale	     unit=	%	variable F 
+<CHANNEL id=	55	 name=	ESRegler    	 unit=	%	regulateur bois ???
+<CHANNEL id=	56	 name=	ESsoll	         unit=	%	bois = %air(134) x %F(54) x %K(160)
+<CHANNEL id=	57	 name=	I Es	         unit=	mA	conso vis bois
+<CHANNEL id=	58	 name=	I Ra	         unit=	mA	vanne??? 0 ou 3
+<CHANNEL id=	59	 name=	I Aa	         unit=	mA	vanne??? 0 ou 3
+<CHANNEL id=	60	 name=	I Sr	         unit=	mA	conso nettoyeur/cendrier
+<CHANNEL id=	61	 name=	I Rein	         unit=	mA	conso nettoyeur/cendrier
+<CHANNEL id=	62	 name=	U_Lambda	     unit=	mV	conso lambda
+<CHANNEL id=	63	 name=	MWZ Vorl.	     unit=	°C	
+<CHANNEL id=	64	 name=	MWZ Rueckl. 	 unit=	°C	
+<CHANNEL id=	65	 name=	MWZ Durchf. 	 unit=		
+<CHANNEL id=	66	 name=	MWZ Leist.  	 unit=	KW	
+<CHANNEL id=	67	 name=	VFS Flow	     unit=	l/min	
+<CHANNEL id=	68	 name=	VFS Temp	     unit=	°C	
+<CHANNEL id=	69	 name=	IO32 VL	         unit=	°C	
+<CHANNEL id=	70	 name=	SR motor	     unit=		moteur actionnement grille/ressort
+<CHANNEL id=	71	 name=	SRpos ist   	 unit=		selection grille ou ressort
+<CHANNEL id=	72	 name=	SR mode	         unit=		selection du sens de rotation du moteur
+<CHANNEL id=	73	 name=	KaskSollTmp_1	 unit=	°C	
+<CHANNEL id=	74	 name=	KaskSollTmp_2	 unit=	°C	
+<CHANNEL id=	75	 name=	KaskSollTmp_3	 unit=	°C	
+<CHANNEL id=	76	 name=	KaskSollTmp_4	 unit=	°C	
+<CHANNEL id=	77	 name=	KaskIstTmp_1	 unit=	°C	
+<CHANNEL id=	78	 name=	KaskIstTmp_2	 unit=	°C	
+<CHANNEL id=	79	 name=	KaskIstTmp_3	 unit=	°C	
+<CHANNEL id=	80	 name=	KaskIstTmp_4	 unit=	°C	
+<CHANNEL id=	81	 name=	UsePos	         unit=		
+<CHANNEL id=	82	 name=	UseMotSoll	     unit=	mm	
+<CHANNEL id=	83	 name=	UseMotIst	     unit=	mm	
+<CHANNEL id=	84	 name=	HKZustand_A	     unit=		
+<CHANNEL id=	85	 name=	HKZustand_1	     unit=		??? 1 en marche /4 a l'arret
+<CHANNEL id=	86	 name=	HKZustand_2	     unit=		
+<CHANNEL id=	87	 name=	HKZustand_3	     unit=		
+<CHANNEL id=	88	 name=	HKZustand_4	     unit=		
+<CHANNEL id=	89	 name=	HKZustand_5	     unit=		
+<CHANNEL id=	90	 name=	HKZustand_6	     unit=		
+<CHANNEL id=	91	 name=	BoiZustand_A	 unit=		
+<CHANNEL id=	92	 name=	BoiZustand_1	 unit=		
+<CHANNEL id=	93	 name=	BoiZustand_2	 unit=		
+<CHANNEL id=	94	 name=	BoiZustand_3	 unit=		
+<CHANNEL id=	95	 name=	PuffZustand	     unit=		
+<CHANNEL id=	96	 name=	Puffer_soll	     unit=	°C	
+<CHANNEL id=	97	 name=	Mode Fw	         unit=		
+<CHANNEL id=	98	 name=	Einschubschn.BSZ unit=		heures vis entree chaudiere 
+<CHANNEL id=	99	 name=	Verbrauchszähler unit=	kg	consommation pellet
+<CHANNEL id=	100	 name=	FRA Zustand	     unit=		
+<CHANNEL id=	101	 name=	FR1 Zustand	     unit=		
+<CHANNEL id=	102	 name=	FR2 Zustand	     unit=		
+<CHANNEL id=	103	 name=	FR3 Zustand	     unit=		
+<CHANNEL id=	104	 name=	FR4 Zustand	     unit=		
+<CHANNEL id=	105	 name=	FR5 Zustand	     unit=		
+<CHANNEL id=	106	 name=	FR6 Zustand	     unit=		
+<CHANNEL id=	107	 name=	Ext.HK Soll	     unit=		
+<CHANNEL id=	108	 name=	Ext.HK Soll_2	 unit=		
+<CHANNEL id=	109	 name=	Ext.HK Soll_3	 unit=		
+<CHANNEL id=	110	 name=	Höchste Anf	     unit=		??? identique c23 avec parfois decalage
+<CHANNEL id=	111	 name=	LZ LB seit Ent.	 unit=	Min	temps combustion est 
+<CHANNEL id=	112	 name=	LZ ES seit Füll. unit=	Min	temps vis pour aspiration est 
+<CHANNEL id=	113	 name=	Anzahl Entasch.	 unit=		nombre decendrage
+<CHANNEL id=	114	 name=	Anzahl SR Beweg. unit=		mouvement grille
+<CHANNEL id=	115	 name=	Lagerstand	     unit=	kg	pellet restant
+<CHANNEL id=	116	 name=	KaskLZLeisMin_1	 unit=	Min	
+<CHANNEL id=	117	 name=	KaskLZLeisMin_2	 unit=	Min	
+<CHANNEL id=	118	 name=	KaskLZLeisMin_3	 unit=	Min	
+<CHANNEL id=	119	 name=	KaskLZLeisMin_4	 unit=	Min	
+<CHANNEL id=	120	 name=	KaskLZLeisMax_1	 unit=	Min	
+<CHANNEL id=	121	 name=	KaskLZLeisMax_2	 unit=	Min	
+<CHANNEL id=	122	 name=	KaskLZLeisMax_3	 unit=	Min	
+<CHANNEL id=	123	 name=	KaskLZLeisMax_4	 unit=	Min	
+<CHANNEL id=	124	 name=	Kask LZLeist_1	 unit=	h	
+<CHANNEL id=	125	 name=	Kask LZLeist_2	 unit=	h	
+<CHANNEL id=	126	 name=	Kask LZLeist_3	 unit=	h	
+<CHANNEL id=	127	 name=	Kask LZLeist_4	 unit=	h	
+<CHANNEL id=	128	 name=	AIN17	         unit=	V	
+<CHANNEL id=	129	 name=	BRT	             unit=	°C	??? 98 a l'arret => 110
+<CHANNEL id=	130	 name=	IO32 522	     unit=	mV	
+<CHANNEL id=	131	 name=	IO32 509	     unit=	mV	
+<CHANNEL id=	132	 name=	IO32 510	     unit=	mV	
+<CHANNEL id=	133	 name=	IO32 517	     unit=	°C	
+<CHANNEL id=	134	 name=	Leistung	     unit=	%	puissance 
+<CHANNEL id=	135	 name=	KasEntaschFreigabe unit=	??? decendrage sup a	
+<CHANNEL id=	136	 name=	I_Lambda    	 unit=	mA	intensite lambda
+<CHANNEL id=	137	 name=	TRA_A	         unit=	°C	
+<CHANNEL id=	138	 name=	TRA_1	         unit=	°C	temperature interieur Z1 FR35
+<CHANNEL id=	139	 name=	TRA_2	         unit=	°C	
+<CHANNEL id=	140	 name=	TRA_3	         unit=	°C	
+<CHANNEL id=	141	 name=	TRA_4	         unit=	°C	
+<CHANNEL id=	142	 name=	TRA_5       	 unit=	°C	
+<CHANNEL id=	143	 name=	TRA_6       	 unit=	°C	
+<CHANNEL id=	144	 name=	U_lambda_soll	 unit=	mV	intensite lambda doit
+<CHANNEL id=	145	 name=	BRT Soll	     unit=	°C	
+<CHANNEL id=	146	 name=	Anf. HKR1	     unit=	°C	
+<CHANNEL id=	147	 name=	Anf. HKR2	     unit=	°C	
+<CHANNEL id=	148	 name=	Anf. HKR3	     unit=	°C	
+<CHANNEL id=	149	 name=	Anf. HKR4	     unit=	°C	
+<CHANNEL id=	150	 name=	Anf. HKR5	     unit=	°C	
+<CHANNEL id=	151	 name=	Anf. HKR6	     unit=	°C	
+<CHANNEL id=	152	 name=	Anf. HKR7	     unit=	°C	
+<CHANNEL id=	153	 name=	Anf. HKR8	     unit=	°C	
+<CHANNEL id=	154	 name=	IO32 521	     unit=	mV	
+<CHANNEL id=	155	 name=	BSZ_STEUERUNG	 unit=	h	heures mise sous tension
+<CHANNEL id=	156	 name=	BSZ_HEIZUNG 	 unit=	h	heures chauffage
+<CHANNEL id=	157	 name=	BSZ_ZUENDUNG	 unit=	h	heures allumages
+<CHANNEL id=	158	 name=	BSZ_SZ	         unit=	h	heures extracteur fumées
+<CHANNEL id=	159	 name=	BSZ_AUSTRAG	     unit=	h	heures extracteur silo
+<CHANNEL id=	160	 name=	Regler K	     unit=		regulateur : K
+<CHANNEL id=	161	 name=	BSZ_HEIZUNG_UPD	 unit=	h	heures chauffage upd
+<CHANNEL id=	162	 name=	BSZ_ZUENDUNGEN	 unit=		50 a l'arret / env 10 en marche
+<CHANNEL id=	163	 name=	BSZ_LEIST_90	 unit=	h	heure puissance > 90%
+<CHANNEL id=	164	 name=	BSZ_GLUTERH	     unit=	h	veille /conservation braise ?
+</DIGITAL>
+<CHANNEL id=	0	 bit=	0	 name=	Stb	            <channel 165> ??? (alphanum)
+<CHANNEL id=	0	 bit=	1	 name=	Fuellstand	    <channel 166> ??? synchro avec bois
+<CHANNEL id=	0	 bit=	3	 name=	Es Rein Endl	<channel 167> ???
+<CHANNEL id=	0	 bit=	4	 name=	HKPA	        <channel 168>
+<CHANNEL id=	0	 bit=	5	 name=	MAA	            <channel 169> Aspiration RAPS 0/2000
+<CHANNEL id=	0	 bit=	6	 name=	MAZ		        <channel 170> 
+<CHANNEL id=	0	 bit=	7	 name=	HKP1	        <channel 171>	
+<CHANNEL id=	0	 bit=	8	 name=	M1A	            <channel 172>	
+-------------------fin de transmission telnet----------------------------------------------
+<CHANNEL id=	0	 bit=	9	 name=	M1Z	
+<CHANNEL id=	0	 bit=	10	 name=	HKP2	
+<CHANNEL id=	0	 bit=	11	 name=	M2A	
+<CHANNEL id=	0	 bit=	12	 name=	M2Z	
+<CHANNEL id=	0	 bit=	13	 name=	Störung	
+<CHANNEL id=	1	 bit=	0	 name=	L Heiz.	
+<CHANNEL id=	1	 bit=	1	 name=	Z Heiz.	
+<CHANNEL id=	1	 bit=	2	 name=	Z Geb.	
+<CHANNEL id=	1	 bit=	3	 name=	AA Run	
+<CHANNEL id=	1	 bit=	4	 name=	AA Dir	
+<CHANNEL id=	1	 bit=	5	 name=	ES Run	
+<CHANNEL id=	1	 bit=	6	 name=	ES Dir	
+<CHANNEL id=	1	 bit=	7	 name=	AS Saug	
+<CHANNEL id=	1	 bit=	8	 name=	AS RA Run	
+<CHANNEL id=	1	 bit=	9	 name=	AS RA Dir	
+<CHANNEL id=	1	 bit=	10	 name=	Rein En	
+<CHANNEL id=	1	 bit=	11	 name=	Rein Run	
+<CHANNEL id=	1	 bit=	12	 name=	RLm_auf	
+<CHANNEL id=	1	 bit=	13	 name=	RLm_zu	
+<CHANNEL id=	1	 bit=	14	 name=	RL Pumpe	
+<CHANNEL id=	2	 bit=	0	 name=	BPA	
+<CHANNEL id=	2	 bit=	1	 name=	BP1	
+<CHANNEL id=	2	 bit=	2	 name=	BP2	
+<CHANNEL id=	2	 bit=	3	 name=	BP3	
+<CHANNEL id=	2	 bit=	4	 name=	BZPA	
+<CHANNEL id=	2	 bit=	5	 name=	BZP1	
+<CHANNEL id=	2	 bit=	6	 name=	BZP2	
+<CHANNEL id=	2	 bit=	7	 name=	BZP3	
+<CHANNEL id=	2	 bit=	8	 name=	EHKP	
+<CHANNEL id=	2	 bit=	9	 name=	EHKP2	
+<CHANNEL id=	2	 bit=	10	 name=	EHKP3	
+<CHANNEL id=	2	 bit=	11	 name=	EHK Anf	
+<CHANNEL id=	2	 bit=	12	 name=	EHK Anf2	
+<CHANNEL id=	2	 bit=	13	 name=	EHK Anf3	
+<CHANNEL id=	3	 bit=	0	 name=	HKP3	
+<CHANNEL id=	3	 bit=	1	 name=	M3A	
+<CHANNEL id=	3	 bit=	2	 name=	M3Z	
+<CHANNEL id=	3	 bit=	3	 name=	HKP4	
+<CHANNEL id=	3	 bit=	4	 name=	M4A	
+<CHANNEL id=	3	 bit=	5	 name=	M4Z	
+<CHANNEL id=	3	 bit=	6	 name=	HKP5	
+<CHANNEL id=	3	 bit=	7	 name=	M5A	
+<CHANNEL id=	3	 bit=	8	 name=	M5Z	
+<CHANNEL id=	3	 bit=	9	 name=	HKP6	
+<CHANNEL id=	3	 bit=	10	 name=	M6A	
+<CHANNEL id=	3	 bit=	11	 name=	M6Z	
+<CHANNEL id=	3	 bit=	12	 name=	Use FuellDis	
+<CHANNEL id=	3	 bit=	13	 name=	PuffP	
+<CHANNEL id=	3	 bit=	14	 name=	Entasch gesp.	
+<CHANNEL id=	3	 bit=	15	 name=	ATW	
+<CHANNEL id=	4	 bit=	0	 name=	KASK1 MinLeist	
+<CHANNEL id=	4	 bit=	1	 name=	KASK2 MinLeist	
+<CHANNEL id=	4	 bit=	2	 name=	KASK3 MinLeist	
+<CHANNEL id=	4	 bit=	3	 name=	KASK4 MinLeist	
+<CHANNEL id=	4	 bit=	4	 name=	KASK1 MaxLeist	
+<CHANNEL id=	4	 bit=	5	 name=	KASK2 MaxLeist	
+<CHANNEL id=	4	 bit=	6	 name=	KASK3 MaxLeist	
+<CHANNEL id=	4	 bit=	7	 name=	KASK4 MaxLeist	
+<CHANNEL id=	4	 bit=	8	 name=	KASK1 Run	
+<CHANNEL id=	4	 bit=	9	 name=	KASK2 Run	
+<CHANNEL id=	4	 bit=	10	 name=	KASK3 Run	
+<CHANNEL id=	4	 bit=	11	 name=	KASK4 Run	
+<CHANNEL id=	4	 bit=	12	 name=	FW Freig.	
+<CHANNEL id=	4	 bit=	13	 name=	sAS Anf Füll	
+<CHANNEL id=	4	 bit=	14	 name=	HKV	
+<CHANNEL id=	4	 bit=	15	 name=	FLP	
+<CHANNEL id=	5	 bit=	0	 name=	KASK1 AschAnf	
+<CHANNEL id=	5	 bit=	1	 name=	KASK2 AschAnf	
+<CHANNEL id=	5	 bit=	2	 name=	KASK3 AschAnf	
+<CHANNEL id=	5	 bit=	3	 name=	KASK4 AschAnf	
+<CHANNEL id=	5	 bit=	4	 name=	Freig Entasch	
+<CHANNEL id=	5	 bit=	5	 name=	Netztrafo	
+<CHANNEL id=	5	 bit=	6	 name=	Netzrelais	
+<CHANNEL id=	5	 bit=	7	 name=	Lagerraum	
+<CHANNEL id=	5	 bit=	8	 name=	Aschebox	
+<CHANNEL id=	5	 bit=	9	 name=	LambdaOk	
+</DIGITAL						
+</DAQPRJ						

@@ -1,7 +1,7 @@
 <?php
 // appelé par ajax, reçoit 1 journée en parametre et renvoi les series de data
 require_once("conf/config.inc.php");
-require_once("conf/connectBDD.inc.php");
+ 
 
 	header("Content-type: text/json");
 

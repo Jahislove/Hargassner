@@ -2,7 +2,7 @@
 // appelé par ajax, specifique page-2-courbes.php / graphe 1
 
 require_once("conf/config.inc.php");
-require_once("conf/connectBDD.inc.php");
+ 
 
 	header("Content-type: text/json");
 

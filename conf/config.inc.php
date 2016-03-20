@@ -1,4 +1,5 @@
 <?php
+$version = 1.2;
 //****vos parametres **************************************************** 	
 $IPchaudiere = "192.168.0.198"; // indiquez l'IP de votre chaudiere
 $port = 23; //port telnet, ne pas modifier
@@ -8,6 +9,11 @@ $taille_silo = 4000; // en kg , il s'agit de la capacité max du silo
 $refresh = 10; //rafraichissement en sec de l'etat de la chaudiere , ne pas descendre sous les 2 car le telnet de la chaudiere n'arrive plus a repondre assez vite
 $histo_temps = 30; //historique du graphique de la page d'accueil en mn
 
+// MySQL config
+$hostname = "localhost"; //localhost si la BDD est sur la meme machine que le serveur web , sinon IP
+$database = "Hargassner"; // nom de la BDD
+$username = "hargassner"; // utilisateur mysql
+$password = "password";
 
 //*****couleurs ************************************************	
 $color_TdepD = '#781BE1'; 
@@ -41,4 +47,10 @@ $months = "['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'A
 $weekdays = "['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']";
 $shortMonths = "['Janv', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin',  'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec']";
 $thousandsSep = "''"; // thousands separator 
+
+// ************* connection to MySQL, **********************************************
+function connectMaBase($hostname, $database, $username, $password){
+    $Conn = mysql_connect ($hostname, $username, $password) or trigger_error(mysql_error(),E_USER_ERROR);  
+    mysql_select_db($database, $Conn);
+}
 ?>

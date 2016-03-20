@@ -1,0 +1,18 @@
+/************************************************************************
+*** Supervision chaudiere Hargassner avec touchtronic
+*** Auteur : Jahislove
+*** Utilisation commerciale interdite sans mon accord
+************************************************************************/
+
+v1.2	12/03/2016
+	ajout detection automatique de nouvelle version
+	ajout installation nouvelle version automatique
+    	suppression connectBDD.inc.php
+
+v1.1 	01/03/2016
+	amélioration lisibilité des graphiques 'variables'
+	ajout calendrier pickup pour remonter dans le temps dans la page 'variables'
+	correction bugs mineurs
+
+v1.0 	22/02/2016 
+	version initiale

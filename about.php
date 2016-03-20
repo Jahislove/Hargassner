@@ -5,10 +5,14 @@
 </head>
 
 <html>
+    <?php
+    require_once("conf/config.inc.php");
+    ?>
+
 <h2>
 <p>
-    22/02/2016 v1.0:
-    site web permettant la visualisation en temps réel d'une chaudière à granulés Hargassner Nano PK .Ce site est personnel et n'engage aucunement la marque Hargassner
+    Version <?php echo $version ;?> :
+    site web permettant la visualisation en temps réel d'une chaudière à granulés Hargassner .Ce site est personnel et n'engage aucunement la marque Hargassner
 </p>
 <p>
     ma configuration :
