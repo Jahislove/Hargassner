@@ -92,7 +92,7 @@ function backup() {
 /******* installation nouvelle version************************/
 function installation() {
     $source = "update/Hargassner-master";
-    $dest= "update/toto";/*#######################a modif en derniere minute ######## $dest= ".";  */
+    $dest= "."; 
 
     if (copyr ($source,$dest)) {
         echo "Installation OK<br>";
@@ -102,6 +102,10 @@ function installation() {
 }
 
 /************enchainement des actions **************************/
+    if (!is_dir("update")) {
+        mkdir("update");
+    }
+
 if (download($github)){
     if (unzip()){ 
         if (purge()){

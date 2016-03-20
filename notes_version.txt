@@ -4,10 +4,11 @@
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
 
-v1.2	12/03/2016
+v1.2	20/03/2016
 	ajout detection automatique de nouvelle version
 	ajout installation nouvelle version automatique
-    	suppression connectBDD.inc.php
+    suppression connectBDD.inc.php
+    suppression graphique aspiration
 
 v1.1 	01/03/2016
 	amélioration lisibilité des graphiques 'variables'
