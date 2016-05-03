@@ -19,7 +19,7 @@
 
     if ($version < $version_github) {
         echo '<div id="new_version">';
-        echo 'Nouvelle version disponible : '.$version_github.' - <a href="notes_version.txt">Notes de version</a> - <a href="auto-install.php">Installation</a>';
+        echo 'Nouvelle version disponible : '.$version_github.' - <a href="https://github.com/Jahislove/Hargassner/blob/master/notes_version.txt">Notes de version</a> - <a href="auto-install.php">Installation</a>';
         echo '</div>';
     }
     // ******************************************************************
