@@ -4,6 +4,10 @@
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
 
+v1.4    03/05/2016
+    ajout courbe temperature exterieur moyenne dans l'onglet régulation
+    correction bug graphique consommation mensuel
+    
 v1.3	20/03/2016
 	suppression graphique aspiration
 

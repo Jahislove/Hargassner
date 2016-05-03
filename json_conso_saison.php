@@ -6,7 +6,12 @@ require_once("conf/config.inc.php");
 
 	header("Content-type: text/json");
 
-    $limit = abs(date('n') -8); // formule permettant de commencer en septembre
+    if (date('n') == 9 ){// formule permettant de commencer en septembre
+		$limit = 1;
+	}
+	else {
+		$limit = abs(date('n') +4); 
+	}
     $query = "SELECT YEAR(dateB), MONTH(dateB),SUM(conso),FORMAT(AVG(Tmoy),1) FROM consommation 
             GROUP BY YEAR(dateB), MONTH(dateB)
             ORDER BY dateB DESC LIMIT " . $limit;

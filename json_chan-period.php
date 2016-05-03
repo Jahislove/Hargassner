@@ -24,6 +24,7 @@ require_once("conf/config.inc.php");
         $liste4[] = [$dateD, $data[4]];
         $liste5[] = [$dateD, $data[5]];
         $liste6[] = [$dateD, $data[6]];
+        $liste7[] = [$dateD, $data[7]];
     }
 
     $liste1 = array_reverse($liste1);
@@ -32,6 +33,7 @@ require_once("conf/config.inc.php");
     $liste4 = array_reverse($liste4);
     $liste5 = array_reverse($liste5);
     $liste6 = array_reverse($liste6);
-    $tableau = [$liste1,$liste2,$liste3,$liste4,$liste5,$liste6];
+    $liste7 = array_reverse($liste7);
+    $tableau = [$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7];
     echo json_encode($tableau, JSON_NUMERIC_CHECK);
 ?>

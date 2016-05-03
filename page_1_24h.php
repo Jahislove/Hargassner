@@ -5,8 +5,8 @@
 <div id="chart_last24"></div>
 
 <?php
-    $chart_last24_name = ['T° depart consigne','T° depart','T° chaudière','T° extérieur','T° intérieur','Puissance'];
-    $chart_last24_chan = 'c23,c21,c3,c6,c138,c134';
+    $chart_last24_name = ['T° depart consigne','T° depart','T° chaudière','T° extérieur','T° ext moy','T° intérieur','Puissance'];
+    $chart_last24_chan = 'c23,c21,c3,c6,c7,c138,c134';
 ?>
 
 
@@ -141,11 +141,16 @@ $(document).ready(function(){
 			data: []
 		}, {
 			name: '<?php echo $chart_last24_name[4]; ?>',
-			color: '<?php echo $color_Tint; ?>',
+			color: '<?php echo $color_TextM; ?>',
 			zIndex: 4,
 			data: []
 		}, {
 			name: '<?php echo $chart_last24_name[5]; ?>',
+			color: '<?php echo $color_Tint; ?>',
+			zIndex: 4,
+			data: []
+		}, {
+			name: '<?php echo $chart_last24_name[6]; ?>',
 			color: '<?php echo $color_puiss; ?>',
 			zIndex: 4,
             yAxis: 1,
@@ -168,6 +173,7 @@ $(document).ready(function(){
             chart_last24.series[3].setData(data[3],false);
             chart_last24.series[4].setData(data[4],false);
             chart_last24.series[5].setData(data[5],false);
+            chart_last24.series[6].setData(data[6],false);
             chart_last24.redraw();
             chart_last24.hideLoading();
             //requestData();
