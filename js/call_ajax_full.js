@@ -100,6 +100,11 @@ $.ajax({
             document.getElementById('nano-A1').className = 'extr_fixe'; 
         }
         
+        // test presence ballon ECS ( valeur=140 egal ballon absent) 
+        if ( channel[27] == 140 ) {
+            channel[27] = "null"; 
+        }
+
         // aspiration RAPS
         if ( channel[169] == 2000 ) {
             document.getElementById('nano-A2').className = 'RAPS_anime'; 
@@ -132,8 +137,8 @@ $.ajax({
         chart_live.series[3].addPoint([heure, channel[56]], true, shift);
         chart_live.series[4].addPoint([heure, channel[134]], true, shift);
         chart_live.series[5].addPoint([heure, channel[21]], true, shift);
-        chart_live.series[6].addPoint([heure, channel[54]], true, shift);
-        chart_live.series[7].addPoint([heure, channel[160]], true, shift);  
+        //chart_live.series[6].addPoint([heure, channel[54]], true, shift);
+        //chart_live.series[7].addPoint([heure, channel[160]], true, shift);  
             
         // rafraichissement tableau gauche et droite
         Gauche1.innerHTML = channel[1]; 
@@ -174,7 +179,8 @@ $.ajax({
         Droite13.innerHTML = channel[162];    
         Droite14.innerHTML = channel[163];    
         Droite15.innerHTML = channel[164];    
-        
+        Droite16.innerHTML = channel[27];    
+       
         
         // changement vitesse vis bois
         //if (channel[56] != 0) {

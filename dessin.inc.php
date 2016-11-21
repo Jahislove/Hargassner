@@ -101,6 +101,7 @@
                 <tr><th>nombre allumage</th>        <td id="Droite13">?</td></tr>  
                 <tr><th>heure puissance > 90%</th>  <td id="Droite14">?</td></tr>  
                 <tr><th>veille</th>                 <td id="Droite15">?</td></tr>  
+                <tr><th>Ballon ECS</th>             <td id="Droite16">?</td></tr>  
 
             </table>
        </span>

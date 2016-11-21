@@ -34,7 +34,7 @@
 
     // auto refresh des données avec ajax
     function requestData() { 
-        call_ajax(); //appel ajax au loading
+        call_ajax(); //appel ajax au loading dans call_ajax_full.js
         id = setInterval(call_ajax,refresh*1000); 
         setTimeout(stop_refresh, 60000000); // 600000ms  stop rafraichissement apres 10 mn 
     };

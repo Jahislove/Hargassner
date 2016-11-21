@@ -1,10 +1,9 @@
-﻿<?php
-/************************************************************************
+﻿<!-- ************************************************************************
 *** Supervision chaudiere Hargassner avec touchtronic
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
-************************************************************************/
-?>
+************************************************************************/ -->
+
 
 <?php require("header_debut.php"); ?>
 <script type="text/javascript" src="js/call_ajax_full.js">	</script>

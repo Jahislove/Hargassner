@@ -3,6 +3,9 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
+v1.5	21/11/2016
+	ajout courbe ballon ECS dans l'onglet variables
+	remplacement courbe variable F et K par courbes temp ext moy et ballon ECS
 
 v1.4    03/05/2016
     ajout courbe temperature exterieur moyenne dans l'onglet régulation

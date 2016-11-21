@@ -118,16 +118,6 @@ $(function() {
 			zIndex: 0,
 			color: 'lightblue',
 			data: [<?php echo $listeInit; ?>],
-		}, {
-			name: 'F',
-			zIndex: 0,
-			color: 'blue',
-			data: [<?php echo $listeInit; ?>],
-		}, {
-			name: 'K',
-			zIndex: 0,
-			color: 'grey',
-			data: [<?php echo $listeInit; ?>],
 		}]
 	});
 });

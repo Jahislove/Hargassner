@@ -10,8 +10,8 @@
 </div>
 
 <?php
-    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','Variable F','% bois','Variable K','Regulateur bois']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
-    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c54,c56,c160,c55"; // la 2 eme valeur (decendrage) est calculé d'apres c0
+    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','Ballon ECS','% bois','T° exterieur Moy','Regulateur bois']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
+    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c55"; // la 2 eme valeur (decendrage) est calculé d'apres c0
     $chart2_name = ['allumage electrique','-','-','-','-'];
     $chart2_chan = "c157,c0,c53,c134,c129";
     
@@ -164,6 +164,9 @@ $(function() {
 	chart1 = new Highcharts.Chart({
 		chart: {
 			renderTo: 'graphe1',
+			events: {
+				load: requestData // in header.php
+			},
 		},
 		title: {
 			text: 'Fonctionnement',
