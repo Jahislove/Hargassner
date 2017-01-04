@@ -41,6 +41,8 @@ require_once("conf/config.inc.php");
         $liste11[] = [$dateD, $data[12]];
         $liste12[] = [$dateD, $data[13]];
         $liste13[] = [$dateD, $data[14]];
+        $liste14[] = [$dateD, $data[15]];
+        $liste15[] = [$dateD, $data[16]];
     }
 
 //    $liste0['name'] = 'Etat';  // a utiliser avec un update() en plus du setdata()
@@ -59,6 +61,8 @@ require_once("conf/config.inc.php");
     $liste11 = array_reverse($liste11);
     $liste12 = array_reverse($liste12);
     $liste13 = array_reverse($liste13);
-    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13];
+    $liste14 = array_reverse($liste14);
+    $liste15 = array_reverse($liste15);
+    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13,$liste14,$liste15];
     echo json_encode($tableau, JSON_NUMERIC_CHECK);
 ?>

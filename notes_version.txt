@@ -3,6 +3,12 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
+v1.6	04/01/2017
+	ajout et modifications de courbes sur la page "variables"
+	refonte du graphique consommation par mois (page consommation)
+	ajout moyenne par jour sur les 3 derniers mois (page consommation)
+	correction de l'affichage de la legende qui sortait de la page sur mobile
+
 v1.5	21/11/2016
 	ajout courbe ballon ECS dans l'onglet variables
 	remplacement courbe variable F et K par courbes temp ext moy et ballon ECS

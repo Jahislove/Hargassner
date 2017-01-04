@@ -10,8 +10,8 @@
 </div>
 
 <?php
-    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','Ballon ECS','% bois','T° exterieur Moy','Regulateur bois']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
-    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c55"; // la 2 eme valeur (decendrage) est calculé d'apres c0
+    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ est','T° Départ doit']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
+    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23"; // la 2 eme valeur (decendrage) est calculé d'apres c0
     $chart2_name = ['allumage electrique','-','-','-','-'];
     $chart2_chan = "c157,c0,c53,c134,c129";
     
@@ -72,6 +72,8 @@ $(function() {
                     chart1.series[11].setData(data[11],false);
                     chart1.series[12].setData(data[12],false);
                     chart1.series[13].setData(data[13],false);
+                    chart1.series[14].setData(data[14],false);
+                    chart1.series[15].setData(data[15],false);
                     chart1.redraw();
                     chart1.hideLoading();
                 }
@@ -172,14 +174,11 @@ $(function() {
 			text: 'Fonctionnement',
 		},
 		legend: {
-			enabled: true,
-			backgroundColor: '<?php echo $color_legend; ?>',
-			borderRadius: 14,
-            itemDistance: 10,
+            itemDistance: 30,
             itemMarginBottom: 5,
             itemMarginTop: 5,
-            itemWidth: 150,
-            width: 1100,
+            //itemWidth: 150,
+            //width: 1100,
 		},
 		xAxis: {
             tickInterval: 15*60*1000,
@@ -196,7 +195,7 @@ $(function() {
 		}, {
 			name: '<?php echo $chart1_name[1]; ?>',
 			color: '<?php echo $color_decend; ?>',
-            legendIndex: 7,
+            legendIndex: 15,
             turboThreshold: 1500,
             type: 'area',
             zIndex: -1,
@@ -211,7 +210,7 @@ $(function() {
 			name: '<?php echo $chart1_name[2]; ?>',
 			color: '<?php echo $color_puiss; ?>',
             lineWidth: 1,
-            legendIndex: 2,
+            legendIndex: 1,
             tooltip: {
                 valueSuffix: ' %',
              },
@@ -219,7 +218,7 @@ $(function() {
 		}, {
 			name: '<?php echo $chart1_name[3]; ?>',
 			color: '<?php echo $color_Tchaud; ?>',
-            legendIndex: 6,
+            legendIndex: 2,
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -227,7 +226,7 @@ $(function() {
 		}, {
 			name: '<?php echo $chart1_name[4]; ?>',
 			color: '<?php echo $color_Tchauddoit; ?>',
-            legendIndex: 13,
+            legendIndex: 3,
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -235,7 +234,7 @@ $(function() {
 		}, {
 			name: '<?php echo $chart1_name[5]; ?>',
 			color: '<?php echo $color_fum; ?>',
-            legendIndex: 5,
+            legendIndex: 12,
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -243,13 +242,14 @@ $(function() {
 		}, {
 			name: '<?php echo $chart1_name[6]; ?>',
 			color: '<?php echo $color_Text; ?>',
-            legendIndex: 11,
+            legendIndex: 6,
             visible: false,
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[7]; ?>',
 			color: '<?php echo $color_O2; ?>',
-            legendIndex: 1,
+            legendIndex: 13,
+            visible: false,
             tooltip: {
                 valueSuffix: ' %',
              },
@@ -257,7 +257,7 @@ $(function() {
 		}, {
 			name: '<?php echo $chart1_name[8]; ?>',
 			color: '<?php echo $color_O2doit; ?>',
-            legendIndex: 8,
+            legendIndex: 14,
             visible: false,
             tooltip: {
                 valueSuffix: ' %',
@@ -271,26 +271,38 @@ $(function() {
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[10]; ?>',
-			color: '<?php echo $color_varF; ?>',
-            legendIndex: 3,
+			color: '<?php echo $color_varF; ?>',// ECS
+            legendIndex: 11,
             visible: false,
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[11]; ?>',
 			color: '<?php echo $color_bois; ?>',
-            legendIndex: 5,
-            visible: false,
-			data: []
-		}, {
-			name: '<?php echo $chart1_name[12]; ?>',
-			color: '<?php echo $color_varK; ?>',
             legendIndex: 10,
             visible: false,
 			data: []
 		}, {
+			name: '<?php echo $chart1_name[12]; ?>',
+			color: '<?php echo $color_TextM; ?>',
+            legendIndex: 7,
+            visible: false,
+			data: []
+		}, {
 			name: '<?php echo $chart1_name[13]; ?>',
-			color: '<?php echo $color_regul; ?>',
-            legendIndex: 12,
+			color: '<?php echo $color_Tint; ?>',
+            legendIndex: 8,
+            visible: false,
+			data: [],
+		}, {
+			name: '<?php echo $chart1_name[14]; ?>',
+			color: '<?php echo $color_TdepE; ?>',
+            legendIndex: 4,
+            visible: false,
+			data: []
+		}, {
+			name: '<?php echo $chart1_name[15]; ?>',
+			color: '<?php echo $color_TdepD; ?>',
+            legendIndex: 5,
             visible: false,
 			data: [],
 		}] 
@@ -347,6 +359,8 @@ $(function() {
             chart1.series[11].setData(data[11],false);
             chart1.series[12].setData(data[12],false);
             chart1.series[13].setData(data[13],false);
+            chart1.series[14].setData(data[14],false);
+            chart1.series[15].setData(data[15],false);
             chart1.redraw();
             chart1.hideLoading();
         }

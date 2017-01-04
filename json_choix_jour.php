@@ -9,7 +9,7 @@ require_once("conf/config.inc.php");
     $jour = date('Y-m-d', $param/1000); # /1000 car le timestamp php est en seconde et javascript en ms
     
 
-$query = "SELECT dateB,c23,c21,c3,c6,c138,c134 FROM data
+$query = "SELECT dateB,c23,c21,c3,c6,c138,c134,c56 FROM data
           WHERE dateB BETWEEN '".$jour."' AND '".$jour."' + INTERVAL 1 DAY";
 
     connectMaBase($hostname, $database, $username, $password);
@@ -24,8 +24,9 @@ $query = "SELECT dateB,c23,c21,c3,c6,c138,c134 FROM data
         $liste4[] = [$dateD, $data[4]];
         $liste5[] = [$dateD, $data[5]];
         $liste6[] = [$dateD, $data[6]];
+        $liste7[] = [$dateD, $data[7]];
     }
 
-    $tableau = [$liste1,$liste2,$liste3,$liste4,$liste5,$liste6];
+    $tableau = [$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7];
     echo json_encode($tableau, JSON_NUMERIC_CHECK);
 ?>

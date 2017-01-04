@@ -25,7 +25,7 @@ $cons = [null,null,null,null,null,null,null,null,null,null,null,null];
 $Tmoy = [null,null,null,null,null,null,null,null,null,null,null,null]; 
 
 // decalage des mois pour debut saison en septembre    
-$mois = ['09' => 0, '10' => 1, '11' => 2, '12' => 3, '1' => 4, '2' => 5, '3' => 6, '4' => 7, '5' => 8, '6' => 9, '7' => 10, '8' => 11];
+$mois = ['9' => 0, '10' => 1, '11' => 2, '12' => 3, '1' => 4, '2' => 5, '3' => 6, '4' => 7, '5' => 8, '6' => 9, '7' => 10, '8' => 11];
 
     while($data = mysql_fetch_row($req)){
         $annee = $data[0];
