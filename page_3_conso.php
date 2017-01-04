@@ -510,7 +510,7 @@ $(function() {
 		subtitle: {
 	        align: 'left',
 	        x: 65,
-			text: 'Pour chaque saison'
+			text: 'Pour chaque saison',
 			style:{
 				color: '#4572A7',
 			},
