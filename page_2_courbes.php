@@ -4,18 +4,19 @@
     
 <div class="calendar">
     <div class="input-group date">
-        <input type="text" class="form-control" placeholder="12 dernieres heures">
+        <input type="text" class="form-control" placeholder="Aujourd'hui">
         <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
     </div>
 </div>
 
 <?php
-    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ est','T° Départ doit']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
-    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23"; // la 2 eme valeur (decendrage) est calculé d'apres c0
+    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ est','T° Départ doit','Conso du jour']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
+    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c99"; //23 la 2 eme valeur (decendrage) est calculé d'apres c0
     $chart2_name = ['allumage electrique','-','-','-','-'];
     $chart2_chan = "c157,c0,c53,c134,c129";
     
-    $query1 = "SELECT YEAR(dateB),MONTH(dateB),DAY(dateB) FROM consommation 
+    // requete pour initialiser la date
+	$query1 = "SELECT YEAR(dateB),MONTH(dateB),DAY(dateB) FROM consommation 
              LIMIT 1";
 	connectMaBase($hostname, $database, $username, $password);
     $req1 = mysql_query($query1) ;
@@ -74,6 +75,7 @@ $(function() {
                     chart1.series[13].setData(data[13],false);
                     chart1.series[14].setData(data[14],false);
                     chart1.series[15].setData(data[15],false);
+                    chart1.series[16].setData(data[16],false);
                     chart1.redraw();
                     chart1.hideLoading();
                 }
@@ -191,11 +193,12 @@ $(function() {
             tooltip: {
                 pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.valeur}</b><br/>',		
             },
+            visible: false,
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[1]; ?>',
 			color: '<?php echo $color_decend; ?>',
-            legendIndex: 15,
+            legendIndex: 16,
             turboThreshold: 1500,
             type: 'area',
             zIndex: -1,
@@ -291,7 +294,7 @@ $(function() {
 			name: '<?php echo $chart1_name[13]; ?>',
 			color: '<?php echo $color_Tint; ?>',
             legendIndex: 8,
-            visible: false,
+            visible: true,
 			data: [],
 		}, {
 			name: '<?php echo $chart1_name[14]; ?>',
@@ -303,6 +306,12 @@ $(function() {
 			name: '<?php echo $chart1_name[15]; ?>',
 			color: '<?php echo $color_TdepD; ?>',
             legendIndex: 5,
+            visible: false,
+			data: [],
+		}, {
+			name: '<?php echo $chart1_name[16]; ?>',
+			color: '<?php echo $color_gran; ?>',
+            legendIndex: 15,
             visible: false,
 			data: [],
 		}] 
@@ -341,7 +350,7 @@ $(function() {
     $.ajax({
         dataType: "json",
         url: 'json_chan-period-2.php',
-        data: 'channel=<?php echo $chart1_chan; ?>' + '&annee=' + d.getFullYear() + '&mois=' + (d.getMonth()+1) + '&jour=' + d.getDate() + '&periode=720',
+        data: 'channel=<?php echo $chart1_chan; ?>' + '&annee=' + d.getFullYear() + '&mois=' + (d.getMonth()+1) + '&jour=' + d.getDate() + '&periode=1440',
         // data: 'channel=<?php echo $chart1_chan; ?>' + '&periode=720',
         cache: false,
         success: function(data) {
@@ -361,6 +370,7 @@ $(function() {
             chart1.series[13].setData(data[13],false);
             chart1.series[14].setData(data[14],false);
             chart1.series[15].setData(data[15],false);
+            chart1.series[16].setData(data[16],false);
             chart1.redraw();
             chart1.hideLoading();
         }

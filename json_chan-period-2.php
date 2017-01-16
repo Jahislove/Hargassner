@@ -43,9 +43,18 @@ require_once("conf/config.inc.php");
         $liste13[] = [$dateD, $data[14]];
         $liste14[] = [$dateD, $data[15]];
         $liste15[] = [$dateD, $data[16]];
+        $liste16[] = [$dateD, $data[17]];
     }
 
-//    $liste0['name'] = 'Etat';  // a utiliser avec un update() en plus du setdata()
+	// calcul consommation journaliere a partir de la conso globale
+	// valeur de depart
+	$init = end($liste16)[1];
+	// modifie la liste avec les valeurs calculées
+	foreach($liste16 as &$valeur) {  //le & permet de lire puis reecrire la nouvelle valeur
+		$valeur = [$valeur[0] , $valeur[1] - $init] ;
+	}
+	
+	//    $liste0['name'] = 'Etat';  // a utiliser avec un update() en plus du setdata()
 
     $liste0['data'] = array_reverse($liste0['data']);// est un objet
     $liste1['data'] = array_reverse($liste1['data']); 
@@ -63,6 +72,7 @@ require_once("conf/config.inc.php");
     $liste13 = array_reverse($liste13);
     $liste14 = array_reverse($liste14);
     $liste15 = array_reverse($liste15);
-    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13,$liste14,$liste15];
+    $liste16 = array_reverse($liste16);
+    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13,$liste14,$liste15,$liste16];
     echo json_encode($tableau, JSON_NUMERIC_CHECK);
 ?>

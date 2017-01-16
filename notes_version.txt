@@ -3,8 +3,11 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
+v1.7	08/01/2017
+	ajout courbe conso journaliere (page variables)
+	
 v1.6	04/01/2017
-	ajout et modifications de courbes sur la page "variables"
+	ajout et modifications de courbes (page variables)
 	refonte du graphique consommation par mois (page consommation)
 	ajout moyenne par jour sur les 3 derniers mois (page consommation)
 	correction de l'affichage de la legende qui sortait de la page sur mobile
