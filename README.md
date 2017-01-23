@@ -1,5 +1,5 @@
 # Hargassner
-26/12/2015
+
 
 site web permettant la visualisation en temps réel d'une chaudière Hargassner + touchtronic
 
@@ -10,8 +10,7 @@ Pour utiliser les menus supplémentaires et naviguer dans l'historique , il faut
 La Chaudière dialogue par telnet , ce protocole n'est pas du tout sécurisé . 
 C'est pour cette raison qu'il est nécessaire d'héberger le site web en local , afin d'éviter de diffuser le telnet sur internet.
 
-Ce site est développé initialement pour une NanoPK. Si vous disposez d'un modèle Classic ou HSV, des modifications légères seront à apporter.
-les paramètres diffusés par la chaudière ne portent pas les mêmes numéros en fonction du modèle de chaudière.
+Ce site est développé initialement pour une NanoPK. Mais il fonctionne parfaitement avec un modèle Classic ou HSV
 
 le fichier qui m'a servit de réference pour la Nano PK est channel-nanoPK-v14.0d.txt situé dans /conf
 
