@@ -44,7 +44,7 @@ premier parametre = pm
 <CHANNEL id=	24	 name=	TVLs_2	         unit=	°C	
 <CHANNEL id=	25	 name=	TR1	             unit=	°C	??? 18
 <CHANNEL id=	26	 name=	TR2	             unit=	°C	??? 20
-<CHANNEL id=	27	 name=	TB1	             unit=	°C	
+<CHANNEL id=	27	 name=	TB1	             unit=	°C	temperature Ballon ECS
 <CHANNEL id=	28	 name=	TBs_1	         unit=	°C	
 <CHANNEL id=	29	 name=	TVL_3	         unit=	°C	
 <CHANNEL id=	30	 name=	TVL_4	         unit=	°C	
@@ -179,7 +179,7 @@ premier parametre = pm
 <CHANNEL id=	159	 name=	BSZ_AUSTRAG	     unit=	h	heures extracteur silo
 <CHANNEL id=	160	 name=	Regler K	     unit=		regulateur : K
 <CHANNEL id=	161	 name=	BSZ_HEIZUNG_UPD	 unit=	h	heures chauffage upd
-<CHANNEL id=	162	 name=	BSZ_ZUENDUNGEN	 unit=		50 a l'arret / env 10 en marche
+<CHANNEL id=	162	 name=	BSZ_ZUENDUNGEN	 unit=		??? 50 a l'arret / env 10 en marche
 <CHANNEL id=	163	 name=	BSZ_LEIST_90	 unit=	h	heure puissance > 90%
 <CHANNEL id=	164	 name=	BSZ_GLUTERH	     unit=	h	veille /conservation braise ?
 </DIGITAL>
