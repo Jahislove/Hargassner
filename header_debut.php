@@ -21,10 +21,10 @@
     <script src="js/datepicker/bootstrap-datepicker.fr.min.js" charset="UTF-8"></script><!-- utilisé uniquement pour le datepicker -->
     
 	<script src="js/highcharts.js"></script> 
-	<script src="js/highcharts-more.js"></script> 
+	<!-- <script src="js/highcharts-more.js"></script> --> 
 	<script src="js/exporting.js"></script> 
 	<!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
-    <!-- <script src="https://code.highcharts.com/highcharts-more.js"></script> -->
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
     
 
 <script type="text/javascript">	
