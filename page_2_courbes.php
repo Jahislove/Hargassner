@@ -27,6 +27,8 @@
 ?>
 
 <div class="rel">
+	<div id="graphe_gauge1" class="graphe_gauge graphe_gaugePos1"></div>
+	<div id="graphe_gauge2" class="graphe_gauge graphe_gaugePos2"></div>
     <div id="graphe1" class="graphe_size2"></div>
     <div id="graphe2" class="graphe_size"></div>
 </div>
@@ -36,6 +38,65 @@
 <?php require("footer.php");?>
 
 <script type="text/javascript">
+//*****************fonction tracage graphe pour loading et pickup calendar********************************************************
+function parse_data(data) {
+	//tracage du graphique
+	chart1.series[0].setData(data[0].data,false); //objet
+	chart1.series[1].setData(data[1].data,false); 
+	chart1.series[2].setData(data[2],false);// array
+	chart1.series[3].setData(data[3],false);
+	chart1.series[4].setData(data[4],false);
+	chart1.series[5].setData(data[5],false);
+	chart1.series[6].setData(data[6],false);
+	chart1.series[7].setData(data[7],false);
+	chart1.series[8].setData(data[8],false);
+	chart1.series[9].setData(data[9],false);
+	chart1.series[10].setData(data[10],false);
+	chart1.series[11].setData(data[11],false);
+	chart1.series[12].setData(data[12],false);
+	chart1.series[13].setData(data[13],false);
+	chart1.series[14].setData(data[14],false);
+	chart1.series[15].setData(data[15],false);
+	chart1.series[16].setData(data[16],false);
+
+	PuissMoyJour = data[17];
+	PuissMoyFonc = data[18];
+	chart1.redraw();
+	chart1.hideLoading();
+	
+	// tracage des gauges
+	document.getElementById('graphe_gauge1').style.visibility="visible";
+	document.getElementById('graphe_gauge2').style.visibility="visible";
+	graphe_gauge1.series[0].points[0].update(data[17]);
+	graphe_gauge2.series[0].points[0].update(data[18]);
+	
+	dataPuiss = data[2];
+	// chart1.renderer.label('Puissance Moyenne<br> sur la journée<br> =' + PuissMoyJour  ,100, 10)
+		// .attr({
+			// fill: '#DBEDFF',
+			// stroke: '<?php echo $color_gran; ?>',
+			// zIndex: 9,
+			// r: 20,
+			// padding: 8,
+			// width: 120,
+			// 'stroke-width': 2,
+		// })
+		// .add()
+		// .shadow(true);
+	// chart1.renderer.label('Puissance Moyenne<br> en fonctionnement<br> = ' + PuissMoyFonc ,650, 10)
+		// .attr({
+			// fill: '#DBEDFF',
+			// stroke: '<?php echo $color_gran; ?>',
+			// zIndex: 10,
+			// r: 20,
+			// width: 120,
+			// padding: 8,
+			// 'stroke-width': 2,
+		// })
+		// .add()
+		// .shadow(true);
+};
+
 //*****************Calendrier pickup********************************************************
 $(function() {
     $( ".input-group.date" ).datepicker({
@@ -49,6 +110,8 @@ $(function() {
         autoclose: true    
     })
     .on('changeDate', function(e){
+			graphe_gauge1.series[0].points[0].update(0);
+			graphe_gauge2.series[0].points[0].update(0);
             chart1.showLoading('loading');
             annee = e.format('yyyy');
             mois = e.format('mm');
@@ -59,31 +122,13 @@ $(function() {
                 data: 'channel=<?php echo $chart1_chan; ?>' + '&annee=' + annee + '&mois=' + mois + '&jour=' + jour + '&periode=1440',
                 cache: false,
                 success: function(data) {
-                    chart1.series[0].setData(data[0].data,false); //objet
-                    chart1.series[1].setData(data[1].data,false); 
-                    chart1.series[2].setData(data[2],false);// array
-                    chart1.series[3].setData(data[3],false);
-                    chart1.series[4].setData(data[4],false);
-                    chart1.series[5].setData(data[5],false);
-                    chart1.series[6].setData(data[6],false);
-                    chart1.series[7].setData(data[7],false);
-                    chart1.series[8].setData(data[8],false);
-                    chart1.series[9].setData(data[9],false);
-                    chart1.series[10].setData(data[10],false);
-                    chart1.series[11].setData(data[11],false);
-                    chart1.series[12].setData(data[12],false);
-                    chart1.series[13].setData(data[13],false);
-                    chart1.series[14].setData(data[14],false);
-                    chart1.series[15].setData(data[15],false);
-                    chart1.series[16].setData(data[16],false);
-                    chart1.redraw();
-                    chart1.hideLoading();
+					parse_data(data);
                 }
             });
     });
 });
 
-//$(document).ready(function(){
+// definition des graphiques
 $(function() {
     // ************* options communes a tous les charts ******************************
     Highcharts.setOptions({
@@ -184,6 +229,32 @@ $(function() {
 		},
 		xAxis: {
             tickInterval: 15*60*1000,
+			events: {
+				afterSetExtremes: function(event){ // declenchement en cas de zoom
+					// calcul de la puissance moyenne dans le zoom
+					var start = Math.ceil(event.min); // valeur mini du zoom
+					var end = Math.floor(event.max);  // valeur maxi du zoom
+					var cumul = 0;
+					var nombre = 0;
+
+					if (this.getExtremes().dataMin < event.min){ // si zoom in
+						// parcoure le tableau dataPuiss et fait la moyenne des valeurs uniquement entre les extremes du zoom
+						for(var i= 0; i < dataPuiss.length; i++){
+							if ((dataPuiss[i][0] > start) && (dataPuiss[i][0] < end)) {
+								//console.log(dataPuiss[i][0]);
+								cumul = cumul + dataPuiss[i][1];
+								nombre++;
+							}
+						}
+						moyenne = Math.round(cumul / nombre);
+						graphe_gauge2.setTitle({ text: 'Puissance moyenne zoom'});
+						graphe_gauge2.series[0].points[0].update(moyenne);
+					}else{ 										//si zoom out
+						graphe_gauge2.setTitle({ text: 'Puissance Moy. en Chauffe'});
+						graphe_gauge2.series[0].points[0].update(PuissMoyFonc); // on restaure la valeur initiale
+					}
+				}
+			},		
 		 },
 		series: [{
 			name: '<?php echo $chart1_name[0]; ?>',
@@ -339,40 +410,341 @@ $(function() {
 			data: []
 		}] 
 	});
-//****************************************************************************************************
+	
+    // *************chart 3 ********************************************
+	graphe_gauge1 = new Highcharts.Chart({
+	    chart: {
+			renderTo: 'graphe_gauge1',
+			backgroundColor: null,
+			borderWidth: 0,
+			borderRadius: 10,
+			type: 'gauge',
+	        plotBackgroundColor: null,
+	        plotBackgroundImage: null,
+	        plotBorderWidth: 0,
+	        plotShadow: false,
+			animation: {
+				duration: 2000,
+			},
+	    },
+		exporting: {
+			enabled: false
+		},
+	    title: {
+	        text: 'Puissance Moyenne journée',
+			style:{
+				fontSize: '10px'
+			},
+			y: 30,
+	    },
+	    
+	    pane: {
+	        startAngle: -120,
+	        endAngle: 120,
+	        background: [{
+	            backgroundColor: {
+	                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+	                stops: [
+	                    [0, '#FFF'],
+	                    [1, '#333']
+	                ]
+	            },
+	            borderWidth: 0,
+	            outerRadius: '109%'
+	        }, {
+	            backgroundColor: {
+	                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+	                stops: [
+	                    [0, '#333'],
+	                    [1, '#FFF']
+	                ]
+	            },
+	            borderWidth: 1,
+	            outerRadius: '107%'
+	        }, {
+	            // default background
+	        }, {
+	            backgroundColor: '#DDD',
+	            borderWidth: 0,
+	            outerRadius: '105%',
+	            innerRadius: '103%'
+	        }]
+	    },
+	       
+	    // the value axis
+	    yAxis: {
+	        min: 0,
+	        max: 100,
+	        
+	        minorTickInterval: 'auto',
+	        minorTickWidth: 1,
+	        minorTickLength: 10,
+	        minorTickPosition: 'inside',
+	        minorTickColor: '#666',
+	
+	        tickPixelInterval: 30,
+	        tickWidth: 1,
+	        tickPosition: 'inside',
+	        tickLength: 14,
+	        tickColor: '#666',
+	        labels: {
+                enabled: true,
+	            step: 1,
+	            rotation: 'auto',
+	        	style:{
+					fontSize: '8px'
+				}
+			},
+	        title: {
+	            text: '%',
+				y: 50,
+				//align: 'low',
+				style:{
+					color: '#666',
+					fontWeight: 'light',
+					fontSize: '12px'
+				}
+	        },
+	        plotBands: [{
+	            from: 0,
+	            to: 30,
+	            color: '#DDDF0D' 
+	        }, {
+	            from: 30,
+	            to: 90,
+	            color: '#55BF3B' 
+	        }, {
+	            from: 90,
+	            to: 100,
+	            color: 'orange' 
+	        }]        
+	    },
+		tooltip: {
+			enabled: false,
+		},
+		plotOptions: {
+			series: {
+				dial: {
+					// radius: '100%',
+					// backgroundColor: 'silver',
+					// borderColor: 'black',
+					borderWidth: 1,
+					baseWidth: 5,
+					topWidth: 1,
+					baseLength: '20%', // of radius
+					// rearLength: '50%'
+				},
+				dataLabels: {
+					enabled: true,
+					useHTML: true,
+					 // formatter: function(){
+						 // return this.y + '<center><img src="./img/battery.jpg"/></br></center>' ;
+					 // },
+					
+					//align: 'left',
+					x: 0,
+					y: 20,
+					//zIndex: 0,
+					borderWidth: 0,
+					style: {
+						fontSize: '12px'
+					},
+				}
+			}
+		},			
+	    series: [{
+	        name: 'PmoyJour',
+	        data: [0], 
+	    }],
+	
+	});
+
+    // *************chart 4 ********************************************
+	graphe_gauge2 = new Highcharts.Chart({
+	    chart: {
+			renderTo: 'graphe_gauge2',
+			backgroundColor: null,
+			borderWidth: 0,
+			borderRadius: 10,
+			type: 'gauge',
+	        plotBackgroundColor: null,
+	        plotBackgroundImage: null,
+	        plotBorderWidth: 0,
+	        plotShadow: false,
+			//width: 180,
+			animation: {
+				duration: 2000,
+			},
+	    },
+		exporting: {
+			enabled: false
+		},
+	    title: {
+	        text: 'Puissance Moy. en Chauffe',
+			style:{
+				fontSize: '10px'
+			},
+			y: 30,
+	    },
+	    
+	    pane: {
+	        startAngle: -120,
+	        endAngle: 120,
+	        background: [{
+	            backgroundColor: {
+	                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+	                stops: [
+	                    [0, '#FFF'],
+	                    [1, '#333']
+	                ]
+	            },
+	            borderWidth: 0,
+	            outerRadius: '109%'
+	        }, {
+	            backgroundColor: {
+	                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+	                stops: [
+	                    [0, '#333'],
+	                    [1, '#FFF']
+	                ]
+	            },
+	            borderWidth: 1,
+	            outerRadius: '107%'
+	        }, {
+	            // default background
+	        }, {
+	            backgroundColor: '#DDD',
+	            borderWidth: 0,
+	            outerRadius: '105%',
+	            innerRadius: '103%'
+	        }]
+	    },
+	       
+	    // the value axis
+	    yAxis: {
+	        min: 0,
+	        max: 100,
+	        
+	        minorTickInterval: 'auto',
+	        minorTickWidth: 1,
+	        minorTickLength: 10,
+	        minorTickPosition: 'inside',
+	        minorTickColor: '#666',
+	
+	        tickPixelInterval: 30,
+	        tickWidth: 1,
+	        tickPosition: 'inside',
+	        tickLength: 14,
+	        tickColor: '#666',
+	        labels: {
+                enabled: true,
+	            step: 1,
+	            rotation: 'auto',
+	        	style:{
+					fontSize: '8px'
+				}
+			},
+	        title: {
+	            text: '%',
+				y: 50,
+				//align: 'low',
+				style:{
+					color: '#666',
+					fontWeight: 'light',
+					fontSize: '12px'
+				}
+	        },
+	        plotBands: [{
+	            from: 0,
+	            to: 30,
+	            color: '#DDDF0D' 
+	        }, {
+	            from: 30,
+	            to: 90,
+	            color: '#55BF3B' 
+	        }, {
+	            from: 90,
+	            to: 100,
+	            color: 'orange' 
+	        }]        
+	    },
+		tooltip: {
+			enabled: false,
+	        // valueSuffix: ' %',
+		},
+		plotOptions: {
+			series: {
+				events: {
+					mouseOver: function () {
+					bulle = chart1.renderer.label('Faites un zoom sur le <br>graphe pour afficher <br>la puissance moyenne <br>dans le zoom'  ,350, 50);
+					bulle.attr({
+						fill: '#DBEDFF',
+						stroke: '<?php echo $color_gran; ?>',
+						zIndex: 15,
+						r: 20,
+						padding: 8,
+						width: 140,
+						'stroke-width': 2,
+					});
+					bulle.add();
+					bulle.shadow(true);
+					},
+					mouseOut: function () {
+						bulle.destroy();
+					},
+				},
+				dial: {
+					// radius: '100%',
+					// backgroundColor: 'silver',
+					// borderColor: 'black',
+					borderWidth: 1,
+					baseWidth: 5,
+					topWidth: 1,
+					baseLength: '20%', // of radius
+					// rearLength: '50%'
+				},
+				dataLabels: {
+					enabled: true,
+					useHTML: true,
+					 // formatter: function(){
+						 // return this.y + '<center><img src="./img/battery.jpg"/></br></center>' ;
+					 // },
+					
+					//align: 'left',
+					x: 0,
+					y: 20,
+					//zIndex: 0,
+					borderWidth: 0,
+					style: {
+						fontSize: '12px'
+					},
+				}
+			}
+		},			
+	    series: [{
+	        name: 'PmoyFonc',
+	        data: [0], 
+	    }],
+	
+	});
+
+
+
+
 //****************************************************************************************************
 // ************* chargement asynchrone des graphes****************************************************
     var chart2 = $('#graphe2').highcharts();
     chart1.showLoading('loading');
     chart2.showLoading('loading');
-
     var d = new Date();
+	
     $.ajax({
         dataType: "json",
         url: 'json_chan-period-2.php',
         data: 'channel=<?php echo $chart1_chan; ?>' + '&annee=' + d.getFullYear() + '&mois=' + (d.getMonth()+1) + '&jour=' + d.getDate() + '&periode=1440',
-        // data: 'channel=<?php echo $chart1_chan; ?>' + '&periode=720',
         cache: false,
         success: function(data) {
-            chart1.series[0].setData(data[0].data,false); //objet
-            chart1.series[1].setData(data[1].data,false); 
-            chart1.series[2].setData(data[2],false);// array
-            chart1.series[3].setData(data[3],false);
-            chart1.series[4].setData(data[4],false);
-            chart1.series[5].setData(data[5],false);
-            chart1.series[6].setData(data[6],false);
-            chart1.series[7].setData(data[7],false);
-            chart1.series[8].setData(data[8],false);
-            chart1.series[9].setData(data[9],false);
-            chart1.series[10].setData(data[10],false);
-            chart1.series[11].setData(data[11],false);
-            chart1.series[12].setData(data[12],false);
-            chart1.series[13].setData(data[13],false);
-            chart1.series[14].setData(data[14],false);
-            chart1.series[15].setData(data[15],false);
-            chart1.series[16].setData(data[16],false);
-            chart1.redraw();
-            chart1.hideLoading();
+			parse_data(data);
         }
     });
     
@@ -386,7 +758,13 @@ $(function() {
             chart2.hideLoading();
         }
     });
+//***************************************************************************************************
+    
 });
+	
+	
+
+
 </script>
 
 

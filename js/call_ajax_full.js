@@ -87,8 +87,7 @@ $.ajax({
         
         // ######## rafraichissement des données ########################################################
         // voir channel-nanoPK-v14.0d.txt pour les numeros de canaux
-        // ces numeros correspondent a une Nano PK v14.0d , pour une classic/HSV il y a des differences dans les numeros 
-        // il faudra donc adapter les canaux en conséquence
+        // ces numeros correspondent a une Nano PK v14.0d 
 
 
         // elements qui ne dependent pas d'un etat , mais de la valeur d'un channel
@@ -180,28 +179,9 @@ $.ajax({
         Droite14.innerHTML = channel[163];    
         Droite15.innerHTML = channel[164];    
         Droite16.innerHTML = channel[27];    
-       
-        
-        // changement vitesse vis bois
-        //if (channel[56] != 0) {
-        //    document.getElementById('nano-D2-vis').style.animationDuration = (1-(channel[56]/100))*5+0.5 + "s";
-        //}
-        //else {
-        //    document.getElementById('nano-D2-vis').style.animationDuration = "0s";
-        //}
-        
-
     },
 });
 };
-
-// $(document).ready(function(){
-    // $('button').click(function(){
-        // $('p').toggleClass('titi');
-    // });
-// });
-
-
 
 //alterne affichage bulles/tableau
 function clic() {

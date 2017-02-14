@@ -18,7 +18,7 @@
     ma configuration :
 </p>
 <p>
-        - Chaudière Hargassner NanoPK + régulation touchtronic + passerelle internet (pas obligatoire je pense)
+        - Chaudière Hargassner NanoPK + régulation touchtronic 
 </p>
 <p>
         - base MySQL/MariaDB sur NAS synology DS411J
@@ -46,17 +46,16 @@
 
     C'est pour cette raison qu'il est nécessaire d'héberger le site web en local , afin d'éviter de diffuser le telnet sur internet.
 </p>
-<p>
-    les paramètres diffusés par la chaudière ne portent pas les mêmes numéros en fonction du modèle de chaudière.
 
-    si vous disposez d'un modèle Classic ou HSV branché sur le réseau (c'est a dire avec touchtronic), des modifications seront à apporter.
-</p>
 <p>
     le site web est disponible ici : https://github.com/Jahislove/Hargassner
 </p>
 <p>
     le script python ici : https://github.com/Jahislove/hargassner-python
     
+</p>
+<p>
+    le forum pour discuter : http://forums.futura-sciences.com/habitat-bioclimatique-isolation-chauffage/503952-chaudieres-hargassner-regroupement-dinformations-98.html
 </p>
 <div>
     <br/>

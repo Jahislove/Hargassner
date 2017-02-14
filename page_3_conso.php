@@ -228,6 +228,7 @@ $(function() {
                 enabled: true,
                 style: {
                     fontSize: '8px',
+					textOutline: false,
                 },
                 rotation: 0,
                 color: '#F0DB0B',
@@ -246,7 +247,10 @@ $(function() {
             dataLabels: {
                 enabled: true,
                 style: {
-                    textShadow: false,
+                    textShadow: true,
+                    fontSize: '8px',
+					textOutline: false,
+					// textOutline: "0px 0px contrast",
                 },
                 rotation: 0,
                 color: '<?php echo $color_TextM; ?>',
@@ -378,118 +382,6 @@ $(function() {
 		}] 
 	});
 
-//******chart 3***************************************************************************************
-	// chart3 = new Highcharts.Chart({
-		// chart: {
-			// renderTo: 'conso_mois',
-		// },
-		// title: {
-			// text: 'Consommation par mois',
-	        // align: 'left',
-	        // x: 65,
-			// style:{
-				// color: '#4572A7',
-			// },
-		// },
-		// subtitle: {
-	        // align: 'left',
-	        // x: 65,
-			// text: ''
-		// },
-		// xAxis: {
-			// type: 'category',
-            // categories: ['Septembre', 'Octobre', 'Novembre', 'Decembre','Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout'],
-		 // },
-		// yAxis: [{
-			// gridLineColor: '#CACACA', 
-            // endOnTick: false,
-			// labels: {
-				// format: '{value} Kg',
-				// style: {
-					// color: '<?php echo $color_gran; ?>',
-				// }
-			// },
-		   // title: {
-				// text: '',
-			// },
-		// },{
-			// opposite: true,
-            // endOnTick: false,
-            // max: 40,
-			// labels: {
-				// format: '{value} °C',
-				// style: {
-					// color: '#72EA01',
-				// }
-			// },
-            // title: {
-				// text: '',
-			// },
-            // plotBands: {
-                // color: '#E7FFFF',
-                // from: 0,
-                // to: -30,
-            // },
-		// }],            
-		// tooltip: {
-	        // shared: true,
-			// crosshairs: true,
-			// borderRadius: 26,
-			// borderWidth: 2,
-		 // },
-		// plotOptions: {
-			// series: {
-				// marker: {
-					// enabled: true,
-				// },
-                // connectNulls: false,
-                // grouping: false,
-			// }
-		// },
-
-		// series: [{
-			// name: '<?php echo $chart3_name[0]; ?>',
-			// type: 'column',
-            // pointPlacement: 0,
-            // pointPadding: 0.1,
-			// color: '<?php echo $color_gran; ?>',
-            // borderWidth: 0,
-            // dataLabels: {
-                // enabled: true,
-                // rotation: 0,
-                // color: '#F0DB0B',
-                // align: 'center',
-                // y: 35,
-            // },
-            // tooltip: {
-                // valueSuffix: ' Kg',
-             // },
-			// zIndex: 1,
-			// data: []
-		// }, {
-			// name: '<?php echo $chart3_name[1]; ?>',
-			// type: 'spline',
-            // pointPlacement: 0,
-            // pointPadding: 0.3,
-            // yAxis: 1,
-            // color: '<?php echo $color_TextM; ?>',
-            // dataLabels: {
-                // enabled: true,
-                // style: {
-                    // textShadow: false,
-                // },
-                // rotation: 0,
-                // color: '<?php echo $color_TextM; ?>',
-                // align: 'center',
-                // y: 0,
-            // },
-            // tooltip: {
-                // valueSuffix: ' °C',
-             // },
-			// zIndex: 2,
-			// data: []
-		// }] 
-	// });
 //*******chart 4************************************************************************************
 	chart4 = new Highcharts.Chart({
 		chart: {
@@ -628,21 +520,8 @@ $(function() {
         
 // ************* chargement asynchrone des graphes****************************************************
     chart2.showLoading('Cliquez sur le graphe du haut pour afficher le détail')
-    // chart3.showLoading('loading');
     chart4.showLoading('loading');
 
-    // $.ajax({
-        // dataType: "json",
-        // url: 'json_conso_saison.php',
-        // cache: false,
-        // success: function(data) {
-            // chart3.setTitle(null, {text: 'Saison ' + data[2]},false );
-            // chart3.series[0].setData(data[0],false);
-            // chart3.series[1].setData(data[1],false);
-            // chart3.redraw();
-            // chart3.hideLoading();
-        // }
-    // });
 
     $.ajax({
         dataType: "json",

@@ -3,6 +3,13 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
+v1.8	14/02/2017
+	ajout 3 jauges de puissance (page variables) : 
+		puissance moyenne sur la journée, 
+		puissance moyenne sur le temps de chauffe 
+		puissance moyenne sur la selection du zoom (remplace la jauge temps de chauffe quand on zoom sur le graphique)
+	upgrade Highchart en version 5.0.7
+
 v1.7	08/01/2017
 	ajout courbe conso journaliere (page variables)
 	

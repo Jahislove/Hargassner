@@ -344,6 +344,23 @@ a:hover{
 .rel {
     width: 100%; /*1206px;*/
 }
+.graphe_gauge {
+    display: inline-block;
+    visibility: hidden;
+	position: absolute;
+    width: 150px;
+	height: 200px;
+	z-index: 10;
+}
+.graphe_gaugePos1{
+	top: 90px;
+	left: 80px;
+}
+.graphe_gaugePos2{
+	top: 90px;
+	left: 210px;
+}
+
 .graphe_size {
     display: inline-block;
 	width: 99%;
@@ -828,9 +845,9 @@ a:hover{
     position: absolute;
     z-index: 0;
     left: 230px;
-    bottom: 80px;
+    bottom: 70px;
     width: 140px;
-    height: 155px;
+    height: 163px;
 	display: inline-block;
   /* background: url("../img/Silo-textile-GWTS-XXL2.png") no-repeat; */
 
