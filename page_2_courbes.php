@@ -16,7 +16,7 @@
     $chart2_chan = "c157,c0,c53,c134,c129";
     
     // requete pour initialiser la date
-	$query1 = "SELECT YEAR(dateB),MONTH(dateB),DAY(dateB) FROM consommation 
+	$query1 = "SELECT YEAR(dateB),MONTH(dateB),DAY(dateB) FROM consommation  
              LIMIT 1";
 	connectMaBase($hostname, $database, $username, $password);
     $req1 = mysql_query($query1) ;
@@ -24,6 +24,10 @@
 
     $data = mysql_fetch_row($req1);
     $dateMin = [$data[0],$data[1],$data[2]];
+	
+	if (empty($data[0])){
+		$dateMin = ['2017','01','01']; 
+	}
 ?>
 
 <div class="rel">
