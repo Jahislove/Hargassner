@@ -973,7 +973,7 @@ a:hover{
 	top: 0px;
     width: 140px;
 	height: 60px;
-    z-index: 0;
+    z-index: 7;
 }
 #tooltip_chauffage { /* zone de survol*/
     position: absolute;
@@ -981,7 +981,7 @@ a:hover{
 	top: 170px;
     width: 140px;
 	height: 60px;
-    z-index: 0;
+    z-index: 6;
 }
 .tooltip-general { /* zone de survol*/
     position: absolute;
