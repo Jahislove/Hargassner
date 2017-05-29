@@ -959,7 +959,31 @@ a:hover{
     height: 200px;
 }
 /*** TOOLTIP ********************************/
-.tooltip { /* zone de survol*/
+#tooltip_Tint { /* zone de survol*/
+    position: absolute;
+    left: 70px;
+	top: 90px;
+    width: 140px;
+	height: 60px;
+    z-index: 5;
+}
+#tooltip_Text { /* zone de survol*/
+    position: absolute;
+    left: 150px;
+	top: 0px;
+    width: 140px;
+	height: 60px;
+    z-index: 0;
+}
+#tooltip_chauffage { /* zone de survol*/
+    position: absolute;
+    left: 70px;
+	top: 170px;
+    width: 140px;
+	height: 60px;
+    z-index: 0;
+}
+.tooltip-general { /* zone de survol*/
     position: absolute;
     left: 130px;
 	top: 45px;
