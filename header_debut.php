@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
+    <?php require_once("conf/config0.inc.php");?>
     <?php require_once("conf/config.inc.php");?>
     <?php  ?>
 <head>
@@ -36,11 +37,14 @@
     var chart_silo; 
     var etat;
 
-    // auto refresh des données avec ajax
+
+		// auto refresh des données avec ajax
+	// l'appel initial de cette fonction se fait dans graph_live.inc.php
     function requestData() { 
         call_ajax(); //appel ajax au loading dans call_ajax_full.js
-        id = setInterval(call_ajax,refresh*1000); 
+        id = setInterval(call_ajax,refresh*1000); // recharge les data toutes les x secondes
         setTimeout(stop_refresh, 60000000); // 600000ms  stop rafraichissement apres 10 mn 
     };
     function stop_refresh() {clearInterval(id)};
+	
 </script>

@@ -3,6 +3,14 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
+v1.9	
+	ajout gestion d'un ballon ECS
+	ajout pompe zone chauffage et ECS 
+	la pompe ECS necessite le firmware 14.0g ( voir peut etre le F ou E , en effet des parametres ont été ajouté 
+	après la version D mais je ne sais pas laquelle exactement)
+	correction bug : page variable qui ne s'affichait pas a la premiere utilisation
+	
+
 v1.8	14/02/2017
 	ajout 3 jauges de puissance (page variables) : 
 		puissance moyenne sur la journée, 

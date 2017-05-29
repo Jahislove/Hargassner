@@ -240,7 +240,7 @@ a:hover{
 }
 
 /**************************************************************************************************/	
-/******************* tableau instantane ***********************************************************/	
+/******************* tableau des valeurs instantanees *********************************************/	
 /**************************************************************************************************/	
 .TableInstant th{
     background-color: #f0f0f0;
@@ -774,21 +774,10 @@ a:hover{
 	background: url("../img/bulles.png") no-repeat;
     background-position: 50% ;
 }
-.depart-bulle {
-    position: absolute;
-    z-index: 2;
-    left: 772px;
-	top: 130px;
-    width: 446px;
-	height: 200px;
-	display: inline-block;
-	background: url("../img/bulles.png") no-repeat;
-    background-position: 66.66% ;
-}
 .bois-bulle {
     position: absolute;
     z-index: 2;
-    left: 630px;
+    left: 600px;/*630px;*/
 	top: 615px;
     width: 446px;
 	height: 200px;
@@ -796,28 +785,121 @@ a:hover{
 	background: url("../img/bulles.png") no-repeat;
     background-position: 83.33% ;
 }
-.maison-bulle {
-    position: absolute;
-    z-index: 2;
-    left: 700px;
-	top: -70px;
-    width: 446px;
-	height: 200px;
-	display: inline-block;
-	background: url("../img/bulles.png") no-repeat;
-    background-position: 100% ;
-}
 .silo-bulle {
     position: absolute;
     z-index: 2;
     left: 670px;
-	top: 320px;
+	top: 370px; /*320px;*/
     width: 446px;
 	height: 300px;
 	display: inline-block;
 	background: url("../img/bulle-silo.png") no-repeat;
 }
-/*** TEXTE BULLE*************************/
+.maison-bulle {
+    position: absolute;
+    z-index: 2;
+    left: 750px;
+	top: -50px;
+    width: 446px;
+	height: 600px;
+	display: inline-block;
+	background: url("../img/maison.png") no-repeat;
+}
+	#pompe-radiat {
+		position: absolute;
+		z-index: 2;
+		left: 60px;
+		top: 260px;
+		width: 100px;
+		height: 135px;
+		display: inline-block;
+	}
+	#ballonECS-bulle {
+		position: absolute;
+		z-index: 2;
+		left: 95px;
+		top: 0px;
+		width: 446px;
+		height: 300px;
+		display: inline-block;
+	}
+	.tuyau-ECS {
+		position: absolute;
+		z-index: 1;
+		left: 0px;
+		top: 0px;
+		width: 446px;
+		height: 600px;
+		display: inline-block;
+		background: url("../img/tuyauECS.png") no-repeat;
+	}
+	.ballonECS-0 {
+		background: url("../img/ballonECS.png") no-repeat;
+		background-position: 0% ; /*11 images 0% 10%... */
+	}
+	.ballonECS-10 {
+		background: url("../img/ballonECS.png") no-repeat;
+		background-position: 10% ; 
+	}
+	.ballonECS-20 {
+		background: url("../img/ballonECS.png") no-repeat;
+		background-position: 20% ; 
+	}
+	.ballonECS-30 {
+		background: url("../img/ballonECS.png") no-repeat;
+		background-position: 30% ; 
+	}
+	.ballonECS-40 {
+		background: url("../img/ballonECS.png") no-repeat;
+		background-position: 40% ; 
+	}
+	.ballonECS-50 {
+		background: url("../img/ballonECS.png") no-repeat;
+		background-position: 50% ; 
+	}
+	.ballonECS-60 {
+		background: url("../img/ballonECS.png") no-repeat;
+		background-position: 60% ; 
+	}
+	.ballonECS-70 {
+		background: url("../img/ballonECS.png") no-repeat;
+		background-position: 70% ; 
+	}
+	.ballonECS-80 {
+		background: url("../img/ballonECS.png") no-repeat;
+		background-position: 80% ; 
+	}
+	.ballonECS-90 {
+		background: url("../img/ballonECS.png") no-repeat;
+		background-position: 90% ; 
+	}
+	.ballonECS-100 {
+		background: url("../img/ballonECS.png") no-repeat;
+		background-position: 100% ; 
+	}
+		#pompe-ECS {
+			position: absolute;
+			z-index: 2;
+			left: 125px;
+			top: 260px;
+			width: 100px;
+			height: 135px;
+			display: inline-block;
+		}
+.pompeOFF {
+	background: url("../img/pompe.png") no-repeat;
+	background-position: 0% ; /* 2 images : 0%  100% */
+}
+.pompeON {
+	background: url("../img/pompe.png") no-repeat;
+    animation: anim_pompe 0.3s steps(5) infinite ;
+}
+@keyframes anim_pompe {
+    from { background-position: 20%; }
+    to       { background-position: 120%; }
+}
+
+	/*** TEXTE BULLE*************************/
 .texte-bulle {
     position: relative;
 	display: block;
@@ -826,18 +908,34 @@ a:hover{
     font-size: 40px ;
     text-align: center;
 }
+.radiateur-texte {
+    position: relative;
+	display: block;
+    z-index: 3;
+    top: 165px;
+    left: 75px;
+    font-size: 20px ;
+}
+.BallonECS-texte {
+    position: relative;
+	display: block;
+    z-index: 3;
+    top: 100px;
+    left: 200px;
+    font-size: 20px ;
+}
 .maison-Tint-texte {
     position: relative;
     z-index: 3;
-    left: 212px;
-    top: 90px;
+    left: 125px;
+    top: 110px;
     font-size: 20px ;
 }
 .maison-Text-texte {
     position: relative;
     z-index: 3;
-    left: 275px;
-    top: 90px;
+    left: 155px;
+    top: 15px;
     font-size: 20px ;
 }
 .silo-texte {

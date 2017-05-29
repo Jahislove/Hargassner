@@ -38,18 +38,24 @@
             <span class="tooltip"><a>Température intérieur et extérieur</a></span>
             <span id="Tint-texte"   class='maison-Tint-texte'></span>
             <span id="Text-texte"   class='maison-Text-texte'></span>
+			<span class="tooltip"><a>température de départ chauffage</a></span>
+			<span id="radiateur-texte" class='radiateur-texte'></span>
+			<span id="pompe-radiat" class='pompeOFF'></span>
+
+			<span id="ballonECS-bulle" class='hidden'>
+				<span class="tooltip"><a>Ballon ECS</a></span>
+				<span id="ballonECS-texte"   class='BallonECS-texte'></span>
+				<span id="pompe-ECS" class='pompeOFF'></span>
+				<span id="tuyau-ECS" class='tuyau-ECS'></span>				
+			</span>
         </span>
-        
-        <span class='depart-bulle'>
-            <span class="tooltip"><a>température de départ de l'eau</a></span>
-            <span id="depart-texte" class='texte-bulle'></span>
-        </span>
-        
+
         <span id="silo-bulle" class='silo-bulle'>
             <span class="tooltip"><a>quantité de granulés restant</a></span>
             <span id="silo-texte"   class='silo-texte'></span>
             <img id="silo" src="img/Silo-textile-GWTS-XXL2.png"></img>
         </span>
+
 
         <span class='bois-bulle'>
             <span class="tooltip"><a>pourcentage d'amené de la vis à granulé</a></span>
@@ -71,17 +77,15 @@
                 <tr><th>T° depart doit</th>     <td id="Gauche9">?</td></tr>    
                 <tr><th>Variable F</th>         <td id="Gauche10">?</td></tr>    
                 <tr><th>Variable K</th>         <td id="Gauche11">?</td></tr>    
-                <tr><th>channel 12 : TRL</th>   <td id="Gauche12">?</td></tr>    
-                <tr><th>channel 13 : TRLsoll</th><td id="Gauche13">?</td></tr>    
+                <tr><th>T° retour</th>   		<td id="Gauche12">?</td></tr>    
+                <tr><th>T° retour doit</th>		<td id="Gauche13">?</td></tr>    
                 <tr><th>channel 15 : Tplat</th> <td id="Gauche14">?</td></tr>    
                 <tr><th>channel 25 : TR1</th>   <td id="Gauche15">?</td></tr>    
                 <tr><th>channel 26 : TR2</th>   <td id="Gauche16">?</td></tr>    
                 <tr><th>channel 45 : TRs_A</th> <td id="Gauche17">?</td></tr>    
                 <tr><th>channel 46 : TRs_1</th> <td id="Gauche18">?</td></tr>    
-                <tr><th>channel 58 : I Ra</th>  <td id="Gauche19">?</td></tr>    
-                <tr><th>channel 59 : I Aa</th>  <td id="Gauche20">?</td></tr>    
-                <tr><th>channel 110 : Höchste A</th><td id="Gauche21">?</td></tr>    
-                <tr><th>channel 129 : BRT</th>  <td id="Gauche22">?</td></tr>    
+                <tr><th>channel 110 : Höchste A</th><td id="Gauche19">?</td></tr>    
+                <tr><th>channel 129 : BRT</th>  <td id="Gauche20">?</td></tr>    
            </table>
         </span>
         <span id='droite'>  
@@ -101,7 +105,8 @@
                 <tr><th>nombre allumage</th>        <td id="Droite13">?</td></tr>  
                 <tr><th>heure puissance > 90%</th>  <td id="Droite14">?</td></tr>  
                 <tr><th>veille</th>                 <td id="Droite15">?</td></tr>  
-                <tr><th>Ballon ECS</th>             <td id="Droite16">?</td></tr>  
+                <tr><th>Ballon ECS °C</th>          <td id="Droite16">?</td></tr>  
+                <tr><th>Ballon ECS On/Off/recyc</th>      <td id="Droite17">?</td></tr>  
 
             </table>
        </span>

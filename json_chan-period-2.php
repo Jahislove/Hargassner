@@ -1,6 +1,8 @@
 <?php
 // appelé par ajax, specifique page-2-courbes.php / graphe 1
 
+//echo '<script>console.log('.$variable.')</script>';
+
 require_once("conf/config.inc.php");
  
 
@@ -25,6 +27,8 @@ require_once("conf/config.inc.php");
     $dict = ['','arret','Allumage','Demarrage','Controle allumage','Allumeur','Demarrage combustion','Combustion','Veille','Arret pour decendrage','decendrage','Refroidissement','Nettoyage'];
     $dict2= ['','0','0','0','0','0','0','0','0','100','100','0','100'];
     $dict3= ['','Non','Non','Non','Non','Non','Non','Non','Non','En attente arrêt','Décendrage','Non','Nettoyage'];
+	$dict4= ['0','100','50']; // ballon ECS off/on/recyclage
+	$dict5= ['arret','en chauffe','recyclage']; // ballon ECS on/off
     while($data = mysql_fetch_row($req)){
         $dateD = strtotime($data[0]) * 1000;
         $liste0['data'][] = [x => $dateD, y => $data[1],valeur => $dict[$data[1]] ];
@@ -44,17 +48,13 @@ require_once("conf/config.inc.php");
         $liste14[] = [$dateD, $data[15]];
         $liste15[] = [$dateD, $data[16]];
         $liste16[] = [$dateD, $data[17]];
+        $liste17['data'][] = [x => $dateD, y => $dict4[intval($data[18])],valeur => $dict5[intval($data[18])] ];
+		
 		if ( $data[5] > 0 ) {  //pour calcul puissance moyenne on n'utilise que la periode ou "chaudiere doit" est > 0
 			$listePmoyFonc[] = $data[3];
 		}
     }
 	
-	//calcul puissance moyenne sur la journee
-	$Pmoy2 = array_sum(array_column($liste2, 1))/count(array_column($liste2, 1));
-	$PmoyJour = round($Pmoy2, 0);
-	//calcul puissance moyenne en fonctionnement (chaudiere doit)
-	$Pmoy3 = array_sum($listePmoyFonc)/count($listePmoyFonc);
-	$PmoyFonc = round($Pmoy3, 0);
 	
 	
 	
@@ -85,6 +85,16 @@ require_once("conf/config.inc.php");
     $liste14 = array_reverse($liste14);
     $liste15 = array_reverse($liste15);
     $liste16 = array_reverse($liste16);
-    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13,$liste14,$liste15,$liste16,$PmoyJour,$PmoyFonc];
+    $liste17['data'] = array_reverse($liste17['data']);// est un objet
+
+	//calcul puissance moyenne sur la journee
+	$Pmoy2 = array_sum(array_column($liste2, 1))/count(array_column($liste2, 1));
+	$PmoyJour = round($Pmoy2, 0);
+	//calcul puissance moyenne en fonctionnement (chaudiere doit)
+	$Pmoy3 = array_sum($listePmoyFonc)/count($listePmoyFonc);
+	$PmoyFonc = round($Pmoy3, 0);
+	
+	
+    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13,$liste14,$liste15,$liste16,$liste17,$PmoyJour,$PmoyFonc];
     echo json_encode($tableau, JSON_NUMERIC_CHECK);
 ?>

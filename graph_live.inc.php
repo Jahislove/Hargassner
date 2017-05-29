@@ -30,7 +30,7 @@ $(function() {
 			defaultSeriesType: 'line',
 			zoomType: 'x',
 			events: {
-				load: requestData // in header.php
+				load: requestData, // in header.php
 			}
 		},
 		title: {

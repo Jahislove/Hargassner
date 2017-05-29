@@ -14,7 +14,7 @@ $database = "Hargassner"; // nom de la BDD
 $username = "hargassner"; // utilisateur mysql
 $password = "password";
 
-//*****couleurs ************************************************	
+//*****couleurs (code couleur HTML)************************************************	
 $color_TdepD = '#781BE1'; 
 $color_TdepE = '#EA7C01';
 $color_Tchaud = '#E662CC';

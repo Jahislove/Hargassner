@@ -1,14 +1,22 @@
-// appel ajax et rafraichissement des données
+// ######## rafraichissement des données ########################################################
+// voir channel-nanoPK-vxxxx.txt pour les numeros de canaux
+
 function call_ajax() {
+
 $.ajax({
     url: 'json_telnet.php', 
     cache: false,
     success: function(channel) {
         heure = channel[0]; // stock la date puis
-        channel.shift(); // supprime la 1ere valeur (date) pour etre synchro avec les numero de channel
+        channel.shift(); // supprime la 1ere valeur (date) et decale les autres pour etre synchro avec les numero de channel
 
+		// initialise les variables (utilisées) au dela du chanel 164 au cas ou le firmware < 14.g 
+		if (typeof channel[183] === 'undefined') {
+			channel[183] = 0;
+		}		 
         // animation du dessin par chargement de class CSS
-        // + remplace valeur numerique de "etat" par un texte
+
+        // remplace valeur numerique de "etat" par un texte
         switch(channel[0]) { 
             case 0:
                 etat = '0';
@@ -16,9 +24,11 @@ $.ajax({
             case 1:
                 etat = 'Arrêt';
                 document.getElementById('nano-D1').className = 'foyer_eteint';
+                document.getElementById('nano-C1').className = 'coeur_eteint';
                 document.getElementById('nano-D2').className = 'vis_stop';
                 document.getElementById('nano-B1').className = 'ressort_fixe';
-                break;
+                document.getElementById('nano-E1').className = 'cendrier_ferme';
+				break;
             case 2:
                 etat = 'Allumage';
                 document.getElementById('nano-D1').className = 'foyer_allumage';
@@ -85,11 +95,6 @@ $.ajax({
                 break;
         }
         
-        // ######## rafraichissement des données ########################################################
-        // voir channel-nanoPK-v14.0d.txt pour les numeros de canaux
-        // ces numeros correspondent a une Nano PK v14.0d 
-
-
         // elements qui ne dependent pas d'un etat , mais de la valeur d'un channel
         // l'extracteur de fumée 
         if ( channel[53] > 0 ) {
@@ -99,19 +104,47 @@ $.ajax({
             document.getElementById('nano-A1').className = 'extr_fixe'; 
         }
         
-        // test presence ballon ECS ( valeur=140 egal ballon absent) 
-        if ( channel[27] == 140 ) {
-            channel[27] = "null"; 
-        }
-
-        // aspiration RAPS
-        if ( channel[169] == 2000 ) {
-            document.getElementById('nano-A2').className = 'RAPS_anime'; 
-        }
-        else {
-            document.getElementById('nano-A2').className = 'RAPS_fixe'; 
-        }
-        
+		// test presence et remplissage ballon ECS 
+		var TempECS = channel[27];
+		switch ( true ) {
+			case (TempECS==140): // ballon ECS absent
+				channel[27] = "null";
+				break;
+			case (TempECS<20):
+				document.getElementById('ballonECS-bulle').className = 'visible ballonECS-0 tuyau-ECS';
+				break;
+			case (TempECS<30):
+				document.getElementById('ballonECS-bulle').className = 'visible ballonECS-10 tuyau-ECS';
+				break;
+			case (TempECS<40):
+				document.getElementById('ballonECS-bulle').className = 'visible ballonECS-20 tuyau-ECS';
+				break;
+			case (TempECS<43):
+				document.getElementById('ballonECS-bulle').className = 'visible ballonECS-30 tuyau-ECS';
+				break;
+			case (TempECS<46):
+				document.getElementById('ballonECS-bulle').className = 'visible ballonECS-40 tuyau-ECS';
+				break;
+			case (TempECS<49):
+				document.getElementById('ballonECS-bulle').className = 'visible ballonECS-50 tuyau-ECS';
+				break;
+			case (TempECS<52):
+				document.getElementById('ballonECS-bulle').className = 'visible ballonECS-60 tuyau-ECS';
+				break;
+			case (TempECS<55):
+				document.getElementById('ballonECS-bulle').className = 'visible ballonECS-70 tuyau-ECS';
+				break;
+			case (TempECS<58):
+				document.getElementById('ballonECS-bulle').className = 'visible ballonECS-80 tuyau-ECS';
+				break;
+			case (TempECS<=60):
+				document.getElementById('ballonECS-bulle').className = 'visible ballonECS-90 tuyau-ECS';
+				break;
+			default:
+				document.getElementById('ballonECS-bulle').className = 'visible ballonECS-100 tuyau-ECS';
+			
+		}
+			
         // rafraichissement etat
         document.getElementById('etat').innerHTML = etat;
         
@@ -122,12 +155,33 @@ $.ajax({
         document.getElementById('puiss-texte').innerHTML =  channel[134] + '%';
         document.getElementById('Tint-texte').innerHTML =  channel[138] + '°C';
         document.getElementById('Text-texte').innerHTML =  channel[6] + '°C';
-        document.getElementById('depart-texte').innerHTML =  channel[21] + '°C';
+        document.getElementById('radiateur-texte').innerHTML =  channel[21] + '°C';
+        document.getElementById('ballonECS-texte').innerHTML =  channel[27] + '°C';
         document.getElementById('bois-texte').innerHTML =  channel[56] + '%';
         
+		// rafraichissement des pompes
+		if ( channel[23] > 0 ) {
+			document.getElementById('pompe-radiat').className = 'pompeON';
+        } else {
+			document.getElementById('pompe-radiat').className = 'pompeOFF';
+		}	
+		if ( channel[183] == 2 ) {
+			document.getElementById('pompe-ECS').className = 'pompeON';
+        } else {
+			document.getElementById('pompe-ECS').className = 'pompeOFF';
+		}	
+
         // rafraichissement graphe silo
         chart_silo.series[0].points[0].update(channel[115]);
-       
+
+        // aspiration RAPS : desactivé car parametre non connu
+        // if ( channel[?] == 2000 ) {
+            // document.getElementById('nano-A2').className = 'RAPS_anime'; 
+        // }
+        // else {
+            // document.getElementById('nano-A2').className = 'RAPS_fixe'; 
+        // }
+
         // rafraichissement graphe live
         var shift = chart_live.series[0].data.length > histo_live_shift;
         chart_live.series[0].addPoint([heure, channel[0]], true, shift);
@@ -158,10 +212,8 @@ $.ajax({
         Gauche16.innerHTML = channel[26];    
         Gauche17.innerHTML = channel[45];    
         Gauche18.innerHTML = channel[46];    
-        Gauche19.innerHTML = channel[58];    
-        Gauche20.innerHTML = channel[59];    
-        Gauche21.innerHTML = channel[110];    
-        Gauche22.innerHTML = channel[129];    
+		Gauche19.innerHTML = channel[110];    
+        Gauche20.innerHTML = channel[129];    
 
         Droite1.innerHTML = channel[98];    
         Droite2.innerHTML = channel[111];    
@@ -179,6 +231,7 @@ $.ajax({
         Droite14.innerHTML = channel[163];    
         Droite15.innerHTML = channel[164];    
         Droite16.innerHTML = channel[27];    
+        Droite17.innerHTML = channel[92];    
     },
 });
 };

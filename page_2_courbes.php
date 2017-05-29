@@ -1,4 +1,4 @@
-﻿<?php require("header_debut.php"); ?>
+<?php require("header_debut.php"); ?>
 <script type="text/javascript" src="js/call_ajax_light.js">	</script>
 <?php require("header_fin.php"); ?>
     
@@ -10,8 +10,8 @@
 </div>
 
 <?php
-    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ est','T° Départ doit','Conso du jour']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
-    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c99"; //23 la 2 eme valeur (decendrage) est calculé d'apres c0
+    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','T° Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ est','T° Départ doit','Conso du jour','Ballon ECS Etat']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
+    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c99,c92"; // la 2 eme valeur (decendrage) est calculé d'apres c0
     $chart2_name = ['allumage electrique','-','-','-','-'];
     $chart2_chan = "c157,c0,c53,c134,c129";
     
@@ -62,43 +62,21 @@ function parse_data(data) {
 	chart1.series[14].setData(data[14],false);
 	chart1.series[15].setData(data[15],false);
 	chart1.series[16].setData(data[16],false);
+	chart1.series[17].setData(data[17].data,false); //objet
 
-	PuissMoyJour = data[17];
-	PuissMoyFonc = data[18];
+	PuissMoyJour = data[18];
+	PuissMoyFonc = data[19];
+
 	chart1.redraw();
 	chart1.hideLoading();
 	
 	// tracage des gauges
 	document.getElementById('graphe_gauge1').style.visibility="visible";
 	document.getElementById('graphe_gauge2').style.visibility="visible";
-	graphe_gauge1.series[0].points[0].update(data[17]);
-	graphe_gauge2.series[0].points[0].update(data[18]);
+	graphe_gauge1.series[0].points[0].update(PuissMoyJour);
+	graphe_gauge2.series[0].points[0].update(PuissMoyFonc);
 	
 	dataPuiss = data[2];
-	// chart1.renderer.label('Puissance Moyenne<br> sur la journée<br> =' + PuissMoyJour  ,100, 10)
-		// .attr({
-			// fill: '#DBEDFF',
-			// stroke: '<?php echo $color_gran; ?>',
-			// zIndex: 9,
-			// r: 20,
-			// padding: 8,
-			// width: 120,
-			// 'stroke-width': 2,
-		// })
-		// .add()
-		// .shadow(true);
-	// chart1.renderer.label('Puissance Moyenne<br> en fonctionnement<br> = ' + PuissMoyFonc ,650, 10)
-		// .attr({
-			// fill: '#DBEDFF',
-			// stroke: '<?php echo $color_gran; ?>',
-			// zIndex: 10,
-			// r: 20,
-			// width: 120,
-			// padding: 8,
-			// 'stroke-width': 2,
-		// })
-		// .add()
-		// .shadow(true);
 };
 
 //*****************Calendrier pickup********************************************************
@@ -273,7 +251,7 @@ $(function() {
 		}, {
 			name: '<?php echo $chart1_name[1]; ?>',
 			color: '<?php echo $color_decend; ?>',
-            legendIndex: 16,
+            legendIndex: 17,
             turboThreshold: 1500,
             type: 'area',
             zIndex: -1,
@@ -349,8 +327,8 @@ $(function() {
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[10]; ?>',
-			color: '<?php echo $color_varF; ?>',// ECS
-            legendIndex: 11,
+			color: '<?php echo $color_ECS_T; ?>',// ECS
+            legendIndex: 15,
             visible: false,
 			data: []
 		}, {
@@ -386,9 +364,20 @@ $(function() {
 		}, {
 			name: '<?php echo $chart1_name[16]; ?>',
 			color: '<?php echo $color_gran; ?>',
-            legendIndex: 15,
+            legendIndex: 14,
             visible: false,
 			data: [],
+		}, {
+			name: '<?php echo $chart1_name[17]; ?>',
+			color: '<?php echo $color_ECS_etat; ?>',
+            legendIndex: 16,
+            turboThreshold: 1500,
+            type: 'area',
+            zIndex: -1,
+            tooltip: {
+                pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.valeur}</b><br/>',		
+            },
+			data: []
 		}] 
 	});
     // *************chart 2 ********************************************
