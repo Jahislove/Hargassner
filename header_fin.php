@@ -10,7 +10,7 @@
             $ligne = fgets($config_github); //lit chaque ligne du fichier
             $ligne_version = strstr($ligne,'version'); //recherche la chaine 'version'
             if ($ligne_version) {
-                $version_github = floatval(explode('=',$ligne_version)[1]); // explode en champ, et extrait la valeur decimal du champ 1
+                $version_github = floatval(explode('=',$ligne_version)[1]); // explode en champ, et extrait la valeur en decimal du champ 1
                 break;
             }
         }

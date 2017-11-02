@@ -3,7 +3,8 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
-v1.11	10/10/2017
+v2.0	02/11/2017
+	refonte page consommation
 	upgrade JQuery 3.2.1
 	upgrade bootstrap 3.3.7
 	upgrade datepicker 1.6.4
@@ -12,8 +13,6 @@ v1.11	10/10/2017
 	info : sur  synology , l'upgrade de webstation en v 2.1.0-0128 semble desactiver l'extension mysql
 	penser a la reactiver dans les options
 
-v1.10 	02/09/2017
-	refonte page consommation
 
 v1.9	20/05/2017	
 	ajout gestion d'un ballon ECS
