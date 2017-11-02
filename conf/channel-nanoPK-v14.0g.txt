@@ -12,6 +12,7 @@ etat
 10  decendrage
 11  refroidissement ?
 12  nettoyage
+17	assistant de combustion
 
 ces channels sont trouvables dans les fichiers de log DAQ de la chaudiere
 j'ai simplement mis en forme et ajouté en francais les parametres que j'ai pu identifier

@@ -36,4 +36,5 @@ require_once("conf/config.inc.php");
     $liste7 = array_reverse($liste7);
     $tableau = [$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7];
     echo json_encode($tableau, JSON_NUMERIC_CHECK);
+	
 ?>

@@ -54,21 +54,29 @@ $tooltip_temp = ['valueSuffix' => ' °C'];
 // formule pour calculer la position des colonnes (le pointPlacement) en fonction du nombre de saison
 $y = -($nbre_saison - 1)*(1/($nbre_saison*2));
 
+
+$colors_gran = ['rgba(230,126,34,1)','rgba(155,89,182,1)','rgba(41,128,185,1)','rgba(46,204,113,1)','rgba(241,196,15,1)','rgba(213,76,60,1)'];
+$colors_temp = ['rgba(230,126,34,0.5)','rgba(155,89,182,0.5)','rgba(41,128,185,0.5)','rgba(46,204,113,0.5)','rgba(241,196,15,0.5)','rgba(213,76,60,0.5)'];
+$j = 0;
 foreach($serie as $annee=>$value){
 	// serie granulés
-    $obj[$annee] = ['name'=> ($annee) ."/". ($annee+1) ." Pellets" ,
+    $obj[$annee] = ['name'=> ($annee) ."/". ($annee+1) ." Granulés" ,
 					'data'=> $serie[$annee],
+					'color' => $colors_gran[$j],
 					'dataLabels' => $label_gran,
 					'tooltip' => $tooltip_gran,
 					'pointPadding' => 0.4,
 					'pointPlacement' => $y,
 					'borderRadius' => 0,
+					'somme' => array_sum($serie[$annee]),
 					];
     $tableau[] = $obj[$annee];
 
 	// serie temperatures		
     $obj[$annee] = ['name'=> ($annee) ."/". ($annee+1) ." T° Moy",
+					'type'=> 'line',
 					'data'=> $serieTmoy[$annee],
+					'color' => $colors_temp[$j],
 					'dataLabels' => $label_gran,
 					'yAxis' => "1",
 					'zIndex' => "2",
@@ -77,6 +85,8 @@ foreach($serie as $annee=>$value){
 					'pointPlacement' => $y,
 					];
     $tableau[] = $obj[$annee];
+	
+	$j = $j + 1;
 
 	$y = $y + (1 / $nbre_saison);
 }

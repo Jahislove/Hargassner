@@ -48,6 +48,8 @@ $.ajax({
             case 12:
                 etat = 'Nettoyage';
                 break;
+            case 17:
+                etat = 'Assistant de combustion';
             default:
                 etat = 'inconnu';
                 break;

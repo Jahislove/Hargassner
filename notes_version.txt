@@ -1,9 +1,21 @@
 /************************************************************************
-*** Supervision chaudiere Hargassner avec touchtronic
+*** Supervision chaudiere Hargassner 
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
-v1.9	
+v1.11	10/10/2017
+	upgrade JQuery 3.2.1
+	upgrade bootstrap 3.3.7
+	upgrade datepicker 1.6.4
+	correction bug changement heure sur la page consommation
+	
+	info : sur  synology , l'upgrade de webstation en v 2.1.0-0128 semble desactiver l'extension mysql
+	penser a la reactiver dans les options
+
+v1.10 	02/09/2017
+	refonte page consommation
+
+v1.9	20/05/2017	
 	ajout gestion d'un ballon ECS
 	ajout pompe zone chauffage et ECS 
 	la pompe ECS necessite le firmware 14.0g ( voir peut etre le F ou E , en effet des parametres ont été ajouté 

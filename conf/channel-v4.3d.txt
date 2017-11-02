@@ -1,0 +1,105 @@
+etat
+
+1   ? arret 
+2   
+3   
+4   
+5   
+6   allumage
+7   
+8   
+9   Combustion
+10  ? arret
+11  
+12  
+
+premier parametre = pm
+<CHANNEL id=	0	 name=		             unit=		etat chaudiere
+<CHANNEL id=	1	 name=		             unit=	%	O2/CO2 est
+<CHANNEL id=	2	 name=		         	 unit=	°C	temperature chaudiere est                             
+<CHANNEL id=	3	 name=		             unit=	°C	temperature fumees 
+<CHANNEL id=	4	 name=			         unit=	°C	temperature exterieur ?
+<CHANNEL id=	5	 name=		             unit=	°C	temperature exterieur moyenne ?
+<CHANNEL id=	6	 name=			         unit=	????
+<CHANNEL id=	7	 name=	   		         unit=	
+<CHANNEL id=	8	 name=		             unit=	????
+<CHANNEL id=	9	 name=		             unit=	
+<CHANNEL id=	10	 name=		             unit=	°C	temperature Ballon ECS est
+<CHANNEL id=	11	 name=		             unit=	°C	temperature Ballon ECS est	
+<CHANNEL id=	12	 name=		             unit=	???? 
+<CHANNEL id=	13	 name=			     	 unit=	???? 
+<CHANNEL id=	14	 name=		             unit=	????	
+<CHANNEL id=	15	 name=			         unit=	
+<CHANNEL id=	16	 name=			         unit=	????	
+<CHANNEL id=	17	 name=			         unit=		
+<CHANNEL id=	18	 name=		             unit=		
+<CHANNEL id=	19	 name=		             unit=		
+<CHANNEL id=	20	 name=			         unit=	????	puissance  ?
+<CHANNEL id=	21	 name=			         unit=	???? 
+<CHANNEL id=	22	 name=			         unit=	????	extracteur ?
+<CHANNEL id=	23	 name=			         unit=	???? 
+<CHANNEL id=	24	 name=			         unit=	????	
+<CHANNEL id=	25	 name=		             unit=	
+<CHANNEL id=	26	 name=		             unit=	
+<CHANNEL id=	27	 name=		             unit=	
+<CHANNEL id=	28	 name=			         unit=	
+<CHANNEL id=	29	 name=			         unit=		
+<CHANNEL id=	30	 name=			         unit=		
+<CHANNEL id=	31	 name=			         unit=		
+<CHANNEL id=	32	 name=			         unit=		
+<CHANNEL id=	33	 name=		             unit=		
+<CHANNEL id=	34	 name=		             unit=		
+<CHANNEL id=	35	 name=		             unit=		
+<CHANNEL id=	36	 name=			         unit=		
+<CHANNEL id=	37	 name=			         unit=		
+<CHANNEL id=	38	 name=			         unit=		
+<CHANNEL id=	39	 name=			         unit=		
+<CHANNEL id=	40	 name=			         unit=		
+<CHANNEL id=	41	 name=		             unit=		
+<CHANNEL id=	42	 name=		             unit=		
+<CHANNEL id=	43	 name=		             unit=		
+<CHANNEL id=	44	 name=			         unit=		
+<CHANNEL id=	45	 name=			         unit=		
+<CHANNEL id=	46	 name=			         unit=	
+<CHANNEL id=	47	 name=			         unit=		
+<CHANNEL id=	48	 name=			         unit=		
+<CHANNEL id=	49	 name=			         unit=		
+<CHANNEL id=	50	 name=			         unit=	????	extracteur ?
+<CHANNEL id=	51	 name=			         unit=	????	
+<CHANNEL id=	52	 name=		             unit=	?
+<CHANNEL id=	53	 name=		             unit=	?
+<CHANNEL id=	54	 name=				     unit=	?
+<CHANNEL id=	55	 name=	  			  	 unit=	?
+<CHANNEL id=	56	 name=			         unit=	?
+<CHANNEL id=	57	 name=			         unit=	?
+<CHANNEL id=	58	 name=			         unit=	?
+<CHANNEL id=	59	 name=			         unit=	?
+<CHANNEL id=	60	 name=			         unit=	?
+<CHANNEL id=	61	 name=			         unit=	?
+<CHANNEL id=	62	 name=		    		 unit=	
+<CHANNEL id=	63	 name=				     unit=	????	
+<CHANNEL id=	64	 name=	 			 	 unit=		
+<CHANNEL id=	65	 name=	 			 	 unit=		
+<CHANNEL id=	66	 name=	 			 	 unit=		
+<CHANNEL id=	67	 name=				     unit=		
+<CHANNEL id=	68	 name=				     unit=		
+<CHANNEL id=	69	 name=			         unit=		
+<CHANNEL id=	70	 name=				     unit=		
+<CHANNEL id=	71	 name=				   	 unit=		
+<CHANNEL id=	72	 name=			         unit=		
+<CHANNEL id=	73	 name=					 unit=		
+<CHANNEL id=	74	 name=					 unit=		
+<CHANNEL id=	75	 name=					 unit=		
+<CHANNEL id=	76	 name=					 unit=	????	
+<CHANNEL id=	77	 name=					 unit=	????	
+<CHANNEL id=	78	 name=					 unit=	????	
+<CHANNEL id=	79	 name=					 unit=	????	
+<CHANNEL id=	80	 name=					 unit=		
+<CHANNEL id=	81	 name=			         unit=	?	
+<CHANNEL id=	82	 name=				     unit=	?	
+<CHANNEL id=	83	 name=				     unit=		
+<CHANNEL id=	84	 name=				     unit=		
+
+
+
+

@@ -18,6 +18,7 @@
     // requete pour initialiser la date
 	$query1 = "SELECT YEAR(dateB),MONTH(dateB),DAY(dateB) FROM consommation  
              LIMIT 1";
+			 
 	connectMaBase($hostname, $database, $username, $password);
     $req1 = mysql_query($query1) ;
 	mysql_close();
@@ -720,7 +721,6 @@ $(function() {
 	    }],
 	
 	});
-
 
 
 

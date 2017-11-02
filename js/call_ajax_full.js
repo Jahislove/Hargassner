@@ -90,6 +90,8 @@ $.ajax({
                 document.getElementById('nano-E1').className = 'cendrier_ouvert';
                 document.getElementById('nano-B1').className = 'ressort_anime';
                 break;
+            case 17:
+                etat = 'Assistant de combustion';
             default:
                 etat = 'inconnu';
                 break;

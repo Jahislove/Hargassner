@@ -11,12 +11,13 @@
 
 <div id="conso" class="graphe_size"></div>
 <div id="courbe" class="graphe_size"></div>
-<div id="conso_annees" class="graphe_size"></div>
+<div id="annees" class="graphe_size3"></div>
+<div id="conso_annees" class="graphe_size4"></div>
 
 <?php
     $chart1_name = ['Consommation granulés par jour','T° extérieure moyenne'];
     $chart2_name = ['T° départ consigne','T° départ','T° chaudière','T° extérieure','T° intérieure','Puissance','% bois'];
-    //$chart3_name = ['Consommation granulés par mois','T° extérieure moyenne'];
+    $chart3_name = ['Sur la Saison'];
 
     // requete
     $query0 = "SELECT dateB,conso,Tmoy FROM consommation 
@@ -60,7 +61,9 @@
 <?php require("footer.php");?>
 <script type="text/javascript">
 //*****************Calendrier pickup********************************************************
+var val_precedente = 0;
 $(function() {
+	$('#courbe').hide();
     $( ".input-group.date" ).datepicker({
         format: "MM yyyy",
         startDate: new Date(<?php echo $dateMin[0]; ?>,<?php echo $dateMin[1]; ?> - 1,1),
@@ -70,21 +73,22 @@ $(function() {
         autoclose: true    
     })
     .on('changeDate', function(e){
-            chart1.showLoading('loading');
-            annee = e.format('yyyy');
-            mois = e.format('mm');
-            $.ajax({
-                dataType: "json",
-                url: 'json_conso_mois.php',
-                data: 'mois=' + mois + '&annee=' + annee,
-                cache: false,
-                success: function(data) {
-                    chart1.series[0].setData(data[0],false);
-                    chart1.series[1].setData(data[1],false);
-                    chart1.redraw();
-                    chart1.hideLoading();
-                }
-            });
+		$('#courbe').slideUp(1000);
+		chart1.showLoading('loading');
+		annee = e.format('yyyy');
+		mois = e.format('mm');
+		$.ajax({
+			dataType: "json",
+			url: 'json_conso_mois.php',
+			data: 'mois=' + mois + '&annee=' + annee,
+			cache: false,
+			success: function(data) {
+				chart1.series[0].setData(data[0],false);
+				chart1.series[1].setData(data[1],false);
+				chart1.redraw();
+				chart1.hideLoading();
+			}
+		});
     });
 });
 
@@ -105,7 +109,9 @@ $(function() {
             },
         },
 		global: {
-			useUTC: false
+			useUTC: true,
+			timezoneOffset: -2 * 60
+
 		},
 	    credits: {
 			enabled: false,
@@ -188,9 +194,17 @@ $(function() {
                 cursor: 'pointer',
                 point: {
                     events: {
-                        click: function () {
-                            //alert('Category: ' + this.x );
+                        // affiche le detail des courbes quand on clic sur une valeur
+						click: function () {
                             chart2.showLoading('loading');
+							// garde le graphe affiché si on clic sur une autre journée , cache le graphe si on clic sur la meme journée
+							if (this.x != val_precedente) {
+								$('#courbe').slideDown(1000);
+							} else {
+								$('#courbe').slideUp(1000);
+							}
+							val_precedente = this.x;
+
                             var jour = new Date(this.x);
                             chart2.setTitle('',{ text: 'Pour la journée du ' + jour.toLocaleDateString() });
                             $.ajax({
@@ -269,6 +283,11 @@ $(function() {
 	chart2 = new Highcharts.Chart({
 		chart: {
 			renderTo: 'courbe',
+			events: {
+				click: function() {
+					$('#courbe').slideUp(1000);
+				}
+			},
 		},
 		title: {
 			text: 'Courbes des températures',
@@ -288,7 +307,7 @@ $(function() {
 		},
 		xAxis: {
 			type: 'datetime',
-			dateTimeLabelFormats: { // don't display the dummy year
+			dateTimeLabelFormats: { 
 				month: '%d. %b',
 				year: '%b'
 			}
@@ -382,6 +401,104 @@ $(function() {
 		}] 
 	});
 
+//*******chart 3************************************************************************************
+	chart3 = new Highcharts.Chart({
+		chart: {
+			renderTo: 'annees',
+			type: 'column',
+			alignThresholds: true,
+		},
+		legend: {
+			enabled: false,
+		},
+		title: {
+			text: 'Consommation annuelle',
+	        align: 'left',
+	        x: 65,
+			style:{
+				color: '#4572A7',
+			},
+		},
+		xAxis: {
+			type: 'category',
+			crosshair: false,
+		 },
+		yAxis: [{
+			gridLineColor: '#CACACA', 
+            //softMax: 1000,
+			min: 0,
+			labels: {
+				format: '{value} Kg',
+				style: {
+					color: '<?php echo $color_gran; ?>',
+				}
+			},
+		   title: {
+				text: '',
+			},
+		}],            
+		tooltip: {
+	        shared: true,
+			distance: 30,
+			padding: 5,
+			crosshairs: true,
+			borderRadius: 26,
+			borderWidth: 2,
+			pointFormat: '<b>{point.y}</b><br/>',		
+			// useHTML: true,
+			// formatter: function () {
+				// var s = '<b>' + this.x + '</b>';
+                // $.each(this.points, function () {
+                    // s += '<br/>\u25CF' + this.series.name + this.x +': ' +
+                        // this.y + ' Kg';
+                // });
+                // return s;
+            // },
+		},
+		plotOptions: {
+			series: {
+				marker: {
+					enabled: true,
+				},
+				dataLabels: {
+					useHTML: false,
+					formatter: function () {
+							return '<span style="color:' + this.point.color + '">' + this.point.y + '</span>';
+					},
+				},
+			},
+            column: {
+                grouping: false,
+                shadow: false,
+                borderWidth: 0
+            },
+		},
+
+		series: [{
+			name: '<?php echo $chart3_name[0]; ?>',
+			type: 'column',
+			color: '<?php echo $color_gran; ?>',
+            pointPadding: 0.3,
+            groupPadding: 0.05,
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                style: {
+                    fontSize: '12px',
+					textOutline: false,
+                },
+                rotation: 0,
+                color: '#F0DB0B',
+                align: 'center',
+                y: 0,
+            },
+            tooltip: {
+                valueSuffix: ' Kg',
+             },
+			zIndex: 1,
+			//data: [0,10]
+		}] 
+	});
 //*******chart 4************************************************************************************
 	chart4 = new Highcharts.Chart({
 		chart: {
@@ -389,8 +506,8 @@ $(function() {
 			type: 'column',
 			alignThresholds: true,
 		},
-		// colors: ['#108BE0','#19AF09','#04E9A4','#D07705','#E900BB','#E662CC','#1F4AEA','#EA7C01','#11C4F0','#781BE1'],
-		colors: ['#2980b9','#a9cce3','#2ecc71','#abebc6','#f1c40f','#f9e79f','#e74c3c','#f5b7b1','#9b59b6','#d7bde2','#e67e22','#fad7a0'],
+		//lors: ['#bleu f','#vert f','#bleu c','#vert c','#jaune ',' rouge ','#1F4AEA','#EA7C01','#11C4F0','#781BE1'],
+		//colors: ['#2980b9','#2ecc71','#a9cce3','#abebc6','#f1c40f','#e74c3c','#f9e79f','#f5b7b1','#9b59b6','#e67e22','#d7bde2','#fad7a0'],
 		title: {
 			text: 'Consommation et temperature moyenne par mois',
 	        align: 'left',
@@ -459,11 +576,13 @@ $(function() {
 		},
 		plotOptions: {
 			series: {
+				lineWidth: 0,
 				marker: {
-					enabled: false,
+					enabled: true,
+					symbol: 'circle',
 				},
 				dataLabels: {
-					useHTML: true,
+					useHTML: false,
 					formatter: function () {
 							return '<span style="color:' + this.point.color + '">' + this.point.y + '</span>';
 					},
@@ -481,45 +600,57 @@ $(function() {
 //***************************************************************************************************
 //***************************************************************************************************
 //*************affichage bulle conso moyenne*********************************************************
-    chart1.renderer.label('Moyenne <?php echo $mois[2];?><br> = <?php echo $consoMoy[2];?> kg / jour',100, 10)
-        .attr({
-            fill: '#DBEDFF',
-            stroke: '<?php echo $color_gran; ?>',
-            zIndex: 10,
-            r: 20,
-            padding: 8,
-			width: 120,
-            'stroke-width': 2,
-        })
-        .add()
-        .shadow(true);
-    chart1.renderer.label('Moyenne <?php echo $mois[1];?><br> = <?php echo $consoMoy[1];?> kg / jour',250, 10)
-        .attr({
-            fill: '#DBEDFF',
-            stroke: '<?php echo $color_gran; ?>',
-            zIndex: 10,
-            r: 20,
-			width: 120,
-            padding: 8,
-            'stroke-width': 2,
-        })
-        .add()
-        .shadow(true);
-    chart1.renderer.label('Moyenne <?php echo $mois[0];?><br> = <?php echo $consoMoy[0];?> kg / jour',400, 10)
-        .attr({
-            fill: '#DBEDFF',
-            stroke: '<?php echo $color_gran; ?>',
-            zIndex: 10,
-            r: 20,
-			width: 120,
-            padding: 8,
-            'stroke-width': 2,
-        })
-        .add()
-        .shadow(true);
-        
+chart1.renderer.label('Moyenne <?php echo $mois[2];?><br> = <?php echo $consoMoy[2];?> kg / jour',100, 10)
+	.attr({
+		fill: '#DBEDFF',
+		stroke: '<?php echo $color_gran; ?>',
+		zIndex: 10,
+		r: 20,
+		padding: 8,
+		width: 120,
+		'stroke-width': 2,
+	})
+	.add()
+	.shadow(true);
+	
+chart1.renderer.label('Moyenne <?php echo $mois[1];?><br> = <?php echo $consoMoy[1];?> kg / jour',250, 10)
+	.attr({
+		fill: '#DBEDFF',
+		stroke: '<?php echo $color_gran; ?>',
+		zIndex: 10,
+		r: 20,
+		width: 120,
+		padding: 8,
+		'stroke-width': 2,
+	})
+	.add()
+	.shadow(true);
+	
+chart1.renderer.label('Moyenne <?php echo $mois[0];?><br> = <?php echo $consoMoy[0];?> kg / jour',400, 10)
+	.attr({
+		fill: '#DBEDFF',
+		stroke: '<?php echo $color_gran; ?>',
+		zIndex: 10,
+		r: 20,
+		width: 120,
+		padding: 8,
+		'stroke-width': 2,
+	})
+	.add()
+	.shadow(true);
+	
+chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
+	.add()
+	.on('mouseover', function () {
+		$('#courbe').slideDown();
+	})
+	.on('mouseout', function () {
+		$('#courbe').slideUp();
+	});
+	
 // ************* chargement asynchrone des graphes****************************************************
-    chart2.showLoading('Cliquez sur le graphe du haut pour afficher le détail')
+    chart2.showLoading('Cliquez sur une colonne ci dessus pour afficher le détail des courbes ici')
+    chart3.showLoading('loading');
     chart4.showLoading('loading');
 
 
@@ -527,15 +658,27 @@ $(function() {
         dataType: "json",
         url: 'json_conso_annees.php',
         cache: false,
-        success: function(data) {
-            //data est un objet  , il est créé dans json_conso_annees.php
-            for (var i = 0; i < data.length; i++){
-                chart4.addSeries(data[i],false);
+        success: function(objet) {
+            // est un objet  , il est créé dans json_conso_annees.php
+            //il contient des objet serie, les paires sont les temperatures et impaires les granulés
+			for (var i = 0; i < objet.length; i=i+2){
+				console.log(objet[i].data);
+                chart4.addSeries(objet[i], false);
+				var x = objet[i].name.slice(0,9);
+				var y = objet[i].somme;
+				chart3.series[0].addPoint([x,y]);
 			}
+            for (var i = 1; i < objet.length; i=i+2){
+                chart4.addSeries(objet[i],false);
+			}
+			chart3.redraw();
             chart4.redraw();
+            chart3.hideLoading();
             chart4.hideLoading();
         }
     });
+
+
     
 });
 </script>

@@ -24,9 +24,12 @@ require_once("conf/config.inc.php");
     $req = mysql_query($query) ;
 	mysql_close();
     
-    $dict = ['','arret','Allumage','Demarrage','Controle allumage','Allumeur','Demarrage combustion','Combustion','Veille','Arret pour decendrage','decendrage','Refroidissement','Nettoyage'];
-    $dict2= ['','0','0','0','0','0','0','0','0','100','100','0','100'];
-    $dict3= ['','Non','Non','Non','Non','Non','Non','Non','Non','En attente arrêt','Décendrage','Non','Nettoyage'];
+    // $dict = ['','arret','Allumage','Demarrage','Controle allumage','Allumeur','Demarrage combustion','Combustion','Veille','Arret pour decendrage','decendrage','Refroidissement','Nettoyage'];
+    // $dict2= ['','0','0','0','0','0','0','0','0','100','100','0','100'];
+    // $dict3= ['','Non','Non','Non','Non','Non','Non','Non','Non','En attente arrêt','Décendrage','Non','Nettoyage'];
+    $dict = ['null','arret','Allumage','Demarrage','Controle allumage','Allumeur','Demarrage combustion','Combustion','Veille','Arret pour decendrage','decendrage','Refroidissement','Nettoyage','inconnu','inconnu','inconnu','inconnu','Assistant de combustion'];
+    $dict2= ['0','0','0','0','0','0','0','0','0','100','100','0','100'];
+    $dict3= ['null','Non','Non','Non','Non','Non','Non','Non','Non','En attente arrêt','Décendrage','Non','Nettoyage'];
 	$dict4= ['0','100','50']; // ballon ECS off/on/recyclage
 	$dict5= ['arret','en chauffe','recyclage']; // ballon ECS on/off
     while($data = mysql_fetch_row($req)){

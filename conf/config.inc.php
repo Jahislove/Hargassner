@@ -2,15 +2,16 @@
 //****vos parametres **************************************************** 	
 $IPchaudiere = "192.168.0.198"; // indiquez l'IP de votre chaudiere
 $port = 23; //port telnet, ne pas modifier
-
+$mode_conn = 'telnet'; // mode de connexion : telnet pour chaudiere recente ou serial pour les anciennes 
+						// en mode serial la page d'acceuil ne fonctionne plus en temps reel mais utilise la BDD
 $taille_silo = 4000; // en kg , il s'agit de la capacité max du silo
 
 $refresh = 10; //rafraichissement en sec de l'etat de la chaudiere , ne pas descendre sous les 2 car le telnet de la chaudiere n'arrive plus a repondre assez vite
 $histo_temps = 30; //historique du graphique de la page d'accueil en mn
 
 // MySQL config
-$hostname = "localhost"; //localhost si la BDD est sur la meme machine que le serveur web , sinon IP
-$database = "Hargassner"; // nom de la BDD
+$hostname = "192.168.0.222:3306"; //localhost si la BDD est sur la meme machine que le serveur web , sinon IP
+$database = "hargassner"; // nom de la BDD
 $username = "hargassner"; // utilisateur mysql
 $password = "password";
 
