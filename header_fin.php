@@ -6,7 +6,7 @@
     require_once("conf/version.php");
                 echo $version;
     $config_github = fopen('https://raw.githubusercontent.com/Jahislove/Hargassner/master/conf/version.php', 'r'); 
-                echo $config_github;
+                // echo $config_github;
     if ($config_github) {
         while (!feof($config_github)) {
             $ligne = fgets($config_github); //lit chaque ligne du fichier
