@@ -4,22 +4,23 @@
     <?php
     // **********recherche nouvelle version******************************
     require_once("conf/version.php");
-                echo $version;
     $config_github = fopen('https://raw.githubusercontent.com/Jahislove/Hargassner/master/conf/version.php', 'r'); 
-                // echo $config_github;
     if ($config_github) {
         while (!feof($config_github)) {
             $ligne = fgets($config_github); //lit chaque ligne du fichier
             $ligne_version = strstr($ligne,'version'); //recherche la chaine 'version'
-                echo $ligne_version;
             if ($ligne_version) {
                 $version_github = floatval(explode('=',$ligne_version)[1]); // explode en champ, et extrait la valeur en decimal du champ 1
-                echo $version_github;
 				break;
             }
         }
         fclose($config_github);
-    }
+    } else {
+		echo '<div id="new_version">';
+		echo 'impossible de joindre github pour vérifier les mises a jour, ';
+		echo "si le problème persiste vérifiez que votre serveur php est bien lancé avec l'extension openssl";
+        echo '</div>';
+	}
 
     if ($version < $version_github) {
         echo '<div id="new_version">';

@@ -10,8 +10,8 @@ v2.0	02/11/2017
 	upgrade datepicker 1.6.4
 	correction bug changement heure sur la page consommation
 	
-	info : sur  synology , l'upgrade de webstation en v 2.1.0-0128 semble desactiver l'extension mysql
-	penser a la reactiver dans les options
+	info : sur  synology , l'upgrade de webstation en v 2.1.0-0128 semble desactiver les extensions mysql et openssl
+	pensez a les reactiver dans les options de webstation
 
 
 v1.9	20/05/2017	
