@@ -301,6 +301,9 @@ $(function() {
 			color: '<?php echo $color_Text; ?>',
             legendIndex: 6,
             visible: false,
+            tooltip: {
+                valueSuffix: ' °C',
+             },
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[7]; ?>',
@@ -325,48 +328,72 @@ $(function() {
 			color: '<?php echo $color_extrac; ?>',
             legendIndex: 9,
             visible: false,
+            tooltip: {
+                valueSuffix: ' %',
+             },
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[10]; ?>',
 			color: '<?php echo $color_ECS_T; ?>',// ECS
             legendIndex: 15,
             visible: false,
+            tooltip: {
+                valueSuffix: ' °C',
+             },
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[11]; ?>',
 			color: '<?php echo $color_bois; ?>',
             legendIndex: 10,
             visible: false,
+            tooltip: {
+                valueSuffix: ' %',
+             },
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[12]; ?>',
 			color: '<?php echo $color_TextM; ?>',
             legendIndex: 7,
             visible: false,
+            tooltip: {
+                valueSuffix: ' °C',
+             },
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[13]; ?>',
 			color: '<?php echo $color_Tint; ?>',
             legendIndex: 8,
             visible: true,
+            tooltip: {
+                valueSuffix: ' °C',
+             },
 			data: [],
 		}, {
 			name: '<?php echo $chart1_name[14]; ?>',
 			color: '<?php echo $color_TdepE; ?>',
             legendIndex: 4,
             visible: false,
+            tooltip: {
+                valueSuffix: ' °C',
+             },
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[15]; ?>',
 			color: '<?php echo $color_TdepD; ?>',
             legendIndex: 5,
             visible: false,
+            tooltip: {
+                valueSuffix: ' °C',
+             },
 			data: [],
 		}, {
 			name: '<?php echo $chart1_name[16]; ?>',
 			color: '<?php echo $color_gran; ?>',
             legendIndex: 14,
             visible: false,
+            tooltip: {
+                valueSuffix: ' Kg',
+             },
 			data: [],
 		}, {
 			name: '<?php echo $chart1_name[17]; ?>',

@@ -49,7 +49,7 @@ require_once("conf/config.inc.php");
         $liste12[] = [$dateD, $data[13]];
         $liste13[] = [$dateD, $data[14]];
         $liste14[] = [$dateD, $data[15]];
-        $liste15[] = [$dateD, $data[16]];
+        $liste15[] = [$dateD, $data[16]];// conso
         $liste16[] = [$dateD, $data[17]];
         $liste17['data'][] = [x => $dateD, y => $dict4[intval($data[18])],valeur => $dict5[intval($data[18])] ];
 		
