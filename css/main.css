@@ -374,12 +374,12 @@ a:hover{
 .graphe_size3 {
     display: inline-block;
 	width: 25%;
-	height: 40%;
+	height: 600px;
 }
 .graphe_size4 {
     display: inline-block;
 	width: 74%;
-	height: 40%;
+	height: 600px;
 }
 .calendar {
     width: 250px;

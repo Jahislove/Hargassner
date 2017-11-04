@@ -15,6 +15,13 @@
 <div id="conso_annees" class="graphe_size4"></div>
 
 <?php
+// pense bete : 
+// calcul correction consommation
+// conso total / 2.2 = A
+// conso reelle / A = X  nouveau facteur Kg/h
+// 100 * (X/2.2) = % de correction a apporter en base
+
+
     $chart1_name = ['Consommation granulés par jour','T° extérieure moyenne'];
     $chart2_name = ['T° départ consigne','T° départ','T° chaudière','T° extérieure','T° intérieure','Puissance','% bois'];
     $chart3_name = ['Sur la Saison'];
@@ -503,11 +510,8 @@ $(function() {
 	chart4 = new Highcharts.Chart({
 		chart: {
 			renderTo: 'conso_annees',
-			type: 'column',
 			alignThresholds: true,
 		},
-		//lors: ['#bleu f','#vert f','#bleu c','#vert c','#jaune ',' rouge ','#1F4AEA','#EA7C01','#11C4F0','#781BE1'],
-		//colors: ['#2980b9','#2ecc71','#a9cce3','#abebc6','#f1c40f','#e74c3c','#f9e79f','#f5b7b1','#9b59b6','#e67e22','#d7bde2','#fad7a0'],
 		title: {
 			text: 'Consommation et temperature moyenne par mois',
 	        align: 'left',
@@ -526,13 +530,19 @@ $(function() {
 		},
 		xAxis: {
 			type: 'category',
-			crosshair: false,
+			crosshair: true,
+			crosshair: {
+				snap: true,
+				// width: 30,
+			},
             categories: ['Septembre', 'Octobre', 'Novembre', 'Decembre','Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout'],
 		 },
 		yAxis: [{
 			gridLineColor: '#CACACA', 
             softMax: 1000,
-			min: -250,
+			//min: -250,
+            top: 250,
+            height: 300,
 			labels: {
 				format: '{value} Kg',
 				style: {
@@ -544,8 +554,11 @@ $(function() {
 			},
 		},{
 			opposite: true,
-            softMax: 40,
-			min: -10,
+            // softMax: 40,
+			// min: -10,
+			Min: -10,
+            top: 50,
+            height: 200,
 			labels: {
 				format: '{value} °C',
 				style: {
@@ -556,8 +569,13 @@ $(function() {
 				text: '',
 			},
 		}],            
+		legend: {
+            x: -30,
+			y: 30,
+		},
 		tooltip: {
 	        shared: true,
+			followPointer: true,
 			distance: 30,
 			padding: 5,
 			crosshairs: true,
@@ -576,7 +594,7 @@ $(function() {
 		},
 		plotOptions: {
 			series: {
-				lineWidth: 0,
+				lineWidth: 1,
 				marker: {
 					enabled: true,
 					symbol: 'circle',
@@ -589,7 +607,9 @@ $(function() {
 				},
 			},
             column: {
-                grouping: false,
+                grouping: true,
+				groupPadding: 0.05,
+				pointPadding: 0.05,
                 shadow: false,
                 borderWidth: 0
             },
@@ -662,7 +682,7 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
             // est un objet  , il est créé dans json_conso_annees.php
             //il contient des objet serie, les paires sont les temperatures et impaires les granulés
 			for (var i = 0; i < objet.length; i=i+2){
-				console.log(objet[i].data);
+				//console.log(objet[i].data);
                 chart4.addSeries(objet[i], false);
 				var x = objet[i].name.slice(0,9);
 				var y = objet[i].somme;

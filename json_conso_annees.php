@@ -61,12 +61,14 @@ $j = 0;
 foreach($serie as $annee=>$value){
 	// serie granulés
     $obj[$annee] = ['name'=> ($annee) ."/". ($annee+1) ." Granulés" ,
+					'type'=> 'column',
 					'data'=> $serie[$annee],
 					'color' => $colors_gran[$j],
 					'dataLabels' => $label_gran,
 					'tooltip' => $tooltip_gran,
-					'pointPadding' => 0.4,
-					'pointPlacement' => $y,
+					// 'pointPadding' => $nbre_saison*0.05+0.1,
+					// 'pointPadding' => 0.05,
+					// 'pointPlacement' => $y,
 					'borderRadius' => 0,
 					'somme' => array_sum($serie[$annee]),
 					];
@@ -74,15 +76,15 @@ foreach($serie as $annee=>$value){
 
 	// serie temperatures		
     $obj[$annee] = ['name'=> ($annee) ."/". ($annee+1) ." T° Moy",
-					'type'=> 'line',
+					'type'=> 'spline',
 					'data'=> $serieTmoy[$annee],
 					'color' => $colors_temp[$j],
 					'dataLabels' => $label_gran,
-					'yAxis' => "1",
-					'zIndex' => "2",
+					'yAxis' => 1,
+					'zIndex' => 2,
 					'tooltip' => $tooltip_temp,
-					'pointPadding' => 0.46,
-					'pointPlacement' => $y,
+					// 'pointPadding' => 0.46,
+					// 'pointPlacement' => $y,
 					];
     $tableau[] = $obj[$annee];
 	
