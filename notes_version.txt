@@ -3,6 +3,9 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
+v2.1	12/12/2017
+	refonte page consommation
+
 v2.0	02/11/2017
 	refonte page consommation
 	upgrade JQuery 3.2.1

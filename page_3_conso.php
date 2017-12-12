@@ -118,7 +118,6 @@ $(function() {
 		global: {
 			useUTC: true,
 			timezoneOffset: -2 * 60
-
 		},
 	    credits: {
 			enabled: false,

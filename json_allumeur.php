@@ -1,5 +1,5 @@
 <?php
-//appelé par ajax, recoit 1 seul channel en parametre et renvoi la serie de data
+//appelé par ajax, 
 
 require_once("conf/config.inc.php");
  
@@ -21,6 +21,7 @@ require_once("conf/config.inc.php");
     
     while($data = mysql_fetch_row($req1)){
         $dateD = strtotime($data[0]) * 1000;
+        // $dateD = (strtotime($data[0])+ 10000) * 1000;
         $liste1[] = [$dateD, $data[1]];
     }
 

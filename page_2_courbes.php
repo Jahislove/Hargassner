@@ -122,7 +122,7 @@ $(function() {
 			thousandsSep: <?php echo $thousandsSep; ?>,
 		},
 		global: {
-			useUTC: false
+			useUTC: false,
 		},
 		chart: {
 			type: 'line',
@@ -408,8 +408,12 @@ $(function() {
 			data: []
 		}] 
 	});
-    // *************chart 2 ********************************************
-	$('#graphe2').highcharts({
+// *************chart 2 ********************************************
+	chart2 = new Highcharts.Chart({
+	// $('#graphe2').highcharts({
+		chart: {
+			renderTo: 'graphe2',
+		},
 		title: {
 			text: 'allumeur electrique',
 		},
@@ -432,7 +436,7 @@ $(function() {
 		}] 
 	});
 	
-    // *************chart 3 ********************************************
+    // *************chart gauge 1 ********************************************
 	graphe_gauge1 = new Highcharts.Chart({
 	    chart: {
 			renderTo: 'graphe_gauge1',
@@ -580,7 +584,7 @@ $(function() {
 	
 	});
 
-    // *************chart 4 ********************************************
+    // *************chart gauge 2 ********************************************
 	graphe_gauge2 = new Highcharts.Chart({
 	    chart: {
 			renderTo: 'graphe_gauge2',
@@ -750,10 +754,9 @@ $(function() {
 	});
 
 
-
 //****************************************************************************************************
 // ************* chargement asynchrone des graphes****************************************************
-    var chart2 = $('#graphe2').highcharts();
+    // var chart2 = $('#graphe2').highcharts();
     chart1.showLoading('loading');
     chart2.showLoading('loading');
     var d = new Date();
