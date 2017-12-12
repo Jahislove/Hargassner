@@ -79,6 +79,33 @@ function parse_data(data) {
 	
 	dataPuiss = data[2];
 };
+//********* cookie**********************************************************
+function setCookie(sName, sValue) {
+	var today = new Date(), expires = new Date();
+	expires.setTime(today.getTime() + (365*24*60*60*1000));
+	document.cookie = sName + "=" + encodeURIComponent(sValue) + ";expires=" + expires.toGMTString();
+}
+function getCookie(sName) {
+	var cookContent = document.cookie, cookEnd, i, j;
+	var sName = sName + "=";
+	for(var i=0,c=cookContent.length;i<c;i++) {
+	j = i + sName.length;
+		if(cookContent.substring(i, j) == sName) {
+			cookEnd = cookContent.indexOf(";", j);
+			if(cookEnd == -1) {
+				cookEnd = cookContent.length;
+			}
+			return decodeURIComponent(cookContent.substring(j, cookEnd));
+		}
+	}
+	return null;
+}
+	// transforme la string des cookies en booleen , pour chaque serie
+var etat = [];
+for (var k=0;k<18;k++) {	
+	etat[k] = Boolean(getCookie('hargassner-p2c1-serie'+k));
+}	
+
 
 //*****************Calendrier pickup********************************************************
 $(function() {
@@ -239,20 +266,35 @@ $(function() {
 				}
 			},		
 		 },
+        plotOptions: {
+            series: {
+                events: { //memorisation de l'etat visible des courbes
+                    legendItemClick: function(event) {
+                        var visibility = this.visible ? '' : true;
+						setCookie('hargassner-p2c1-serie' + this.index, visibility);
+                        // if (!confirm('The series is now  ' + 
+                                     // visibility +'. Do you want to change that? '+ 'toto'+this.index)) {
+                            // return false;
+                        // }
+                    }
+                }
+            }
+        },
 		series: [{
 			name: '<?php echo $chart1_name[0]; ?>',
 			color: '<?php echo $color_etat; ?>',
             legendIndex: 0,
+            visible: etat[0],
             turboThreshold: 1500, // necessaire car serie 1 et 2 sont des objets et pas des array
             tooltip: {
                 pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.valeur}</b><br/>',		
             },
-            visible: false,
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[1]; ?>',
 			color: '<?php echo $color_decend; ?>',
             legendIndex: 17,
+            visible: etat[1],
             turboThreshold: 1500,
             type: 'area',
             zIndex: -1,
@@ -268,6 +310,7 @@ $(function() {
 			color: '<?php echo $color_puiss; ?>',
             lineWidth: 1,
             legendIndex: 1,
+            visible: etat[2],
             tooltip: {
                 valueSuffix: ' %',
              },
@@ -276,6 +319,7 @@ $(function() {
 			name: '<?php echo $chart1_name[3]; ?>',
 			color: '<?php echo $color_Tchaud; ?>',
             legendIndex: 2,
+            visible: etat[3],
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -284,6 +328,7 @@ $(function() {
 			name: '<?php echo $chart1_name[4]; ?>',
 			color: '<?php echo $color_Tchauddoit; ?>',
             legendIndex: 3,
+            visible: etat[4],
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -292,6 +337,7 @@ $(function() {
 			name: '<?php echo $chart1_name[5]; ?>',
 			color: '<?php echo $color_fum; ?>',
             legendIndex: 12,
+            visible: etat[5],
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -300,7 +346,7 @@ $(function() {
 			name: '<?php echo $chart1_name[6]; ?>',
 			color: '<?php echo $color_Text; ?>',
             legendIndex: 6,
-            visible: false,
+            visible: etat[6],
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -309,7 +355,7 @@ $(function() {
 			name: '<?php echo $chart1_name[7]; ?>',
 			color: '<?php echo $color_O2; ?>',
             legendIndex: 13,
-            visible: false,
+            visible: etat[7],
             tooltip: {
                 valueSuffix: ' %',
              },
@@ -318,7 +364,7 @@ $(function() {
 			name: '<?php echo $chart1_name[8]; ?>',
 			color: '<?php echo $color_O2doit; ?>',
             legendIndex: 14,
-            visible: false,
+            visible: etat[8],
             tooltip: {
                 valueSuffix: ' %',
              },
@@ -327,7 +373,7 @@ $(function() {
 			name: '<?php echo $chart1_name[9]; ?>',
 			color: '<?php echo $color_extrac; ?>',
             legendIndex: 9,
-            visible: false,
+            visible: etat[9],
             tooltip: {
                 valueSuffix: ' %',
              },
@@ -336,7 +382,7 @@ $(function() {
 			name: '<?php echo $chart1_name[10]; ?>',
 			color: '<?php echo $color_ECS_T; ?>',// ECS
             legendIndex: 15,
-            visible: false,
+            visible: etat[10],
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -345,7 +391,7 @@ $(function() {
 			name: '<?php echo $chart1_name[11]; ?>',
 			color: '<?php echo $color_bois; ?>',
             legendIndex: 10,
-            visible: false,
+            visible: etat[11],
             tooltip: {
                 valueSuffix: ' %',
              },
@@ -354,7 +400,7 @@ $(function() {
 			name: '<?php echo $chart1_name[12]; ?>',
 			color: '<?php echo $color_TextM; ?>',
             legendIndex: 7,
-            visible: false,
+            visible: etat[12],
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -363,7 +409,7 @@ $(function() {
 			name: '<?php echo $chart1_name[13]; ?>',
 			color: '<?php echo $color_Tint; ?>',
             legendIndex: 8,
-            visible: true,
+            visible: etat[13],
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -372,7 +418,7 @@ $(function() {
 			name: '<?php echo $chart1_name[14]; ?>',
 			color: '<?php echo $color_TdepE; ?>',
             legendIndex: 4,
-            visible: false,
+            visible: etat[14],
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -381,7 +427,7 @@ $(function() {
 			name: '<?php echo $chart1_name[15]; ?>',
 			color: '<?php echo $color_TdepD; ?>',
             legendIndex: 5,
-            visible: false,
+            visible: etat[15],
             tooltip: {
                 valueSuffix: ' °C',
              },
@@ -390,7 +436,7 @@ $(function() {
 			name: '<?php echo $chart1_name[16]; ?>',
 			color: '<?php echo $color_gran; ?>',
             legendIndex: 14,
-            visible: false,
+            visible: etat[16],
             tooltip: {
                 valueSuffix: ' Kg',
              },
@@ -399,6 +445,7 @@ $(function() {
 			name: '<?php echo $chart1_name[17]; ?>',
 			color: '<?php echo $color_ECS_etat; ?>',
             legendIndex: 16,
+            visible: etat[17],
             turboThreshold: 1500,
             type: 'area',
             zIndex: -1,
@@ -408,7 +455,7 @@ $(function() {
 			data: []
 		}] 
 	});
-// *************chart 2 ********************************************
+	// *************chart 2 ********************************************
 	chart2 = new Highcharts.Chart({
 	// $('#graphe2').highcharts({
 		chart: {
@@ -782,7 +829,7 @@ $(function() {
         }
     });
 //***************************************************************************************************
-    
+
 });
 	
 	
