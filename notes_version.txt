@@ -4,10 +4,10 @@
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
 v2.2	13/12/2017
-	ajout memorisation de l'etat Visible/caché des courbes sur la page variables(le stockage se fait dans des cookies)
+	ajout memorisation de la visibilité des courbes entre les sessions(le stockage se fait dans des cookies)
 
 v2.1	12/12/2017
-	refonte page consommation
+	refonte page consommation (videz le cache du navigateur si defaut d'affichage)
 
 v2.0	02/11/2017
 	refonte page consommation
