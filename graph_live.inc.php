@@ -10,7 +10,36 @@ for ($i = -$histo_live_X; $i < 0; $i++){  //la valeur de $i doit correspondre a 
 <div id="live"></div>
 
 <script type="text/javascript">
-		
+//********* déclaration des cookies pour stockage visibilité des courbes****************************
+//*** creation cookie******
+function setCookie(sName, sValue) {
+	var today = new Date(), expires = new Date();
+	expires.setTime(today.getTime() + (365*24*60*60*1000));
+	document.cookie = sName + "=" + encodeURIComponent(sValue) + ";expires=" + expires.toGMTString();
+}
+//*** lecture cookie******
+function getCookie(sName) {
+	var cookContent = document.cookie, cookEnd, i, j;
+	var sName = sName + "=";
+	for(var i=0,c=cookContent.length;i<c;i++) {
+	j = i + sName.length;
+		if(cookContent.substring(i, j) == sName) {
+			cookEnd = cookContent.indexOf(";", j);
+			if(cookEnd == -1) {
+				cookEnd = cookContent.length;
+			}
+			return decodeURIComponent(cookContent.substring(j, cookEnd));
+		}
+	}
+	return true;
+}
+//*** lecture des cookies pour chaque serie et affectation dans une variable*******
+var etat = [];
+for (var k=0;k<6;k++) {	
+	etat[k] = Boolean(getCookie('hargassner-p0c1-serie'+k)); // transforme la string des cookies en booleen , pour chaque serie
+}	
+
+//*********************chart *************************************************		
 $(function() {
     Highcharts.setOptions({
 		lang: {
@@ -82,6 +111,12 @@ $(function() {
                     radius: 0,
 					enabled: false,
 				},
+                events: { //memorisation de l'etat visible des courbes
+                    legendItemClick: function(event) {
+                        var visibility = this.visible ? '' : true; // for boolean => true=true and ''=false
+						setCookie('hargassner-p0c1-serie' + this.index, visibility);
+                    }
+                }
 			}
 		},
 
@@ -89,6 +124,7 @@ $(function() {
 			name: 'etat',
 			color: '#01AEE3',
             zIndex: 1,
+            visible: etat[0],
 			data: [<?php echo $listeInit; ?>],
 		}, {
 			name: 'T° eau',
@@ -96,26 +132,31 @@ $(function() {
             tooltip: {
                 valueSuffix: ' °',
             },
+            visible: etat[1],
             zIndex: 2,
 			data: [<?php echo $listeInit; ?>],
 		}, {
 			name: 'Extraction',
 			color: 'yellow',
+            visible: etat[2],
 			zIndex: 3,
 			data: [<?php echo $listeInit; ?>],
 		}, {
 			name: '% bois',
 			zIndex: 4,
+            visible: etat[3],
 			color: 'grey',
 			data: [<?php echo $listeInit; ?>],
 		}, {
 			name: 'puissance',
 			zIndex: 0,
+            visible: etat[4],
 			color: 'red',
 			data: [<?php echo $listeInit; ?>],
 		}, {
 			name: 'T° départ',
 			zIndex: 0,
+            visible: etat[5],
 			color: 'lightblue',
 			data: [<?php echo $listeInit; ?>],
 		}]

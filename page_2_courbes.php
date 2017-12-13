@@ -79,12 +79,14 @@ function parse_data(data) {
 	
 	dataPuiss = data[2];
 };
-//********* cookie**********************************************************
+//********* déclaration des cookies pour stockage visibilité des courbes****************************
+//*** creation cookie******
 function setCookie(sName, sValue) {
 	var today = new Date(), expires = new Date();
 	expires.setTime(today.getTime() + (365*24*60*60*1000));
 	document.cookie = sName + "=" + encodeURIComponent(sValue) + ";expires=" + expires.toGMTString();
 }
+//*** lecture cookie******
 function getCookie(sName) {
 	var cookContent = document.cookie, cookEnd, i, j;
 	var sName = sName + "=";
@@ -98,12 +100,12 @@ function getCookie(sName) {
 			return decodeURIComponent(cookContent.substring(j, cookEnd));
 		}
 	}
-	return null;
+	return true;
 }
-	// transforme la string des cookies en booleen , pour chaque serie
+//*** lecture des cookies pour chaque serie et affectation dans une variable*******
 var etat = [];
 for (var k=0;k<18;k++) {	
-	etat[k] = Boolean(getCookie('hargassner-p2c1-serie'+k));
+	etat[k] = Boolean(getCookie('hargassner-p2c1-serie'+k)); // transforme la string des cookies en booleen , pour chaque serie
 }	
 
 
@@ -270,12 +272,8 @@ $(function() {
             series: {
                 events: { //memorisation de l'etat visible des courbes
                     legendItemClick: function(event) {
-                        var visibility = this.visible ? '' : true;
+                        var visibility = this.visible ? '' : true; // for boolean => true=true and ''=false
 						setCookie('hargassner-p2c1-serie' + this.index, visibility);
-                        // if (!confirm('The series is now  ' + 
-                                     // visibility +'. Do you want to change that? '+ 'toto'+this.index)) {
-                            // return false;
-                        // }
                     }
                 }
             }

@@ -3,8 +3,8 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
-v2.2	12/12/2017
-	ajout memorisation de l'etat Visible/caché des courbes (le stockage se fait dans des cookies)
+v2.2	13/12/2017
+	ajout memorisation de l'etat Visible/caché des courbes sur la page variables(le stockage se fait dans des cookies)
 
 v2.1	12/12/2017
 	refonte page consommation

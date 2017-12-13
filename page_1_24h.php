@@ -13,6 +13,35 @@
 <?php require("footer.php");?>
 
 <script type="text/javascript">
+//********* déclaration des cookies pour stockage visibilité des courbes****************************
+//*** creation cookie******
+function setCookie(sName, sValue) {
+	var today = new Date(), expires = new Date();
+	expires.setTime(today.getTime() + (365*24*60*60*1000));
+	document.cookie = sName + "=" + encodeURIComponent(sValue) + ";expires=" + expires.toGMTString();
+}
+//*** lecture cookie******
+function getCookie(sName) {
+	var cookContent = document.cookie, cookEnd, i, j;
+	var sName = sName + "=";
+	for(var i=0,c=cookContent.length;i<c;i++) {
+	j = i + sName.length;
+		if(cookContent.substring(i, j) == sName) {
+			cookEnd = cookContent.indexOf(";", j);
+			if(cookEnd == -1) {
+				cookEnd = cookContent.length;
+			}
+			return decodeURIComponent(cookContent.substring(j, cookEnd));
+		}
+	}
+	return true;
+}
+//*** lecture des cookies pour chaque serie et affectation dans une variable*******
+var etat = [];
+for (var k=0;k<7;k++) {	
+	etat[k] = Boolean(getCookie('hargassner-p1c1-serie'+k)); // transforme la string des cookies en booleen , pour chaque serie
+}	
+
 $(document).ready(function(){
 //*** definition du graphe ******************************
     Highcharts.setOptions({
@@ -116,42 +145,55 @@ $(document).ready(function(){
                         enabled: false,
                     }
                 },
+                events: { //memorisation de l'etat visible des courbes
+                    legendItemClick: function(event) {
+                        var visibility = this.visible ? '' : true; // for boolean => true=true and ''=false
+						setCookie('hargassner-p1c1-serie' + this.index, visibility);
+                    }
+                }
 			},
 		},
 
 		series: [{
 			name: '<?php echo $chart_last24_name[0]; ?>',
 			color: '<?php echo $color_TdepD; ?>',
+            visible: etat[0],
 			zIndex: 5,
 			data: []
 		}, {
 			name: '<?php echo $chart_last24_name[1]; ?>',
 			color: '<?php echo $color_TdepE; ?>',
+            visible: etat[1],
 			zIndex: 3,
 			data: []
 		}, {
 			name: '<?php echo $chart_last24_name[2]; ?>',
 			color: '<?php echo $color_Tchaud; ?>',
+            visible: etat[2],
 			zIndex: 2,
 			data: []
 		}, {
 			name: '<?php echo $chart_last24_name[3]; ?>',
 			color: '<?php echo $color_Text; ?>',
+            visible: etat[3],
 			zIndex: 4,
 			data: []
 		}, {
 			name: '<?php echo $chart_last24_name[4]; ?>',
 			color: '<?php echo $color_TextM; ?>',
+            visible: etat[4],
 			zIndex: 4,
 			data: []
 		}, {
 			name: '<?php echo $chart_last24_name[5]; ?>',
 			color: '<?php echo $color_Tint; ?>',
+            visible: etat[5],
 			zIndex: 4,
 			data: []
 		}, {
 			name: '<?php echo $chart_last24_name[6]; ?>',
 			color: '<?php echo $color_puiss; ?>',
+            visible: etat[6],
 			zIndex: 4,
             yAxis: 1,
 			data: []
