@@ -46,8 +46,12 @@ $label_gran = ['enabled' => 'True',
 			'align' => 'center',
 			'y' => 0,
 		];
-$tooltip_gran = ['valueSuffix' => ' Kg'];
-$tooltip_temp = ['valueSuffix' => ' °C'];
+$tooltip_gran = ['valueSuffix' => ' Kg',
+				 'pointFormat' => '<span style="color:{point.color}">¤ {series.name}</span>: <span align="right"><b>{point.y}</b></span> / ',
+				];
+$tooltip_temp = ['valueSuffix' => ' °C',
+				 'pointFormat' => '<span style="color:{point.color}">T° moy </span>: <span align="right"><b>{point.y}</b></span><br/>',
+				];
 
 //creation des objets serie
 // formule pour calculer la position des colonnes (le pointPlacement) en fonction du nombre de saison
@@ -57,6 +61,7 @@ $colors_gran = ['rgba(230,126,34,1)','rgba(155,89,182,1)','rgba(41,128,185,1)','
 //$colors_temp = ['rgba(230,126,34,0.5)','rgba(155,89,182,0.5)','rgba(41,128,185,0.5)','rgba(46,204,113,0.5)','rgba(241,196,15,0.5)','rgba(213,76,60,0.5)'];
 $j = 0;
 foreach($serie as $annee=>$value){
+// pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <span align="right"><b>{point.y}</b></span><br/>',		
 	// serie granulés
     $obj[$annee] = ['name'=> ($annee) ."/". ($annee+1) ,
 					'type'=> 'column',
@@ -73,7 +78,8 @@ foreach($serie as $annee=>$value){
     $tableau[] = $obj[$annee];
 
 	// serie temperatures		
-    $obj[$annee] = ['name'=> ($annee) ."/". ($annee+1) ." T° Moy",
+    $obj[$annee] = [//'name'=> ($annee) ."/". ($annee+1) ." T° Moy",
+					'name'=> ' ',
 					'type'=> 'spline',
 					'data'=> $serieTmoy[$annee],
 					'color' => $colors_gran[$j],
@@ -86,9 +92,7 @@ foreach($serie as $annee=>$value){
 					// 'pointPlacement' => $y,
 					];
     $tableau[] = $obj[$annee];
-	
 	$j = $j + 1;
-
 	$y = $y + (1 / $nbre_saison);
 }
 

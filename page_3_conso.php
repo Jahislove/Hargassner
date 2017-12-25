@@ -583,7 +583,7 @@ $(function() {
 			crosshairs: true,
 			borderRadius: 26,
 			borderWidth: 2,
-			pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <span align="right"><b>{point.y}</b></span><br/>',		
+			// pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <span align="right"><b>{point.y}</b></span><br/>',		
 			// useHTML: true,
 			// formatter: function () {
 				// var s = '<b>' + this.x + '</b>';
@@ -675,7 +675,6 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
     chart3.showLoading('loading');
     chart4.showLoading('loading');
 
-
     $.ajax({
         dataType: "json",
         url: 'json_conso_annees.php',
@@ -697,9 +696,6 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
             chart4.hideLoading();
         }
     });
-
-
-    
 });
 </script>
 
