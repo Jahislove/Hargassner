@@ -47,10 +47,10 @@ $label_gran = ['enabled' => 'True',
 			'y' => 0,
 		];
 $tooltip_gran = ['valueSuffix' => ' Kg',
-				 'pointFormat' => '<span style="color:{point.color}">¤ {series.name}</span>: <span align="right"><b>{point.y}</b></span> / ',
+				 'pointFormat' => '<b><span style="color:{point.color}">¤ {series.name}</span></b>: <b>{point.y}</b></span> / ',
 				];
 $tooltip_temp = ['valueSuffix' => ' °C',
-				 'pointFormat' => '<span style="color:{point.color}">T° moy </span>: <span align="right"><b>{point.y}</b></span><br/>',
+				 'pointFormat' => '<span style="color:{point.color}">T° moy </span>: <b>{point.y}</b></span><br/>',
 				];
 
 //creation des objets serie

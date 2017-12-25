@@ -583,8 +583,9 @@ $(function() {
 			crosshairs: true,
 			borderRadius: 26,
 			borderWidth: 2,
+			headerFormat: '<span style="font-size: 15px">{point.key}</span><br/>',
 			// pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <span align="right"><b>{point.y}</b></span><br/>',		
-			// useHTML: true,
+			useHTML: true,
 			// formatter: function () {
 				// var s = '<b>' + this.x + '</b>';
                 // $.each(this.points, function () {
