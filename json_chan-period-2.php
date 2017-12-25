@@ -14,8 +14,6 @@ require_once("conf/config.inc.php");
     $jour =  $_GET["jour"];
     $periode = $_GET["periode"];
  
-    // $query = "SELECT dateB,$channel FROM data
-              // ORDER by dateB DESC LIMIT $periode";
     $query = "SELECT dateB,$channel FROM data
             WHERE dateB BETWEEN '".$annee."-".$mois."-".$jour." 00:00:00' AND '".$annee."-".$mois."-".$jour." 23:59:59'
             ORDER BY dateB DESC LIMIT ".$periode;
@@ -32,6 +30,8 @@ require_once("conf/config.inc.php");
     $dict3= ['null','Non','Non','Non','Non','Non','Non','Non','Non','En attente arrêt','Décendrage','Non','Nettoyage'];
 	$dict4= ['0','100','50']; // ballon ECS off/on/recyclage
 	$dict5= ['arret','en chauffe','recyclage']; // ballon ECS on/off
+	
+	$prev = 1;
     while($data = mysql_fetch_row($req)){
         $dateD = strtotime($data[0]) * 1000;
         $liste0['data'][] = [x => $dateD, y => $data[1],valeur => $dict[$data[1]] ];
@@ -52,8 +52,16 @@ require_once("conf/config.inc.php");
         $liste15[] = [$dateD, $data[16]];// conso
         $liste16[] = [$dateD, $data[17]];
         $liste17['data'][] = [x => $dateD, y => $dict4[intval($data[18])],valeur => $dict5[intval($data[18])] ];
-		
-		if ( $data[5] > 0 ) {  //pour calcul puissance moyenne on n'utilise que la periode ou "chaudiere doit" est > 0
+        // aspiration calcul changement d'etat quand le compteur c112 passe a zero
+		if ( $data[19] > 0 and $prev == 0) {
+			$liste18['data'][] = [x => $dateD, y => 100,valeur => 'on' ];
+			$prev = $data[19];
+		}else {
+			$liste18['data'][] = [x => $dateD, y => 0,valeur => 'off' ];
+			$prev = $data[19];
+		}
+		//pour calcul puissance moyenne on n'utilise que la periode ou "chaudiere doit" est > 0 
+		if ( $data[5] > 0 ) {  
 			$listePmoyFonc[] = $data[3];
 		}
     }
@@ -89,6 +97,7 @@ require_once("conf/config.inc.php");
     $liste15 = array_reverse($liste15);
     $liste16 = array_reverse($liste16);
     $liste17['data'] = array_reverse($liste17['data']);// est un objet
+    $liste18['data'] = array_reverse($liste18['data']);// est un objet
 
 	//calcul puissance moyenne sur la journee
 	$Pmoy2 = array_sum(array_column($liste2, 1))/count(array_column($liste2, 1));
@@ -98,6 +107,6 @@ require_once("conf/config.inc.php");
 	$PmoyFonc = round($Pmoy3, 0);
 	
 	
-    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13,$liste14,$liste15,$liste16,$liste17,$PmoyJour,$PmoyFonc];
+    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13,$liste14,$liste15,$liste16,$liste17,$liste18,$PmoyJour,$PmoyFonc];
     echo json_encode($tableau, JSON_NUMERIC_CHECK);
 ?>

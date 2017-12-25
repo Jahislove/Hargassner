@@ -137,7 +137,7 @@ $(function() {
 		},
     });
 
-//*****chart 1*****************************************************************************************
+//*****chart 1  conso+temp*********************************************************************************
 	chart1 = new Highcharts.Chart({
 		chart: {
 			renderTo: 'conso',
@@ -285,7 +285,7 @@ $(function() {
 		}] 
 	});
     
-//******chart 2***************************************************************************************
+//******chart 2 detail apres clic******************************************************************************
 	chart2 = new Highcharts.Chart({
 		chart: {
 			renderTo: 'courbe',
@@ -407,7 +407,7 @@ $(function() {
 		}] 
 	});
 
-//*******chart 3************************************************************************************
+//*******chart 3 conso annuelle**************************************************************************
 	chart3 = new Highcharts.Chart({
 		chart: {
 			renderTo: 'annees',
@@ -505,7 +505,7 @@ $(function() {
 			//data: [0,10]
 		}] 
 	});
-//*******chart 4************************************************************************************
+//*******chart 4 comparaison saison*************************************************************************
 	chart4 = new Highcharts.Chart({
 		chart: {
 			renderTo: 'conso_annees',
@@ -570,7 +570,10 @@ $(function() {
 		}],            
 		legend: {
             x: -30,
-			y: 30,
+			y: 0,
+            align: 'right',
+			verticalAlign: 'top',
+			floating: true
 		},
 		tooltip: {
 	        shared: true,
@@ -682,13 +685,11 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
             //il contient des objet serie, les paires sont les temperatures et impaires les granulés
 			for (var i = 0; i < objet.length; i=i+2){
 				//console.log(objet[i].data);
-                chart4.addSeries(objet[i], false);
-				var x = objet[i].name.slice(0,9);
+				var x = objet[i].name;
 				var y = objet[i].somme;
 				chart3.series[0].addPoint([x,y]);
-			}
-            for (var i = 1; i < objet.length; i=i+2){
                 chart4.addSeries(objet[i],false);
+                chart4.addSeries(objet[i+1],false);
 			}
 			chart3.redraw();
             chart4.redraw();

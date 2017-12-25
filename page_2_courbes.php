@@ -10,10 +10,11 @@
 </div>
 
 <?php
-    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','T° Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ est','T° Départ doit','Conso du jour','Ballon ECS Etat']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
-    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c99,c92"; // la 2 eme valeur (decendrage) est calculé d'apres c0
-    $chart2_name = ['allumage electrique','-','-','-','-'];
-    $chart2_chan = "c157,c0,c53,c134,c129";
+    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','T° Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ est','T° Départ doit','Conso du jour','Ballon ECS Etat','Aspiration']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
+    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c99,c92,c112"; // la 2 eme valeur (decendrage) est calculé d'apres c0
+    $chart2_name = ['allumage electrique'];
+    // $chart2_name = ['allumage electrique','-','-','-','-'];
+    // $chart2_chan = "c157,c0,c53,c134,c129";
     
     // requete pour initialiser la date
 	$query1 = "SELECT YEAR(dateB),MONTH(dateB),DAY(dateB) FROM consommation  
@@ -64,9 +65,10 @@ function parse_data(data) {
 	chart1.series[15].setData(data[15],false);
 	chart1.series[16].setData(data[16],false);
 	chart1.series[17].setData(data[17].data,false); //objet
+	chart1.series[18].setData(data[18].data,false); //objet
 
-	PuissMoyJour = data[18];
-	PuissMoyFonc = data[19];
+	PuissMoyJour = data[19];
+	PuissMoyFonc = data[20];
 
 	chart1.redraw();
 	chart1.hideLoading();
@@ -444,6 +446,18 @@ $(function() {
 			color: '<?php echo $color_ECS_etat; ?>',
             legendIndex: 16,
             visible: etat[17],
+            turboThreshold: 1500,
+            type: 'area',
+            zIndex: -1,
+            tooltip: {
+                pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.valeur}</b><br/>',		
+            },
+			data: []
+		}, {
+			name: '<?php echo $chart1_name[18]; ?>',
+			color: '<?php echo $color_aspi; ?>',
+            legendIndex: 18,
+            visible: etat[18],
             turboThreshold: 1500,
             type: 'area',
             zIndex: -1,

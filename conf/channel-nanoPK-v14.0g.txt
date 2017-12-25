@@ -129,7 +129,7 @@ premier parametre = pm
 <CHANNEL id=	109	 name=	Ext.HK Soll_3	 unit=		
 <CHANNEL id=	110	 name=	Höchste Anf	     unit=		temp depart chaudiere doit
 <CHANNEL id=	111	 name=	LZ LB seit Ent.	 unit=	Min	temps combustion est (pour decendrage ?)
-<CHANNEL id=	112	 name=	LZ ES seit Füll. unit=	Min	temps vis pour aspiration est 
+<CHANNEL id=	112	 name=	LZ ES seit Füll. unit=	Min	temps vis pour aspiration est ?(proportionnel a la conso granulé)
 <CHANNEL id=	113	 name=	Anzahl Entasch.	 unit=		nombre decendrage
 <CHANNEL id=	114	 name=	Anzahl SR Beweg. unit=		mouvement grille
 <CHANNEL id=	115	 name=	Lagerstand	     unit=	kg	pellet restant
@@ -198,7 +198,7 @@ premier parametre = pm
 <CHANNEL id=	178	 name=	TPmo			 unit='°C'
 <CHANNEL id=	179	 name=	TPmu			 unit='°C'
 <CHANNEL id=	180	 name=	Puff Füllgrad	 unit='%'  	% remplissage du Ballon Tampon
-<channel id= 	181	 name=	Alarme : 					1=rien , 9=debut ou fin ,2009=defaut
+<channel id= 	181	 name=	Alarme ? : 					1=rien , 9=debut ou fin ,2009=defaut,89 , 8 ,18, 28...
 <channel id=	182	 name= ?  alphanum
 <channel id=	183	 name= 								pompe ballon ECS 0 =off, 2=on
 <channel id= 	184	 name= ?
