@@ -52,12 +52,21 @@ require_once("conf/config.inc.php");
         $liste15[] = [$dateD, $data[16]];// conso
         $liste16[] = [$dateD, $data[17]];
         $liste17['data'][] = [x => $dateD, y => $dict4[intval($data[18])],valeur => $dict5[intval($data[18])] ];
-        // aspiration calcul changement d'etat quand le compteur c112 passe a zero
-		if ( $data[19] > 0 and $prev == 0) {
+		// il n'existe pas de parametre pour detecter l'aspiration
+		// mais il existe un compteur de tour de vis qui repasse a zero lors d'une aspi
+		// le but est detecter cette remise a zero
+        // calcul changement d'etat quand le compteur c112 passe a zero
+		// les valeurs etant lu en sens inverse :
+		if ( $data[19] > 0 and $prev == 0) { // quand le compteur est superieur a zero et que la valeur precedente etait zero alors on detecte un changement d'etat
 			$liste18['data'][] = [x => $dateD, y => 100,valeur => 'Marche' ];
 			$prev = $data[19];
-		}else {
-			$liste18['data'][] = [x => $dateD, y => 0,valeur => 'Arrêt' ];
+			$pointeur = 1;
+		}elseif ( $pointeur == 1){ // une pointe de courbe de 1mn etant trop fine pour le graphique, on ajoute une 2 eme minute
+			$liste18['data'][] = [x => $dateD, y => 100,valeur => 'Marche' ];
+			$prev = $data[19];
+			$pointeur = 0;
+		}else { // dans tous les autres cas : pas d'aspi
+			$liste18['data'][] = [x => $dateD, y => 0,valeur => 'Arrêt' ]; 
 			$prev = $data[19];
 		}
 		//pour calcul puissance moyenne on n'utilise que la periode ou "chaudiere doit" est > 0 
