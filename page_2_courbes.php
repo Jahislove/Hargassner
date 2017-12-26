@@ -205,9 +205,8 @@ $(function() {
 			crosshairs: true,
 			borderRadius: 26,
 			borderWidth: 1,
-            pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.y}</b><br/>',		
 			xDateFormat: '%A %d %b %H:%M:%S',
-        },
+       },
 		plotOptions: {
 			series: {
                 lineWidth: 1.5,
@@ -280,6 +279,30 @@ $(function() {
                 }
             }
         },
+		tooltip: {
+			useHTML: true,
+			headerFormat: '<small>{point.key}</small><br/><table>',
+			pointFormatter: function () {
+				 return '<tr><td> <span style="color:' + this.series.color +'">\u25CF </span>' + this.series.name + ' :</td> <td style="text-align: right"><b>' + this.y + '</b></td></tr>';
+			},				
+			footerFormat: '</table>',
+			
+			// pointFormatter: function () {
+				// if ( this.y == 0){
+					// return '';
+				// }	
+				 // return '<span style="color:' + this.series.color + '">\u25CF </span>' + this.series.name +' : <b>' + this.y + '</b><br/>';
+			// },				
+			// pointFormatter: function () {
+				// if ((this.series.name == 'Aspiration' || this.series.name == 'Décendrage'|| this.series.name == 'Ballon ECS Etat')  && this.y == 0){
+					// return '';
+				// }else {
+					// return '<span style="color:' + this.series.color + '">\u25CF </span>' + this.series.name +' : <b>' + this.y + '</b><br/>';
+				// }	
+			// },
+			
+		},
+
 		series: [{
 			name: '<?php echo $chart1_name[0]; ?>',
 			color: '<?php echo $color_etat; ?>',
@@ -287,7 +310,10 @@ $(function() {
             visible: etat[0],
             turboThreshold: 1500, // necessaire car serie 1 et 2 sont des objets et pas des array
             tooltip: {
-                pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.valeur}</b><br/>',		
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.valeur + '</b> ' + puce + '</td></tr>'
+				},				
             },
 			data: []
 		}, {
@@ -298,11 +324,14 @@ $(function() {
             turboThreshold: 1500,
             type: 'area',
             zIndex: -1,
-            // pointPadding: 0,
-            // groupPadding: 0,
-            // borderWidth: 0,
             tooltip: {
-                pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.valeur}</b><br/>',		
+				pointFormatter: function () {
+					if ( this.y == 0){
+						return '';
+					}	
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.valeur + '</b> ' + puce + '</td></tr>'
+				},				
             },
 			data: []
 		}, {
@@ -312,7 +341,10 @@ $(function() {
             legendIndex: 1,
             visible: etat[2],
             tooltip: {
-                valueSuffix: ' %',
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp % ' + puce + '</td></tr>'
+				},				
              },
 			data: []
 		}, {
@@ -321,7 +353,10 @@ $(function() {
             legendIndex: 2,
             visible: etat[3],
             tooltip: {
-                valueSuffix: ' °C',
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp °C ' + puce + '</td></tr>'
+				},				
              },
 			data: []
 		}, {
@@ -330,7 +365,10 @@ $(function() {
             legendIndex: 3,
             visible: etat[4],
             tooltip: {
-                valueSuffix: ' °C',
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp °C ' + puce + '</td></tr>'
+				},				
              },
 			data: [],
 		}, {
@@ -339,7 +377,10 @@ $(function() {
             legendIndex: 12,
             visible: etat[5],
             tooltip: {
-                valueSuffix: ' °C',
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp °C ' + puce + '</td></tr>'
+				},				
              },
 			data: [],
 		}, {
@@ -348,7 +389,10 @@ $(function() {
             legendIndex: 6,
             visible: etat[6],
             tooltip: {
-                valueSuffix: ' °C',
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp °C ' + puce + '</td></tr>'
+				},				
              },
 			data: []
 		}, {
@@ -357,8 +401,11 @@ $(function() {
             legendIndex: 13,
             visible: etat[7],
             tooltip: {
-                valueSuffix: ' %',
-             },
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp % ' + puce + '</td></tr>'
+				},				
+            },
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[8]; ?>',
@@ -366,8 +413,11 @@ $(function() {
             legendIndex: 14,
             visible: etat[8],
             tooltip: {
-                valueSuffix: ' %',
-             },
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp % ' + puce + '</td></tr>'
+				},				
+            },
 			data: [],
 		}, {
 			name: '<?php echo $chart1_name[9]; ?>',
@@ -375,8 +425,11 @@ $(function() {
             legendIndex: 9,
             visible: etat[9],
             tooltip: {
-                valueSuffix: ' %',
-             },
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp % ' + puce + '</td></tr>'
+				},				
+            },
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[10]; ?>',
@@ -384,7 +437,10 @@ $(function() {
             legendIndex: 15,
             visible: etat[10],
             tooltip: {
-                valueSuffix: ' °C',
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp °C ' + puce + '</td></tr>'
+				},				
              },
 			data: []
 		}, {
@@ -393,8 +449,11 @@ $(function() {
             legendIndex: 10,
             visible: etat[11],
             tooltip: {
-                valueSuffix: ' %',
-             },
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp % ' + puce + '</td></tr>'
+				},				
+            },
 			data: []
 		}, {
 			name: '<?php echo $chart1_name[12]; ?>',
@@ -402,7 +461,10 @@ $(function() {
             legendIndex: 7,
             visible: etat[12],
             tooltip: {
-                valueSuffix: ' °C',
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp °C ' + puce + '</td></tr>'
+				},				
              },
 			data: []
 		}, {
@@ -411,7 +473,10 @@ $(function() {
             legendIndex: 8,
             visible: etat[13],
             tooltip: {
-                valueSuffix: ' °C',
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp °C ' + puce + '</td></tr>'
+				},				
              },
 			data: [],
 		}, {
@@ -420,7 +485,10 @@ $(function() {
             legendIndex: 4,
             visible: etat[14],
             tooltip: {
-                valueSuffix: ' °C',
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp °C ' + puce + '</td></tr>'
+				},				
              },
 			data: []
 		}, {
@@ -429,7 +497,10 @@ $(function() {
             legendIndex: 5,
             visible: etat[15],
             tooltip: {
-                valueSuffix: ' °C',
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp °C ' + puce + '</td></tr>'
+				},				
              },
 			data: [],
 		}, {
@@ -438,7 +509,10 @@ $(function() {
             legendIndex: 14,
             visible: etat[16],
             tooltip: {
-                valueSuffix: ' Kg',
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp Kg ' + puce + '</td></tr>'
+				},				
              },
 			data: [],
 		}, {
@@ -450,7 +524,13 @@ $(function() {
             type: 'area',
             zIndex: -1,
             tooltip: {
-                pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.valeur}</b><br/>',		
+				pointFormatter: function () {
+					if ( this.y == 0){
+						return '';
+					}	
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.valeur + ' </b>' + puce + '</td></tr>'
+				},				
             },
 			data: []
 		}, {
@@ -462,8 +542,14 @@ $(function() {
             type: 'area',
             zIndex: -1,
             tooltip: {
-                pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.valeur}</b><br/>',		
-            },
+				pointFormatter: function () {
+					if ( this.y == 0){
+						return '';
+					}	
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.valeur + ' </b>' + puce + '</td></tr>'
+				},				
+			},
 			data: []
 		}] 
 	});

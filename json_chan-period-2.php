@@ -25,11 +25,11 @@ require_once("conf/config.inc.php");
     // $dict = ['','arret','Allumage','Demarrage','Controle allumage','Allumeur','Demarrage combustion','Combustion','Veille','Arret pour decendrage','decendrage','Refroidissement','Nettoyage'];
     // $dict2= ['','0','0','0','0','0','0','0','0','100','100','0','100'];
     // $dict3= ['','Non','Non','Non','Non','Non','Non','Non','Non','En attente arrêt','Décendrage','Non','Nettoyage'];
-    $dict = ['null','arret','Allumage','Demarrage','Controle allumage','Allumeur','Demarrage combustion','Combustion','Veille','Arret pour decendrage','decendrage','Refroidissement','Nettoyage','inconnu','inconnu','inconnu','inconnu','Assistant de combustion'];
+    $dict = ['null','Arrêt','Allumage','Démarrage','Contrôle allumage','Allumeur','Démarrage combustion','Combustion','Veille','Arrêt pour décendrage','décendrage','Refroidissement','Nettoyage','inconnu','inconnu','inconnu','inconnu','Assistant de combustion'];
     $dict2= ['0','0','0','0','0','0','0','0','0','100','100','0','100'];
     $dict3= ['null','Non','Non','Non','Non','Non','Non','Non','Non','En attente arrêt','Décendrage','Non','Nettoyage'];
 	$dict4= ['0','100','50']; // ballon ECS off/on/recyclage
-	$dict5= ['arret','en chauffe','recyclage']; // ballon ECS on/off
+	$dict5= ['Arrêt','En chauffe','Recyclage']; // ballon ECS on/off
 	
 	$prev = 1;
     while($data = mysql_fetch_row($req)){
@@ -54,10 +54,10 @@ require_once("conf/config.inc.php");
         $liste17['data'][] = [x => $dateD, y => $dict4[intval($data[18])],valeur => $dict5[intval($data[18])] ];
         // aspiration calcul changement d'etat quand le compteur c112 passe a zero
 		if ( $data[19] > 0 and $prev == 0) {
-			$liste18['data'][] = [x => $dateD, y => 100,valeur => 'on' ];
+			$liste18['data'][] = [x => $dateD, y => 100,valeur => 'Marche' ];
 			$prev = $data[19];
 		}else {
-			$liste18['data'][] = [x => $dateD, y => 0,valeur => 'off' ];
+			$liste18['data'][] = [x => $dateD, y => 0,valeur => 'Arrêt' ];
 			$prev = $data[19];
 		}
 		//pour calcul puissance moyenne on n'utilise que la periode ou "chaudiere doit" est > 0 

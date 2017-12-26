@@ -450,16 +450,6 @@ $(function() {
 			crosshairs: true,
 			borderRadius: 26,
 			borderWidth: 2,
-			pointFormat: '<b>{point.y}</b><br/>',		
-			// useHTML: true,
-			// formatter: function () {
-				// var s = '<b>' + this.x + '</b>';
-                // $.each(this.points, function () {
-                    // s += '<br/>\u25CF' + this.series.name + this.x +': ' +
-                        // this.y + ' Kg';
-                // });
-                // return s;
-            // },
 		},
 		plotOptions: {
 			series: {
