@@ -58,14 +58,28 @@ $data = explode(" ",$reponse); //transforme la reponse telnet (separateur espace
     }
 	// $requete = 'select * from data
 	// LIMIT 1';
-	$liste = "'" . implode("','", $data) . "'"; // transforme le tableau en chaine entre simple quote
-	echo $liste;
+	$liste = "'" . implode("','", $data) . "'";
+	// $liste = "null,'" . implode("','", $data) . "'";
+	// echo $liste;
+// $liste = "'2018-01-02 21:29:25','1','1.2','8.0','38','0','35','9','8','120','-20','120','125','38','35','100','25','-20','0','20','-20','0','25','140','0','0','21','20','20','0','-20','-20','0','0','20','20','-20','0','-20','-20','0','0','20','20','-20','0','20','24','20','20','20','20','20','0.0','0','100','43','0.0','0','0','0','0','0','50','0.0','0.0','0','0.0','0','0','0','0','0','4','0','0','0','0','0','0','0','0','1','0','0','0','4','0','0','0','0','0','0','0','0','0','0','0','0','516','2270','1','1','1','1','1','1','1','0','0','0','0','18','163','0','581','584','0','0','0','0','0','0','0','0','0','0','0','0','0.0','107.8','0.0','0.0','0.0','-20','0','4','-2','20.0','20.6','20.0','20.0','20.0','20.0','20.0','0','0','0','0','0','0','0','0','0','0','0.0','2957','968','16.8','990','0.9','123.0','968.6','240','189.6','73.5','0.0','0.0','0.0','0','0','0','0','0','0','0','0','5.0','100.0','-20.0','-20.0','100','0003','4000','0000','0000','0000','0110','0000','0000'";
+	
+	
+	// $requete = "INSERT INTO data VALUES (null, '$liste')";
+	$requete = "INSERT INTO data  VALUES (null, $liste)";
+	// $requete = "INSERT INTO consommation VALUES ('2018-01-05','1','6')";
+    // $req = mysqli_query($connn, $requete) ;
 
-	$requete = "INSERT INTO data  VALUES ('NULL', '$liste')";
-    mysqli_query($conn, $requete) ;
-	mysqli_close($conn);
+	if (mysqli_query($conn, $requete)) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $requete . "<br>" . mysqli_error($conn);
+}
+
+
+
+
+	mysqli_close($connn);
     
     // $dataf = mysqli_fetch_row($req);
 	// echo json_encode($dataf, JSON_NUMERIC_CHECK);
-	
 ?>
