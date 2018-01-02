@@ -3,7 +3,7 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************
-
+*** version php 5.6
 *** le serveur php doit etre lancé avec les extensions mysql et openssl
 
 / -->

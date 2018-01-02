@@ -1,8 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
-    <?php require_once("conf/config0.inc.php");?>
     <?php require_once("conf/config.inc.php");?>
-    <?php  ?>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>My Hargassner</title>

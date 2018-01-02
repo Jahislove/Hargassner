@@ -29,27 +29,25 @@
     }
 	//ajout nouveau parametre dans config.php
 	// si un fichier de nouveau parametre existe
-	// if (is_file('conf/new_param.txt')) {
+	if (is_file('conf/new_param.txt')) {
 		
-		// $new_param = file('conf/new_param.txt');// ecrit parametres dans tableau
-		// $new_param = array_reverse($new_param); // inverse le tableau
-		// $k = floor(count($new_param)/2);// divise par 2 pour avoir le nombre de couple
+		$new_param = file('conf/new_param.txt');// ecrit parametres dans tableau
+		$new_param = array_reverse($new_param); // inverse le tableau
+		$k = floor(count($new_param)/2);// divise par 2 pour avoir le nombre de couple
 
-		// $old_lignes = file('conf/config.inc.test.php'); //ecrit fichier dans tableau
-		// for ($i = 0; $i < $k; $i++){
-			// array_splice($old_lignes,$new_param[$i*2],0,$new_param[$i*2+1]);// insert lignes
-		// }
-		// $new_content = join('',$old_lignes);
-		// $fp = fopen('conf/config.inc.test.php','w');
-		// $write = fwrite($fp, $new_content);
-		// fclose($fp);
+		$old_lignes = file('conf/config.inc.php'); //ecrit fichier dans tableau
+		for ($i = 0; $i < $k; $i++){
+			array_splice($old_lignes,$new_param[$i*2],0,$new_param[$i*2+1]);// insert lignes
+		}
+		$new_content = join('',$old_lignes);
+		$fp = fopen('conf/config.inc.php','w');
+		$write = fwrite($fp, $new_content);
+		fclose($fp);
 
-
-		
 		// avertir
 		
-		//unlink('conf/new_param.txt');
-    //}
+		unlink('conf/new_param.txt');
+    }
 
 	
 	

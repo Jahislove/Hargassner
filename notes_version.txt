@@ -3,7 +3,7 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
-v2.3	24/12/2017
+v2.3	02/01/2018
 	ajout courbe aspiration (page variables)
 	refonte tooltip + legende (page consommation)
 	refonte tooltip (page variables)
