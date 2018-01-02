@@ -11,9 +11,9 @@ $username = "hargassner"; // utilisateur mysql
 $password = "password";
 
 $conn = mysqli_connect ($hostname, $username, $password, $database, $portSQL); 
-if (!$conn) {
-	die("Connection failed: " . mysqli_connect_error());
-}
+// if (!$conn) {
+	// die("Connection failed: " . mysqli_connect_error());
+// }
 	
 # declaration nombre de parametre dans la trame en fonction du firmware (note : +2 par rapport au numero du dernier chanel)
 # pour les vieux firmware avec moins de 164 parametres , l'ordre des champs est 
@@ -61,7 +61,7 @@ $data = explode(" ",$reponse); //transforme la reponse telnet (separateur espace
 	LIMIT 1';
 	
     $req = mysqli_query($conn, $requete) ;
-	mysql_close($conn);
+	mysqli_close($conn);
     
     $dataf = mysqli_fetch_row($req);
 	echo json_encode($dataf, JSON_NUMERIC_CHECK);
