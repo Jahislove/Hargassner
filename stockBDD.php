@@ -76,9 +76,9 @@ $data = explode(" ",$reponse); //transforme la reponse telnet (separateur espace
 }
 
 
+echo getcwd();
 
-
-	mysqli_close($connn);
+	mysqli_close($conn);
     
     // $dataf = mysqli_fetch_row($req);
 	// echo json_encode($dataf, JSON_NUMERIC_CHECK);

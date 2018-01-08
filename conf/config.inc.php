@@ -1,6 +1,7 @@
 <?php
 //****vos parametres **************************************************** 	
 $IPchaudiere = "192.168.0.198"; // indiquez l'IP de votre chaudiere
+$firmware= "14g" ; // valeur possible 14d, 14e, 14f, 14g
 $port = 23; //port telnet, ne pas modifier
 $mode_conn = 'telnet'; // mode de connexion : telnet pour chaudiere recente ou serial pour les anciennes 
 						// en mode serial la page d'acceuil ne fonctionne plus en temps reel mais utilise la BDD
@@ -37,6 +38,8 @@ $color_regul = '#0040A8';
 $color_bois = '#E97E04';
 $color_decend = '#AAFFAC';
 $color_legend = '#DBEDFF'; 
+$color_ECS_T = '#b7950b';
+$color_ECS_etat = '#B4EDFE';
 
 //*****ne pas modifier ci dessous************************************************	
 $histo_live_shift = $histo_temps * 60 / $refresh; // nombre de valeur avant de shift
