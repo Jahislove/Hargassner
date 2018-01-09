@@ -1,7 +1,8 @@
 <?php
 //****vos parametres **************************************************** 	
 $IPchaudiere = "192.168.0.198"; // indiquez l'IP de votre chaudiere
-$firmware= "14g" ; // valeur possible 14d, 14e, 14f, 14g
+$firmware= "14g" ; // valeur possible 14d, 14e, 14f, 14g , si votre firmware est plus recent utilisez le dernier dispo
+
 $port = 23; //port telnet, ne pas modifier
 $mode_conn = 'telnet'; // mode de connexion : telnet pour chaudiere recente ou serial pour les anciennes 
 						// en mode serial la page d'acceuil ne fonctionne plus en temps reel mais utilise la BDD
@@ -11,7 +12,7 @@ $refresh = 10; //rafraichissement en sec de l'etat de la chaudiere , ne pas desc
 $histo_temps = 30; //historique du graphique de la page d'accueil en mn
 
 // MySQL config
-$hostname = "192.168.0.222:3306"; //localhost si la BDD est sur la meme machine que le serveur web , sinon IP
+$hostname = "127.0.0.1:3306"; //127.0.0.1 si la BDD est sur la meme machine que le serveur web , sinon IP
 $database = "hargassner"; // nom de la BDD
 $username = "hargassner"; // utilisateur mysql
 $password = "password";

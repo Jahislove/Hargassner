@@ -1,24 +1,17 @@
 <?php 
-// version 0.1
-//en cours dev
+// version 0.1 alpha
+// 
 // ecriture des data dans bdd en php
+//en cours dev
+
 header("Content-type: text/json");
 require_once("conf/config.inc.php");
 	
-$hostname = "127.0.0.1"; //127.0.0.1 si la BDD est sur la meme machine que le serveur web , sinon IP
-$portSQL  = "3306";
 $database = "test"; // nom de la BDD
-$username = "hargassner"; // utilisateur mysql
-$password = "password";
-
-$conn = mysqli_connect ($hostname, $username, $password, $database, $portSQL); 
-if (!$conn) {
-	die("Connection failed: " . mysqli_connect_error());
-}
 	
 # declaration nombre de parametre dans la trame en fonction du firmware (note : +2 par rapport au numero du dernier chanel)
-# pour les vieux firmware avec moins de 164 parametres , l'ordre des champs est 
-# modifié afin d'etre compatible avec le site web
+# pour les vieux firmware avec moins de 174 parametres , l'ordre des champs est modifié afin d'etre compatible avec le site web
+
 if ($firmware == '4.3d'){
     $nbre_param = 85;
     $list_champ = str_repeat(",'%s'", $nbre_param) ; # adapte la requete au nombre de parametre
@@ -39,48 +32,50 @@ if ($firmware == '4.3d'){
 }	
 
 //ouverture socket telnet et lecture
-$fp = fsockopen ($IPchaudiere, $port, $errno, $errstr);
-if(!$fp){
-	echo "$errstr";
-}
-else {
-	$reponse=fgets ($fp,1024); //lecture reponse telnet
+function ecoute_socket($IPchaudiere, $port){
+	$fp = fsockopen ($IPchaudiere, $port, $errno, $errstr);
+	if(!$fp){
+		fclose($fp);
+		return;
+	}
+	$reponse = fgets ($fp,1024); //lecture reponse telnet
 	fclose($fp);
+	return $reponse; 
 }
 
-$data = explode(" ",$reponse); //transforme la reponse telnet (separateur espace) en array
-    
-    // verifie le bon format de la reponse
-    // pm 0 0 0 0 0 0 ....
-    if($data[0] == "pm"){
-        $data[0] = date('Y-m-d H:i:s', time()); //remplace pm par la date
-        $data = array_slice($data, 0, $nbre_param); // selectionne le nombre de param suivant le firmware
-		// echo json_encode($data, JSON_NUMERIC_CHECK);  //numeric_check : remove ""  
-    }
-	// $requete = 'select * from data
-	// LIMIT 1';
-	$liste = "'" . implode("','", $data) . "'";
-	// $liste = "null,'" . implode("','", $data) . "'";
-	// echo $liste;
-// $liste = "'2018-01-02 21:29:25','1','1.2','8.0','38','0','35','9','8','120','-20','120','125','38','35','100','25','-20','0','20','-20','0','25','140','0','0','21','20','20','0','-20','-20','0','0','20','20','-20','0','-20','-20','0','0','20','20','-20','0','20','24','20','20','20','20','20','0.0','0','100','43','0.0','0','0','0','0','0','50','0.0','0.0','0','0.0','0','0','0','0','0','4','0','0','0','0','0','0','0','0','1','0','0','0','4','0','0','0','0','0','0','0','0','0','0','0','0','516','2270','1','1','1','1','1','1','1','0','0','0','0','18','163','0','581','584','0','0','0','0','0','0','0','0','0','0','0','0','0.0','107.8','0.0','0.0','0.0','-20','0','4','-2','20.0','20.6','20.0','20.0','20.0','20.0','20.0','0','0','0','0','0','0','0','0','0','0','0.0','2957','968','16.8','990','0.9','123.0','968.6','240','189.6','73.5','0.0','0.0','0.0','0','0','0','0','0','0','0','0','5.0','100.0','-20.0','-20.0','100','0003','4000','0000','0000','0000','0110','0000','0000'";
-	
-	
-	// $requete = "INSERT INTO data VALUES (null, '$liste')";
-	$requete = "INSERT INTO data  VALUES (null, $liste)";
-	// $requete = "INSERT INTO consommation VALUES ('2018-01-05','1','6')";
-    // $req = mysqli_query($connn, $requete) ;
+// analyse reponse
+function lecture($IPchaudiere, $port){
+	$reponse = ecoute_socket($IPchaudiere, $port);
+	$prefix = strpos($reponse, 'pm');// verifie si debut de la ligne commence par pm
 
-	if (mysqli_query($conn, $requete)) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $requete . "<br>" . mysqli_error($conn);
+	while(!$reponse or $prefix === false) {
+		sleep(1);
+		$reponse = ecoute_socket($IPchaudiere, $port);
+		$i++;
+		if ($i >10){
+			break 2; // si pas de reponse on quitte tout le programme
+		}
+	}
+	return $reponse;
 }
 
+$reponse = lecture($IPchaudiere, $port); //interrogation chaudiere
 
-echo getcwd();
+$data = explode(" ",$reponse); //transforme la reponse telnet (separateur espace) en tableau
+$data[0] = date('Y-m-d H:i:s', time()); //remplace pm par la date
+$data = array_slice($data, 0, $nbre_param); // selectionne le nombre de param suivant le firmware
 
-	mysqli_close($conn);
+// insertion dans la BDD
+connectMaBase($hostname, $database, $username, $password);
+
+$liste = "'" . implode("','", $data) . "'";
+$requete = "INSERT INTO data  VALUES (null, $liste)";
+
+mysql_query($requete);
+
+
+//echo getcwd();
+
+mysql_close();
     
-    // $dataf = mysqli_fetch_row($req);
-	// echo json_encode($dataf, JSON_NUMERIC_CHECK);
 ?>
