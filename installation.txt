@@ -1,0 +1,52 @@
+Supervision chaudiere Hargassner
+auteur : JahisLove
+
+pour faire fonctionner ce site vous avez besoin :
+
+un serveur sur lequel tourne :
+une base MySQL (ou MariaDB) version 5 ou 10
+un serveur web (apache)
+php 5 avec les extensions :
+ mysql
+ openssl
+ 
+ 
+personnellement j'utilise un NAS Synology sur lequel tout est pré-installé
+
+
+installation et configuration: 
+Je ne detaille pas l'installation des produits ci dessus , google saura mieux vous expliquez que moi .
+
+partie web :
+le repertoire et sous repertoires du site sont a copier dans un sous repertoire hargassner du repertoire web(ou www) du serveur.
+blablabla/web/hargassner
+vous devez personnaliser le fichier dans conf/config.inc.php
+le site sera accessible a partir de l'adresse de votre serveur :
+http://ip_mon_serveur/hargassner
+
+partie MySQL :
+dans votre logiciel d'administration ( ex phpmyadmin) vous devez executer la requete situé :
+conf/create_db_user.sql
+
+ceci va créer une base de données avec ses tables et son utilisateur hargassner( mot de passe : password)
+
+
+partie enregistrement des données:
+maintenant , il faut ecouter la chaudiere et stocker les données :
+ceci se fait avec un script php qui doit tourner toutes les minutes.
+
+personnalisation du conf/php.ini
+il faut personnaliser cette ligne avec votre chemin
+extension_dir = /usr/local/lib/php56/modules
+
+pour trouver votre chemin utiliser la page
+http://ip_mon_serveur/hargassner/phpinfo.php
+
+maintenant il faut lancer le script toutes les minutes
+soit en crontab si vous etes sous linux
+editez la crontab de root et ajoutez la ligne (adaptez votre path) :
+* * * * * root php -c /mon_chemin/web/hargassner/conf/php.ini -f /mon_chemin/web/hargassner/stockBDD.php
+
+soit dans le planificateur de tache synology( notez que sous dsm6 l'executable php s'appelle php56)
+dans l'onglet parametre de la tache / case script defini par utilisateur :
+php56 -c /volume1/web/hargassner/conf/php.ini -f /volume1/web/hargassner/stockBDD.php

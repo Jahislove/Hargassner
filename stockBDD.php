@@ -31,7 +31,34 @@ if ($firmware == '4.3d'){
     $requete = "INSERT INTO data  VALUES (null" . $list_champ . ")" ;# null correspond au champ id qui sera auto completed par mysql
 }	
 
-//ouverture socket telnet et lecture
+//*******************declaration des fonctions*******************************************************
+
+// fonction calcul de la consommation de la veille et insertion dans la table consommation
+function calcul_consommation($hostname, $database, $username, $password){
+	connectMaBase($hostname, $database, $username, $password);
+	$requete = "SELECT dateB FROM consommation ORDER by dateB DESC LIMIT 1 ";
+	$result = mysql_query($requete);
+	$id = mysql_fetch_row($result);
+	
+	$last_conso = date("Y-m-d", strtotime($id[0]." +1 day"));
+	$hist_conso = date("Y-m-d", strtotime($id[0]." -10 day"));
+	$jour = date('Y-m-d', time());  
+	
+        if ($jour > $last_conso){
+            $SQLrequete = "SELECT DATE(dateB),MAX(c99)-MIN(c99),FORMAT(AVG(c6), 1) FROM data
+                        WHERE dateB > $hist_conso
+						GROUP BY DATE(dateB)
+                        ORDER by dateB DESC LIMIT 1,1 ";
+			$result = mysql_query($SQLrequete);
+			$data = mysql_fetch_row($result);
+			echo "\nresult ".$data[0];
+            $SQLinsert = "INSERT INTO consommation (dateB, conso, Tmoy) VALUES ('$data[0]',$data[1],$data[2])" ;
+			mysql_query($SQLinsert);
+		}
+	mysql_close();
+}
+
+//ouverture socket telnet 
 function ecoute_socket($IPchaudiere, $port){
 	$fp = fsockopen ($IPchaudiere, $port, $errno, $errstr);
 	if(!$fp){
@@ -43,7 +70,7 @@ function ecoute_socket($IPchaudiere, $port){
 	return $reponse; 
 }
 
-// analyse reponse
+// lecture et analyse reponse telnet
 function lecture($IPchaudiere, $port){
 	$reponse = ecoute_socket($IPchaudiere, $port);
 	$prefix = strpos($reponse, 'pm');// verifie si debut de la ligne commence par pm
@@ -59,23 +86,29 @@ function lecture($IPchaudiere, $port){
 	return $reponse;
 }
 
+// appel fonction lecture
 $reponse = lecture($IPchaudiere, $port); //interrogation chaudiere
-
 $data = explode(" ",$reponse); //transforme la reponse telnet (separateur espace) en tableau
 $data[0] = date('Y-m-d H:i:s', time()); //remplace pm par la date
 $data = array_slice($data, 0, $nbre_param); // selectionne le nombre de param suivant le firmware
 
 // insertion dans la BDD
 connectMaBase($hostname, $database, $username, $password);
-
 $liste = "'" . implode("','", $data) . "'";
-$requete = "INSERT INTO data  VALUES (null, $liste)";
-
+$requete = "INSERT INTO data  VALUES (null, $liste)";// null pour l'id qui est en auto-increment
 mysql_query($requete);
-
-
-//echo getcwd();
-
 mysql_close();
+
+// echo getcwd();
+
+
+//appel fonction consommation 
+$heure = date('H', time());
+$minute = date('i', time());
+
+if ($heure == '00' and $minute < '05'){ # si heure est comprise entre 00h00 et 00h05 on calcul la conso de la veille
+	calcul_consommation($hostname, $database, $username, $password);
+	
+}
     
 ?>
