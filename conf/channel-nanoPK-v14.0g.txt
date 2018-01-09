@@ -1,4 +1,4 @@
-etat
+ï»¿etat
 
 1   arret
 2   allumage
@@ -15,60 +15,60 @@ etat
 17	assistant de combustion
 
 ces channels sont trouvables dans les fichiers de log DAQ de la chaudiere
-j'ai simplement mis en forme et ajouté en francais les parametres que j'ai pu identifier
+j'ai simplement mis en forme et ajoutÃ© en francais les parametres que j'ai pu identifier
 premier parametre = pm
 <CHANNEL id=	0	 name=	ZK	             unit=		etat chaudiere
 <CHANNEL id=	1	 name=	O2	             unit=	%	O2 est
 <CHANNEL id=	2	 name=	O2soll	         unit=	%	O2 doit                              
-<CHANNEL id=	3	 name=	TK	             unit=	°C	temperature chaudiere est 
-<CHANNEL id=	4	 name=	TKsoll	         unit=	°C	temperature chaudiere doit
-<CHANNEL id=	5	 name=	TRG	             unit=	°C	temperature fumees
-<CHANNEL id=	6	 name=	Taus	         unit=	°C	temperature exterieur
-<CHANNEL id=	7	 name=	TA Gem.	         unit=	°C	temperature exterieur moyenne
-<CHANNEL id=	8	 name=	TPo	             unit=	°C	sonde BT haut
-<CHANNEL id=	9	 name=	TPm	             unit=	°C	sonde BT milieu
-<CHANNEL id=	10	 name=	TPu	             unit=	°C	sonde BT bas
-<CHANNEL id=	11	 name=	TFW	             unit=	°C	
-<CHANNEL id=	12	 name=	TRL	             unit=	°C	température retour après mélangeur
-<CHANNEL id=	13	 name=	TRLsoll     	 unit=	°C	température retour après mélangeur doit 
+<CHANNEL id=	3	 name=	TK	             unit=	Â°C	temperature chaudiere est 
+<CHANNEL id=	4	 name=	TKsoll	         unit=	Â°C	temperature chaudiere doit
+<CHANNEL id=	5	 name=	TRG	             unit=	Â°C	temperature fumees
+<CHANNEL id=	6	 name=	Taus	         unit=	Â°C	temperature exterieur
+<CHANNEL id=	7	 name=	TA Gem.	         unit=	Â°C	temperature exterieur moyenne
+<CHANNEL id=	8	 name=	TPo	             unit=	Â°C	sonde BT haut
+<CHANNEL id=	9	 name=	TPm	             unit=	Â°C	sonde BT milieu
+<CHANNEL id=	10	 name=	TPu	             unit=	Â°C	sonde BT bas
+<CHANNEL id=	11	 name=	TFW	             unit=	Â°C	
+<CHANNEL id=	12	 name=	TRL	             unit=	Â°C	tempÃ©rature retour aprÃ¨s mÃ©langeur
+<CHANNEL id=	13	 name=	TRLsoll     	 unit=	Â°C	???tempÃ©rature retour aprÃ¨s mÃ©langeur doit 
 <CHANNEL id=	14	 name=	RLP	             unit=	%	
-<CHANNEL id=	15	 name=	Tplat	         unit=	°C	Temp platine???
-<CHANNEL id=	16	 name=	TVL_A	         unit=	°C	
-<CHANNEL id=	17	 name=	TVLs_A	         unit=	°C	
-<CHANNEL id=	18	 name=	TRA	             unit=	°C	
-<CHANNEL id=	19	 name=	TBA	             unit=	°C	
-<CHANNEL id=	20	 name=	TBs_A	         unit=	°C	
-<CHANNEL id=	21	 name=	TVL_1	         unit=	°C	temperature depart chauffage est 
-<CHANNEL id=	22	 name=	TVL_2	         unit=	°C	
-<CHANNEL id=	23	 name=	TVLs_1	         unit=	°C	temperature depart chauffage doit 
-<CHANNEL id=	24	 name=	TVLs_2	         unit=	°C	
-<CHANNEL id=	25	 name=	TR1	             unit=	°C	??? 18
-<CHANNEL id=	26	 name=	TR2	             unit=	°C	??? 20
-<CHANNEL id=	27	 name=	TB1	             unit=	°C	temperature Ballon ECS est
-<CHANNEL id=	28	 name=	TBs_1	         unit=	°C	temperature Ballon ECS doit
-<CHANNEL id=	29	 name=	TVL_3	         unit=	°C	
-<CHANNEL id=	30	 name=	TVL_4	         unit=	°C	
-<CHANNEL id=	31	 name=	TVLs_3	         unit=	°C	
-<CHANNEL id=	32	 name=	TVLs_4	         unit=	°C	
-<CHANNEL id=	33	 name=	TR3	             unit=	°C	
-<CHANNEL id=	34	 name=	TR4	             unit=	°C	
-<CHANNEL id=	35	 name=	TB2	             unit=	°C	
-<CHANNEL id=	36	 name=	TBs_2	         unit=	°C	
-<CHANNEL id=	37	 name=	TVL_5	         unit=	°C	
-<CHANNEL id=	38	 name=	TVL_6	         unit=	°C	
-<CHANNEL id=	39	 name=	TVLs_5	         unit=	°C	
-<CHANNEL id=	40	 name=	TVLs_6	         unit=	°C	
-<CHANNEL id=	41	 name=	TR5	             unit=	°C	
-<CHANNEL id=	42	 name=	TR6	             unit=	°C	
-<CHANNEL id=	43	 name=	TB3	             unit=	°C	
-<CHANNEL id=	44	 name=	TBs_3	         unit=	°C	
-<CHANNEL id=	45	 name=	TRs_A	         unit=	°C	??? 20
-<CHANNEL id=	46	 name=	TRs_1	         unit=	°C	??? 22 temp int consigne??
-<CHANNEL id=	47	 name=	TRs_2	         unit=	°C	
-<CHANNEL id=	48	 name=	TRs_3	         unit=	°C	
-<CHANNEL id=	49	 name=	TRs_4	         unit=	°C	
-<CHANNEL id=	50	 name=	TRs_5	         unit=	°C	
-<CHANNEL id=	51	 name=	TRs_6	         unit=	°C	
+<CHANNEL id=	15	 name=	Tplat	         unit=	Â°C	Temp platine???
+<CHANNEL id=	16	 name=	TVL_A	         unit=	Â°C	
+<CHANNEL id=	17	 name=	TVLs_A	         unit=	Â°C	
+<CHANNEL id=	18	 name=	TRA	             unit=	Â°C	
+<CHANNEL id=	19	 name=	TBA	             unit=	Â°C	
+<CHANNEL id=	20	 name=	TBs_A	         unit=	Â°C	
+<CHANNEL id=	21	 name=	TVL_1	         unit=	Â°C	temperature depart chauffage est 
+<CHANNEL id=	22	 name=	TVL_2	         unit=	Â°C	
+<CHANNEL id=	23	 name=	TVLs_1	         unit=	Â°C	temperature depart chauffage doit 
+<CHANNEL id=	24	 name=	TVLs_2	         unit=	Â°C	
+<CHANNEL id=	25	 name=	TR1	             unit=	Â°C	??? 18
+<CHANNEL id=	26	 name=	TR2	             unit=	Â°C	??? 20
+<CHANNEL id=	27	 name=	TB1	             unit=	Â°C	temperature Ballon ECS est
+<CHANNEL id=	28	 name=	TBs_1	         unit=	Â°C	temperature Ballon ECS doit
+<CHANNEL id=	29	 name=	TVL_3	         unit=	Â°C	
+<CHANNEL id=	30	 name=	TVL_4	         unit=	Â°C	
+<CHANNEL id=	31	 name=	TVLs_3	         unit=	Â°C	
+<CHANNEL id=	32	 name=	TVLs_4	         unit=	Â°C	
+<CHANNEL id=	33	 name=	TR3	             unit=	Â°C	
+<CHANNEL id=	34	 name=	TR4	             unit=	Â°C	
+<CHANNEL id=	35	 name=	TB2	             unit=	Â°C	
+<CHANNEL id=	36	 name=	TBs_2	         unit=	Â°C	
+<CHANNEL id=	37	 name=	TVL_5	         unit=	Â°C	
+<CHANNEL id=	38	 name=	TVL_6	         unit=	Â°C	
+<CHANNEL id=	39	 name=	TVLs_5	         unit=	Â°C	
+<CHANNEL id=	40	 name=	TVLs_6	         unit=	Â°C	
+<CHANNEL id=	41	 name=	TR5	             unit=	Â°C	
+<CHANNEL id=	42	 name=	TR6	             unit=	Â°C	
+<CHANNEL id=	43	 name=	TB3	             unit=	Â°C	
+<CHANNEL id=	44	 name=	TBs_3	         unit=	Â°C	
+<CHANNEL id=	45	 name=	TRs_A	         unit=	Â°C	??? 20
+<CHANNEL id=	46	 name=	TRs_1	         unit=	Â°C	??? 22 temp int consigne??
+<CHANNEL id=	47	 name=	TRs_2	         unit=	Â°C	
+<CHANNEL id=	48	 name=	TRs_3	         unit=	Â°C	
+<CHANNEL id=	49	 name=	TRs_4	         unit=	Â°C	
+<CHANNEL id=	50	 name=	TRs_5	         unit=	Â°C	
+<CHANNEL id=	51	 name=	TRs_6	         unit=	Â°C	
 <CHANNEL id=	52	 name=	SZs	             unit=	%	vitesse extracteur doit
 <CHANNEL id=	53	 name=	SZ	             unit=	%	vitesse extracteur
 <CHANNEL id=	54	 name=	KeBrstScale	     unit=	%	variable F 
@@ -80,24 +80,24 @@ premier parametre = pm
 <CHANNEL id=	60	 name=	I Sr	         unit=	mA	conso nettoyeur/cendrier
 <CHANNEL id=	61	 name=	I Rein	         unit=	mA	conso nettoyeur/cendrier
 <CHANNEL id=	62	 name=	U_Lambda	     unit=	mV	conso lambda
-<CHANNEL id=	63	 name=	MWZ Vorl.	     unit=	°C	
-<CHANNEL id=	64	 name=	MWZ Rueckl. 	 unit=	°C	
+<CHANNEL id=	63	 name=	MWZ Vorl.	     unit=	Â°C	
+<CHANNEL id=	64	 name=	MWZ Rueckl. 	 unit=	Â°C	
 <CHANNEL id=	65	 name=	MWZ Durchf. 	 unit=		
 <CHANNEL id=	66	 name=	MWZ Leist.  	 unit=	KW	
 <CHANNEL id=	67	 name=	VFS Flow	     unit=	l/min	
-<CHANNEL id=	68	 name=	VFS Temp	     unit=	°C	
-<CHANNEL id=	69	 name=	IO32 VL	         unit=	°C	
+<CHANNEL id=	68	 name=	VFS Temp	     unit=	Â°C	
+<CHANNEL id=	69	 name=	IO32 VL	         unit=	Â°C	
 <CHANNEL id=	70	 name=	SR motor	     unit=		moteur actionnement grille/ressort
 <CHANNEL id=	71	 name=	SRpos ist   	 unit=		selection grille ou ressort
 <CHANNEL id=	72	 name=	SR mode	         unit=		selection du sens de rotation du moteur
-<CHANNEL id=	73	 name=	KaskSollTmp_1	 unit=	°C	
-<CHANNEL id=	74	 name=	KaskSollTmp_2	 unit=	°C	
-<CHANNEL id=	75	 name=	KaskSollTmp_3	 unit=	°C	
-<CHANNEL id=	76	 name=	KaskSollTmp_4	 unit=	°C	
-<CHANNEL id=	77	 name=	KaskIstTmp_1	 unit=	°C	
-<CHANNEL id=	78	 name=	KaskIstTmp_2	 unit=	°C	
-<CHANNEL id=	79	 name=	KaskIstTmp_3	 unit=	°C	
-<CHANNEL id=	80	 name=	KaskIstTmp_4	 unit=	°C	
+<CHANNEL id=	73	 name=	KaskSollTmp_1	 unit=	Â°C	
+<CHANNEL id=	74	 name=	KaskSollTmp_2	 unit=	Â°C	
+<CHANNEL id=	75	 name=	KaskSollTmp_3	 unit=	Â°C	
+<CHANNEL id=	76	 name=	KaskSollTmp_4	 unit=	Â°C	
+<CHANNEL id=	77	 name=	KaskIstTmp_1	 unit=	Â°C	
+<CHANNEL id=	78	 name=	KaskIstTmp_2	 unit=	Â°C	
+<CHANNEL id=	79	 name=	KaskIstTmp_3	 unit=	Â°C	
+<CHANNEL id=	80	 name=	KaskIstTmp_4	 unit=	Â°C	
 <CHANNEL id=	81	 name=	UsePos	         unit=		
 <CHANNEL id=	82	 name=	UseMotSoll	     unit=	mm	
 <CHANNEL id=	83	 name=	UseMotIst	     unit=	mm	
@@ -116,7 +116,7 @@ premier parametre = pm
 <CHANNEL id=	96	 name=	Puffer_soll	     unit=	Temp BT doit	
 <CHANNEL id=	97	 name=	Mode Fw	         unit=		
 <CHANNEL id=	98	 name=	Einschubschn.BSZ unit=		heures vis entree chaudiere 
-<CHANNEL id=	99	 name=	Verbrauchszähler unit=	kg	consommation pellet
+<CHANNEL id=	99	 name=	VerbrauchszÃ¤hler unit=	kg	consommation pellet
 <CHANNEL id=	100	 name=	FRA Zustand	     unit=		
 <CHANNEL id=	101	 name=	FR1 Zustand	     unit=		
 <CHANNEL id=	102	 name=	FR2 Zustand	     unit=		
@@ -127,9 +127,9 @@ premier parametre = pm
 <CHANNEL id=	107	 name=	Ext.HK Soll	     unit=		
 <CHANNEL id=	108	 name=	Ext.HK Soll_2	 unit=		
 <CHANNEL id=	109	 name=	Ext.HK Soll_3	 unit=		
-<CHANNEL id=	110	 name=	Höchste Anf	     unit=		temp depart chaudiere doit
+<CHANNEL id=	110	 name=	HÃ¶chste Anf	     unit=		temp depart chaudiere doit
 <CHANNEL id=	111	 name=	LZ LB seit Ent.	 unit=	Min	temps combustion est (pour decendrage ?)
-<CHANNEL id=	112	 name=	LZ ES seit Füll. unit=	Min	temps vis pour aspiration est ?(proportionnel a la conso granulé)
+<CHANNEL id=	112	 name=	LZ ES seit FÃ¼ll. unit=	Min	temps vis pour aspiration est ?(proportionnel a la conso granulÃ©)
 <CHANNEL id=	113	 name=	Anzahl Entasch.	 unit=		nombre decendrage
 <CHANNEL id=	114	 name=	Anzahl SR Beweg. unit=		mouvement grille
 <CHANNEL id=	115	 name=	Lagerstand	     unit=	kg	pellet restant
@@ -146,36 +146,36 @@ premier parametre = pm
 <CHANNEL id=	126	 name=	Kask LZLeist_3	 unit=	h	
 <CHANNEL id=	127	 name=	Kask LZLeist_4	 unit=	h	
 <CHANNEL id=	128	 name=	AIN17	         unit=	V	
-<CHANNEL id=	129	 name=	BRT	             unit=	°C	??? 98 a l'arret => 110
+<CHANNEL id=	129	 name=	BRT	             unit=	Â°C	??? 98 a l'arret => 110
 <CHANNEL id=	130	 name=	IO32 522	     unit=	mV	
 <CHANNEL id=	131	 name=	IO32 509	     unit=	mV	
 <CHANNEL id=	132	 name=	IO32 510	     unit=	mV	
-<CHANNEL id=	133	 name=	IO32 517	     unit=	°C	
+<CHANNEL id=	133	 name=	IO32 517	     unit=	Â°C	
 <CHANNEL id=	134	 name=	Leistung	     unit=	%	puissance 
 <CHANNEL id=	135	 name=	KasEntaschFreigabe unit=	??? decendrage sup a	
 <CHANNEL id=	136	 name=	I_Lambda    	 unit=	mA	intensite lambda
-<CHANNEL id=	137	 name=	TRA_A	         unit=	°C	
-<CHANNEL id=	138	 name=	TRA_1	         unit=	°C	temperature interieur Z1 FR35
-<CHANNEL id=	139	 name=	TRA_2	         unit=	°C	
-<CHANNEL id=	140	 name=	TRA_3	         unit=	°C	
-<CHANNEL id=	141	 name=	TRA_4	         unit=	°C	
-<CHANNEL id=	142	 name=	TRA_5       	 unit=	°C	
-<CHANNEL id=	143	 name=	TRA_6       	 unit=	°C	
+<CHANNEL id=	137	 name=	TRA_A	         unit=	Â°C	
+<CHANNEL id=	138	 name=	TRA_1	         unit=	Â°C	temperature interieur Z1 FR35
+<CHANNEL id=	139	 name=	TRA_2	         unit=	Â°C	
+<CHANNEL id=	140	 name=	TRA_3	         unit=	Â°C	
+<CHANNEL id=	141	 name=	TRA_4	         unit=	Â°C	
+<CHANNEL id=	142	 name=	TRA_5       	 unit=	Â°C	
+<CHANNEL id=	143	 name=	TRA_6       	 unit=	Â°C	
 <CHANNEL id=	144	 name=	U_lambda_soll	 unit=	mV	intensite lambda doit
-<CHANNEL id=	145	 name=	BRT Soll	     unit=	°C	
-<CHANNEL id=	146	 name=	Anf. HKR1	     unit=	°C	
-<CHANNEL id=	147	 name=	Anf. HKR2	     unit=	°C	
-<CHANNEL id=	148	 name=	Anf. HKR3	     unit=	°C	
-<CHANNEL id=	149	 name=	Anf. HKR4	     unit=	°C	
-<CHANNEL id=	150	 name=	Anf. HKR5	     unit=	°C	
-<CHANNEL id=	151	 name=	Anf. HKR6	     unit=	°C	
-<CHANNEL id=	152	 name=	Anf. HKR7	     unit=	°C	
-<CHANNEL id=	153	 name=	Anf. HKR8	     unit=	°C	
+<CHANNEL id=	145	 name=	BRT Soll	     unit=	Â°C	
+<CHANNEL id=	146	 name=	Anf. HKR1	     unit=	Â°C	
+<CHANNEL id=	147	 name=	Anf. HKR2	     unit=	Â°C	
+<CHANNEL id=	148	 name=	Anf. HKR3	     unit=	Â°C	
+<CHANNEL id=	149	 name=	Anf. HKR4	     unit=	Â°C	
+<CHANNEL id=	150	 name=	Anf. HKR5	     unit=	Â°C	
+<CHANNEL id=	151	 name=	Anf. HKR6	     unit=	Â°C	
+<CHANNEL id=	152	 name=	Anf. HKR7	     unit=	Â°C	
+<CHANNEL id=	153	 name=	Anf. HKR8	     unit=	Â°C	
 <CHANNEL id=	154	 name=	IO32 521	     unit=	mV	
 <CHANNEL id=	155	 name=	BSZ_STEUERUNG	 unit=	h	heures mise sous tension
 <CHANNEL id=	156	 name=	BSZ_HEIZUNG 	 unit=	h	heures chauffage
 <CHANNEL id=	157	 name=	BSZ_ZUENDUNG	 unit=	h	heures allumages
-<CHANNEL id=	158	 name=	BSZ_SZ	         unit=	h	heures extracteur fumées
+<CHANNEL id=	158	 name=	BSZ_SZ	         unit=	h	heures extracteur fumÃ©es
 <CHANNEL id=	159	 name=	BSZ_AUSTRAG	     unit=	h	heures extracteur silo
 <CHANNEL id=	160	 name=	Regler K	     unit=		regulateur : K
 <CHANNEL id=	161	 name=	BSZ_HEIZUNG_UPD	 unit=	h	heures chauffage upd
@@ -185,19 +185,19 @@ premier parametre = pm
 <CHANNEL id=	165	 name=	UseSoll 		 unit='mm'
 <CHANNEL id=	166	 name=	UseIst 			 unit='mm'
 <CHANNEL id=	167	 name=	UseStrom		 unit='mA'
-<CHANNEL id=	168	 name=	Anf. HKR0		 unit='°C'
-<CHANNEL id=	169	 name=	Anf. HKR9		 unit='°C'
-<CHANNEL id=	170	 name=	Anf. HKR10		 unit='°C'
-<CHANNEL id=	171	 name=	Anf. HKR11		 unit='°C'
-<CHANNEL id=	172	 name=	Anf. HKR12		 unit='°C'
-<CHANNEL id=	173	 name=	Anf. HKR13		 unit='°C'
-<CHANNEL id=	174	 name=	Anf. HKR14		 unit='°C'
-<CHANNEL id=	175	 name=	Anf. HKR15		 unit='°C'
-<CHANNEL id=	176	 name=	Spreizung		 unit='°C'  
+<CHANNEL id=	168	 name=	Anf. HKR0		 unit='Â°C'
+<CHANNEL id=	169	 name=	Anf. HKR9		 unit='Â°C'
+<CHANNEL id=	170	 name=	Anf. HKR10		 unit='Â°C'
+<CHANNEL id=	171	 name=	Anf. HKR11		 unit='Â°C'
+<CHANNEL id=	172	 name=	Anf. HKR12		 unit='Â°C'
+<CHANNEL id=	173	 name=	Anf. HKR13		 unit='Â°C'
+<CHANNEL id=	174	 name=	Anf. HKR14		 unit='Â°C'
+<CHANNEL id=	175	 name=	Anf. HKR15		 unit='Â°C'
+<CHANNEL id=	176	 name=	Spreizung		 unit='Â°C'  
 <CHANNEL id=	177	 name=	max.Leist.P3F.HT unit='%'
-<CHANNEL id=	178	 name=	TPmo			 unit='°C'
-<CHANNEL id=	179	 name=	TPmu			 unit='°C'
-<CHANNEL id=	180	 name=	Puff Füllgrad	 unit='%'  	% remplissage du Ballon Tampon
+<CHANNEL id=	178	 name=	TPmo			 unit='Â°C'
+<CHANNEL id=	179	 name=	TPmu			 unit='Â°C'
+<CHANNEL id=	180	 name=	Puff FÃ¼llgrad	 unit='%'  	% remplissage du Ballon Tampon
 <channel id= 	181	 name=	Alarme ? : 					1=rien , 9=debut ou fin ,2009=defaut,89 , 8 ,18, 28...
 <channel id=	182	 name= ?  alphanum
 <channel id=	183	 name= 								pompe ballon ECS 0 =off, 2=on
@@ -220,7 +220,7 @@ premier parametre = pm
 <CHANNEL id=	0	 bit=	10	 name=	HKP2	
 <CHANNEL id=	0	 bit=	11	 name=	M2A	
 <CHANNEL id=	0	 bit=	12	 name=	M2Z	
-<CHANNEL id=	0	 bit=	13	 name=	Störung	
+<CHANNEL id=	0	 bit=	13	 name=	StÃ¶rung	
 <CHANNEL id=	1	 bit=	0	 name=	L Heiz.	
 <CHANNEL id=	1	 bit=	1	 name=	Z Heiz.	
 <CHANNEL id=	1	 bit=	2	 name=	Z Geb.	
@@ -279,7 +279,7 @@ premier parametre = pm
 <CHANNEL id=	4	 bit=	10	 name=	KASK3 Run	
 <CHANNEL id=	4	 bit=	11	 name=	KASK4 Run	
 <CHANNEL id=	4	 bit=	12	 name=	FW Freig.	
-<CHANNEL id=	4	 bit=	13	 name=	sAS Anf Füll	
+<CHANNEL id=	4	 bit=	13	 name=	sAS Anf FÃ¼ll	
 <CHANNEL id=	4	 bit=	14	 name=	HKV	
 <CHANNEL id=	4	 bit=	15	 name=	FLP	
 <CHANNEL id=	5	 bit=	0	 name=	KASK1 AschAnf	

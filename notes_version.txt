@@ -3,6 +3,9 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
+v2.4
+	ajout script de remplissage BDD en php
+	
 v2.3	02/01/2018
 	ajout courbe aspiration (page variables)
 	refonte tooltip + legende (page consommation)

@@ -1,4 +1,5 @@
 <?php 
+// version 0.1
 //en cours dev
 // ecriture des data dans bdd en php
 header("Content-type: text/json");
