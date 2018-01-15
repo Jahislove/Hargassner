@@ -1,13 +1,15 @@
 <?php 
 // version 0.1 beta
-// 
-// ecriture des data dans bdd en php
-//
+// auteur : JahisLove 2018
+// ecriture des data dans la bdd en php
+
+// rien a configurer ici par l'utilisateur
+// seule une ligne dans conf/php.ini est a configurer ( la ligne extension_dir)
+// pour trouver votre chemin utiliser la page
+// http://ip_mon_serveur/hargassner/phpinfo.php
 
 header("Content-type: text/json");
 require_once("conf/config.inc.php");
-	
-$database = "test"; // nom de la BDD
 	
 # declaration nombre de parametre dans la trame en fonction du firmware (note : +2 par rapport au numero du dernier chanel)
 # pour les vieux firmware avec moins de 174 parametres , l'ordre des champs est modifié afin d'etre compatible avec le site web

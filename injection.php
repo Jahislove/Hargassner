@@ -1,6 +1,7 @@
 <?php
 // cette page permet d'injecter manuellement les temperatures interieures dans la BDD
-// format du fichier csv :
+// les données proviennent d'un thermo peanut
+//format du fichier csv :
 //utc,local,celsius
 //2017-10-03T14:36:15+00:00,2017-10-18T01:30:15+01:00,20.2
 //2018-01-03T14:36:22+00:00,2017-10-18T01:31:22+01:00,20.2

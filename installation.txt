@@ -38,7 +38,7 @@ ceci se fait :
 -soit avec un script python sur un raspberry pi (plus performant avec un backup en cas d'indispo de la base , mais plus complexe)
 lien https://github.com/Jahislove/hargassner-python 
 
--soit avec un script php (plus simple et ne necessite pas de raspberry) qui doit tourner toutes les minutes.
+-soit avec le script stockBDD.php fourni(plus simple et ne necessite pas de raspberry) qui doit tourner toutes les minutes.
 
 
 installation de la methode php :
