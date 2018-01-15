@@ -13,6 +13,7 @@ $.ajax({
 		// initialise les variables (utilisées) au dela du chanel 164 au cas ou le firmware < 14.g 
 		if (typeof channel[183] === 'undefined') {
 			channel[183] = 0;
+			channel[181] = 0;
 		}		 
         // animation du dessin par chargement de class CSS
 
@@ -144,8 +145,26 @@ $.ajax({
 				break;
 			default:
 				document.getElementById('ballonECS-bulle').className = 'visible ballonECS-100 tuyau-ECS';
-			
 		}
+		
+		// test diagnostic
+		// channel[181] = parseInt(channel[181]);
+		// if ( channel[181] >= 2000 ) {
+			// document.getElementById('etat').className = 'etat_erreur';
+			// switch ( true ) {
+				// case (channel[181]==2003): 
+					// etat = etat + '/Temps de Remplissage dépassé';
+					// break;
+				// case (channel[181]==2009):
+					// etat = etat + '/défaut';
+					// break;
+				// default:
+					// etat = etat + '/alerte inconnue';
+			// }
+        // } else {
+			// document.getElementById('etat').className = 'etat';
+		// }			
+		
 			
         // rafraichissement etat
         document.getElementById('etat').innerHTML = etat;
@@ -213,7 +232,7 @@ $.ajax({
         Gauche15.innerHTML = channel[25];    
         Gauche16.innerHTML = channel[26];    
         Gauche17.innerHTML = channel[45];    
-        Gauche18.innerHTML = channel[46];    
+        Gauche18.innerHTML = channel[181];    
 		Gauche19.innerHTML = channel[110];    
         Gauche20.innerHTML = channel[129];    
 

@@ -1,12 +1,12 @@
 Supervision chaudiere Hargassner
-auteur : JahisLove
+auteur : JahisLove 2018
 
 pour faire fonctionner ce site vous avez besoin :
 
 un serveur sur lequel tourne :
 une base MySQL (ou MariaDB) version 5 ou 10
 un serveur web (apache)
-php 5 avec les extensions :
+php 5.6 avec les extensions :
  mysql
  openssl
  
@@ -19,8 +19,9 @@ Je ne detaille pas l'installation des produits ci dessus , google saura mieux vo
 
 partie web :
 le repertoire et sous repertoires du site sont a copier dans un sous repertoire hargassner du repertoire web(ou www) du serveur.
-blablabla/web/hargassner
+/mon_chemin/web/hargassner
 vous devez personnaliser le fichier dans conf/config.inc.php
+
 le site sera accessible a partir de l'adresse de votre serveur :
 http://ip_mon_serveur/hargassner
 
@@ -33,8 +34,14 @@ ceci va créer une base de données avec ses tables et son utilisateur hargassne
 
 partie enregistrement des données:
 maintenant , il faut ecouter la chaudiere et stocker les données :
-ceci se fait avec un script php qui doit tourner toutes les minutes.
+ceci se fait :
+-soit avec un script python sur un raspberry pi (plus performant avec un backup en cas d'indispo de la base , mais plus complexe)
+lien https://github.com/Jahislove/hargassner-python 
 
+-soit avec un script php (plus simple et ne necessite pas de raspberry) qui doit tourner toutes les minutes.
+
+
+installation de la methode php :
 personnalisation du conf/php.ini
 il faut personnaliser cette ligne avec votre chemin
 extension_dir = /usr/local/lib/php56/modules
@@ -50,3 +57,5 @@ editez la crontab de root et ajoutez la ligne (adaptez votre path) :
 soit dans le planificateur de tache synology( notez que sous dsm6 l'executable php s'appelle php56)
 dans l'onglet parametre de la tache / case script defini par utilisateur :
 php56 -c /volume1/web/hargassner/conf/php.ini -f /volume1/web/hargassner/stockBDD.php
+
+et programmez cette tache toutes les minutes de 00h00 à 23h59

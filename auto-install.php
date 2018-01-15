@@ -13,7 +13,7 @@ function copyr($source,$dest) {
     }
     $dir = opendir($source);
     while (false !== ($entry = readdir($dir))){
-        if ($entry == '.' || $entry == '..' || $entry == 'backup'|| $entry == 'update'|| $entry == '.git'|| $entry == 'config.inc.php') {
+        if ($entry == '.' || $entry == '..' || $entry == 'backup'|| $entry == 'update'|| $entry == '.git'|| $entry == 'config.inc.php' || $entry == 'php.ini') {
             continue;
         }
         copyr("$source/$entry", "$dest/$entry");

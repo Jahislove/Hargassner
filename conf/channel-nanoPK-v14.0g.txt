@@ -63,7 +63,7 @@ premier parametre = pm
 <CHANNEL id=	43	 name=	TB3	             unit=	°C	
 <CHANNEL id=	44	 name=	TBs_3	         unit=	°C	
 <CHANNEL id=	45	 name=	TRs_A	         unit=	°C	??? 20
-<CHANNEL id=	46	 name=	TRs_1	         unit=	°C	??? 22 temp int consigne??
+<CHANNEL id=	46	 name=	TRs_1	         unit=	°C	??? 22 
 <CHANNEL id=	47	 name=	TRs_2	         unit=	°C	
 <CHANNEL id=	48	 name=	TRs_3	         unit=	°C	
 <CHANNEL id=	49	 name=	TRs_4	         unit=	°C	
@@ -198,11 +198,17 @@ premier parametre = pm
 <CHANNEL id=	178	 name=	TPmo			 unit='°C'
 <CHANNEL id=	179	 name=	TPmu			 unit='°C'
 <CHANNEL id=	180	 name=	Puff Füllgrad	 unit='%'  	% remplissage du Ballon Tampon
-<channel id= 	181	 name=	Alarme ? : 					1=rien , 9=debut ou fin ,2009=defaut,89 , 8 ,18, 28...
+<channel id= 	181	 name=	Alarme si >2000? : 			1=rien , 9=debut ou fin ,89 , 8 ,18, 28... ,
+														2001 ?
+														2003 Temps de Remplissage dépassé
+														2009 defaut 
+														2089 ?
+														2189 ?
+														2289 ?
 <channel id=	182	 name= ?  alphanum
 <channel id=	183	 name= 								pompe ballon ECS 0 =off, 2=on
 <channel id= 	184	 name= ?
-<channel id= 	185	 name= ?
+<channel id= 	185	 name= ?   							0 = tremi OK ,2000 = tremi vide
 <channel id= 	186	 name= ?
 <channel id= 	187	 name= ?
 <channel id= 	188	 name= ?

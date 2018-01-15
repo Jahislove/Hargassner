@@ -64,4 +64,4 @@
         </ul>
 	</nav>
     
-<div id="etat">?</div>
+<div id="etat" class="etat">?</div>

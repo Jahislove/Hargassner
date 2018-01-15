@@ -1,8 +1,8 @@
 <?php 
-// version 0.1 alpha
+// version 0.1 beta
 // 
 // ecriture des data dans bdd en php
-//en cours dev
+//
 
 header("Content-type: text/json");
 require_once("conf/config.inc.php");
@@ -51,7 +51,6 @@ function calcul_consommation($hostname, $database, $username, $password){
                         ORDER by dateB DESC LIMIT 1,1 ";
 			$result = mysql_query($SQLrequete);
 			$data = mysql_fetch_row($result);
-			echo "\nresult ".$data[0];
             $SQLinsert = "INSERT INTO consommation (dateB, conso, Tmoy) VALUES ('$data[0]',$data[1],$data[2])" ;
 			mysql_query($SQLinsert);
 		}
@@ -62,7 +61,6 @@ function calcul_consommation($hostname, $database, $username, $password){
 function ecoute_socket($IPchaudiere, $port){
 	$fp = fsockopen ($IPchaudiere, $port, $errno, $errstr);
 	if(!$fp){
-		fclose($fp);
 		return;
 	}
 	$reponse = fgets ($fp,1024); //lecture reponse telnet
@@ -76,10 +74,15 @@ function lecture($IPchaudiere, $port){
 	$prefix = strpos($reponse, 'pm');// verifie si debut de la ligne commence par pm
 
 	while(!$reponse or $prefix === false) {
-		sleep(1);
+		sleep(2);
 		$reponse = ecoute_socket($IPchaudiere, $port);
+		$prefix = strpos($reponse, 'pm');// verifie si debut de la ligne commence par pm
 		$i++;
 		if ($i >10){
+			$log = fopen("/volume1/web/hargassner-dev/trace.log","a");
+			$trace = date('Y-m-d H:i:s', time());
+			fwrite($log, $trace . " lecture du socket KO\n");
+			fclose($fp);
 			break 2; // si pas de reponse on quitte tout le programme
 		}
 	}
@@ -88,6 +91,8 @@ function lecture($IPchaudiere, $port){
 
 // appel fonction lecture
 $reponse = lecture($IPchaudiere, $port); //interrogation chaudiere
+
+//traitement des données
 $data = explode(" ",$reponse); //transforme la reponse telnet (separateur espace) en tableau
 $data[0] = date('Y-m-d H:i:s', time()); //remplace pm par la date
 $data = array_slice($data, 0, $nbre_param); // selectionne le nombre de param suivant le firmware
@@ -99,16 +104,12 @@ $requete = "INSERT INTO data  VALUES (null, $liste)";// null pour l'id qui est e
 mysql_query($requete);
 mysql_close();
 
-// echo getcwd();
-
-
 //appel fonction consommation 
 $heure = date('H', time());
 $minute = date('i', time());
 
-if ($heure == '00' and $minute < '05'){ # si heure est comprise entre 00h00 et 00h05 on calcul la conso de la veille
+if ($heure == '00' and $minute < '30'){ # si heure est comprise entre 00h00 et 00h05 on calcul la conso de la veille
 	calcul_consommation($hostname, $database, $username, $password);
-	
 }
-    
+  
 ?>

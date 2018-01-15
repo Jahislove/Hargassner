@@ -84,7 +84,7 @@
                 <tr><th>channel 25 : TR1</th>   <td id="Gauche15">?</td></tr>    
                 <tr><th>channel 26 : TR2</th>   <td id="Gauche16">?</td></tr>    
                 <tr><th>channel 45 : TRs_A</th> <td id="Gauche17">?</td></tr>    
-                <tr><th>channel 46 : TRs_1</th> <td id="Gauche18">?</td></tr>    
+                <tr><th>Diagnostic </th> 		<td id="Gauche18">?</td></tr>    
                 <tr><th>channel 110 : Höchste A</th><td id="Gauche19">?</td></tr>    
                 <tr><th>channel 129 : BRT</th>  <td id="Gauche20">?</td></tr>    
            </table>
