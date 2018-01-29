@@ -177,7 +177,7 @@ $(function() {
 			title: {
 				text: '',
 			},
-			max: 60,
+			// max: 60,
             plotBands: {
                 color: '#E7FFFF',
                 from: 0,

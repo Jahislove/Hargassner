@@ -3,7 +3,10 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
-v2.4
+v2.5
+	correction bug graphe consommation
+
+v2.4	15/01/2018
 	ajout script de remplissage BDD en php (peut remplacer le script python du raspberry)
 	mode d'emploi dans le fichier installation.txt
 	

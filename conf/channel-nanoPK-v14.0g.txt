@@ -161,7 +161,7 @@ premier parametre = pm
 <CHANNEL id=	141	 name=	TRA_4	         unit=	°C	
 <CHANNEL id=	142	 name=	TRA_5       	 unit=	°C	
 <CHANNEL id=	143	 name=	TRA_6       	 unit=	°C	
-<CHANNEL id=	144	 name=	U_lambda_soll	 unit=	mV	intensite lambda doit
+<CHANNEL id=	144	 name=	U_lambda_soll	 unit=	mV	tension lambda doit
 <CHANNEL id=	145	 name=	BRT Soll	     unit=	°C	
 <CHANNEL id=	146	 name=	Anf. HKR1	     unit=	°C	
 <CHANNEL id=	147	 name=	Anf. HKR2	     unit=	°C	

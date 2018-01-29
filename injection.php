@@ -3,8 +3,10 @@
 // les données proviennent d'un thermo peanut
 //format du fichier csv :
 //utc,local,celsius
-//2017-10-03T14:36:15+00:00,2017-10-18T01:30:15+01:00,20.2
-//2018-01-03T14:36:22+00:00,2017-10-18T01:31:22+01:00,20.2
+//2017-10-18T14:10:15+00:00,2017-10-18T15:10:15+01:00,20.2
+//2017-10-18T14:40:22+00:00,2017-10-18T15:40:22+01:00,20.2
+
+$frequence = 30; // frequence des enregistrements en minutes
 
 require_once("conf/config.inc.php");
 
@@ -44,8 +46,10 @@ for ($i = 1; $i < count($data); $i++){ // pour chaque ligne du tableau
 	$result = mysql_query($reqid);
     $id = mysql_fetch_row($result);
 	
+	$id_fin = $id[0] + $frequence ;
 	// utilise l'id pour updater
-	$requete = "UPDATE data SET c138 = '$temp' WHERE id = $id[0]";
+	// $requete = "UPDATE data SET c138 = '$temp' WHERE id = $id[0]";
+	$requete = "UPDATE data SET c138 = '$temp' WHERE id BETWEEN $id[0] AND $id_fin";
 				
 	echo "<br>" . $requete;
 	//injection dans la BDD
