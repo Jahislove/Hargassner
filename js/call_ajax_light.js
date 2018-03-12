@@ -54,7 +54,10 @@ $.ajax({
                 etat = 'inconnu';
                 break;
         }
-        document.getElementById('etat').innerHTML = etat;
+		document.getElementById('etat').innerHTML = etat;
+        //document.getElementById('etat').innerHTML = etat + ' | ' + channel[134] + '%';
+        //document.getElementById('T°ext').innerHTML = 'T°ext : ' + channel[6];
+        //document.getElementById('T°depart').innerHTML = 'T°depart : ' + channel[21];
     },
 });
 };

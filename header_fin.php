@@ -63,5 +63,14 @@
             <li id="about">  <a href="about.php">a propos</a></li>
         </ul>
 	</nav>
-    
-<div id="etat" class="etat">?</div>
+
+	<div id="etat" class="etat">?</div>    
+	<!-- <div>
+        <table class="TableInstant">
+            <tr>
+			<th id="etat" >?</th>
+             <th id="T°ext" >. </th>
+            <th id="T°depart" >. </th> 
+			</tr>
+        </table>
+	</div>-->

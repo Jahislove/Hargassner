@@ -4,7 +4,10 @@
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
 v2.5
+	ajout compatibilité firmware 14.0i5 (pensez a modifier le parametre dans conf/config.inc.php)
+	si votre base de donnée(table data) s'arrete a la colonne c172 il faut executer la requete conf/ajout_colonne_BDD.sql
 	correction bug graphe consommation
+	a partir du firmware 14.0i , le script python de remplissage n'est plus supporté , il faut utiliser le stockBDD.php
 
 v2.4	15/01/2018
 	ajout script de remplissage BDD en php (peut remplacer le script python du raspberry)

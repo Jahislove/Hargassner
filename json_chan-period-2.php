@@ -4,7 +4,6 @@
 //echo '<script>console.log('.$variable.')</script>';
 
 require_once("conf/config.inc.php");
- 
 
 	header("Content-type: text/json");
 
@@ -31,8 +30,10 @@ require_once("conf/config.inc.php");
 	$dict4= ['0','100','50']; // ballon ECS off/on/recyclage
 	$dict5= ['Arrêt','En chauffe','Recyclage']; // ballon ECS on/off
 	
+	
 	$prev = 1;
-    while($data = mysql_fetch_row($req)){
+    $listePmoyFonc[]= '';
+	while($data = mysql_fetch_row($req)){
         $dateD = strtotime($data[0]) * 1000;
         $liste0['data'][] = [x => $dateD, y => $data[1],valeur => $dict[$data[1]] ];
         $liste1['data'][] = [x => $dateD, y => $dict2[$data[2]],valeur => $dict3[$data[2]] ];
@@ -74,8 +75,6 @@ require_once("conf/config.inc.php");
 			$listePmoyFonc[] = $data[3];
 		}
     }
-	
-	
 	
 	
 	// calcul consommation journaliere a partir de la conso globale

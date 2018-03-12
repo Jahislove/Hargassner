@@ -6,6 +6,7 @@ function call_ajax() {
 $.ajax({
     url: 'json_telnet.php', 
     cache: false,
+	//dataType : "JSON",
     success: function(channel) {
         heure = channel[0]; // stock la date puis
         channel.shift(); // supprime la 1ere valeur (date) et decale les autres pour etre synchro avec les numero de channel

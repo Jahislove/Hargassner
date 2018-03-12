@@ -1,6 +1,7 @@
 ﻿<?php
 // graphique temps reel de la page d'accueil
 // pre-remplissage du chart avec des valeurs null
+$listeInit = '';
 $x = (time() * 1000);
 for ($i = -$histo_live_X; $i < 0; $i++){  //la valeur de $i doit correspondre a celle de la variable histo dans index.php
     $listeInit .= "[($x + $i*1000),null]," ;
