@@ -3,7 +3,7 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
-v2.5
+v2.5	12/03/2018
 	ajout compatibilité firmware 14.0i5 (pensez a modifier le parametre dans conf/config.inc.php)
 	si votre base de donnée(table data) s'arrete a la colonne c172 il faut executer la requete conf/ajout_colonne_BDD.sql
 	correction bug graphe consommation
