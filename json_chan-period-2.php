@@ -2,6 +2,7 @@
 // appelé par ajax, specifique page-2-courbes.php / graphe 1
 
 //echo '<script>console.log('.$variable.')</script>';
+// print_r($monarray); affichage array
 
 require_once("conf/config.inc.php");
 
