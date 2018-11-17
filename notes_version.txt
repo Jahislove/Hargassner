@@ -8,7 +8,7 @@ v2.6 	17/11/2018
 	amelioration requete allumeur
 	stockBDD.php :
 		amelioration :si ecriture en BDD impossible on ecrit dans stockBDD.log a la place
-		ajout prise en compte firmware 14.0j
+		ajout prise en compte firmware 14.0j(faites moi remonter les problemes de courbes)
 	
 v2.5	12/03/2018
 	ajout compatibilité firmware 14.0i5 (pensez a modifier le parametre dans conf/config.inc.php)
