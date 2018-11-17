@@ -1,5 +1,5 @@
 <?php 
-// version 0.2 beta
+// version 0.3 beta
 // auteur : JahisLove 2018
 // ecriture des data dans la bdd en php
 
@@ -8,6 +8,8 @@
 // pour trouver votre chemin utiliser la page et cherchez extension_dir
 // http://ip_mon_serveur/hargassner/phpinfo.php
 // pensez egalement a bien configurer le firmware dans conf/config.inc.php
+// les valeurs prises en compte a ce jour sont 
+// 4.3d , 14e , 14f , 14g , 14i , 14j
 
 header("Content-type: text/json");
 require_once("conf/config.inc.php");
@@ -53,21 +55,33 @@ function ecoute_socket($IPchaudiere, $port){
 function lecture($IPchaudiere, $port){
 	$reponse = ecoute_socket($IPchaudiere, $port);
 	$prefix = strpos($reponse, 'pm');// verifie si debut de la ligne commence par pm
-
+	
 	while(!$reponse or $prefix === false) {
 		sleep(2);
 		$reponse = ecoute_socket($IPchaudiere, $port);
 		$prefix = strpos($reponse, 'pm');// verifie si debut de la ligne commence par pm
 		$i++;
 		if ($i >10){
-			$log = fopen("/volume1/web/hargassner-dev/trace.log","a");
-			$trace = date('Y-m-d H:i:s', time());
-			fwrite($log, $trace . " lecture du socket KO\n");
-			fclose($fp);
+			addLogEvent("lecture du socket KO");
+			//$log = fopen("/volume1/web/hargassner/error.log","a");
+			//$trace = date('Y-m-d H:i:s', time());
+			//fwrite($log, $trace . " lecture du socket KO\n");
+			//fclose($fp);
 			break 2; // si pas de reponse on quitte tout le programme
 		}
 	}
 	return $reponse;
+}
+
+// log
+// si ecriture en BDD impossible on ecrit dans stockBDD.log a la place
+// 
+function addLogEvent($event)
+{
+    // $time = date("D, d M Y H:i:s");
+    // $time = "[".$time."] ";
+    $event = $event.";"."\n";
+    file_put_contents("/volume1/web/hargassner/stockBDD.log", $event, FILE_APPEND);
 }
 
 //*******************programme principal*******************************************************
@@ -117,6 +131,7 @@ switch ($firmware) {
 		$requete = "INSERT INTO data  VALUES (null, $liste)" ; // la BDD compte 190 champ , on peut donc simplifier la requete
         break;
     case '14i':
+	case '14j':
 		$nbre_param = 136;
         $data = array_slice($data, 0, $nbre_param); 
 		$liste = "'" . implode("','", $data) . "'"; // a partir du 14i l'ordre des parametres a changé => on modifie l'ordre d'ecriture en bdd
@@ -129,12 +144,18 @@ switch ($firmware) {
 }			
 			
 // insertion dans la BDD
-connectMaBase($hostname, $database, $username, $password);
 
-$result = mysql_query($requete);
-if (!$result) {
+$Conn = mysql_connect ($hostname, $username, $password) ;  
+mysql_select_db($database, $Conn);
+
+
+$result = mysql_query($requete); // ecriture en BDD
+
+if (!$result) { // si requete KO on log et on quitte
+	addLogEvent($requete);	
     die('erreur ecriture : ' . mysql_error());
 }
+
 
 mysql_close();
 

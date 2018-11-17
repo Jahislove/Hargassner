@@ -1,7 +1,7 @@
 <?php
 //****vos parametres **************************************************** 	
 $IPchaudiere = "192.168.0.198"; // indiquez l'IP de votre chaudiere
-$firmware= "14g" ; // valeur possible 14d, 14e, 14f, 14g , 14i si votre firmware est plus recent utilisez le dernier dispo
+$firmware= "14g" ; // valeur possible voir dans stockBDD.php , si votre firmware est plus recent utilisez le dernier dispo
 
 $port = 23; //port telnet, ne pas modifier
 $mode_conn = 'telnet'; // mode de connexion : telnet pour chaudiere recente ou serial pour les anciennes 

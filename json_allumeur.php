@@ -5,15 +5,16 @@ require_once("conf/config.inc.php");
  
 
 	header("Content-type: text/json");
+                // select DATE(dateB), SUM(c0) FROM(
+                // select dateB,c0/5 as c0 from data
 
     $query1 = "
-                select DATE(dateB), SUM(c0) FROM(
-                select dateB,c0/5 as c0 from data
+                select DATE(dateB), count(c0) FROM(
+                select dateB,c0 from data
                 where dateB > DATE_SUB(NOW(), INTERVAL 30 DAY) AND c0 = '5'
                 GROUP by DATE(dateB),HOUR(dateB)  
                 ) as tmp
                 GROUP BY DATE(dateB)";
-                
 
     connectMaBase($hostname, $database, $username, $password);
     $req1 = mysql_query($query1) ;
