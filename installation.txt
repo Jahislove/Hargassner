@@ -34,11 +34,7 @@ ceci va créer une base de données avec ses tables et son utilisateur hargassne
 
 partie enregistrement des données:
 maintenant , il faut ecouter la chaudiere et stocker les données :
-ceci se fait :
--soit avec un script python sur un raspberry pi (plus performant avec un backup en cas d'indispo de la base , mais plus complexe)
-lien https://github.com/Jahislove/hargassner-python 
-
--soit avec le script stockBDD.php fourni(plus simple et ne necessite pas de raspberry) qui doit tourner toutes les minutes.
+ceci se fait avec le script stockBDD.php fourni qui doit tourner toutes les minutes.
 
 
 installation de la methode php :

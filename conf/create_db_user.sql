@@ -1,8 +1,9 @@
 -- --------------------------------------------------------
--- Hôte :                        192.168.0.222
--- Version du serveur:           10.0.31-MariaDB - Source distribution
--- SE du serveur:                Linux
--- HeidiSQL Version:             9.3.0.4984
+-- Requete de creation de la base + tables + utilisateur 
+-- ATTENTION version compatible MySQL/MariaDB 5.6 mini
+-- 
+-- version 0.3
+-- 
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
