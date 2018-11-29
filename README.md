@@ -25,11 +25,6 @@ condition necessaire :
  - meme chose + 
  - base MySQL ou MariaDB
  
- le remplissage de la base peut se faire de 2 manières :
- - la manière simple : en utilisant le script php stockBDD.php fourni (voir le fichier installation.txt)
- - la manière compliquée : un script python tournant sur un raspberry pi , cette methode offre toutefois l'avantage de disposer 
-   d'une base SQlite de secours pour stocker temporairement les données en cas d'indispo de MySQL
-   voir ici  https://github.com/Jahislove/hargassner-python
-
-   
+ le remplissage de la base se fait en utilisant le script php stockBDD.php fourni (voir le fichier installation.txt)
+    
    voir le wiki pour plus d'info
