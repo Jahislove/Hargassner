@@ -54,6 +54,7 @@ require_once("conf/config.inc.php");
         $liste15[] = [$dateD, $data[16]];// conso
         $liste16[] = [$dateD, $data[17]];
         $liste17['data'][] = [x => $dateD, y => $dict4[intval($data[18])],valeur => $dict5[intval($data[18])] ];
+		// $liste18
 		// il n'existe pas de parametre pour detecter l'aspiration
 		// mais il existe un compteur de tour de vis qui repasse a zero lors d'une aspi
 		// le but est detecter cette remise a zero
@@ -71,6 +72,8 @@ require_once("conf/config.inc.php");
 			$liste18['data'][] = [x => $dateD, y => 0,valeur => 'Arrêt' ]; 
 			$prev = $data[19];
 		}
+		$liste19[] = [$dateD, $data[20]];
+		
 		//pour calcul puissance moyenne on n'utilise que la periode ou "chaudiere doit" est > 0 
 		if ( $data[5] > 0 ) {  
 			$listePmoyFonc[] = $data[3];
@@ -107,6 +110,7 @@ require_once("conf/config.inc.php");
     $liste16 = array_reverse($liste16);
     $liste17['data'] = array_reverse($liste17['data']);// est un objet
     $liste18['data'] = array_reverse($liste18['data']);// est un objet
+	$liste19 = array_reverse($liste19);
 
 	//calcul puissance moyenne sur la journee
 	$Pmoy2 = array_sum(array_column($liste2, 1))/count(array_column($liste2, 1));
@@ -116,6 +120,6 @@ require_once("conf/config.inc.php");
 	$PmoyFonc = round($Pmoy3, 0);
 	
 	
-    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13,$liste14,$liste15,$liste16,$liste17,$liste18,$PmoyJour,$PmoyFonc];
+    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13,$liste14,$liste15,$liste16,$liste17,$liste18,$liste19,$PmoyJour,$PmoyFonc];
     echo json_encode($tableau, JSON_NUMERIC_CHECK);
 ?>
