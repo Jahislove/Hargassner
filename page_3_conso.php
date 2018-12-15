@@ -428,6 +428,7 @@ $(function() {
 		xAxis: {
 			type: 'category',
 			crosshair: false,
+			visible: false,
 		 },
 		yAxis: [{
 			gridLineColor: '#CACACA', 
@@ -435,9 +436,9 @@ $(function() {
 			min: 0,
 			labels: {
 				format: '{value} Kg',
-				style: {
-					color: '<?php echo $color_gran; ?>',
-				}
+				// style: {
+					// color: '<?php echo $color_gran; ?>',
+				// }
 			},
 		   title: {
 				text: '',
@@ -453,6 +454,7 @@ $(function() {
 		},
 		plotOptions: {
 			series: {
+				colorByPoint: true,
 				marker: {
 					enabled: true,
 				},
@@ -464,6 +466,8 @@ $(function() {
 				},
 			},
             column: {
+				// colors a synchro avec json_conso_annees.php
+				colors: ['rgba(230,126,34,1)','rgba(155,89,182,1)','rgba(41,128,185,1)','rgba(46,204,113,1)','rgba(241,196,15,1)','rgba(213,76,60,1)'],
                 grouping: false,
                 shadow: false,
                 borderWidth: 0
@@ -473,7 +477,7 @@ $(function() {
 		series: [{
 			name: '<?php echo $chart3_name[0]; ?>',
 			type: 'column',
-			color: '<?php echo $color_gran; ?>',
+			// color: '<?php echo $color_gran; ?>',
             pointPadding: 0.3,
             groupPadding: 0.05,
             borderWidth: 0,
@@ -681,8 +685,12 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
                 chart4.addSeries(objet[i],false);
                 chart4.addSeries(objet[i+1],false);
 			}
+			
 			chart3.redraw();
             chart4.redraw();
+			chart3.xAxis[0].update({ // affiche les category apres le graph sinon bug d'affichage
+				visible: true
+				});
             chart3.hideLoading();
             chart4.hideLoading();
         }
