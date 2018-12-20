@@ -7,6 +7,7 @@ v2.8 	//2018
 	ajout courbe température retour dans la page "variables"
 	correction bug affichage des saisons sur le graphe conso annuelle(page consommation)
 	
+	
 v2.7 	10/12/2018 
 	correctif bug affichage page principale(telnet) avec le firmware 14.0g
 	

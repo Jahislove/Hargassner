@@ -70,6 +70,7 @@ function parse_data(data) {
 	chart1.series[19].setData(data[19],false);
 	PuissMoyJour = data[20];
 	PuissMoyFonc = data[21];
+	// en cas d'ajout penser a incrementer k pour les cookies plus bas
 
 	chart1.redraw();
 	chart1.hideLoading();
@@ -107,7 +108,7 @@ function getCookie(sName) {
 }
 //*** lecture des cookies pour chaque serie et affectation dans une variable*******
 var etat = [];
-for (var k=0;k<18;k++) {	
+for (var k=0;k<=19;k++) {	
 	etat[k] = Boolean(getCookie('hargassner-p2c1-serie'+k)); // transforme la string des cookies en booleen , pour chaque serie
 }	
 

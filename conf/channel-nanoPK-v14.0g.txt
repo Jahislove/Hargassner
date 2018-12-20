@@ -4,8 +4,8 @@
 2   allumage
 3   demarrage chaudiere
 4   controle allumage
-5   allumeur ?
-6   demarrage combustion/reduction phase allumage?
+5   allumeur 
+6   demarrage combustion/reduction phase allumage
 7   combustion
 8   veille
 9   decendrage dans 7 mn

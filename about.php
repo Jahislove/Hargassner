@@ -1,13 +1,7 @@
-<!DOCTYPE html>
+<?php require("header_debut.php"); ?>
+<script type="text/javascript" src="js/call_ajax_light.js">	</script>
+<?php require("header_fin.php"); ?>
 
-<head>
-	<link type="text/css" rel="stylesheet" href="css/main.css" />
-</head>
-
-<html>
-    <?php
-    require_once("conf/version.php");
-    ?>
 
 <h2>
 <p>
@@ -18,17 +12,15 @@
     ma configuration :
 </p>
 <p>
-        - Chaudière Hargassner NanoPK + régulation touchtronic 
+        - Chaudière Hargassner NanoPK avec touchtronic 
 </p>
 <p>
-        - base MySQL/MariaDB sur NAS synology DS411J
+        - base MySQL/MariaDB sur NAS synology DS916+
 </p>
 <p>
-        - site web + php sur NAS synology DS411J
+        - site web + php sur NAS synology D916+
 </p>
-<p>
-        - script python sur Raspberry pi
-</p>
+
 <p>
     ce site est divisé en 2 parties :
 </p>
@@ -36,11 +28,9 @@
     Une version simple , la page d'accueil uniquement, propose le temps réel. Elle ne nécessite qu'un serveur web+php sur le même réseau que la chaudière.
 </p>
 <p>
-    une version avancée (les autres menus)qui nécessite en plus une base de données MySQL ou MariaDB et un script pour remplir cette base.
+    une version avancée (les autres menus)qui nécessite en plus une base de données MySQL ou MariaDB .
 </p>
-<p>
-    Pour remplir cette base J'ai développé un script python qui tourne en permanence sur le Raspberry
-</p>
+
 <p>
     La Chaudière dialogue par telnet , ce protocole n'est pas du tout sécurisé .
 
@@ -48,17 +38,17 @@
 </p>
 
 <p>
-    le site web est disponible ici : https://github.com/Jahislove/Hargassner
+    le site web est disponible ici :<a href="https://github.com/Jahislove/Hargassner"> Github </a>
 </p>
+
 <p>
-    le script python ici : https://github.com/Jahislove/hargassner-python
-    
-</p>
-<p>
-    le forum pour discuter : http://forums.futura-sciences.com/habitat-bioclimatique-isolation-chauffage/503952-chaudieres-hargassner-regroupement-dinformations-98.html
+    le forum pour discuter : <a href="http://forums.futura-sciences.com/habitat-bioclimatique-isolation-chauffage/503952-chaudieres-hargassner-regroupement-dinformations-98.html"> Forum Futura-sciences </a>
 </p>
 <div>
     <br/>
 </div></h2>
+<?php require("footer.php");?>
 
-</html>
+<script type="text/javascript">
+	requestData();
+</script>
