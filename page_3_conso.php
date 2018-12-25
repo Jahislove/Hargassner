@@ -116,8 +116,8 @@ $(function() {
             },
         },
 		global: {
-			useUTC: true,
-			timezoneOffset: -2 * 60
+			useUTC: false,
+			//timezoneOffset: -1 * 60
 		},
 	    credits: {
 			enabled: false,
