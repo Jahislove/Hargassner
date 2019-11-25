@@ -3,9 +3,11 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
-v2.8 	//2018 
+v2.8 	25/11/2019
+	ajout courbes temp depart Zone 2 dans la page "variables"
 	ajout courbe température retour dans la page "variables"
 	correction bug affichage des saisons sur le graphe conso annuelle(page consommation)
+	ajout couleur par saison pour conso annuelle
 	
 	
 v2.7 	10/12/2018 
