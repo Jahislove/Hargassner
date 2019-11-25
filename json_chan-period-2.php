@@ -59,7 +59,7 @@ require_once("conf/config.inc.php");
 		// mais il existe un compteur de tour de vis qui repasse a zero lors d'une aspi
 		// le but est detecter cette remise a zero
         // calcul changement d'etat quand le compteur c112 passe a zero
-		// les valeurs etant lu en sens inverse :
+		// les valeurs etant lu en SENS INVERSE :
 		if ( $data[19] > 0 and $prev == 0) { // quand le compteur est superieur a zero et que la valeur precedente etait zero alors on detecte un changement d'etat
 			$liste18['data'][] = [x => $dateD, y => 100,valeur => 'Marche' ];
 			$prev = $data[19];

@@ -1,11 +1,11 @@
-solution pour corriger la consommation reelle sur la chaudiere et en BDD:
+﻿solution pour corriger la consommation reelle sur la chaudiere et en BDD:
 le principe est le suivant :
 il faut connaitre la quantité exacte de granulés consommés
 donc il faut attendre d'avoir vider le silo , comme ca on sait combien on avait mis dedans 
 a ce moment la on regarde combien la chaudiere indique avoir consommé
 
 par exemple dans mon cas cette année : 
-j'avais rentré 4250 kgs et une fois le silo vide , la chaudiere indiquait 6700
+j'avais rentré 4250 kgs et une fois le silo vide , la chaudiere indiquait 6700 consommé
 
 petit calcul :
 conso chaudiere / conso reelle = Facteur correction
@@ -16,7 +16,7 @@ ancienne valeur / facteur correction = nouvelle valeur
 2.2/1.576= 1.3959
 1.39 n'est pas selectionnable ,on choisi la valeur la plus proche superieur  : 1.4 
 
-pour etre synchro avec la BDD on recalcule la valeur du facteur de correction 
+pour etre synchro avec la BDD on recalcule la valeur du nouveau facteur de correction 
 2.2/1.4 = 1.571
 
 ensuite on execute une requete SQL dans phpmyadmin pour corriger l'historique de la page "variables" en BDD

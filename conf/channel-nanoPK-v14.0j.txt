@@ -19,9 +19,6 @@ etat
 12  nettoyage
 17	assistant de combustion
 
-config : remettre bdd
-json_chan_period2 : L17 remettre data
-page_2_courbe : L14 remettre chart1_chan
 
 channel firmware 14.0j								correspondance avec firmwares precedents (colonne dans la BDD)
 premier parametre = pm	

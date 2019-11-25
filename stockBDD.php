@@ -17,6 +17,7 @@ require_once("conf/config.inc.php");
 //*******************declaration des fonctions*******************************************************
 
 // fonction calcul de la consommation de la veille et insertion dans la table consommation
+// la table consommation se rempli 1 seule fois par jour, apres minuit
 function calcul_consommation($hostname, $database, $username, $password){
 	connectMaBase($hostname, $database, $username, $password);
 	$requete = "SELECT dateB FROM consommation ORDER by dateB DESC LIMIT 1 ";
