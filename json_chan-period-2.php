@@ -51,28 +51,30 @@ require_once("conf/config.inc.php");
         $liste12[] = [$dateD, $data[13]];
         $liste13[] = [$dateD, $data[14]];
         $liste14[] = [$dateD, $data[15]];
-        $liste15[] = [$dateD, $data[16]];// conso
+        $liste15[] = [$dateD, $data[16]];
         $liste16[] = [$dateD, $data[17]];
-        $liste17['data'][] = [x => $dateD, y => $dict4[intval($data[18])],valeur => $dict5[intval($data[18])] ];
-		// $liste18
+        $liste17[] = [$dateD, $data[18]];// conso
+        $liste18[] = [$dateD, $data[19]];
+        $liste19['data'][] = [x => $dateD, y => $dict4[intval($data[20])],valeur => $dict5[intval($data[20])] ];
+		// $liste20
 		// il n'existe pas de parametre pour detecter l'aspiration
 		// mais il existe un compteur de tour de vis qui repasse a zero lors d'une aspi
 		// le but est detecter cette remise a zero
         // calcul changement d'etat quand le compteur c112 passe a zero
 		// les valeurs etant lu en SENS INVERSE :
-		if ( $data[19] > 0 and $prev == 0) { // quand le compteur est superieur a zero et que la valeur precedente etait zero alors on detecte un changement d'etat
-			$liste18['data'][] = [x => $dateD, y => 100,valeur => 'Marche' ];
-			$prev = $data[19];
+		if ( $data[21] > 0 and $prev == 0) { // quand le compteur est superieur a zero et que la valeur precedente etait zero alors on detecte un changement d'etat
+			$liste20['data'][] = [x => $dateD, y => 100,valeur => 'Marche' ];
+			$prev = $data[21];
 			$pointeur = 1;
 		}elseif ( $pointeur == 1){ // une pointe de courbe de 1mn etant trop fine pour le graphique, on ajoute une 2 eme minute
-			$liste18['data'][] = [x => $dateD, y => 100,valeur => 'Marche' ];
-			$prev = $data[19];
+			$liste20['data'][] = [x => $dateD, y => 100,valeur => 'Marche' ];
+			$prev = $data[21];
 			$pointeur = 0;
 		}else { // dans tous les autres cas : pas d'aspi
-			$liste18['data'][] = [x => $dateD, y => 0,valeur => 'Arrêt' ]; 
-			$prev = $data[19];
+			$liste20['data'][] = [x => $dateD, y => 0,valeur => 'Arrêt' ]; 
+			$prev = $data[21];
 		}
-		$liste19[] = [$dateD, $data[20]];
+		$liste21[] = [$dateD, $data[22]];
 		
 		//pour calcul puissance moyenne on n'utilise que la periode ou "chaudiere doit" est > 0 
 		if ( $data[5] > 0 ) {  
@@ -83,9 +85,9 @@ require_once("conf/config.inc.php");
 	
 	// calcul consommation journaliere a partir de la conso globale
 	// valeur de depart
-	$init = end($liste16)[1];
+	$init = end($liste18)[1];
 	// modifie la liste avec les valeurs calculées
-	foreach($liste16 as &$valeur) {  //le & permet de lire puis reecrire la nouvelle valeur
+	foreach($liste18 as &$valeur) {  //le & permet de lire puis reecrire la nouvelle valeur
 		$valeur = [$valeur[0] , $valeur[1] - $init] ;
 	}
 	
@@ -108,9 +110,11 @@ require_once("conf/config.inc.php");
     $liste14 = array_reverse($liste14);
     $liste15 = array_reverse($liste15);
     $liste16 = array_reverse($liste16);
-    $liste17['data'] = array_reverse($liste17['data']);// est un objet
-    $liste18['data'] = array_reverse($liste18['data']);// est un objet
-	$liste19 = array_reverse($liste19);
+    $liste17 = array_reverse($liste17);
+    $liste18 = array_reverse($liste18);
+    $liste19['data'] = array_reverse($liste19['data']);// est un objet
+    $liste20['data'] = array_reverse($liste20['data']);// est un objet
+	$liste21 = array_reverse($liste21);
 
 	//calcul puissance moyenne sur la journee
 	$Pmoy2 = array_sum(array_column($liste2, 1))/count(array_column($liste2, 1));
@@ -120,6 +124,6 @@ require_once("conf/config.inc.php");
 	$PmoyFonc = round($Pmoy3, 0);
 	
 	
-    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13,$liste14,$liste15,$liste16,$liste17,$liste18,$liste19,$PmoyJour,$PmoyFonc];
+    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13,$liste14,$liste15,$liste16,$liste17,$liste18,$liste19,$liste20,$liste21,$PmoyJour,$PmoyFonc];
     echo json_encode($tableau, JSON_NUMERIC_CHECK);
 ?>

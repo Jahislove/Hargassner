@@ -11,11 +11,9 @@
 
 <?php
 	// utilise json_chan-period-2.php
-    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','T° Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ est','T° Départ doit','Conso du jour','Ballon ECS Etat','Aspiration','T° Retour']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
-    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c99,c92,c112,c12"; // la 2 eme valeur (decendrage) est calculé d'apres c0
+    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','T° Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ Z1 est','T° Départ Z1 doit','T° Départ Z2 est','T° Départ Z2 doit','Conso du jour','Ballon ECS Etat','Aspiration','T° Retour']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
+    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c22,c24,c99,c92,c112,c12"; // la 2 eme valeur (decendrage) est calculé d'apres c0
     $chart2_name = ['allumage electrique'];
-    // $chart2_name = ['allumage electrique','-','-','-','-'];
-    // $chart2_chan = "c157,c0,c53,c134,c129";
     
     // requete pour initialiser la date
 	$query1 = "SELECT YEAR(dateB),MONTH(dateB),DAY(dateB) FROM consommation  
@@ -48,9 +46,9 @@
 //*****************fonction tracage graphe pour loading et pickup calendar********************************************************
 function parse_data(data) {
 	//tracage du graphique
-	chart1.series[0].setData(data[0].data,false); //objet
-	chart1.series[1].setData(data[1].data,false); 
-	chart1.series[2].setData(data[2],false);// array
+	chart1.series[0].setData(data[0].data,false); //objet : etat
+	chart1.series[1].setData(data[1].data,false); //objet : decendrage
+	chart1.series[2].setData(data[2],false);// array : puissance
 	chart1.series[3].setData(data[3],false);
 	chart1.series[4].setData(data[4],false);
 	chart1.series[5].setData(data[5],false);
@@ -62,14 +60,16 @@ function parse_data(data) {
 	chart1.series[11].setData(data[11],false);
 	chart1.series[12].setData(data[12],false);
 	chart1.series[13].setData(data[13],false);
-	chart1.series[14].setData(data[14],false);
-	chart1.series[15].setData(data[15],false);
-	chart1.series[16].setData(data[16],false);
-	chart1.series[17].setData(data[17].data,false); //objet
-	chart1.series[18].setData(data[18].data,false); //objet
-	chart1.series[19].setData(data[19],false);
-	PuissMoyJour = data[20];
-	PuissMoyFonc = data[21];
+	chart1.series[14].setData(data[14],false); // temp Z1 est 
+	chart1.series[15].setData(data[15],false); // temp Z1 doit
+	chart1.series[16].setData(data[16],false); // temp Z2 est
+	chart1.series[17].setData(data[17],false); // temp Z2 doit
+	chart1.series[18].setData(data[18],false);
+	chart1.series[19].setData(data[19].data,false); //objet
+	chart1.series[20].setData(data[20].data,false); //objet
+	chart1.series[21].setData(data[21],false);
+	PuissMoyJour = data[22];
+	PuissMoyFonc = data[23];
 	// en cas d'ajout penser a incrementer k pour les cookies plus bas
 
 	chart1.redraw();
@@ -108,7 +108,7 @@ function getCookie(sName) {
 }
 //*** lecture des cookies pour chaque serie et affectation dans une variable*******
 var etat = [];
-for (var k=0;k<=19;k++) {	
+for (var k=0;k<=21;k++) {	
 	etat[k] = Boolean(getCookie('hargassner-p2c1-serie'+k)); // transforme la string des cookies en booleen , pour chaque serie
 }	
 
@@ -460,7 +460,7 @@ $(function() {
 		}, {
 			name: '<?php echo $chart1_name[12]; ?>',
 			color: '<?php echo $color_TextM; ?>',
-            legendIndex: 7,
+            legendIndex: 9,
             visible: etat[12],
             tooltip: {
 				pointFormatter: function () {
@@ -472,7 +472,7 @@ $(function() {
 		}, {
 			name: '<?php echo $chart1_name[13]; ?>',
 			color: '<?php echo $color_Tint; ?>',
-            legendIndex: 8,
+            legendIndex: 10,
             visible: etat[13],
             tooltip: {
 				pointFormatter: function () {
@@ -507,9 +507,33 @@ $(function() {
 			data: [],
 		}, {
 			name: '<?php echo $chart1_name[16]; ?>',
+			color: '<?php echo $color_TdepE; ?>',
+            legendIndex: 6,
+            visible: etat[16],
+            tooltip: {
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp °C ' + puce + '</td></tr>'
+				},				
+             },
+			data: []
+		}, {
+			name: '<?php echo $chart1_name[17]; ?>',
+			color: '<?php echo $color_TdepD; ?>',
+            legendIndex: 7,
+            visible: etat[17],
+            tooltip: {
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp °C ' + puce + '</td></tr>'
+				},				
+             },
+			data: [],
+		}, {
+			name: '<?php echo $chart1_name[18]; ?>',
 			color: '<?php echo $color_gran; ?>',
             legendIndex: 14,
-            visible: etat[16],
+            visible: etat[18],
             tooltip: {
 				pointFormatter: function () {
 					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
@@ -518,10 +542,10 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo $chart1_name[17]; ?>',
+			name: '<?php echo $chart1_name[19]; ?>',
 			color: '<?php echo $color_ECS_etat; ?>',
             legendIndex: 16,
-            visible: etat[17],
+            visible: etat[19],
             turboThreshold: 1500,
             type: 'area',
             zIndex: -1,
@@ -536,10 +560,10 @@ $(function() {
             },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[18]; ?>',
+			name: '<?php echo $chart1_name[20]; ?>',
 			color: '<?php echo $color_aspi; ?>',
             legendIndex: 18,
-            visible: etat[18],
+            visible: etat[20],
             turboThreshold: 1500,
             type: 'area',
             zIndex: -1,
@@ -554,10 +578,10 @@ $(function() {
 			},
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[19]; ?>',
+			name: '<?php echo $chart1_name[21]; ?>',
 			color: '<?php echo $color_gran; ?>',
-            legendIndex: 5,
-            visible: etat[19],
+            legendIndex: 11,
+            visible: etat[21],
             tooltip: {
 				pointFormatter: function () {
 					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
