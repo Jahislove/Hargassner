@@ -48,7 +48,7 @@ function download($source) {
         echo 'Telechargement nouvelle version OK<br>';
         return true;
     } else {
-        echo "Erreur de telechargement : annulation de l'installation";
+        echo "Erreur de telechargement : annulation de l'installation , si l'erreur persiste verifiez les droits du repertoire hargassner , le user ou group http doit avoir les droits en ecriture";
         return false;
     }
 }

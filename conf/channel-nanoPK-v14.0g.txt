@@ -102,7 +102,7 @@ premier parametre = pm
 <CHANNEL id=	82	 name=	UseMotSoll	     unit=	mm	
 <CHANNEL id=	83	 name=	UseMotIst	     unit=	mm	
 <CHANNEL id=	84	 name=	HKZustand_A	     unit=		
-<CHANNEL id=	85	 name=	HKZustand_1	     unit=		??? 1 en marche /4 a l'arret /9 en cours d'arret /0
+<CHANNEL id=	85	 name=	HKZustand_1	     unit=	mode de chauffage => 1 confort /3 reduit/4 arret /9 en cours d'arret /0
 <CHANNEL id=	86	 name=	HKZustand_2	     unit=		
 <CHANNEL id=	87	 name=	HKZustand_3	     unit=		
 <CHANNEL id=	88	 name=	HKZustand_4	     unit=		
@@ -118,7 +118,7 @@ premier parametre = pm
 <CHANNEL id=	98	 name=	Einschubschn.BSZ unit=		heures vis entree chaudiere 
 <CHANNEL id=	99	 name=	Verbrauchszähler unit=	kg	consommation pellet
 <CHANNEL id=	100	 name=	FRA Zustand	     unit=		
-<CHANNEL id=	101	 name=	FR1 Zustand	     unit=		
+<CHANNEL id=	101	 name=	FR1 Zustand	     unit=	mode de commande => 1:  programmé, 2 reduit forcé, 3 confort forcé, 4 soirée , 5 absence brève
 <CHANNEL id=	102	 name=	FR2 Zustand	     unit=		
 <CHANNEL id=	103	 name=	FR3 Zustand	     unit=		
 <CHANNEL id=	104	 name=	FR4 Zustand	     unit=		
