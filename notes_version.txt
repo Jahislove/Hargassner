@@ -3,21 +3,19 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
-v2.9 	10/12/2019
-	bug correction : 
+v2.9 	09/12/2019
+	bug correction (concerne uniquement les firmwares 14.0 D, E et F) : 
 	a partir du firmware 14.0g une nouvelle BDD avec 188 parametres a été mise en place ( au lieu de 172 en version D, E et F)
 	je viens d'identifier un bug avec les anciens firmwares 14.0d, e et f en combinaison avec la nouvelle BDD 
 	il empeche stockBDD.php d'ecrire en base apres un declenchement d'aspiration
 	la version 2.9 corrige ce bug , mais ATTENTION si vous etes toujours en 14.0 D, E ou F il va falloir migrer sur la nouvelle BDD
 	pour cela il faut simplement executer la requete conf/ajout_colonne_bdd.sql dans votre phpmyadmin
 	
-
 v2.8 	25/11/2019
 	ajout courbes temp depart Zone 2 dans la page "variables"
 	ajout courbe température retour dans la page "variables"
 	correction bug affichage des saisons sur le graphe conso annuelle(page consommation)
 	ajout couleur par saison pour conso annuelle
-	
 	
 v2.7 	10/12/2018 
 	correctif bug affichage page principale(telnet) avec le firmware 14.0g

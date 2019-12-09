@@ -13,7 +13,6 @@ C'est pour cette raison qu'il est nécessaire d'héberger le site web en local ,
 Ce site est développé initialement pour une NanoPK. Mais il fonctionne parfaitement avec un modèle Classic ou HSV
 La passerelle internet Hargassner n'est pas nécéssaire
 
-le fichier qui m'a servit de réference pour la Nano PK est channel-nanoPK-vxxx.txt situé dans /conf
 
 condition necessaire :
 
