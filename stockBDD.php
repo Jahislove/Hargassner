@@ -9,7 +9,7 @@
 // http://ip_mon_serveur/hargassner/phpinfo.php
 // pensez egalement a bien configurer le firmware dans conf/config.inc.php
 // les valeurs prises en compte a ce jour sont 
-// 4.3d , 14e , 14f , 14g , 14i , 14j
+// 4.3d , 14e , 14f , 14g , 14i , 14j, 14k
 
 header("Content-type: text/json");
 require_once("conf/config.inc.php");
@@ -133,6 +133,7 @@ switch ($firmware) {
         break;
     case '14i':
 	case '14j':
+	case '14k':
 		$nbre_param = 136;
         $data = array_slice($data, 0, $nbre_param); 
 		$liste = "'" . implode("','", $data) . "'"; // a partir du 14i l'ordre des parametres a changé => on modifie l'ordre d'ecriture en bdd

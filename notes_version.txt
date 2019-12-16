@@ -3,6 +3,9 @@
 *** Auteur : Jahislove
 *** Utilisation commerciale interdite sans mon accord
 ************************************************************************/
+v3.0	16/12/2019
+	prise en charge du firmware 14.0k (en fait identique au 14.0j)
+	
 v2.9 	09/12/2019
 	bug correction (concerne uniquement les firmwares 14.0 D, E et F) : 
 	a partir du firmware 14.0g une nouvelle BDD avec 188 parametres a été mise en place ( au lieu de 172 en version D, E et F)
