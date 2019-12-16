@@ -126,7 +126,7 @@ switch ($firmware) {
 			c167,c182,c169,c170,c171,c172) VALUES (null, $liste)"; // 168 (alphanum) est ecrit dans c182
         break;
     case '14g':
-		$nbre_param = 190;
+		$nbre_param = 190; // 188 chanels
         $data = array_slice($data, 0, $nbre_param); 
 		$liste = "'" . implode("','", $data) . "'";
 		$requete = "INSERT INTO data  VALUES (null, $liste)" ; // la BDD compte 190 champ , on peut donc simplifier la requete
@@ -134,7 +134,7 @@ switch ($firmware) {
     case '14i':
 	case '14j':
 	case '14k':
-		$nbre_param = 136;
+		$nbre_param = 136; //134 chanels
         $data = array_slice($data, 0, $nbre_param); 
 		$liste = "'" . implode("','", $data) . "'"; // a partir du 14i l'ordre des parametres a changé => on modifie l'ordre d'ecriture en bdd
 		$requete = "INSERT INTO data (id,dateB,c0,c1,c2,c3,c4,c5,c53,c52,c134,c56,c57,c58,c59,c60,c61,c6,c7,c8,c178,c9,c179,c10,c11,c12,c13,c15,c129,c160,c54,

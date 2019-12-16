@@ -18,7 +18,7 @@
     } else {
 		echo '<div id="new_version">';
 		echo 'impossible de joindre github pour vérifier les mises a jour, ';
-		echo "si le problème persiste vérifiez que votre serveur php est bien lancé avec l'extension openssl";
+		echo "si le problème persiste vérifiez que votre serveur php est bien lancé avec les extensions openssl et zip";
         echo '</div>';
 	}
 

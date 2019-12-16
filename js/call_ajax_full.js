@@ -187,7 +187,7 @@ $.ajax({
         } else {
 			document.getElementById('pompe-radiat').className = 'pompeOFF';
 		}	
-		if ( channel[183] == 2 ) {
+		if ( channel[92] > 0 ) { //old: 183   Ballon ECS 0:off , 1:charge, 2:recyclage 
 			document.getElementById('pompe-ECS').className = 'pompeON';
         } else {
 			document.getElementById('pompe-ECS').className = 'pompeOFF';
