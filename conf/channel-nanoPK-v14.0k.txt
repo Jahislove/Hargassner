@@ -136,7 +136,7 @@ CHANNEL id='132' name='TWT' unit='°C'/				c118
 CHANNEL id='133' name='DiffReg S1' unit='°C'/		c119
 CHANNEL id='134' name='DiffReg S2' unit='°C'/		c120
 
-<CHANNEL id='135' name='TVG' unit='°C'/>			
+<CHANNEL id='135' name='TVG' unit='°C'/>			a partir de 135 : non stocké en BDD car inutilisés
 <CHANNEL id='136' name='WMZ_1_TVL' unit='°C'/>		
 <CHANNEL id='137' name='WMZ_1_TRL' unit='°C'/>		
 <CHANNEL id='138' name='WMZ_1_PWR' unit='kW'/>			

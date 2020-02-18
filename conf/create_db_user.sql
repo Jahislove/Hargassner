@@ -22,11 +22,12 @@ GRANT ALL PRIVILEGES ON `hargassner`.* TO 'hargassner'@'%';
 
 -- creation de la structure de table hargassner.consommation
 CREATE TABLE IF NOT EXISTS `consommation` (
-  `dateB` date NOT NULL DEFAULT '2018-01-01',
+  `dateB` date NOT NULL ,
   `conso` smallint(5) unsigned NOT NULL DEFAULT '0',
   `Tmoy` decimal(5,1) NOT NULL DEFAULT '0.0',
   PRIMARY KEY (`dateB`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+insert into consommation VALUES(CURDATE() -INTERVAL 1 DAY, 0,0);
 
 
 -- creation de la structure de table hargassner.data
