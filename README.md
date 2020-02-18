@@ -1,5 +1,6 @@
 # Hargassner
-auteur : JahisLove,  2018
+auteur : JahisLove,  2018-2020
+licence GPL-3.0-or-later
 
 site web permettant la visualisation en temps réel d'une chaudière Hargassner avec regulation touchtronic
 

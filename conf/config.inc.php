@@ -1,5 +1,7 @@
 <?php
 //****vos parametres **************************************************** 	
+// licence GPL-3.0-or-later
+
 $IPchaudiere = "192.168.0.198"; // indiquez l'IP de votre chaudiere
 $firmware= "14k" ; // valeur possible voir dans stockBDD.php , si votre firmware est plus recent utilisez le dernier dispo
 

@@ -1,5 +1,7 @@
 Supervision chaudiere Hargassner
-auteur : JahisLove 2018
+auteur : JahisLove 2018-2020
+licence GPL-3.0-or-later
+
 
 pour faire fonctionner ce site vous avez besoin :
 

@@ -1,5 +1,7 @@
 
 <?php 
+// licence GPL-3.0-or-later
+
 // appelé par ajax, permet d'interroger la chaudiere par telnet et retourne la reponse en JSON 
 // pour les anciennes chaudiere ne disposant que du port serie , on remplace le telnet par une interrogation mysql
 	header("Content-type: text/json");

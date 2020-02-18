@@ -1,10 +1,10 @@
 ﻿<!-- ************************************************************************
 *** Supervision chaudiere Hargassner avec touchtronic
 *** Auteur : Jahislove
-*** Utilisation commerciale interdite sans mon accord
+*** licence GPL-3.0-or-later
 ************************************************************************
 *** version php 5.6
-*** le serveur php doit etre lancé avec les extensions mysql et openssl
+*** le serveur php doit etre lancé avec les extensions mysql, zip et openssl
 
 / -->
 
