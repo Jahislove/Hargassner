@@ -1,6 +1,6 @@
 <?php 
 // version 0.3 beta
-// auteur : JahisLove 2018
+// auteur : JahisLove 2018-2020
 // licence GPL-3.0-or-later
 // ecriture des data dans la bdd en php
 
