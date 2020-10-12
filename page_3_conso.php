@@ -38,13 +38,21 @@
 				GROUP BY YEAR(dateB), MONTH(dateB)           
 				ORDER BY dateB DESC LIMIT 3 ";
 
-	connectMaBase($hostname, $database, $username, $password);
-    $req0 = mysql_query($query0) ;
-    $req1 = mysql_query($query1) ;
-    $req2 = mysql_query($query2) ;
-	mysql_close();
+	// connectMaBase($hostname, $database, $username, $password);
+    // $req0 = mysql_query($query0) ;
+    // $req1 = mysql_query($query1) ;
+    // $req2 = mysql_query($query2) ;
+	// mysql_close();
+	$conn = mysqli_connect ($hostname, $username, $password, $database); 
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+    $req0 = mysqli_query($conn, $query0) ;
+    $req1 = mysqli_query($conn, $query1) ;
+    $req2 = mysqli_query($conn, $query2) ;
+	mysqli_close($conn);
 
-    while($data = mysql_fetch_row($req0)){
+    while($data = mysqli_fetch_row($req0)){
         $dateD = strtotime($data[0]) * 1000;
         $chart1_data1[] = "[$dateD, $data[1]]";
         $chart1_data2[] = "[$dateD, $data[2]]";
@@ -53,16 +61,14 @@
     $chart1_data1 = join(',', array_reverse($chart1_data1));
     $chart1_data2 = join(',', array_reverse($chart1_data2));
 
-    $data = mysql_fetch_row($req1);
+    $data = mysqli_fetch_row($req1);
     $dateMin = [$data[0],$data[1]];
 
 	$moisNom = ['','Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
-    while($data = mysql_fetch_row($req2)){
+    while($data = mysqli_fetch_row($req2)){
 		$mois[] = $moisNom[$data[0]]; // transformation mois numerique en nom long
         $consoMoy[] = $data[1];
     }
-    //$data = mysql_fetch_row($req2);
-    //$consoMoy = $data[0];
 ?>
 
 <?php require("footer.php");?>

@@ -1,5 +1,5 @@
 Supervision chaudiere Hargassner
-auteur : JahisLove 2018-2020
+auteur : JahisLove 2018-2021
 licence GPL-3.0-or-later
 
 
@@ -8,8 +8,8 @@ pour faire fonctionner ce site vous avez besoin :
 un serveur sur lequel tourne :
 une base MySQL (ou MariaDB) version 5 ou 10
 un serveur web (apache)
-php 5.6 avec les extensions :
- mysql
+php 5.6+ , php 7+ avec les extensions :
+ mysqli
  openssl
  zip
  
@@ -40,10 +40,10 @@ maintenant , il faut ecouter la chaudiere et stocker les données :
 ceci se fait avec le script stockBDD.php fourni qui doit tourner toutes les minutes.
 
 
-installation de la methode php :
+installation  :
 personnalisation du conf/php.ini
 il faut personnaliser cette ligne avec votre chemin
-extension_dir = /usr/local/lib/php56/modules
+extension_dir = /usr/local/lib/php74/modules
 
 pour trouver votre chemin utilisez la page
 http://ip_mon_serveur/hargassner/phpinfo.php
@@ -53,8 +53,8 @@ soit en crontab si vous etes sous linux
 éditez la crontab de root et ajoutez la ligne (adaptez votre path) :
 * * * * * root php -c /mon_chemin/web/hargassner/conf/php.ini -f /mon_chemin/web/hargassner/stockBDD.php
 
-soit dans le planificateur de tache synology( notez que sous dsm6 l'executable php s'appelle php56)
+soit dans le planificateur de tache synology(notez que sous dsm6 l'executable php s'appelle php56 ou php74)
 dans l'onglet parametre de la tache / case script defini par utilisateur :
-php56 -c /volume1/web/hargassner/conf/php.ini -f /volume1/web/hargassner/stockBDD.php
+php74 -c /volume1/web/hargassner/conf/php.ini -f /volume1/web/hargassner/stockBDD.php
 
 et programmez cette tache toutes les minutes de 00h00 à 23h59

@@ -14,13 +14,25 @@ require_once("conf/config.inc.php");
     $jour =  $_GET["jour"];
     $periode = $_GET["periode"];
  
+    // $channel = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c22,c24,c99,c92,c112,c12";
+    // $mois =  "10";
+    // $annee =  "2020";
+    // $jour =  "2";
+    // $periode = "2";
+
     $query = "SELECT dateB,$channel FROM data
             WHERE dateB BETWEEN '".$annee."-".$mois."-".$jour." 00:00:00' AND '".$annee."-".$mois."-".$jour." 23:59:59'
             ORDER BY dateB DESC LIMIT ".$periode;
               
-	connectMaBase($hostname, $database, $username, $password);
-    $req = mysql_query($query) ;
-	mysql_close();
+	// connectMaBase($hostname, $database, $username, $password);
+    // $req = mysql_query($query) ;
+	// mysql_close();
+	$conn = mysqli_connect ($hostname, $username, $password, $database); 
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+	$req = mysqli_query($conn, $query);
+	mysqli_close($conn);
     
     // $dict = ['','arret','Allumage','Demarrage','Controle allumage','Allumeur','Demarrage combustion','Combustion','Veille','Arret pour decendrage','decendrage','Refroidissement','Nettoyage'];
     // $dict2= ['','0','0','0','0','0','0','0','0','100','100','0','100'];
@@ -34,10 +46,10 @@ require_once("conf/config.inc.php");
 	
 	$prev = 1;
     $listePmoyFonc[]= '';
-	while($data = mysql_fetch_row($req)){
-        $dateD = strtotime($data[0]) * 1000;
-        $liste0['data'][] = [x => $dateD, y => $data[1],valeur => $dict[$data[1]] ];
-        $liste1['data'][] = [x => $dateD, y => $dict2[$data[2]],valeur => $dict3[$data[2]] ];
+	while($data = mysqli_fetch_row($req)){
+		$dateD = strtotime($data[0]) * 1000;
+        $liste0['data'][] = ["x" => $dateD, "y" => $data[1],"valeur" => $dict[$data[1]] ];
+        $liste1['data'][] = ["x" => $dateD, "y" => $dict2[$data[2]],"valeur" => $dict3[$data[2]] ];
         $liste2[] = [$dateD, $data[3]];
         $liste3[] = [$dateD, $data[4]];
         $liste4[] = [$dateD, $data[5]];
@@ -55,7 +67,7 @@ require_once("conf/config.inc.php");
         $liste16[] = [$dateD, $data[17]];
         $liste17[] = [$dateD, $data[18]];// conso
         $liste18[] = [$dateD, $data[19]];
-        $liste19['data'][] = [x => $dateD, y => $dict4[intval($data[20])],valeur => $dict5[intval($data[20])] ];
+        $liste19['data'][] = ["x" => $dateD, "y" => $dict4[intval($data[20])],"valeur" => $dict5[intval($data[20])] ];
 		// $liste20
 		// il n'existe pas de parametre pour detecter l'aspiration
 		// mais il existe un compteur de tour de vis qui repasse a zero lors d'une aspi
@@ -63,15 +75,15 @@ require_once("conf/config.inc.php");
         // calcul changement d'etat quand le compteur c112 passe a zero
 		// les valeurs etant lu en SENS INVERSE :
 		if ( $data[21] > 0 and $prev == 0) { // quand le compteur est superieur a zero et que la valeur precedente etait zero alors on detecte un changement d'etat
-			$liste20['data'][] = [x => $dateD, y => 100,valeur => 'Marche' ];
+			$liste20['data'][] = ["x" => $dateD, "y" => 100,"valeur" => 'Marche' ];
 			$prev = $data[21];
 			$pointeur = 1;
 		}elseif ( $pointeur == 1){ // une pointe de courbe de 1mn etant trop fine pour le graphique, on ajoute une 2 eme minute
-			$liste20['data'][] = [x => $dateD, y => 100,valeur => 'Marche' ];
+			$liste20['data'][] = ["x" => $dateD, "y" => 100,"valeur" => 'Marche' ];
 			$prev = $data[21];
 			$pointeur = 0;
 		}else { // dans tous les autres cas : pas d'aspi
-			$liste20['data'][] = [x => $dateD, y => 0,valeur => 'Arrêt' ]; 
+			$liste20['data'][] = ["x" => $dateD, "y" => 0,"valeur" => 'Arrêt' ]; 
 			$prev = $data[21];
 		}
 		$liste21[] = [$dateD, $data[22]];

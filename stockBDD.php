@@ -1,8 +1,17 @@
 <?php 
-// version 0.3 beta
-// auteur : JahisLove 2018-2020
+	
+// version 0.4 compatibilité avec php7
+// auteur : JahisLove 2018-2021
 // licence GPL-3.0-or-later
 // ecriture des data dans la bdd en php
+
+		// si vous restez en php5 : remplacez l'extension mysql par mysqli dans votre config du serveur php
+		// si vous remplacez php5 par 7 : 
+			// + ajoutez l'extension  mysqli dans votre config du serveur php 
+			// + modifiez le extension_dir dans conf/php.ini vers le nouveau chemin
+			// + supprimer la ligne extension = mysql.so dans conf/php.ini
+			// + la ligne extension = mysqli.so devrait deja exister ( si non , la créer)
+
 
 // rien a configurer ici par l'utilisateur
 // seule une ligne dans conf/php.ini est a configurer ( la ligne extension_dir)
@@ -10,7 +19,14 @@
 // http://ip_mon_serveur/hargassner/phpinfo.php
 // pensez egalement a bien configurer le firmware dans conf/config.inc.php
 // les valeurs prises en compte a ce jour sont 
-// 4.3d , 14e , 14f , 14g , 14i , 14j, 14k
+// 4.3d , 14e , 14f , 14g , 14i , 14j, 14k, 14l
+
+// l'ordre des parametres envoyés par la chaudiere differe en fonction du firmware
+// pour conserver la compatibilité des differentes versions , les colonnes de la BDD ne changent jamais.
+// c'est ici dans stockBDD.php , qu'on modifie l'ordre des parametres dans la requete avant d'écrire en BDD.
+// ex : on stock normalement le parametre 134 reçu par telnet dans la colonne c134 de la BDD ( qui correspond a la puissance)
+// mais si avec un autre firmware la puissance correspond au parametre telnet  50 , alors  on stock ce parametre 50 dans la colonne c134 de la BDD
+// de cette manière , le reste du site continue a lire la puissance dans la c134
 
 header("Content-type: text/json");
 require_once("conf/config.inc.php");
@@ -20,12 +36,14 @@ require_once("conf/config.inc.php");
 // fonction calcul de la consommation de la veille et insertion dans la table consommation
 // la table consommation se rempli 1 seule fois par jour, apres minuit
 function calcul_consommation($hostname, $database, $username, $password){
-	connectMaBase($hostname, $database, $username, $password);
+	$conn = mysqli_connect ($hostname, $username, $password, $database); 
 	$requete = "SELECT dateB FROM consommation ORDER by dateB DESC LIMIT 1 ";
-	$result = mysql_query($requete);
-	$id = mysql_fetch_row($result);
-	
-	$last_conso = date("Y-m-d", strtotime($id[0]." +1 day"));
+
+	if ($result = mysqli_query($conn, $requete)){
+		while ($id = mysqli_fetch_row($result)) {
+		}
+ 	}
+	$last_conso = date("Y-m-d", strtotime($id[0]." -1 day"));
 	$hist_conso = date("Y-m-d", strtotime($id[0]." -10 day"));
 	$jour = date('Y-m-d', time());  
 	
@@ -34,12 +52,12 @@ function calcul_consommation($hostname, $database, $username, $password){
                         WHERE dateB > $hist_conso
 						GROUP BY DATE(dateB)
                         ORDER by dateB DESC LIMIT 1,1 ";
-			$result = mysql_query($SQLrequete);
-			$data = mysql_fetch_row($result);
-            $SQLinsert = "INSERT INTO consommation (dateB, conso, Tmoy) VALUES ('$data[0]',$data[1],$data[2])" ;
-			mysql_query($SQLinsert);
+			$result = mysqli_query($conn, $SQLrequete);
+			$data = mysqli_fetch_row($result);
+           $SQLinsert = "INSERT INTO consommation (dateB, conso, Tmoy) VALUES ('$data[0]',$data[1],$data[2])" ;
+			mysqli_query($conn, $SQLinsert);
 		}
-	mysql_close();
+	mysqli_close($conn);
 }
 
 //ouverture socket telnet 
@@ -65,11 +83,7 @@ function lecture($IPchaudiere, $port){
 		$i++;
 		if ($i >10){
 			addLogEvent("lecture du socket KO");
-			//$log = fopen("/volume1/web/hargassner/error.log","a");
-			//$trace = date('Y-m-d H:i:s', time());
-			//fwrite($log, $trace . " lecture du socket KO\n");
-			//fclose($fp);
-			break 2; // si pas de reponse on quitte tout le programme
+			break ; // si pas de reponse on quitte tout le programme
 		}
 	}
 	return $reponse;
@@ -80,10 +94,8 @@ function lecture($IPchaudiere, $port){
 // 
 function addLogEvent($event)
 {
-    // $time = date("D, d M Y H:i:s");
-    // $time = "[".$time."] ";
     $event = $event.";"."\n";
-    file_put_contents("/volume1/web/hargassner/stockBDD.log", $event, FILE_APPEND);
+    file_put_contents("stockBDD.log", $event, FILE_APPEND);
 }
 
 //*******************programme principal*******************************************************
@@ -135,6 +147,7 @@ switch ($firmware) {
     case '14i':
 	case '14j':
 	case '14k':
+	case '14l':
 		$nbre_param = 136; //134 chanels
         $data = array_slice($data, 0, $nbre_param); 
 		$liste = "'" . implode("','", $data) . "'"; // a partir du 14i l'ordre des parametres a changé => on modifie l'ordre d'ecriture en bdd
@@ -148,26 +161,23 @@ switch ($firmware) {
 			
 // insertion dans la BDD
 
-$Conn = mysql_connect ($hostname, $username, $password) ;  
-mysql_select_db($database, $Conn);
+$conn = mysqli_connect ($hostname, $username, $password, $database); 
 
-
-$result = mysql_query($requete); // ecriture en BDD
+$result = mysqli_query($conn, $requete);
 
 if (!$result) { // si requete KO on log et on quitte
 	addLogEvent($requete);	
-    die('erreur ecriture : ' . mysql_error());
+	exit("connexion BDD impossible");
 }
 
-
-mysql_close();
+mysqli_close($conn);
 
 //appel fonction consommation pour remplissage 1 fois par jour de la table consommation
 $heure = date('H', time());
 $minute = date('i', time());
 
-if ($heure == '00' and $minute < '30'){ # si heure est comprise entre 00h00 et 00h30 on calcul la conso de la veille
+if ($heure == '18' and $minute < '30'){ # si heure est comprise entre 00h00 et 00h30 on calcul la conso de la veille
 	calcul_consommation($hostname, $database, $username, $password);
 }
-  
+
 ?>

@@ -16,9 +16,15 @@ require_once("conf/config.inc.php");
             GROUP BY YEAR(dateB), MONTH(dateB)
             ORDER BY dateB DESC LIMIT " . $limit;
               
-	connectMaBase($hostname, $database, $username, $password);
-    $req = mysql_query($query) ;
-	mysql_close();
+	// connectMaBase($hostname, $database, $username, $password);
+    // $req = mysql_query($query) ;
+	// mysql_close();
+	$conn = mysqli_connect ($hostname, $username, $password, $database); 
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+	$req = mysqli_query($conn, $query);
+	mysqli_close($conn);
 
 //pre-remplissage avec des null en cas d'année incomplete
 $cons = [null,null,null,null,null,null,null,null,null,null,null,null]; 
@@ -27,7 +33,7 @@ $Tmoy = [null,null,null,null,null,null,null,null,null,null,null,null];
 // decalage des mois pour debut saison en septembre    
 $mois = ['9' => 0, '10' => 1, '11' => 2, '12' => 3, '1' => 4, '2' => 5, '3' => 6, '4' => 7, '5' => 8, '6' => 9, '7' => 10, '8' => 11];
 
-    while($data = mysql_fetch_row($req)){
+    while($data = mysqli_fetch_row($req)){
         $annee = $data[0];
         $cons[$mois[$data[1]]] = $data[2];        
         $Tmoy[$mois[$data[1]]] = $data[3];        

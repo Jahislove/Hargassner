@@ -3,8 +3,27 @@
 *** Auteur : Jahislove
 *** GPL-3.0-or-later
 ************************************************************************/
-v3.1	18/02/2020
+v3.1	06/10/2020
+	ajout compatibilité php7
+	ATTENTION pour les installations deja existantes ,même si vous restez en php5.6 il y a quand même une action a faire
+		si vous restez en php5 : 
+			mysqli est pré-installé :
+			+ il faut ajouter ou remplacez l'extension mysql par mysqli dans votre config du serveur php
+		
+		si vous remplacez php5 par 7 : 
+			mysqli est pré-installé :
+			+ ajoutez simplement l'extension  mysqli dans votre config du serveur php 
+			
+			dans le fichier conf/php.ini :
+			+ modifiez le extension_dir pour pointer vers le nouveau chemin(lancer  phpinfo.php dans votre barre d'adresse)
+			+ supprimer la ligne extension = mysql.so 
+			+ ajouter la ligne extension = mysqli.so 
+			
+			+ sur Synology modifier l'executable php dans votre tache planifiée
+				ex php74 -c /volume1/web/hargassner/conf/php.ini -f /volume1/web/hargassner/stockBDD.php
+				
 	correction bug table consommation qui ne se remplissait pas a la première utilisation
+	prise en charge du firmware 14.0l (je suppose identique au 14.0k)
 	
 v3.0	16/12/2019
 	prise en charge du firmware 14.0k (en fait identique au 14.0j)

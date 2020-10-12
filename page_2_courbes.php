@@ -16,14 +16,26 @@
     $chart2_name = ['allumage electrique'];
     
     // requete pour initialiser la date
-	$query1 = "SELECT YEAR(dateB),MONTH(dateB),DAY(dateB) FROM consommation  
+	$query = "SELECT YEAR(dateB),MONTH(dateB),DAY(dateB) FROM consommation  
              LIMIT 1";
 			 
-	connectMaBase($hostname, $database, $username, $password);
-    $req1 = mysql_query($query1) ;
-	mysql_close();
+	$conn = mysqli_connect ($hostname, $username, $password, $database); 
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+	if ($req = mysqli_query($conn, $query)) {
+	   
+	} else {
+		echo "Error: " . $requete . "<br>" . mysqli_error($conn);
+	}
+	mysqli_close($conn);
 
-    $data = mysql_fetch_row($req1);
+
+	// connectMaBase($hostname, $database, $username, $password);
+    // $req1 = mysql_query($query1) ;
+	// mysql_close();
+
+    $data = mysqli_fetch_row($req);
     $dateMin = [$data[0],$data[1],$data[2]];
 	
 	if (empty($data[0])){

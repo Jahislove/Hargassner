@@ -13,11 +13,17 @@ if ($mode_conn == 'serial'){
 			ORDER by id DESC
 			LIMIT 1" ;
 			  
-	connectMaBase($hostname, $database, $username, $password);
-	$req = mysql_query($query) ;
-	mysql_close();
+	// connectMaBase($hostname, $database, $username, $password);
+	// $req = mysql_query($query) ;
+	// mysql_close();
+	$conn = mysqli_connect ($hostname, $username, $password, $database); 
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+	$req = mysqli_query($conn, $query);
+	mysqli_close($conn);
 	
-    $data = mysql_fetch_row($req);
+    $data = mysqli_fetch_row($req);
     $data[1] = strtotime($data[1]) * 1000;
 	array_shift ($data); // supprime le champ id
 	
@@ -37,7 +43,7 @@ if ($mode_conn == 'serial'){
 
 // a partir du firmware 14.0i , l'ordre des parametres a changé
 // on remet les valeurs dans l'ordre attendu par le site
-if ($firmware == '14i' || $firmware == '14j' || $firmware == '14k'){
+if ($firmware == '14i' || $firmware == '14j' || $firmware == '14k' || $firmware == '14l'){
 	$T = $data; // reprends le tableau data
 	array_shift($T); // supprime la date pour aligner les chanels
 
