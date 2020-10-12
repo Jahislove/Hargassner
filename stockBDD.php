@@ -5,29 +5,39 @@
 // licence GPL-3.0-or-later
 // ecriture des data dans la bdd en php
 
-		// si vous restez en php5 : remplacez l'extension mysql par mysqli dans votre config du serveur php
-		// si vous remplacez php5 par 7 : 
-			// + ajoutez l'extension  mysqli dans votre config du serveur php 
-			// + modifiez le extension_dir dans conf/php.ini vers le nouveau chemin
-			// + supprimer la ligne extension = mysql.so dans conf/php.ini
-			// + la ligne extension = mysqli.so devrait deja exister ( si non , la créer)
+/* 	ATTENTION pour les installations deja existantes ,même si vous restez en php5.6 il y a quand même une action a faire
+		si vous restez en php5 : 
+			mysqli est pré-installé :
+			+ il faut ajouter ou remplacez l'extension mysql par mysqli dans votre config du serveur php
+		
+		si vous remplacez php5 par 7 : 
+			mysqli est pré-installé :
+			+ ajoutez simplement l'extension  mysqli dans votre config du serveur php 
+			
+			dans le fichier conf/php.ini :
+			+ modifiez le extension_dir pour pointer vers le nouveau chemin(lancer  phpinfo.php dans votre barre d'adresse)
+			+ supprimer la ligne extension = mysql.so 
+			+ ajouter la ligne extension = mysqli.so 
+			
+			+ sur Synology modifier l'executable php dans votre tache planifiée
+				ex php74 -c /volume1/web/hargassner/conf/php.ini -f /volume1/web/hargassner/stockBDD.php
+ 
 
+rien a configurer ici par l'utilisateur
+seule une ligne dans conf/php.ini est a configurer ( la ligne extension_dir)
+pour trouver votre chemin utiliser la page et cherchez extension_dir
+http://ip_mon_serveur/hargassner/phpinfo.php
+pensez egalement a bien configurer le firmware dans conf/config.inc.php
+les valeurs prises en compte a ce jour sont 
+4.3d , 14e , 14f , 14g , 14i , 14j, 14k, 14l
 
-// rien a configurer ici par l'utilisateur
-// seule une ligne dans conf/php.ini est a configurer ( la ligne extension_dir)
-// pour trouver votre chemin utiliser la page et cherchez extension_dir
-// http://ip_mon_serveur/hargassner/phpinfo.php
-// pensez egalement a bien configurer le firmware dans conf/config.inc.php
-// les valeurs prises en compte a ce jour sont 
-// 4.3d , 14e , 14f , 14g , 14i , 14j, 14k, 14l
-
-// l'ordre des parametres envoyés par la chaudiere differe en fonction du firmware
-// pour conserver la compatibilité des differentes versions , les colonnes de la BDD ne changent jamais.
-// c'est ici dans stockBDD.php , qu'on modifie l'ordre des parametres dans la requete avant d'écrire en BDD.
-// ex : on stock normalement le parametre 134 reçu par telnet dans la colonne c134 de la BDD ( qui correspond a la puissance)
-// mais si avec un autre firmware la puissance correspond au parametre telnet  50 , alors  on stock ce parametre 50 dans la colonne c134 de la BDD
-// de cette manière , le reste du site continue a lire la puissance dans la c134
-
+l'ordre des parametres envoyés par la chaudiere differe en fonction du firmware
+pour conserver la compatibilité des differentes versions , les colonnes de la BDD ne changent jamais.
+c'est ici dans stockBDD.php , qu'on modifie l'ordre des parametres dans la requete avant d'écrire en BDD.
+ex : on stock normalement le parametre 134 reçu par telnet dans la colonne c134 de la BDD ( qui correspond a la puissance)
+mais si avec un autre firmware la puissance correspond au parametre telnet  50 , alors  on stock ce parametre 50 dans la colonne c134 de la BDD
+de cette manière , le reste du site continue a lire la puissance dans la c134
+*/
 header("Content-type: text/json");
 require_once("conf/config.inc.php");
 
