@@ -3,14 +3,14 @@
 *** Auteur : Jahislove
 *** GPL-3.0-or-later
 ************************************************************************/
-v3.1	06/10/2020
+v3.1	27/10/2020
 	ajout compatibilité php7
 	ATTENTION pour les installations deja existantes ,même si vous restez en php5.6 il y a quand même une action a faire
 		si vous restez en php5 : 
-			mysqli est pré-installé :
+			mysqli étant pré-installé :
 			+ il faut ajouter ou remplacez l'extension mysql par mysqli dans votre config du serveur php
 		
-		si vous remplacez php5 par 7 : 
+		si vous remplacez php5 par php7 : 
 			mysqli est pré-installé :
 			+ ajoutez simplement l'extension  mysqli dans votre config du serveur php 
 			
