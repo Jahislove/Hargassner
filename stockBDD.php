@@ -1,5 +1,6 @@
 <?php 
-	
+// version 0.5	ajout firmware 10.2h
+
 // version 0.4 compatibilité avec php7
 // auteur : JahisLove 2018-2021
 // licence GPL-3.0-or-later
@@ -29,7 +30,9 @@ pour trouver votre chemin utiliser la page et cherchez extension_dir
 http://ip_mon_serveur/hargassner/phpinfo.php
 pensez egalement a bien configurer le firmware dans conf/config.inc.php
 les valeurs prises en compte a ce jour sont 
-4.3d , 14e , 14f , 14g , 14i , 14j, 14k, 14l
+
+granulés  14e , 14f , 14g , 14i , 14j, 14k, 14l
+buches 4.3d, 10.2h
 
 l'ordre des parametres envoyés par la chaudiere differe en fonction du firmware
 pour conserver la compatibilité des differentes versions , les colonnes de la BDD ne changent jamais.
@@ -127,6 +130,17 @@ $data[0] = date('Y-m-d H:i:s', time()); //remplace le premier parametre (pm) par
 			c137,c138,c139,c140,c141,c142,c143,c144,c145,c146,c147,c148,c149,c150,c151,c152,c153,c154,c155,c156,c157,c158,c159,c160,c161,c162,c163,c164,c165,c166,
 			c167,c168,c169,c170,c171,c172,c173,c174,c175,c176,c177,c178,c179,c180,c181,c182,c183,c184,c185,c186,c187,c188) VALUES (null, $liste)";  */
 switch ($firmware) {
+    case '10.2h':
+		$nbre_param = 163; // declaration nombre de parametre dans la trame en fonction du firmware (note : +2 par rapport au numero du dernier chanel)
+        $data = array_slice($data, 0, $nbre_param); // selectionne le nombre de param dans la trame suivant le firmware ( car parfois il y a plus de parametre dans le telnet)
+		$liste = "'" . implode("','", $data) . "'";
+		$requete = "INSERT INTO data (id,dateB,c3,c5,c1,c8,c9,c10,c6,c21,c22,c25,c26,c27,c23,c24,c46,c47,c73,c74,c75,c76,c52,c14,c0,c2,c62,c77,c134,c4,c29,c30,c33,
+					c34,c35,c31,c32,c48,c49,c37,c38,c41,c42,c43,c39,c40,c50,c51,c53,c15,c12,c180,c168,c146,c147,c63,c64,c65,c66,c11,c13,c7,c67,c68,c69,c154,c130,
+					c131,c132,c19,c17,c45,c18,c16,c100,c101,c102,c103,c104,c105,c106,c137,c138,c139,c140,c141,c142,c143,c78,c79,c80,c107,c148,c108,c109,c116,c117,
+					c118,c119,c120,c121,c54,c55,c56,c57,c58,c59,c60,c169,c122,c149,c150,c151,c152,c70,c71,c72,c81,c82,c83,c98,c99,c111,c112,c113,c114,c115,c123,c124,
+					c125,c153,c126,c127,c155,c156,c128,c129,c157,c176,c177,c178,c179,c159,c84,c85,c86,c87,c88,c89,c90,c91,c92,c93,c94,c184,c186,c187,c188,c170,c171,
+					c172,c173,c174,c175) VALUES (null, $liste)" ;
+        break;
     case '4.3d':
 		$nbre_param = 85; // declaration nombre de parametre dans la trame en fonction du firmware (note : +2 par rapport au numero du dernier chanel)
         $data = array_slice($data, 0, $nbre_param); // selectionne le nombre de param dans la trame suivant le firmware ( car parfois il y a plus de parametre dans le telnet)

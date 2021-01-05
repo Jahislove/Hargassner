@@ -1,0 +1,227 @@
+2021-01-04_18:58:02 SW=V10.2h chaudiere buche
+															  |---stocké dans une colonne non utilisée
+<ANALOG>											BDD		  |		commentaire specifique Ch Buche
+<CHANNEL id='0' name='TK' unit='°C'/>				c3
+<CHANNEL id='1' name='TRG' unit='°C'/>				c5
+<CHANNEL id='2' name='O2' unit='%'/>				c1
+<CHANNEL id='3' name='TPo' unit='°C'/>				c8
+<CHANNEL id='4' name='TPm' unit='°C'/>				c9
+<CHANNEL id='5' name='TPu' unit='°C'/>				c10
+<CHANNEL id='6' name='Taus' unit='°C'/>				c6
+<CHANNEL id='7' name='TVL_1' unit='°C'/>			c21
+<CHANNEL id='8' name='TVL_2' unit='°C'/>			c22
+<CHANNEL id='9' name='TR1' unit='°C'/>				c25
+<CHANNEL id='10' name='TR2' unit='°C'/>				c26
+<CHANNEL id='11' name='TB1' unit='°C'/>				c27
+<CHANNEL id='12' name='TVLs_1' unit='°C'/>			c23	
+<CHANNEL id='13' name='TVLs_2' unit='°C'/>			c24
+<CHANNEL id='14' name='TRs_1' unit='°C'/>			c46
+<CHANNEL id='15' name='TRs_2' unit='°C'/>			c47
+<CHANNEL id='16' name='Prim.ist' unit='%'/>					c73		air primaire est ?
+<CHANNEL id='17' name='Prim.soll' unit='%'/>				c74		air primaire doit ?
+<CHANNEL id='18' name='Sek.ist' unit='%'/>					c75		air secondaire est ?
+<CHANNEL id='19' name='Sek.soll' unit='%'/>					c76		air secondaire doit ?
+<CHANNEL id='20' name='SZsoll' unit='%'/>			c52
+<CHANNEL id='21' name='RLP' unit='%'/>				c14
+<CHANNEL id='22' name='ZK' unit=''/>				c0
+<CHANNEL id='23' name='O2_soll' unit='%'/>			c2
+<CHANNEL id='24' name='Sens U Lambda' unit='mV'/>	c62 ?
+<CHANNEL id='25' name='TRG_soll' unit='°C'/>				c77		temperature fumées doit
+<CHANNEL id='26' name='Leistung' unit='%'/>			c134
+<CHANNEL id='27' name='TKsoll' unit='°C'/>			c4
+<CHANNEL id='28' name='TVL_3' unit='°C'/>			c29
+<CHANNEL id='29' name='TVL_4' unit='°C'/>			c30
+<CHANNEL id='30' name='TR3' unit='°C'/>				c33
+<CHANNEL id='31' name='TR4' unit='°C'/>				c34
+<CHANNEL id='32' name='TB2' unit='°C'/>				c35
+<CHANNEL id='33' name='TVLs_3' unit='°C'/>			c31
+<CHANNEL id='34' name='TVLs_4' unit='°C'/>			c32
+<CHANNEL id='35' name='TRs_3' unit='°C'/>			c48
+<CHANNEL id='36' name='TRs_4' unit='°C'/>			c49	
+<CHANNEL id='37' name='TVL_5' unit='°C'/>			c37
+<CHANNEL id='38' name='TVL_6' unit='°C'/>			c38
+<CHANNEL id='39' name='TR5' unit='°C'/>				c41
+<CHANNEL id='40' name='TR6' unit='°C'/>				c42
+<CHANNEL id='41' name='TB3' unit='°C'/>				c43
+<CHANNEL id='42' name='TVLs_5' unit='°C'/>			c39
+<CHANNEL id='43' name='TVLs_6' unit='°C'/>			c40
+<CHANNEL id='44' name='TRs_5' unit='°C'/>			c50
+<CHANNEL id='45' name='TRs_6' unit='°C'/>			c51
+<CHANNEL id='46' name='SZist' unit='%'/>			c53 ?
+<CHANNEL id='47' name='Tplat' unit='°C'/>			c15
+<CHANNEL id='48' name='TRL' unit='°C'/>				c12
+<CHANNEL id='49' name='PufLad' unit='%'/>			c180 ?
+<CHANNEL id='50' name='Anf. HKR0' unit='°C'/>		c168
+<CHANNEL id='51' name='Anf. HKR1' unit='°C'/>		c146
+<CHANNEL id='52' name='Anf. HKR2' unit='°C'/>		c147	
+<CHANNEL id='53' name='MWZ Vorl.' unit='°C'/>		c63		???
+<CHANNEL id='54' name='MWZ Rueckl.' unit='°C'/>		c64		???
+<CHANNEL id='55' name='MWZ Durchf.' unit=''/>		c65		???
+<CHANNEL id='56' name='MWZ Leist.' unit='KW'/>		c66		???
+<CHANNEL id='57' name='TFW' unit='°C'/>				c11
+<CHANNEL id='58' name='TRLsoll' unit='°C'/>			c13
+<CHANNEL id='59' name='TA Gem.' unit='°C'/>			c7
+<CHANNEL id='60' name='VFS Flow' unit='l/min'/>		c67
+<CHANNEL id='61' name='VFS Temp' unit='°C'/>		c68
+<CHANNEL id='62' name='IO32 VL' unit='°C'/>			c69
+<CHANNEL id='63' name='IO32 521' unit='Pa'/>		c154	
+<CHANNEL id='64' name='IO32 522' unit='Pa'/>		c130
+<CHANNEL id='65' name='IO32 509' unit='Pa'/>		c131
+<CHANNEL id='66' name='IO32 510' unit='Pa'/>		c132
+<CHANNEL id='67' name='TBA' unit='°C'/>				c19
+<CHANNEL id='68' name='TVLs_A' unit='°C'/>			c17
+<CHANNEL id='69' name='TRs_A' unit='°C'/>			c45
+<CHANNEL id='70' name='TRA' unit='°C'/>				c18
+<CHANNEL id='71' name='TVL_A' unit='°C'/>			c16
+<CHANNEL id='72' name='FRA Zustand' unit=''/>		c100
+<CHANNEL id='73' name='FR1 Zustand' unit=''/>		c101
+<CHANNEL id='74' name='FR2 Zustand' unit=''/>		c102
+<CHANNEL id='75' name='FR3 Zustand' unit=''/>		c103
+<CHANNEL id='76' name='FR4 Zustand' unit=''/>		c104
+<CHANNEL id='77' name='FR5 Zustand' unit=''/>		c105
+<CHANNEL id='78' name='FR6 Zustand' unit=''/>		c106
+<CHANNEL id='79' name='TRA_A' unit='°C'/>			c137
+<CHANNEL id='80' name='TRA_1' unit='°C'/>			c138
+<CHANNEL id='81' name='TRA_2' unit='°C'/>			c139
+<CHANNEL id='82' name='TRA_3' unit='°C'/>			c140
+<CHANNEL id='83' name='TRA_4' unit='°C'/>			c141
+<CHANNEL id='84' name='TRA_5' unit='°C'/>			c142
+<CHANNEL id='85' name='TRA_6' unit='°C'/>			c143
+<CHANNEL id='86' name='PK_TK' unit='°C'/>					c78		???
+<CHANNEL id='87' name='PK_ZK' unit=''/>						c79		???
+<CHANNEL id='88' name='PK_O2' unit='%'/>					c80		???
+<CHANNEL id='89' name='PK_O2soll' unit='%'/>				c107	???
+<CHANNEL id='90' name='Anf. HKR3' unit='°C'/>		c148
+<CHANNEL id='91' name='PK_TKsoll' unit='°C'/>				c108	???
+<CHANNEL id='92' name='PK_TRG' unit='°C'/>					c109	???
+<CHANNEL id='93' name='PK_TRL' unit='°C'/>					c116	???
+<CHANNEL id='94' name='PK_TRLsoll' unit='°C'/>				c117	???
+<CHANNEL id='95' name='PK_RLP' unit='%'/>					c118	???
+<CHANNEL id='96' name='PK_Tplat' unit='°C'/>				c119	???	
+<CHANNEL id='97' name='PK_SZs' unit='%'/>					c120	???
+<CHANNEL id='98' name='PK_SZ' unit='%'/>					c121	???
+<CHANNEL id='99' name='PK_KeBrstScale' unit='%'/>	c54
+<CHANNEL id='100' name='PK_ESRegler' unit='%'/>		c55
+<CHANNEL id='101' name='PK_ESsoll' unit='%'/>		c56
+<CHANNEL id='102' name='PK_I Es' unit='mA'/>		c57
+<CHANNEL id='103' name='PK_I Ra' unit='mA'/>		c58
+<CHANNEL id='104' name='PK_I Aa' unit='mA'/>		c59
+<CHANNEL id='105' name='PK_I Sr' unit='mA'/>		c60
+<CHANNEL id='106' name='Anf. HKR9' unit='°C'/>		c169
+<CHANNEL id='107' name='PK_Sens U Lambda' unit='mV'/> 		c122	???
+<CHANNEL id='108' name='Anf. HKR4' unit='°C'/>		c149
+<CHANNEL id='109' name='Anf. HKR5' unit='°C'/>		c150
+<CHANNEL id='110' name='Anf. HKR6' unit='°C'/>		c151
+<CHANNEL id='111' name='Anf. HKR7' unit='°C'/>		c152
+<CHANNEL id='112' name='PK_SR motor' unit=''/>		c70
+<CHANNEL id='113' name='PK_SRpos ist' unit=''/>		c71
+<CHANNEL id='114' name='PK_SR mode' unit=''/>		c72
+<CHANNEL id='115' name='PK_UsePos' unit=''/>		c81
+<CHANNEL id='116' name='PK_UseMotSoll' unit='mm'/>	c82
+<CHANNEL id='117' name='PK_UseMotIst' unit='mm'/>	c83
+<CHANNEL id='118' name='PK_Einschubschn. BSZ' unit=''/>	c98
+<CHANNEL id='119' name='PK_Verbrauchszähler' unit='kg'/>c99
+<CHANNEL id='120' name='PK_LZ ES seit Ent.' unit='Min'/>c111
+<CHANNEL id='121' name='PK_LZ ES seit Füll.' unit='Min'/>c112
+<CHANNEL id='122' name='PK_Anzahl Entasch.' unit=''/>c113	
+<CHANNEL id='123' name='PK_Anzahl SR Beweg.' unit=''/>c114
+<CHANNEL id='124' name='PK_Lagerstand' unit='kg'/>	c115
+<CHANNEL id='125' name='PK_Leistung' unit='%'/>				c123	???
+<CHANNEL id='126' name='PK_Heiz I Lambda' unit='mA'/>		c124	???
+<CHANNEL id='127' name='PK_Heiz U Lambda' unit='V'/>		c125	???
+<CHANNEL id='128' name='Anf. HKR8' unit='°C'/>		c153
+<CHANNEL id='129' name='FW-Anforderung' unit=''/>			c126	???
+<CHANNEL id='130' name='Verb-Anforderung' unit=''/>			c127	???
+<CHANNEL id='131' name='BSZ_ST_Steuerung' unit='h'/>c155
+<CHANNEL id='132' name='BSZ_ST_Heizung' unit='h'/>	c156
+<CHANNEL id='133' name='BSZ_ST_Volllast' unit='h'/>			c128	???
+<CHANNEL id='134' name='BSZ_ST_Teillast' unit='h'/>			c129	???
+<CHANNEL id='135' name='BSZ_ST_Zündung' unit='h'/>	c157
+<CHANNEL id='136' name='BSZ_ST_Saugzug' unit='h'/>			c176	???
+<CHANNEL id='137' name='BSZ_PK_Heizung' unit='h'/>			c177	???
+<CHANNEL id='138' name='BSZ_PK_Zündung' unit='h'/>			c178	???
+<CHANNEL id='139' name='BSZ_PK_Saugzug' unit='h'/>			c179	???
+<CHANNEL id='140' name='BSZ_PK_Austragung' unit='h'/>c159
+<CHANNEL id='141' name='HKZustand_A' unit=''/>		c84
+<CHANNEL id='142' name='HKZustand_1' unit=''/>		c85
+<CHANNEL id='143' name='HKZustand_2' unit=''/>		c86
+<CHANNEL id='144' name='HKZustand_3' unit=''/>		c87
+<CHANNEL id='145' name='HKZustand_4' unit=''/>		c88
+<CHANNEL id='146' name='HKZustand_5' unit=''/>		c89
+<CHANNEL id='147' name='HKZustand_6' unit=''/>		c90
+<CHANNEL id='148' name='BoiZustand_A' unit=''/>		c91
+<CHANNEL id='149' name='BoiZustand_1' unit=''/>		c92
+<CHANNEL id='150' name='BoiZustand_2' unit=''/>		c93
+<CHANNEL id='151' name='BoiZustand_3' unit=''/>		c94
+<CHANNEL id='152' name='TVG' unit='°C'/>					c184	???
+<CHANNEL id='153' name='PK_UseSoll' unit='mm'/>				c186	???
+<CHANNEL id='154' name='PK_UseIst' unit='mm'/>				c187	???
+<CHANNEL id='155' name='PK_UseStrom' unit='mA'/>			c188	???
+<CHANNEL id='156' name='Anf. HKR10' unit='°C'/>		c170	
+<CHANNEL id='157' name='Anf. HKR11' unit='°C'/>		c171
+<CHANNEL id='158' name='Anf. HKR12' unit='°C'/>		c172
+<CHANNEL id='159' name='Anf. HKR13' unit='°C'/>		c173
+<CHANNEL id='160' name='Anf. HKR14' unit='°C'/>		c174
+<CHANNEL id='161' name='Anf. HKR15' unit='°C'/>		c175
+
+a partir de 162 : non stocké en BDD car inutilisés
+<CHANNEL id='162' name='BSZ_PK_AA' unit='h'/>				???
+<CHANNEL id='163' name='BLDC_ES soll' unit='rpm'/>			???
+<CHANNEL id='164' name='BLDC_ES ist' unit='rpm'/>			???
+<CHANNEL id='165' name='Heiz P Lambda' unit='W'/>			???
+<CHANNEL id='166' name='Störungs Nr' unit=''/>				???
+<CHANNEL id='167' name='DiffReg S1' unit='°C'/>				???
+<CHANNEL id='168' name='DiffReg S2' unit='°C'/>				???
+<CHANNEL id='169' name='T Spülung' unit='°C'/>				???
+<CHANNEL id='170' name='TPmo' unit='°C'/>			 		???
+<CHANNEL id='171' name='TPmu' unit='°C'/>					???
+<CHANNEL id='172' name='Heiz U Lambda' unit='V'/>			???
+<CHANNEL id='173' name='Heiz I Lambda' unit='mA'/>			???
+
+<CHANNEL id='174' name='WMZ_1_TVL' unit='°C'/>
+<CHANNEL id='175' name='WMZ_1_TRL' unit='°C'/>
+<CHANNEL id='176' name='WMZ_1_PWR' unit='kW'/>
+<CHANNEL id='177' name='WMZ_1_FLOW' unit='l/h'/>
+<CHANNEL id='178' name='WMZ_2_TVL' unit='°C'/>
+<CHANNEL id='179' name='WMZ_2_TRL' unit='°C'/>
+<CHANNEL id='180' name='WMZ_2_PWR' unit='kW'/>
+<CHANNEL id='181' name='WMZ_2_FLOW' unit='l/h'/>
+<CHANNEL id='182' name='WMZ_3_TVL' unit='°C'/>
+<CHANNEL id='183' name='WMZ_3_TRL' unit='°C'/>
+<CHANNEL id='184' name='WMZ_3_PWR' unit='kW'/>
+<CHANNEL id='185' name='WMZ_3_FLOW' unit='l/h'/>
+<CHANNEL id='186' name='WMZ_4_TVL' unit='°C'/>
+<CHANNEL id='187' name='WMZ_4_TRL' unit='°C'/>
+<CHANNEL id='188' name='WMZ_4_PWR' unit='kW'/>
+<CHANNEL id='189' name='WMZ_4_FLOW' unit='l/h'/>
+<CHANNEL id='190' name='WMZ_5_TVL' unit='°C'/>
+<CHANNEL id='191' name='WMZ_5_TRL' unit='°C'/>
+<CHANNEL id='192' name='WMZ_5_PWR' unit='kW'/>
+<CHANNEL id='193' name='WMZ_5_FLOW' unit='l/h'/>
+<CHANNEL id='194' name='WMZ_6_TVL' unit='°C'/>
+<CHANNEL id='195' name='WMZ_6_TRL' unit='°C'/>
+<CHANNEL id='196' name='WMZ_6_PWR' unit='kW'/>
+<CHANNEL id='197' name='WMZ_6_FLOW' unit='l/h'/>
+</ANALOG>
+
+</DAQPRJ>
+2021-01-04_18:58:02 KD=Hargassner
+2021-01-04_18:58:02 KT=MV49
+2021-01-04_18:58:02 SW=V10.2h
+2021-01-04_18:58:02 HW=V2.0c
+2021-01-04_18:58:02 KN=60010510
+2021-01-04_18:58:02 pm 76.0 185.5 6.1 54.7 34.7 30.8 -2.2 120.0 120.0 20.0 20.0 120.0 0.0 0.0 20.0 20.0 33 32 79 77 86.4 100 6 6.0 17.8 200.0 100 80.0 51.0 120.0 20.0 20.0 34.2 54.0 0.0 23.0 20.0 -20.0 -20.0 20.0 20.0 -20.0 0.0 0.0 20.0 20.0 86 28.3 72.3 35 0 0 0 0.0 0.0 0.0 0.0 121.0 72.0 -1.9 0.0 0.0 0.0 0.00 0.00 0.00 0.00 -20.0 0.0 20.0 20.0 -20.0 1 1 1 1 1 1 1 20.0 20.0 20.0 20.0 20.0 20.0 20.0 -20.0 1 15.9 0.0 0 0 2 -20 58 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 1 6 0 0 0 0 0 0 0 0 0 0 0.0 0 68 68 51496.5 14333.7 2320.9 1568.8 19.3 5853.2 0.0 0.0 65.7 0.0 0 0 0 1 0 0 0 0 0 1 0 -20.0 0.0 0.0 0.0 0 0 0 0 0 0 0.0 0 0 7.97 0 -20.0 -20.0 -20.0 -20.0 -20.0 13.20 604 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0@2 -1.0 -1.0 -1.0 -1.0 0100 0003 0002 0081 2000 0000 0000 0000 
+2021-01-04_18:58:02 pm 76.0 185.6 6.1 54.7 34.7 30.8h É6 35 0 0 0 0.0 0.0 0.0 0.0 121.0h¡Z8 0 -20.0 -20.0 -20.0 -20.0 -20.0 13.20 605 -1.0 -1.0 -1.0 -1.0 k dh *h 5 h£1h 6 pm 76.0 185.8 6.1 54.7 34.7 30.8h f3 120.0 20.0 20.0 34.2 54.0 0.0 h¡ç4 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 l`Z1100 0003 0002 0081 2000 0000 00h 
+h 7 pm 76.0 186.0 6.2 54.7 34.7 30.8h >6 86.4 100 6 6.0 17.3 200.0 100 h¢‰0100 0003 0002 0089 2000 0000 00h 
+h zclient connected (8681)
+n`8 pm 76.0 187.0 6.2 54.7 34.7 30.8n`81 78 77 86.2 100 6 6.0 17.3 200.nb5 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 r Z0100 0003 0002 0081 2000 0000 00n`
+n`9 h r4 200.0 100 80.0 51.3 120.0 20.0h¡Ñ9 0 -20.0 -20.0 -20.0 -20.0 -20.h ®h 10 pm 76.0 187.1 6.0 54.7 34.7 30.8h >8 86.2 100 6 6.0 18.2 200.0 100 h¡å6 0 -20.0 -20.0 -20.0 -20.0 -20.0 13.20 603 -1.0 -1.0 -1.0 -1.0 k dh *h 1 pm 76.0 188.0 6.4 54.7 34.7 30.8h >5 86.2 100 6 6.0 16.7 200.0 100 h¡å7 0 -20.0 -20.0 -20.0 -20.0 -20.0 13.20 605 -1.0 -1.0 -1.0 -1.0 k d1100 0003 0002 0081 2000 0000 00h 
+h 2 pm 76.0 188.0 6.3 54.7 34.7 30.8h >6 86.2 100 6 6.0 16.7 200.0 100 80.0 51.3 120.0 20.0 20.0 34.4 5h¡ï4 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 l`Z0100 0003 000A 0081 2000 0000 00h 
+h zclient connection abort (8681)
+o@3 oBc8 0 -20.0 -20.0 -20.0 -20.0 -20.o@®o@3 h r8 200.0 100 80.0 51.3 120.0 20.0h¡Ñ7 0 -20.0 -20.0 -20.0 -20.0 -20.h ®h 4 pm 76.0 188.1 6.3 54.7 34.7 30.8h¢C8 0 -20.0 -20.0 -20.0 -20.0 -20.h ®h 5 pm 76.0 188.1 6.1 54.7 34.7 30.8h >7 86.2 100 6 6.0 17.5 200.0 100 h¡å7 0 -20.0 -20.0 -20.0 -20.0 -20.h ®h 6 h¢c8 0 -20.0 -20.0 -20.0 -20.0 -20.0 13.20 605 -1.0 -1.0 -1.0 -1.0 k d0100 0003 0002 0081 2000 0000 00h 
+h 7 zclient connected (8682)
+n`8 pm 76.0 188.2 6.1 54.7 34.7 30.8nbC6 0 -20.0 -20.0 -20.0 -20.0 -20.0 13.20 603 -1.0 -1.0 -1.0 -1.0 pàd0100 0003 0002 0089 2000 0000 00n`
+n`9 pm 76.0 188.4 6.1 54.4 34.7 30.8h¢ù1 2000 0000 0000 0000 
+h zPa A: D17 = Oui
+m`zPa N: D17 = Non
+r zlogging disable
