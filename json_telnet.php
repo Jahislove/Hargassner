@@ -41,18 +41,66 @@ if ($mode_conn == 'serial'){
 	$data[0] = time() * 1000;// remplace pm par la date au format javascript (unix *1000)
 }
 
+
+array_shift($data); // supprime le 1er parametre (la date) pour aligner les numeros de chanels avec la colonne BDD
+
 // a partir du firmware 14.0i , l'ordre des parametres a changé
 // on remet les valeurs dans l'ordre attendu par le site
-if ($firmware == '14i' || $firmware == '14j' || $firmware == '14k' || $firmware == '14l'){
-	$T = $data; // reprends le tableau data
-	array_shift($T); // supprime la date pour aligner les chanels
+switch ($firmware) {
+    case '4.3d':
+    case '10.2h':
+        break;
+    case '14d':
+    case '14e':
+    case '14f':
+        break;
+    case '14g':
+        break;
+    case '14i':
+	case '14j':
+	case '14k':
+	case '14l':
+	default:
+		$output = array(
+			'heure' 	=> time() * 1000,
+			'etat' 		=> $data[0],
+			'puissance' => $data[8],
+			'extract'	=> $data[6],
+			'TempECS'	=> $data[95],
+			'Fumee'		=> $data[5],
+			'chaudiereEst'=> $data[3],
+			'puissance'	=> $data[8],
+			'Tint'		=> $data[58],
+			'Text'		=> $data[15],
+			'departEst'	=> $data[56],
+			'bois'		=> $data[9],
+			'pompe-rad'	=> $data[57],
+			'pompe-ECS'	=> $data[97],
+			'silo'		=> $data[46],
+			
+			'lambda'	=> $data[1],
+			'TextMoy'	=> $data[16],
+			'departDoit'=> $data[57],
+			'chaudiereDoit'=> $data[4],
+			'retourEst' => $data[23],
+			'retourDoit'=> $data[24],
 
-	//initialisation du tableau attendu
-	for ($i = 1; $i <= 190; $i++) {
-		$c[]=0;
-	}
+			'tempsDecend'=> $data[33],
+			'tempsVis'	=> $data[32],
+			'mvtGrille' => $data[35],
+			'PelletConso'=> $data[47],
+			'PelletRest' => $data[46],
+			'variableK' => $data[27],
+			'variableF' => $data[28],
+		);
+}	
 
+// on renvoi la reponse
+echo json_encode($output, JSON_NUMERIC_CHECK);  //numeric_check : remove ""
+
+/*
 	// on rempli le tableau attendu avec les valeurs reçues du telnet
+	// obsolete , remplacé par tableau associatif
 
 	$c[0]=$T[0]		;$c[20]=$T[93]	;$c[40]=$T[87]	;$c[60]=$T[13]		;$c[80]=$T[131]	;$c[100]=$T[55]		;$c[120]=$T[134]	;$c[140]=$T[70]		;$c[160]=$T[27]		;$c[180]=$T[42]  ;
 	$c[1]=$T[1]		;$c[21]=$T[56]	;$c[41]=$T[null];$c[61]=$T[14]		;$c[81]=$T[48]	;$c[101]=$T[61]		;$c[121]=$T[null]	;$c[141]=$T[76]		;$c[161]=$T[null]	;$c[181]=$T[null];
@@ -74,14 +122,5 @@ if ($firmware == '14i' || $firmware == '14j' || $firmware == '14k' || $firmware 
 	$c[17]=$T[51]	;$c[37]=$T[80]	;$c[57]=$T[10]	;$c[77]=$T[128]		;$c[97]=$T[49]	;$c[117]=$T[31]		;$c[137]=$T[52]		;$c[157]=$T[null]	;$c[177]=$T[43]		;
 	$c[18]=$T[null]	;$c[38]=$T[96]	;$c[58]=$T[11]	;$c[78]=$T[129]		;$c[98]=$T[null];$c[118]=$T[132]	;$c[138]=$T[58]		;$c[158]=$T[null]	;$c[178]=$T[18]		;
 	$c[19]=$T[92]	;$c[39]=$T[81]	;$c[59]=$T[12]	;$c[79]=$T[130]		;$c[99]=$T[47]	;$c[119]=$T[133]	;$c[139]=$T[64]		;$c[159]=$T[null]	;$c[179]=$T[20]		;
-
-	// on remet l'heure au debut
-	array_unshift($c, time() * 1000);
-	$data = $c;
-}
-
-// on renvoi une des reponses
-echo json_encode($data, JSON_NUMERIC_CHECK);  //numeric_check : remove ""
-
-
+*/
 ?>

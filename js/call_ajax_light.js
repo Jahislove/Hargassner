@@ -4,11 +4,11 @@ $.ajax({
     url: 'json_telnet.php', 
     cache: false,
     success: function(channel) {
-        heure = channel[0]; // stock la date puis
-        channel.shift(); // supprime la 1ere valeur (date) pour etre synchro avec les numero de channel
+//        heure = channel[0]; // stock la date puis
+//        channel.shift(); // supprime la 1ere valeur (date) pour etre synchro avec les numero de channel
 
         //  remplace valeur numerique de "etat" par un texte
-        switch(channel[0]) { 
+        switch(channel['etat']) { 
             case 0:
                 etat = '0';
                 break;

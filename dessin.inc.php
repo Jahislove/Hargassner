@@ -68,46 +68,28 @@
         <span id='gauche'>  
             <table class='TableInstant'>  
                 <tr><th>O² Lambda</th>          <td id="Gauche1">?</td></tr>    
-                <tr><th>T° chaudière est</th>   <td id="Gauche3">?</td></tr>    
-                <tr><th>T° chaudière doit</th>  <td id="Gauche4">?</td></tr>    
-                <tr><th>T° fumée</th>           <td id="Gauche5">?</td></tr>    
                 <tr><th>T° interieur</th>       <td id="Gauche2">?</td></tr>    
-                <tr><th>T° exterieur</th>       <td id="Gauche6">?</td></tr>    
-                <tr><th>T° exterieur moy</th>   <td id="Gauche7">?</td></tr>    
-                <tr><th>T° depart est</th>      <td id="Gauche8">?</td></tr>    
-                <tr><th>T° depart doit</th>     <td id="Gauche9">?</td></tr>    
-                <tr><th>Variable F</th>         <td id="Gauche10">?</td></tr>    
-                <tr><th>Variable K</th>         <td id="Gauche11">?</td></tr>    
-                <tr><th>T° retour</th>   		<td id="Gauche12">?</td></tr>    
-                <tr><th>T° retour doit</th>		<td id="Gauche13">?</td></tr>    
-                <tr><th>channel 15 : Tplat</th> <td id="Gauche14">?</td></tr>    
-                <tr><th>channel 25 : TR1</th>   <td id="Gauche15">?</td></tr>    
-                <tr><th>channel 26 : TR2</th>   <td id="Gauche16">?</td></tr>    
-                <tr><th>channel 45 : TRs_A</th> <td id="Gauche17">?</td></tr>    
-                <tr><th>Diagnostic </th> 		<td id="Gauche18">?</td></tr>    
-                <tr><th>channel 110 : Höchste A</th><td id="Gauche19">?</td></tr>    
-                <tr><th>channel 129 : BRT</th>  <td id="Gauche20">?</td></tr>    
+                <tr><th>T° exterieur</th>   	<td id="Gauche3">?</td></tr>    
+                <tr><th>T° exterieur moy</th> 	<td id="Gauche4">?</td></tr>    
+                <tr><th>T° depart est</th>   	<td id="Gauche5">?</td></tr>    
+                <tr><th>T° depart doit</th>  	<td id="Gauche6">?</td></tr>    
+                <tr><th>T° chaudière est</th>  	<td id="Gauche7">?</td></tr>    
+                <tr><th>T° chaudière doit</th>  <td id="Gauche8">?</td></tr>    
+                <tr><th>T° retour est</th>      <td id="Gauche9">?</td></tr>    
+                <tr><th>T° retour doit</th>     <td id="Gauche10">?</td></tr>    
            </table>
         </span>
         <span id='droite'>  
             <table class='TableInstant'>  
-                <tr><th>heures vis bois</th>        <td id="Droite1">?</td></tr>    
-                <tr><th>tps comb pour décend est</th><td id="Droite2">?</td></tr>  
-                <tr><th>temps vis aspiration</th>   <td id="Droite3">?</td></tr>    
-                <tr><th>nombre décendrage</th>      <td id="Droite4">?</td></tr>  
-                <tr><th>mouvement grille</th>       <td id="Droite5">?</td></tr>    
-                <tr><th>consommation pellet</th>    <td id="Droite6">?</td></tr>  
-                <tr><th>pellet restant</th>         <td id="Droite7">?</td></tr>  
-                <tr><th>heures sous tension</th>    <td id="Droite8">?</td></tr>  
-                <tr><th>heures chauffage</th>       <td id="Droite9">?</td></tr>  
-                <tr><th>heures allumage</th>        <td id="Droite10">?</td></tr>  
-                <tr><th>heures extr fumée</th>      <td id="Droite11">?</td></tr>  
-                <tr><th>heures extr silo</th>       <td id="Droite12">?</td></tr>  
-                <tr><th>nombre allumage</th>        <td id="Droite13">?</td></tr>  
-                <tr><th>heure puissance > 90%</th>  <td id="Droite14">?</td></tr>  
-                <tr><th>veille</th>                 <td id="Droite15">?</td></tr>  
-                <tr><th>Ballon ECS °C</th>          <td id="Droite16">?</td></tr>  
-                <tr><th>Ballon ECS On/Off/recyc</th>      <td id="Droite17">?</td></tr>  
+                <tr><th>tps comb pour décend est</th><td id="Droite1">?</td></tr>  
+                <tr><th>tps vis depuis aspi</th>    <td id="Droite2">?</td></tr>    
+                <tr><th>mouvement grille</th>       <td id="Droite3">?</td></tr>  
+                <tr><th>consommation pellet</th>    <td id="Droite4">?</td></tr>  
+                <tr><th>pellet restant</th>         <td id="Droite5">?</td></tr>  
+                <tr><th>Ballon ECS °C</th>          <td id="Droite6">?</td></tr>  
+                <tr><th>Ballon ECS On/Off/recyc</th><td id="Droite7">?</td></tr>  
+                <tr><th>Variable F</th>         	<td id="Droite8">?</td></tr>    
+                <tr><th>Variable K</th>   			<td id="Droite9">?</td></tr>    
 
             </table>
        </span>

@@ -5,7 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>My Hargassner</title>
     <link rel="icon" type="image/png" href="img/logo.png" />
-
+	<link rel="shortcut icon" href="img/favicon.ico">
+	
     <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css" /> <!-- utilisé uniquement pour le datepicker -->
     <link rel="stylesheet" href="js/datepicker/bootstrap-datepicker3.min.css" /><!-- utilisé uniquement pour le datepicker -->
 	<link rel="stylesheet" href="css/main.css" type="text/css"  />
