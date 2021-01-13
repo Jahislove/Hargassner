@@ -3,6 +3,9 @@
 // licence GPL-3.0-or-later
 
 // appelé par ajax, permet d'interroger la chaudiere par telnet et retourne la reponse en JSON 
+// utilisé par la page d'accueil pour mettre a jour l'affichage
+// la page d'accueil utilise uniquement le telnet et pas la BDD
+
 // pour les anciennes chaudiere ne disposant que du port serie , on remplace le telnet par une interrogation mysql
 	header("Content-type: text/json");
     require_once("conf/config.inc.php");
@@ -12,10 +15,6 @@ if ($mode_conn == 'serial'){
 	$query = "SELECT * FROM data 
 			ORDER by id DESC
 			LIMIT 1" ;
-			  
-	// connectMaBase($hostname, $database, $username, $password);
-	// $req = mysql_query($query) ;
-	// mysql_close();
 	$conn = mysqli_connect ($hostname, $username, $password, $database); 
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
@@ -38,23 +37,77 @@ if ($mode_conn == 'serial'){
         fclose($fp);
     }
     $data = explode(" ",$reponse); //transforme la reponse telnet (separateur espace) en array
-	$data[0] = time() * 1000;// remplace pm par la date au format javascript (unix *1000)
+	//$data[0] = time() * 1000;// remplace pm par la date au format javascript (unix *1000)
 }
 
 
-array_shift($data); // supprime le 1er parametre (la date) pour aligner les numeros de chanels avec la colonne BDD
+array_shift($data); // supprime le 1er parametre inutile(pm) pour aligner les numeros de chanels avec la colonne BDD
 
-// a partir du firmware 14.0i , l'ordre des parametres a changé
-// on remet les valeurs dans l'ordre attendu par le site
+// le tableau data contient tous les parametres recu par telnet numéroté de 0 à 188+
+// le tableau output contient les parametres utilisés par la page d'accueil
+// ex ci dessous avec le firmware 10.2h : le parametre puissance correspond au 26eme parametre du telnet
 switch ($firmware) {
     case '4.3d':
-    case '10.2h':
+    case '10.2h': //chaudiere buche
+		$output = array(
+			'heure' 	=> time() * 1000,
+			'etat' 		=> $data[22],
+			'lambda'	=> $data[2], 	//O2 sonde lambda
+			'puissance' => $data[26],
+			'extract'	=> $data[46], 	// extracteur de fumée
+			'Fumee'		=> $data[1],	// temperature fumée
+			'chaudiereEst'=> $data[0],
+			'chaudiereDoit'=> $data[27],
+			'Tint'		=> $data[80],	//temperature interieur
+			'Text'		=> $data[6],	//temperature exterieur
+			'TextMoy'	=> $data[59],	//temperature ext moyenne
+			'departEst'	=> $data[7],
+			'departDoit'=> $data[12],
+			'retourEst' => $data[48],
+			'retourDoit'=> $data[58],
+			'bois'		=> null,		// % vis amené granulés
+			'TempECS'	=> $data[11],
+			'pompe-ECS'	=> $data[148],
+			'tempsDecend'=> $data[120], // temps depuis dernier decendrage auto
+			'tempsVis'	=> null,		// temps rotation vis amené
+			'mvtGrille' => $data[123],	// nombre mouvement grille
+			'PelletConso'=> null,
+			'PelletRest' => null,
+			'variableK' => null,
+			'variableF' => null,
+		);
         break;
     case '14d':
     case '14e':
     case '14f':
-        break;
     case '14g':
+		$output = array( // ordre original (chanel = colonne BDD)
+			'heure' 	=> time() * 1000,
+			'etat' 		=> $data[0],
+			'lambda'	=> $data[1],
+			'puissance' => $data[134],
+			'extract'	=> $data[53],
+			'Fumee'		=> $data[5],
+			'chaudiereEst'=> $data[3],
+			'chaudiereDoit'=> $data[4],
+			'Tint'		=> $data[138],
+			'Text'		=> $data[6],
+			'TextMoy'	=> $data[7],
+			'departEst'	=> $data[21],
+			'departDoit'=> $data[23],
+			'retourEst' => $data[12],
+			'retourDoit'=> $data[13],
+			'bois'		=> $data[56],
+			'TempECS'	=> $data[27],
+			'pompe-ECS'	=> $data[92],
+			'tempsDecend'=> $data[111],
+			'tempsVis'	=> $data[112],
+			'mvtGrille' => $data[114],
+			'PelletConso'=> $data[99],
+			'PelletRest' => $data[115],
+			'variableK' => $data[160],
+			'variableF' => $data[54],
+		);
         break;
     case '14i':
 	case '14j':
@@ -64,27 +117,22 @@ switch ($firmware) {
 		$output = array(
 			'heure' 	=> time() * 1000,
 			'etat' 		=> $data[0],
+			'lambda'	=> $data[1],
 			'puissance' => $data[8],
 			'extract'	=> $data[6],
-			'TempECS'	=> $data[95],
 			'Fumee'		=> $data[5],
 			'chaudiereEst'=> $data[3],
-			'puissance'	=> $data[8],
+			'chaudiereDoit'=> $data[4],
 			'Tint'		=> $data[58],
 			'Text'		=> $data[15],
-			'departEst'	=> $data[56],
-			'bois'		=> $data[9],
-			'pompe-rad'	=> $data[57],
-			'pompe-ECS'	=> $data[97],
-			'silo'		=> $data[46],
-			
-			'lambda'	=> $data[1],
 			'TextMoy'	=> $data[16],
+			'departEst'	=> $data[56],
 			'departDoit'=> $data[57],
-			'chaudiereDoit'=> $data[4],
 			'retourEst' => $data[23],
 			'retourDoit'=> $data[24],
-
+			'bois'		=> $data[9],
+			'TempECS'	=> $data[95],
+			'pompe-ECS'	=> $data[97],
 			'tempsDecend'=> $data[33],
 			'tempsVis'	=> $data[32],
 			'mvtGrille' => $data[35],

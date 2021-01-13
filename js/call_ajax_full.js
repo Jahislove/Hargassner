@@ -181,7 +181,7 @@ $.ajax({
         document.getElementById('bois-texte').innerHTML =  channel['bois'] + '%';
         
 		// rafraichissement des pompes
-		if ( channel['pompe-rad'] > 0 ) {
+		if ( channel['departDoit'] > 0 ) {
 			document.getElementById('pompe-radiat').className = 'pompeON';
         } else {
 			document.getElementById('pompe-radiat').className = 'pompeOFF';
@@ -193,7 +193,7 @@ $.ajax({
 		}	
 
         // rafraichissement graphe silo
-        chart_silo.series[0].points[0].update(channel['silo']);
+        chart_silo.series[0].points[0].update(channel['PelletRest']);
 
         // aspiration RAPS : desactivé car parametre non connu
         // if ( channel[?] == 2000 ) {
