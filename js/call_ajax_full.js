@@ -1,24 +1,24 @@
 // ######## rafraichissement des données ########################################################
-// voir channel-nanoPK-vxxxx.txt pour les numeros de canaux
+// voir chanel-nanoPK-vxxxx.txt pour les numeros de canaux
 
 function call_ajax() {
 $.ajax({
     url: 'json_telnet.php', 
     cache: false,
 	//dataType : "JSON",
-    success: function(channel) {
-        //heure = channel[0]; // stock la date puis
-        //channel.shift(); // supprime la 1ere valeur (date) et decale les autres pour etre synchro avec les numero de channel
+    success: function(chanel) {
+        //heure = chanel[0]; // stock la date puis
+        //chanel.shift(); // supprime la 1ere valeur (date) et decale les autres pour etre synchro avec les numero de chanel
 
 		// initialise les variables (utilisées) au dela du chanel 164 au cas ou le firmware < 14.g 
-		// if (typeof channel[183] === 'undefined') {
-			// channel[183] = 0;
-			// channel[181] = 0;
+		// if (typeof chanel[183] === 'undefined') {
+			// chanel[183] = 0;
+			// chanel[181] = 0;
 		// }		 
         // animation du dessin par chargement de class CSS
 
         // remplace valeur numerique de "etat" par un texte
-        switch(channel['etat']) { 
+        switch(chanel['etat']) { 
             case 0:
                 etat = '0';
                 break;
@@ -98,9 +98,9 @@ $.ajax({
                 break;
         }
         
-        // elements qui ne dependent pas d'un etat , mais de la valeur d'un channel
+        // elements qui ne dependent pas d'un etat , mais de la valeur d'un chanel
         // l'extracteur de fumée 
-        if ( channel['extract'] > 0 ) {
+        if ( chanel['extract'] > 0 ) {
             document.getElementById('nano-A1').className = 'extr_anime'; 
         }
         else {
@@ -108,10 +108,10 @@ $.ajax({
         }
         
 		// test presence et remplissage ballon ECS 
-		var TempECS = channel['TempECS'];
+		var TempECS = chanel['TempECS'];
 		switch ( true ) {
 			case (TempECS==140): // ballon ECS absent
-				channel['TempECS'] = "null";
+				chanel['TempECS'] = "null";
 				break;
 			case (TempECS<20):
 				document.getElementById('ballonECS-bulle').className = 'visible ballonECS-0 tuyau-ECS';
@@ -148,14 +148,14 @@ $.ajax({
 		}
 		
 		// test diagnostic
-		// channel[181] = parseInt(channel[181]);
-		// if ( channel[181] >= 2000 ) {
+		// chanel[181] = parseInt(chanel[181]);
+		// if ( chanel[181] >= 2000 ) {
 			// document.getElementById('etat').className = 'etat_erreur';
 			// switch ( true ) {
-				// case (channel[181]==2003): 
+				// case (chanel[181]==2003): 
 					// etat = etat + '/Temps de Remplissage dépassé';
 					// break;
-				// case (channel[181]==2009):
+				// case (chanel[181]==2009):
 					// etat = etat + '/défaut';
 					// break;
 				// default:
@@ -168,35 +168,71 @@ $.ajax({
 			
         // rafraichissement etat
         document.getElementById('etat').innerHTML = etat;
+		switch ( chanel['modeCommand'] ) {
+			case 1: 
+				//document.getElementById('modeCommand').innerHTML = 'programmé';
+				document.getElementById('modeCommand').className = 'modeCommandProgram';
+				break;
+			case 2: 
+				document.getElementById('modeCommand').className = 'modeCommandReduit';
+				break;
+			case 3: 
+				document.getElementById('modeCommand').className = 'modeCommandConfort';
+				break;
+			case 4: 
+				document.getElementById('modeCommand').className = 'modeCommandSoiree';
+				break;
+			case 5: 
+				document.getElementById('modeCommand').className = 'modeCommandAbsence';
+				break;
+			default:
+				document.getElementById('modeCommand').innerHTML = chanel['modeCommand'];
+		}
+		switch ( chanel['modeChauff'] ) {
+			case 1: 
+				document.getElementById('modeChauff').className = 'modeCommandConfort';
+				break;
+			case 3: 
+				document.getElementById('modeChauff').className = 'modeCommandReduit';
+				break;
+			case 4: 
+				document.getElementById('modeChauff').className = 'modeCommandArret';
+				break;
+			case 9: 
+				document.getElementById('modeChauff').innerHTML = 'en cours arret';
+				break;
+			default:
+				document.getElementById('modeChauff').innerHTML = chanel['modeChauff'];
+		}
         
         // rafraichissement des bulles
-        document.getElementById('extr-texte').innerHTML =  channel['extract'] + '%';
-        document.getElementById('fumee-texte').innerHTML =  channel['Fumee'] + '°C';
-        document.getElementById('Tchaud-texte').innerHTML =  channel['chaudiereEst'] + '°C';
-        document.getElementById('puiss-texte').innerHTML =  channel['puissance'] + '%';
-        document.getElementById('Tint-texte').innerHTML =  channel['Tint'] + '°C';
-        document.getElementById('Text-texte').innerHTML =  channel['Text'] + '°C';
-        document.getElementById('radiateur-texte').innerHTML =  channel['departEst'] + '°C';
-        document.getElementById('ballonECS-texte').innerHTML =  channel['TempECS'] + '°C';
-        document.getElementById('bois-texte').innerHTML =  channel['bois'] + '%';
+        document.getElementById('extr-texte').innerHTML =  chanel['extract'] + '%';
+        document.getElementById('fumee-texte').innerHTML =  chanel['Fumee'] + '°C';
+        document.getElementById('Tchaud-texte').innerHTML =  chanel['chaudiereEst'] + '°C';
+        document.getElementById('puiss-texte').innerHTML =  chanel['puissance'] + '%';
+        document.getElementById('Tint-texte').innerHTML =  chanel['Tint'] + '°C';
+        document.getElementById('Text-texte').innerHTML =  chanel['Text'] + '°C';
+        document.getElementById('radiateur-texte').innerHTML =  chanel['departEst'] + '°C';
+        document.getElementById('ballonECS-texte').innerHTML =  chanel['TempECS'] + '°C';
+        document.getElementById('bois-texte').innerHTML =  chanel['bois'] + '%';
         
 		// rafraichissement des pompes
-		if ( channel['departDoit'] > 0 ) {
+		if ( chanel['departDoit'] > 0 ) {
 			document.getElementById('pompe-radiat').className = 'pompeON';
         } else {
 			document.getElementById('pompe-radiat').className = 'pompeOFF';
 		}	
-		if ( channel['pompe-ECS'] > 0 ) { //old: 183   Ballon ECS 0:off , 1:charge, 2:recyclage 
+		if ( chanel['pompe-ECS'] > 0 ) { //old: 183   Ballon ECS 0:off , 1:charge, 2:recyclage 
 			document.getElementById('pompe-ECS').className = 'pompeON';
         } else {
 			document.getElementById('pompe-ECS').className = 'pompeOFF';
 		}	
 
         // rafraichissement graphe silo
-        chart_silo.series[0].points[0].update(channel['PelletRest']);
+        chart_silo.series[0].points[0].update(chanel['PelletRest']);
 
         // aspiration RAPS : desactivé car parametre non connu
-        // if ( channel[?] == 2000 ) {
+        // if ( chanel[?] == 2000 ) {
             // document.getElementById('nano-A2').className = 'RAPS_anime'; 
         // }
         // else {
@@ -205,36 +241,36 @@ $.ajax({
 
         // rafraichissement graphe live
         var shift = chart_live.series[0].data.length > histo_live_shift;
-        chart_live.series[0].addPoint([channel['heure'], channel['etat']], true, shift);
-        chart_live.series[1].addPoint([channel['heure'], channel['chaudiereEst']], true, shift);
-        chart_live.series[2].addPoint([channel['heure'], channel['extract']], true, shift);
-        chart_live.series[3].addPoint([channel['heure'], channel['bois']], true, shift);
-        chart_live.series[4].addPoint([channel['heure'], channel['puissance']], true, shift);
-        chart_live.series[5].addPoint([channel['heure'], channel['departEst']], true, shift);
-        //chart_live.series[6].addPoint([heure, channel[54]], true, shift);
-        //chart_live.series[7].addPoint([heure, channel[160]], true, shift);  
+        chart_live.series[0].addPoint([chanel['heure'], chanel['etat']], true, shift);
+        chart_live.series[1].addPoint([chanel['heure'], chanel['chaudiereEst']], true, shift);
+        chart_live.series[2].addPoint([chanel['heure'], chanel['extract']], true, shift);
+        chart_live.series[3].addPoint([chanel['heure'], chanel['bois']], true, shift);
+        chart_live.series[4].addPoint([chanel['heure'], chanel['puissance']], true, shift);
+        chart_live.series[5].addPoint([chanel['heure'], chanel['departEst']], true, shift);
+        //chart_live.series[6].addPoint([heure, chanel[54]], true, shift);
+        //chart_live.series[7].addPoint([heure, chanel[160]], true, shift);  
             
         // rafraichissement tableau gauche et droite
-        Gauche1.innerHTML = channel['lambda']; 
-        Gauche2.innerHTML = channel['Tint'];    
-        Gauche3.innerHTML = channel['Text'];    
-        Gauche4.innerHTML = channel['TextMoy'];    
-        Gauche5.innerHTML = channel['departEst'];    
-        Gauche6.innerHTML = channel['departDoit'];    
-        Gauche7.innerHTML = channel['chaudiereEst'];    
-        Gauche8.innerHTML = channel['chaudiereDoit'];    
-        Gauche9.innerHTML = channel['retourEst'];    
-        Gauche10.innerHTML = channel['retourDoit'];    
+        Gauche1.innerHTML = chanel['lambda']; 
+        Gauche2.innerHTML = chanel['Tint'];    
+        Gauche3.innerHTML = chanel['Text'];    
+        Gauche4.innerHTML = chanel['TextMoy'];    
+        Gauche5.innerHTML = chanel['departEst'];    
+        Gauche6.innerHTML = chanel['departDoit'];    
+        Gauche7.innerHTML = chanel['chaudiereEst'];    
+        Gauche8.innerHTML = chanel['chaudiereDoit'];    
+        Gauche9.innerHTML = chanel['retourEst'];    
+        Gauche10.innerHTML = chanel['retourDoit'];    
 
-        Droite1.innerHTML = channel['tempsDecend'];    
-        Droite2.innerHTML = channel['tempsVis'];    
-        Droite3.innerHTML = channel['mvtGrille'];    
-        Droite4.innerHTML = channel['PelletConso'];    
-        Droite5.innerHTML = channel['PelletRest'];    
-        Droite6.innerHTML = channel['TempECS'];    
-        Droite7.innerHTML = channel['pompe-ECS'];    
-        Droite8.innerHTML = channel['variableF'];    
-        Droite9.innerHTML = channel['variableK'];    
+        Droite1.innerHTML = chanel['tempsDecend'];    
+        Droite2.innerHTML = chanel['tempsVis'];    
+        Droite3.innerHTML = chanel['mvtGrille'];    
+        Droite4.innerHTML = chanel['PelletConso'];    
+        Droite5.innerHTML = chanel['PelletRest'];    
+        Droite6.innerHTML = chanel['TempECS'];    
+        Droite7.innerHTML = chanel['pompe-ECS'];    
+        Droite8.innerHTML = chanel['variableF'];    
+        Droite9.innerHTML = chanel['variableK'];    
     },
 });
 

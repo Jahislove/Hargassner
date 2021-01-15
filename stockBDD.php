@@ -200,7 +200,7 @@ mysqli_close($conn);
 $heure = date('H', time());
 $minute = date('i', time());
 
-if ($heure == '18' and $minute < '30'){ # si heure est comprise entre 00h00 et 00h30 on calcul la conso de la veille
+if ($heure == '00' and $minute < '30'){ # si heure est comprise entre 00h00 et 00h30 on calcul la conso de la veille
 	calcul_consommation($hostname, $database, $username, $password);
 }
 

@@ -255,15 +255,6 @@ a:hover{
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
 	text-align: left;
     padding: 8px 180px 10px 10px;
-    /* list-style: none; */
-    /* Styling texte */
-    /* display: inline-block; */
-    /* font: 20px/1 Cabin Condensed,Arial,sans-serif; */
-    /* padding: 8px 40px 10px 40px; */
-    /*padding: 8px 45px 10px;*/
-    /* text-shadow: 1px 1px 0 rgba(188, 176, 176, 0.6); */
-    /* z-index:2; */
-    /* text-decoration:none !important; */
 }
 .TableInstant th:first-child{
     border-radius: 24px 0 0 24px;
@@ -318,30 +309,63 @@ a:hover{
 }
 
 /******ETAT**************************************************************/
-.etat {
-	margin: 0 auto 3px ;
-	width: 400px;
-    border-radius: 24px;
-    color: #5d5d5d;
+.etat th{
+    background-color: #f0f0f0;
     background-image: linear-gradient(#fefefe 0%, #f0f0f0 50%, #D6D6D6 70%);
     border-right: 1px solid rgba(9, 9, 9, 0.125);
     box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
-    padding: 8px 40px 10px 40px;
-    text-shadow: 1px 1px 0 rgba(188, 176, 176, 0.6);
+    position:relative;
+    /* float: left; */
+    color: #757474;
+    white-space:nowrap;
+	width: 120px;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
 	text-align: center;
+    padding: 8px 10px 10px 10px;
 }
-/* .etat_erreur { */
-	/* margin: 0 auto 3px ; */
-	/* width: 400px; */
-    /* border-radius: 24px; */
-    /* color: #5d5d5d; */
-    /* background-image: linear-gradient(rgba(246, 80, 80, 0.64) 0%, #F58888 50%, #F00 90%) ; */
-    /* border-right: 1px solid rgba(9, 9, 9, 0.125); */
-    /* box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset; */
-    /* padding: 8px 40px 10px 40px; */
-    /* text-shadow: 1px 1px 0 rgba(188, 176, 176, 0.6); */
-	/* text-align: center; */
-/* } */
+.etat th:first-child{
+	width: 300px;
+    border-radius: 24px 0 0 24px;
+    padding: 8px 10px 10px 10px;
+}
+.etat th:last-child{
+	width: 120px;
+    border-radius: 0 24px 24px 0;
+    padding: 0px 0px 0px 0px;
+}
+
+#modeCommand,#modeChauff {
+	position: relative;
+	z-index: 2;
+	width: 40px;
+	height: 30px;
+	display: inline-block;
+}
+.modeCommandArret {
+	background: url("../img/modeCommand.png") no-repeat;
+	background-position: 0% ; 
+}
+.modeCommandProgram {
+	background: url("../img/modeCommand.png") no-repeat;
+	background-position: 20% ; 
+}
+.modeCommandConfort {
+	background: url("../img/modeCommand.png") no-repeat;
+	background-position: 40% ; 
+}
+.modeCommandReduit {
+	background: url("../img/modeCommand.png") no-repeat;
+	background-position: 60% ; 
+}
+.modeCommandSoiree {
+	background: url("../img/modeCommand.png") no-repeat;
+	background-position: 80% ; 
+}
+.modeCommandAbsence {
+	background: url("../img/modeCommand.png") no-repeat;
+	background-position: 100% ; 
+}
+
 /**************************************************************************************************/	
 /******************* graphiques ******************************************************************/	
 /**************************************************************************************************/	

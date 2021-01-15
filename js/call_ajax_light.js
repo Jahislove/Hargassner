@@ -3,12 +3,10 @@ function call_ajax() {
 $.ajax({
     url: 'json_telnet.php', 
     cache: false,
-    success: function(channel) {
-//        heure = channel[0]; // stock la date puis
-//        channel.shift(); // supprime la 1ere valeur (date) pour etre synchro avec les numero de channel
+    success: function(chanel) {
 
         //  remplace valeur numerique de "etat" par un texte
-        switch(channel['etat']) { 
+        switch(chanel['etat']) { 
             case 0:
                 etat = '0';
                 break;
@@ -54,10 +52,44 @@ $.ajax({
                 etat = 'inconnu';
                 break;
         }
-		document.getElementById('etat').innerHTML = etat;
-        //document.getElementById('etat').innerHTML = etat + ' | ' + channel[134] + '%';
-        //document.getElementById('T°ext').innerHTML = 'T°ext : ' + channel[6];
-        //document.getElementById('T°depart').innerHTML = 'T°depart : ' + channel[21];
+        // rafraichissement etat
+        document.getElementById('etat').innerHTML = etat;
+		switch ( chanel['modeCommand'] ) {
+			case 1: 
+				//document.getElementById('modeCommand').innerHTML = 'programmé';
+				document.getElementById('modeCommand').className = 'modeCommandProgram';
+				break;
+			case 2: 
+				document.getElementById('modeCommand').className = 'modeCommandReduit';
+				break;
+			case 3: 
+				document.getElementById('modeCommand').className = 'modeCommandConfort';
+				break;
+			case 4: 
+				document.getElementById('modeCommand').className = 'modeCommandSoiree';
+				break;
+			case 5: 
+				document.getElementById('modeCommand').className = 'modeCommandAbsence';
+				break;
+			default:
+				document.getElementById('modeCommand').innerHTML = chanel['modeCommand'];
+		}
+		switch ( chanel['modeChauff'] ) {
+			case 1: 
+				document.getElementById('modeChauff').className = 'modeCommandConfort';
+				break;
+			case 3: 
+				document.getElementById('modeChauff').className = 'modeCommandReduit';
+				break;
+			case 4: 
+				document.getElementById('modeChauff').className = 'modeCommandArret';
+				break;
+			case 9: 
+				document.getElementById('modeChauff').innerHTML = 'en cours arret';
+				break;
+			default:
+				document.getElementById('modeChauff').innerHTML = chanel['modeChauff'];
+		}
     },
 });
 };

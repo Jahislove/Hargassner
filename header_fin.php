@@ -64,13 +64,35 @@
         </ul>
 	</nav>
 
-	<div id="etat" class="etat">?</div>    
-	<!-- <div>
-        <table class="TableInstant">
+	<!-- <div id="etat" class="etat">?</div>     -->
+	<div>
+        <table class="etat">
             <tr>
 			<th id="etat" >?</th>
-             <th id="T°ext" >. </th>
-            <th id="T°depart" >. </th> 
+            <th >
+				<span id="modeChauff" class='modeCommandArret'></span> 
+			</th>
+			<th>
+				<span id="modeCommand" class='modeCommandArret'></span> 
+			</th> 
 			</tr>
         </table>
-	</div>-->
+	</div>
+<!--
+        <span class='maison-bulle'>
+            <span id="tooltip_Tint" class="tooltip"><a>Température intérieur</a></span>
+            <span id="Tint-texte"   class='maison-Tint-texte'></span>
+            <span id="tooltip_Text" class="tooltip"><a>Température extérieur</a></span>
+            <span id="Text-texte"   class='maison-Text-texte'></span>
+			<span id="tooltip_chauffage" class=" tooltip"><a>température de départ chauffage</a></span>
+			<span id="radiateur-texte" class='radiateur-texte'></span>
+			<span id="pompe-radiat" class='pompeOFF'></span>
+
+			<span id="ballonECS-bulle" class='hidden'>
+				<span class="tooltip-general tooltip"><a>Ballon ECS</a></span>
+				<span id="ballonECS-texte"   class='BallonECS-texte'></span>
+				<span id="pompe-ECS" class='pompeOFF'></span>
+				<span id="tuyau-ECS" class='tuyau-ECS'></span>				
+			</span>
+        </span>
+-->
