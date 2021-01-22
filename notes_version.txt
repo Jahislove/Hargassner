@@ -21,9 +21,7 @@ v3.1	27/10/2020
 			
 			+ sur Synology modifier l'executable php dans votre tache planifiée
 				ex php74 -c /volume1/web/hargassner/conf/php.ini -f /volume1/web/hargassner/stockBDD.php
-				sur synology il y a actuellement un bug sur  php7.4 : l'extension zip n'est pas disponible, ce qui empeche la mise a jour automatique
-				pour contourner, soit vous installez php7.3 soit vous decompressez le zip a la main 
-				
+								
 	correction bug table consommation qui ne se remplissait pas a la première utilisation
 	prise en charge du firmware 14.0l (je suppose identique au 14.0k)
 	
