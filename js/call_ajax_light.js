@@ -85,7 +85,7 @@ $.ajax({
 				document.getElementById('modeChauff').className = 'modeCommandArret';
 				break;
 			case 9: 
-				document.getElementById('modeChauff').innerHTML = 'en cours arret';
+				document.getElementById('modeChauff').className = 'modeCommandArret';
 				break;
 			default:
 				document.getElementById('modeChauff').innerHTML = chanel['modeChauff'];
