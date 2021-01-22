@@ -116,6 +116,36 @@ switch ($firmware) {
     case '14i':
 	case '14j':
 	case '14k':
+		$output = array(
+			'heure' 	=> time() * 1000,
+			'etat' 		=> $data[0],
+			'lambda'	=> $data[1],
+			'puissance' => $data[8],
+			'extract'	=> $data[6],
+			'Fumee'		=> $data[5],
+			'chaudiereEst'=> $data[3],
+			'chaudiereDoit'=> $data[4],
+			'Tint'		=> $data[58],
+			'Text'		=> $data[15],
+			'TextMoy'	=> $data[16],
+			'departEst'	=> $data[56],
+			'departDoit'=> $data[57],
+			'retourEst' => $data[23],
+			'retourDoit'=> $data[24],
+			'bois'		=> $data[9],
+			'TempECS'	=> $data[95],
+			'pompe-ECS'	=> $data[97],
+			'tempsDecend'=> $data[33],
+			'tempsVis'	=> $data[32],
+			'mvtGrille' => $data[35],
+			'PelletConso'=> $data[47],
+			'PelletRest' => $data[46],
+			'variableK' => $data[27],
+			'variableF' => $data[28],
+			'modeChauff'=> $data[60],
+			'modeCommand'=> $data[61],
+		);
+        break;
 	case '14l':
 	default:
 		$output = array(

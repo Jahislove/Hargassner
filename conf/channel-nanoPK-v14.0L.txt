@@ -123,62 +123,23 @@ CHANNEL id='120' name='Anf. HKR12' unit='°C'/		c172
 CHANNEL id='121' name='Anf. HKR13' unit='°C'/		c173
 CHANNEL id='122' name='Anf. HKR14' unit='°C'/		c174
 CHANNEL id='123' name='Anf. HKR15' unit='°C'/		c175
-CHANNEL id='124' name='KaskSollTmp_1' unit='°C'/	c73
-CHANNEL id='125' name='KaskSollTmp_2' unit='°C'/	c74
-CHANNEL id='126' name='KaskSollTmp_3' unit='°C'/	c75
-CHANNEL id='127' name='KaskSollTmp_4' unit='°C'/	c76
-CHANNEL id='128' name='KaskIstTmp_1' unit='°C'/		c77
-CHANNEL id='129' name='KaskIstTmp_2' unit='°C'/		c78
-CHANNEL id='130' name='KaskIstTmp_3' unit='°C'/		c79
-CHANNEL id='131' name='KaskIstTmp_4' unit='°C'/		c80
-CHANNEL id='132' name='TWT' unit='°C'/				c118	
-CHANNEL id='133' name='DiffReg S1' unit='°C'/		c119
-CHANNEL id='134' name='DiffReg S2' unit='°C'/		c120
+CHANNEL id='124' name='T Spülung' unit='°C'/		c73
+CHANNEL id='125' name='DiffReg S1' unit='°C'/		c74
+CHANNEL id='126' name='DiffReg S2' unit='°C'/		c75
+CHANNEL id='127' name='TVG' unit='°C'/				c76
+CHANNEL id='128' name='DiffReg2 S3' unit='°C'/		c77
+CHANNEL id='129' name='DiffReg2 S4' unit='°C'/		c78
+CHANNEL id='130' name='U Netzteil' unit='mV'/		c79
+CHANNEL id='131' name='TBB' unit='°C'/				c80
+CHANNEL id='132' name='TBs_B' unit='°C'/			c118
+CHANNEL id='133' name='BoiZustand_B' unit=''/		c119
+CHANNEL id='134' name='TVL_B' unit='°C'/			c120
+CHANNEL id='135' name='TVLs_B' unit='°C'/			c176
+CHANNEL id='136' name='TRB' unit='°C'/				c177
+CHANNEL id='137' name='TRs_B' unit='°C'/			c178
+CHANNEL id='138' name='HKZustand_B' unit=''/		c179
+CHANNEL id='139' name='TRA_B' unit='°C'/			c186
+CHANNEL id='140' name='FRB Zustand' unit=''/		c187	
+</ANALOG>
 
-<CHANNEL id='135' name='TVG' unit='°C'/>			a partir de 135 : non stocké en BDD car inutilisés
-<CHANNEL id='136' name='WMZ_1_TVL' unit='°C'/>		
-<CHANNEL id='137' name='WMZ_1_TRL' unit='°C'/>		
-<CHANNEL id='138' name='WMZ_1_PWR' unit='kW'/>			
-<CHANNEL id='139' name='WMZ_1_FLOW' unit='l/h'/>	
-<CHANNEL id='140' name='WMZ_2_TVL' unit='°C'/>
-<CHANNEL id='141' name='WMZ_2_TRL' unit='°C'/>
-<CHANNEL id='142' name='WMZ_2_PWR' unit='kW'/>
-<CHANNEL id='143' name='WMZ_2_FLOW' unit='l/h'/>
-<CHANNEL id='144' name='WMZ_3_TVL' unit='°C'/>
-<CHANNEL id='145' name='WMZ_3_TRL' unit='°C'/>
-<CHANNEL id='146' name='WMZ_3_PWR' unit='kW'/>
-<CHANNEL id='147' name='WMZ_3_FLOW' unit='l/h'/>
-<CHANNEL id='148' name='WMZ_4_TVL' unit='°C'/>
-<CHANNEL id='149' name='WMZ_4_TRL' unit='°C'/>
-<CHANNEL id='150' name='WMZ_4_PWR' unit='kW'/>
-<CHANNEL id='151' name='WMZ_4_FLOW' unit='l/h'/>
-<CHANNEL id='152' name='WMZ_5_TVL' unit='°C'/>
-<CHANNEL id='153' name='WMZ_5_TRL' unit='°C'/>
-<CHANNEL id='154' name='WMZ_5_PWR' unit='kW'/>
-<CHANNEL id='155' name='WMZ_5_FLOW' unit='l/h'/>
-<CHANNEL id='156' name='WMZ_6_TVL' unit='°C'/>
-<CHANNEL id='157' name='WMZ_6_TRL' unit='°C'/>
-<CHANNEL id='158' name='WMZ_6_PWR' unit='kW'/>
-<CHANNEL id='159' name='WMZ_6_FLOW' unit='l/h'/>
-<CHANNEL id='160' name='FWS1 Anf.' unit='°C'/>
-<CHANNEL id='161' name='FWS1 Pumpe' unit='%'/>
-<CHANNEL id='162' name='FWS1 Leist' unit='kW'/>
-<CHANNEL id='163' name='FWS1 T' unit='°C'/>
-<CHANNEL id='164' name='FWS1 D' unit='l/min'/>
-<CHANNEL id='165' name='FWS2 Anf.' unit='°C'/>
-<CHANNEL id='166' name='FWS2 Pumpe' unit='%'/>
-<CHANNEL id='167' name='FWS2 Leist' unit='kW'/>
-<CHANNEL id='168' name='FWS2 T' unit='°C'/>
-<CHANNEL id='169' name='FWS2 D' unit='l/min'/>
-<CHANNEL id='170' name='FWS3 Anf.' unit='°C'/>
-<CHANNEL id='171' name='FWS3 Pumpe' unit='%'/>
-<CHANNEL id='172' name='FWS3 Leist' unit='kW'/>
-<CHANNEL id='173' name='FWS3 T' unit='°C'/>
-<CHANNEL id='174' name='FWS3 D' unit='l/min'/>
-<CHANNEL id='175' name='FWS4 Anf.' unit='°C'/>
-<CHANNEL id='176' name='FWS4 Pumpe' unit='%'/>
-<CHANNEL id='177' name='FWS4 Leist' unit='kW'/>
-<CHANNEL id='178' name='FWS4 T' unit='°C'/>
-<CHANNEL id='179' name='FWS4 D' unit='l/min'/>
-<CHANNEL id='180' name='DiffReg2 S3' unit='°C'/>
-<CHANNEL id='181' name='DiffReg2 S4' unit='°C'/>
+

@@ -211,14 +211,14 @@ colonne c177	 name=	max.Leist.P3F.HT unit='%'
 colonne c178	 name=	TPmo			 unit='°C'
 colonne c179	 name=	TPmu			 unit='°C'
 colonne c180	 name=	Puff Füllgrad	 unit='%'  	% remplissage du Ballon Tampon
-colonne c181	 name=	Alarme si >2000? : 			1=rien , 9=debut ou fin ,89 , 8 ,18, 28... ,
+colonne c181	 name=	Alarme si >2000? CHAR 			1=rien , 9=debut ou fin ,89 , 8 ,18, 28... ,
 														2001 ?
 														2003 Temps de Remplissage dépassé
 														2009 defaut 
 														2089 ?
 														2189 ?
 														2289 ?
-colonne c182	 name= ?  				unit=
+colonne c182	 name= ?  				CHAR
 colonne c183	 name= ?				unit=		pompe ballon ECS 0 =off, 2=on
 colonne c184	 name= ?				unit=
 colonne c185	 name= ?   				unit=		0 = tremi OK ,2000 = tremi vide
