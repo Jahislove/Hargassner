@@ -13,8 +13,8 @@
 </div>
 <?php
 // MySQL config
-$hostname = "192.168.0.222:3306"; //localhost si la BDD est sur la meme machine que le serveur web , sinon IP
-$database = "test"; // nom de la BDD
+$hostname = "192.168.0.222:3307"; //localhost si la BDD est sur la meme machine que le serveur web , sinon IP 3306 MySQL 5 , 3307 MySQL 10
+$database = "hargassner"; // nom de la BDD
 $username = "hargassner"; // utilisateur mysql
 $password = "password";
 
@@ -41,10 +41,6 @@ $color_bois = '#E97E04';
 $color_decend = '#AAFFAC';
 $color_legend = '#DBEDFF'; 
 
-function connectMaBase($hostname, $database, $username, $password){
-    $Conn = mysql_connect ($hostname, $username, $password) or trigger_error(mysql_error(),E_USER_ERROR);  
-    mysql_select_db($database, $Conn);
-}
 
 
 //  test des valeur les plus interessantes
@@ -62,13 +58,13 @@ function connectMaBase($hostname, $database, $username, $password){
             // WHERE dateB BETWEEN '2017-10-17 00:00:00' AND '2017-10-17  23:59:59'
             // ORDER BY dateB DESC ";
               
-	connectMaBase($hostname, $database, $username, $password);
-    $req = mysql_query($query) ;
-	mysql_close();
+$conn = mysqli_connect ($hostname, $username, $password, $database); 
+    $req = mysqli_query($conn, $query) ;
+	mysqli_close($conn);
     
 // pas toucher ci dessous
 
-    while($data = mysql_fetch_row($req)){
+    while($data = mysqli_fetch_row($req)){
         $dateD = strtotime($data[0]) * 1000;
         $liste0 .= "[". $dateD . "," . $data[1] ."],";
         $liste1 .= "[". $dateD . "," . $data[2] ."],";

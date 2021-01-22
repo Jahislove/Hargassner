@@ -30,11 +30,6 @@
 	}
 	mysqli_close($conn);
 
-
-	// connectMaBase($hostname, $database, $username, $password);
-    // $req1 = mysql_query($query1) ;
-	// mysql_close();
-
     $data = mysqli_fetch_row($req);
     $dateMin = [$data[0],$data[1],$data[2]];
 	

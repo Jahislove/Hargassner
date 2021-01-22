@@ -54,9 +54,4 @@ $weekdays = "['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Sa
 $shortMonths = "['Janv', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin',  'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec']";
 $thousandsSep = "''"; // thousands separator 
 
-// ************* connection to MySQL, **********************************************
-function connectMaBase($hostname, $database, $username, $password){
-    $Conn = mysql_connect ($hostname, $username, $password) or trigger_error(mysql_error(),E_USER_ERROR);  
-    mysql_select_db($database, $Conn);
-}
 ?>

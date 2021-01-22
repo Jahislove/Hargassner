@@ -24,9 +24,6 @@ require_once("conf/config.inc.php");
             WHERE dateB BETWEEN '".$annee."-".$mois."-".$jour." 00:00:00' AND '".$annee."-".$mois."-".$jour." 23:59:59'
             ORDER BY dateB DESC LIMIT ".$periode;
               
-	// connectMaBase($hostname, $database, $username, $password);
-    // $req = mysql_query($query) ;
-	// mysql_close();
 	$conn = mysqli_connect ($hostname, $username, $password, $database); 
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());

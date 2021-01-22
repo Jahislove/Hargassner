@@ -8,9 +8,6 @@ $query = "SELECT YEAR(dateB), MONTH(dateB),SUM(conso),FORMAT(AVG(Tmoy),1) FROM c
         GROUP BY YEAR(dateB), MONTH(dateB)
         ORDER BY dateB " ;
           
-// connectMaBase($hostname, $database, $username, $password);
-// $req = mysql_query($query) ;
-// mysql_close();
 	$conn = mysqli_connect ($hostname, $username, $password, $database); 
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());

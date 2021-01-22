@@ -38,11 +38,6 @@
 				GROUP BY YEAR(dateB), MONTH(dateB)           
 				ORDER BY dateB DESC LIMIT 3 ";
 
-	// connectMaBase($hostname, $database, $username, $password);
-    // $req0 = mysql_query($query0) ;
-    // $req1 = mysql_query($query1) ;
-    // $req2 = mysql_query($query2) ;
-	// mysql_close();
 	$conn = mysqli_connect ($hostname, $username, $password, $database); 
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());

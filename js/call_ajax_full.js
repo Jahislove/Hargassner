@@ -7,14 +7,6 @@ $.ajax({
     cache: false,
 	//dataType : "JSON",
     success: function(chanel) {
-        //heure = chanel[0]; // stock la date puis
-        //chanel.shift(); // supprime la 1ere valeur (date) et decale les autres pour etre synchro avec les numero de chanel
-
-		// initialise les variables (utilisées) au dela du chanel 164 au cas ou le firmware < 14.g 
-		// if (typeof chanel[183] === 'undefined') {
-			// chanel[183] = 0;
-			// chanel[181] = 0;
-		// }		 
         // animation du dessin par chargement de class CSS
 
         // remplace valeur numerique de "etat" par un texte

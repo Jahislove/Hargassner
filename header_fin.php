@@ -78,21 +78,3 @@
 			</tr>
         </table>
 	</div>
-<!--
-        <span class='maison-bulle'>
-            <span id="tooltip_Tint" class="tooltip"><a>Température intérieur</a></span>
-            <span id="Tint-texte"   class='maison-Tint-texte'></span>
-            <span id="tooltip_Text" class="tooltip"><a>Température extérieur</a></span>
-            <span id="Text-texte"   class='maison-Text-texte'></span>
-			<span id="tooltip_chauffage" class=" tooltip"><a>température de départ chauffage</a></span>
-			<span id="radiateur-texte" class='radiateur-texte'></span>
-			<span id="pompe-radiat" class='pompeOFF'></span>
-
-			<span id="ballonECS-bulle" class='hidden'>
-				<span class="tooltip-general tooltip"><a>Ballon ECS</a></span>
-				<span id="ballonECS-texte"   class='BallonECS-texte'></span>
-				<span id="pompe-ECS" class='pompeOFF'></span>
-				<span id="tuyau-ECS" class='tuyau-ECS'></span>				
-			</span>
-        </span>
--->

@@ -16,9 +16,6 @@ require_once("conf/config.inc.php");
                 ) as tmp
                 GROUP BY DATE(dateB)";
 
-    // connectMaBase($hostname, $database, $username, $password);
-    // $req1 = mysql_query($query1) ;
-	// mysql_close();
 	$conn = mysqli_connect ($hostname, $username, $password, $database); 
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
