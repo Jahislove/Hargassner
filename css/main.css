@@ -365,6 +365,27 @@ a:hover{
 	background: url("../img/modeCommand.png") no-repeat;
 	background-position: 100% ; 
 }
+/* Tooltip container */
+.tooltipContainer {
+  position: relative;
+}
+
+/* Tooltip text */
+.tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  top: 40px;
+  background-color: grey;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 15px 0;
+  position: absolute;
+  z-index: 10;
+}
+.tooltipContainer:hover .tooltiptext {
+  visibility: visible;
+}
 
 /**************************************************************************************************/	
 /******************* graphiques ******************************************************************/	

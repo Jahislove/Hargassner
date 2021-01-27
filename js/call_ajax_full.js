@@ -164,37 +164,48 @@ $.ajax({
 			case 1: 
 				//document.getElementById('modeCommand').innerHTML = 'programmé';
 				document.getElementById('modeCommand').className = 'modeCommandProgram';
-				break;
+				document.getElementById('tooltipModeCommand').innerHTML = 'Programmé';
+			break;
 			case 2: 
 				document.getElementById('modeCommand').className = 'modeCommandReduit';
+				document.getElementById('tooltipModeCommand').innerHTML = 'Réduit forcé';
 				break;
 			case 3: 
 				document.getElementById('modeCommand').className = 'modeCommandConfort';
+				document.getElementById('tooltipModeCommand').innerHTML = 'Confort forcé';
 				break;
 			case 4: 
 				document.getElementById('modeCommand').className = 'modeCommandSoiree';
+				document.getElementById('tooltipModeCommand').innerHTML = 'Soirée';
 				break;
 			case 5: 
 				document.getElementById('modeCommand').className = 'modeCommandAbsence';
+				document.getElementById('tooltipModeCommand').innerHTML = 'Absence';
 				break;
 			default:
 				document.getElementById('modeCommand').innerHTML = chanel['modeCommand'];
+				document.getElementById('tooltipModeCommand').innerHTML = '?';
 		}
 		switch ( chanel['modeChauff'] ) {
 			case 1: 
 				document.getElementById('modeChauff').className = 'modeCommandConfort';
+				document.getElementById('tooltipModeChauff').innerHTML = 'Mode confort';
 				break;
 			case 3: 
 				document.getElementById('modeChauff').className = 'modeCommandReduit';
+				document.getElementById('tooltipModeChauff').innerHTML = 'Mode réduit';
 				break;
 			case 4: 
 				document.getElementById('modeChauff').className = 'modeCommandArret';
+				document.getElementById('tooltipModeChauff').innerHTML = 'Mode arrêt';
 				break;
 			case 9: 
 				document.getElementById('modeChauff').className = 'modeCommandArret';
+				document.getElementById('tooltipModeChauff').innerHTML = 'arrêt en cours';
 				break;
 			default:
 				document.getElementById('modeChauff').innerHTML = chanel['modeChauff'];
+				document.getElementById('tooltipModeChauff').innerHTML = '?';
 		}
         
         // rafraichissement des bulles
