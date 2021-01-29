@@ -1063,12 +1063,9 @@ a:hover{
     z-index: 5;
 }
 .tooltip  a{
-    /* display:none; */
-  opacity: 90;
   display : block;
 }
 .tooltip:hover a{ /* tooltip */
-  visibility: visible;
     display : block;
     text-decoration:none ;
     border-radius: 20px;
