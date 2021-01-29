@@ -1063,9 +1063,12 @@ a:hover{
     z-index: 5;
 }
 .tooltip  a{
-    display:none;
+    /* display:none; */
+  opacity: 90;
+  display : block;
 }
 .tooltip:hover a{ /* tooltip */
+  visibility: visible;
     display : block;
     text-decoration:none ;
     border-radius: 20px;
@@ -1086,4 +1089,26 @@ a:hover{
     60%  { transform: scale(1); }
     80%  { transform: scale(0.9); }
     100%{ transform: scale(1); }
+}
+
+
+/* Tooltip container */
+.tooltipContainer {
+  position: relative;
+}
+/* Tooltip text */
+.tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  top: 40px;
+  background-color: grey;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 15px 0;
+  position: absolute;
+  z-index: 10;
+}
+.tooltipContainer:hover .tooltiptext {
+  visibility: visible;
 }
