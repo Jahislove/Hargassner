@@ -56,9 +56,8 @@ $.ajax({
         document.getElementById('etat').innerHTML = etat;
 		switch ( chanel['modeCommand'] ) {
 			case 1: 
-				//document.getElementById('modeCommand').innerHTML = 'programmé';
 				document.getElementById('modeCommand').className = 'modeCommandProgram';
-				document.getElementById('tooltipModeCommand').innerHTML = 'Programmé';
+				document.getElementById('tooltipModeCommand').innerHTML = 'Mode Programmé';
 			break;
 			case 2: 
 				document.getElementById('modeCommand').className = 'modeCommandReduit';
@@ -70,11 +69,11 @@ $.ajax({
 				break;
 			case 4: 
 				document.getElementById('modeCommand').className = 'modeCommandSoiree';
-				document.getElementById('tooltipModeCommand').innerHTML = 'Soirée';
+				document.getElementById('tooltipModeCommand').innerHTML = "Soirée : mode confort<br>activé jusqu'au<br>prochain changement<br>d'état programmé";
 				break;
 			case 5: 
 				document.getElementById('modeCommand').className = 'modeCommandAbsence';
-				document.getElementById('tooltipModeCommand').innerHTML = 'Absence';
+				document.getElementById('tooltipModeCommand').innerHTML = "Absence : mode réduit<br>activé jusqu'au<br>prochain changement<br>d'état programmé";
 				break;
 			default:
 				document.getElementById('modeCommand').innerHTML = chanel['modeCommand'];

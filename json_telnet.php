@@ -77,6 +77,7 @@ switch ($firmware) {
 			'variableF' => null,
 			'modeChauff'=> $data[142],  // mode chauffage ( confort, réduit, arret)
 			'modeCommand'=> $data[85],  //mode de commande => 1:  programmé, 2 reduit forcé, 3 confort forcé, 4 soirée , 5 absence brève
+			'consoHeure'=> $consoHeure, // conso granulé par heure
 		);
         break;
     case '14d':
@@ -111,6 +112,7 @@ switch ($firmware) {
 			'variableF' => $data[54],
 			'modeChauff'=> $data[85],
 			'modeCommand'=> $data[101],
+			'consoHeure'=> $consoHeure, // conso granulé par heure
 		);
         break;
     case '14i':
@@ -146,6 +148,7 @@ switch ($firmware) {
 			'variableF' => $data[28],
 			'modeChauff'=> $data[60],
 			'modeCommand'=> $data[61],
+			'consoHeure'=> $consoHeure, // conso granulé par heure
 		);
 
 }	

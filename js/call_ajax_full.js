@@ -162,9 +162,8 @@ $.ajax({
         document.getElementById('etat').innerHTML = etat;
 		switch ( chanel['modeCommand'] ) {
 			case 1: 
-				//document.getElementById('modeCommand').innerHTML = 'programmé';
 				document.getElementById('modeCommand').className = 'modeCommandProgram';
-				document.getElementById('tooltipModeCommand').innerHTML = 'Programmé';
+				document.getElementById('tooltipModeCommand').innerHTML = 'Mode Programmé';
 			break;
 			case 2: 
 				document.getElementById('modeCommand').className = 'modeCommandReduit';
@@ -176,11 +175,11 @@ $.ajax({
 				break;
 			case 4: 
 				document.getElementById('modeCommand').className = 'modeCommandSoiree';
-				document.getElementById('tooltipModeCommand').innerHTML = 'Soirée';
+				document.getElementById('tooltipModeCommand').innerHTML = "Soirée : mode confort<br>activé jusqu'au<br>prochain changement<br>d'état programmé";
 				break;
 			case 5: 
 				document.getElementById('modeCommand').className = 'modeCommandAbsence';
-				document.getElementById('tooltipModeCommand').innerHTML = 'Absence';
+				document.getElementById('tooltipModeCommand').innerHTML = "Absence : mode réduit<br>activé jusqu'au<br>prochain changement<br>d'état programmé";
 				break;
 			default:
 				document.getElementById('modeCommand').innerHTML = chanel['modeCommand'];
@@ -217,7 +216,7 @@ $.ajax({
         document.getElementById('Text-texte').innerHTML =  chanel['Text'] + '°C';
         document.getElementById('radiateur-texte').innerHTML =  chanel['departEst'] + '°C';
         document.getElementById('ballonECS-texte').innerHTML =  chanel['TempECS'] + '°C';
-        document.getElementById('bois-texte').innerHTML =  chanel['bois'] + '%';
+        document.getElementById('bois-texte').innerHTML =  chanel['bois'] + '%<br>' + Math.round(((chanel['consoHeure']*60)*chanel['bois'])/1000)/100+ 'kg/h'; // consoHeure= gr/tr (R8a), 60 = 60 tr/h (supposition)
         
 		// rafraichissement des pompes
 		if ( chanel['departDoit'] > 0 ) {

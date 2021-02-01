@@ -365,27 +365,38 @@ a:hover{
 	background: url("../img/modeCommand.png") no-repeat;
 	background-position: 100% ; 
 }
+
+#tooltipModeCommand{
+  display : block;
+  width: 200px;
+}
+
 /* Tooltip container */
-.tooltipContainer {
+.tooltipEtatContainer {
   position: relative;
 }
 
 /* Tooltip text */
-.tooltiptext {
+.tooltipEtatText {
+  position: relative;
+  display : block;
   visibility: hidden;
   width: 200px;
   top: 40px;
   background-color: grey;
   color: #fff;
   text-align: center;
-  border-radius: 10px;
-  padding: 15px 0;
+  border-radius: 50px;
+  padding: 30px 0;
   position: absolute;
   z-index: 10;
 }
-.tooltipContainer:hover .tooltiptext {
+.tooltipEtatContainer:hover .tooltipEtatText {
   visibility: visible;
+  background: linear-gradient(white,grey);
+  Animation: pop-tooltip 1s ; 
 }
+
 
 /**************************************************************************************************/	
 /******************* graphiques ******************************************************************/	
@@ -972,10 +983,11 @@ a:hover{
 
 	/*** TEXTE BULLE*************************/
 .texte-bulle {
-    position: relative;
-	display: block;
+    position: absolute;
+	display: inline-block;
     z-index: 3;
-    top: 115px;
+    top: 110px;
+	left: 185px;
     font-size: 40px ;
     text-align: center;
 }
@@ -1019,7 +1031,11 @@ a:hover{
     height: 163px;
 	display: inline-block;
   /* background: url("../img/Silo-textile-GWTS-XXL2.png") no-repeat; */
-
+}
+#bois-texte {
+    left: 160px;
+    top: 87px;
+	font-size: 33px;
 }
 #silo {
     position: absolute;
@@ -1054,58 +1070,35 @@ a:hover{
 	height: 60px;
     z-index: 6;
 }
-.tooltip-general { /* zone de survol*/
-    position: absolute;
-    left: 130px;
-	top: 45px;
-    width: 185px;
-	height: 120px;
-    z-index: 5;
-}
-.tooltip  a{
-  display : block;
-}
-.tooltip:hover a{ /* tooltip */
-    display : block;
-    text-decoration:none ;
-    border-radius: 20px;
-    position: relative;
-    text-align: center;
-    line-height: 50px;
-    color: black;
-    left: -50px;
-	top: -50px;
-    width: 400px;
-	height: 50px;
-    background: linear-gradient(white,red);
-    /* background:url("../img/nano-E2.png") no-repeat;   */
-    animation: pop-tooltip 1s ; 
-}
+
 @keyframes pop-tooltip {
     0%  { transform: scale(0.1); }
     60%  { transform: scale(1); }
     80%  { transform: scale(0.9); }
     100%{ transform: scale(1); }
 }
-
-
 /* Tooltip container */
-.tooltipContainer {
+.tooltip2Container {
   position: relative;
+  display: block;
 }
 /* Tooltip text */
-.tooltiptext {
+.tooltip2Container .tooltip2text {
   visibility: hidden;
-  width: 200px;
-  top: 40px;
+  width: 150px;
   background-color: grey;
   color: #fff;
   text-align: center;
-  border-radius: 10px;
-  padding: 15px 0;
+  border-radius: 50px;
+  padding: 30px 0;
+
   position: absolute;
+  top: 0px;
+  left: 0px;
   z-index: 10;
 }
-.tooltipContainer:hover .tooltiptext {
+.tooltip2Container:hover .tooltip2text {
   visibility: visible;
+  background: linear-gradient(white,grey);
+  Animation: pop-tooltip 1s ; 
 }

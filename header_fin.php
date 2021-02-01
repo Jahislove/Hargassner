@@ -69,12 +69,14 @@
         <table class="etat">
             <tr>
 			<th id="etat" >?</th>
-            <th class ="tooltipContainer">
-				<span id="tooltipModeChauff" class="tooltiptext">?</span> 
+            <th class ="tooltipEtatContainer">
+				<span id="tooltipModeChauff" class="tooltipEtatText">?</span> 
 				<span id="modeChauff" ></span> 
 			</th>
-			<th class ="tooltipContainer">
-				<span id="tooltipModeCommand" class="tooltiptext">?</span> 
+			<th class ="tooltipEtatContainer">
+				<span class="tooltipEtatText" >
+					<span id="tooltipModeCommand">?</span> 
+				</span>
 				<span id="modeCommand" ></span>
 			</th> 
 			</tr>
