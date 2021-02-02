@@ -14,9 +14,9 @@
 	</div>
     
 	<div id='bulles' class="visible" onclick="clic()">  
-		<span class='tooltipContainer'>
+		<span class='tooltip2Container'>
 			<span class='extr-bulle'>
-				<span class="tooltiptext">Puissance du ventilateur d'extraction des fumées</span>
+				<span class="tooltip2text">Puissance du ventilateur d'extraction des fumées</span>
 				<span id="extr-texte"  class='texte-bulle'></span>
 			</span>
         </span>
