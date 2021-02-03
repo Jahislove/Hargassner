@@ -14,60 +14,73 @@
 	</div>
     
 	<div id='bulles' class="visible" onclick="clic()">  
-	<!-- <span class='tooltip2Container'> -->
-		<div class='tooltip2Container extr-bulle '>
-			<span class="tooltip2text">Puissance du ventilateur d'extraction des fumées</span>
+	<!-- <span class='tooltipContainer'> -->
+		<div class='tooltipContainer extr-bulle '>
+			<span class="tooltiptext">Puissance du ventilateur d'extraction des fumées</span>
 			<span id="extr-texte"  class='texte-bulle'></span>
 		</div>
 	<!-- </span> -->
-		<span class='tooltip2Container fumee-bulle'>
-			<span class="tooltip2text">Température des fumées</span>
+		<span class='tooltipContainer fumee-bulle'>
+			<span class="tooltiptext">Température des fumées</span>
 			<span id="fumee-texte" class='texte-bulle'></span>
 		</span>
 	
-		<span class='tooltip2Container Tchaud-bulle'>
-			<span class="tooltip2text">Température de l'eau</span>
+		<span class='tooltipContainer Tchaud-bulle'>
+			<span class="tooltiptext">Température de l'eau</span>
 			<span id="Tchaud-texte" class='texte-bulle'></span>
 		</span>
 	
-		<span class='tooltip2Container puiss-bulle'>
-			<span class="tooltip2text">Puissance</span>
+		<span class='tooltipContainer puiss-bulle'>
+			<span class="tooltiptext">Puissance</span>
 			<span id="puiss-texte"  class='texte-bulle'></span>
 		</span>
         
         <div class='maison-bulle'>
-			<div class='tooltip2Container'>
-				<span id="Tint-texte"   class='maison-Tint-texte'></span>
-				<span class="tooltip2text">Température intérieure</span>
+			<!-- <div class='tooltipContainer tooltip_Tint'> -->
+				<!-- <span id="Tint-texte"   class='maison-Tint-texte'></span> -->
+				<!-- <span class="tooltiptext">Température intérieure</span> -->
+			<!-- </div> -->
+			<div class='tooltip_Maison maison-Tint-texte'>
+				<div id="Tint-texte" ></div>	
+				<span class="tooltipText">Température intérieure</span>
 			</div>
-			<div class='tooltip2Container'>
-				<span id="Text-texte"   class='maison-Text-texte'></span>
-				<span class="tooltip2text">Température extérieure</span>
+			<div class='tooltip_Maison maison-Text-texte'>
+				<span id="Text-texte"></span>
+				<span class="tooltipText">Température extérieure</span>
 			</div>
-			<div id="radiateur-texte" class='tooltip2Container'>toto
-				<span class="tooltip2text">température de départ chauffage</span>
+			<div class='tooltip_Maison radiateur-texte'>
+				<span id="radiateur-texte"></span>
+				<span class="tooltipText">température de départ chauffage</span>
 			</div>
 
-			<span id="pompe-radiat" class='pompeOFF'></span>
-
-			<span id="ballonECS-bulle" class='hidden'>
-				<span class="tooltip-general tooltip"><a>Ballon ECS</a></span>
-				<span id="ballonECS-texte"   class='BallonECS-texte'></span>
-				<span id="pompe-ECS" class='pompeOFF'></span>
-				<span id="tuyau-ECS" class='tuyau-ECS'></span>				
+			<span id="pompe-radiat" class='tooltipContainer pompeOFF'>
+				<span class="tooltiptext">pompe radiateur</span>
 			</span>
+			<!-- <div class='tooltip_Maison pompe-radiat pompeOFF'> -->
+				<!-- <span id="pompe-radiat"></span> -->
+				<!-- <span class="tooltipText">pompe radiateur</span> -->
+			<!-- </div> -->
+
+			<div id="ballonECS-bulle" class='hidden'>
+				<span class="tooltiptext">Ballon ECS</span>
+				<span id="ballonECS-texte"   class='BallonECS-texte'></span>
+				<div id="pompe-ECS" class='pompeOFF tooltipContainer'>
+					<span class="tooltiptext">pompe ECS</span>
+				</div>
+				<span id="tuyau-ECS" class='tuyau-ECS'></span>				
+			</div>
         </div>
 
 		<span id="silo-bulle" class='silo-bulle'>
-			<span class='tooltip2Container'>
-				<span class="tooltip2text">quantité de granulés restant</span>
+			<span class='tooltipContainer'>
+				<span class="tooltiptext">quantité de granulés restant</span>
 				<span id="silo-texte"   class='silo-texte'></span>
 				<img id="silo" src="img/Silo-textile-GWTS-XXL2.png"></img>
 			</span>
 		</span>
 
-		<span class='tooltip2Container bois-bulle'>
-			<span class="tooltip2text">pourcentage d'amené de la vis à granulé</span>
+		<span class='tooltipContainer bois-bulle'>
+			<span class="tooltiptext">pourcentage d'amené de la vis à granulé</span>
 			<span id="bois-texte"   class='texte-bulle'></span>
 		</span>
 	</div>

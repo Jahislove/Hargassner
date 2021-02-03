@@ -889,7 +889,7 @@ a:hover{
 }
 	#pompe-radiat {
 		position: absolute;
-		z-index: 2;
+		z-index: 3;
 		left: 60px;
 		top: 260px;
 		width: 100px;
@@ -985,40 +985,45 @@ a:hover{
 .texte-bulle {
     position: absolute;
 	display: inline-block;
-    z-index: 3;
+    z-index: 5;
     top: 110px;
 	left: 185px;
     font-size: 40px ;
     text-align: center;
 }
-.radiateur-texte {
-    position: relative;
-	display: block;
-    z-index: 3;
-    top: 165px;
-    left: 75px;
-    font-size: 20px ;
-}
 .BallonECS-texte {
-    position: relative;
+    position: absolute;
 	display: block;
     z-index: 3;
     top: 100px;
     left: 200px;
+	width: 40px;
     font-size: 20px ;
 }
 .maison-Tint-texte {
-    position: relative;
-    z-index: 3;
+    z-index: 4;
     left: 125px;
     top: 110px;
+    width: 60px;
+	height: 20px;
     font-size: 20px ;
 }
 .maison-Text-texte {
-    position: relative;
     z-index: 3;
-    left: 155px;
+    left: 215px;
     top: 15px;
+    width: 60px;
+	height: 20px;
+    font-size: 20px ;
+}
+.radiateur-texte {
+    position: relative;
+	/* display: block; */
+    z-index: 4;
+    top: 185px;
+    left: 75px;
+    width: 60px;
+	height: 20px;
     font-size: 20px ;
 }
 .silo-texte {
@@ -1033,6 +1038,14 @@ a:hover{
 	display: inline-block;
   /* background: url("../img/Silo-textile-GWTS-XXL2.png") no-repeat; */
 }
+/* .pompe-radiat { */
+	/* position: relative; */
+	/* z-index: 3; */
+	/* left: 60px; */
+	/* top: 260px; */
+	/* width: 100px; */
+	/* height: 135px; */
+/* } */
 #bois-texte {
     left: 160px;
     top: 87px;
@@ -1047,30 +1060,45 @@ a:hover{
     height: 200px;
 }
 /*** TOOLTIP ********************************/
-#tooltip_Tint { /* zone de survol*/
+.tooltip_Maison { /* zone de survol*/
     position: absolute;
-    left: 70px;
-	top: 90px;
-    width: 140px;
-	height: 60px;
     z-index: 5;
 }
-#tooltip_Text { /* zone de survol*/
-    position: absolute;
-    left: 150px;
-	top: 0px;
-    width: 140px;
-	height: 60px;
-    z-index: 7;
+.tooltip_Maison .tooltipText { /*position+look tooltip*/
+  visibility: hidden;
+  position: relative;
+  display : block;
+  width: 200px;
+  background-color: grey;
+  color: #fff;
+  text-align: center;
+  border-radius: 50px;
+  padding: 15px ;
+  top: -90px;
+  left: -80px;
+  z-index: 10;
 }
-#tooltip_chauffage { /* zone de survol*/
-    position: absolute;
-    left: 70px;
-	top: 170px;
-    width: 140px;
-	height: 60px;
-    z-index: 6;
+.tooltip_Maison:hover .tooltipText {
+  visibility: visible;
+  background: linear-gradient(white,grey);
+  Animation: pop-tooltip 1s ; 
 }
+/* #tooltip_Text { /* zone de survol*/ 
+    /* position: absolute; */
+    /* left: 150px; */
+	/* top: 0px; */
+    /* width: 140px; */
+	/* height: 60px; */
+    /* z-index: 7; */
+/* } */
+/* #tooltip_chauffage { /* zone de survol*/ 
+    /* position: absolute; */
+    /* left: 70px; */
+	/* top: 170px; */
+    /* width: 140px; */
+	/* height: 60px; */
+    /* z-index: 6; */
+/* } */
 
 @keyframes pop-tooltip {
     0%  { transform: scale(0.1); }
@@ -1079,14 +1107,15 @@ a:hover{
     100%{ transform: scale(1); }
 }
 /* Tooltip container */
-.tooltip2Container {
+.tooltipContainer {
   position: absolute;
   /* position: relative; */
   /* display: block; */
 }
 /* Tooltip text */
-.tooltip2Container .tooltip2text {
+.tooltipContainer .tooltiptext {
   visibility: hidden;
+  position: relative;
   display : block;
   width: 200px;
   background-color: grey;
@@ -1098,12 +1127,11 @@ a:hover{
   /* margin-left: auto; */
   /* margin-right: auto; */
   /* position: absolute; */
-  position: relative;
   top: 30px;
   /* left: 0px; */
   z-index: 10;
 }
-.tooltip2Container:hover .tooltip2text {
+.tooltipContainer:hover .tooltiptext {
   visibility: visible;
   background: linear-gradient(white,grey);
   Animation: pop-tooltip 1s ; 

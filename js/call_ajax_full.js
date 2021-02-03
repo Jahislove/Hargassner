@@ -209,9 +209,9 @@ $.ajax({
         
         // rafraichissement des bulles
         document.getElementById('extr-texte').innerHTML =  chanel['extract'] + '%';
-        document.getElementById('fumee-texte').innerHTML =  chanel['Fumee'] + '°C';
-        document.getElementById('Tchaud-texte').innerHTML =  chanel['chaudiereEst'] + '°C';
-        document.getElementById('puiss-texte').innerHTML =  chanel['puissance'] + '%';
+        document.getElementById('fumee-texte').innerHTML = chanel['Fumee'] + '°C';
+        document.getElementById('Tchaud-texte').innerHTML =chanel['chaudiereEst'] + '°C';
+        document.getElementById('puiss-texte').innerHTML = chanel['puissance'] + '%';
         document.getElementById('Tint-texte').innerHTML =  chanel['Tint'] + '°C';
         document.getElementById('Text-texte').innerHTML =  chanel['Text'] + '°C';
         document.getElementById('radiateur-texte').innerHTML =  chanel['departEst'] + '°C';
@@ -220,14 +220,14 @@ $.ajax({
         
 		// rafraichissement des pompes
 		if ( chanel['departDoit'] > 0 ) {
-			document.getElementById('pompe-radiat').className = 'pompeON';
+			document.getElementById('pompe-radiat').className = 'tooltipContainer pompeON';
         } else {
-			document.getElementById('pompe-radiat').className = 'pompeOFF';
+			document.getElementById('pompe-radiat').className = 'tooltipContainer pompeOFF';
 		}	
 		if ( chanel['pompe-ECS'] > 0 ) { //old: 183   Ballon ECS 0:off , 1:charge, 2:recyclage 
-			document.getElementById('pompe-ECS').className = 'pompeON';
+			document.getElementById('pompe-ECS').className = 'tooltipContainer pompeON';
         } else {
-			document.getElementById('pompe-ECS').className = 'pompeOFF';
+			document.getElementById('pompe-ECS').className = 'tooltipContainer pompeOFF';
 		}	
 
         // rafraichissement graphe silo
