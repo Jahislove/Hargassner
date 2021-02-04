@@ -84,7 +84,7 @@ require_once("conf/config.inc.php");
 			$prev = $data[21];
 		}
 		$liste21[] = [$dateD, $data[22]];
-		$liste22[] = [$dateD, $data[23]/4];
+		$liste22[] = [$dateD, $data[23]/4]; // temps pour decendrage /4 pour reduire hauteur du graphe
 		
 		//pour calcul puissance moyenne on n'utilise que la periode ou "chaudiere doit" est > 0 
 		if ( $data[5] > 0 ) {  
