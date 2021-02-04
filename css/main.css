@@ -366,10 +366,10 @@ a:hover{
 	background-position: 100% ; 
 }
 
-#tooltipModeCommand{
-  display : block;
-  width: 200px;
-}
+/* #tooltipModeCommand{ */
+  /* display : block; */
+  /* width: 200px; */
+/* } */
 
 
 
@@ -1075,24 +1075,13 @@ a:hover{
   top: 30px;
   z-index: 10;
 }
-.tooltipContainer:hover .tooltipBulle, .tooltipContainer:hover .tooltipMaison{
-  visibility: visible;
-  background: linear-gradient(white,grey);
-  Animation: pop-tooltip 1s ; 
-}
-
-/* Tooltip container */
-.tooltipEtatContainer {
-  position: relative;
-}
-
-/* Tooltip text */
-.tooltipEtatText {
+.tooltipContainer .tooltipEtat {
   position: relative;
   display : block;
   visibility: hidden;
   width: 200px;
   top: 40px;
+  left: -30px;
   background-color: grey;
   color: #fff;
   text-align: center;
@@ -1101,7 +1090,7 @@ a:hover{
   position: absolute;
   z-index: 10;
 }
-.tooltipEtatContainer:hover .tooltipEtatText {
+.tooltipContainer:hover .tooltipBulle, .tooltipContainer:hover .tooltipMaison, .tooltipContainer:hover .tooltipEtat{
   visibility: visible;
   background: linear-gradient(white,grey);
   Animation: pop-tooltip 1s ; 
