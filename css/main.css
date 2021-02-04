@@ -1083,22 +1083,6 @@ a:hover{
   background: linear-gradient(white,grey);
   Animation: pop-tooltip 1s ; 
 }
-/* #tooltip_Text { /* zone de survol*/ 
-    /* position: absolute; */
-    /* left: 150px; */
-	/* top: 0px; */
-    /* width: 140px; */
-	/* height: 60px; */
-    /* z-index: 7; */
-/* } */
-/* #tooltip_chauffage { /* zone de survol*/ 
-    /* position: absolute; */
-    /* left: 70px; */
-	/* top: 170px; */
-    /* width: 140px; */
-	/* height: 60px; */
-    /* z-index: 6; */
-/* } */
 
 @keyframes pop-tooltip {
     0%  { transform: scale(0.1); }

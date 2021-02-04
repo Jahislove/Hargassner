@@ -53,22 +53,25 @@
 				<span class="tooltipText">température de départ chauffage</span>
 			</div>
 
-			<span id="pompe-radiat" class='tooltipContainer pompeOFF'>
+			<span id="pompe-radiat" class='tooltip_Maison pompeOFF'>
 				<span class="tooltiptext">pompe radiateur</span>
 			</span>
-			<!-- <div class='tooltip_Maison pompe-radiat pompeOFF'> -->
-				<!-- <span id="pompe-radiat"></span> -->
-				<!-- <span class="tooltipText">pompe radiateur</span> -->
-			<!-- </div> -->
-
 			<div id="ballonECS-bulle" class='hidden'>
-				<span class="tooltiptext">Ballon ECS</span>
+				<span id="tuyau-ECS" class='tuyau-ECS'></span>				
 				<span id="ballonECS-texte"   class='BallonECS-texte'></span>
-				<div id="pompe-ECS" class='pompeOFF tooltipContainer'>
+				<div id="pompe-ECS" class='tooltip_Maison pompeOFF'>
 					<span class="tooltiptext">pompe ECS</span>
 				</div>
-				<span id="tuyau-ECS" class='tuyau-ECS'></span>				
 			</div>
+
+			<!-- <div id="ballonECS-bulle" class='hidden'> -->
+				<!-- <span class="tooltiptext">Ballon ECS</span> -->
+				<!-- <span id="ballonECS-texte"   class='BallonECS-texte'></span> -->
+				<!-- <div id="pompe-ECS" class='pompeOFF tooltipContainer'> -->
+					<!-- <span class="tooltiptext">pompe ECS</span> -->
+				<!-- </div> -->
+				<!-- <span id="tuyau-ECS" class='tuyau-ECS'></span>				 -->
+			<!-- </div> -->
         </div>
 
 		<span id="silo-bulle" class='silo-bulle'>
