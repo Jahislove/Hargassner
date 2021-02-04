@@ -371,31 +371,6 @@ a:hover{
   width: 200px;
 }
 
-/* Tooltip container */
-.tooltipEtatContainer {
-  position: relative;
-}
-
-/* Tooltip text */
-.tooltipEtatText {
-  position: relative;
-  display : block;
-  visibility: hidden;
-  width: 200px;
-  top: 40px;
-  background-color: grey;
-  color: #fff;
-  text-align: center;
-  border-radius: 50px;
-  padding: 30px 0;
-  position: absolute;
-  z-index: 10;
-}
-.tooltipEtatContainer:hover .tooltipEtatText {
-  visibility: visible;
-  background: linear-gradient(white,grey);
-  Animation: pop-tooltip 1s ; 
-}
 
 
 /**************************************************************************************************/	
@@ -1060,11 +1035,19 @@ a:hover{
     height: 200px;
 }
 /*** TOOLTIP ********************************/
-.tooltip_Maison { /* zone de survol*/
-    position: absolute;
-    z-index: 5;
+
+@keyframes pop-tooltip {
+    0%  { transform: scale(0.1); }
+    60%  { transform: scale(1); }
+    80%  { transform: scale(0.9); }
+    100%{ transform: scale(1); }
 }
-.tooltip_Maison .tooltipText { /*position+look tooltip*/
+/* Tooltip container */
+.tooltipContainer {
+  position: absolute;
+}
+/* Tooltip text + position*/
+.tooltipContainer .tooltipMaison { /*div maison*/
   visibility: hidden;
   position: relative;
   display : block;
@@ -1078,26 +1061,7 @@ a:hover{
   left: -80px;
   z-index: 10;
 }
-.tooltip_Maison:hover .tooltipText {
-  visibility: visible;
-  background: linear-gradient(white,grey);
-  Animation: pop-tooltip 1s ; 
-}
-
-@keyframes pop-tooltip {
-    0%  { transform: scale(0.1); }
-    60%  { transform: scale(1); }
-    80%  { transform: scale(0.9); }
-    100%{ transform: scale(1); }
-}
-/* Tooltip container */
-.tooltipContainer {
-  position: absolute;
-  /* position: relative; */
-  /* display: block; */
-}
-/* Tooltip text */
-.tooltipContainer .tooltiptext {
+.tooltipContainer .tooltipBulle {/*bulles*/
   visibility: hidden;
   position: relative;
   display : block;
@@ -1108,16 +1072,37 @@ a:hover{
   border-radius: 50px;
   padding: 20px ;
   margin: auto;
-  /* margin-left: auto; */
-  /* margin-right: auto; */
-  /* position: absolute; */
   top: 30px;
-  /* left: 0px; */
   z-index: 10;
 }
-.tooltipContainer:hover .tooltiptext {
+.tooltipContainer:hover .tooltipBulle, .tooltipContainer:hover .tooltipMaison{
   visibility: visible;
   background: linear-gradient(white,grey);
   Animation: pop-tooltip 1s ; 
 }
 
+/* Tooltip container */
+.tooltipEtatContainer {
+  position: relative;
+}
+
+/* Tooltip text */
+.tooltipEtatText {
+  position: relative;
+  display : block;
+  visibility: hidden;
+  width: 200px;
+  top: 40px;
+  background-color: grey;
+  color: #fff;
+  text-align: center;
+  border-radius: 50px;
+  padding: 30px 0;
+  position: absolute;
+  z-index: 10;
+}
+.tooltipEtatContainer:hover .tooltipEtatText {
+  visibility: visible;
+  background: linear-gradient(white,grey);
+  Animation: pop-tooltip 1s ; 
+}
