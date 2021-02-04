@@ -3,7 +3,7 @@
 *** Auteur : Jahislove
 *** GPL-3.0-or-later
 ************************************************************************/
-v3.2	22/01/2021
+v3.2	04/02/2021
 	prise en charge du firmware 14.0l
 	prise en charge du firmware 10.2h chaudiere a buche
 	refonte du script json_telnet(les nouveaux firmwares seront pris en compte automatiquement dans la page d'accueil)
@@ -11,6 +11,7 @@ v3.2	22/01/2021
 	refonte des info additionnelles de la page d'accueil
 	ajout conso par heure dans la bulle vis bois (parametre consoHeure à configurer dans config.inc.php)
 	reaffichage des tooltips qui avait disparues
+	ajout courbe temps decendrage
 
 v3.1	27/10/2020
 	ajout compatibilité php7

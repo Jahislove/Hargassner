@@ -11,8 +11,8 @@
 
 <?php
 	// utilise json_chan-period-2.php
-    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','T° Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ z1 est','T° Départ z1 doit','T° Départ z2 est','T° Départ z2 doit','Conso du jour','Ballon ECS Etat','Aspiration','T° Retour']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
-    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c22,c24,c99,c92,c112,c12"; // la 2 eme valeur (decendrage) est calculé d'apres c0
+    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','T° Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ z1 est','T° Départ z1 doit','T° Départ z2 est','T° Départ z2 doit','Conso du jour','Ballon ECS Etat','Aspiration','T° Retour','Temps décendrage']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
+    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c22,c24,c99,c92,c112,c12,c111"; // la 2 eme valeur (decendrage) est calculé d'apres c0
     $chart2_name = ['allumage electrique'];
     
     // requete pour initialiser la date
@@ -75,8 +75,9 @@ function parse_data(data) {
 	chart1.series[19].setData(data[19].data,false); //objet
 	chart1.series[20].setData(data[20].data,false); //objet
 	chart1.series[21].setData(data[21],false);
-	PuissMoyJour = data[22];
-	PuissMoyFonc = data[23];
+	chart1.series[22].setData(data[22],false); //temps decendrage
+	PuissMoyJour = data[23];
+	PuissMoyFonc = data[24];
 	// en cas d'ajout penser a incrementer k pour les cookies plus bas
 
 	chart1.redraw();
@@ -115,7 +116,7 @@ function getCookie(sName) {
 }
 //*** lecture des cookies pour chaque serie et affectation dans une variable*******
 var etat = [];
-for (var k=0;k<=21;k++) {	
+for (var k=0;k<=22;k++) {	
 	etat[k] = Boolean(getCookie('hargassner-p2c1-serie'+k)); // transforme la string des cookies en booleen , pour chaque serie
 }	
 
@@ -593,6 +594,18 @@ $(function() {
 				pointFormatter: function () {
 					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
 					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y + '</b>&nbsp&nbsp °C ' + puce + '</td></tr>'
+				},				
+             },
+			data: [],
+		}, {
+			name: '<?php echo $chart1_name[22]; ?>',
+			color: 'purple',
+            legendIndex: 22,
+            visible: etat[22],
+            tooltip: {
+				pointFormatter: function () {
+					puce = '<span style=\"color:' + this.series.color +'\">\u25CF </span>';
+					return '<tr><td>' + puce + this.series.name + '</td> <td style="text-align: right"><b>' + this.y*4 + '</b>&nbsp&nbsp mn ' + puce + '</td></tr>'
 				},				
              },
 			data: [],
