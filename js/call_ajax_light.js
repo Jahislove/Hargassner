@@ -48,6 +48,7 @@ $.ajax({
                 break;
             case 17:
                 etat = 'Assistant de combustion';
+                break;
             default:
                 etat = 'inconnu';
                 break;
@@ -84,6 +85,10 @@ $.ajax({
 				document.getElementById('modeChauff').className = 'modeCommandConfort';
 				document.getElementById('tooltipModeChauff').innerHTML = 'Mode confort';
 				break;
+			case 2: 
+				document.getElementById('modeChauff').className = 'modeCommandArret'; // etat inconnu
+				document.getElementById('tooltipModeChauff').innerHTML = '?';
+				break;
 			case 3: 
 				document.getElementById('modeChauff').className = 'modeCommandReduit';
 				document.getElementById('tooltipModeChauff').innerHTML = 'Mode réduit';
@@ -97,7 +102,7 @@ $.ajax({
 				document.getElementById('tooltipModeChauff').innerHTML = 'arrêt en cours';
 				break;
 			default:
-				document.getElementById('modeChauff').innerHTML = chanel['modeChauff'];
+				//document.getElementById('modeChauff').innerHTML = chanel['modeChauff'];
 				document.getElementById('tooltipModeChauff').innerHTML = '?';
 		}
     },
