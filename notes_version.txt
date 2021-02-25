@@ -5,7 +5,7 @@
 ************************************************************************/
 v3.2	04/02/2021
 	prise en charge du firmware 14.0l
-	prise en charge du firmware 10.2h chaudiere a buche
+	prise en charge (partielle)du firmware 10.2h chaudiere a buche
 	refonte du script json_telnet(les nouveaux firmwares seront pris en compte automatiquement dans la page d'accueil)
 	ajout des icones mode de fonctionnement
 	refonte des info additionnelles de la page d'accueil

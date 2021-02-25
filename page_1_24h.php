@@ -5,8 +5,10 @@
 <div id="chart_last24"></div>
 
 <?php
+	require_once("conf/settings.inc.php");
     $chart_last24_name = ['T° depart consigne','T° depart','T° chaudière','T° extérieur','T° ext moy','T° intérieur','Puissance'];
-    $chart_last24_chan = 'c23,c21,c3,c6,c7,c138,c134';
+    //$chart_last24_chan = 'c23,c21,c3,c6,c7,c138,c134';
+    // => remplacé par conf/settings.inc.php
 ?>
 
 

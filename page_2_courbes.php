@@ -10,10 +10,13 @@
 </div>
 
 <?php
+	require_once("conf/settings.inc.php");
+
 	// utilise json_chan-period-2.php
     $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','T° Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ z1 est','T° Départ z1 doit','T° Départ z2 est','T° Départ z2 doit','Conso du jour','Ballon ECS Etat','Aspiration','T° Retour','Temps décendrage']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
-    $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c22,c24,c99,c92,c112,c12,c111"; // la 2 eme valeur (decendrage) est calculé d'apres c0
-    $chart2_name = ['allumage electrique'];
+	// $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c22,c24,c99,c92,c112,c12,c111"; // la 2 eme valeur (decendrage) est calculé d'apres c0
+    // => remplacé par conf/settings.inc.php
+	$chart2_name = ['allumage electrique'];
     
     // requete pour initialiser la date
 	$query = "SELECT YEAR(dateB),MONTH(dateB),DAY(dateB) FROM consommation  
