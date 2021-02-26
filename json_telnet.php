@@ -9,6 +9,7 @@
 // pour les anciennes chaudiere ne disposant que du port serie , on remplace le telnet par une interrogation mysql
 	header("Content-type: text/json");
     require_once("conf/config.inc.php");
+	require_once("conf/settings.inc.php");
 
 if ($mode_conn == 'serial'){ 
     //ouverture port serie
@@ -120,6 +121,31 @@ switch ($firmware) {
 	case '14k':
 	case '14l':
 	default:
+		switch ($numero_zone) {
+			case 1:
+				$chanel_depart_chauffage_est = 56;
+				$chanel_depart_chauffage_doit = 57;
+				break;
+			case 2:
+				$chanel_depart_chauffage_est = 62;
+				$chanel_depart_chauffage_doit = 63;
+				break;
+			case 3:
+				$chanel_depart_chauffage_est = 68;
+				$chanel_depart_chauffage_doit = 69;
+				break;
+		}
+		switch ($numero_ecs) {
+			case 1:
+				$chanel_temp_ecs = 95;
+				break;
+			case 2:
+				$chanel_temp_ecs = 98;
+				break;
+			case 3:
+				$chanel_temp_ecs = 101;
+				break;
+		}
 		$output = array(
 			'heure' 	=> time() * 1000,
 			'etat' 		=> $data[0],
@@ -132,12 +158,12 @@ switch ($firmware) {
 			'Tint'		=> $data[58],
 			'Text'		=> $data[15],
 			'TextMoy'	=> $data[16],
-			'departEst'	=> $data[56],
-			'departDoit'=> $data[57],
+			'departEst'	=> $data[$chanel_depart_chauffage_est], //$data[56]
+			'departDoit'=> $data[$chanel_depart_chauffage_doit], //$data[57]
 			'retourEst' => $data[23],
 			'retourDoit'=> $data[24],
 			'bois'		=> $data[9],
-			'TempECS'	=> $data[95],
+			'TempECS'	=> $data[$chanel_temp_ecs], //$data[95],
 			'pompe-ECS'	=> $data[97],
 			'tempsDecend'=> $data[33],
 			'tempsVis'	=> $data[32],
