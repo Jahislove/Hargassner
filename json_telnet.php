@@ -44,8 +44,9 @@ if ($mode_conn == 'serial'){
 
 array_shift($data); // supprime le 1er parametre inutile(pm) pour aligner les numeros de chanels avec la colonne BDD
 
-// le tableau data contient tous les parametres recu par telnet numéroté de 0 à 188+
-// le tableau output contient les parametres utilisés par la page d'accueil
+// le tableau data contient tous les parametres recu par telnet numéroté de 0 à 188+, cet ordre change au fil des firmwares
+// le tableau output contient les parametres utilisés par la page d'accueil(fixe)
+// on associe un parametre de la page d'acceuil avec le numero du parametre telnet correspondant
 // ex ci dessous avec le firmware 10.2h : le parametre puissance correspond au 26eme parametre du telnet
 switch ($firmware) {
     case '4.3d':
@@ -85,6 +86,16 @@ switch ($firmware) {
     case '14e':
     case '14f':
     case '14g':
+		$depart_chauffage = array( 
+			'zone1' => ['est' => 21,'doit' => 23],
+			'zone2' => ['est' => 22,'doit' => 24],
+			'zone3' => ['est' => 29,'doit' => 31],
+		);
+		$ballon_ECS = array( 
+			'ballon1' => ['est' => 27],
+			'ballon2' => ['est' => 35],
+			'ballon3' => ['est' => 43],
+		);
 		$output = array( // ordre original (chanel = colonne BDD)
 			'heure' 	=> time() * 1000,
 			'etat' 		=> $data[0],
@@ -97,12 +108,12 @@ switch ($firmware) {
 			'Tint'		=> $data[138],
 			'Text'		=> $data[6],
 			'TextMoy'	=> $data[7],
-			'departEst'	=> $data[21],
-			'departDoit'=> $data[23],
+			'departEst' => $data[$depart_chauffage[$zone_chauffage]['est']],
+			'departDoit'=> $data[$depart_chauffage[$zone_chauffage]['doit']],
 			'retourEst' => $data[12],
 			'retourDoit'=> $data[13],
 			'bois'		=> $data[56],
-			'TempECS'	=> $data[27],
+			'TempECS'	=> $data[$ballon_ECS[$zone_ecs]['est']], 
 			'pompe-ECS'	=> $data[92],
 			'tempsDecend'=> $data[111],
 			'tempsVis'	=> $data[112],
@@ -121,38 +132,16 @@ switch ($firmware) {
 	case '14k':
 	case '14l':
 	default:
-		switch ($zone_chauffage) {
-			case 1:
-				$chanel_depart_chauffage_est = 56;
-				$chanel_depart_chauffage_doit = 57;
-				break;
-			case 2:
-				$chanel_depart_chauffage_est = 62;
-				$chanel_depart_chauffage_doit = 63;
-				break;
-			case 3:
-				$chanel_depart_chauffage_est = 68;
-				$chanel_depart_chauffage_doit = 69;
-				break;
-		}
-		switch ($zone_ecs) {
-			case 1:
-				$chanel_temp_ecs = 95;
-				break;
-			case 2:
-				$chanel_temp_ecs = 98;
-				break;
-			case 3:
-				$chanel_temp_ecs = 101;
-				break;
-		}
-$zone_chauffage = 'chauffage_zone1';	
-		$depart_chauffage_zone1 = [ 
-			'est' => 56,
-			'doit' => 57,
-		];
-		
-		
+		$depart_chauffage = array( 
+			'zone1' => ['est' => 56,'doit' => 57],
+			'zone2' => ['est' => 62,'doit' => 63],
+			'zone3' => ['est' => 68,'doit' => 69],
+		);
+		$ballon_ECS = array( 
+			'ballon1' => ['est' => 95],
+			'ballon2' => ['est' => 98],
+			'ballon3' => ['est' => 10],
+		);
 		$output = array(
 			'heure' 	=> time() * 1000,
 			'etat' 		=> $data[0],
@@ -165,14 +154,12 @@ $zone_chauffage = 'chauffage_zone1';
 			'Tint'		=> $data[58],
 			'Text'		=> $data[15],
 			'TextMoy'	=> $data[16],
-			//'departEst'	=> $data[$chanel_depart_chauffage_est], //$data[56]
-			//'departEst' => $data[$depart_chauffage['zone1']],
-			'departEst' => $data[$depart_chauffage_zone1['est']],
-			'departDoit'=> $data[$chanel_depart_chauffage_doit], //$data[57]
+			'departEst' => $data[$depart_chauffage[$zone_chauffage]['est']],
+			'departDoit'=> $data[$depart_chauffage[$zone_chauffage]['doit']],
 			'retourEst' => $data[23],
 			'retourDoit'=> $data[24],
 			'bois'		=> $data[9],
-			'TempECS'	=> $data[$chanel_temp_ecs], //$data[95],
+			'TempECS'	=> $data[$ballon_ECS[$zone_ecs]['est']], 
 			'pompe-ECS'	=> $data[97],
 			'tempsDecend'=> $data[33],
 			'tempsVis'	=> $data[32],
@@ -185,7 +172,6 @@ $zone_chauffage = 'chauffage_zone1';
 			'modeCommand'=> $data[61],
 			'consoHeure'=> $consoHeure, // conso granulé par heure
 		);
-
 }	
 
 // on renvoi la reponse
