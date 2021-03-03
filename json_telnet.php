@@ -146,6 +146,13 @@ switch ($firmware) {
 				$chanel_temp_ecs = 101;
 				break;
 		}
+$zone_chauffage = 'chauffage_zone1';	
+		$depart_chauffage_zone1 = [ 
+			'est' => 56,
+			'doit' => 57,
+		];
+		
+		
 		$output = array(
 			'heure' 	=> time() * 1000,
 			'etat' 		=> $data[0],
@@ -158,7 +165,9 @@ switch ($firmware) {
 			'Tint'		=> $data[58],
 			'Text'		=> $data[15],
 			'TextMoy'	=> $data[16],
-			'departEst'	=> $data[$chanel_depart_chauffage_est], //$data[56]
+			//'departEst'	=> $data[$chanel_depart_chauffage_est], //$data[56]
+			//'departEst' => $data[$depart_chauffage['zone1']],
+			'departEst' => $data[$depart_chauffage_zone1['est']],
 			'departDoit'=> $data[$chanel_depart_chauffage_doit], //$data[57]
 			'retourEst' => $data[23],
 			'retourDoit'=> $data[24],
