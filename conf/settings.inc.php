@@ -1,7 +1,7 @@
 
 <?php
-$numero_zone = 1;
-$numero_ecs = 1;
+$zone_chauffage = 1;
+$zone_ecs = 1;
 // page_1_24h.php
 $chart_last24_chan = "c23,c21,c3,c6,c7,c138,c134";
 // page_2_courbes.php

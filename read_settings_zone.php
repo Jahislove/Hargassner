@@ -1,4 +1,7 @@
 <?php
+
+// OBSOLETE
+
 // lit les parametres de zone dans settings.inc.php
 // et ajuste les chanel telnet et colonnes BDD en consequences
 // telnet utilisé par json_telnet

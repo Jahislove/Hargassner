@@ -121,7 +121,7 @@ switch ($firmware) {
 	case '14k':
 	case '14l':
 	default:
-		switch ($numero_zone) {
+		switch ($zone_chauffage) {
 			case 1:
 				$chanel_depart_chauffage_est = 56;
 				$chanel_depart_chauffage_doit = 57;
@@ -135,7 +135,7 @@ switch ($firmware) {
 				$chanel_depart_chauffage_doit = 69;
 				break;
 		}
-		switch ($numero_ecs) {
+		switch ($zone_ecs) {
 			case 1:
 				$chanel_temp_ecs = 95;
 				break;

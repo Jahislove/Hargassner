@@ -1,14 +1,20 @@
+<?php require("header_debut.php"); ?>
+<script type="text/javascript" src="js/call_ajax_light.js">	</script>
+<?php require("header_fin.php"); ?>
+    
+<script type="text/javascript">
+	requestData();
+</script>
+
 <?php
 // appelé par page_reglages.php
 // permet d'ecrire les parametres dans settings.inc.php
 
-echo  $_POST['zone_chauffage'];
-echo  $_POST['zone_ecs'];
 
 file_put_contents('conf/settings.inc.php','
 <?php
-$numero_zone = 1;
-$numero_ecs = 1;
+$zone_chauffage = '.$_POST['zone_chauffage'].';
+$zone_ecs = '.$_POST['zone_ecs'].';
 // page_1_24h.php
 $chart_last24_chan = "c23,c21,c3,c6,c7,c138,c134";
 // page_2_courbes.php
@@ -22,3 +28,4 @@ $json_conso_jour_chanel = "dateB,c23,c21,c3,c6,c138,c134,c56";
 ');
 
 ?>
+<?php require("footer.php");?>
