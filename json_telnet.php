@@ -140,7 +140,7 @@ switch ($firmware) {
 		$ballon_ECS = array( 
 			'ballon1' => ['est' => 95],
 			'ballon2' => ['est' => 98],
-			'ballon3' => ['est' => 10],
+			'ballon3' => ['est' => 101],
 		);
 		$output = array(
 			'heure' 	=> time() * 1000,
