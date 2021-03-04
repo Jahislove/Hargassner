@@ -4,25 +4,26 @@
 *** GPL-3.0-or-later
 ************************************************************************/
 v3.2	03/03/2021
+	ajout page "Reglages" pour prise en compte de 3 zones de chauffage et 3 ballons ECS
 	prise en charge du firmware 14.0l
 	prise en charge (partielle)du firmware 10.2h chaudiere a buche
 	refonte du script json_telnet(les nouveaux firmwares seront pris en compte automatiquement dans la page d'accueil)
 	ajout des icones mode de fonctionnement
 	refonte des info additionnelles de la page d'accueil
-	ajout conso par heure dans la bulle vis bois (parametre consoHeure à configurer dans config.inc.php)
+	ajout conso par heure dans la bulle vis bois (parametre consoHeure Ã  configurer dans config.inc.php)
 	reaffichage des tooltips qui avait disparues
 	ajout courbe temps decendrage
-	ajout page "Reglages" pour prise en compte de 3 zones de chauffage et 3 ballons ECS
+	ajout affichage des notes de version dans la page "a propos"
 
 v3.1	27/10/2020
-	ajout compatibilité php7
-	ATTENTION pour les installations deja existantes ,même si vous restez en php5.6 il y a quand même une action a faire
+	ajout compatibilitÃ© php7
+	ATTENTION pour les installations deja existantes ,mÃªme si vous restez en php5.6 il y a quand mÃªme une action a faire
 		si vous restez en php5 : 
-			mysqli étant pré-installé :
+			mysqli Ã©tant prÃ©installÃ© :
 			+ il faut ajouter ou remplacez l'extension mysql par mysqli dans votre config du serveur php
 		
 		si vous remplacez php5 par php7 : 
-			mysqli est pré-installé :
+			mysqli est prÃ©installÃ© :
 			+ ajoutez simplement l'extension  mysqli dans votre config du serveur php 
 			
 			dans le fichier conf/php.ini :
@@ -30,10 +31,10 @@ v3.1	27/10/2020
 			+ supprimer la ligne extension = mysql.so 
 			+ ajouter la ligne extension = mysqli.so 
 			
-			+ sur Synology modifier l'executable php dans votre tache planifiée
+			+ sur Synology modifier l'executable php dans votre tache planifiÃ©e
 				ex php74 -c /volume1/web/hargassner/conf/php.ini -f /volume1/web/hargassner/stockBDD.php
 								
-	correction bug table consommation qui ne se remplissait pas a la première utilisation
+	correction bug table consommation qui ne se remplissait pas a la premiÃ¨re utilisation
 	prise en charge du firmware 14.0l (je suppose identique au 14.0k)
 	
 v3.0	16/12/2019
@@ -41,7 +42,7 @@ v3.0	16/12/2019
 	
 v2.9 	09/12/2019
 	bug correction (concerne uniquement les firmwares 14.0 D, E et F) : 
-	a partir du firmware 14.0g une nouvelle BDD avec 188 parametres a été mise en place ( au lieu de 172 en version D, E et F)
+	a partir du firmware 14.0g une nouvelle BDD avec 188 parametres a Ã©tÃ© mise en place ( au lieu de 172 en version D, E et F)
 	je viens d'identifier un bug avec les anciens firmwares 14.0d, e et f en combinaison avec la nouvelle BDD 
 	il empeche stockBDD.php d'ecrire en base apres un declenchement d'aspiration
 	la version 2.9 corrige ce bug , mais ATTENTION si vous etes toujours en 14.0 D, E ou F il va falloir migrer sur la nouvelle BDD
@@ -49,7 +50,7 @@ v2.9 	09/12/2019
 	
 v2.8 	25/11/2019
 	ajout courbes temp depart Zone 2 dans la page "variables"
-	ajout courbe température retour dans la page "variables"
+	ajout courbe tempÃ©rature retour dans la page "variables"
 	correction bug affichage des saisons sur le graphe conso annuelle(page consommation)
 	ajout couleur par saison pour conso annuelle
 	
@@ -64,10 +65,10 @@ v2.6 	17/11/2018
 		ajout prise en compte firmware 14.0j(faites moi remonter les problemes de courbes)
 	
 v2.5	12/03/2018
-	ajout compatibilité firmware 14.0i5 (pensez a modifier le parametre dans conf/config.inc.php)
-	si votre base de donnée(table data) s'arrete a la colonne c172 il faut executer la requete conf/ajout_colonne_BDD.sql
+	ajout compatibilitÃ© firmware 14.0i5 (pensez a modifier le parametre dans conf/config.inc.php)
+	si votre base de donnÃ©e(table data) s'arrete a la colonne c172 il faut executer la requete conf/ajout_colonne_BDD.sql
 	correction bug graphe consommation
-	a partir du firmware 14.0i , le script python de remplissage n'est plus supporté , il faut utiliser le stockBDD.php
+	a partir du firmware 14.0i , le script python de remplissage n'est plus supportÃ© , il faut utiliser le stockBDD.php
 
 v2.4	15/01/2018
 	ajout script de remplissage BDD en php (peut remplacer le script python du raspberry)
@@ -79,7 +80,7 @@ v2.3	02/01/2018
 	refonte tooltip (page variables)
 
 v2.2	13/12/2017
-	ajout memorisation de la visibilité des courbes entre les sessions(le stockage se fait dans des cookies)
+	ajout memorisation de la visibilitÃ© des courbes entre les sessions(le stockage se fait dans des cookies)
 
 v2.1	12/12/2017
 	refonte page consommation (videz le cache du navigateur si defaut d'affichage)
@@ -98,14 +99,14 @@ v2.0	02/11/2017
 v1.9	20/05/2017	
 	ajout gestion d'un ballon ECS
 	ajout pompe zone chauffage et ECS 
-	la pompe ECS necessite le firmware 14.0g ( voir peut etre le F ou E , en effet des parametres ont été ajouté 
-	après la version D mais je ne sais pas laquelle exactement)
+	la pompe ECS necessite le firmware 14.0g ( voir peut etre le F ou E , en effet des parametres ont Ã©tÃ© ajoutÃ© 
+	aprÃ¨s la version D mais je ne sais pas laquelle exactement)
 	correction bug : page variable qui ne s'affichait pas a la premiere utilisation
 	
 
 v1.8	14/02/2017
 	ajout 3 jauges de puissance (page variables) : 
-		puissance moyenne sur la journée, 
+		puissance moyenne sur la journÃ©e, 
 		puissance moyenne sur le temps de chauffe 
 		puissance moyenne sur la selection du zoom (remplace la jauge temps de chauffe quand on zoom sur le graphique)
 	upgrade Highchart en version 5.0.7
@@ -124,7 +125,7 @@ v1.5	21/11/2016
 	remplacement courbe variable F et K par courbes temp ext moy et ballon ECS
 
 v1.4    03/05/2016
-    ajout courbe temperature exterieur moyenne dans l'onglet régulation
+    ajout courbe temperature exterieur moyenne dans l'onglet rÃ©gulation
     correction bug graphique consommation mensuel
     
 v1.3	20/03/2016
@@ -136,7 +137,7 @@ v1.2	19/03/2016
 	suppression connectBDD.inc.php
 	
 v1.1 	01/03/2016
-	amélioration lisibilité des graphiques 'variables'
+	amÃ©lioration lisibilitÃ© des graphiques 'variables'
 	ajout calendrier pickup pour remonter dans le temps dans la page 'variables'
 	correction bugs mineurs
 

@@ -1,39 +1,24 @@
 /** main.css **/
 @CHARSET "UTF-8";
-
 *{
 	margin:auto;
 	padding:0;
 }
 body{
-	/**background:url('../img/bg_head.jpg') repeat-x top center, url('../img/bg_tile.jpg') repeat-x; **/
 	min-height:500px;
-    /* width: 1280px; */
-	/* font:14px/1.3 'Cabin Condensed',Arial, sans-serif; */
     font: 20px/1 Nunito,Arial,sans-serif;
-	/*color: #888;
-	/* padding:10px; */
 }
-
-/* p{
-    margin: 0 0 0 250px;
-}
- */
 h1,h2{
-/* 	color: #fff; */
  	line-height: 1;
-/*	background-color: #222; */
 	font-family: Cabin Condensed,Arial,sans-serif;
 	font-weight: normal;
 	margin: 0 auto;
-/*	position: absolute; 
-	left: 10%;
- 	margin-left: -180px; */
 }
 
 p {
     padding: 20px;
-    width : 500px;
+	margin:  auto;
+    width : 550px;
 }
 
 h1{
@@ -49,11 +34,13 @@ h2{
 	padding: 4px 13px 9px 11px;
 	top: 51px;
 }
-
-/* header{
-	display:block;
-	position:relative;
-} */
+object{
+	display: block;
+    width: 1200px;
+    height: 1000px;
+	margin:  auto;
+	background-color: #f0f0f0;
+}
 
 nav{
 	display: block;

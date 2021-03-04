@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
     <?php require_once("conf/config.inc.php");?>
 <head>

@@ -29,6 +29,6 @@
 </p>
 </h2>
 
-<object data="notes_version.txt" height=400 width=1200> </object> 
+<object data="notes_version.txt"> </object> 
 <?php require("footer.php");?>
 
