@@ -3,8 +3,8 @@
 *** Auteur : Jahislove
 *** licence GPL-3.0-or-later
 ************************************************************************
-*** version php 5.6
-*** le serveur php doit etre lancé avec les extensions mysql, zip et openssl
+*** version php 7.x
+*** le serveur php doit etre lancé avec les extensions mysqli, zip et openssl
 
 / -->
 

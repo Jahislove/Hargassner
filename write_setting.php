@@ -1,11 +1,3 @@
-<?php require("header_debut.php"); ?>
-<script type="text/javascript" src="js/call_ajax_light.js">	</script>
-<?php require("header_fin.php"); ?>
-    
-<script type="text/javascript">
-	requestData();
-</script>
-
 <?php
 // appelé par page_reglages.php
 // permet d'ecrire les parametres de zone dans settings.inc.php
@@ -47,5 +39,5 @@ file_put_contents('conf/settings.inc.php',
 
 file_put_contents('conf/settings.inc.php','?>',FILE_APPEND);
 
-require("footer.php");
+require("index.php");
 ?>
