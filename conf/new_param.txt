@@ -1,3 +1,0 @@
-// conserver cette ligne en premier, format : ligne 1 = valeur et ligne 2 = position(insert apres ce numero)
-$consoHeure = 38; //correspond au parametre R8a de la chaudiere
-12

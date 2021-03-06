@@ -133,9 +133,9 @@ switch ($firmware) {
 	case '14l':
 	default:
 		$depart_chauffage = array( 
-			'zone1' => ['est' => 56,'doit' => 57],
-			'zone2' => ['est' => 62,'doit' => 63],
-			'zone3' => ['est' => 68,'doit' => 69],
+			'zone1' => ['est' => 56, 'doit' => 57, 'modeChauff' => 60],
+			'zone2' => ['est' => 62, 'doit' => 63, 'modeChauff' => 66],
+			'zone3' => ['est' => 68, 'doit' => 69, 'modeChauff' => 72],
 		);
 		$ballon_ECS = array( 
 			'ballon1' => ['est' => 95],
@@ -168,7 +168,7 @@ switch ($firmware) {
 			'PelletRest' => $data[46],
 			'variableK' => $data[27],
 			'variableF' => $data[28],
-			'modeChauff'=> $data[60],
+			'modeChauff'=> $data[$depart_chauffage[$zone_chauffage]['modeChauff']],
 			'modeCommand'=> $data[61],
 			'consoHeure'=> $consoHeure, // conso granulé par heure
 		);
