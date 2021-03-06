@@ -15,6 +15,21 @@ file_put_contents('conf/settings.inc.php',
 // pour l'instant la page "variables" affiche les zone1 et zone2 pour le chauffage ( pas de choix)
 // et 1 seul ballon (au choix)
 
+switch ($_POST['zone_chauffage']){
+	case 'zone1':
+		$depart_chauffage_EST = 'c21';
+		$depart_chauffage_DOIT = 'c23';
+		break;
+	case 'zone2':
+		$depart_chauffage_EST = 'c22';
+		$depart_chauffage_DOIT = 'c24';
+		break;
+	case 'zone3':
+		$depart_chauffage_EST = 'c29';
+		$depart_chauffage_DOIT = 'c31';
+		break;
+}
+
 switch ($_POST['zone_ecs']){
 	case 'ballon1':
 		$ballon_ECS = 'c27';
@@ -26,15 +41,14 @@ switch ($_POST['zone_ecs']){
 		$ballon_ECS = 'c43';
 		break;
 }
-
 file_put_contents('conf/settings.inc.php',
 '
 	// page_1_24h.php
-	$chart_last24_chan = "c23,c21,c3,c6,c7,c138,c134";
+	$chart_last24_chan = "'.$depart_chauffage_DOIT.','.$depart_chauffage_EST.',c3,c6,c7,c138,c134";
 	// page_2_courbes.php
-	$chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,'.$ballon_ECS.',c56,c7,c138,c21,c23,c22,c24,c99,c92,c112,c12,c111"; // la 2 eme valeur (decendrage) est calculé d"apres c0
+	$chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,'.$ballon_ECS.',c56,c7,c138,'.$depart_chauffage_EST.','.$depart_chauffage_DOIT.',c22,c24,c99,c92,c112,c12,c111"; // la 2 eme valeur (decendrage) est calculé d"apres c0
 	// json_conso_jour.php (via page_3_conso.php)
-	$json_conso_jour_chanel = "dateB,c23,c21,c3,c6,c138,c134,c56";
+	$json_conso_jour_chanel = "dateB,'.$depart_chauffage_DOIT.','.$depart_chauffage_EST.',c3,c6,c138,c134,c56";
 ',FILE_APPEND);
 
 file_put_contents('conf/settings.inc.php','?>',FILE_APPEND);
