@@ -2,6 +2,7 @@
 	//ne pas modifier manuellement , les modifs se font par la page Reglages
 	$zone_chauffage = "zone1";
 	$zone_ecs = "ballon1";
+	$zone_mode_chauffage = "modeChauffage1";
 
 	// page_1_24h.php
 	$chart_last24_chan = "c23,c21,c3,c6,c7,c138,c134";

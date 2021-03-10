@@ -142,6 +142,15 @@ switch ($firmware) {
 			'ballon2' => ['est' => 98],
 			'ballon3' => ['est' => 101],
 		);
+		$mode_chauff = array( 
+			'modeChauffageA' => ['modeChauff' => 54],
+			'modeChauffage1' => ['modeChauff' => 60],
+			'modeChauffage2' => ['modeChauff' => 66],
+			'modeChauffage3' => ['modeChauff' => 72],
+			'modeChauffage4' => ['modeChauff' => 78],
+			'modeChauffage5' => ['modeChauff' => 84],
+			'modeChauffage6' => ['modeChauff' => 90],
+		);
 		$output = array(
 			'heure' 	=> time() * 1000,
 			'etat' 		=> $data[0],
@@ -168,7 +177,7 @@ switch ($firmware) {
 			'PelletRest' => $data[46],
 			'variableK' => $data[27],
 			'variableF' => $data[28],
-			'modeChauff'=> $data[$depart_chauffage[$zone_chauffage]['modeChauff']],
+			'modeChauff'=> $data[$mode_chauff[$zone_mode_chauffage]['modeChauff']],
 			'modeCommand'=> $data[61],
 			'consoHeure'=> $consoHeure, // conso granulé par heure
 		);

@@ -9,11 +9,9 @@ file_put_contents('conf/settings.inc.php',
 	//ne pas modifier manuellement , les modifs se font par la page Reglages
 	$zone_chauffage = "'.$_POST['zone_chauffage'].'";
 	$zone_ecs = "'.$_POST['zone_ecs'].'";
+	$zone_mode_chauffage = "'.$_POST['zone_mode_chauffage'].'";
 '
 );
-
-// pour l'instant la page "variables" affiche les zone1 et zone2 pour le chauffage ( pas de choix)
-// et 1 seul ballon (au choix)
 
 switch ($_POST['zone_chauffage']){
 	case 'zone1':
