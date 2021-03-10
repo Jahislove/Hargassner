@@ -133,9 +133,9 @@ switch ($firmware) {
 	case '14l':
 	default:
 		$depart_chauffage = array( 
-			'zone1' => ['est' => 56, 'doit' => 57, 'modeChauff' => 60],
-			'zone2' => ['est' => 62, 'doit' => 63, 'modeChauff' => 66],
-			'zone3' => ['est' => 68, 'doit' => 69, 'modeChauff' => 72],
+			'zone1' => ['est' => 56, 'doit' => 57, 'modeChauff' => 60, 'Tint' => 58],
+			'zone2' => ['est' => 62, 'doit' => 63, 'modeChauff' => 66, 'Tint' => 64],
+			'zone3' => ['est' => 68, 'doit' => 69, 'modeChauff' => 72, 'Tint' => 70],
 		);
 		$ballon_ECS = array( 
 			'ballon1' => ['est' => 95],
@@ -151,7 +151,7 @@ switch ($firmware) {
 			'Fumee'		=> $data[5],
 			'chaudiereEst'=> $data[3],
 			'chaudiereDoit'=> $data[4],
-			'Tint'		=> $data[58],
+			'Tint'		=> $data[$depart_chauffage[$zone_chauffage]['Tint']],
 			'Text'		=> $data[15],
 			'TextMoy'	=> $data[16],
 			'departEst' => $data[$depart_chauffage[$zone_chauffage]['est']],
