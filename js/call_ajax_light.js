@@ -68,11 +68,11 @@ $.ajax({
 				document.getElementById('modeCommand').className = 'modeCommandConfort';
 				document.getElementById('tooltipModeCommand').innerHTML = 'Confort forcé';
 				break;
-			case 4: 
+			case 5: 
 				document.getElementById('modeCommand').className = 'modeCommandSoiree';
 				document.getElementById('tooltipModeCommand').innerHTML = "Soirée : mode confort<br>activé jusqu'au<br>prochain changement<br>d'état programmé";
 				break;
-			case 5: 
+			case 6: 
 				document.getElementById('modeCommand').className = 'modeCommandAbsence';
 				document.getElementById('tooltipModeCommand').innerHTML = "Absence : mode réduit<br>activé jusqu'au<br>prochain changement<br>d'état programmé";
 				break;
@@ -81,6 +81,10 @@ $.ajax({
 				document.getElementById('tooltipModeCommand').innerHTML = '?';
 		}
 		switch ( chanel['modeChauff'] ) {
+			case 0: 
+				document.getElementById('modeChauff').className = 'modeCommandConfort';
+				document.getElementById('tooltipModeChauff').innerHTML = 'Mode été';
+				break;
 			case 1: 
 				document.getElementById('modeChauff').className = 'modeCommandConfort';
 				document.getElementById('tooltipModeChauff').innerHTML = 'Mode confort';

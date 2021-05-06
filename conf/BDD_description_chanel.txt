@@ -115,7 +115,7 @@ colonne c81	 name=	UsePos	         unit=
 colonne c82	 name=	UseMotSoll	     unit=	mm	
 colonne c83	 name=	UseMotIst	     unit=	mm	
 colonne c84	 name=	HKZustand_A	     unit=		
-colonne c85	 name=	HKZustand_1	     unit=	mode de chauffage => 1 confort /3 reduit/4 arret /9 en cours d'arret /0
+colonne c85	 name=	HKZustand_1	     unit=	mode de chauffage => 0 été /1 confort /3 reduit/4 arret /9 en cours d'arret /
 colonne c86	 name=	HKZustand_2	     unit=		
 colonne c87	 name=	HKZustand_3	     unit=		
 colonne c88	 name=	HKZustand_4	     unit=		
@@ -127,11 +127,11 @@ colonne c93	 name=	BoiZustand_2	 unit=
 colonne c94	 name=	BoiZustand_3	 unit=		
 colonne c95	 name=	PuffZustand	     unit=	etat BT 3:charge 2:decharge	
 colonne c96	 name=	Puffer_soll	     unit=	Temp BT doit	
-colonne c97	 name=	Mode Fw	         unit=		
+colonne c97	 name=	Mode Fw	         unit=	erreur en cours : 32=Temps de Remplissage dépassé,		
 colonne c98	 name=	Einschubschn.BSZ unit=		heures vis entree chaudiere 
 colonne c99	 name=	Verbrauchszähler unit=	kg	consommation pellet
 colonne c100	 name=	FRA Zustand	     unit=		
-colonne c101	 name=	FR1 Zustand	     unit=	mode de commande => 1:  programmé, 2 reduit forcé, 3 confort forcé, 4 soirée , 5 absence brève
+colonne c101	 name=	FR1 Zustand	     unit=	mode de commande => 1:  programmé, 2 reduit forcé, 3 confort forcé, 4 ?, 5 soirée , 6 absence brève
 colonne c102	 name=	FR2 Zustand	     unit=		
 colonne c103	 name=	FR3 Zustand	     unit=		
 colonne c104	 name=	FR4 Zustand	     unit=		
