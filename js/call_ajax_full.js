@@ -212,8 +212,8 @@ $.ajax({
 				document.getElementById('tooltipModeChauff').innerHTML = 'arrêt en cours';
 				break;
 			default:
-				//document.getElementById('modeChauff').innerHTML = chanel['modeChauff'];
-				document.getElementById('tooltipModeChauff').innerHTML = '?';
+				document.getElementById('modeChauff').innerHTML = chanel['modeChauff'];
+				document.getElementById('tooltipModeChauff').innerHTML = 'code inconnu';
 		}
         
         // rafraichissement des bulles
