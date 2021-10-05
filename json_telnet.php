@@ -131,6 +131,7 @@ switch ($firmware) {
 	case '14j':
 	case '14k':
 	case '14l':
+	case '14m':
 	default:
 		$depart_chauffage = array( 
 			'zone1' => ['est' => 56, 'doit' => 57, 'modeChauff' => 60, 'Tint' => 58],

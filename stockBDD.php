@@ -31,7 +31,7 @@ http://ip_mon_serveur/hargassner/phpinfo.php
 pensez egalement a bien configurer le firmware dans conf/config.inc.php
 les valeurs prises en compte a ce jour sont 
 
-granulés  14e , 14f , 14g , 14i , 14j, 14k, 14l
+granulés  14e , 14f , 14g , 14i , 14j, 14k, 14l, 14m
 buches 4.3d, 10.2h
 
 l'ordre des parametres envoyés par la chaudiere differe en fonction du firmware
@@ -131,7 +131,7 @@ $data[0] = date('Y-m-d H:i:s', time()); //remplace le premier parametre (pm) par
 			c167,c168,c169,c170,c171,c172,c173,c174,c175,c176,c177,c178,c179,c180,c181,c182,c183,c184,c185,c186,c187,c188) VALUES (null, $liste)";  */
 switch ($firmware) {
     case '10.2h':
-		$nbre_param = 163; // declaration nombre de parametre dans la trame en fonction du firmware (note : +2 par rapport au numero du dernier chanel)
+		$nbre_param = 163; // declaration nombre de parametre dans la trame en fonction du firmware (note : +2 par rapport au numero du dernier chanel pour ajouter date et id)
         $data = array_slice($data, 0, $nbre_param); // selectionne le nombre de param dans la trame suivant le firmware ( car parfois il y a plus de parametre dans le telnet)
 		$liste = "'" . implode("','", $data) . "'";
 		$requete = "INSERT INTO data (id,dateB,c3,c5,c1,c8,c9,c10,c6,c21,c22,c25,c26,c27,c23,c24,c46,c47,c73,c74,c75,c76,c52,c14,c0,c2,c62,c77,c134,c4,c29,c30,c33,
@@ -181,7 +181,6 @@ switch ($firmware) {
 			c74,c75,c76,c77,c78,c79,c80,c118,c119,c120) VALUES (null, $liste)" ;
         break;
 	case '14l':
-	default:
 		$nbre_param = 142; //140 chanels
         $data = array_slice($data, 0, $nbre_param); 
 		$liste = "'" . implode("','", $data) . "'"; // a partir du 14i l'ordre des parametres a changé => on modifie l'ordre d'ecriture en bdd
@@ -190,6 +189,16 @@ switch ($firmware) {
 			c101,c22,c24,c139,c47,c86,c102,c29,c31,c140,c48,c87,c103,c30,c32,c141,c49,c88,c104,c37,c39,c142,c50,c89,c105,c38,c40,c143,c51,c90,c106,c19,c20,
 			c91,c27,c28,c92,c35,c36,c93,c43,c44,c94,c107,c108,c109,c110,c168,c146,c147,c148,c149,c150,c151,c152,c153,c169,c170,c171,c172,c173,c174,c175,c73,
 			c74,c75,c76,c77,c78,c79,c80,c118,c119,c120,c165,c166,c167,c186,c187,c188) VALUES (null, $liste)" ;
+	case '14m':
+	default:
+		$nbre_param = 145; //143 chanels
+        $data = array_slice($data, 0, $nbre_param); 
+		$liste = "'" . implode("','", $data) . "'"; // a partir du 14i l'ordre des parametres a changé => on modifie l'ordre d'ecriture en bdd
+		$requete = "INSERT INTO data (id,dateB,c0,c1,c2,c3,c4,c5,c53,c52,c134,c56,c57,c58,c59,c60,c61,c6,c7,c8,c178,c9,c179,c10,c11,c12,c13,c15,c129,c160,c54,
+			c55,c116,c117,c112,c111,c113,c114,c154,c130,c136,c62,c95,c96,c180,c177,c176,c128,c115,c99,c81,c97,c16,c17,c137,c45,c84,c100,c21,c23,c138,c46,c85,
+			c101,c22,c24,c139,c47,c86,c102,c29,c31,c140,c48,c87,c103,c30,c32,c141,c49,c88,c104,c37,c39,c142,c50,c89,c105,c38,c40,c143,c51,c90,c106,c19,c20,
+			c91,c27,c28,c92,c35,c36,c184,c43,c44,c94,c107,c108,c109,c110,c168,c146,c147,c148,c149,c150,c151,c152,c153,c169,c170,c171,c172,c173,c174,c175,c73,
+			c74,c75,c76,c77,c78,c79,c80,c118,c119,c120,c165,c166,c167,c186,c187,c188,c121,c122,c93) VALUES (null, $liste)" ;
 	
 }			
 			

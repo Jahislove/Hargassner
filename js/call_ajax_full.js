@@ -207,6 +207,10 @@ $.ajax({
 				document.getElementById('modeChauff').className = 'modeCommandArret';
 				document.getElementById('tooltipModeChauff').innerHTML = 'Mode arrêt';
 				break;
+			case 5: 
+				document.getElementById('modeChauff').className = 'modeCommandArret';
+				document.getElementById('tooltipModeChauff').innerHTML = 'Arrêt sur temp ext';
+				break;
 			case 9: 
 				document.getElementById('modeChauff').className = 'modeCommandArret';
 				document.getElementById('tooltipModeChauff').innerHTML = 'arrêt en cours';
