@@ -127,7 +127,14 @@ colonne c93	 name=	BoiZustand_2	 unit=
 colonne c94	 name=	BoiZustand_3	 unit=		
 colonne c95	 name=	PuffZustand	     unit=	etat BT 3:charge 2:decharge	
 colonne c96	 name=	Puffer_soll	     unit=	Temp BT doit	
-colonne c97	 name=	Mode Fw	         unit=	erreur en cours : 32=Temps de Remplissage dépassé,		
+colonne c97	 name=	Mode Fw	         unit=	erreur en cours :
+											 6 = Le cendrier est trop plein
+											 7 = la grille ne s'ouvre pas
+											27 = Température de fumées trop basse
+											32 = Temps de Remplissage dépassé,	
+											93 = cendrier ouvert
+											371= Vérifier l'encrassement du foyer, nettoyer si nécessaire
+											7101= Temps Maxi de charge du Ballon dépassé. Contrôler la position de la sonde, et l'irrigation par la pompe
 colonne c98	 name=	Einschubschn.BSZ unit=		heures vis entree chaudiere 
 colonne c99	 name=	Verbrauchszähler unit=	kg	consommation pellet
 colonne c100	 name=	FRA Zustand	     unit=		
