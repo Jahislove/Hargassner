@@ -219,6 +219,32 @@ $.ajax({
 				document.getElementById('modeChauff').innerHTML = chanel['modeChauff'];
 				document.getElementById('tooltipModeChauff').innerHTML = 'code inconnu';
 		}
+// en cas d'erreur
+		const TabErreur = [];
+		TabErreur[0] = "pas d'erreur";
+		TabErreur[6] = "Le cendrier est plein";
+		TabErreur[7] = "la grille ne s'ouvre pas";
+		TabErreur[27] = "Température de fumées trop basse";
+		TabErreur[32] = "Temps de Remplissage dépassé"	
+		TabErreur[93] = "cendrier ouvert"
+		TabErreur[371] = "Vérifier l'encrassement du foyer, nettoyer si nécessaire"
+		TabErreur[7101] = "Temps Maxi de charge du Ballon dépassé. Contrôler les heures, la sonde, la pompe"
+
+        document.getElementById('erreurNumber').innerHTML = chanel['erreur'];
+        switch(chanel['erreur']) { 
+			case 0: 
+				document.getElementById('erreurText').innerHTML = TabErreur[chanel['erreur']];
+				document.getElementById('erreur').className = 'erreur erreurNonVisible';
+				break;
+            default:
+				document.getElementById('erreur').className = 'erreur erreurVisible';
+				if (typeof TabErreur[chanel['erreur']] == 'undefined') {
+					document.getElementById('erreurText').innerHTML = "erreur inconnue";
+				}else{
+					document.getElementById('erreurText').innerHTML = TabErreur[chanel['erreur']];
+				}
+                break;
+        }
         
         // rafraichissement des bulles
         document.getElementById('extr-texte').innerHTML =  chanel['extract'] + '%';

@@ -353,7 +353,37 @@ a:hover{
   /* width: 200px; */
 /* } */
 
-
+#erreurNumber,#erreurText{
+    padding: 12px 0px 12px 10px;
+}
+.erreur th{
+    background-color: #f0f0f0;
+    background-image: linear-gradient(#fefefe 0%, #f9c0c0 50%, #EA8F8F 70%);
+    border-right: 1px solid rgba(9, 9, 9, 0.125);
+    box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+    position:relative;
+    color: #757474;
+    white-space:nowrap;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+	text-align: center;
+}
+.erreurVisible th{
+    visibility: visible;
+}
+.erreurNonVisible th{
+    visibility: hidden;
+}
+.erreur th:first-child{
+	width: 80px;
+    border-radius: 24px 0 0 24px;
+    padding: 8px 10px 10px 10px;
+}
+.erreur th:last-child{
+	width: 600px;
+    border-radius: 0 24px 24px 0;
+    padding: 0px 0px 0px 0px;
+	text-align: left;
+}
 
 /**************************************************************************************************/	
 /******************* graphiques ******************************************************************/	

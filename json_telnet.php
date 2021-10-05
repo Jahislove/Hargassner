@@ -181,6 +181,7 @@ switch ($firmware) {
 			'modeChauff'=> $data[$mode_chauff[$zone_mode_chauffage]['modeChauff']],
 			'modeCommand'=> $data[61],
 			'consoHeure'=> $consoHeure, // conso granulé par heure
+			'erreur' 	=> $data[49],
 		);
 }	
 

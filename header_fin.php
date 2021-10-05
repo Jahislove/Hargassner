@@ -69,17 +69,23 @@
 	<div>
         <table class="etat">
             <tr>
-			<th id="etat" >?</th>
-            <th class ="tooltipContainer">
-				<span id="tooltipModeChauff" class="tooltipEtat">?</span> 
-				<span id="modeChauff" ></span> 
-			</th>
-			<th class ="tooltipContainer">
-				<span class="tooltipEtat" >
-					<span id="tooltipModeCommand">?</span> 
-				</span>
-				<span id="modeCommand" ></span>
-			</th> 
+				<th id="etat" >?</th>
+				<th class ="tooltipContainer">
+					<span id="tooltipModeChauff" class="tooltipEtat">?</span> 
+					<span id="modeChauff" ></span> 
+				</th>
+				<th class ="tooltipContainer">
+					<span class="tooltipEtat" >
+						<span id="tooltipModeCommand">?</span> 
+					</span>
+					<span id="modeCommand" ></span>
+				</th> 
+			</tr>
+        </table>
+        <table id="erreur" class="erreur erreurNonVisible">
+			<tr>
+				<th id="erreurNumber" ></th>
+				<th id="erreurText" ></th>
 			</tr>
         </table>
 	</div>
