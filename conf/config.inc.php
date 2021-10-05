@@ -9,8 +9,9 @@ $port = 23; //port telnet, ne pas modifier
 $mode_conn = 'telnet'; // mode de connexion : telnet pour chaudiere recente ou serial pour les anciennes 
 						// en mode serial la page d'acceuil ne fonctionne plus en temps reel mais utilise la BDD
 $taille_silo = 4000; // en kg , il s'agit de la capacité max du silo
+$consoHeure = 38; //correspond au parametre R8a de la chaudiere
 
-$refresh = 10; //rafraichissement en sec de l'etat de la chaudiere , ne pas descendre sous les 2 car le telnet de la chaudiere n'arrive plus a repondre assez vite
+$refresh = 10; //rafraichissement en seconde de l'etat de la chaudiere , ne pas descendre sous les 2 car le telnet de la chaudiere n'arrive plus a repondre assez vite
 $histo_temps = 30; //historique du graphique de la page d'accueil en mn
 
 // MySQL config

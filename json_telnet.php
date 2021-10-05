@@ -9,6 +9,7 @@
 // pour les anciennes chaudiere ne disposant que du port serie , on remplace le telnet par une interrogation mysql
 	header("Content-type: text/json");
     require_once("conf/config.inc.php");
+	require_once("conf/settings.inc.php");
 
 if ($mode_conn == 'serial'){ 
     //ouverture port serie
@@ -43,8 +44,9 @@ if ($mode_conn == 'serial'){
 
 array_shift($data); // supprime le 1er parametre inutile(pm) pour aligner les numeros de chanels avec la colonne BDD
 
-// le tableau data contient tous les parametres recu par telnet numéroté de 0 à 188+
-// le tableau output contient les parametres utilisés par la page d'accueil
+// le tableau data contient tous les parametres recu par telnet numéroté de 0 à 188+, cet ordre change au fil des firmwares
+// le tableau output contient les parametres utilisés par la page d'accueil(fixe)
+// on associe un parametre de la page d'acceuil avec le numero du parametre telnet correspondant
 // ex ci dessous avec le firmware 10.2h : le parametre puissance correspond au 26eme parametre du telnet
 switch ($firmware) {
     case '4.3d':
@@ -77,12 +79,23 @@ switch ($firmware) {
 			'variableF' => null,
 			'modeChauff'=> $data[142],  // mode chauffage ( confort, réduit, arret)
 			'modeCommand'=> $data[85],  //mode de commande => 1:  programmé, 2 reduit forcé, 3 confort forcé, 4 soirée , 5 absence brève
+			'consoHeure'=> $consoHeure, // conso granulé par heure
 		);
         break;
     case '14d':
     case '14e':
     case '14f':
     case '14g':
+		$depart_chauffage = array( 
+			'zone1' => ['est' => 21,'doit' => 23],
+			'zone2' => ['est' => 22,'doit' => 24],
+			'zone3' => ['est' => 29,'doit' => 31],
+		);
+		$ballon_ECS = array( 
+			'ballon1' => ['est' => 27],
+			'ballon2' => ['est' => 35],
+			'ballon3' => ['est' => 43],
+		);
 		$output = array( // ordre original (chanel = colonne BDD)
 			'heure' 	=> time() * 1000,
 			'etat' 		=> $data[0],
@@ -95,12 +108,12 @@ switch ($firmware) {
 			'Tint'		=> $data[138],
 			'Text'		=> $data[6],
 			'TextMoy'	=> $data[7],
-			'departEst'	=> $data[21],
-			'departDoit'=> $data[23],
+			'departEst' => $data[$depart_chauffage[$zone_chauffage]['est']],
+			'departDoit'=> $data[$depart_chauffage[$zone_chauffage]['doit']],
 			'retourEst' => $data[12],
 			'retourDoit'=> $data[13],
 			'bois'		=> $data[56],
-			'TempECS'	=> $data[27],
+			'TempECS'	=> $data[$ballon_ECS[$zone_ecs]['est']], 
 			'pompe-ECS'	=> $data[92],
 			'tempsDecend'=> $data[111],
 			'tempsVis'	=> $data[112],
@@ -111,6 +124,7 @@ switch ($firmware) {
 			'variableF' => $data[54],
 			'modeChauff'=> $data[85],
 			'modeCommand'=> $data[101],
+			'consoHeure'=> $consoHeure, // conso granulé par heure
 		);
         break;
     case '14i':
@@ -118,6 +132,25 @@ switch ($firmware) {
 	case '14k':
 	case '14l':
 	default:
+		$depart_chauffage = array( 
+			'zone1' => ['est' => 56, 'doit' => 57, 'modeChauff' => 60, 'Tint' => 58],
+			'zone2' => ['est' => 62, 'doit' => 63, 'modeChauff' => 66, 'Tint' => 64],
+			'zone3' => ['est' => 68, 'doit' => 69, 'modeChauff' => 72, 'Tint' => 70],
+		);
+		$ballon_ECS = array( 
+			'ballon1' => ['est' => 95],
+			'ballon2' => ['est' => 98],
+			'ballon3' => ['est' => 101],
+		);
+		$mode_chauff = array( 
+			'modeChauffageA' => ['modeChauff' => 54],
+			'modeChauffage1' => ['modeChauff' => 60],
+			'modeChauffage2' => ['modeChauff' => 66],
+			'modeChauffage3' => ['modeChauff' => 72],
+			'modeChauffage4' => ['modeChauff' => 78],
+			'modeChauffage5' => ['modeChauff' => 84],
+			'modeChauffage6' => ['modeChauff' => 90],
+		);
 		$output = array(
 			'heure' 	=> time() * 1000,
 			'etat' 		=> $data[0],
@@ -127,15 +160,15 @@ switch ($firmware) {
 			'Fumee'		=> $data[5],
 			'chaudiereEst'=> $data[3],
 			'chaudiereDoit'=> $data[4],
-			'Tint'		=> $data[58],
+			'Tint'		=> $data[$depart_chauffage[$zone_chauffage]['Tint']],
 			'Text'		=> $data[15],
 			'TextMoy'	=> $data[16],
-			'departEst'	=> $data[56],
-			'departDoit'=> $data[57],
+			'departEst' => $data[$depart_chauffage[$zone_chauffage]['est']],
+			'departDoit'=> $data[$depart_chauffage[$zone_chauffage]['doit']],
 			'retourEst' => $data[23],
 			'retourDoit'=> $data[24],
 			'bois'		=> $data[9],
-			'TempECS'	=> $data[95],
+			'TempECS'	=> $data[$ballon_ECS[$zone_ecs]['est']], 
 			'pompe-ECS'	=> $data[97],
 			'tempsDecend'=> $data[33],
 			'tempsVis'	=> $data[32],
@@ -144,10 +177,10 @@ switch ($firmware) {
 			'PelletRest' => $data[46],
 			'variableK' => $data[27],
 			'variableF' => $data[28],
-			'modeChauff'=> $data[60],
+			'modeChauff'=> $data[$mode_chauff[$zone_mode_chauffage]['modeChauff']],
 			'modeCommand'=> $data[61],
+			'consoHeure'=> $consoHeure, // conso granulé par heure
 		);
-
 }	
 
 // on renvoi la reponse

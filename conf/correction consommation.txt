@@ -1,4 +1,5 @@
-﻿solution pour corriger la consommation reelle sur la chaudiere et en BDD:
+﻿OBSOLETE depuis 14k
+solution pour corriger la consommation reelle sur la chaudiere et en BDD:
 le principe est le suivant :
 il faut connaitre la quantité exacte de granulés consommés
 donc il faut attendre d'avoir vider le silo , comme ca on sait combien on avait mis dedans 

@@ -48,6 +48,7 @@ $.ajax({
                 break;
             case 17:
                 etat = 'Assistant de combustion';
+                break;
             default:
                 etat = 'inconnu';
                 break;
@@ -56,39 +57,57 @@ $.ajax({
         document.getElementById('etat').innerHTML = etat;
 		switch ( chanel['modeCommand'] ) {
 			case 1: 
-				//document.getElementById('modeCommand').innerHTML = 'programmé';
 				document.getElementById('modeCommand').className = 'modeCommandProgram';
-				break;
+				document.getElementById('tooltipModeCommand').innerHTML = 'Mode Programmé';
+			break;
 			case 2: 
 				document.getElementById('modeCommand').className = 'modeCommandReduit';
+				document.getElementById('tooltipModeCommand').innerHTML = 'Réduit forcé';
 				break;
 			case 3: 
 				document.getElementById('modeCommand').className = 'modeCommandConfort';
-				break;
-			case 4: 
-				document.getElementById('modeCommand').className = 'modeCommandSoiree';
+				document.getElementById('tooltipModeCommand').innerHTML = 'Confort forcé';
 				break;
 			case 5: 
+				document.getElementById('modeCommand').className = 'modeCommandSoiree';
+				document.getElementById('tooltipModeCommand').innerHTML = "Soirée : mode confort<br>activé jusqu'au<br>prochain changement<br>d'état programmé";
+				break;
+			case 6: 
 				document.getElementById('modeCommand').className = 'modeCommandAbsence';
+				document.getElementById('tooltipModeCommand').innerHTML = "Absence : mode réduit<br>activé jusqu'au<br>prochain changement<br>d'état programmé";
 				break;
 			default:
 				document.getElementById('modeCommand').innerHTML = chanel['modeCommand'];
+				document.getElementById('tooltipModeCommand').innerHTML = '?';
 		}
 		switch ( chanel['modeChauff'] ) {
+			case 0: 
+				document.getElementById('modeChauff').className = 'modeCommandConfort';
+				document.getElementById('tooltipModeChauff').innerHTML = 'Mode été';
+				break;
 			case 1: 
 				document.getElementById('modeChauff').className = 'modeCommandConfort';
+				document.getElementById('tooltipModeChauff').innerHTML = 'Mode confort';
+				break;
+			case 2: 
+				document.getElementById('modeChauff').className = 'modeCommandArret'; // etat inconnu
+				document.getElementById('tooltipModeChauff').innerHTML = '?';
 				break;
 			case 3: 
 				document.getElementById('modeChauff').className = 'modeCommandReduit';
+				document.getElementById('tooltipModeChauff').innerHTML = 'Mode réduit';
 				break;
 			case 4: 
 				document.getElementById('modeChauff').className = 'modeCommandArret';
+				document.getElementById('tooltipModeChauff').innerHTML = 'Mode arrêt';
 				break;
 			case 9: 
 				document.getElementById('modeChauff').className = 'modeCommandArret';
+				document.getElementById('tooltipModeChauff').innerHTML = 'arrêt en cours';
 				break;
 			default:
 				document.getElementById('modeChauff').innerHTML = chanel['modeChauff'];
+				document.getElementById('tooltipModeChauff').innerHTML = 'code inconnu';
 		}
     },
 });

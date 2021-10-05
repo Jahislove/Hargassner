@@ -21,7 +21,6 @@
 // conso reelle / A = X  nouveau facteur Kg/h
 // 100 * (X/2.2) = % de correction a apporter en base
 
-
     $chart1_name = ['Consommation granulés par jour','T° extérieure moyenne'];
     $chart2_name = ['T° départ consigne','T° départ','T° chaudière','T° extérieure','T° intérieure','Puissance','% bois'];
     $chart3_name = ['Sur la Saison'];

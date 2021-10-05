@@ -134,12 +134,12 @@ CHANNEL id='131' name='TBB' unit='°C'/				c80
 CHANNEL id='132' name='TBs_B' unit='°C'/			c118
 CHANNEL id='133' name='BoiZustand_B' unit=''/		c119
 CHANNEL id='134' name='TVL_B' unit='°C'/			c120
-CHANNEL id='135' name='TVLs_B' unit='°C'/			c176
-CHANNEL id='136' name='TRB' unit='°C'/				c177
-CHANNEL id='137' name='TRs_B' unit='°C'/			c178
-CHANNEL id='138' name='HKZustand_B' unit=''/		c179
-CHANNEL id='139' name='TRA_B' unit='°C'/			c186
-CHANNEL id='140' name='FRB Zustand' unit=''/		c187	
+CHANNEL id='135' name='TVLs_B' unit='°C'/			c165
+CHANNEL id='136' name='TRB' unit='°C'/				c166
+CHANNEL id='137' name='TRs_B' unit='°C'/			c167
+CHANNEL id='138' name='HKZustand_B' unit=''/		c186
+CHANNEL id='139' name='TRA_B' unit='°C'/			c187
+CHANNEL id='140' name='FRB Zustand' unit=''/		c188	
 </ANALOG>
 
 

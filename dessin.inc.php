@@ -14,54 +14,63 @@
 	</div>
     
 	<div id='bulles' class="visible" onclick="clic()">  
-        <span class='extr-bulle'>
-            <span class="tooltip-general tooltip"><a>Puissance du ventilateur d'extraction des fumées</a></span>
-            <span id="extr-texte"  class='texte-bulle'></span>
-        </span>
+		<div class='tooltipContainer extr-bulle '>
+			<span class="tooltipBulle">Puissance du ventilateur d'extraction des fumées</span>
+			<span id="extr-texte"  class='texte-bulle'></span>
+		</div>
+		<span class='tooltipContainer fumee-bulle'>
+			<span class="tooltipBulle">Température des fumées</span>
+			<span id="fumee-texte" class='texte-bulle'></span>
+		</span>
+	
+		<span class='tooltipContainer Tchaud-bulle'>
+			<span class="tooltipBulle">Température de l'eau</span>
+			<span id="Tchaud-texte" class='texte-bulle'></span>
+		</span>
+	
+		<span class='tooltipContainer puiss-bulle'>
+			<span class="tooltipBulle">Puissance</span>
+			<span id="puiss-texte"  class='texte-bulle'></span>
+		</span>
         
-        <span class='fumee-bulle'>
-            <span class="tooltip-general tooltip"><a>Température des fumées</a></span>
-            <span id="fumee-texte" class='texte-bulle'></span>
-        </span>
-        
-        <span class='Tchaud-bulle'>
-            <span class="tooltip-general tooltip"><a>Température de l'eau</a></span>
-            <span id="Tchaud-texte" class='texte-bulle'></span>
-        </span>
-        
-        <span class='puiss-bulle'>
-            <span class="tooltip-general tooltip"><a>Puissance</a></span>
-            <span id="puiss-texte"  class='texte-bulle'></span>
-        </span>
-        
-        <span class='maison-bulle'>
-            <span id="tooltip_Tint" class="tooltip"><a>Température intérieur</a></span>
-            <span id="Tint-texte"   class='maison-Tint-texte'></span>
-            <span id="tooltip_Text" class="tooltip"><a>Température extérieur</a></span>
-            <span id="Text-texte"   class='maison-Text-texte'></span>
-			<span id="tooltip_chauffage" class=" tooltip"><a>température de départ chauffage</a></span>
-			<span id="radiateur-texte" class='radiateur-texte'></span>
-			<span id="pompe-radiat" class='pompeOFF'></span>
+        <div class='maison-bulle'>
+			<div class='tooltipContainer maison-Tint-texte'>
+				<div id="Tint-texte" ></div>	
+				<span class="tooltipMaison">Température intérieure</span>
+			</div>
+			<div class='tooltipContainer maison-Text-texte'>
+				<span id="Text-texte"></span>
+				<span class="tooltipMaison">Température extérieure</span>
+			</div>
+			<div class='tooltipContainer radiateur-texte'>
+				<span id="radiateur-texte"></span>
+				<span class="tooltipMaison">température de départ chauffage</span>
+			</div>
 
-			<span id="ballonECS-bulle" class='hidden'>
-				<span class="tooltip-general tooltip"><a>Ballon ECS</a></span>
-				<span id="ballonECS-texte"   class='BallonECS-texte'></span>
-				<span id="pompe-ECS" class='pompeOFF'></span>
-				<span id="tuyau-ECS" class='tuyau-ECS'></span>				
+			<span id="pompe-radiat" class='tooltipContainer pompeOFF'>
+				<span class="tooltipBulle">pompe radiateur</span>
 			</span>
-        </span>
+			<div id="ballonECS-bulle" class='hidden'>
+				<span id="tuyau-ECS" class='tuyau-ECS'></span>				
+				<span id="ballonECS-texte"   class='BallonECS-texte'></span>
+				<div id="pompe-ECS" class='tooltipContainer pompeOFF'>
+					<span class="tooltipBulle">pompe ECS</span>
+				</div>
+			</div>
+        </div>
 
-        <span id="silo-bulle" class='silo-bulle'>
-            <span class="tooltip-general tooltip"><a>quantité de granulés restant</a></span>
-            <span id="silo-texte"   class='silo-texte'></span>
-            <img id="silo" src="img/Silo-textile-GWTS-XXL2.png"></img>
-        </span>
+		<span id="silo-bulle" class='silo-bulle'>
+			<span class='tooltipContainer'>
+				<span class="tooltipBulle">quantité de granulés restant</span>
+				<span id="silo-texte"   class='silo-texte'></span>
+				<img id="silo" src="img/Silo-textile-GWTS-XXL2.png"></img>
+			</span>
+		</span>
 
-
-        <span class='bois-bulle'>
-            <span class="tooltip-general tooltip"><a>pourcentage d'amené de la vis à granulé</a></span>
-            <span id="bois-texte"   class='texte-bulle'></span>
-        </span>
+		<span class='tooltipContainer bois-bulle'>
+			<span class="tooltipBulle">pourcentage d'amené de la vis à granulé</span>
+			<span id="bois-texte"   class='texte-bulle'></span>
+		</span>
 	</div>
 
 	<div id='tableau' class="hidden" >  

@@ -1,15 +1,16 @@
 <?php
 // appelé par ajax, reçoit 1 journée en parametre et renvoi les series de data
 require_once("conf/config.inc.php");
+require_once("conf/settings.inc.php");
  
 
 	header("Content-type: text/json");
 
     $param =  $_GET["channel"];
     $jour = date('Y-m-d', $param/1000); # /1000 car le timestamp php est en seconde et javascript en ms
-    
 
-$query = "SELECT dateB,c23,c21,c3,c6,c138,c134,c56 FROM data
+//$query = "SELECT dateB,c23,c21,c3,c6,c138,c134,c56 FROM data
+$query = "SELECT $json_conso_jour_chanel FROM data
           WHERE dateB BETWEEN '".$jour."' AND '".$jour."' + INTERVAL 1 DAY";
 
 	$conn = mysqli_connect ($hostname, $username, $password, $database); 

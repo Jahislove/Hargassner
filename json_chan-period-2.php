@@ -84,6 +84,7 @@ require_once("conf/config.inc.php");
 			$prev = $data[21];
 		}
 		$liste21[] = [$dateD, $data[22]];
+		$liste22[] = [$dateD, $data[23]/4]; // temps pour decendrage /4 pour reduire hauteur du graphe
 		
 		//pour calcul puissance moyenne on n'utilise que la periode ou "chaudiere doit" est > 0 
 		if ( $data[5] > 0 ) {  
@@ -124,6 +125,7 @@ require_once("conf/config.inc.php");
     $liste19['data'] = array_reverse($liste19['data']);// est un objet
     $liste20['data'] = array_reverse($liste20['data']);// est un objet
 	$liste21 = array_reverse($liste21);
+	$liste22 = array_reverse($liste22);
 
 	//calcul puissance moyenne sur la journee
 	$Pmoy2 = array_sum(array_column($liste2, 1))/count(array_column($liste2, 1));
@@ -133,6 +135,6 @@ require_once("conf/config.inc.php");
 	$PmoyFonc = round($Pmoy3, 0);
 	
 	
-    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13,$liste14,$liste15,$liste16,$liste17,$liste18,$liste19,$liste20,$liste21,$PmoyJour,$PmoyFonc];
+    $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13,$liste14,$liste15,$liste16,$liste17,$liste18,$liste19,$liste20,$liste21,$liste22,$PmoyJour,$PmoyFonc];
     echo json_encode($tableau, JSON_NUMERIC_CHECK);
 ?>

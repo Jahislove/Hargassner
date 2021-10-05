@@ -1,44 +1,24 @@
 /** main.css **/
 @CHARSET "UTF-8";
-
 *{
 	margin:auto;
 	padding:0;
 }
-
-html{
-	/**background:url('../img/bg_tile.jpg') #333d43;**/
-}
-
 body{
-	/**background:url('../img/bg_head.jpg') repeat-x top center, url('../img/bg_tile.jpg') repeat-x; **/
 	min-height:500px;
-    /* width: 1280px; */
-	/* font:14px/1.3 'Cabin Condensed',Arial, sans-serif; */
     font: 20px/1 Nunito,Arial,sans-serif;
-	/*color: #888;
-	/* padding:10px; */
 }
-
-/* p{
-    margin: 0 0 0 250px;
-}
- */
 h1,h2{
-/* 	color: #fff; */
  	line-height: 1;
-/*	background-color: #222; */
 	font-family: Cabin Condensed,Arial,sans-serif;
 	font-weight: normal;
 	margin: 0 auto;
-/*	position: absolute; 
-	left: 10%;
- 	margin-left: -180px; */
 }
 
 p {
     padding: 20px;
-    width : 500px;
+	margin:  auto;
+    width : 550px;
 }
 
 h1{
@@ -54,17 +34,19 @@ h2{
 	padding: 4px 13px 9px 11px;
 	top: 51px;
 }
-
-/* header{
-	display:block;
-	position:relative;
-} */
+object{
+	display: block;
+    width: 1200px;
+    height: 1000px;
+	margin:  auto;
+	background-color: #f0f0f0;
+}
 
 nav{
 	display: block;
 	margin: 2px auto 0;
 	text-align: center;
-	width: 900px;
+	width: 950px;
 
 }
 
@@ -366,6 +348,13 @@ a:hover{
 	background-position: 100% ; 
 }
 
+/* #tooltipModeCommand{ */
+  /* display : block; */
+  /* width: 200px; */
+/* } */
+
+
+
 /**************************************************************************************************/	
 /******************* graphiques ******************************************************************/	
 /**************************************************************************************************/	
@@ -449,10 +438,6 @@ a:hover{
 /*************************************************************************************************/	
 /********tableau pour le dessin ********************************************************************/	
 #tableau_dessin {
-/*  border: 0px;
-    border-collapse:collapse;
-    padding:0px; 
-    font-size: 0; */
     width: 1073px;
     height: 801px;
     margin: auto; 
@@ -852,12 +837,12 @@ a:hover{
 	top: -50px;
     width: 446px;
 	height: 600px;
-	display: inline-block;
+	display: block;
 	background: url("../img/maison.png") no-repeat;
 }
 	#pompe-radiat {
 		position: absolute;
-		z-index: 2;
+		z-index: 3;
 		left: 60px;
 		top: 260px;
 		width: 100px;
@@ -951,41 +936,47 @@ a:hover{
 
 	/*** TEXTE BULLE*************************/
 .texte-bulle {
-    position: relative;
-	display: block;
-    z-index: 3;
-    top: 115px;
+    position: absolute;
+	display: inline-block;
+    z-index: 5;
+    top: 110px;
+	left: 185px;
     font-size: 40px ;
     text-align: center;
 }
-.radiateur-texte {
-    position: relative;
-	display: block;
-    z-index: 3;
-    top: 165px;
-    left: 75px;
-    font-size: 20px ;
-}
 .BallonECS-texte {
-    position: relative;
+    position: absolute;
 	display: block;
     z-index: 3;
     top: 100px;
     left: 200px;
+	width: 40px;
     font-size: 20px ;
 }
 .maison-Tint-texte {
-    position: relative;
-    z-index: 3;
+    z-index: 4;
     left: 125px;
     top: 110px;
+    width: 60px;
+	height: 20px;
     font-size: 20px ;
 }
 .maison-Text-texte {
-    position: relative;
     z-index: 3;
-    left: 155px;
+    left: 215px;
     top: 15px;
+    width: 60px;
+	height: 20px;
+    font-size: 20px ;
+}
+.radiateur-texte {
+    position: relative;
+	/* display: block; */
+    z-index: 4;
+    top: 185px;
+    left: 75px;
+    width: 60px;
+	height: 20px;
     font-size: 20px ;
 }
 .silo-texte {
@@ -993,12 +984,25 @@ a:hover{
     position: absolute;
     z-index: 0;
     left: 230px;
+	top: 145px;
     bottom: 70px;
     width: 140px;
     height: 163px;
 	display: inline-block;
   /* background: url("../img/Silo-textile-GWTS-XXL2.png") no-repeat; */
-
+}
+/* .pompe-radiat { */
+	/* position: relative; */
+	/* z-index: 3; */
+	/* left: 60px; */
+	/* top: 260px; */
+	/* width: 100px; */
+	/* height: 135px; */
+/* } */
+#bois-texte {
+    left: 160px;
+    top: 87px;
+	font-size: 33px;
 }
 #silo {
     position: absolute;
@@ -1009,60 +1013,106 @@ a:hover{
     height: 200px;
 }
 /*** TOOLTIP ********************************/
-#tooltip_Tint { /* zone de survol*/
-    position: absolute;
-    left: 70px;
-	top: 90px;
-    width: 140px;
-	height: 60px;
-    z-index: 5;
-}
-#tooltip_Text { /* zone de survol*/
-    position: absolute;
-    left: 150px;
-	top: 0px;
-    width: 140px;
-	height: 60px;
-    z-index: 7;
-}
-#tooltip_chauffage { /* zone de survol*/
-    position: absolute;
-    left: 70px;
-	top: 170px;
-    width: 140px;
-	height: 60px;
-    z-index: 6;
-}
-.tooltip-general { /* zone de survol*/
-    position: absolute;
-    left: 130px;
-	top: 45px;
-    width: 185px;
-	height: 120px;
-    z-index: 5;
-}
-.tooltip  a{
-    display:none;
-}
-.tooltip:hover a{ /* tooltip */
-    display : block;
-    text-decoration:none ;
-    border-radius: 20px;
-    position: relative;
-    text-align: center;
-    line-height: 50px;
-    color: black;
-    left: -50px;
-	top: -50px;
-    width: 400px;
-	height: 50px;
-    background: linear-gradient(white,red);
-    /* background:url("../img/nano-E2.png") no-repeat;   */
-    animation: pop-tooltip 1s ; 
-}
+
 @keyframes pop-tooltip {
     0%  { transform: scale(0.1); }
     60%  { transform: scale(1); }
     80%  { transform: scale(0.9); }
     100%{ transform: scale(1); }
+}
+/* Tooltip container */
+.tooltipContainer {
+  position: absolute;
+}
+/* Tooltip text + position*/
+.tooltipContainer .tooltipMaison { /*div maison*/
+  visibility: hidden;
+  position: relative;
+  display : block;
+  width: 200px;
+  background-color: grey;
+  color: #fff;
+  text-align: center;
+  border-radius: 50px;
+  padding: 15px ;
+  top: -90px;
+  left: -80px;
+  z-index: 10;
+}
+.tooltipContainer .tooltipBulle {/*bulles*/
+  visibility: hidden;
+  position: relative;
+  display : block;
+  width: 200px;
+  background-color: grey;
+  color: #fff;
+  text-align: center;
+  border-radius: 50px;
+  padding: 20px ;
+  margin: auto;
+  top: 30px;
+  z-index: 10;
+}
+.tooltipContainer .tooltipEtat {
+  position: relative;
+  display : block;
+  visibility: hidden;
+  width: 200px;
+  top: 40px;
+  left: -30px;
+  background-color: grey;
+  color: #fff;
+  text-align: center;
+  border-radius: 50px;
+  padding: 30px 0;
+  position: absolute;
+  z-index: 10;
+}
+.tooltipContainer:hover .tooltipBulle, .tooltipContainer:hover .tooltipMaison, .tooltipContainer:hover .tooltipEtat{
+  visibility: visible;
+  background: linear-gradient(white,grey);
+  Animation: pop-tooltip 1s ; 
+}
+
+/*** page settings ********************************/
+
+.boutons_radio {
+  width: 500px;
+  height: 600px;
+  border: 1px solid;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 30px 30px;
+  margin: 30px auto auto auto;
+}
+.radio_chauffage, .radio_ECS, .radio_MODE{
+  top: 50px;
+  position: relative;
+  /* width: 400px; */
+  /* Height: 100px; */
+  text-align: left;
+  margin: 0px 30px 40px 0px ;
+}
+.radio_bouton {
+  top: 50px;
+  position: relative;
+  width: 200px;
+  height: 100px;
+  text-align: center;
+}
+input[type=submit]{
+  background-color: grey;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;	
+  transition-duration: 0.4s;
+}
+input[type=submit]:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: #4CAF50; /* Green */
+  color: white;
 }
