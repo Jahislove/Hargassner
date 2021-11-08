@@ -60,8 +60,8 @@ $tooltip_temp = ['valueSuffix' => ' °C',
 // formule pour calculer la position des colonnes (le pointPlacement) en fonction du nombre de saison
 $y = -($nbre_saison - 1)*(1/($nbre_saison*2));
 
-// colors a synchro avec page_3_conso.php / chart3
-$colors_gran = ['rgba(230,126,34,1)','rgba(155,89,182,1)','rgba(41,128,185,1)','rgba(46,204,113,1)','rgba(241,196,15,1)','rgba(213,76,60,1)'];
+// colors pour le chart4 ,a synchro avec page_3_conso.php / chart3
+$colors_gran = ['rgba(230,126,34,1)','rgba(155,89,182,1)','rgba(41,128,185,1)','rgba(46,204,113,1)','rgba(241,196,15,1)','rgba(213,76,60,1)','rgba(230,126,255,1)','rgba(10,126,255,1)','rgba(150,150,150,1)','rgba(0,150,150,1)','rgba(150,150,10,1)'];
 //$colors_temp = ['rgba(230,126,34,0.5)','rgba(155,89,182,0.5)','rgba(41,128,185,0.5)','rgba(46,204,113,0.5)','rgba(241,196,15,0.5)','rgba(213,76,60,0.5)'];
 $j = 0;
 foreach($serie as $annee=>$value){
