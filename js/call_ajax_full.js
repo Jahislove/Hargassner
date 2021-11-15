@@ -220,18 +220,7 @@ $.ajax({
 				document.getElementById('tooltipModeChauff').innerHTML = 'code inconnu';
 		}
 // en cas d'erreur
-		const TabErreur = [];
-		TabErreur[0] = "pas d'erreur";
-		TabErreur[6] = "Le cendrier est plein";
-		TabErreur[7] = "la grille ne s'ouvre pas";
-		TabErreur[27] = "Température de fumées trop basse";
-		TabErreur[29] = "Defaut de combustion, démarrage impossible";
-		TabErreur[32] = "Temps de Remplissage dépassé"	
-		TabErreur[70] = "niveau silo bas"
-		TabErreur[93] = "cendrier ouvert"
-		TabErreur[371] = "Vérifier l'encrassement du foyer, nettoyer si nécessaire"
-		TabErreur[7101] = "Temps Maxi de charge du Ballon dépassé. Contrôler les heures, la sonde, la pompe"
-
+// la liste des erreurs est contenue dans TabErreur (js/codes_erreurs.js)
         document.getElementById('erreurNumber').innerHTML = chanel['erreur'];
         switch(chanel['erreur']) { 
 			case 0: 
