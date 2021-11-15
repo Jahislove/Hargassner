@@ -1,4 +1,5 @@
 // appel ajax et rafraichissement des données
+
 function call_ajax() {
 $.ajax({
     url: 'json_telnet.php', 
