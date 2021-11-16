@@ -131,6 +131,7 @@ switch ($firmware) {
 	case '14j':
 	case '14k':
 	case '14l':
+	case '14m':
 	default:
 		$depart_chauffage = array( 
 			'zone1' => ['est' => 56, 'doit' => 57, 'modeChauff' => 60, 'Tint' => 58],
@@ -180,6 +181,7 @@ switch ($firmware) {
 			'modeChauff'=> $data[$mode_chauff[$zone_mode_chauffage]['modeChauff']],
 			'modeCommand'=> $data[61],
 			'consoHeure'=> $consoHeure, // conso granulé par heure
+			'erreur' 	=> $data[49],
 		);
 }	
 

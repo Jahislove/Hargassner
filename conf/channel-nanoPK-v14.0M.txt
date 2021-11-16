@@ -1,0 +1,146 @@
+<ANALOG>
+CHANNEL id='0' name='ZK' unit=''/					c0
+CHANNEL id='1' name='O2' unit='%'/					c1
+CHANNEL id='2' name='O2soll' unit='%'/				c2
+CHANNEL id='3' name='TK' unit='°C'/					c3
+CHANNEL id='4' name='TKsoll' unit='°C'/				c4
+CHANNEL id='5' name='TRG' unit='°C'/				c5
+CHANNEL id='6' name='SZist' unit='%'/				c53
+CHANNEL id='7' name='SZsoll' unit='%'/				c52
+CHANNEL id='8' name='Leistung' unit='%'/			c134
+CHANNEL id='9' name='ESsoll' unit='%'/				c56
+CHANNEL id='10' name='I Es' unit='mA'/				c57
+CHANNEL id='11' name='I Ra' unit='mA'/				c58
+CHANNEL id='12' name='I Aa' unit='mA'/				c59
+CHANNEL id='13' name='I Sr' unit='mA'/				c60
+CHANNEL id='14' name='I Rein' unit='mA'/			c61
+CHANNEL id='15' name='Taus' unit='°C'/				c6
+CHANNEL id='16' name='TA Gem.' unit='°C'/			c7
+CHANNEL id='17' name='TPo' unit='°C'/				c8
+CHANNEL id='18' name='TPmo' unit='°C'/				c178
+CHANNEL id='19' name='TPm' unit='°C'/				c9
+CHANNEL id='20' name='TPmu' unit='°C'/				c179
+CHANNEL id='21' name='TPu' unit='°C'/				c10
+CHANNEL id='22' name='TFW' unit='°C'/				c11
+CHANNEL id='23' name='TRL' unit='°C'/				c12
+CHANNEL id='24' name='TRLsoll' unit='°C'/			c13
+CHANNEL id='25' name='Tplat' unit='°C'/				c15
+CHANNEL id='26' name='BRT' unit='°C'/				c129
+CHANNEL id='27' name='Regler K' unit=''/			c160
+CHANNEL id='28' name='KeBrstScale' unit='%'/		c54
+CHANNEL id='29' name='ESRegler' unit='%'/			c55
+CHANNEL id='30' name='BLDC_ES ist' unit='rpm'/		c116
+CHANNEL id='31' name='BLDC_ES soll' unit='rpm'/		c117
+CHANNEL id='32' name='LZ ES seit Füll.' unit='Min'/	c112
+CHANNEL id='33' name='LZ ES seit Ent.' unit='Min'/	c111
+CHANNEL id='34' name='Anzahl Entasch.' unit=''/		c113
+CHANNEL id='35' name='Anzahl SR Beweg.' unit=''/	c114
+CHANNEL id='36' name='Heiz P Lambda' unit='W'/		c154
+CHANNEL id='37' name='Heiz U Lambda' unit='V'/		c130
+CHANNEL id='38' name='Heiz I Lambda' unit='mA'/		c136
+CHANNEL id='39' name='Sens U Lambda' unit='mV'/		c62
+CHANNEL id='40' name='PuffZustand' unit=''/			c95
+CHANNEL id='41' name='Puffer_soll' unit='°C'/		c96
+CHANNEL id='42' name='Puff Füllgrad' unit='%'/		c180
+CHANNEL id='43' name='max.Leist.P3F.HT' unit='%'/	c177
+CHANNEL id='44' name='Spreizung' unit='°C'/			c176
+CHANNEL id='45' name='AIN17' unit='V'/				c128
+CHANNEL id='46' name='Lagerstand' unit='kg'/		c115
+CHANNEL id='47' name='Verbrauchszähler' unit='kg'/	c99
+CHANNEL id='48' name='UsePos' unit=''/				c81
+CHANNEL id='49' name='Störungs Nr' unit=''/			c97
+CHANNEL id='50' name='TVL_A' unit='°C'/				c16
+CHANNEL id='51' name='TVLs_A' unit='°C'/			c17
+CHANNEL id='52' name='TRA_A' unit='°C'/				c137
+CHANNEL id='53' name='TRs_A' unit='°C'/				c45
+CHANNEL id='54' name='HKZustand_A' unit=''/			c84
+CHANNEL id='55' name='FRA Zustand' unit=''/			c100
+CHANNEL id='56' name='TVL_1' unit='°C'/				c21
+CHANNEL id='57' name='TVLs_1' unit='°C'/			c23
+CHANNEL id='58' name='TRA_1' unit='°C'/				c138
+CHANNEL id='59' name='TRs_1' unit='°C'/				c46
+CHANNEL id='60' name='HKZustand_1' unit=''/			c85
+CHANNEL id='61' name='FR1 Zustand' unit=''/			c101
+CHANNEL id='62' name='TVL_2' unit='°C'/				c22
+CHANNEL id='63' name='TVLs_2' unit='°C'/			c24
+CHANNEL id='64' name='TRA_2' unit='°C'/				c139
+CHANNEL id='65' name='TRs_2' unit='°C'/				c47
+CHANNEL id='66' name='HKZustand_2' unit=''/			c86
+CHANNEL id='67' name='FR2 Zustand' unit=''/			c102
+CHANNEL id='68' name='TVL_3' unit='°C'/				c29
+CHANNEL id='69' name='TVLs_3' unit='°C'/			c31
+CHANNEL id='70' name='TRA_3' unit='°C'/				c140
+CHANNEL id='71' name='TRs_3' unit='°C'/				c48
+CHANNEL id='72' name='HKZustand_3' unit=''/			c87
+CHANNEL id='73' name='FR3 Zustand' unit=''/			c103
+CHANNEL id='74' name='TVL_4' unit='°C'/				c30
+CHANNEL id='75' name='TVLs_4' unit='°C'/			c32
+CHANNEL id='76' name='TRA_4' unit='°C'/				c141
+CHANNEL id='77' name='TRs_4' unit='°C'/				c49
+CHANNEL id='78' name='HKZustand_4' unit=''/			c88
+CHANNEL id='79' name='FR4 Zustand' unit=''/			c104
+CHANNEL id='80' name='TVL_5' unit='°C'/				c37
+CHANNEL id='81' name='TVLs_5' unit='°C'/			c39
+CHANNEL id='82' name='TRA_5' unit='°C'/				c142
+CHANNEL id='83' name='TRs_5' unit='°C'/				c50
+CHANNEL id='84' name='HKZustand_5' unit=''/			c89
+CHANNEL id='85' name='FR5 Zustand' unit=''/			c105
+CHANNEL id='86' name='TVL_6' unit='°C'/				c38
+CHANNEL id='87' name='TVLs_6' unit='°C'/			c40
+CHANNEL id='88' name='TRA_6' unit='°C'/				c143
+CHANNEL id='89' name='TRs_6' unit='°C'/				c51
+CHANNEL id='90' name='HKZustand_6' unit=''/			c90
+CHANNEL id='91' name='FR6 Zustand' unit=''/			c106
+CHANNEL id='92' name='TBA' unit='°C'/				c19
+CHANNEL id='93' name='TBs_A' unit='°C'/				c20
+CHANNEL id='94' name='DUMMY' unit=''/				c91
+CHANNEL id='95' name='TB1' unit='°C'/				c27
+CHANNEL id='96' name='TBs_1' unit='°C'/				c28
+CHANNEL id='97' name='DUMMY' unit=''/				c92
+CHANNEL id='98' name='TB2' unit='°C'/				c35
+CHANNEL id='99' name='TBs_2' unit='°C'/				c36
+CHANNEL id='100' name='DUMMY' unit=''/				c184
+CHANNEL id='101' name='TB3' unit='°C'/				c43
+CHANNEL id='102' name='TBs_3' unit='°C'/			c44
+CHANNEL id='103' name='DUMMY' unit=''/				c94
+CHANNEL id='104' name='Ext.HK Soll' unit=''/		c107
+CHANNEL id='105' name='Ext.HK Soll_2' unit=''/		c108
+CHANNEL id='106' name='Ext.HK Soll_3' unit=''/		c109
+CHANNEL id='107' name='Höchste Anf' unit=''/		c110
+CHANNEL id='108' name='Anf. HKR0' unit='°C'/		c168
+CHANNEL id='109' name='Anf. HKR1' unit='°C'/		c146
+CHANNEL id='110' name='Anf. HKR2' unit='°C'/		c147
+CHANNEL id='111' name='Anf. HKR3' unit='°C'/		c148
+CHANNEL id='112' name='Anf. HKR4' unit='°C'/		c149
+CHANNEL id='113' name='Anf. HKR5' unit='°C'/		c150
+CHANNEL id='114' name='Anf. HKR6' unit='°C'/		c151
+CHANNEL id='115' name='Anf. HKR7' unit='°C'/		c152
+CHANNEL id='116' name='Anf. HKR8' unit='°C'/		c153
+CHANNEL id='117' name='Anf. HKR9' unit='°C'/		c169
+CHANNEL id='118' name='Anf. HKR10' unit='°C'/		c170
+CHANNEL id='119' name='Anf. HKR11' unit='°C'/		c171
+CHANNEL id='120' name='Anf. HKR12' unit='°C'/		c172
+CHANNEL id='121' name='Anf. HKR13' unit='°C'/		c173
+CHANNEL id='122' name='Anf. HKR14' unit='°C'/		c174
+CHANNEL id='123' name='Anf. HKR15' unit='°C'/		c175
+CHANNEL id='124' name='T Spülung' unit='°C'/		c73
+CHANNEL id='125' name='Programm HKM1' unit=''/		c74
+CHANNEL id='126' name='Programm HKM2' unit=''/		c75
+CHANNEL id='127' name='TVG' unit='°C'/				c76
+CHANNEL id='128' name='DUMMY' unit=''/				c77
+CHANNEL id='129' name='DUMMY' unit=''/				c78
+CHANNEL id='130' name='U Netzteil' unit='mV'/		c79
+CHANNEL id='131' name='TBB' unit='°C'/				c80
+CHANNEL id='132' name='TBs_B' unit='°C'/			c118
+CHANNEL id='133' name='DUMMY' unit=''/				c119
+CHANNEL id='134' name='TVL_B' unit='°C'/			c120
+CHANNEL id='135' name='TVLs_B' unit='°C'/			c165
+CHANNEL id='136' name='TRB' unit='°C'/				c166
+CHANNEL id='137' name='TRs_B' unit='°C'/			c167
+CHANNEL id='138' name='HKZustand_B' unit=''/		c186
+CHANNEL id='139' name='TRA_B' unit='°C'/			c187
+CHANNEL id='140' name='FRB Zustand' unit=''/		c188	
+CHANNEL id='141' name='Programm' unit=''/			c121
+CHANNEL id='142' name='Anf. EHK Spg' unit='V'/		c122
+CHANNEL id='143' name='BoiZustand_2' unit=''/		c93
+/ANALOG

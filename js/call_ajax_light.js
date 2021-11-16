@@ -1,4 +1,5 @@
 // appel ajax et rafraichissement des données
+
 function call_ajax() {
 $.ajax({
     url: 'json_telnet.php', 
@@ -101,6 +102,10 @@ $.ajax({
 				document.getElementById('modeChauff').className = 'modeCommandArret';
 				document.getElementById('tooltipModeChauff').innerHTML = 'Mode arrêt';
 				break;
+			case 5: 
+				document.getElementById('modeChauff').className = 'modeCommandArret';
+				document.getElementById('tooltipModeChauff').innerHTML = 'Arrêt sur temp ext';
+				break;
 			case 9: 
 				document.getElementById('modeChauff').className = 'modeCommandArret';
 				document.getElementById('tooltipModeChauff').innerHTML = 'arrêt en cours';
@@ -109,6 +114,23 @@ $.ajax({
 				document.getElementById('modeChauff').innerHTML = chanel['modeChauff'];
 				document.getElementById('tooltipModeChauff').innerHTML = 'code inconnu';
 		}
+// en cas d'erreur
+// la liste des erreurs est contenue dans TabErreur (js/codes_erreurs.js)
+        document.getElementById('erreurNumber').innerHTML = chanel['erreur'];
+        switch(chanel['erreur']) { 
+			case 0: 
+				document.getElementById('erreurText').innerHTML = TabErreur[chanel['erreur']];
+				document.getElementById('erreur').className = 'erreur erreurNonVisible';
+				break;
+            default:
+				document.getElementById('erreur').className = 'erreur erreurVisible';
+				if (typeof TabErreur[chanel['erreur']] == 'undefined') {
+					document.getElementById('erreurText').innerHTML = "erreur inconnue";
+				}else{
+					document.getElementById('erreurText').innerHTML = TabErreur[chanel['erreur']];
+				}
+                break;
+        }
     },
 });
 };

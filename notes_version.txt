@@ -3,6 +3,10 @@
 *** Auteur : Jahislove
 *** GPL-3.0-or-later
 ************************************************************************/
+v3.3	05/10/2021
+	prise en charge du firmware 14.0M
+	ajout bandeau d'affichage des code erreurs (peu d'erreurs recensées pour l'instant) en cas d'alarme
+	
 v3.2	03/03/2021
 	ajout page "Reglages" pour prise en compte de 3 zones de chauffage et 3 ballons ECS
 	prise en charge du firmware 14.0l

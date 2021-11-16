@@ -30,20 +30,20 @@ les differentes valeurs d'etat (chanel 0)
 ================================================================================================
 
 
-colonne c0	 name=	ZK	             unit=		etat chaudiere
-colonne c1	 name=	O2	             unit=	%	O2 est
-colonne c2	 name=	O2soll	         unit=	%	O2 doit                              
-colonne c3	 name=	TK	             unit=	°C	temperature chaudiere est 
-colonne c4	 name=	TKsoll	         unit=	°C	temperature chaudiere doit
-colonne c5	 name=	TRG	             unit=	°C	temperature fumees
-colonne c6	 name=	Taus	         unit=	°C	temperature exterieur
-colonne c7	 name=	TA Gem.	         unit=	°C	temperature exterieur moyenne
-colonne c8	 name=	TPo	             unit=	°C	sonde BT haut
+COLONNE c0	 name=	ZK	             unit=		etat chaudiere
+COLONNE c1	 name=	O2	             unit=	%	O2 est
+COLONNE c2	 name=	O2soll	         unit=	%	O2 doit                              
+COLONNE c3	 name=	TK	             unit=	°C	temperature chaudiere est 
+COLONNE c4	 name=	TKsoll	         unit=	°C	temperature chaudiere doit
+COLONNE c5	 name=	TRG	             unit=	°C	temperature fumees
+COLONNE c6	 name=	Taus	         unit=	°C	temperature exterieur
+COLONNE c7	 name=	TA Gem.	         unit=	°C	temperature exterieur moyenne
+COLONNE c8	 name=	TPo	             unit=	°C	sonde BT haut
 colonne c9	 name=	TPm	             unit=	°C	sonde BT milieu
 colonne c10	 name=	TPu	             unit=	°C	sonde BT bas
 colonne c11	 name=	TFW	             unit=	°C	
-colonne c12	 name=	TRL	             unit=	°C	température retour après mélangeur
-colonne c13	 name=	TRLsoll     	 unit=	°C	???température retour après mélangeur doit 
+COLONNE c12	 name=	TRL	             unit=	°C	température retour après mélangeur
+COLONNE c13	 name=	TRLsoll     	 unit=	°C	???température retour après mélangeur doit 
 colonne c14	 name=	RLP	             unit=	%	
 colonne c15	 name=	Tplat	         unit=	°C	Temp platine???
 colonne c16	 name=	TVL_A	         unit=	°C	
@@ -51,13 +51,13 @@ colonne c17	 name=	TVLs_A	         unit=	°C
 colonne c18	 name=	TRA	             unit=	°C	
 colonne c19	 name=	TBA	             unit=	°C	
 colonne c20	 name=	TBs_A	         unit=	°C	
-colonne c21	 name=	TVL_1	         unit=	°C	temperature depart chauffage est 
-colonne c22	 name=	TVL_2	         unit=	°C	
-colonne c23	 name=	TVLs_1	         unit=	°C	temperature depart chauffage doit 
-colonne c24	 name=	TVLs_2	         unit=	°C	
+COLONNE c21	 name=	TVL_1	         unit=	°C	temperature depart chauffage est 
+COLONNE c22	 name=	TVL_2	         unit=	°C	
+COLONNE c23	 name=	TVLs_1	         unit=	°C	temperature depart chauffage doit 
+COLONNE c24	 name=	TVLs_2	         unit=	°C	
 colonne c25	 name=	TR1	             unit=	°C	??? 18
 colonne c26	 name=	TR2	             unit=	°C	??? 20
-colonne c27	 name=	TB1	             unit=	°C	temperature Ballon ECS est
+COLONNE c27	 name=	TB1	             unit=	°C	temperature Ballon ECS est
 colonne c28	 name=	TBs_1	         unit=	°C	temperature Ballon ECS doit
 colonne c29	 name=	TVL_3	         unit=	°C	
 colonne c30	 name=	TVL_4	         unit=	°C	
@@ -83,10 +83,10 @@ colonne c49	 name=	TRs_4	         unit=	°C
 colonne c50	 name=	TRs_5	         unit=	°C	
 colonne c51	 name=	TRs_6	         unit=	°C	
 colonne c52	 name=	SZs	             unit=	%	vitesse extracteur doit
-colonne c53	 name=	SZ	             unit=	%	vitesse extracteur
-colonne c54	 name=	KeBrstScale	     unit=	%	variable F 
+COLONNE c53	 name=	SZ	             unit=	%	vitesse extracteur
+COLONNE c54	 name=	KeBrstScale	     unit=	%	variable F 
 colonne c55	 name=	ESRegler    	 unit=	%	regulateur bois ???
-colonne c56	 name=	ESsoll	         unit=	%	bois = %air(134) x %F(54) x %K(160)
+COLONNE c56	 name=	ESsoll	         unit=	%	bois = %air(134) x %F(54) x %K(160)
 colonne c57	 name=	I Es	         unit=	mA	conso vis bois
 colonne c58	 name=	I Ra	         unit=	mA	pilotage vanne 3 voies 0 ou 3
 colonne c59	 name=	I Aa	         unit=	mA	pilotage vanne 3 voies 0 ou 3
@@ -115,14 +115,14 @@ colonne c81	 name=	UsePos	         unit=
 colonne c82	 name=	UseMotSoll	     unit=	mm	
 colonne c83	 name=	UseMotIst	     unit=	mm	
 colonne c84	 name=	HKZustand_A	     unit=		
-colonne c85	 name=	HKZustand_1	     unit=	mode de chauffage => 0 été /1 confort /3 reduit/4 arret /9 en cours d'arret /
+COLONNE c85	 name=	HKZustand_1	     unit=	mode de chauffage => 0 été /1 confort /3 reduit/4 arret /9 en cours d'arret /
 colonne c86	 name=	HKZustand_2	     unit=		
 colonne c87	 name=	HKZustand_3	     unit=		
 colonne c88	 name=	HKZustand_4	     unit=		
 colonne c89	 name=	HKZustand_5	     unit=		
 colonne c90	 name=	HKZustand_6	     unit=		
 colonne c91	 name=	BoiZustand_A	 unit=		
-colonne c92	 name=	BoiZustand_1	 unit=	Ballon ECS 0:off , 1:charge, 2:recyclage 	
+COLONNE c92	 name=	BoiZustand_1	 unit=	Ballon ECS 0:off , 1:charge, 2:recyclage 	
 colonne c93	 name=	BoiZustand_2	 unit=		
 colonne c94	 name=	BoiZustand_3	 unit=		
 colonne c95	 name=	PuffZustand	     unit=	etat BT 3:charge 2:decharge	
@@ -130,15 +130,21 @@ colonne c96	 name=	Puffer_soll	     unit=	Temp BT doit
 colonne c97	 name=	Mode Fw	         unit=	erreur en cours :
 											 6 = Le cendrier est trop plein
 											 7 = la grille ne s'ouvre pas
+											 9 = Surintensité nettoyage échangeur
+											15 = Sonde Ballon 1 coupée
 											27 = Température de fumées trop basse
+											29 = Defaut de combustion, démarrage impossible
 											32 = Temps de Remplissage dépassé,	
+											70 = niveau silo bas
 											93 = cendrier ouvert
+											229= Nettoyer/Contrôler le détecteur de niveau de granulés
 											371= Vérifier l'encrassement du foyer, nettoyer si nécessaire
-											7101= Temps Maxi de charge du Ballon dépassé. Contrôler la position de la sonde, et l'irrigation par la pompe
+											7101= Temps Maxi de charge du Ballon dépassé. Contrôler la position de la sonde, et le débit de la pompe
+											65402 = Impossible d'ouvrir la connexion au serveur Web
 colonne c98	 name=	Einschubschn.BSZ unit=		heures vis entree chaudiere 
-colonne c99	 name=	Verbrauchszähler unit=	kg	consommation pellet
+COLONNE c99	 name=	Verbrauchszähler unit=	kg	consommation pellet
 colonne c100	 name=	FRA Zustand	     unit=		
-colonne c101	 name=	FR1 Zustand	     unit=	mode de commande => 1:  programmé, 2 reduit forcé, 3 confort forcé, 4 ?, 5 soirée , 6 absence brève
+COLONNE c101	 name=	FR1 Zustand	     unit=	mode de commande => 1:  programmé, 2 reduit forcé, 3 confort forcé, 4 ?, 5 soirée , 6 absence brève
 colonne c102	 name=	FR2 Zustand	     unit=		
 colonne c103	 name=	FR3 Zustand	     unit=		
 colonne c104	 name=	FR4 Zustand	     unit=		
@@ -148,11 +154,11 @@ colonne c107	 name=	Ext.HK Soll	     unit=
 colonne c108	 name=	Ext.HK Soll_2	 unit=		
 colonne c109	 name=	Ext.HK Soll_3	 unit=		
 colonne c110	 name=	Höchste Anf	     unit=		temp depart chaudiere doit
-colonne c111	 name=	LZ LB seit Ent.	 unit=	Min	temps combustion est (pour decendrage ?)
-colonne c112	 name=	LZ ES seit Füll. unit=	Min	temps vis pour aspiration est ?(proportionnel a la conso granulé)
+COLONNE c111	 name=	LZ LB seit Ent.	 unit=	Min	temps combustion est (pour decendrage ?)
+COLONNE c112	 name=	LZ ES seit Füll. unit=	Min	temps vis pour aspiration est ?(proportionnel a la conso granulé)
 colonne c113	 name=	Anzahl Entasch.	 unit=		nombre decendrage
-colonne c114	 name=	Anzahl SR Beweg. unit=		mouvement grille
-colonne c115	 name=	Lagerstand	     unit=	kg	pellet restant
+COLONNE c114	 name=	Anzahl SR Beweg. unit=		mouvement grille
+COLONNE c115	 name=	Lagerstand	     unit=	kg	pellet restant
 colonne c116	 name=	KaskLZLeisMin_1	 unit=	Min	
 colonne c117	 name=	KaskLZLeisMin_2	 unit=	Min	
 colonne c118	 name=	KaskLZLeisMin_3	 unit=	Min	
@@ -171,11 +177,11 @@ colonne c130	 name=	IO32 522	     unit=	mV
 colonne c131	 name=	IO32 509	     unit=	mV	
 colonne c132	 name=	IO32 510	     unit=	mV	
 colonne c133	 name=	IO32 517	     unit=	°C	
-colonne c134	 name=	Leistung	     unit=	%	puissance 
+COLONNE c134	 name=	Leistung	     unit=	%	puissance 
 colonne c135	 name=	KasEntaschFreigabe unit=	??? decendrage sup a	
 colonne c136	 name=	I_Lambda    	 unit=	mA	intensite lambda
 colonne c137	 name=	TRA_A	         unit=	°C	
-colonne c138	 name=	TRA_1	         unit=	°C	temperature interieur Z1 FR35
+COLONNE c138	 name=	TRA_1	         unit=	°C	temperature interieur Z1 FR35
 colonne c139	 name=	TRA_2	         unit=	°C	
 colonne c140	 name=	TRA_3	         unit=	°C	
 colonne c141	 name=	TRA_4	         unit=	°C	
@@ -197,7 +203,7 @@ colonne c156	 name=	BSZ_HEIZUNG 	 unit=	h	heures chauffage
 colonne c157	 name=	BSZ_ZUENDUNG	 unit=	h	heures allumages
 colonne c158	 name=	BSZ_SZ	         unit=	h	heures extracteur fumées
 colonne c159	 name=	BSZ_AUSTRAG	     unit=	h	heures extracteur silo
-colonne c160	 name=	Regler K	     unit=		regulateur : K
+COLONNE c160	 name=	Regler K	     unit=		regulateur : K
 colonne c161	 name=	BSZ_HEIZUNG_UPD	 unit=	h	heures chauffage upd
 colonne c162	 name=	BSZ_ZUENDUNGEN	 unit=		??? 50 a l'arret / env 10 en marche
 colonne c163	 name=	BSZ_LEIST_90	 unit=	h	heure puissance > 90%

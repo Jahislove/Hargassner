@@ -1,4 +1,5 @@
 <?php require("header_debut.php"); ?>
+<script type="text/javascript" src="js/codes_erreurs.js">	</script>
 <script type="text/javascript" src="js/call_ajax_light.js">	</script>
 <?php require("header_fin.php"); ?>
     
