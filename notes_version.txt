@@ -3,8 +3,8 @@
 *** Auteur : Jahislove
 *** GPL-3.0-or-later
 ************************************************************************/
-v3.4	16/11/2021
-	en cours
+v3.4	22/12/2021
+	correction bug ECS
 
 v3.3	05/10/2021
 	prise en charge du firmware 14.0M
