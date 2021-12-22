@@ -18,6 +18,11 @@ USE `hargassner`;
 -- creation utilisateur
 -- password par defaut : password
 GRANT USAGE ON *.* TO 'hargassner'@'%' IDENTIFIED BY PASSWORD '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19';
+
+-- password plus complexe si MariaDB l'exige : Password2021!
+-- pensez a mettre ce mot de passe dans conf/config.inc.php
+--GRANT USAGE ON *.* TO 'hargassner'@'%' IDENTIFIED BY PASSWORD '*82225B56CB06634FE2DCB3534FCF3B909B1D7F90';
+
 GRANT ALL PRIVILEGES ON `hargassner`.* TO 'hargassner'@'%';
 
 -- creation de la structure de table hargassner.consommation
