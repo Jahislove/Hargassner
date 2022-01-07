@@ -15,12 +15,13 @@
 CREATE DATABASE IF NOT EXISTS `hargassner` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `hargassner`;
 
--- creation utilisateur
--- password par defaut : password
+-- creation user/utilisateur
+-- simple password default : password
 GRANT USAGE ON *.* TO 'hargassner'@'%' IDENTIFIED BY PASSWORD '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19';
 
--- password plus complexe si MariaDB l'exige : Password2021!
--- pensez a mettre ce mot de passe dans conf/config.inc.php
+-- complex password if MariaDB requires it  : Password2021!
+-- update this password in conf/config.inc.php
+-- uncomment the lign below and comment the one above
 --GRANT USAGE ON *.* TO 'hargassner'@'%' IDENTIFIED BY PASSWORD '*82225B56CB06634FE2DCB3534FCF3B909B1D7F90';
 
 GRANT ALL PRIVILEGES ON `hargassner`.* TO 'hargassner'@'%';

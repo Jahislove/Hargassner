@@ -2,16 +2,18 @@
 //****vos parametres **************************************************** 	
 // licence GPL-3.0-or-later
 
-$IPchaudiere = "192.168.0.198"; // indiquez l'IP de votre chaudiere
-$firmware= "14k" ; // valeur possible voir dans stockBDD.php , si votre firmware est plus recent utilisez le dernier dispo
+$IPchaudiere = "192.168.0.198"; // indiquez l'IP de votre chaudiere /boiler IP
+// valeur possible voir dans stockBDD.php , si votre firmware est plus recent utilisez le dernier dispo
+// firmware version , look in stockBDD.php to see available value, if your version is newer, use last version
+$firmware= "14k" ; 
 
-$port = 23; //port telnet, ne pas modifier
+$port = 23; //port telnet, ne pas modifier / no need to change
 $mode_conn = 'telnet'; // mode de connexion : telnet pour chaudiere recente ou serial pour les anciennes 
 						// en mode serial la page d'acceuil ne fonctionne plus en temps reel mais utilise la BDD
-$taille_silo = 4000; // en kg , il s'agit de la capacité max du silo
-$consoHeure = 38; //correspond au parametre R8a de la chaudiere
+$taille_silo = 4000; // silo max size / en kg ,  capacité max du silo
+$consoHeure = 38; // = parameter R8a in factory parameter of the boiler
 
-$refresh = 10; //rafraichissement en seconde de l'etat de la chaudiere , ne pas descendre sous les 2 car le telnet de la chaudiere n'arrive plus a repondre assez vite
+$refresh = 10; //refresh main page / rafraichissement en seconde de l'etat de la chaudiere , ne pas descendre sous les 2 car le telnet de la chaudiere n'arrive plus a repondre assez vite
 $histo_temps = 30; //historique du graphique de la page d'accueil en mn
 
 // MySQL config
@@ -45,14 +47,15 @@ $color_legend = '#DBEDFF';
 $color_ECS_T = '#b7950b';
 $color_ECS_etat = '#B4EDFE';
 
-//*****ne pas modifier ci dessous************************************************	
-$histo_live_shift = $histo_temps * 60 / $refresh; // nombre de valeur avant de shift
-$histo_live_X = $histo_temps * 60; // init longueur axe X du graphe live 
-
 //Chart localization
 $months = "['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre']";
 $weekdays = "['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']";
 $shortMonths = "['Janv', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin',  'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec']";
 $thousandsSep = "''"; // thousands separator 
+
+//*****ne pas modifier ci dessous/ do not modify below************************************************	
+$histo_live_shift = $histo_temps * 60 / $refresh; // nombre de valeur avant de shift
+$histo_live_X = $histo_temps * 60; // init longueur axe X du graphe live 
+
 
 ?>

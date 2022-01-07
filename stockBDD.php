@@ -4,35 +4,20 @@
 // version 0.4 compatibilité avec php7
 // auteur : JahisLove 2018-2021
 // licence GPL-3.0-or-later
-// ecriture des data dans la bdd en php
+// ecriture des data dans la bdd en php /writing data in database
+// this script need to be executed every minute
+/* 	
 
-/* 	ATTENTION pour les installations deja existantes ,même si vous restez en php5.6 il y a quand même une action a faire
-		si vous restez en php5 : 
-			mysqli est pré-installé :
-			+ il faut ajouter ou remplacez l'extension mysql par mysqli dans votre config du serveur php
-		
-		si vous remplacez php5 par 7 : 
-			mysqli est pré-installé :
-			+ ajoutez simplement l'extension  mysqli dans votre config du serveur php 
-			
-			dans le fichier conf/php.ini :
-			+ modifiez le extension_dir pour pointer vers le nouveau chemin(lancer  phpinfo.php dans votre barre d'adresse)
-			+ supprimer la ligne extension = mysql.so 
-			+ ajouter la ligne extension = mysqli.so 
-			
-			+ sur Synology modifier l'executable php dans votre tache planifiée
-				ex php74 -c /volume1/web/hargassner/conf/php.ini -f /volume1/web/hargassner/stockBDD.php
- 
+available firmware (if yours is not here , use pellet last one and customize in conf/config.inc.php)
+pellets  14e , 14f , 14g , 14i , 14j, 14k, 14l, 14m
+wood 4.3d, 10.2h
 
-rien a configurer ici par l'utilisateur
-seule une ligne dans conf/php.ini est a configurer ( la ligne extension_dir)
-pour trouver votre chemin utiliser la page et cherchez extension_dir
-http://ip_mon_serveur/hargassner/phpinfo.php
-pensez egalement a bien configurer le firmware dans conf/config.inc.php
-les valeurs prises en compte a ce jour sont 
 
-granulés  14e , 14f , 14g , 14i , 14j, 14k, 14l, 14m
-buches 4.3d, 10.2h
+nothing to modify here by user /rien a configurer ici par l'utilisateur
+
+the order of parameter send by boiler vary with firmwares
+to keep compatibility with this web site , the database columns never change.
+instead we reorder parameter before writing in database
 
 l'ordre des parametres envoyés par la chaudiere differe en fonction du firmware
 pour conserver la compatibilité des differentes versions , les colonnes de la BDD ne changent jamais.
