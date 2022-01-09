@@ -1,7 +1,5 @@
-// conserver cette ligne en premier, format : ligne 1 = valeur et ligne 2 = position(insert apres ce numero)
-$firmware= "14g" ; // valeur possible 14d, 14e, 14f, 14g
-3
-$color_ECS_T = '#b7950b';
-39
-$color_ECS_etat = '#B4EDFE';
-39
+// conserver cette ligne en premier, format : ligne 1 = valeur et ligne 2 = position(insert apres ce numero) fichier est lu a l'envers
+$language = "fr-FR";
+4
+//language = fr-FR, en-EN
+4
