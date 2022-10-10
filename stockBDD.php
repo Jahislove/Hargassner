@@ -92,8 +92,9 @@ function lecture($IPchaudiere, $port){
 // 
 function addLogEvent($event)
 {
-    $event = $event.";"."\n";
-    file_put_contents("stockBDD.log", $event, FILE_APPEND);
+	$horodatage = date('Y-m-d H:i:s', time());  
+    $event = $horodatage." ".$event."\n";
+    file_put_contents("/volume1/web/hargassner/stockBDD.log", $event, FILE_APPEND);
 }
 
 //*******************programme principal*******************************************************
