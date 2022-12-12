@@ -133,6 +133,7 @@ switch ($firmware) {
 			'modeChauff'=> $data[85], // heating mode (comfort, reduced,stop)
 			'modeCommand'=> $data[101], // heating command (scheduled, reduced forced , comfort forced, short absence)
 			'consoHeure'=> $consoHeure, // pellets/hour
+			'erreur' 	=> '0', //n'existe pas en 14g => on renvoi 0
 		);
         break;
     case '14i':

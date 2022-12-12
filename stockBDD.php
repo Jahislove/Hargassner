@@ -1,14 +1,16 @@
 <?php 
+// version 0.8	ajout firmware 14m
+// version 0.7	ajout firmware 14l
+// version 0.6	ajout firmware 14i, 14j, 14k
 // version 0.5	ajout firmware 10.2h
-
 // version 0.4 compatibilité avec php7
-// auteur : JahisLove 2018-2021
+// auteur : JahisLove 2018-2022
 // licence GPL-3.0-or-later
 // ecriture des data dans la bdd en php /writing data in database
 // this script need to be executed every minute
 /* 	
 
-available firmware (if yours is not here , use pellet last one and customize in conf/config.inc.php)
+available firmware (if yours is not here , use the pellets last one ( modify in conf/config.inc.php)
 pellets  14e , 14f , 14g , 14i , 14j, 14k, 14l, 14m
 wood 4.3d, 10.2h
 
@@ -152,7 +154,13 @@ switch ($firmware) {
 		$nbre_param = 190; // 188 chanels
         $data = array_slice($data, 0, $nbre_param); 
 		$liste = "'" . implode("','", $data) . "'";
-		$requete = "INSERT INTO data  VALUES (null, $liste)" ; // la BDD compte 190 champ , on peut donc simplifier la requete
+		//$requete = "INSERT INTO data  VALUES (null, $liste)" ; // la BDD compte 190 champ , on peut donc simplifier la requete
+		$requete = "INSERT INTO data (id,dateB,c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31,c32,
+			c33,c34,c35,c36,c37,c38,c39,c40,c41,c42,c43,c44,c45,c46,c47,c48,c49,c50,c51,c52,c53,c54,c55,c56,c57,c58,c59,c60,c61,c62,c63,c64,c65,c66,c67,c68,c69,c70,
+			c71,c72,c73,c74,c75,c76,c77,c78,c79,c80,c81,c82,c83,c84,c85,c86,c87,c88,c89,c90,c91,c92,c93,c94,c95,c96,c97,c98,c99,c100,c101,c102,c103,c104,c105,c106,
+			c107,c108,c109,c110,c111,c112,c113,c114,c115,c116,c117,c118,c119,c120,c121,c122,c123,c124,c125,c126,c127,c128,c129,c130,c131,c132,c133,c134,c135,c136,
+			c137,c138,c139,c140,c141,c142,c143,c144,c145,c146,c147,c148,c149,c150,c151,c152,c153,c154,c155,c156,c157,c158,c159,c160,c161,c162,c163,c164,c165,c166,
+			c167,c182,c169,c170,c171,c172,c173,c174,c175,c176,c177,c178,c179,c180,c181,c168,c183,c184,c185,c186,c187,c188) VALUES (null, $liste)";// inversion c168(alphanum) et c182  
         break;
     case '14i':
 	case '14j':
