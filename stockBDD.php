@@ -96,7 +96,8 @@ function addLogEvent($event)
 {
 	$horodatage = date('Y-m-d H:i:s', time());  
     $event = $horodatage." ".$event."\n";
-    file_put_contents("/volume1/web/hargassner/stockBDD.log", $event, FILE_APPEND);
+    // file_put_contents("/volume1/web/hargassner/stockBDDtest.log", $event, FILE_APPEND);
+    file_put_contents("stockBDD.log", $event, FILE_APPEND);
 }
 
 //*******************programme principal*******************************************************
@@ -202,9 +203,8 @@ $conn = mysqli_connect ($hostname, $username, $password, $database);
 
 $result = mysqli_query($conn, $requete);
 
-if (!$result) { // si requete KO on log et on quitte
-	addLogEvent($requete);	
-	exit("connexion BDD impossible");
+if (!$result) { // si requete KO on log 
+	addLogEvent(mysqli_error($conn));
 }
 
 mysqli_close($conn);
