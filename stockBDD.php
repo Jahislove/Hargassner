@@ -153,6 +153,7 @@ switch ($firmware) {
 			c167,c182,c169,c170,c171,c172) VALUES (null, $liste)"; // 168 (alphanum) est ecrit dans c182
         break;
     case '14g':
+		$data[182] = 0; //palliatif : cas ou c181 est decimal au lieu de char: on remplace la valeur alaphanum du param 182 par 0 pour stockage dans c181 (decimal)
 		$nbre_param = 190; // 188 chanels
         $data = array_slice($data, 0, $nbre_param); 
 		$liste = "'" . implode("','", $data) . "'";
