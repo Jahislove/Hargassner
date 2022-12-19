@@ -96,8 +96,9 @@ function addLogEvent($event)
 {
 	$horodatage = date('Y-m-d H:i:s', time());  
     $event = $horodatage." ".$event."\n";
-    file_put_contents("/volume1/web/hargassner/stockBDD.log", $event, FILE_APPEND);
-    //file_put_contents("stockBDD.log", $event, FILE_APPEND);
+	$chemin = getcwd();
+    // file_put_contents("/volume1/web/hargassner/stockBDDtest.log", $event, FILE_APPEND);
+    file_put_contents($chemin."/stockBDD.log", $event, FILE_APPEND);
 }
 
 //*******************programme principal*******************************************************
