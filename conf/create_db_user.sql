@@ -221,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `data` (
   `c178` decimal(7,2) NOT NULL DEFAULT '0.00',
   `c179` decimal(7,2) NOT NULL DEFAULT '0.00',
   `c180` decimal(7,2) NOT NULL DEFAULT '0.00',
-  `c181` decimal(7,2) NOT NULL DEFAULT '0.00',
+  `c181` char(5) NOT NULL DEFAULT '0',
   `c182` char(5) NOT NULL DEFAULT '0',
   `c183` decimal(7,2) NOT NULL DEFAULT '0.00',
   `c184` decimal(7,2) NOT NULL DEFAULT '0.00',
