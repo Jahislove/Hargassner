@@ -118,7 +118,7 @@ switch ($firmware) {
 			'TextMoy'	=> $data[7],		//average outside temperature 
 			'departEst' => $data[$depart_chauffage[$zone_chauffage]['est']], //start temperature is (to heaters)
 			'departDoit'=> $data[$depart_chauffage[$zone_chauffage]['doit']],//start temperature must be
-			'retourEst' => $data[12], //return temperature is
+			'retourEst' => $data[15], //return temperature is
 			'retourDoit'=> $data[13], //return temperature must be
 			'bois'		=> $data[56],		//wood percent
 			'TempECS'	=> $data[$ballon_ECS[$zone_ecs]['est']], //domestic hot water temperature
