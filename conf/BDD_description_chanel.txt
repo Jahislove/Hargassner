@@ -14,18 +14,20 @@ le parametre N°8 recu du telnet est stocké dans la colonne c134
 
 ================================================================================================
 les differentes valeurs d'etat (chanel 0)
+0	init
 1   arret
-2   allumage
+2   init grille
 3   demarrage chaudiere
-4   controle allumage
+4   controle allumage residuel
 5   allumeur 
 6   demarrage combustion/reduction phase allumage
 7   combustion
 8   veille
 9   decendrage dans 7 mn
 10  decendrage
-11  refroidissement ?
+11  refroidissement : utilisation chaleur residuelle
 12  nettoyage
+15	mode manuel
 17	assistant de combustion
 ================================================================================================
 
@@ -144,7 +146,7 @@ colonne c97	 name=	Mode Fw	         unit=	erreur en cours :
 colonne c98	 name=	Einschubschn.BSZ unit=		heures vis entree chaudiere 
 COLONNE c99	 name=	Verbrauchszähler unit=	kg	consommation pellet
 colonne c100	 name=	FRA Zustand	     unit=		
-COLONNE c101	 name=	FR1 Zustand	     unit=	mode de commande => 1:  programmé, 2 reduit forcé, 3 confort forcé, 4 ?, 5 soirée , 6 absence brève
+COLONNE c101	 name=	FR1 Zustand	     unit=	mode de commande => 1:  programmé, 2 reduit forcé, 3 confort forcé, 4 arret, 5 soirée , 6 absence brève
 colonne c102	 name=	FR2 Zustand	     unit=		
 colonne c103	 name=	FR3 Zustand	     unit=		
 colonne c104	 name=	FR4 Zustand	     unit=		

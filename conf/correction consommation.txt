@@ -1,34 +1,33 @@
-﻿OBSOLETE depuis 14k
-solution pour corriger la consommation reelle sur la chaudiere et en BDD:
+﻿solution pour corriger la consommation reelle sur la chaudiere et en BDD
+dans le cas ou votre consommation ne corresponds pas a ce qu'indique la chaudiere
+cette manipulation n'est a faire qu'une fois , logiquement apres le premier vidage du silos
+ 
 le principe est le suivant :
 il faut connaitre la quantité exacte de granulés consommés
 donc il faut attendre d'avoir vider le silo , comme ca on sait combien on avait mis dedans 
 a ce moment la on regarde combien la chaudiere indique avoir consommé
 
 par exemple dans mon cas cette année : 
-j'avais rentré 4250 kgs et une fois le silo vide , la chaudiere indiquait 6700 consommé
+j'avais rentré 4000 kgs et une fois le silo vide , la chaudiere indiquait 4581 consommé
 
 petit calcul :
 conso chaudiere / conso reelle = Facteur correction
-6700/4250=1.576
+4000/4581=0.873
 
-sur la chaudiere on modifie le parametre R8 (2.2 par defaut sur nano 9)
+sur la chaudiere on modifie le parametre R8 (parametre usine) afin qu'a l'avenir l'affichage soit correct
 ancienne valeur / facteur correction = nouvelle valeur
-2.2/1.576= 1.3959
-1.39 n'est pas selectionnable ,on choisi la valeur la plus proche superieur  : 1.4 
+33.8/0.873= 38.7
 
-pour etre synchro avec la BDD on recalcule la valeur du nouveau facteur de correction 
-2.2/1.4 = 1.571
+ensuite il faut corriger les valeurs en BDD pour que l'historique soit correct:
+on execute une requete SQL dans phpmyadmin pour corriger les valeurs en BDD
+remplacez 0.873 par votre valeur ainsi que les dates
 
-ensuite on execute une requete SQL dans phpmyadmin pour corriger l'historique de la page "variables" en BDD
-Attention c'est irreversible,  fait une copie de la bdd avant
-
-update hargassner.data set c99 = round(c99/1.571, 1) 
+update hargassner.data set c99 = round(c99/0.873, 1) 
 where dateB between '2017-09-31 00:00:00' and '2018-09-31 12:56:59'
 
 la date de debut etant le remplissage du silo et la fin le jour de la correction
 
-puis une pour la page consommation :
+puis une requete pour la page consommation :
 
-update hargassner.consommation set conso = round(conso/1.571, 0) 
+update hargassner.consommation set conso = round(conso/0.873, 0) 
 where dateB between '2017-09-31' and '2018-09-31'

@@ -57,5 +57,5 @@ $thousandsSep = "''"; // thousands separator
 $histo_live_shift = $histo_temps * 60 / $refresh; // nombre de valeur avant de shift
 $histo_live_X = $histo_temps * 60; // init longueur axe X du graphe live 
 
-
+//require("$language.inc.php")
 ?>

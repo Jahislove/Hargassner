@@ -23,7 +23,7 @@ $.ajax({
                 document.getElementById('nano-E1').className = 'cendrier_ferme';
 				break;
             case 2:
-                etat = 'Allumage';
+                etat = 'init grille';
                 document.getElementById('nano-D1').className = 'foyer_allumage';
                 document.getElementById('nano-D2').className = 'vis_stop';
                 document.getElementById('nano-B1').className = 'ressort_fixe';
@@ -34,7 +34,7 @@ $.ajax({
                 document.getElementById('nano-B1').className = 'ressort_fixe';
                 break;
             case 4:
-                etat = 'Controle allumage';
+                etat = 'Controle allumage residuel';
                 document.getElementById('nano-D1').className = 'foyer_reprise';
                 document.getElementById('nano-D2').className = 'vis_marche';
                 break;
@@ -76,7 +76,7 @@ $.ajax({
                 document.getElementById('nano-E1').className = 'cendrier_mouvt';
                 break;
             case 11:
-                etat = 'Refroidissement sécurité';
+                etat = 'Refroidissement/chaleur residuelle';
                 break;
             case 12:
                 etat = 'Nettoyage';

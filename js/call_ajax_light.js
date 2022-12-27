@@ -15,13 +15,13 @@ $.ajax({
                 etat = 'Arrêt';
                 break;
             case 2:
-                etat = 'Allumage';
+                etat = 'init grille';
                 break;
             case 3:
                 etat = 'Démarrage';
                 break;
             case 4:
-                etat = 'Controle allumage';
+                etat = 'Controle allumage residuel';
                 break;
             case 5:
                 etat = 'Allumage électrique';
@@ -42,7 +42,7 @@ $.ajax({
                 etat = 'Décendrage';
                 break;
             case 11:
-                etat = 'Refroidissement sécurité';
+                etat = 'Refroidissement/chaleur residuelle';
                 break;
             case 12:
                 etat = 'Nettoyage';
@@ -68,6 +68,10 @@ $.ajax({
 			case 3: 
 				document.getElementById('modeCommand').className = 'modeCommandConfort';
 				document.getElementById('tooltipModeCommand').innerHTML = 'Confort forcé';
+				break;
+			case 4: 
+				document.getElementById('modeCommand').className = 'modeCommandArret';
+				document.getElementById('tooltipModeCommand').innerHTML = 'Arret';
 				break;
 			case 5: 
 				document.getElementById('modeCommand').className = 'modeCommandSoiree';
