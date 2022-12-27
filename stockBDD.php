@@ -1,10 +1,11 @@
 <?php 
+// version 0.9  refonte calcul conso + correction bug 14g
 // version 0.8	ajout firmware 14m
 // version 0.7	ajout firmware 14l
 // version 0.6	ajout firmware 14i, 14j, 14k
 // version 0.5	ajout firmware 10.2h
 // version 0.4 compatibilité avec php7
-// auteur : JahisLove 2018-2022
+// auteur : JahisLove 2018-2023
 // licence GPL-3.0-or-later
 // ecriture des data dans la bdd en php /writing data in database
 // this script need to be executed every minute
@@ -13,7 +14,6 @@
 available firmware (if yours is not here , use the pellets last one ( modify in conf/config.inc.php)
 pellets  14e , 14f , 14g , 14i , 14j, 14k, 14l, 14m
 wood 4.3d, 10.2h
-
 
 nothing to modify here by user /rien a configurer ici par l'utilisateur
 
@@ -39,24 +39,28 @@ function calcul_consommation($hostname, $database, $username, $password){
 	$conn = mysqli_connect ($hostname, $username, $password, $database); 
 	$requete = "SELECT dateB FROM consommation ORDER by dateB DESC LIMIT 1 ";
 
-	if ($result = mysqli_query($conn, $requete)){
-		while ($id = mysqli_fetch_row($result)) {
-		}
+	if ($result = mysqli_query($conn, $requete)){ // recuperation derniere journée en base
+		$lastDateInConso = mysqli_fetch_row($result);
  	}
-	$last_conso = date("Y-m-d", strtotime($id[0]." -1 day"));
-	$hist_conso = date("Y-m-d", strtotime($id[0]." -10 day"));
-	$jour = date('Y-m-d', time());  
 	
-        if ($jour > $last_conso){
+	$jourCalcul = date("Y-m-d", strtotime($lastDateInConso[0]." +1 day")); // la journée a calculer est la suivante
+	$plageCalcul = "'".$jourCalcul . " 00:00:00' AND '". $jourCalcul ." 23:59:59'"; // transformation pour SQL
+	
+	$jour = date('Y-m-d', time());  
+
+        if ($jourCalcul < $jour){ // si on a changé de journée on calcul
             $SQLrequete = "SELECT DATE(dateB),MAX(c99)-MIN(c99),FORMAT(AVG(c6), 1) FROM data
-                        WHERE dateB > $hist_conso
-						GROUP BY DATE(dateB)
-                        ORDER by dateB DESC LIMIT 1,1 ";
+                           WHERE dateB BETWEEN $plageCalcul ";
 			$result = mysqli_query($conn, $SQLrequete);
 			$data = mysqli_fetch_row($result);
-           $SQLinsert = "INSERT INTO consommation (dateB, conso, Tmoy) VALUES ('$data[0]',$data[1],$data[2])" ;
+			if ($data[0]) { //si données existent
+				$SQLinsert = "INSERT INTO consommation (dateB, conso, Tmoy) VALUES ('$data[0]',$data[1],$data[2])" ;
+			}else { //si pas de données on insert des zero
+				$SQLinsert = "INSERT INTO consommation (dateB, conso, Tmoy) VALUES ('$jourCalcul',0,0)" ;
+			}
 			mysqli_query($conn, $SQLinsert);
 		}
+		
 	mysqli_close($conn);
 }
 
@@ -97,7 +101,6 @@ function addLogEvent($event)
 	$horodatage = date('Y-m-d H:i:s', time());  
     $event = $horodatage." ".$event."\n";
 	$chemin = getcwd();
-    // file_put_contents("/volume1/web/hargassner/stockBDDtest.log", $event, FILE_APPEND);
     file_put_contents($chemin."/stockBDD.log", $event, FILE_APPEND);
 }
 
@@ -207,7 +210,7 @@ $result = mysqli_query($conn, $requete);
 
 if (!$result) { // si requete KO on log 
 	addLogEvent(mysqli_error($conn));
-	addLogEvent($liste);
+	addLogEvent($requete);	
 }
 
 mysqli_close($conn);

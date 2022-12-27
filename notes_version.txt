@@ -8,6 +8,7 @@ v3.5	19/12/2022
 	correction bug affichage erreur en 14g
 	ajout temp retour pour 14g
 	ajout stockBDD.log en cas d'erreur d'insertion en BDD
+	optimisation calcul quotidien consommation 
 	upgrade highchart 9.3.2 
 	les librairies highchart sont maintenant en local afin de fonctionner meme sans internet
 	
