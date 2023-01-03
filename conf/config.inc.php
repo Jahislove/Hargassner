@@ -7,6 +7,9 @@ $IPchaudiere = "192.168.0.198"; // indiquez l'IP de votre chaudiere /boiler IP
 // firmware version , look in stockBDD.php to see available value, if your version is newer, use last version
 $firmware= "14k" ; 
 
+// password pour acceder à la page reglages , a personnaliser
+$password_settings = 'password';
+
 $port = 23; //port telnet, ne pas modifier / no need to change
 $mode_conn = 'telnet'; // mode de connexion : telnet pour chaudiere recente ou serial pour les anciennes 
 						// en mode serial la page d'acceuil ne fonctionne plus en temps reel mais utilise la BDD
@@ -20,7 +23,7 @@ $histo_temps = 30; //historique du graphique de la page d'accueil en mn
 $hostname = "127.0.0.1:3307"; //127.0.0.1 si la BDD est sur la meme machine que le serveur web , sinon IP . 3306 MySQL 5 , 3307 MySQL 10
 $database = "hargassner"; // nom de la BDD
 $username = "hargassner"; // utilisateur mysql
-$password = "password";
+$password = "password"; //  a personnaliser
 
 //*****couleurs (code couleur HTML)************************************************	
 $color_TdepD = '#781BE1'; 

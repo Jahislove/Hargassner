@@ -1156,3 +1156,36 @@ input[type=submit]:hover {
   background-color: #4CAF50; /* Green */
   color: white;
 }
+
+.password_div {
+  top: 0px;
+  border: 1px solid;
+  border-radius: 20px;
+  position: relative;
+  width: 550px;
+  height: 150px;
+  text-align: center;
+}
+.error_password_div {
+  top: 0px;
+  position: relative;
+  width: 550px;
+  height: 60px;
+  text-align: center;
+}
+button[type=submit]{
+  background-color: grey;
+  border: none;
+  color: white;
+  padding: 6px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;	
+  transition-duration: 0.4s;
+}
+button[type=submit]:hover {
+  box-shadow: 0 12px 6px 0 rgba(0,0,0,0.24), 0 17px 6px 0 rgba(0,0,0,0.19);
+  background-color: #4CAF50; /* Green */
+  color: white;
+}

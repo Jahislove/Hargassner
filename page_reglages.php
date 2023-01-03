@@ -1,4 +1,8 @@
-<?php require("header_debut.php"); ?>
+<?php 
+require("header_debut.php"); 
+require_once 'protect.php';
+Protect\with('form_password.php', $password_settings);
+?>
 <script type="text/javascript" src="js/codes_erreurs.js">	</script>
 <script type="text/javascript" src="js/call_ajax_light.js">	</script>
 <?php require("header_fin.php"); ?>
