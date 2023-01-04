@@ -65,7 +65,7 @@ require_once("conf/settings.inc.php");
 		</form>
 	</div>
 	<div class="tarif">
-		<form name="form_tarif" method="post" action="ajout_tarif.php">
+		<form class="form_saison_tarif" name="form_tarif" method="post" action="ajout_tarif.php">
 			<table class='TableTarif'>  
 				<input name="nombre_saison" type="hidden" value="<?php echo $nombre_saison ;?>">
 				<?php for ($i=0 ; $i < $nombre_saison ; $i++){ ?>
@@ -81,41 +81,60 @@ require_once("conf/settings.inc.php");
 				<?php } ?>
 				
 			</table>
-			<input type="submit" value="Enregistrer">
+			<div class="tarif_bouton">
+				<input type="submit" value="Enregistrer">
+			</div>
 		</form>
-		
-		<form name="form_delete" method="post" action="delete_saison.php">
-			<table class='TableTarif'>  
-				<?php for ($i=0 ; $i < $nombre_saison ; $i++){ ?>
-				<tr>
-					<td>
-						<input type="radio" name="delete" value="delete<?php echo $i;?>">
-					</td>
-				</tr>    
-				<?php } ?>
-			</table>
-			<input type="submit" value="Supprimer">
-		</form>
-		
-		<form name="form_ajout_saison" method="post" action="ajout_saison.php">
-			<datalist id="list_saison">
-				<option value="2015/2016">
-				<option value="2016/2017">
-				<option value="2017/2018">
-				<option value="2018/2019">
-				<option value="2019/2020">
-				<option value="2020/2021">
-				<option value="2021/2022">
-				<option value="2022/2023">
-				<option value="2023/2024">
-				<option value="2024/2025">
-				<option value="2025/2026">
-			</datalist>
-			<label>ajouter saison</label>
-				<input placeholder="2015/2016" name="saison" list="list_saison" type="text" pattern="(([0-9]){4,4})((\/))([0-9]){4,4}" required>
-				<input type="submit" value="Ajouter Saison">
-		</form>
-	
+		<div class="onglet" >
+			<div class=tabs>
+				<div id=tab1> <a href="#tab1">Ajouter</a>
+					<div>
+						<form class="form_ajout_saison" method="post" action="ajout_saison.php">
+							<datalist id="list_saison">
+								<option value="2015/2016">
+								<option value="2016/2017">
+								<option value="2017/2018">
+								<option value="2018/2019">
+								<option value="2019/2020">
+								<option value="2020/2021">
+								<option value="2021/2022">
+								<option value="2022/2023">
+								<option value="2023/2024">
+								<option value="2024/2025">
+								<option value="2025/2026">
+							</datalist>
+							<label><BR>Ajouter une saison</label>
+							<input placeholder="2015/2016" class="text_ajout_saison" name="saison" list="list_saison" type="text" pattern="(([0-9]){4,4})((\/))([0-9]){4,4}" required>
+							<input type="submit" value="Ajouter Saison">
+						</form>
+					</div>
+				</div>
+
+				<div id=tab2> <a href="#tab2">Supprimer</a>
+					<div>
+						<form name="form_delete" method="post" action="delete_saison.php">
+							<table class='TableTarif'>  
+								<?php for ($i=0 ; $i < $nombre_saison ; $i++){ ?>
+								<tr>
+									<th>
+										<?php echo $obj_saison[$i]['saison'];?> 
+									</th> 
+									<td>
+										<input type="radio" name="delete" value="<?php echo $obj_saison[$i]['saison'];?>">
+									</td>
+								</tr>    
+								<?php } ?>
+							</table>
+							<input type="submit" value="Supprimer">
+						</form>
+					</div>
+				</div>
+
+				<div id=default2> <a href="#default2">info</a>
+					<div>pour chaque saison, indiquez le prix en euro par kilo de granulés<BR><BR>si vous avez des tarifs différents pendant la saison , indiquez le prix moyen<BR><BR>dans la partie droite vous pouvez ajouter ou supprimer des saisons. <BR><BR>La suppression ne concerne que la saison avec son tarif et n'a pas d'impact sur les données de la base</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 

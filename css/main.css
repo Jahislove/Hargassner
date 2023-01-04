@@ -1113,9 +1113,10 @@ a:hover{
   Animation: pop-tooltip 1s ; 
 }
 
+/*****************************************************************************/
 /*** page reglages ********************************/
 .ensemble {
-  width: 800px;
+  width: 1150px;
   margin-left: auto;
   margin-right: auto;
 }  
@@ -1123,7 +1124,7 @@ a:hover{
 /********cadre reglage******/
 .boutons_radio {
   width: 400px;
-  height: 600px;
+  height: 700px;
   border: 1px solid;
   background-color: #f0f0f0;
   border-radius: 20px;
@@ -1152,9 +1153,9 @@ input[type=submit]{
   background-color: grey;
   border: none;
   color: white;
-  padding: 16px 32px;
+  padding: 8px 32px;
   text-decoration: none;
-  margin: 4px 2px;
+  margin: 8px 2px 15px;
   cursor: pointer;
   border-radius: 10px;	
   transition-duration: 0.4s;
@@ -1166,12 +1167,9 @@ input[type=submit]:hover {
 }
 /********************************************************************/	
 /********cadre tarif******/
-.form_ajout_saison {
-  z-index: 1;
-}	
 .tarif {
-  width: 400px;
-  height: 600px;
+  width: 750px;
+  min-height: 700px;
   border: 1px solid;
   background-color: #f0f0f0;
   border-radius: 20px;
@@ -1228,11 +1226,95 @@ input[type=submit]:hover {
     text-align: left;
     /* z-index:-1; */
 }
-
 #prix {
 	width: 63px;
 	height: 20px;
 }
+.tarif_bouton {
+  position: relative;
+  width: 200px;
+  margin: 2px auto 5px;
+  text-align: center;
+}
+.form_saison_tarif {
+  position: absolute;
+  width: 350px;
+  /* height: 100px; */
+  text-align: center;
+  display : inline-block;
+}
+
+/***ajouter/supprimer  onglet*******/
+.onglet {
+  position: relative;
+  /* width: 200px; */
+  height: 100px;
+  text-align: center;
+  /* display : inline-block; */
+  float: right;
+}	
+.form_ajout_saison {
+  position: relative;
+  width: 200px;
+  /* height: 100px; */
+  text-align: center;
+}	
+.text_ajout_saison {
+  position: relative;
+  width: 130px;
+  height: 35px;
+  margin: 20px auto 20px;
+  text-align: center;
+}	
+div.tabs {
+  height: 650px;		
+  width: 300px;
+  position: relative;		/* Establish a containing block */
+  line-height: 1;		/* Easier to calculate with */
+  z-index: 0;
+  }			
+div.tabs > div {
+  display: inline;		/* We want the buttons all on one line */
+}
+div.tabs > div > a {
+  color: #5d5d5d;			/* Looks more like a button than a link */
+  background: #CCC;		/* Active tabs are light gray */
+  padding: 0.2em;		/* Some breathing space */
+  border: 0.1em outset #BBB;	/* Make it look like a button */
+  border-bottom: 0.1em solid #CCC;  /* Visually connect tab and tab body */
+  border-radius: 10px 10px 10px 10px;
+} 
+div.tabs > div:not(:target) > a {
+  border-bottom: none;		/* Make the bottom border disappear */
+  background: #999;		/* Inactive tabs are dark gray */
+}		
+div.tabs > div:target > a,	/* Apply to the targeted item or... */
+:target #default2 > a {		/* ... to the default item */
+  border-bottom: 0.1em solid #CCC; /* Visually connect tab and tab body */
+  background: #f0f0f0; /* Active tab is light gray */
+}		
+div.tabs > div > div {
+  background: #f0f0f0;		/* Light gray */
+  z-index: -2;			/* Behind, because the borders overlap */
+  left: 0; top: 1.3em;		/* The top needs some calculation... */
+  bottom: 0; right: 0;		/* Other sides flush with containing block */
+  overflow: auto;		/* Scroll bar if needed */
+  padding: 0.3em;		/* Looks better */
+  /*border: 0.1em outset #BBB; /* 3D look */
+  /* border: 1px solid #f0f0f0; */
+  border-radius: 0px 20px 20px 20px;
+}	
+div.tabs > div:not(:target) > div { /* Protect CSS1 & CSS2 browsers */
+  position: absolute ; /* All these DIVs overlap */
+}		
+div.tabs > div:target > div, :target #default2 > div {
+  position: absolute;		/* All these DIVs overlap */
+  z-index: -1; /* Raise it above the others */
+}			
+div.tabs :target {
+  outline: none}
+
+
 
 /*** page form_password ********************************/
 
