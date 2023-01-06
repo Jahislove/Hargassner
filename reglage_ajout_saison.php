@@ -18,9 +18,11 @@
 	
     $req1 = mysqli_query($conn, $query1) ;
 	echo mysqli_error($conn);
-    $req2 = mysqli_query($conn, $query2) ;
-	echo mysqli_error($conn);
-
+	
+	if($saison){
+		$req2 = mysqli_query($conn, $query2) ;
+		echo mysqli_error($conn);
+	}
 	mysqli_close($conn);
 
  require("page_reglages.php");
