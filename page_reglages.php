@@ -1,7 +1,7 @@
 <?php 
 require("header_debut.php"); 
-require_once 'protect.php';
-Protect\with('form_password.php', $password_settings);
+require_once 'reglage_protect.php';
+Protect\with('reglage_form_password.php', $password_settings);
 ?>
 <script type="text/javascript" src="js/codes_erreurs.js">	</script>
 <script type="text/javascript" src="js/call_ajax_light.js">	</script>
@@ -38,7 +38,7 @@ require_once("conf/settings.inc.php");
 
 <div class="ensemble">
 	<div class="boutons_radio">
-		<form name="form1" method="post" action="write_setting.php" >
+		<form name="form1" method="post" action="reglage_write_setting.php" >
 			<span>Choix de l'affichage sur la page d'accueil</span>
 			<div class="radio_chauffage">
 				<input type="radio" name="zone_chauffage" value="zone1" <?php echo ($zone_chauffage == "zone1") ? 'checked' : '';?> > Chauffage zone 1<BR>
@@ -65,7 +65,7 @@ require_once("conf/settings.inc.php");
 		</form>
 	</div>
 	<div class="tarif">
-		<form class="form_saison_tarif" name="form_tarif" method="post" action="ajout_tarif.php">
+		<form class="form_saison_tarif" name="form_tarif" method="post" action="reglage_ajout_tarif.php">
 			<table class='TableTarif'>  
 				<input name="nombre_saison" type="hidden" value="<?php echo $nombre_saison ;?>">
 				<?php for ($i=0 ; $i < $nombre_saison ; $i++){ ?>
@@ -89,7 +89,7 @@ require_once("conf/settings.inc.php");
 			<div class=tabs>
 				<div id=tab1> <a href="#tab1">Ajouter</a>
 					<div>
-						<form class="form_ajout_saison" method="post" action="ajout_saison.php">
+						<form class="form_ajout_saison" method="post" action="reglage_ajout_saison.php">
 							<datalist id="list_saison">
 								<option value="2015/2016">
 								<option value="2016/2017">
@@ -112,7 +112,7 @@ require_once("conf/settings.inc.php");
 
 				<div id=tab2> <a href="#tab2">Supprimer</a>
 					<div>
-						<form name="form_delete" method="post" action="delete_saison.php">
+						<form name="form_delete" method="post" action="reglage_delete_saison.php">
 							<table class='TableTarif'>  
 								<?php for ($i=0 ; $i < $nombre_saison ; $i++){ ?>
 								<tr>

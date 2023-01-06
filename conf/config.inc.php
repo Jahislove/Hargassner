@@ -13,6 +13,7 @@ $password_settings = 'password';
 $port = 23; //port telnet, ne pas modifier / no need to change
 $mode_conn = 'telnet'; // mode de connexion : telnet pour chaudiere recente ou serial pour les anciennes 
 						// en mode serial la page d'acceuil ne fonctionne plus en temps reel mais utilise la BDD
+
 $taille_silo = 4000; // silo max size / en kg ,  capacité max du silo
 $consoHeure = 38; // = parameter R8a in factory parameter of the boiler
 
@@ -21,7 +22,7 @@ $histo_temps = 30; //historique du graphique de la page d'accueil en mn
 
 // MySQL config
 $hostname = "127.0.0.1:3307"; //127.0.0.1 si la BDD est sur la meme machine que le serveur web , sinon IP . 3306 MySQL 5 , 3307 MySQL 10
-$database = "hargassner"; // nom de la BDD
+$database = "test"; // nom de la BDD
 $username = "hargassner"; // utilisateur mysql
 $password = "password"; //  a personnaliser
 
