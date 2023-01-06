@@ -23,8 +23,10 @@ require_once("conf/settings.inc.php");
 	}
 
     $req0 = mysqli_query($conn, $query0) ;
-	echo mysqli_error($conn);
-
+	if (mysqli_error($conn)) {
+		echo mysqli_error($conn);
+		echo '<BR>commencez par créer une saison avec le bouton "ajouter"<BR><BR><BR>';
+	}
 	mysqli_close($conn);
 
     while($data = mysqli_fetch_row($req0)){
@@ -82,7 +84,7 @@ require_once("conf/settings.inc.php");
 				
 			</table>
 			<div class="tarif_bouton">
-				<input type="submit" value="Enregistrer">
+				<input type="submit" value="Enregistrer" >
 			</div>
 		</form>
 		<div class="onglet" >

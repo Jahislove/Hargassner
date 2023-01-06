@@ -22,7 +22,7 @@ $histo_temps = 30; //historique du graphique de la page d'accueil en mn
 
 // MySQL config
 $hostname = "127.0.0.1:3307"; //127.0.0.1 si la BDD est sur la meme machine que le serveur web , sinon IP . 3306 MySQL 5 , 3307 MySQL 10
-$database = "test"; // nom de la BDD
+$database = "hargassner"; // nom de la BDD
 $username = "hargassner"; // utilisateur mysql
 $password = "password"; //  a personnaliser
 

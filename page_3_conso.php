@@ -12,8 +12,9 @@
 
 <div id="conso" class="graphe_size"></div>
 <div id="courbe" class="graphe_size"></div>
-<div id="annees" class="graphe_size3"></div>
-<div id="conso_annees" class="graphe_size4"></div>
+<div id="cumul_saison" class="graphe_size3"></div>
+<div id="conso_par_mois" class="graphe_size4"></div>
+<div id="tarif_histo" class="graphe_size3"></div>
 
 <?php
 // pense bete : 
@@ -411,7 +412,7 @@ $(function() {
 //*******chart 3 conso annuelle**************************************************************************
 	chart3 = new Highcharts.Chart({
 		chart: {
-			renderTo: 'annees',
+			renderTo: 'cumul_saison',
 			type: 'column',
 			alignThresholds: true,
 		},
@@ -503,7 +504,7 @@ $(function() {
 //*******chart 4 comparaison saison*************************************************************************
 	chart4 = new Highcharts.Chart({
 		chart: {
-			renderTo: 'conso_annees',
+			renderTo: 'conso_par_mois',
 			alignThresholds: true,
 		},
 		title: {
@@ -615,6 +616,98 @@ $(function() {
 
 		series: [] 
 	});
+//*******chart 5 tarif historique saison**************************************************************************
+	chart5 = new Highcharts.Chart({
+		chart: {
+			renderTo: 'tarif_histo',
+			type: 'column',
+			alignThresholds: true,
+		},
+		legend: {
+			enabled: false,
+		},
+		title: {
+			text: 'historique tarif',
+	        align: 'left',
+	        x: 65,
+			style:{
+				color: '#4572A7',
+			},
+		},
+		xAxis: {
+			type: 'category',
+			crosshair: false,
+			visible: false,
+		 },
+		yAxis: [{
+			gridLineColor: '#CACACA', 
+            //softMax: 1000,
+			min: 0,
+			labels: {
+				format: '{value} €/tonne',
+				// style: {
+					// color: '<?php echo $color_gran; ?>',
+				// }
+			},
+		   title: {
+				text: '',
+			},
+		}],            
+		tooltip: {
+	        shared: true,
+			distance: 30,
+			padding: 5,
+			crosshairs: true,
+			borderRadius: 26,
+			borderWidth: 2,
+		},
+		plotOptions: {
+			series: {
+				colorByPoint: true,
+				marker: {
+					enabled: true,
+				},
+				dataLabels: {
+					useHTML: false,
+					formatter: function () {
+							return '<span style="color:' + this.point.color + '">' + this.point.y + '</span>';
+					},
+				},
+			},
+            column: {
+				// colors a synchro avec json_conso_annees.php
+				colors: ['rgba(230,126,34,1)','rgba(155,89,182,1)','rgba(41,128,185,1)','rgba(46,204,113,1)','rgba(241,196,15,1)','rgba(213,76,60,1)','rgba(230,126,255,1)','rgba(10,126,255,1)','rgba(150,150,150,1)','rgba(0,150,150,1)','rgba(150,150,10,1)'],
+                grouping: false,
+                shadow: false,
+                borderWidth: 0
+            },
+		},
+
+		series: [{
+			name: 'par tonne',
+			type: 'column',
+            pointPadding: 0.3,
+            groupPadding: 0.05,
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                style: {
+                    fontSize: '12px',
+					textOutline: false,
+                },
+                rotation: 0,
+                color: '#F0DB0B',
+                align: 'center',
+                y: 0,
+            },
+            tooltip: {
+                valueSuffix: ' €',
+				pointFormat: '<span style="color:{point.color}">■ par tonne </span>: <b>{point.y}</b></span><br/>',
+             },
+			zIndex: 1,
+			//data: [0,10]
+		}] 
+	});
 //***************************************************************************************************
 //***************************************************************************************************
 //*************affichage bulle conso moyenne*********************************************************
@@ -670,6 +763,7 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
     chart2.showLoading('Cliquez sur une colonne ci dessus pour afficher le détail des courbes ici')
     chart3.showLoading('loading');
     chart4.showLoading('loading');
+    chart5.showLoading('loading');
 
     $.ajax({
         dataType: "json",
@@ -685,6 +779,7 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
 				chart3.series[0].addPoint([x,y]);
                 chart4.addSeries(objet[i],false);
                 chart4.addSeries(objet[i+1],false);
+				chart5.series[0].addPoint([x,objet[i].prix*1000]);
 			}
 			
 			chart3.redraw();
@@ -692,8 +787,12 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
 			chart3.xAxis[0].update({ // affiche les category apres le graph sinon bug d'affichage
 				visible: true
 				});
+			chart5.xAxis[0].update({ // affiche les category apres le graph sinon bug d'affichage
+				visible: true
+				});
             chart3.hideLoading();
             chart4.hideLoading();
+            chart5.hideLoading();
         }
     });
 });
