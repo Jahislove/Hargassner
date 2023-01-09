@@ -445,6 +445,20 @@ $(function() {
 		   title: {
 				text: '',
 			},
+		},{
+			opposite:true,
+			gridLineColor: '#CACACA', 
+            //softMax: 1000,
+			min: 0,
+			labels: {
+				format: '{value} €',
+				// style: {
+					// color: '<?php echo $color_gran; ?>',
+				// }
+			},
+		   title: {
+				text: '',
+			},
 		}],            
 		tooltip: {
 	        shared: true,
@@ -498,6 +512,30 @@ $(function() {
                 valueSuffix: ' Kg',
              },
 			zIndex: 1,
+			//data: [0,10]
+		},{
+			name: 'prix',
+			type: 'column',
+			// color: '<?php echo $color_gran; ?>',
+            pointPadding: 0.6,
+            groupPadding: 0.05,
+            borderWidth: 2,
+            dataLabels: {
+                enabled: true,
+                style: {
+                    fontSize: '12px',
+					textOutline: false,
+                },
+                rotation: 0,
+                color: '#F0DB0B',
+                align: 'center',
+                y: 0,
+            },
+            tooltip: {
+                valueSuffix: ' €',
+             },
+			zIndex: 2,
+			yAxis: 1,
 			//data: [0,10]
 		}] 
 	});
@@ -774,12 +812,14 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
             //il contient des objet serie, les paires sont les temperatures et impaires les granulés
 			for (var i = 0; i < objet.length; i=i+2){
 				//console.log(objet[i].data);
-				var x = objet[i].name;
-				var y = objet[i].somme;
-				chart3.series[0].addPoint([x,y]);
+				var saison = objet[i].name;
+				var quantite = objet[i].somme;
+				var cout = Math.round(objet[i].prix*quantite);
+				chart3.series[0].addPoint([saison,quantite]);
+				chart3.series[1].addPoint([saison,cout]);
                 chart4.addSeries(objet[i],false);
                 chart4.addSeries(objet[i+1],false);
-				chart5.series[0].addPoint([x,objet[i].prix*1000]);
+				chart5.series[0].addPoint([saison,objet[i].prix*1000]);
 			}
 			
 			chart3.redraw();
