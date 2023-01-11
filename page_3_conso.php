@@ -10,11 +10,16 @@
     </div>
 </div>
 
-<div id="conso" class="graphe_size"></div>
-<div id="courbe" class="graphe_size"></div>
-<div id="cumul_saison" class="graphe_size3"></div>
-<div id="conso_par_mois" class="graphe_size4"></div>
-<div id="tarif_histo" class="graphe_size3"></div>
+<div id="conso" class="graphe_size"></div> 
+<div id="courbe" class="graphe_size"></div> 
+<div id="conso_par_mois" class="graphe_size4"></div> 
+<div id="cumul_saison" class="graphe_size3"></div> 
+<div id="tarif_histo" class="graphe_size3"></div> 
+<div id="info_histo "class="graphe_size5" > 
+	<table id="stat" class='TableTarif'>  
+		<tr></tr>    
+	</table>
+</div>
 
 <?php
 // pense bete : 
@@ -821,7 +826,6 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
                 chart4.addSeries(objet[i+1],false);
 				chart5.series[0].addPoint([saison,objet[i].prix*1000]);
 			}
-			
 			chart3.redraw();
             chart4.redraw();
 			chart3.xAxis[0].update({ // affiche les category apres le graph sinon bug d'affichage
@@ -833,6 +837,85 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
             chart3.hideLoading();
             chart4.hideLoading();
             chart5.hideLoading();
+        }
+    });
+
+    $.ajax({
+		method: 'POST',
+		data: {request:"Tmin"},
+        dataType: "json",
+        url: 'json_stat.php',
+        cache: false,
+        success: function(objet) {
+            // est un objet  , il est créé dans json_stat.php
+			compteur = Object.keys(objet).length;
+			for (i=0;i<compteur;i++){
+				document.getElementById('stat').innerHTML +='\
+					<tr>\
+						<th>Température minimale enregistrée</th> \
+						<th>' + objet[i].Date + '</th> \
+						<td>' + objet[i].Temp + '°</td>\
+					</tr>' ; 
+			}
+        }
+    });
+    $.ajax({
+		method: 'POST',
+		data: {request:"Tmax"},
+        dataType: "json",
+        url: 'json_stat.php',
+        cache: false,
+        success: function(objet) {
+            // est un objet  , il est créé dans json_stat.php
+			compteur = Object.keys(objet).length;
+			for (i=0;i<compteur;i++){
+				document.getElementById('stat').innerHTML +='\
+					<tr>\
+						<th>Température maximale enregistrée</th> \
+						<th>' + objet[i].Date + '</th> \
+						<td>' + objet[i].Temp + '°</td>\
+					</tr>' ; 
+			}
+        }
+    });
+    $.ajax({
+		method: 'POST',
+		data: {request:"Gmax"},
+        dataType: "json",
+        url: 'json_stat.php',
+        cache: false,
+        success: function(objet) {
+            // est un objet  , il est créé dans json_stat.php
+			compteur = Object.keys(objet).length;
+			for (i=0;i<compteur;i++){
+				document.getElementById('stat').innerHTML +='\
+					<tr>\
+						<th>Conso maximale granulés par jour</th> \
+						<th>' + objet[i].Date + '</th> \
+						<td>' + objet[i].Temp + ' Kg</td>\
+					</tr>' ; 
+			}
+        }
+    });
+    $.ajax({
+		method: 'POST',
+		data: {request:"ecs"},
+        dataType: "json",
+        url: 'json_stat.php',
+        cache: false,
+        success: function(objet) {
+            // est un objet  , il est créé dans json_stat.php
+			compteur = Object.keys(objet).length;
+			for (i=0;i<compteur;i++){
+				document.getElementById('stat').innerHTML +='\
+					<tr>\
+						<th class ="tooltipContainer">\
+							<span class="tooltipStatEcs">calculée a partir des mois juin-juillet-aout</span>\
+							Consommation ECS moyenne</th> \
+						<th>par mois</th> \
+						<td>' + objet[i].Temp + ' Kg</td>\
+					</tr>' ; 
+			}
         }
     });
 });
