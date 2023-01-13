@@ -1,4 +1,5 @@
 <?php 
+// version 1.0  ajout scraper prix moyen
 // version 0.9  refonte calcul conso + correction bug 14g
 // version 0.8	ajout firmware 14m
 // version 0.7	ajout firmware 14l
@@ -30,6 +31,7 @@ de cette manière , le reste du site continue a lire la puissance dans la c134
 */
 header("Content-type: text/json");
 require_once("conf/config.inc.php");
+include('simple_html_dom.php'); // load scraper librarie
 
 //*******************declaration des fonctions*******************************************************
 
@@ -61,6 +63,39 @@ function calcul_consommation($hostname, $database, $username, $password){
 			mysqli_query($conn, $SQLinsert);
 		}
 		
+	mysqli_close($conn);
+}
+// recupere le prix moyen sur internet
+function scraper_prix_moyen($hostname, $database, $username, $password){
+	$html = file_get_html('https://www.proxi-totalenergies.fr/prix-pellets');
+
+	foreach($html->find('.unit-price') as $e) // recupere la valeur de la class .unit-price
+    // echo $e->innertext . '<br>';
+	preg_match_all('!\d+!', $e, $data);
+	$prix = $data[0][0];
+	
+	foreach($html->find('p.cell') as $e) // recupere la valeur du selecteur p ayant class .cell
+    // echo $e->innertext . '<br>';
+	preg_match_all('!\d+!', $e, $data);
+	// print_r($date);
+	$date = $data[0][5].'-'.$data[0][4].'-'.$data[0][3]; //format date pour mysql
+
+	$query = "INSERT IGNORE INTO prix_moyen (dateB , prix) VALUES ('$date' , $prix )" ;
+
+	$conn = mysqli_connect ($hostname, $username, $password, $database); 
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+	
+	// test validité date
+	if (DateTime::createFromFormat('Y-m-d', trim($date)) !== FALSE) {
+		$dateOK = true;
+	}
+
+	if($dateOK == true and is_numeric($prix)){
+		$req = mysqli_query($conn, $query) ;
+		// echo mysqli_error($conn);
+	}
 	mysqli_close($conn);
 }
 
@@ -221,6 +256,11 @@ $minute = date('i', time());
 
 if ($heure == '00' and $minute < '30'){ # si heure est comprise entre 00h00 et 00h30 on calcul la conso de la veille
 	calcul_consommation($hostname, $database, $username, $password);
+}
+
+//appel fonction scraper_prix_moyen pour remplissage 1 fois par jour de la table prix_moyen
+if ($heure == '00' and $minute < '5'){  
+	scraper_prix_moyen($hostname, $database, $username, $password);
 }
 
 ?>
