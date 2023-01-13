@@ -17,25 +17,54 @@ require_once("conf/settings.inc.php");
     $query0 = "SELECT * FROM tarif 
             ORDER BY saison ASC ";
 
+	$query1 = "CREATE TABLE IF NOT EXISTS `tarif` (
+		`saison` CHAR(9) NOT NULL COLLATE 'utf8_general_ci',
+		`prix` DECIMAL(5,3) NOT NULL DEFAULT '0.000',
+		PRIMARY KEY (`saison`) USING BTREE
+		) COLLATE='utf8_general_ci'
+		ENGINE=InnoDB";
+
+	$query2 = "CREATE TABLE IF NOT EXISTS `prix_moyen` (
+		`dateB` DATE NOT NULL,
+		`prix` INT(5) NOT NULL,
+		PRIMARY KEY (`dateB`) USING BTREE
+		) COLLATE='utf8_general_ci'
+		ENGINE=InnoDB";
+
 	$conn = mysqli_connect ($hostname, $username, $password, $database); 
-	if (!$conn) {
-		die("Connection failed: " . mysqli_connect_error());
+	if ($conn) {
+		$req1 = mysqli_query($conn, $query1) ;
+		$req2 = mysqli_query($conn, $query2) ;
+
+		$req0 = mysqli_query($conn, $query0) ;
+		
+		if (mysqli_error($conn)) {
+			echo mysqli_error($conn);
+			echo '<BR>commencez par créer une saison avec le bouton "ajouter"<BR><BR><BR>';
+		}
+		mysqli_close($conn);
+
+		while($data = mysqli_fetch_row($req0)){
+			$obj_saison[] = [
+						'saison'=> $data[0] ,
+						'prix' => $data[1],
+						];
+		}
+		$bouton_hidden = '';
+		if($obj_saison){
+			$nombre_saison = count($obj_saison);
+		} else {
+			$table_vide = 'commencez par créer une saison<BR>avec le bouton "ajouter"<BR>';
+			$bouton_hidden = ' hidden'; // cache le bouton enregistrer si bdd vide
+		}
+		$tarif_hidden = '';
+	}
+	else {
+		$nombre_saison = 0;
+		$tarif_hidden = ' hidden'; // cache le cadre tarif si pas de BDD
+		// die("Connection failed: " . mysqli_connect_error());
 	}
 
-    $req0 = mysqli_query($conn, $query0) ;
-	if (mysqli_error($conn)) {
-		echo mysqli_error($conn);
-		echo '<BR>commencez par créer une saison avec le bouton "ajouter"<BR><BR><BR>';
-	}
-	mysqli_close($conn);
-
-    while($data = mysqli_fetch_row($req0)){
-        $obj_saison[] = [
-					'saison'=> $data[0] ,
-					'prix' => $data[1],
-					];
-    }
-	$nombre_saison = count($obj_saison);
 ?>
 
 <div class="ensemble">
@@ -66,7 +95,8 @@ require_once("conf/settings.inc.php");
 			</div>
 		</form>
 	</div>
-	<div class="tarif">
+	<div class="tarif<?php echo $tarif_hidden ;?>">
+		<?php echo $table_vide ;?> 
 		<form class="form_saison_tarif" name="form_tarif" method="post" action="reglage_ajout_tarif.php">
 			<table class='TableTarif'>  
 				<input name="nombre_saison" type="hidden" value="<?php echo $nombre_saison ;?>">
@@ -83,7 +113,7 @@ require_once("conf/settings.inc.php");
 				<?php } ?>
 				
 			</table>
-			<div class="tarif_bouton">
+			<div class="tarif_bouton<?php echo $bouton_hidden ;?>">
 				<input type="submit" value="Enregistrer" >
 			</div>
 		</form>

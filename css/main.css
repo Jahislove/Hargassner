@@ -456,11 +456,7 @@ a:hover{
 	width: 33%;
 	height: 600px;
 	padding: 10% 0 0 0 ;
-  /* margin: 0; */
-  position: relative;
-  /* top: 50%; */
-  /* -ms-transform: translateY(-50%); */
-  /* transform: translateY(-50%); */
+	position: relative;
 }
 .calendar {
     width: 250px;
@@ -1157,7 +1153,7 @@ a:hover{
   background-color: #f0f0f0;
   border-radius: 20px;
   padding: 30px 30px;
-  margin: 30px auto auto auto;
+  margin:  auto;
   /* position: absolute; */
   display: inline-block;
   float: left;
@@ -1202,7 +1198,7 @@ input[type=submit]:hover {
   background-color: #f0f0f0;
   border-radius: 20px;
   padding: 30px 30px;
-  margin: 30px auto auto auto;
+  margin: auto;
   position: relative;
   display : inline-block;
   /* z-index: -2; */

@@ -6,6 +6,10 @@
 v3.6	03/01/2023
 	sécurisation de la page reglages par un mot de passe
 	le mot de passe par defaut (a personnaliser) est dans le fichier conf/config.inc.php
+	ajout prix d'achat des granulés chaque saison (page reglages : vous pouvez ajouter manuellement les saisons et le prix d'achat)
+	ajout graphiques  : evolution prix d'achat et cout total par saison
+	ajout historique prix moyen en France : le prix est récupéré sur le site www.proxi-totalenergies.fr
+	les nouvelles tables en BDD sont crées automatiquement lors de la 1ere visite de la page réglages
 
 v3.5	19/12/2022
 	correction bug en 14g : c181 alphanum
