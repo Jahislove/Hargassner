@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="css/main.css" type="text/css"  />
 </head>
 <div class="rel">
-    <div id="graphe1" class="graphe_size2"></div>
+    <div id="graphe1" class="graphe_size4"></div>
 </div>
 <?php
 // MySQL config

@@ -6,17 +6,20 @@ switch($_POST['request']){
 	case 'Tmin':
 		$query = "SELECT dateB,c6 FROM data
 				WHERE c6=(SELECT MIN(c6) FROM data)
-				group BY  DATE(dateB)" ;
+				group BY  DATE(dateB)
+				LIMIT 3" ;
 		break;
 	case 'Tmax':
 		$query = "SELECT dateB,c6 FROM data
 				WHERE c6=(SELECT MAX(c6) FROM data)
-				group BY  DATE(dateB)" ;
+				group BY  DATE(dateB)
+				LIMIT 3" ;
 		break;
 	case 'Gmax':
 		$query = "SELECT dateB,conso FROM consommation
 				WHERE conso=(SELECT MAX(conso) FROM consommation)
-				group BY  DATE(dateB)" ;
+				group BY  DATE(dateB)
+				LIMIT 2" ;
 		break;
 	case 'ecs':
 		$query = "SELECT dateB, avg(sum_conso) FROM (
@@ -24,6 +27,10 @@ switch($_POST['request']){
 					WHERE month(dateB) IN(6,7,8)  
 					GROUP BY year(dateB),month(dateB)
 					HAVING SUM(conso) <> 0) tmp" ;
+		break;
+	case 'prix_moyen':
+		$query = "SELECT dateB, prix FROM  prix_moyen
+				  ORDER BY dateB ASC" ;
 		break;
 	default :
 		break;
@@ -38,8 +45,10 @@ mysqli_close($conn);
 
 // #########traitement query#####################################################################################
 while($data = mysqli_fetch_row($req)){
+	// $phpdate = strtotime($data[0]) ;
+	// $date = date( 'd/m/Y', $phpdate );
 	$objetDivers[] = ['Date'=> $data[0],
-					  'Temp'=> $data[1],
+					  'Data'=> $data[1],
 					 ];
 }
 

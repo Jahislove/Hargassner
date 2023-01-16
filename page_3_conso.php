@@ -12,14 +12,22 @@
 
 <div id="conso" class="graphe_size"></div> 
 <div id="courbe" class="graphe_size"></div> 
+
 <div id="conso_par_mois" class="graphe_size4"></div> 
+
 <div id="cumul_saison" class="graphe_size3"></div> 
 <div id="tarif_histo" class="graphe_size3"></div> 
-<div id="info_histo "class="graphe_size5" > 
-	<table id="stat" class='TableTarif'>  
-		<tr></tr>    
-	</table>
+
+<div class="graphe_size3">
+	<div id="info_histo" class="graphe_size5" > 
+		<table id="stat" class="TableTarif">  
+			<tr></tr>    
+		</table>
+	</div>
+	<span id="prix_moyen_histo" class="graphe_size5"></span> 
 </div>
+
+
 
 <?php
 // pense bete : 
@@ -670,7 +678,7 @@ $(function() {
 			enabled: false,
 		},
 		title: {
-			text: 'historique tarif',
+			text: 'historique tarif achat',
 	        align: 'left',
 	        x: 65,
 			style:{
@@ -751,6 +759,84 @@ $(function() {
 			//data: [0,10]
 		}] 
 	});
+//******chart 6 prix moyen******************************************************************************
+	chart6 = new Highcharts.Chart({
+		chart: {
+			renderTo: 'prix_moyen_histo',
+		},
+		title: {
+			text: 'évolution prix moyen',
+	        align: 'left',
+	        x: 65,
+			style:{
+				color: '#4572A7',
+			},
+		},
+		// subtitle: {
+			// text: '',
+	        // align: 'left',
+	        // x: 65,
+			// style:{
+				// color: '#4572A7',
+			// },
+		// },
+		xAxis: {
+			type: 'datetime',
+			  labels: {
+				formatter: function() {
+				  return Highcharts.dateFormat('%d/%m/%Y', this.value);
+				}
+			  }
+			// dateTimeLabelFormats: { 
+				// month: '%d. %b',
+				// year: '%b'
+			// }
+		 },
+		yAxis: {
+			gridLineColor: '#CACACA', 
+			labels: {
+				format: '{value}€',
+				style: {
+					color: '#4572A7',
+				}
+			},
+		   title: {
+				text: '',
+			},
+		},
+		tooltip: {
+	        shared: true,
+			crosshairs: true,
+			borderRadius: 6,
+			borderWidth: 1,
+			valueSuffix: '',
+			xDateFormat: '%A %d %B %Y',
+			valueSuffix: ' €',
+		 },
+		plotOptions: {
+			series: {
+                lineWidth: 1.5,
+				marker: {
+					enabled: false
+				},
+                states: {
+                    hover: {
+                        enabled: false,
+                    }
+                },
+                connectNulls: false,
+			}
+		},
+
+		series: [{
+			name: 'prix à la tonne',
+			type: 'line',
+			color: '<?php echo $color_TdepD; ?>',
+			zIndex: 1,
+			data: []
+			// data: []
+		}] 
+	});
 //***************************************************************************************************
 //***************************************************************************************************
 //*************affichage bulle conso moyenne*********************************************************
@@ -807,6 +893,7 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
     chart3.showLoading('loading');
     chart4.showLoading('loading');
     chart5.showLoading('loading');
+    chart6.showLoading('loading');
 
     $.ajax({
         dataType: "json",
@@ -842,6 +929,25 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
 
     $.ajax({
 		method: 'POST',
+        dataType: "json",
+        url: 'json_stat.php',
+		data: {request:"prix_moyen"},
+        cache: false,
+        success: function(objet) {
+			for (var i = 0; i < objet.length; i=i+1){
+				var date = objet[i].Date;
+				var prix = objet[i].Data;
+				console.log(date);
+				var dateT = new Date(date).getTime();//convert to timestamp
+				console.log(dateT);
+				chart6.series[0].addPoint([dateT,prix]);
+			}
+            chart6.hideLoading();
+        }
+    });
+
+    $.ajax({
+		method: 'POST',
 		data: {request:"Tmin"},
         dataType: "json",
         url: 'json_stat.php',
@@ -850,11 +956,14 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
             // est un objet  , il est créé dans json_stat.php
 			compteur = Object.keys(objet).length;
 			for (i=0;i<compteur;i++){
+				var date1 = new Date(objet[i].Date).toLocaleDateString("fr"); // transforme YYYY-MM-DD hh:mm:ss en DD/MM/YYYY
+				var date2 = date1.split("/");
+				var date = date2[0] +'-'+ date2[1] +'-'+ date2[2];// transforme DD/MM/YYYY en DD-MM-YYYY
 				document.getElementById('stat').innerHTML +='\
 					<tr>\
 						<th>Température minimale enregistrée</th> \
-						<th>' + objet[i].Date + '</th> \
-						<td>' + objet[i].Temp + '°</td>\
+						<th>' + date + '</th> \
+						<td>' + objet[i].Data + '°</td>\
 					</tr>' ; 
 			}
         }
@@ -869,11 +978,14 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
             // est un objet  , il est créé dans json_stat.php
 			compteur = Object.keys(objet).length;
 			for (i=0;i<compteur;i++){
+				var date1 = new Date(objet[i].Date).toLocaleDateString("fr"); // transforme YYYY-MM-DD hh:mm:ss en DD/MM/YYYY
+				var date2 = date1.split("/");
+				var date = date2[0] +'-'+ date2[1] +'-'+ date2[2];// transforme DD/MM/YYYY en DD-MM-YYYY
 				document.getElementById('stat').innerHTML +='\
 					<tr>\
 						<th>Température maximale enregistrée</th> \
-						<th>' + objet[i].Date + '</th> \
-						<td>' + objet[i].Temp + '°</td>\
+						<th>' + date + '</th> \
+						<td>' + objet[i].Data + '°</td>\
 					</tr>' ; 
 			}
         }
@@ -888,11 +1000,14 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
             // est un objet  , il est créé dans json_stat.php
 			compteur = Object.keys(objet).length;
 			for (i=0;i<compteur;i++){
+				var dateM = objet[i].Date;
+				var date = dateM.split("-");
+				var dateF = date[2] +'-'+ date[1] +'-'+ date[0];// transforme YYYY-MM-DD en DD-MM-YYYY
 				document.getElementById('stat').innerHTML +='\
 					<tr>\
 						<th>Conso maximale granulés par jour</th> \
-						<th>' + objet[i].Date + '</th> \
-						<td>' + objet[i].Temp + ' Kg</td>\
+						<th>' + dateF + '</th> \
+						<td>' + objet[i].Data + ' Kg</td>\
 					</tr>' ; 
 			}
         }
@@ -913,7 +1028,7 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
 							<span class="tooltipStatEcs">calculée a partir des mois juin-juillet-aout</span>\
 							Consommation ECS moyenne</th> \
 						<th>par mois</th> \
-						<td>' + objet[i].Temp + ' Kg</td>\
+						<td>' + objet[i].Data + ' Kg</td>\
 					</tr>' ; 
 			}
         }

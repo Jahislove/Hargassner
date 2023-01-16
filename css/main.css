@@ -436,14 +436,18 @@ a:hover{
 }
 .graphe_size2 {
     display: inline-block;
-	width: 99%;
+	width: 33%;
 	height: 600px;
+	/* margin: 0 auto; */
+    position:relative;
+	/* top: -200px; */
 }
 .graphe_size3 {
     display: inline-block;
 	width: 33%;
 	height: 600px;
-	margin: 0 auto;
+	/* margin: 0 auto; */
+    position:static;
 }
 .graphe_size4 {
     display: inline-block;
@@ -452,11 +456,12 @@ a:hover{
 }
 .graphe_size5 {
     font: 15px/1 Nunito,Arial,sans-serif;
-    display: inline-block;
-	width: 33%;
-	height: 600px;
-	padding: 10% 0 0 0 ;
-	position: relative;
+    display: block;
+	/* width: 33%; */
+	height: 299px;
+	/* padding: 10% 0 0 0 ; */
+	margin: 0 auto;
+	position: static;
 }
 .calendar {
     width: 250px;

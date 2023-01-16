@@ -45,7 +45,7 @@
 <div class="rel">
 	<div id="graphe_gauge1" class="graphe_gauge graphe_gaugePos1"></div>
 	<div id="graphe_gauge2" class="graphe_gauge graphe_gaugePos2"></div>
-    <div id="graphe1" class="graphe_size2"></div>
+    <div id="graphe1" class="graphe_size4"></div>
     <div id="graphe2" class="graphe_size"></div>
 </div>
 
