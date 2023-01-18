@@ -80,7 +80,7 @@ function parse_data(data) {
 	chart1.series[20].setData(data[20].data,false); //objet
 	chart1.series[21].setData(data[21],false);
 	chart1.series[22].setData(data[22],false); //temps decendrage
-	chart1.series[23].setData(data[23],false); //temps decendrage
+	chart1.series[23].setData(data[23],false); //conso instant
 	PuissMoyJour = data[24];
 	PuissMoyFonc = data[25];
 	// en cas d'ajout penser a incrementer k pour les cookies plus bas
@@ -580,6 +580,7 @@ $(function() {
             turboThreshold: 1500,
             type: 'area',
             zIndex: -1,
+			connectNulls:false,
             tooltip: {
 				pointFormatter: function () {
 					if ( this.y == 0){

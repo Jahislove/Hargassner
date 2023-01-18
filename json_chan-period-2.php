@@ -74,13 +74,13 @@ require_once("conf/config.inc.php");
 		if ( $data[21] > 0 and $prev == 0) { // quand le compteur est superieur a zero et que la valeur precedente etait zero alors on detecte un changement d'etat
 			$liste20['data'][] = ["x" => $dateD, "y" => 100,"valeur" => 'Marche' ];
 			$prev = $data[21];
-			$pointeur = 1;
-		}elseif ( $pointeur == 1){ // une pointe de courbe de 1mn etant trop fine pour le graphique, on ajoute une 2 eme minute
+			$pointeur = 3;
+		}elseif ( $pointeur > 0 ){ // une pointe de courbe de 1mn etant trop fine pour le graphique, on allonge de 3 minutes
 			$liste20['data'][] = ["x" => $dateD, "y" => 100,"valeur" => 'Marche' ];
 			$prev = $data[21];
-			$pointeur = 0;
+			$pointeur = $pointeur - 1;
 		}else { // dans tous les autres cas : pas d'aspi
-			$liste20['data'][] = ["x" => $dateD, "y" => 0,"valeur" => 'Arrêt' ]; 
+			$liste20['data'][] = ["x" => $dateD, "y" => null,"valeur" => 'Arrêt' ]; 
 			$prev = $data[21];
 		}
 		$liste21[] = [$dateD, $data[22]];
