@@ -456,7 +456,7 @@ a:hover{
 }
 .graphe_size5 {
     font: 15px/1 Nunito,Arial,sans-serif;
-    display: block;
+    display: inline-block;
 	/* width: 33%; */
 	height: 299px;
 	/* padding: 10% 0 0 0 ; */

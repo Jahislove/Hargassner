@@ -19,12 +19,12 @@
 <div id="tarif_histo" class="graphe_size3"></div> 
 
 <div class="graphe_size3">
+	<span id="prix_moyen_histo" class="graphe_size5"></span> 
 	<div id="info_histo" class="graphe_size5" > 
 		<table id="stat" class="TableTarif">  
 			<tr></tr>    
 		</table>
 	</div>
-	<span id="prix_moyen_histo" class="graphe_size5"></span> 
 </div>
 
 
@@ -430,7 +430,7 @@ $(function() {
 			alignThresholds: true,
 		},
 		legend: {
-			enabled: false,
+			enabled: true,
 		},
 		title: {
 			text: 'Consommation annuelle',
@@ -496,60 +496,55 @@ $(function() {
 			},
             column: {
 				// colors a synchro avec json_conso_annees.php
-				colors: ['rgba(230,126,34,1)','rgba(155,89,182,1)','rgba(41,128,185,1)','rgba(46,204,113,1)','rgba(241,196,15,1)','rgba(213,76,60,1)','rgba(230,126,255,1)','rgba(10,126,255,1)','rgba(150,150,150,1)','rgba(0,150,150,1)','rgba(150,150,10,1)'],
-                grouping: false,
+                grouping: true,
                 shadow: false,
-                borderWidth: 0
+                borderWidth: 0,
+				dataLabels: {
+					enabled: true,
+					style: {
+						fontSize: '12px',
+						textOutline: true,
+					},
+					rotation: 0,
+					// color: '#F0DB0B',
+					align: 'center',
+					y: 0,
+				},
             },
 		},
-
 		series: [{
-			name: '<?php echo $chart3_name[0]; ?>',
+			name: 'Quantité',
 			type: 'column',
-			// color: '<?php echo $color_gran; ?>',
-            pointPadding: 0.3,
-            groupPadding: 0.05,
+			// colors a synchro avec json_conso_annees.php
+			colors: ['rgba(230,126,34,1)','rgba(155,89,182,1)','rgba(41,128,185,1)','rgba(46,204,113,1)','rgba(241,196,15,1)','rgba(213,76,60,1)','rgba(230,126,255,1)','rgba(10,126,255,1)','rgba(150,150,150,1)','rgba(0,150,150,1)','rgba(150,150,10,1)'],
             borderWidth: 0,
             dataLabels: {
-                enabled: true,
-                style: {
-                    fontSize: '12px',
-					textOutline: false,
+                formatter: function() {
+                    return '<span style="color: ' + this.point.color + '">' + this.point.y + ' Kg</span>';   
                 },
-                rotation: 0,
-                color: '#F0DB0B',
-                align: 'center',
-                y: 0,
-            },
+				// x: -10,
+			},
             tooltip: {
                 valueSuffix: ' Kg',
              },
 			zIndex: 1,
-			//data: [0,10]
 		},{
-			name: 'prix',
+			name: 'coût',
 			type: 'column',
-			// color: '<?php echo $color_gran; ?>',
-            pointPadding: 0.6,
-            groupPadding: 0.05,
-            borderWidth: 2,
+			// colors a synchro avec json_conso_annees.php
+			colors: ['rgba(230,126,34,0.6)','rgba(155,89,182,0.6)','rgba(41,128,185,0.6)','rgba(46,204,113,0.6)','rgba(241,196,15,0.6)','rgba(213,76,60,0.6)','rgba(230,126,255,0.6)','rgba(10,126,255,0.6)','rgba(150,150,150,0.6)','rgba(0,150,150,0.7)','rgba(150,150,10,0.7)'],
             dataLabels: {
-                enabled: true,
-                style: {
-                    fontSize: '12px',
-					textOutline: false,
+                formatter: function() {
+                    return '<span style="color: ' + this.point.color + '">' + this.point.y + '€</span>';   
                 },
-                rotation: 0,
-                color: '#F0DB0B',
-                align: 'center',
-                y: 0,
-            },
+				// align: 'left',
+				x: 8,
+			},
             tooltip: {
                 valueSuffix: ' €',
              },
-			zIndex: 2,
+			zIndex: 0,
 			yAxis: 1,
-			//data: [0,10]
 		}] 
 	});
 //*******chart 4 comparaison saison*************************************************************************
@@ -765,21 +760,16 @@ $(function() {
 			renderTo: 'prix_moyen_histo',
 		},
 		title: {
-			text: 'évolution prix moyen',
+			text: 'Historique prix moyen en France',
 	        align: 'left',
 	        x: 65,
 			style:{
 				color: '#4572A7',
 			},
 		},
-		// subtitle: {
-			// text: '',
-	        // align: 'left',
-	        // x: 65,
-			// style:{
-				// color: '#4572A7',
-			// },
-		// },
+		legend: {
+			enabled: false,
+		},
 		xAxis: {
 			type: 'datetime',
 			  labels: {
@@ -852,7 +842,6 @@ chart1.renderer.label('Moyenne <?php echo $mois[2];?><br> = <?php echo $consoMoy
 	})
 	.add()
 	.shadow(true);
-	
 chart1.renderer.label('Moyenne <?php echo $mois[1];?><br> = <?php echo $consoMoy[1];?> kg / jour',250, 10)
 	.attr({
 		fill: '#DBEDFF',
@@ -937,9 +926,7 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
 			for (var i = 0; i < objet.length; i=i+1){
 				var date = objet[i].Date;
 				var prix = objet[i].Data;
-				console.log(date);
 				var dateT = new Date(date).getTime();//convert to timestamp
-				console.log(dateT);
 				chart6.series[0].addPoint([dateT,prix]);
 			}
             chart6.hideLoading();
