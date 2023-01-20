@@ -11,6 +11,7 @@ v3.6	20/01/2023
 	ajout graphiques  : evolution prix d'achat et cout total par saison
 	ajout historique prix moyen en France : le prix est récupéré sur le site www.proxi-totalenergies.fr
 	les nouvelles tables en BDD sont crées automatiquement lors de la 1ere visite de la page réglages
+	ajout icone pour basculer de la conso en Kg à euro sur le graphe de conso quotidienne
 
 v3.5	19/12/2022
 	correction bug en 14g : c181 alphanum
