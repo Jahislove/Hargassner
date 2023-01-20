@@ -40,17 +40,21 @@
     $chart2_name = ['T° départ consigne','T° départ','T° chaudière','T° extérieure','T° intérieure','Puissance','% bois'];
     $chart3_name = ['Sur la Saison'];
 
-    // requete
+    // recupere la conso des 90 derniers jours
     $query0 = "SELECT dateB,conso,Tmoy FROM consommation 
             ORDER BY dateB DESC LIMIT 90";
     // recupere la 1ere mesure dans la base pour initialiser le calendrier
-    $query1 = "SELECT YEAR(dateB),MONTH(dateB),FORMAT(AVG(conso),1) FROM consommation 
+    $query1 = "SELECT YEAR(dateB),MONTH(dateB) FROM consommation 
              LIMIT 1";
 			 
     // recupere la conso moyenne des 3 derniers mois
     $query2 = "SELECT MONTH(dateB),FORMAT(AVG(conso),1) FROM consommation 
 				GROUP BY YEAR(dateB), MONTH(dateB)           
 				ORDER BY dateB DESC LIMIT 3 ";
+
+    // recupere le prix de la saison en cours
+	$query3 = "SELECT * FROM tarif 
+			ORDER BY saison DESC LIMIT 1" ;
 
 	$conn = mysqli_connect ($hostname, $username, $password, $database); 
 	if (!$conn) {
@@ -59,16 +63,23 @@
     $req0 = mysqli_query($conn, $query0) ;
     $req1 = mysqli_query($conn, $query1) ;
     $req2 = mysqli_query($conn, $query2) ;
+    $req3 = mysqli_query($conn, $query3) ;
 	mysqli_close($conn);
+
+    $data = mysqli_fetch_row($req3);
+    $prix = $data[1];
 
     while($data = mysqli_fetch_row($req0)){
         $dateD = strtotime($data[0]) * 1000;
-        $chart1_data1[] = "[$dateD, $data[1]]";
-        $chart1_data2[] = "[$dateD, $data[2]]";
+        $chart1_data1[] = "[$dateD, $data[1]]";//kg
+        $chart1_data2[] = "[$dateD, $data[2]]";//temperature
+		$cout = round($data[1]*$prix,1,PHP_ROUND_HALF_EVEN);
+        $chart1_data3[] = "[$dateD, $cout]";//cout
     }
     
     $chart1_data1 = join(',', array_reverse($chart1_data1));
     $chart1_data2 = join(',', array_reverse($chart1_data2));
+    $chart1_data3 = join(',', array_reverse($chart1_data3));
 
     $data = mysqli_fetch_row($req1);
     $dateMin = [$data[0],$data[1]];
@@ -262,13 +273,9 @@ $(function() {
             dataLabels: {
                 enabled: true,
                 style: {
-                    fontSize: '8px',
-					textOutline: false,
+                    fontSize: '10px',
                 },
-                rotation: 0,
-                color: '#F0DB0B',
-                align: 'center',
-                y: 25,
+                y: 7,
             },
             tooltip: {
                 valueSuffix: ' Kg',
@@ -282,14 +289,10 @@ $(function() {
             dataLabels: {
                 enabled: true,
                 style: {
-                    textShadow: true,
-                    fontSize: '8px',
+                    fontSize: '10px',
 					textOutline: false,
-					// textOutline: "0px 0px contrast",
                 },
-                rotation: 0,
                 color: '<?php echo $color_TextM; ?>',
-                align: 'center',
                 y: 25,
             },
             tooltip: {
@@ -830,7 +833,7 @@ $(function() {
 //***************************************************************************************************
 //***************************************************************************************************
 //*************affichage bulle conso moyenne*********************************************************
-chart1.renderer.label('Moyenne <?php echo $mois[2];?><br> = <?php echo $consoMoy[2];?> kg / jour',100, 10)
+chart1.renderer.label('Moyenne <?php echo $mois[2];?><br> = <?php echo $consoMoy[2];?> kg / jour',150, 10)
 	.attr({
 		fill: '#DBEDFF',
 		stroke: '<?php echo $color_gran; ?>',
@@ -842,20 +845,7 @@ chart1.renderer.label('Moyenne <?php echo $mois[2];?><br> = <?php echo $consoMoy
 	})
 	.add()
 	.shadow(true);
-chart1.renderer.label('Moyenne <?php echo $mois[1];?><br> = <?php echo $consoMoy[1];?> kg / jour',250, 10)
-	.attr({
-		fill: '#DBEDFF',
-		stroke: '<?php echo $color_gran; ?>',
-		zIndex: 10,
-		r: 20,
-		width: 120,
-		padding: 8,
-		'stroke-width': 2,
-	})
-	.add()
-	.shadow(true);
-	
-chart1.renderer.label('Moyenne <?php echo $mois[0];?><br> = <?php echo $consoMoy[0];?> kg / jour',400, 10)
+chart1.renderer.label('Moyenne <?php echo $mois[1];?><br> = <?php echo $consoMoy[1];?> kg / jour',300, 10)
 	.attr({
 		fill: '#DBEDFF',
 		stroke: '<?php echo $color_gran; ?>',
@@ -868,7 +858,22 @@ chart1.renderer.label('Moyenne <?php echo $mois[0];?><br> = <?php echo $consoMoy
 	.add()
 	.shadow(true);
 	
+chart1.renderer.label('Moyenne <?php echo $mois[0];?><br> = <?php echo $consoMoy[0];?> kg / jour',450, 10)
+	.attr({
+		fill: '#DBEDFF',
+		stroke: '<?php echo $color_gran; ?>',
+		zIndex: 10,
+		r: 20,
+		width: 120,
+		padding: 8,
+		'stroke-width': 2,
+	})
+	.add()
+	.shadow(true);
+	
+// **** affichage point information*****
 chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
+	.attr('id','info')
 	.add()
 	.on('mouseover', function () {
 		$('#courbe').slideDown();
@@ -877,6 +882,34 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
 		$('#courbe').slideUp();
 	});
 	
+// **** affichage icone euro*****
+var mode = 'Kg';
+chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
+	.on('click', function () {
+		if ( mode == 'Kg'){
+			chart1.series[0].update({
+				tooltip: {
+					valueSuffix: ' €',
+				},
+				data: [<?php echo $chart1_data3; ?>],
+			});
+			$('#euroKilo').attr('href', 'img/euro-icon.png')
+			mode = '€';
+		} else {
+			chart1.series[0].update({
+				tooltip: {
+					valueSuffix: ' Kg',
+				},
+				data: [<?php echo $chart1_data1; ?>],
+			});
+			$('#euroKilo').attr('href', 'img/kilo-icon.png')
+			mode = 'Kg';
+		}			
+	})
+	.attr('id','euroKilo')
+	.add()
+	
+//***************************************************************************************************
 // ************* chargement asynchrone des graphes****************************************************
     chart2.showLoading('Cliquez sur une colonne ci dessus pour afficher le détail des courbes ici')
     chart3.showLoading('loading');
@@ -884,6 +917,7 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
     chart5.showLoading('loading');
     chart6.showLoading('loading');
 
+// *******graphique conso annuelle*********************
     $.ajax({
         dataType: "json",
         url: 'json_conso_annees.php',
@@ -916,6 +950,7 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
         }
     });
 
+// *******graphique prix moyen en France*********************
     $.ajax({
 		method: 'POST',
         dataType: "json",
@@ -933,6 +968,7 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
         }
     });
 
+// *******tableau Température mini enregistrée***************
     $.ajax({
 		method: 'POST',
 		data: {request:"Tmin"},
@@ -952,9 +988,11 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
 						<th>' + date + '</th> \
 						<td>' + objet[i].Data + '°</td>\
 					</tr>' ; 
+                document.getElementById('loading_temp').className = 'hidden';
 			}
         }
     });
+// *******tableau Température maxi enregistrée***************
     $.ajax({
 		method: 'POST',
 		data: {request:"Tmax"},
@@ -974,9 +1012,11 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
 						<th>' + date + '</th> \
 						<td>' + objet[i].Data + '°</td>\
 					</tr>' ; 
+                document.getElementById('loading_temp').className = 'hidden';
 			}
         }
     });
+// *******tableau conso granulés max sur une journée***************
     $.ajax({
 		method: 'POST',
 		data: {request:"Gmax"},
@@ -999,6 +1039,7 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
 			}
         }
     });
+// *******tableau cout moyen ECS***************
     $.ajax({
 		method: 'POST',
 		data: {request:"ecs"},
@@ -1013,9 +1054,17 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
 					<tr>\
 						<th class ="tooltipContainer">\
 							<span class="tooltipStatEcs">calculée a partir des mois juin-juillet-aout</span>\
-							Consommation ECS moyenne</th> \
+							Consommation ECS moyenne\
+						</th> \
 						<th>par mois</th> \
 						<td>' + objet[i].Data + ' Kg</td>\
+					</tr>\
+					<tr id="loading_temp">\
+						<th class ="tooltipContainer">\
+							Recherche  températures...\
+						</th> \
+						<th>Patientez</th> \
+						<td>...</td>\
 					</tr>' ; 
 			}
         }
