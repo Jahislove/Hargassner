@@ -165,11 +165,15 @@ switch ($firmware) {
 			'heure' 	=> time() * 1000,
 			'etat' 		=> $data[0],
 			'lambda'	=> $data[1],
-			'puissance' => $data[8],
-			'extract'	=> $data[6],
-			'Fumee'		=> $data[5],
+			't2' 		=> $data[2],
 			'chaudiereEst'=> $data[3],
 			'chaudiereDoit'=> $data[4],
+			'Fumee'		=> $data[5],
+			'extract'	=> $data[6],
+			't3'		=> $data[7],
+			'puissance' => $data[8],
+			'bois'		=> $data[9],
+			't4' 		=> $data[10],
 			'Tint'		=> $data[$depart_chauffage[$zone_chauffage]['Tint']],
 			'Text'		=> $data[15],
 			'TextMoy'	=> $data[16],
@@ -177,7 +181,6 @@ switch ($firmware) {
 			'departDoit'=> $data[$depart_chauffage[$zone_chauffage]['doit']],
 			'retourEst' => $data[23],
 			'retourDoit'=> $data[24],
-			'bois'		=> $data[9],
 			'TempECS'	=> $data[$ballon_ECS[$zone_ecs]['est']], 
 			'pompe-ECS'	=> $data[97],
 			'tempsDecend'=> $data[33],
@@ -191,6 +194,7 @@ switch ($firmware) {
 			'modeCommand'=> $data[61],
 			'consoHeure'=> $consoHeure, 
 			'erreur' 	=> $data[49], //error code
+			'integral'	=> $data,
 		);
 }	
 

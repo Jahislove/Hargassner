@@ -1,14 +1,11 @@
 <?php 
-require("header_debut.php"); 
+require("header.php"); 
 require_once 'reglage_protect.php';
 Protect\with('reglage_form_password.php', $password_settings);
 ?>
-<script type="text/javascript" src="js/codes_erreurs.js">	</script>
-<script type="text/javascript" src="js/call_ajax_light.js">	</script>
-<?php require("header_fin.php"); ?>
     
 <script type="text/javascript">
-	requestData();
+	requestData('call_ajax_light') // in header.php
 </script>
 
 <?php 

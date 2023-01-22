@@ -1,7 +1,4 @@
-﻿<?php require("header_debut.php"); ?>
-<script type="text/javascript" src="js/codes_erreurs.js">	</script>
-<script type="text/javascript" src="js/call_ajax_light.js">	</script>
-<?php require("header_fin.php"); ?>
+﻿<?php require("header.php"); ?>
 
 <div class="calendar">
     <div class="input-group date">
@@ -168,7 +165,7 @@ $(function() {
 		chart: {
 			renderTo: 'conso',
 			events: {
-				load: requestData // in header.php
+				load: requestData('call_ajax_light') // in header.php
 			},
 		},
 		title: {

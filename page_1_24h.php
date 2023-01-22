@@ -1,7 +1,4 @@
-<?php require("header_debut.php"); ?>
-<script type="text/javascript" src="js/codes_erreurs.js">	</script>
-<script type="text/javascript" src="js/call_ajax_light.js">	</script>
-<?php require("header_fin.php"); ?>
+<?php require("header.php"); ?>
 
 <div id="chart_last24"></div>
 
@@ -13,7 +10,6 @@
 ?>
 
 
-<?php require("footer.php");?>
 
 <script type="text/javascript">
 //********* déclaration des cookies pour stockage visibilité des courbes****************************
@@ -66,7 +62,7 @@ $(document).ready(function(){
 			zoomType: 'x',
 			backgroundColor: null,
 			events: {
-				load: requestData // in header.php
+				load: requestData('call_ajax_light') // in header.php
 			},
 		},
 	    credits: {
@@ -229,4 +225,30 @@ $(document).ready(function(){
 </script>
 
 
+<table class="telnetTable">
+<tbody>
+<tr>
+<td id="cell_0_0">&nbsp;</td><td id="cell_1_0">&nbsp;</td><td id="cell_2_0">&nbsp;</td><td id="cell_3_0">&nbsp;</td><td id="cell_4_0">&nbsp;</td><td id="cell_5_0">&nbsp;</td><td id="cell_6_0">&nbsp;</td><td id="cell_7_0">&nbsp;</td><td id="cell_8_0">&nbsp;</td><td id="cell_9_0">&nbsp;</td></tr>
+<tr>
+<td id="cell_0_1">&nbsp;</td><td id="cell_1_1">&nbsp;</td><td id="cell_2_1">&nbsp;</td><td id="cell_3_1">&nbsp;</td><td id="cell_4_1">&nbsp;</td><td id="cell_5_1">&nbsp;</td><td id="cell_6_1">&nbsp;</td><td id="cell_7_1">&nbsp;</td><td id="cell_8_1">&nbsp;</td><td id="cell_9_1">&nbsp;</td></tr>
+<tr>
+<td id="cell_0_2">&nbsp;</td><td id="cell_1_2">&nbsp;</td><td id="cell_2_2">&nbsp;</td><td id="cell_3_2">&nbsp;</td><td id="cell_4_2">&nbsp;</td><td id="cell_5_2">&nbsp;</td><td id="cell_6_2">&nbsp;</td><td id="cell_7_2">&nbsp;</td><td id="cell_8_2">&nbsp;</td><td id="cell_9_2">&nbsp;</td><</tr>
+<tr>
+<td id="cell_0_3">&nbsp;</td><td id="cell_1_3">&nbsp;</td><td id="cell_2_3">&nbsp;</td><td id="cell_3_3">&nbsp;</td><td id="cell_4_3">&nbsp;</td><td id="cell_5_3">&nbsp;</td><td id="cell_6_3">&nbsp;</td><td id="cell_7_3">&nbsp;</td><td id="cell_8_3">&nbsp;</td><td id="cell_9_3">&nbsp;</td></tr>
+<tr>
+<td id="cell_0_4">&nbsp;</td><td id="cell_1_4">&nbsp;</td><td id="cell_2_4">&nbsp;</td><td id="cell_3_4">&nbsp;</td><td id="cell_4_4">&nbsp;</td><td id="cell_5_4">&nbsp;</td><td id="cell_6_4">&nbsp;</td><td id="cell_7_4">&nbsp;</td><td id="cell_8_4">&nbsp;</td><td id="cell_9_4">&nbsp;</td></tr>
+<tr>
+<td id="cell_0_5">&nbsp;</td><td id="cell_1_5">&nbsp;</td><td id="cell_2_5">&nbsp;</td><td id="cell_3_5">&nbsp;</td><td id="cell_4_5">&nbsp;</td><td id="cell_5_5">&nbsp;</td><td id="cell_6_5">&nbsp;</td><td id="cell_7_5">&nbsp;</td><td id="cell_8_5">&nbsp;</td><td id="cell_9_5">&nbsp;</td></tr>
+<tr>
+<td id="cell_0_6">&nbsp;</td><td id="cell_1_6">&nbsp;</td><td id="cell_2_6">&nbsp;</td><td id="cell_3_6">&nbsp;</td><td id="cell_4_6">&nbsp;</td><td id="cell_5_6">&nbsp;</td><td id="cell_6_6">&nbsp;</td><td id="cell_7_6">&nbsp;</td><td id="cell_8_6">&nbsp;</td><td id="cell_9_6">&nbsp;</td></tr>
+<tr>
+<td id="cell_0_7">&nbsp;</td><td id="cell_1_7">&nbsp;</td><td id="cell_2_7">&nbsp;</td><td id="cell_3_7">&nbsp;</td><td id="cell_4_7">&nbsp;</td><td id="cell_5_7">&nbsp;</td><td id="cell_6_7">&nbsp;</td><td id="cell_7_7">&nbsp;</td><td id="cell_8_7">&nbsp;</td><td id="cell_9_7">&nbsp;</td></tr>
+<tr>
+<td id="cell_0_8">&nbsp;</td><td id="cell_1_8">&nbsp;</td><td id="cell_2_8">&nbsp;</td><td id="cell_3_8">&nbsp;</td><td id="cell_4_8">&nbsp;</td><td id="cell_5_8">&nbsp;</td><td id="cell_6_8">&nbsp;</td><td id="cell_7_8">&nbsp;</td><td id="cell_8_8">&nbsp;</td><td id="cell_9_8">&nbsp;</td></tr>
+<tr>
+<td id="cell_0_9">&nbsp;</td><td id="cell_1_9">&nbsp;</td><td id="cell_2_9">&nbsp;</td><td id="cell_3_9">&nbsp;</td><td id="cell_4_9">&nbsp;</td><td id="cell_5_9">&nbsp;</td><td id="cell_6_9">&nbsp;</td><td id="cell_7_9">&nbsp;</td><td id="cell_8_9">&nbsp;</td><td id="cell_9_9">&nbsp;</td></tr>
+</tbody>
+</tr>
+</table>
 
+<?php require("footer.php");?>

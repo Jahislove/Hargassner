@@ -1381,3 +1381,37 @@ button[type=submit]:hover {
   background-color: #4CAF50; /* Green */
   color: white;
 }
+
+
+/*** tableau telnet********************************/
+table.telnetTable {
+  border: 4px solid #555555;
+  background-color: #74A6A2;
+  width: 400px;
+  height: 220px;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.telnetTable td, table.telnetTable th {
+  border: 1px solid #555555;
+  padding: 6px 5px;
+  width: 40px;
+}
+table.telnetTable tbody td {
+  font-size: 13px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+/* table.telnetTable tfoot td { */
+  /* font-size: 13px; */
+/* } */
+/* table.telnetTable tfoot .links { */
+  /* text-align: right; */
+/* } */
+/* table.telnetTable tfoot .links a{ */
+  /* display: inline-block; */
+  /* background: #FFFFFF; */
+  /* color: #A43152; */
+  /* padding: 2px 8px; */
+  /* border-radius: 5px; */
+/* } */

@@ -60,7 +60,7 @@ $(function() {
 			defaultSeriesType: 'line',
 			zoomType: 'x',
 			events: {
-				load: requestData, // in header.php
+				load: requestData('call_ajax_full') // in header.php
 			}
 		},
 		title: {
