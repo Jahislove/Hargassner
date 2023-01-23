@@ -882,6 +882,7 @@ chart1.renderer.image('img/help-icon.png', 50, 10, 40, 40)
 // **** affichage icone euro*****
 var mode = 'Kg';
 chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
+	.attr('id','euroKilo')
 	.on('click', function () {
 		if ( mode == 'Kg'){
 			chart1.series[0].update({
@@ -905,8 +906,10 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 			mode = 'Kg';
 		}			
 	})
-	.attr('id','euroKilo')
-	.add()
+	.on('mouseover', function () {
+		$('#euroKilo').attr({cursor: 'pointer'});
+	})
+	.add();
 	
 //***************************************************************************************************
 // ************* chargement asynchrone des graphes****************************************************

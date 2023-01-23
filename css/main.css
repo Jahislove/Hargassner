@@ -406,7 +406,7 @@ a:hover{
 }
 #chart_last24 {
 	min-width: 400px;
-	height: 700px;
+	height: 550px;
 	margin: 0 auto;
 }
 .rel {
@@ -1343,7 +1343,8 @@ div.tabs > div:target > div, :target #default2 > div {
   z-index: -1; /* Raise it above the others */
 }			
 div.tabs :target {
-  outline: none}
+  outline: none;
+}
 
 
 
@@ -1385,23 +1386,35 @@ button[type=submit]:hover {
 
 /*** tableau telnet********************************/
 table.telnetTable {
+  /* position: relative; */
+  display : inline-table;
   border: 4px solid #555555;
   background-color: #74A6A2;
-  width: 400px;
-  height: 220px;
+  width: 500px;
   text-align: center;
   border-collapse: collapse;
+  table-layout: fixed;
+  padding: auto;
 }
 table.telnetTable td, table.telnetTable th {
   border: 1px solid #555555;
   padding: 6px 5px;
-  width: 40px;
+  width: 50px;
 }
 table.telnetTable tbody td {
   font-size: 13px;
   font-weight: bold;
   color: #FFFFFF;
+  cursor: pointer;
 }
+
+td.select  {
+  background-color: #A43152;
+
+  border: 7px solid #555555;
+}
+
+
 /* table.telnetTable tfoot td { */
   /* font-size: 13px; */
 /* } */

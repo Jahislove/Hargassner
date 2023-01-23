@@ -2,6 +2,7 @@
 <html lang="fr">
     <?php require_once("conf/config.inc.php");?>
 <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>My Hargassner</title>
     <link rel="icon" type="image/png" href="img/logo.png" />
@@ -40,21 +41,24 @@
     var etat;
 
 
-		// auto refresh des données avec ajax
+	// auto refresh des données avec ajax
 	// l'appel initial de cette fonction se fait dans graph_live.inc.php et dans chaque page
-	var mesFonctions = {
-	  	call_ajax_light : function () {
-	 		call_ajax_light();
-		  },
-	  	call_ajax_full : function () {
-	 		call_ajax_full();
-		  }
-	};
+
+	// var mesFonctions = {
+	//   	call_ajax_light : function () {
+	//  		call_ajax('call_ajax_light');
+		//   },
+	//   	call_ajax_full : function () {
+	//  		call_ajax('call_ajax_full');
+		//   }
+	// };
 	
     function requestData(type) { 
-		console.log(type);
-        mesFonctions[type](); //appel ajax au loading dans call_ajax.js
-        id = setInterval(mesFonctions[type],refresh*1000); // recharge les data toutes les x secondes
+		//type = call_ajax_regul,call_ajax_light,call_ajax_accueil
+        // mesFonctions[type](); //appel ajax au loading dans call_ajax.js
+        // id = setInterval(mesFonctions[type],refresh*1000); // recharge les data toutes les x secondes
+        call_ajax(type); //appel ajax au loading dans call_ajax.js
+        id = setInterval(call_ajax,refresh*1000,type); // recharge les data toutes les 10 secondes(par defaut)
         // setTimeout(stop_refresh, 60000000); // 600000ms  stop rafraichissement apres 10 mn 
     };
     function stop_refresh() {clearInterval(id)};

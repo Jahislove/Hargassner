@@ -11,6 +11,18 @@ for ($i = -$histo_live_X; $i < 0; $i++){  //la valeur de $i doit correspondre a 
 <div id="live"></div>
 
 <script type="text/javascript">
+//alterne affichage bulles/tableau
+function clic() {
+    if ( bulles.className == 'visible' ) {
+        bulles.className = 'hidden';
+        tableau.className = 'visible';
+    }
+    else {
+        bulles.className = 'visible';
+        tableau.className ='hidden';
+    }
+};
+
 //********* déclaration des cookies pour stockage visibilité des courbes****************************
 //*** creation cookie******
 function setCookie(sName, sValue) {
@@ -60,7 +72,7 @@ $(function() {
 			defaultSeriesType: 'line',
 			zoomType: 'x',
 			events: {
-				load: requestData('call_ajax_full') // in header.php
+				load: requestData('call_ajax_accueil') // in header.php
 			}
 		},
 		title: {
