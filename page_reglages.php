@@ -1,8 +1,10 @@
+<?php include("/volume1/web/hargassner-dev/password_protect.php"); ?>
 <?php 
+// require_once 'reglage_protect.php';
+// Protect\with('reglage_form_password.php', $password_settings);
 require("header.php"); 
-require_once 'reglage_protect.php';
-Protect\with('reglage_form_password.php', $password_settings);
 ?>
+
     
 <script type="text/javascript">
 	requestData('call_ajax_light') // in header.php
