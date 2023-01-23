@@ -1347,23 +1347,17 @@ div.tabs :target {
 }
 
 
-
 /*** page form_password ********************************/
 
 .password_div {
-  top: 0px;
+  top: 20px;
   border: 1px solid;
   border-radius: 20px;
   position: relative;
-  width: 550px;
-  height: 150px;
-  text-align: center;
-}
-.error_password_div {
-  top: 0px;
-  position: relative;
-  width: 550px;
-  height: 60px;
+  width: 600px;
+  height: 230px;
+  margin:auto;
+  /* margin-right:auto; */
   text-align: center;
 }
 button[type=submit]{
