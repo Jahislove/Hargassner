@@ -1406,6 +1406,10 @@ td.select  {
   background-color: #A43152;
   border: 7px solid #555555;
 }
+.inactif  {
+  background-color: #a2c3c1;
+  border: 7px solid #555555;
+}
 
 #telnet_center {
   width: 1020px;

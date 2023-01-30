@@ -135,51 +135,6 @@ $(document).ready(function(){
                 }
 			},
 		},
-
-		// series: [{
-			// name: '<?php echo $chart_last24_name[0]; ?>',
-			// color: '<?php echo $color_TdepD; ?>',
-            // visible: etat[0],
-			// zIndex: 5,
-			// data: []
-		// }, {
-			// name: '<?php echo $chart_last24_name[1]; ?>',
-			// color: '<?php echo $color_TdepE; ?>',
-            // visible: etat[1],
-			// zIndex: 3,
-			// data: []
-		// }, {
-			// name: '<?php echo $chart_last24_name[2]; ?>',
-			// color: '<?php echo $color_Tchaud; ?>',
-            // visible: etat[2],
-			// zIndex: 2,
-			// data: []
-		// }, {
-			// name: '<?php echo $chart_last24_name[3]; ?>',
-			// color: '<?php echo $color_Text; ?>',
-            // visible: etat[3],
-			// zIndex: 4,
-			// data: []
-		// }, {
-			// name: '<?php echo $chart_last24_name[4]; ?>',
-			// color: '<?php echo $color_TextM; ?>',
-            // visible: etat[4],
-			// zIndex: 4,
-			// data: []
-		// }, {
-			// name: '<?php echo $chart_last24_name[5]; ?>',
-			// color: '<?php echo $color_Tint; ?>',
-            // visible: etat[5],
-			// zIndex: 4,
-			// data: []
-		// }, {
-			// name: '<?php echo $chart_last24_name[6]; ?>',
-			// color: '<?php echo $color_puiss; ?>',
-            // visible: etat[6],
-			// zIndex: 4,
-            // yAxis: 1,
-			// data: []
-		// }] 
 	});
 //****************************************************************************************************
 //*** chargement des données en asynchrone *****************************
@@ -191,51 +146,39 @@ $(document).ready(function(){
 		';
     chart_last24.showLoading(msg);
 
-    // $.ajax({
-        // dataType: "json",
-        // url: 'json_chan-period.php',
-        // data: 'channel=<?php echo $chart_last24_chan; ?>' + '&periode=1440',
-        // cache: false,
-        // success: function(data) {
-            // chart_last24.series[0].setData(data[0],false);
-            // chart_last24.series[1].setData(data[1],false);
-            // chart_last24.series[2].setData(data[2],false);
-            // chart_last24.series[3].setData(data[3],false);
-            // chart_last24.series[4].setData(data[4],false);
-            // chart_last24.series[5].setData(data[5],false);
-            // chart_last24.series[6].setData(data[6],false);
-            // chart_last24.redraw();
-            // chart_last24.hideLoading();
-        // }
-    // });
-
-
+//****************************************************************************************************
+//*** desactivation tableau non utilisé *****************************
+	for(var i = 134;i<200;i=i+1){
+			document.getElementById(i).className = 'inactif';
+	}
 //****************************************************************************************************
 //*** clic sur tableau *****************************
     $(".telnetTable").on('click','tbody.id>tr>td',function(){
-		if (document.getElementById(this.id).className == 'select'){
-			document.getElementById(this.id).className = '';
-			chart_last24.get('t'+this.id).remove();
-			if (chart_last24.series.length == 0){
-				chart_last24.showLoading(msg);
-			};
-		} else {
-            chart_last24.hideLoading();
-			document.getElementById(this.id).className = 'select';
-			console.log(this.id);
-			$.ajax({
-				dataType: "json",
-				url: 'json_chan-period-1.php',
-				data: 'id=' + this.id + '&periode=1440',
-				cache: false,
-				success: function(object) {
-					// chart_last24.addSeries({
-						// data: data[0],
-					// });
-					chart_last24.addSeries(object);
-				}
-			});
-		} 
+		if (document.getElementById(this.id).className != 'inactif' ){
+			if (document.getElementById(this.id).className == 'select'){
+				document.getElementById(this.id).className = '';
+				chart_last24.get('t'+this.id).remove();
+				if (chart_last24.series.length == 0){
+					chart_last24.showLoading(msg);
+				};
+			} else {
+				chart_last24.hideLoading();
+				document.getElementById(this.id).className = 'select';
+				console.log(this.id);
+				$.ajax({
+					dataType: "json",
+					url: 'json_chan-period-1.php',
+					data: 'id=' + this.id + '&periode=1440',
+					cache: false,
+					success: function(object) {
+						// chart_last24.addSeries({
+							// data: data[0],
+						// });
+						chart_last24.addSeries(object);
+					}
+				});
+			} 
+		}
     });
 
 
