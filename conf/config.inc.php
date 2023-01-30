@@ -10,6 +10,9 @@ $firmware= "14k" ;
 // password pour acceder à la page reglages , a personnaliser
 $password_settings = 'password';
 
+// chemin réel vers votre site pour stockage des logs
+$cheminLog = "/volume1/web/hargassner";
+
 $port = 23; //port telnet, ne pas modifier / no need to change
 $mode_conn = 'telnet'; // mode de connexion : telnet pour chaudiere recente ou serial pour les anciennes 
 						// en mode serial la page d'acceuil ne fonctionne plus en temps reel mais utilise la BDD

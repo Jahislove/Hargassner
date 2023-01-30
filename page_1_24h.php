@@ -243,56 +243,36 @@ $(document).ready(function(){
 });
 </script>
 
-
-<table class="telnetTable">
-<tbody class="id">
-<tr>
-<td id="0" >&nbsp;</td><td id="1" >&nbsp;</td><td id="2" >&nbsp;</td><td id="3" >&nbsp;</td><td id="4" >&nbsp;</td><td id="5" >&nbsp;</td><td id="6" >&nbsp;</td><td id="7" >&nbsp;</td><td id="8" >&nbsp;</td><td id="9" >&nbsp;</td></tr>
-<tr>
-<td id="10">&nbsp;</td><td id="11">&nbsp;</td><td id="12">&nbsp;</td><td id="13">&nbsp;</td><td id="14">&nbsp;</td><td id="15">&nbsp;</td><td id="16">&nbsp;</td><td id="17">&nbsp;</td><td id="18">&nbsp;</td><td id="19">&nbsp;</td></tr>
-<tr>
-<td id="20">&nbsp;</td><td id="21">&nbsp;</td><td id="22">&nbsp;</td><td id="23">&nbsp;</td><td id="24">&nbsp;</td><td id="25">&nbsp;</td><td id="26">&nbsp;</td><td id="27">&nbsp;</td><td id="28">&nbsp;</td><td id="29">&nbsp;</td></tr>
-<tr>
-<td id="30">&nbsp;</td><td id="31">&nbsp;</td><td id="32">&nbsp;</td><td id="33">&nbsp;</td><td id="34">&nbsp;</td><td id="35">&nbsp;</td><td id="36">&nbsp;</td><td id="37">&nbsp;</td><td id="38">&nbsp;</td><td id="39">&nbsp;</td></tr>
-<tr>
-<td id="40">&nbsp;</td><td id="41">&nbsp;</td><td id="42">&nbsp;</td><td id="43">&nbsp;</td><td id="44">&nbsp;</td><td id="45">&nbsp;</td><td id="46">&nbsp;</td><td id="47">&nbsp;</td><td id="48">&nbsp;</td><td id="49">&nbsp;</td></tr>
-<tr>
-<td id="50">&nbsp;</td><td id="51">&nbsp;</td><td id="52">&nbsp;</td><td id="53">&nbsp;</td><td id="54">&nbsp;</td><td id="55">&nbsp;</td><td id="56">&nbsp;</td><td id="57">&nbsp;</td><td id="58">&nbsp;</td><td id="59">&nbsp;</td></tr>
-<tr>
-<td id="60">&nbsp;</td><td id="61">&nbsp;</td><td id="62">&nbsp;</td><td id="63">&nbsp;</td><td id="64">&nbsp;</td><td id="65">&nbsp;</td><td id="66">&nbsp;</td><td id="67">&nbsp;</td><td id="68">&nbsp;</td><td id="69">&nbsp;</td></tr>
-<tr>
-<td id="70">&nbsp;</td><td id="71">&nbsp;</td><td id="72">&nbsp;</td><td id="73">&nbsp;</td><td id="74">&nbsp;</td><td id="75">&nbsp;</td><td id="76">&nbsp;</td><td id="77">&nbsp;</td><td id="78">&nbsp;</td><td id="79">&nbsp;</td></tr>
-<tr>
-<td id="80">&nbsp;</td><td id="81">&nbsp;</td><td id="82">&nbsp;</td><td id="83">&nbsp;</td><td id="84">&nbsp;</td><td id="85">&nbsp;</td><td id="86">&nbsp;</td><td id="87">&nbsp;</td><td id="88">&nbsp;</td><td id="89">&nbsp;</td></tr>
-<tr>
-<td id="90">&nbsp;</td><td id="91">&nbsp;</td><td id="92">&nbsp;</td><td id="93">&nbsp;</td><td id="94">&nbsp;</td><td id="95">&nbsp;</td><td id="96">&nbsp;</td><td id="97">&nbsp;</td><td id="98">&nbsp;</td><td id="99">&nbsp;</td></tr>
-</tbody>
-</tr>
-</table>
-<table class="telnetTable">
-<tbody class="id">
-<tr>
-<td id="100">&nbsp;</td><td id="101">&nbsp;</td><td id="102">&nbsp;</td><td id="103">&nbsp;</td><td id="104">&nbsp;</td><td id="105">&nbsp;</td><td id="106">&nbsp;</td><td id="107">&nbsp;</td><td id="108">&nbsp;</td><td id="109">&nbsp;</td></tr>
-<tr>
-<td id="110">&nbsp;</td><td id="111">&nbsp;</td><td id="112">&nbsp;</td><td id="113">&nbsp;</td><td id="114">&nbsp;</td><td id="115">&nbsp;</td><td id="116">&nbsp;</td><td id="117">&nbsp;</td><td id="118">&nbsp;</td><td id="119">&nbsp;</td></tr>
-<tr>
-<td id="120">&nbsp;</td><td id="121">&nbsp;</td><td id="122">&nbsp;</td><td id="123">&nbsp;</td><td id="124">&nbsp;</td><td id="125">&nbsp;</td><td id="126">&nbsp;</td><td id="127">&nbsp;</td><td id="128">&nbsp;</td><td id="129">&nbsp;</td></tr>
-<tr>
-<td id="130">&nbsp;</td><td id="131">&nbsp;</td><td id="132">&nbsp;</td><td id="133">&nbsp;</td><td id="134">&nbsp;</td><td id="135">&nbsp;</td><td id="136">&nbsp;</td><td id="137">&nbsp;</td><td id="138">&nbsp;</td><td id="139">&nbsp;</td></tr>
-<tr>
-<td id="140">&nbsp;</td><td id="141">&nbsp;</td><td id="142">&nbsp;</td><td id="143">&nbsp;</td><td id="144">&nbsp;</td><td id="145">&nbsp;</td><td id="146">&nbsp;</td><td id="147">&nbsp;</td><td id="148">&nbsp;</td><td id="149">&nbsp;</td></tr>
-<tr>
-<td id="150">&nbsp;</td><td id="151">&nbsp;</td><td id="152">&nbsp;</td><td id="153">&nbsp;</td><td id="154">&nbsp;</td><td id="155">&nbsp;</td><td id="156">&nbsp;</td><td id="157">&nbsp;</td><td id="158">&nbsp;</td><td id="159">&nbsp;</td></tr>
-<tr>
-<td id="160">&nbsp;</td><td id="161">&nbsp;</td><td id="162">&nbsp;</td><td id="163">&nbsp;</td><td id="164">&nbsp;</td><td id="165">&nbsp;</td><td id="166">&nbsp;</td><td id="167">&nbsp;</td><td id="168">&nbsp;</td><td id="169">&nbsp;</td></tr>
-<tr>
-<td id="170">&nbsp;</td><td id="171">&nbsp;</td><td id="172">&nbsp;</td><td id="173">&nbsp;</td><td id="174">&nbsp;</td><td id="175">&nbsp;</td><td id="176">&nbsp;</td><td id="177">&nbsp;</td><td id="178">&nbsp;</td><td id="179">&nbsp;</td></tr>
-<tr>
-<td id="180">&nbsp;</td><td id="181">&nbsp;</td><td id="182">&nbsp;</td><td id="183">&nbsp;</td><td id="184">&nbsp;</td><td id="185">&nbsp;</td><td id="186">&nbsp;</td><td id="187">&nbsp;</td><td id="188">&nbsp;</td><td id="189">&nbsp;</td></tr>
-<tr>
-<td id="190">&nbsp;</td><td id="191">&nbsp;</td><td id="192">&nbsp;</td><td id="193">&nbsp;</td><td id="194">&nbsp;</td><td id="195">&nbsp;</td><td id="196">&nbsp;</td><td id="197">&nbsp;</td><td id="198">&nbsp;</td><td id="199">&nbsp;</td></tr>
-</tbody>
-</tr>
-</table>
-
+<div id="telnet_center">
+	<table class="telnetTable">
+	<tbody class="id">
+		<tr><td id="0" >&nbsp;</td><td id="1" >&nbsp;</td><td id="2" >&nbsp;</td><td id="3" >&nbsp;</td><td id="4" >&nbsp;</td><td id="5" >&nbsp;</td><td id="6" >&nbsp;</td><td id="7" >&nbsp;</td><td id="8" >&nbsp;</td><td id="9" >&nbsp;</td></tr>
+		<tr><td id="10">&nbsp;</td><td id="11">&nbsp;</td><td id="12">&nbsp;</td><td id="13">&nbsp;</td><td id="14">&nbsp;</td><td id="15">&nbsp;</td><td id="16">&nbsp;</td><td id="17">&nbsp;</td><td id="18">&nbsp;</td><td id="19">&nbsp;</td></tr>
+		<tr><td id="20">&nbsp;</td><td id="21">&nbsp;</td><td id="22">&nbsp;</td><td id="23">&nbsp;</td><td id="24">&nbsp;</td><td id="25">&nbsp;</td><td id="26">&nbsp;</td><td id="27">&nbsp;</td><td id="28">&nbsp;</td><td id="29">&nbsp;</td></tr>
+		<tr><td id="30">&nbsp;</td><td id="31">&nbsp;</td><td id="32">&nbsp;</td><td id="33">&nbsp;</td><td id="34">&nbsp;</td><td id="35">&nbsp;</td><td id="36">&nbsp;</td><td id="37">&nbsp;</td><td id="38">&nbsp;</td><td id="39">&nbsp;</td></tr>
+		<tr><td id="40">&nbsp;</td><td id="41">&nbsp;</td><td id="42">&nbsp;</td><td id="43">&nbsp;</td><td id="44">&nbsp;</td><td id="45">&nbsp;</td><td id="46">&nbsp;</td><td id="47">&nbsp;</td><td id="48">&nbsp;</td><td id="49">&nbsp;</td></tr>
+		<tr><td id="50">&nbsp;</td><td id="51">&nbsp;</td><td id="52">&nbsp;</td><td id="53">&nbsp;</td><td id="54">&nbsp;</td><td id="55">&nbsp;</td><td id="56">&nbsp;</td><td id="57">&nbsp;</td><td id="58">&nbsp;</td><td id="59">&nbsp;</td></tr>
+		<tr><td id="60">&nbsp;</td><td id="61">&nbsp;</td><td id="62">&nbsp;</td><td id="63">&nbsp;</td><td id="64">&nbsp;</td><td id="65">&nbsp;</td><td id="66">&nbsp;</td><td id="67">&nbsp;</td><td id="68">&nbsp;</td><td id="69">&nbsp;</td></tr>
+		<tr><td id="70">&nbsp;</td><td id="71">&nbsp;</td><td id="72">&nbsp;</td><td id="73">&nbsp;</td><td id="74">&nbsp;</td><td id="75">&nbsp;</td><td id="76">&nbsp;</td><td id="77">&nbsp;</td><td id="78">&nbsp;</td><td id="79">&nbsp;</td></tr>
+		<tr><td id="80">&nbsp;</td><td id="81">&nbsp;</td><td id="82">&nbsp;</td><td id="83">&nbsp;</td><td id="84">&nbsp;</td><td id="85">&nbsp;</td><td id="86">&nbsp;</td><td id="87">&nbsp;</td><td id="88">&nbsp;</td><td id="89">&nbsp;</td></tr>
+		<tr><td id="90">&nbsp;</td><td id="91">&nbsp;</td><td id="92">&nbsp;</td><td id="93">&nbsp;</td><td id="94">&nbsp;</td><td id="95">&nbsp;</td><td id="96">&nbsp;</td><td id="97">&nbsp;</td><td id="98">&nbsp;</td><td id="99">&nbsp;</td></tr>
+	</tbody>
+	</tr>
+	</table>
+	<table class="telnetTable">
+	<tbody class="id">
+		<tr><td id="100">&nbsp;</td><td id="101">&nbsp;</td><td id="102">&nbsp;</td><td id="103">&nbsp;</td><td id="104">&nbsp;</td><td id="105">&nbsp;</td><td id="106">&nbsp;</td><td id="107">&nbsp;</td><td id="108">&nbsp;</td><td id="109">&nbsp;</td></tr>
+		<tr><td id="110">&nbsp;</td><td id="111">&nbsp;</td><td id="112">&nbsp;</td><td id="113">&nbsp;</td><td id="114">&nbsp;</td><td id="115">&nbsp;</td><td id="116">&nbsp;</td><td id="117">&nbsp;</td><td id="118">&nbsp;</td><td id="119">&nbsp;</td></tr>
+		<tr><td id="120">&nbsp;</td><td id="121">&nbsp;</td><td id="122">&nbsp;</td><td id="123">&nbsp;</td><td id="124">&nbsp;</td><td id="125">&nbsp;</td><td id="126">&nbsp;</td><td id="127">&nbsp;</td><td id="128">&nbsp;</td><td id="129">&nbsp;</td></tr>
+		<tr><td id="130">&nbsp;</td><td id="131">&nbsp;</td><td id="132">&nbsp;</td><td id="133">&nbsp;</td><td id="134">&nbsp;</td><td id="135">&nbsp;</td><td id="136">&nbsp;</td><td id="137">&nbsp;</td><td id="138">&nbsp;</td><td id="139">&nbsp;</td></tr>
+		<tr><td id="140">&nbsp;</td><td id="141">&nbsp;</td><td id="142">&nbsp;</td><td id="143">&nbsp;</td><td id="144">&nbsp;</td><td id="145">&nbsp;</td><td id="146">&nbsp;</td><td id="147">&nbsp;</td><td id="148">&nbsp;</td><td id="149">&nbsp;</td></tr>
+		<tr><td id="150">&nbsp;</td><td id="151">&nbsp;</td><td id="152">&nbsp;</td><td id="153">&nbsp;</td><td id="154">&nbsp;</td><td id="155">&nbsp;</td><td id="156">&nbsp;</td><td id="157">&nbsp;</td><td id="158">&nbsp;</td><td id="159">&nbsp;</td></tr>
+		<tr><td id="160">&nbsp;</td><td id="161">&nbsp;</td><td id="162">&nbsp;</td><td id="163">&nbsp;</td><td id="164">&nbsp;</td><td id="165">&nbsp;</td><td id="166">&nbsp;</td><td id="167">&nbsp;</td><td id="168">&nbsp;</td><td id="169">&nbsp;</td></tr>
+		<tr><td id="170">&nbsp;</td><td id="171">&nbsp;</td><td id="172">&nbsp;</td><td id="173">&nbsp;</td><td id="174">&nbsp;</td><td id="175">&nbsp;</td><td id="176">&nbsp;</td><td id="177">&nbsp;</td><td id="178">&nbsp;</td><td id="179">&nbsp;</td></tr>
+		<tr><td id="180">&nbsp;</td><td id="181">&nbsp;</td><td id="182">&nbsp;</td><td id="183">&nbsp;</td><td id="184">&nbsp;</td><td id="185">&nbsp;</td><td id="186">&nbsp;</td><td id="187">&nbsp;</td><td id="188">&nbsp;</td><td id="189">&nbsp;</td></tr>
+		<tr><td id="190">&nbsp;</td><td id="191">&nbsp;</td><td id="192">&nbsp;</td><td id="193">&nbsp;</td><td id="194">&nbsp;</td><td id="195">&nbsp;</td><td id="196">&nbsp;</td><td id="197">&nbsp;</td><td id="198">&nbsp;</td><td id="199">&nbsp;</td></tr>
+	</tbody>
+	</tr>
+	</table>
+</div>
 <?php require("footer.php");?>

@@ -351,28 +351,12 @@ function call_ajax_light(chanel){
 	}
 };
 
-// rafraichissement header seulement
+// rafraichissement table telnet
 function call_ajax_regul(chanel){
-	// for(var y = 0;y<10;y=y+1){
-		// for(var x = 0;x<10;x=x+1){
-			// document.getElementById('cell_'+x+'_'+y).innerHTML = chanel['integral'][x+y*10]; 
-		// }
-	// }
 	for(var i = 0;i<200;i=i+1){
-		// if(chanel['integral'][i] != ''){
-			document.getElementById(i).innerHTML = chanel['integral'][i]; 
-		// }
+		if(chanel['integral'][i] === undefined){
+			chanel['integral'][i] ='.'; 
+		}
+		document.getElementById(i).innerHTML = chanel['integral'][i]; 
 	}
-	
-	
-	// document.getElementById('cell_1_0').innerHTML = chanel['etat'];
-	// document.getElementById('cell_2_0').innerHTML = chanel['t2'];
-	// document.getElementById('cell_3_0').innerHTML = chanel['t3'];
-	// document.getElementById('cell_4_0').innerHTML = chanel['t4'];
-	// document.getElementById('cell_5_0').innerHTML = chanel['puissance'];
-	// document.getElementById('cell_6_0').innerHTML = chanel['puissance'];
-	// document.getElementById('cell_7_0').innerHTML = chanel['puissance'];
-	// document.getElementById('cell_8_0').innerHTML = chanel['puissance'];
-	// document.getElementById('cell_9_0').innerHTML = chanel['puissance'];
-		
 };

@@ -1,6 +1,12 @@
 // conserver cette ligne en premier, format : ligne 1 = valeur et ligne 2 = position(insert apres ce numero) fichier est lu a l'envers, puis renommer en .txt
 
 10
+$cheminLog = "/volume1/web/hargassner";
+10
+// chemin réel vers votre site pour stockage des logs
+10
+
+10
 $password_settings = 'password';
 10
 // password pour acceder à la page reglages , a personnaliser

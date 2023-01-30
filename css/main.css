@@ -1404,10 +1404,13 @@ table.telnetTable tbody td {
 
 td.select  {
   background-color: #A43152;
-
   border: 7px solid #555555;
 }
 
+#telnet_center {
+  width: 1020px;
+  margin: auto;
+}
 
 /* table.telnetTable tfoot td { */
   /* font-size: 13px; */
