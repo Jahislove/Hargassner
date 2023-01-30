@@ -1,4 +1,5 @@
-﻿ce fichier décrit chaque colonne de la BDD
+﻿<?php
+/* ce fichier décrit chaque colonne de la BDD
 jusqu'au firmware 14g la correspondance entre le telnet de la chaudiere et la BDD est identique ,
 c'est a dire que par exemple le parametre N°97 du telnet correspond a la colonne c97 de la BDD
 a partir du firmware 14i , Hargassner a modifier l'ordre et le nombre de parametre
@@ -30,18 +31,21 @@ les differentes valeurs d'etat (chanel 0)
 15	mode manuel
 17	assistant de combustion
 ================================================================================================
-
-
-COLONNE c0	 name=	ZK	             unit=		etat chaudiere
-COLONNE c1	 name=	O2	             unit=	%	O2 est
-COLONNE c2	 name=	O2soll	         unit=	%	O2 doit                              
-COLONNE c3	 name=	TK	             unit=	°C	temperature chaudiere est 
-COLONNE c4	 name=	TKsoll	         unit=	°C	temperature chaudiere doit
-COLONNE c5	 name=	TRG	             unit=	°C	temperature fumees
-COLONNE c6	 name=	Taus	         unit=	°C	temperature exterieur
-COLONNE c7	 name=	TA Gem.	         unit=	°C	temperature exterieur moyenne
-COLONNE c8	 name=	TPo	             unit=	°C	sonde BT haut
-colonne c9	 name=	TPm	             unit=	°C	sonde BT milieu
+ */
+$BDD = [
+'c0'=>['name'=>'ZK',   'unit'=>' ',	'desc'=>'etat chaudiere']
+];
+ 
+// COLONNE c1	 name=	O2	             unit=	%	O2 est
+// COLONNE c2	 name=	O2soll	         unit=	%	O2 doit                              
+// COLONNE c3	 name=	TK	             unit=	°C	temperature chaudiere est 
+// COLONNE c4	 name=	TKsoll	         unit=	°C	temperature chaudiere doit
+// COLONNE c5	 name=	TRG	             unit=	°C	temperature fumees
+// COLONNE c6	 name=	Taus	         unit=	°C	temperature exterieur
+// COLONNE c7	 name=	TA Gem.	         unit=	°C	temperature exterieur moyenne
+// COLONNE c8	 name=	TPo	             unit=	°C	sonde BT haut
+// colonne c9	 name=	TPm	             unit=	°C	sonde BT milieu
+/*
 colonne c10	 name=	TPu	             unit=	°C	sonde BT bas
 colonne c11	 name=	TFW	             unit=	°C	
 COLONNE c12	 name=	TRL	             unit=	°C	température retour après mélangeur
@@ -240,4 +244,5 @@ colonne c185	 name= ?   				unit=		0 = tremi OK ,2000 = tremi vide
 colonne c186	 name= ?				unit=
 colonne c187	 name= ?				unit=
 colonne c188	 name= ?				unit=
-
+ */
+?>
