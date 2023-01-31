@@ -16,21 +16,21 @@ le parametre N°8 recu du telnet est stocké dans la colonne c134
 ================================================================================================
 les differentes valeurs d'etat (chanel 0)*/
 $ETAT=[
-	0	=>'init',
-	1   =>'arret',
-	2   =>'init grille',
-	3   =>'demarrage chaudiere',
-	4   =>'controle allumage residuel',
-	5   =>'allumeur', 
-	6   =>'demarrage combustion/reduction phase allumage',
-	7   =>'combustion',
-	8   =>'veille',
-	9   =>'decendrage dans 7 mn',
-	10  =>'decendrage',
-	11  =>'refroidissement : utilisation chaleur residuelle',
-	12  =>'nettoyage',
-	15	=>'mode manuel',
-	17	=>'assistant de combustion'
+	0	=>'Initialisation',
+	1   =>'Arrêt',
+	2   =>'Init grille',
+	3   =>'Démarrage chaudière',
+	4   =>'Contrôle allumage résiduel',
+	5   =>'Allumage électrique', 
+	6   =>'Démarrage combustion',
+	7   =>'Combustion',
+	8   =>'Veille',
+	9   =>'Arrêt pour décendrage',
+	10  =>'Décendrage',
+	11  =>'Refroidissement : utilisation chaleur residuelle',
+	12  =>'Nettoyage',
+	15	=>'Mode manuel',
+	17	=>'Assistant de combustion'
 ];
 /*================================================================================================
 

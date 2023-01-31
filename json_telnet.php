@@ -60,10 +60,14 @@ array_shift($data); // supprime le 1er parametre inutile(pm) pour aligner les nu
 switch ($firmware) {
     case '4.3d':
     case '10.2h': //chaudiere buche
+		$etat_desc = $ETAT[$data[22]];
+		if (!$etat_desc){
+			$etat_desc = 'Etat inconnu '.$data[22];
+		}
 		$output = array(
 			'heure' 	=> time() * 1000,
 			'etat_num' 		=> $data[22],
-			'etat_desc' 	=> $ETAT[$data[22]],
+			'etat_desc' 	=> $etat_desc,
 			'lambda'	=> $data[2], 	//O2 sonde lambda
 			'puissance' => $data[26],
 			'extract'	=> $data[46], 	// extracteur de fumée
@@ -106,10 +110,14 @@ switch ($firmware) {
 			'ballon2' => ['est' => 35],
 			'ballon3' => ['est' => 43],
 		);
+		$etat_desc = $ETAT[$data[0]];
+		if (!$etat_desc){
+			$etat_desc = 'Etat inconnu '.$data[0];
+		}
 		$output = array( 
 			'heure' 	=> time() * 1000,	//hour
 			'etat_num' 		=> $data[0], 	//status
-			'etat_desc' 	=> $ETAT[$data[0]],
+			'etat_desc' 	=> $etat_desc,
 			'lambda'	=> $data[1],		//Lambda
 			'puissance' => $data[134],		//power
 			'extract'	=> $data[53],		//extraction fan
@@ -164,10 +172,16 @@ switch ($firmware) {
 			'modeChauffage5' => ['modeChauff' => 84],
 			'modeChauffage6' => ['modeChauff' => 90],
 		);
+		
+		$etat_desc = $ETAT[$data[0]];
+		if (!$etat_desc){
+			$etat_desc = 'Etat inconnu '.$data[0];
+		}
+
 		$output = array(
 			'heure' 	=> time() * 1000,
 			'etat_num' 		=> $data[0],
-			'etat_desc' 	=> $ETAT[$data[0]],
+			'etat_desc' 	=> $etat_desc,
 			'lambda'	=> $data[1],
 			'chaudiereEst'=> $data[3],
 			'chaudiereDoit'=> $data[4],
