@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /* ce fichier décrit chaque colonne de la BDD
 jusqu'au firmware 14g la correspondance entre le telnet de la chaudiere et la BDD est identique ,
 c'est a dire que par exemple le parametre N°97 du telnet correspond a la colonne c97 de la BDD
@@ -14,23 +14,25 @@ CHANNEL id='8' name='Leistung' unit='%'/			c134
 le parametre N°8 recu du telnet est stocké dans la colonne c134
 
 ================================================================================================
-les differentes valeurs d'etat (chanel 0)
-0	init
-1   arret
-2   init grille
-3   demarrage chaudiere
-4   controle allumage residuel
-5   allumeur 
-6   demarrage combustion/reduction phase allumage
-7   combustion
-8   veille
-9   decendrage dans 7 mn
-10  decendrage
-11  refroidissement : utilisation chaleur residuelle
-12  nettoyage
-15	mode manuel
-17	assistant de combustion
-================================================================================================
+les differentes valeurs d'etat (chanel 0)*/
+$ETAT=[
+	0	=>'init',
+	1   =>'arret',
+	2   =>'init grille',
+	3   =>'demarrage chaudiere',
+	4   =>'controle allumage residuel',
+	5   =>'allumeur', 
+	6   =>'demarrage combustion/reduction phase allumage',
+	7   =>'combustion',
+	8   =>'veille',
+	9   =>'decendrage dans 7 mn',
+	10  =>'decendrage',
+	11  =>'refroidissement : utilisation chaleur residuelle',
+	12  =>'nettoyage',
+	15	=>'mode manuel',
+	17	=>'assistant de combustion'
+];
+/*================================================================================================
 
 colonneBDD		nom_chanel			unité			description */
 $BDD = [

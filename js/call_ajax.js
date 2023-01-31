@@ -26,7 +26,7 @@ function call_ajax(type) {
 		
 function call_ajax_accueil(chanel){
 	// animation du dessin par chargement de class CSS
-	switch(chanel['etat']) { 
+	switch(chanel['etat_num']) { 
 		case 0:
 			// etat = '0';
 			break;
@@ -220,60 +220,12 @@ function call_ajax_accueil(chanel){
 
 // rafraichissement header seulement
 function call_ajax_light(chanel){
-	//  remplace valeur numerique de "etat" par un texte
-	switch(chanel['etat']) { 
-		case 0:
-			etat = '0';
-			break;
-		case 1:
-			etat = 'Arrêt';
-			break;
-		case 2:
-			etat = 'init grille';
-			break;
-		case 3:
-			etat = 'Démarrage';
-			break;
-		case 4:
-			etat = 'Controle allumage residuel';
-			break;
-		case 5:
-			etat = 'Allumage électrique';
-			break;
-		case 6:
-			etat = 'Démarrage combustion';
-			break;
-		case 7:
-			etat = 'Combustion';
-			break;
-		case 8:
-			etat = 'En veille';
-			break;
-		case 9:
-			etat = 'Arrêt pour décendrage';
-			break;
-		case 10:
-			etat = 'Décendrage';
-			break;
-		case 11:
-			etat = 'Refroidissement/chaleur residuelle';
-			break;
-		case 12:
-			etat = 'Nettoyage';
-			break;
-		case 17:
-			etat = 'Assistant de combustion';
-			break;
-		default:
-			etat = 'inconnu';
-			break;
-	}
 	// rafraichissement etat
-	document.getElementById('etat').innerHTML = etat;
+	document.getElementById('etat').innerHTML = chanel['etat_desc'];
 	switch ( chanel['modeCommand'] ) {
 		case 1: 
 			document.getElementById('modeCommand').className = 'modeCommandProgram';
-			document.getElementById('tooltipModeCommand').innerHTML = 'Mode Programmé';
+			document.getElementById('tooltipModeCommand').innerHTML = 'Mode Auto';
 		break;
 		case 2: 
 			document.getElementById('modeCommand').className = 'modeCommandReduit';
@@ -306,7 +258,7 @@ function call_ajax_light(chanel){
 			break;
 		case 1: 
 			document.getElementById('modeChauff').className = 'modeCommandConfort';
-			document.getElementById('tooltipModeChauff').innerHTML = 'Mode confort';
+			document.getElementById('tooltipModeChauff').innerHTML = 'Confort';
 			break;
 		case 2: 
 			document.getElementById('modeChauff').className = 'modeCommandArret'; // etat inconnu
@@ -314,11 +266,11 @@ function call_ajax_light(chanel){
 			break;
 		case 3: 
 			document.getElementById('modeChauff').className = 'modeCommandReduit';
-			document.getElementById('tooltipModeChauff').innerHTML = 'Mode réduit';
+			document.getElementById('tooltipModeChauff').innerHTML = 'Réduit';
 			break;
 		case 4: 
 			document.getElementById('modeChauff').className = 'modeCommandArret';
-			document.getElementById('tooltipModeChauff').innerHTML = 'Mode arrêt';
+			document.getElementById('tooltipModeChauff').innerHTML = 'Arrêt';
 			break;
 		case 5: 
 			document.getElementById('modeChauff').className = 'modeCommandArret';
@@ -326,11 +278,11 @@ function call_ajax_light(chanel){
 			break;
 		case 9: 
 			document.getElementById('modeChauff').className = 'modeCommandArret';
-			document.getElementById('tooltipModeChauff').innerHTML = 'arrêt en cours';
+			document.getElementById('tooltipModeChauff').innerHTML = 'Arrêt en cours';
 			break;
 		default:
 			document.getElementById('modeChauff').innerHTML = chanel['modeChauff'];
-			document.getElementById('tooltipModeChauff').innerHTML = 'code inconnu';
+			document.getElementById('tooltipModeChauff').innerHTML = 'Code inconnu';
 	}
 // en cas d'erreur
 // la liste des erreurs est contenue dans TabErreur (js/codes_erreurs.js)

@@ -15,6 +15,7 @@
 	header("Content-type: text/json");
     require_once("conf/config.inc.php");
 	require_once("conf/settings.inc.php");
+	require_once("conf/BDD_description_chanel.php");
 
 if ($mode_conn == 'serial'){ 
     //ouverture port serie , opening serial port
@@ -61,7 +62,8 @@ switch ($firmware) {
     case '10.2h': //chaudiere buche
 		$output = array(
 			'heure' 	=> time() * 1000,
-			'etat' 		=> $data[22],
+			'etat_num' 		=> $data[22],
+			'etat_desc' 	=> $ETAT[$data[22]],
 			'lambda'	=> $data[2], 	//O2 sonde lambda
 			'puissance' => $data[26],
 			'extract'	=> $data[46], 	// extracteur de fumée
@@ -106,7 +108,8 @@ switch ($firmware) {
 		);
 		$output = array( 
 			'heure' 	=> time() * 1000,	//hour
-			'etat' 		=> $data[0],		//state
+			'etat_num' 		=> $data[0], 	//status
+			'etat_desc' 	=> $ETAT[$data[0]],
 			'lambda'	=> $data[1],		//Lambda
 			'puissance' => $data[134],		//power
 			'extract'	=> $data[53],		//extraction fan
@@ -163,7 +166,8 @@ switch ($firmware) {
 		);
 		$output = array(
 			'heure' 	=> time() * 1000,
-			'etat' 		=> $data[0],
+			'etat_num' 		=> $data[0],
+			'etat_desc' 	=> $ETAT[$data[0]],
 			'lambda'	=> $data[1],
 			'chaudiereEst'=> $data[3],
 			'chaudiereDoit'=> $data[4],
