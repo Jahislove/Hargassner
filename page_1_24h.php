@@ -1,16 +1,9 @@
-<?php require("header.php"); ?>
-
-<div id="chart_last24"></div>
-
-<?php
+<?php 
+	require("header.php"); 
 	require_once("conf/settings.inc.php");
 	require_once("conf/firmware.inc.php");
-    // $chart_last24_name = ['T° depart consigne','T° depart','T° chaudière','T° extérieur','T° ext moy','T° intérieur','Puissance'];
-    //$chart_last24_chan = 'c23,c21,c3,c6,c7,c138,c134';
-    // => remplacé par conf/settings.inc.php
 ?>
-
-
+<div id="chart_last24"></div>
 
 <script type="text/javascript">
 //********* déclaration des cookies pour stockage visibilité des courbes****************************
@@ -148,11 +141,6 @@ $(document).ready(function(){
     chart_last24.showLoading(msg);
 
 //****************************************************************************************************
-//*** desactivation tableau non utilisé *****************************
-	// for(var i = 134;i<200;i=i+1){
-			// document.getElementById(i).className = 'inactif';
-	// }
-//****************************************************************************************************
 //*** clic sur tableau *****************************
     $(".telnetTable").on('click','tbody.id>tr>td',function(){
 		if (document.getElementById(this.id).className != 'inactif' ){
@@ -168,22 +156,16 @@ $(document).ready(function(){
 				console.log(this.id);
 				$.ajax({
 					dataType: "json",
-					url: 'json_chan-period-1.php',
+					url: 'json_table_telnet.php',
 					data: 'id=' + this.id + '&periode=1440',
 					cache: false,
 					success: function(object) {
-						// chart_last24.addSeries({
-							// data: data[0],
-						// });
 						chart_last24.addSeries(object);
 					}
 				});
 			} 
 		}
     });
-
-
-
 });
 </script>
 

@@ -13,6 +13,7 @@ v3.6	20/01/2023
 	les nouvelles tables en BDD sont crées automatiquement lors de la 1ere visite de la page réglages
 	ajout icone pour basculer de la conso en Kg à euro sur le graphe de conso quotidienne
 	ajout parametre $cheminLog a personnaliser dans conf/config.inc.php
+	changement de nom des onglets Régulation=>Données et Variables=>Courbes
 
 v3.5	19/12/2022
 	correction bug en 14g : c181 alphanum
