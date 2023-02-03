@@ -239,7 +239,7 @@ $BDD = [
 														// 2189 ?
 														// 2289 ?
 'c182'=>['name'=>'?',				'unit'=>'',		'desc'=>'?'],
-'c183'=>['name'=>'?',				'unit'=>'',		'desc'=>'pompe ballon ECS 0 =off, 2=on'],
+'c183'=>['name'=>'?',				'unit'=>'',		'desc'=>'? 0, 1 ou 21'],
 'c184'=>['name'=>'?',				'unit'=>'',		'desc'=>'?'],
 'c185'=>['name'=>'?',				'unit'=>'',		'desc'=>'0 = tremi OK ,2000 = tremi vide'],
 'c186'=>['name'=>'?',				'unit'=>'',		'desc'=>'?'],
