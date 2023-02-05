@@ -6,6 +6,7 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="description" content="Supervision en temps réel d'une chaudière à granulés Hargassner. Site en php/MariaDB">
     <title>My Hargassner</title>
     <link rel="icon" type="image/png" href="img/logo.png" />
 	<link rel="shortcut icon" href="img/favicon.ico">
@@ -100,7 +101,6 @@
 	
     // ******************************************************************
     ?>
-
 	<nav>
         <ul class="fancyNav">
             <li id="home">   <a href="index.php" class="homeIcon">Accueil</a></li>
@@ -112,19 +112,19 @@
         </ul>
 	</nav>
 
-	<!-- <div id="etat" class="etat">?</div>     -->
-	<div>
         <table class="etat">
             <tr>
 				<th id="etat" >?</th>
+				<th class ="tooltipContainer">
+					<span class="tooltipEtat">Puissance</span> 
+					<span id="puissance" ></span> 
+				</th>
 				<th class ="tooltipContainer">
 					<span id="tooltipModeChauff" class="tooltipEtat">?</span> 
 					<span id="modeChauff" ></span> 
 				</th>
 				<th class ="tooltipContainer">
-					<span class="tooltipEtat" >
-						<span id="tooltipModeCommand">?</span> 
-					</span>
+					<span id="tooltipModeCommand" class="tooltipEtat" >?</span> 
 					<span id="modeCommand" ></span>
 				</th> 
 			</tr>
@@ -135,4 +135,3 @@
 				<th id="erreurText" ></th>
 			</tr>
         </table>
-	</div>

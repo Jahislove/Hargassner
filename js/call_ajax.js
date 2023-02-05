@@ -222,6 +222,7 @@ function call_ajax_accueil(chanel){
 function call_ajax_light(chanel){
 	// rafraichissement etat
 	document.getElementById('etat').innerHTML = chanel['etat_desc'];
+	document.getElementById('puissance').innerHTML = chanel['puissance']+'%';
 	switch ( chanel['modeCommand'] ) {
 		case 1: 
 			document.getElementById('modeCommand').className = 'modeCommandProgram';

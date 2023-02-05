@@ -300,6 +300,14 @@ a:hover{
 }
 
 /******ETAT**************************************************************/
+.etat {
+    position:sticky;
+    z-index:90;
+	width:500px;
+	/* left: 50%; */
+	top: 1px;
+	/* transform: translateX(-50%); */
+}
 .etat th{
     background-color: #f0f0f0;
     background-image: linear-gradient(#fefefe 0%, #f0f0f0 50%, #D6D6D6 70%);
@@ -314,6 +322,7 @@ a:hover{
 	text-align: center;
     padding: 8px 10px 10px 10px;
 }
+	
 .etat th:first-child{
 	width: 300px;
     border-radius: 24px 0 0 24px;

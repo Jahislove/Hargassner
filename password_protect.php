@@ -103,6 +103,13 @@ if(!function_exists('showLoginPasswordProtect')) {
 			  <form method="post">
 				<h3><BR/>Entrez le mot de passe pour accéder aux réglages</h3>
 				<BR/>
+				<?php
+				if ($password_settings == 'password'){
+					echo 'défaut : password 
+					<BR/>
+					a modifier dans conf/config.inc.php';
+				}
+				?>
 				<font color="red"><?php echo $error_msg; ?></font><br />
 				<BR/>
 			<?php if (USE_USERNAME) echo 'Login:<br /><input type="input" name="access_login" /><br />Password:<br />'; ?>

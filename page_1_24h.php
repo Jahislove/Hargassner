@@ -131,12 +131,14 @@ $(document).ready(function(){
 		},
 	});
 //****************************************************************************************************
-//*** chargement des données en asynchrone *****************************
-	var msg = '\
-		Le tableau représente le contenu des données provenant de la chaudière par telnet.\
-		En cliquant par exemple sur la première case , cela affiche la courbe correspondant au parametre 0 du telnet (T0) et , normalement, a la colonne 0 de la BDD (c0).\
-		Cependant au fil des firmwares , Hargassner a modifier l\'ordre des parametres\
-		et la colonne réelle de la BDD ne correspond plus au parametre, donc le nom de la courbe indique le numero du paramètre Telnet et la colonne correspondante en BDD\
+//*** chargement des données en asynchrone *****************************<h3 style="text-align:left;"> 
+	var msg = ' \
+		Le tableau représente le contenu des données provenant en temps réel de la chaudière par telnet.<br/>\
+		En cliquant sur une case , cela affiche la courbe correspondant au telnet et a la colonne de la BDD.<br/>\
+		Dans les premiers firmware on avait donc telnet 10 (t10) = colonne 10 (c10)<br/>\
+		Cependant au fil des firmwares , Hargassner a modifier l\'ordre des paramètres<br/>\
+		et la colonne réelle de la BDD ne correspond plus au paramètre telnet,<br/>\
+		En cliquant , on affiche le numero du paramètre Telnet (t..), la colonne correspondante en BDD (c..) et sa description si connue\
 		';
     chart_last24.showLoading(msg);
 

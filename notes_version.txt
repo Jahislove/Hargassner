@@ -3,7 +3,7 @@
 *** Auteur : Jahislove
 *** GPL-3.0-or-later
 ************************************************************************/
-v3.6	20/01/2023
+v3.6	06/02/2023
 	sécurisation de la page reglages par un mot de passe
 	le mot de passe par defaut (a personnaliser) est dans le fichier conf/config.inc.php
 	ajout prix d'achat des granulés chaque saison (page reglages : vous devez ajouter manuellement les saisons et le prix d'achat)
@@ -14,6 +14,7 @@ v3.6	20/01/2023
 	ajout icone pour basculer de la conso en Kg à euro sur le graphe de conso quotidienne
 	ajout parametre $cheminLog a personnaliser dans conf/config.inc.php
 	changement de nom des onglets Régulation=>Données et Variables=>Courbes
+	ajout tableau affichant tous les paramètres du telnet (page Données)
 
 v3.5	19/12/2022
 	correction bug en 14g : c181 alphanum

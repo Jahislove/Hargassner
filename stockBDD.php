@@ -1,4 +1,5 @@
 <?php 
+// version 1.1  choix firmware se fait maintenant avec conf/firmware.inc.php
 // version 1.0  ajout scraper prix moyen
 // version 0.9  refonte calcul conso + correction bug 14g
 // version 0.8	ajout firmware 14m
