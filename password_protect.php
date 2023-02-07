@@ -48,6 +48,7 @@ $LOGIN_INFORMATION = array(
 $LOGIN_INFORMATION = array(
 	$password_settings
 );
+define('PASSWORD', $password_settings);
 
 // request login? true - show login and password boxes, false - password box only
 define('USE_USERNAME', false);
@@ -104,7 +105,7 @@ if(!function_exists('showLoginPasswordProtect')) {
 				<h3><BR/>Entrez le mot de passe pour accéder aux réglages</h3>
 				<BR/>
 				<?php
-				if ($password_settings == 'password'){
+				if (PASSWORD == 'password'){
 					echo 'défaut : password 
 					<BR/>
 					a modifier dans conf/config.inc.php';
