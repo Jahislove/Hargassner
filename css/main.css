@@ -311,8 +311,8 @@ a:hover{
 .etat th{
     background-color: #f0f0f0;
     background-image: linear-gradient(#fefefe 0%, #f0f0f0 50%, #D6D6D6 70%);
-    border-right: 1px solid rgba(9, 9, 9, 0.125);
-    box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+    /* border-right: 1px solid rgba(9, 9, 9, 0.125); */
+    /* box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset; */
     position:relative;
     /* float: left; */
     color: #757474;
@@ -320,7 +320,7 @@ a:hover{
 	width: 120px;
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
 	text-align: center;
-    padding: 8px 10px 10px 10px;
+    /* padding: 8px 10px 10px 10px; */
 }
 	
 .etat th:first-child{

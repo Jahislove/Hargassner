@@ -124,7 +124,7 @@
 					<span id="modeChauff" ></span> 
 				</th>
 				<th class ="tooltipContainer">
-					<span id="tooltipModeCommand" class="tooltipEtat" >?</span> 
+					<span id="tooltipModeCommand" class="tooltipEtat">?</span> 
 					<span id="modeCommand" ></span>
 				</th> 
 			</tr>
