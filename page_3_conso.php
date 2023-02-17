@@ -892,7 +892,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 				color: '#ff9900',
 				data: [<?php echo $chart1_data3; ?>],
 			});
-			$('#euroKilo').attr('href', 'img/euro-icon.png')
+			$('#euroKilo').attr('href', 'img/euro-icon.png');
 			mode = '€';
 		} else {
 			chart1.series[0].update({
@@ -902,7 +902,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 				data: [<?php echo $chart1_data1; ?>],
 				color: '<?php echo $color_gran; ?>',
 			});
-			$('#euroKilo').attr('href', 'img/kilo-icon.png')
+			$('#euroKilo').attr('href', 'img/kilo-icon.png');
 			mode = 'Kg';
 		}			
 	})

@@ -149,6 +149,10 @@ $(function() {
                 cache: false,
                 success: function(data) {
 					parse_data(data);
+					// desactive le refresh auto quand on selectionne une autre date
+					// etat_refresh = false;
+					$('#auto_refresh').attr('href', 'img/icon_refresh_off.png');
+					clearInterval(idref);
                 }
             });
     });
@@ -977,18 +981,55 @@ $(function() {
     // var chart2 = $('#graphe2').highcharts();
     chart1.showLoading('loading');
     chart2.showLoading('loading');
+
+	// affichage graphe1
     var d = new Date();
+    function chart1_refresh() { 
+		$.ajax({
+			dataType: "json",
+			url: 'json_chan-period-2.php',
+			data: 'channel=<?php echo $chart1_chan; ?>' + '&annee=' + d.getFullYear() + '&mois=' + (d.getMonth()+1) + '&jour=' + d.getDate() + '&periode=1440',
+			cache: false,
+			success: function(data) {
+				parse_data(data);
+			}
+		});
+    };
+	chart1_refresh();
 	
-    $.ajax({
-        dataType: "json",
-        url: 'json_chan-period-2.php',
-        data: 'channel=<?php echo $chart1_chan; ?>' + '&annee=' + d.getFullYear() + '&mois=' + (d.getMonth()+1) + '&jour=' + d.getDate() + '&periode=1440',
-        cache: false,
-        success: function(data) {
-			parse_data(data);
-        }
-    });
-    
+	// rafraichissement auto du graphe1
+
+	var etat_refresh = false;
+	chart1.renderer.image('img/icon_refresh_off.png', 40, 20,40,40)
+	    .attr({
+			id: 'auto_refresh',
+			zIndex: 3,
+		})
+		.on('click', function () {
+			if ( etat_refresh == false){
+				etat_refresh = true;
+				setCookie('etat_refresh' , true);
+				$('#auto_refresh').attr('href', 'img/icon_refresh_on.png');
+				idref = setInterval(chart1_refresh,60000); 
+			}else{
+				etat_refresh = false;
+				setCookie('etat_refresh' , '');
+				$('#auto_refresh').attr('href', 'img/icon_refresh_off.png');
+				clearInterval(idref);
+			}
+		})
+		.on('mouseover', function () {
+			$('#auto_refresh').attr({cursor: 'pointer'});
+		})
+ 		.add();
+		
+	etat_refresh = Boolean(getCookie('etat_refresh')); // transforme la string des cookies en booleen , pour chaque serie
+	if ( etat_refresh == true){
+		$('#auto_refresh').attr('href', 'img/icon_refresh_on.png');
+		idref = setInterval(chart1_refresh,60000); 
+	}
+
+	// affichage graphe2
     $.ajax({
         dataType: "json",
         url: 'json_allumeur.php',

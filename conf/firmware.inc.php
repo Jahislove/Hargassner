@@ -1,5 +1,6 @@
 <?php 
-
+// selection du firmware
+// on stock le parametre telnet N°x dans la colonne correspondante de la BDD
 switch ($firmware) {
     case '10.2h':
 		$dict = [ 

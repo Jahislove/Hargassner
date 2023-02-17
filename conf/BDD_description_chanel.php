@@ -178,7 +178,7 @@ $BDD = [
 'c126'=>['name'=>'Kask LZLeist_3',	'unit'=>'h',	'desc'=>'?'],
 'c127'=>['name'=>'Kask LZLeist_4',	'unit'=>'h',	'desc'=>'?'],
 'c128'=>['name'=>'AIN17',			'unit'=>'V',	'desc'=>'?'],
-'c129'=>['name'=>'BRT',				'unit'=>'°C',	'desc'=>'??? 98 a l"arret => 110'],
+'c129'=>['name'=>'BRT',				'unit'=>'°C',	'desc'=>'?'],
 'c130'=>['name'=>'IO32 522',		'unit'=>'mV',	'desc'=>'?'],
 'c131'=>['name'=>'IO32 509',		'unit'=>'mV',	'desc'=>'?'],
 'c132'=>['name'=>'IO32 510',		'unit'=>'mV',	'desc'=>'?'],
