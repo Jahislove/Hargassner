@@ -94,6 +94,7 @@ switch ($firmware) {
 			'modeChauff'=> $data[142],  // mode chauffage ( confort, réduit, arret)
 			'modeCommand'=> $data[85],  //mode de commande => 1:  programmé, 2 reduit forcé, 3 confort forcé, 4 soirée , 5 absence brève
 			'consoHeure'=> $consoHeure, // conso granulé par heure
+			'integral'	=> $data,
 		);
         break;
     case '14d': //pellet boiler
@@ -145,6 +146,8 @@ switch ($firmware) {
 			'modeCommand'=> $data[101], // heating command (scheduled, reduced forced , comfort forced, short absence)
 			'consoHeure'=> $consoHeure, // pellets/hour
 			'erreur' 	=> '0', //n'existe pas en 14g => on renvoi 0
+			'aspiration'=> $data[185], //mode aspiration pneumatique
+			'integral'	=> $data,
 		);
         break;
     case '14i':

@@ -182,6 +182,14 @@ function call_ajax_accueil(chanel){
 	// rafraichissement graphe silo
 	chart_silo.series[0].points[0].update(chanel['PelletRest']);
 
+	// aspiration RAPS : desactivé car parametre non connu
+	 if ( chanel['aspiration'] == 2000 ) {
+		 document.getElementById('nano-A2').className = 'RAPS_anime'; 
+	 }
+	 else {
+		 document.getElementById('nano-A2').className = 'RAPS_fixe'; 
+	 }
+	 
 	// rafraichissement graphe live
 	var shift = chart_live.series[0].data.length > histo_live_shift;
 	chart_live.series[0].addPoint([chanel['heure'], chanel['etat']], true, shift);
