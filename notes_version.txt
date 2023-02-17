@@ -3,18 +3,20 @@
 *** Auteur : Jahislove
 *** GPL-3.0-or-later
 ************************************************************************/
-v3.6	06/02/2023
+v3.6	17/02/2023
 	sécurisation de la page reglages par un mot de passe
 	le mot de passe par defaut (a personnaliser) est dans le fichier conf/config.inc.php
+	changement de nom des onglets Régulation=>Données et Variables=>Courbes
+	remplacement page régulation par tableau affichant tous les paramètres du telnet (page Données)
 	ajout prix d'achat des granulés chaque saison (page reglages : vous devez ajouter manuellement les saisons et le prix d'achat)
-	ajout courbe conso instantanée dans le graphique des variables
+	ajout courbe conso instantanée dans le graphique des courbes
 	ajout graphiques  : evolution prix d'achat et cout total par saison
-	ajout historique prix moyen en France : le prix est récupéré sur le site www.proxi-totalenergies.fr
+	ajout historique prix moyen en France : le prix est récupéré sur le site www.proxi-totalenergies.fr et se remplira au fil du temps
 	les nouvelles tables en BDD sont crées automatiquement lors de la 1ere visite de la page réglages
 	ajout icone pour basculer de la conso en Kg à euro sur le graphe de conso quotidienne
 	ajout parametre $cheminLog a personnaliser dans conf/config.inc.php
-	changement de nom des onglets Régulation=>Données et Variables=>Courbes
-	ajout tableau affichant tous les paramètres du telnet (page Données)
+	ajout bouton rafraichissement auto dans la page courbes
+	refonte de la gestion des firmwares et du call ajax
 
 v3.5	19/12/2022
 	correction bug en 14g : c181 alphanum
