@@ -3,6 +3,9 @@
 *** Auteur : Jahislove
 *** GPL-3.0-or-later
 ************************************************************************/
+v3.7
+	correction faille sécurité sur ecriture reglages
+	
 v3.6	17/02/2023
 	sécurisation de la page reglages par un mot de passe
 	le mot de passe par defaut (a personnaliser) est dans le fichier conf/config.inc.php
