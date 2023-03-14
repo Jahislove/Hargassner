@@ -3,8 +3,9 @@
 *** Auteur : Jahislove
 *** GPL-3.0-or-later
 ************************************************************************/
-v3.7
+v3.7	14/03/2023
 	correction faille sécurité sur ecriture reglages
+	prise en charge firmware 14n
 	
 v3.6	17/02/2023
 	sécurisation de la page reglages par un mot de passe

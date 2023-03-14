@@ -1,4 +1,5 @@
 <?php 
+// version 1.2	ajout firmware 14n
 // version 1.1  choix firmware se fait maintenant avec conf/firmware.inc.php
 // version 1.0  ajout scraper prix moyen
 // version 0.9  refonte calcul conso + correction bug 14g
@@ -14,7 +15,7 @@
 /* 	
 
 available firmware (if yours is not here , use the pellets last one ( modify in conf/config.inc.php)
-pellets  14e , 14f , 14g , 14i , 14j, 14k, 14l, 14m
+pellets  14e , 14f , 14g , 14i , 14j, 14k, 14l, 14m, 14n
 wood 4.3d, 10.2h
 
 nothing to modify here by user /rien a configurer ici par l'utilisateur
