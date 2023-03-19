@@ -86,7 +86,7 @@ CHANNEL id='83' name='TBs_1' unit='°C' dop='0'				c28
 CHANNEL id='84' name='BoiZustand_1' dop='0'					c92
 CHANNEL id='85' name='TBB' unit='°C'						c80
 CHANNEL id='86' name='TBs_B' unit='°C' dop='0'				c118
-CHANNEL id='87' name='HKR Anf' unit='°C'					c110
+CHANNEL id='87' name='HKR Anf' unit='°C'					c145
 CHANNEL id='88' name='Anf. HKR0' unit='°C'/					c168
 CHANNEL id='89' name='Anf. HKR1' unit='°C'/					c146
 CHANNEL id='90' name='Anf. HKR2' unit='°C'/					c147
@@ -102,7 +102,7 @@ CHANNEL id='99' name='Anf. HKR11' unit='°C'/				c171
 CHANNEL id='100' name='Anf. HKR12' unit='°C'/				c172
 CHANNEL id='101' name='Anf. HKR13' unit='°C'/				c173
 CHANNEL id='102' name='Anf. HKR14' unit='°C'/				c174
-CHANNEL id='103' name='Anf. HKR15' unit='°C'/				c175
+CHANNEL id='103' name='Anf. HKR15' unit='°C'/				c182 alpha
 CHANNEL id='104' name='UsePos' dop='0'						c81
 CHANNEL id='105' name='AUPSoll' unit='mm'					c165
 CHANNEL id='106' name='AUPIst' unit='mm'					c166
