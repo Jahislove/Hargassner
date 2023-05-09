@@ -155,7 +155,6 @@ switch ($firmware) {
 	case '14k':
 	case '14l':
 	case '14m':
-	default:
 		$depart_chauffage = array( 
 			'zone1' => ['est' => 56, 'doit' => 57, 'modeChauff' => 60, 'Tint' => 58],
 			'zone2' => ['est' => 62, 'doit' => 63, 'modeChauff' => 66, 'Tint' => 64],
@@ -214,6 +213,70 @@ switch ($firmware) {
 			'erreur' 	=> $data[49], //error code
 			'integral'	=> $data,
 		);
+	case '14n':
+	default:
+		$depart_chauffage = array( 
+			'zone1' => ['est' => 62, 'doit' => 63, 'modeChauff' => 66, 'Tint' => 64],
+			'zone2' => ['est' => 68, 'doit' => 69, 'modeChauff' => 72, 'Tint' => 70],
+			'zone3' => ['est' => 68, 'doit' => 69, 'modeChauff' => 72, 'Tint' => 70],// n'existe plus en 14n => on pointe sur zone2
+		);
+		$ballon_ECS = array( 
+			'ballon1' => ['est' => 82],
+			'ballon2' => ['est' => 82], // n'existe plus en 14n => on pointe sur 82
+			'ballon3' => ['est' => 82], // n'existe plus en 14n => on pointe sur 82
+		);
+		$mode_chauff = array( 
+			'modeChauffageA' => ['modeChauff' => 60],
+			'modeChauffage1' => ['modeChauff' => 66],
+			'modeChauffage2' => ['modeChauff' => 72],
+			'modeChauffage3' => ['modeChauff' => 72],// n'existe plus en 14n => on pointe sur 72
+			'modeChauffage4' => ['modeChauff' => 72],// n'existe plus en 14n => on pointe sur 72
+			'modeChauffage5' => ['modeChauff' => 72],// n'existe plus en 14n => on pointe sur 72
+			'modeChauffage6' => ['modeChauff' => 72],// n'existe plus en 14n => on pointe sur 72
+		); // pense-bete : a prevoir , suppression des options directement dans la page reglages
+		
+		$etat_desc = $ETAT[$data[0]];
+		if (!$etat_desc){
+			$etat_desc = 'Etat inconnu '.$data[0];
+		}
+
+		$output = array(
+			'heure' 	=> time() * 1000,
+			'etat_num' 		=> $data[0],
+			'etat_desc' 	=> $etat_desc,
+			'lambda'	=> $data[1],
+			'chaudiereEst'=> $data[3],
+			'chaudiereDoit'=> $data[4],
+			'Fumee'		=> $data[8],
+			'extract'	=> $data[9],
+			'puissance' => $data[20],
+			'bois'		=> $data[21],
+			'Tint'		=> $data[$depart_chauffage[$zone_chauffage]['Tint']],
+			'Text'		=> $data[53],
+			'TextMoy'	=> $data[54],
+			'departEst' => $data[$depart_chauffage[$zone_chauffage]['est']],
+			'departDoit'=> $data[$depart_chauffage[$zone_chauffage]['doit']],
+			'retourEst' => $data[5],
+			'retourDoit'=> $data[6],
+			'TempECS'	=> $data[$ballon_ECS[$zone_ecs]['est']], 
+			'pompe-ECS'	=> $data[84],
+			'tempsDecend'=> $data[37],
+			'tempsVis'	=> $data[36],
+			'mvtGrille' => $data[39],
+			'PelletConso'=> $data[41],
+			'PelletRest' => $data[40],
+			'variableK' => $data[27],
+			'variableF' => $data[28],
+			'modeChauff'=> $data[$mode_chauff[$zone_mode_chauffage]['modeChauff']],
+			'modeCommand'=> $data[67],
+			'consoHeure'=> $consoHeure, 
+			'erreur' 	=> $data[30], //error code
+			'integral'	=> $data,
+		);
+
+
+
+
 }	
 
 // on renvoi la reponse
