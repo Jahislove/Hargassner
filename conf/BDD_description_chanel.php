@@ -230,7 +230,7 @@ $BDD = [
 'c178'=>['name'=>'TPmo',			'unit'=>'°C',	'desc'=>'?'],
 'c179'=>['name'=>'TPmu',			'unit'=>'°C',	'desc'=>'?'],
 'c180'=>['name'=>'Puff Füllgrad',	'unit'=>'%',	'desc'=>'% remplissage du Ballon Tampon'],
-'c181'=>['name'=>'?',				'unit'=>'',		'desc'=>'???'], 
+'c181'=>['name'=>'?',				'unit'=>'',		'desc'=>'???'], //alphanum
 														// 1=rien , 9=debut ou fin ,89 , 8 ,18, 28... ,
 														// 2001 ?
 														// 2003 Temps de Remplissage dépassé
@@ -238,7 +238,7 @@ $BDD = [
 														// 2089 ?
 														// 2189 ?
 														// 2289 ?
-'c182'=>['name'=>'?',				'unit'=>'',		'desc'=>'?'],
+'c182'=>['name'=>'?',				'unit'=>'',		'desc'=>'?'], // alphanum
 'c183'=>['name'=>'?',				'unit'=>'',		'desc'=>'? 0, 1 ou 21'],
 'c184'=>['name'=>'?',				'unit'=>'',		'desc'=>'?'],
 'c185'=>['name'=>'?',				'unit'=>'',		'desc'=>'0 = tremi OK ,2000 = tremi vide'],

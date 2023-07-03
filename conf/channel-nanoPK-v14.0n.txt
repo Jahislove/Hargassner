@@ -103,7 +103,7 @@ CHANNEL id='100' name='Anf. HKR12' unit='°C'/				c172
 CHANNEL id='101' name='Anf. HKR13' unit='°C'/				c173
 CHANNEL id='102' name='Anf. HKR14' unit='°C'/				c174
 CHANNEL id='103' name='Anf. HKR15' unit='°C'/				c182 alpha
-CHANNEL id='104' name='UsePos' dop='0'						c81
+CHANNEL id='104' name='UsePos' dop='0'						c181 alpha
 CHANNEL id='105' name='AUPSoll' unit='mm'					c165
 CHANNEL id='106' name='AUPIst' unit='mm'					c166
 CHANNEL id='107' name='AUPStrom' unit='mA'					c167
