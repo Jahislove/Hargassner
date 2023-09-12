@@ -213,6 +213,7 @@ switch ($firmware) {
 			'erreur' 	=> $data[49], //error code
 			'integral'	=> $data,
 		);
+        break;
 	case '14n':
 		$depart_chauffage = array( 
 			'zone1' => ['est' => 62, 'doit' => 63, 'modeChauff' => 66, 'Tint' => 64],
@@ -272,6 +273,8 @@ switch ($firmware) {
 			'erreur' 	=> $data[30], //error code
 			'integral'	=> $data,
 		);
+        break;
+
 	case 'V14.0HAR.o':
 	default:
 		$depart_chauffage = array( 
@@ -332,8 +335,7 @@ switch ($firmware) {
 			'erreur' 	=> $data[30], //error code
 			'integral'	=> $data,
 		);
-
-
+        break;
 
 
 }	
