@@ -1,4 +1,3 @@
-ANALOG
 CHANNEL id='0' name='ZK' dop='0'							c0
 CHANNEL id='1' name='O2' unit='%'							c1
 CHANNEL id='2' name='O2soll' unit='%'						c2

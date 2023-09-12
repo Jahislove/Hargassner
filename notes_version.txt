@@ -3,6 +3,9 @@
 *** Auteur : Jahislove
 *** GPL-3.0-or-later
 ************************************************************************/
+v3.8	12/09/2023
+	prise en charge firmware V14.0HAR.o (nouvelle regle de nommage)
+
 v3.7	14/03/2023
 	correction faille sécurité sur ecriture reglages
 	prise en charge firmware 14n
