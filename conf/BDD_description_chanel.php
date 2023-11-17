@@ -141,6 +141,7 @@ $BDD = [
 											// 27 = Température de fumées trop basse
 											// 29 = Defaut de combustion, démarrage impossible
 											// 32 = Temps de Remplissage dépassé,	
+											// 49 = Défaut extracteur de fumée,	
 											// 70 = niveau silo bas
 											// 93 = cendrier ouvert
 											// 229= Nettoyer/Contrôler le détecteur de niveau de granulés

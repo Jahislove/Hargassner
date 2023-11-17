@@ -8,6 +8,7 @@ TabErreur[15] = "Sonde Ballon 1 coupée";
 TabErreur[27] = "Température de fumées trop basse";
 TabErreur[29] = "Defaut de combustion, démarrage impossible";
 TabErreur[32] = "Temps de Remplissage dépassé";	
+TabErreur[49] = "Défaut extracteur de fumée";	
 TabErreur[70] = "Niveau silo bas";
 TabErreur[93] = "Cendrier ouvert";
 TabErreur[229] = "Nettoyer/Contrôler le détecteur de niveau de granulés";

@@ -1,4 +1,5 @@
 <?php 
+// version 1.4	ajout firmware V14.0HAR.o2
 // version 1.3	ajout firmware V14.0HAR.o
 // version 1.2	ajout firmware 14n
 // version 1.1  choix firmware se fait maintenant avec conf/firmware.inc.php
@@ -16,7 +17,7 @@
 /* 	
 
 available firmware (if yours is not here , use the pellets last one ( modify in conf/config.inc.php)
-pellets  14e , 14f , 14g , 14i , 14j, 14k, 14l, 14m, 14n, V14.0HAR.o
+pellets  14e , 14f , 14g , 14i , 14j, 14k, 14l, 14m, 14n, V14.0HAR.o, V14.0HAR.o2
 wood 4.3d, 10.2h
 
 nothing to modify here by user /rien a configurer ici par l'utilisateur
