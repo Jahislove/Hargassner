@@ -341,21 +341,21 @@ switch ($firmware) {
 		$depart_chauffage = array( 
 			'zone1' => ['est' => 65, 'doit' => 66, 'modeChauff' => 69, 'Tint' => 67],//c21,c23,c85,c138
 			'zone2' => ['est' => 71, 'doit' => 72, 'modeChauff' => 75, 'Tint' => 73],//c22,c24,c86,c139
-			'zone3' => ['est' => 71, 'doit' => 72, 'modeChauff' => 75, 'Tint' => 73],// n'existe plus en 14n => on pointe sur zone2
+			'zone3' => ['est' => 77, 'doit' => 78, 'modeChauff' => 81, 'Tint' => 79],//c29,c31,c87,c33
 		);
 		$ballon_ECS = array( 
 			'ballon1' => ['est' => 97], // c27
-			'ballon2' => ['est' => 97], // n'existe plus en 14n => on pointe sur 83
-			'ballon3' => ['est' => 97], // n'existe plus en 14n => on pointe sur 83
+			'ballon2' => ['est' => 99], // c35
+			'ballon3' => ['est' => 97], // n'existe plus en 14n => on pointe sur ancien
 		);
 		$mode_chauff = array( 
 			'modeChauffageA' => ['modeChauff' => 63],//c84
 			'modeChauffage1' => ['modeChauff' => 69],//c85
 			'modeChauffage2' => ['modeChauff' => 75],//c86
-			'modeChauffage3' => ['modeChauff' => 75],// n'existe plus en 14n => on pointe sur 73
-			'modeChauffage4' => ['modeChauff' => 75],// n'existe plus en 14n => on pointe sur 73
-			'modeChauffage5' => ['modeChauff' => 75],// n'existe plus en 14n => on pointe sur 73
-			'modeChauffage6' => ['modeChauff' => 75],// n'existe plus en 14n => on pointe sur 73
+			'modeChauffage3' => ['modeChauff' => 81],//c87 
+			'modeChauffage4' => ['modeChauff' => 87],//c88 
+			'modeChauffage5' => ['modeChauff' => 75],// n'existe plus en 14n => on pointe sur 75
+			'modeChauffage6' => ['modeChauff' => 75],// n'existe plus en 14n => on pointe sur 75
 		); // pense-bete : a prevoir , suppression des options directement dans la page reglages
 		
 		$etat_desc = $ETAT[$data[0]];
