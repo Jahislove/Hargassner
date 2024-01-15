@@ -33,13 +33,13 @@
 // conso reelle / A = X  nouveau facteur Kg/h
 // 100 * (X/2.2) = % de correction a apporter en base
 
-    $chart1_name = ['Consommation granulés par jour','T° extérieure moyenne'];
+    $chart1_name = ['kilo granulés par jour','cout granulés par jour','T° extérieure moyenne'];
     $chart2_name = ['T° départ consigne','T° départ','T° chaudière','T° extérieure','T° intérieure','Puissance','% bois'];
     $chart3_name = ['Sur la Saison'];
 
     // recupere la conso des 90 derniers jours
-    $query0 = "SELECT dateB,conso,Tmoy FROM consommation 
-            ORDER BY dateB DESC LIMIT 90";
+    // $query0 = "SELECT dateB,conso,Tmoy FROM consommation 
+            // ORDER BY dateB DESC LIMIT 90";
     // recupere la 1ere mesure dans la base pour initialiser le calendrier
     $query1 = "SELECT YEAR(dateB),MONTH(dateB) FROM consommation 
              LIMIT 1";
@@ -57,7 +57,7 @@
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
 	}
-    $req0 = mysqli_query($conn, $query0) ;
+    // $req0 = mysqli_query($conn, $query0) ;
     $req1 = mysqli_query($conn, $query1) ;
     $req2 = mysqli_query($conn, $query2) ;
     $req3 = mysqli_query($conn, $query3) ;
@@ -66,17 +66,17 @@
     $data = mysqli_fetch_row($req3);
     $prix = $data[1];
 
-    while($data = mysqli_fetch_row($req0)){
-        $dateD = strtotime($data[0]) * 1000;
-        $chart1_data1[] = "[$dateD, $data[1]]";//kg
-        $chart1_data2[] = "[$dateD, $data[2]]";//temperature
-		$cout = round($data[1]*$prix,1,PHP_ROUND_HALF_EVEN);
-        $chart1_data3[] = "[$dateD, $cout]";//cout
-    }
+    // while($data = mysqli_fetch_row($req0)){
+        // $dateD = strtotime($data[0]) * 1000;
+        // $chart1_data1[] = "[$dateD, $data[1]]";//kg
+        // $chart1_data2[] = "[$dateD, $data[2]]";//temperature
+		// $cout = round($data[1]*$prix,1,PHP_ROUND_HALF_EVEN);
+        // $chart1_data3[] = "[$dateD, $cout]";//cout
+    // }
     
-    $chart1_data1 = join(',', array_reverse($chart1_data1));
-    $chart1_data2 = join(',', array_reverse($chart1_data2));
-    $chart1_data3 = join(',', array_reverse($chart1_data3));
+    // $chart1_data1 = join(',', array_reverse($chart1_data1));
+    // $chart1_data2 = join(',', array_reverse($chart1_data2));
+    // $chart1_data3 = join(',', array_reverse($chart1_data3));
 
     $data = mysqli_fetch_row($req1);
     $dateMin = [$data[0],$data[1]];
@@ -278,9 +278,8 @@ $(function() {
                 valueSuffix: ' Kg',
              },
 			zIndex: 1,
-			data: [<?php echo $chart1_data1; ?>]
 		}, {
-			name: '<?php echo $chart1_name[1]; ?>',
+			name: '<?php echo $chart1_name[2]; ?>',
 			type: 'line',
 			color: '<?php echo $color_TextM; ?>',
             dataLabels: {
@@ -296,7 +295,24 @@ $(function() {
                 valueSuffix: ' °C',
              },
 			zIndex: 2,
-			data: [<?php echo $chart1_data2; ?>]
+		},{
+			name: '<?php echo $chart1_name[1]; ?>',
+			type: 'column',
+			color: '#ff9900',
+            pointPadding: 0,
+            groupPadding: 0.05,
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                style: {
+                    fontSize: '10px',
+                },
+                y: 7,
+            },
+            tooltip: {
+                valueSuffix: ' Kg',
+             },
+			zIndex: 1,
 		}] 
 	});
     
@@ -885,23 +901,13 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 	.attr('id','euroKilo')
 	.on('click', function () {
 		if ( mode == 'Kg'){
-			chart1.series[0].update({
-				tooltip: {
-					valueSuffix: ' €',
-				},
-				color: '#ff9900',
-				data: [<?php echo $chart1_data3; ?>],
-			});
+			chart1.series[0].setVisible(false); //kilo
+			chart1.series[2].setVisible(true); //euro
 			$('#euroKilo').attr('href', 'img/euro-icon.png');
 			mode = '€';
 		} else {
-			chart1.series[0].update({
-				tooltip: {
-					valueSuffix: ' Kg',
-				},
-				data: [<?php echo $chart1_data1; ?>],
-				color: '<?php echo $color_gran; ?>',
-			});
+			chart1.series[0].setVisible(true); //kilo
+			chart1.series[2].setVisible(false); //euro
 			$('#euroKilo').attr('href', 'img/kilo-icon.png');
 			mode = 'Kg';
 		}			
@@ -913,11 +919,30 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 	
 //***************************************************************************************************
 // ************* chargement asynchrone des graphes****************************************************
+    chart1.showLoading('loading');
     chart2.showLoading('Cliquez sur une colonne ci dessus pour afficher le détail des courbes ici')
     chart3.showLoading('loading');
     chart4.showLoading('loading');
     chart5.showLoading('loading');
     chart6.showLoading('loading');
+
+// *******graphique conso 90jours*********************
+    $.ajax({
+        dataType: "json",
+        url: 'json_conso_90j.php',
+        cache: false,
+        success: function(data) {
+				 // console.log(data[0]);
+			chart1.series[0].setData(data[0],false); //kg
+			chart1.series[1].setData(data[1],false); //temp
+			chart1.series[2].setData(data[2],false); //euro
+			chart1.series[2].setVisible(false); //euro
+
+			chart1.redraw();
+            chart1.hideLoading();
+				 console.log(EK);
+        }
+    });
 
 // *******graphique conso annuelle*********************
     $.ajax({
