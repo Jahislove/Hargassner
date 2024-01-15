@@ -940,7 +940,6 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 
 			chart1.redraw();
             chart1.hideLoading();
-				 console.log(EK);
         }
     });
 

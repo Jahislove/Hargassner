@@ -27,19 +27,12 @@ header("Content-type: text/json");
 
     while($data = mysqli_fetch_row($req0)){
         $dateD = strtotime($data[0]) * 1000;
-        // $chart1_data1[] = "[$dateD, $data[1]]";//kg
-        // $chart1_data2[] = "[$dateD, $data[2]]";//temperature
-		// $cout = round($data[1]*$prix,1,PHP_ROUND_HALF_EVEN);
-        // $chart1_data3[] = "[$dateD, $cout]";//cout
         $chart1_data1[] = [$dateD, $data[1]];//kg
         $chart1_data2[] = [$dateD, $data[2]];//temperature
 		$cout = round($data[1]*$prix,1,PHP_ROUND_HALF_EVEN);
         $chart1_data3[] = [$dateD, $cout];//cout
     }
     
-    // $chart1_data1 = join(',', array_reverse($chart1_data1));
-    // $chart1_data2 = join(',', array_reverse($chart1_data2));
-    // $chart1_data3 = join(',', array_reverse($chart1_data3));
     $chart1_data1 = array_reverse($chart1_data1);
     $chart1_data2 = array_reverse($chart1_data2);
     $chart1_data3 = array_reverse($chart1_data3);
