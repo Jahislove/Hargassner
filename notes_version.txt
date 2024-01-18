@@ -3,8 +3,9 @@
 *** Auteur : Jahislove
 *** GPL-3.0-or-later
 ************************************************************************/
-v3.9	17/11/2023
+v3.9	17/01/2024
 	prise en charge firmware V14.0HAR.o2
+	passage du chargement courbe conso sur 90j en asynchrone
 
 v3.8	12/09/2023
 	prise en charge firmware V14.0HAR.o (nouvelle regle de nommage)
