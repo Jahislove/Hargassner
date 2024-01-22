@@ -3,6 +3,8 @@
 *** Auteur : Jahislove
 *** GPL-3.0-or-later
 ************************************************************************/
+v4.0
+
 v3.9	17/01/2024
 	prise en charge firmware V14.0HAR.o2
 	passage du chargement courbe conso sur 90j en asynchrone pour un affichage plus rapide
