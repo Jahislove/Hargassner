@@ -121,7 +121,7 @@ $BDD = [
 'c82'=>['name'=>'UseMotSoll',		'unit'=>'mm',	'desc'=>'?'],
 'c83'=>['name'=>'UseMotIst',		'unit'=>'mm',	'desc'=>'?'],
 'c84'=>['name'=>'HKZustand_A',		'unit'=>'',		'desc'=>'?'],
-'c85'=>['name'=>'HKZustand_1',		'unit'=>'',		'desc'=>'mode de chauffage => 0 été /1 confort /3 reduit/4 arret /9 en cours arret'],
+'c85'=>['name'=>'HKZustand_1',		'unit'=>'',		'desc'=>'mode de chauffage => 0 été /1 confort /2 passage confort vers réduit /3 reduit/4 arret /9 en cours arret'],
 'c86'=>['name'=>'HKZustand_2',		'unit'=>'',		'desc'=>'?'],
 'c87'=>['name'=>'HKZustand_3',		'unit'=>'',		'desc'=>'?'],
 'c88'=>['name'=>'HKZustand_4',		'unit'=>'',		'desc'=>'?'],

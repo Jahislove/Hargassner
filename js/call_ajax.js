@@ -270,8 +270,8 @@ function call_ajax_light(chanel){
 			document.getElementById('tooltipModeChauff').innerHTML = 'Confort';
 			break;
 		case 2: 
-			document.getElementById('modeChauff').className = 'modeCommandArret'; // etat inconnu
-			document.getElementById('tooltipModeChauff').innerHTML = '?';
+			document.getElementById('modeChauff').className = 'modeCommandReduit'; 
+			document.getElementById('tooltipModeChauff').innerHTML = 'Confort vers Réduit';
 			break;
 		case 3: 
 			document.getElementById('modeChauff').className = 'modeCommandReduit';
