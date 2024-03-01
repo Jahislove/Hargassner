@@ -4,15 +4,23 @@ header("Content-type: text/json");
 
 switch($_POST['request']){
 	case 'Tmin':
-		$query = "SELECT dateB,c6 FROM data
-				WHERE c6=(SELECT MIN(c6) FROM data)
+		// $query = "SELECT dateB,c6 FROM data
+				// WHERE c6=(SELECT MIN(c6) FROM data)
+				// group BY  DATE(dateB)
+				// LIMIT 3" ;
+		$query = "SELECT dateB,MIN(c6) AS temp FROM data
 				group BY  DATE(dateB)
+				ORDER BY temp ASC
 				LIMIT 3" ;
 		break;
 	case 'Tmax':
-		$query = "SELECT dateB,c6 FROM data
-				WHERE c6=(SELECT MAX(c6) FROM data)
+		// $query = "SELECT dateB,c6 FROM data
+				// WHERE c6=(SELECT MAX(c6) FROM data)
+				// group BY  DATE(dateB)
+				// LIMIT 3" ;
+		$query = "SELECT dateB,MAX(c6) AS temp FROM data
 				group BY  DATE(dateB)
+				ORDER BY temp DESC
 				LIMIT 3" ;
 		break;
 	case 'Gmax':
@@ -22,7 +30,7 @@ switch($_POST['request']){
 				LIMIT 2" ;
 		break;
 	case 'ecs':
-		$query = "SELECT dateB, avg(sum_conso) FROM (
+		$query = "SELECT dateB, ROUND(avg(sum_conso),0) FROM (
 				  SELECT dateB, SUM(conso) AS sum_conso FROM consommation
 					WHERE month(dateB) IN(6,7,8)  
 					GROUP BY year(dateB),month(dateB)
