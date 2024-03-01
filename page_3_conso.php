@@ -951,6 +951,8 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
         success: function(objet) {
             // est un objet  , il est créé dans json_conso_annees.php
             //il contient des objet serie, les paires sont les temperatures et impaires les granulés
+			var CumulMois = [0,0,0,0,0,0,0,0,0,0,0,0];
+			var MoyMois = [0,0,0,0,0,0,0,0,0,0,0,0];
 			for (var i = 0; i < objet.length; i=i+2){
 				//console.log(objet[i].data);
 				var saison = objet[i].name;
@@ -961,7 +963,31 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
                 chart4.addSeries(objet[i],false);
                 chart4.addSeries(objet[i+1],false);
 				chart5.series[0].addPoint([saison,objet[i].prix*1000]);
+				for (var j = 0; j < 12; j=j+1){ // on cumul la conso par mois( tous les mois de janvier ...)
+					CumulMois[j] = CumulMois[j] + objet[i].data[j];
+				}
 			}
+			for (var j = 0; j < 12; j=j+1){ // calcul de la moyenne de chaque mois de toutes les saisons
+				MoyMois[j] = Math.round(CumulMois[j] / ((objet.length+1)/2));// nombre saison
+			console.log(MoyMois[j]);
+			}
+            chart4.addSeries({ // serie moyenne
+				type: 'line',
+				step: 'center',
+				name: 'Moyenne',
+				lineWidth: 2,
+				lineColor: 'black',
+				color: 'black',
+				data: MoyMois,
+				marker: {
+					enabled: false,
+					lineWidth: 2,
+					lineColor: 'black',
+					fillColor: 'black'
+				}
+			},false);
+			
+			
 			chart3.redraw();
             chart4.redraw();
 			chart3.xAxis[0].update({ // affiche les category apres le graph sinon bug d'affichage
