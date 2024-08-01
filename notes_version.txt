@@ -6,6 +6,7 @@
 v4.0 	01/08/2024
 	optimisation de requetes(chargement plus rapide de la page consommation)
 	prise en charge firmware V14.0HAR.p
+	page consommation : ajout courbe conso moyenne par mois
 
 v3.9	17/01/2024
 	prise en charge firmware V14.0HAR.o2
