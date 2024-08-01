@@ -1,4 +1,5 @@
 <?php 
+// version 1.5	ajout firmware V14.0HAR.p
 // version 1.4	ajout firmware V14.0HAR.o2
 // version 1.3	ajout firmware V14.0HAR.o
 // version 1.2	ajout firmware 14n
@@ -10,14 +11,14 @@
 // version 0.6	ajout firmware 14i, 14j, 14k
 // version 0.5	ajout firmware 10.2h
 // version 0.4 compatibilité avec php7
-// auteur : JahisLove 2018-2023
+// auteur : JahisLove 2015-2024
 // licence GPL-3.0-or-later
 // ecriture des data dans la bdd en php /writing data in database
 // this script need to be executed every minute
 /* 	
 
 available firmware (if yours is not here , use the pellets last one ( modify in conf/config.inc.php)
-pellets  14e , 14f , 14g , 14i , 14j, 14k, 14l, 14m, 14n, V14.0HAR.o, V14.0HAR.o2
+pellets  14e , 14f , 14g , 14i , 14j, 14k, 14l, 14m, 14n, V14.0HAR.o, V14.0HAR.o2, V14.0HAR.p
 wood 4.3d, 10.2h
 
 nothing to modify here by user /rien a configurer ici par l'utilisateur
