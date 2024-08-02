@@ -44,7 +44,7 @@
 			</div>
 			<div class='tooltipContainer radiateur-texte'>
 				<span id="radiateur-texte"></span>
-				<span class="tooltipMaison"><?php echo text_temp_toHeaterIs;?></span>
+				<span class="tooltipMaison"><?php echo text_tempZ1_toHeaterIs;?></span>
 			</div>
 
 			<span id="pompe-radiat" class='tooltipContainer pompeOFF'>
@@ -80,8 +80,8 @@
                 <tr><th><?php echo text_temp_indoor;?></th>    		<td id="Gauche2">?</td></tr>    
                 <tr><th><?php echo text_temp_outdoor;?></th>   		<td id="Gauche3">?</td></tr>    
                 <tr><th><?php echo text_temp_outdoorAvg;?></th> 	<td id="Gauche4">?</td></tr>    
-                <tr><th><?php echo text_temp_toHeaterIs;?></th>   	<td id="Gauche5">?</td></tr>    
-                <tr><th><?php echo text_temp_toHeaterMust;?></th>  	<td id="Gauche6">?</td></tr>    
+                <tr><th><?php echo text_tempZ1_toHeaterIs;?></th>   <td id="Gauche5">?</td></tr>    
+                <tr><th><?php echo text_tempZ1_toHeaterMust;?></th> <td id="Gauche6">?</td></tr>    
                 <tr><th><?php echo text_temp_waterIs;?></th>  		<td id="Gauche7">?</td></tr>    
                 <tr><th><?php echo text_temp_waterMust;?></th>  	<td id="Gauche8">?</td></tr>    
                 <tr><th><?php echo text_temp_returnIs;?></th>   	<td id="Gauche9">?</td></tr>    
@@ -93,7 +93,7 @@
                 <tr><th><?php echo text_time_ash;?></th>			<td id="Droite1">?</td></tr>  
                 <tr><th><?php echo text_time_screw;?></th> 		   	<td id="Droite2">?</td></tr>    
                 <tr><th><?php echo text_move_ash;?></th>   			<td id="Droite3">?</td></tr>  
-                <tr><th><?php echo text_pellet_consum;?></th>    	<td id="Droite4">?</td></tr>  
+                <tr><th><?php echo text_pell_consumTot;?></th>    	<td id="Droite4">?</td></tr>  
                 <tr><th><?php echo text_pellet_left;?></th>    		<td id="Droite5">?</td></tr>  
                 <tr><th><?php echo text_temp_tank;?></th>    		<td id="Droite6">?</td></tr>  
                 <tr><th><?php echo text_state_tank;?></th>			<td id="Droite7">?</td></tr>  

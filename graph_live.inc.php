@@ -167,7 +167,7 @@ $(function() {
 			color: 'red',
 			data: [<?php echo $listeInit; ?>],
 		}, {
-			name: '<?php echo text_temp_toHeaterIs; ?>',
+			name: '<?php echo text_tempZ1_toHeaterIs; ?>',
 			zIndex: 0,
             visible: etat[5],
 			color: 'lightblue',

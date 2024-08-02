@@ -10,11 +10,8 @@
 <?php
 	require_once("conf/settings.inc.php");
 
-	// utilise json_chan-period-2.php
-    $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','T° Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ z1 est','T° Départ z1 doit','T° Départ z2 est','T° Départ z2 doit','Conso du jour','Ballon ECS Etat','Aspiration','T° Retour','Temps décendrage','conso instantanée']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
-	$chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c22,c24,c99,c92,c112,c12,c111"; // la 2 eme valeur (decendrage) est calculé d'apres c0
-    // => remplacé par conf/settings.inc.php
-	$chart2_name = ['allumage electrique'];
+    // => liste des chanel utilisés dans conf/settings.inc.php
+	// $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','T° Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ z1 est','T° Départ z1 doit','T° Départ z2 est','T° Départ z2 doit','Conso du jour','Ballon ECS Etat','Aspiration','T° Retour','Temps décendrage','conso instantanée']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
     
     // requete pour initialiser la date
 	$query = "SELECT YEAR(dateB),MONTH(dateB),DAY(dateB) FROM consommation  
@@ -320,7 +317,7 @@ $(function() {
 		},
 
 		series: [{
-			name: '<?php echo chart1_chart_serie0; ?>',
+			name: '<?php echo text_state; ?>',
 			color: '<?php echo $color_etat; ?>',
             legendIndex: 0,
             visible: etat[0],
@@ -333,7 +330,7 @@ $(function() {
             },
 			data: []
 		}, {
-			name: '<?php echo chart1_chart_serie1; ?>',
+			name: '<?php echo text_state_ash; ?>',
 			color: '<?php echo $color_decend; ?>',
             legendIndex: 17,
             visible: etat[1],
@@ -351,7 +348,7 @@ $(function() {
             },
 			data: []
 		}, {
-			name: '<?php echo chart1_chart_serie2; ?>',
+			name: '<?php echo text_power; ?>',
 			color: '<?php echo $color_puiss; ?>',
             lineWidth: 1,
             legendIndex: 1,
@@ -364,7 +361,7 @@ $(function() {
              },
 			data: []
 		}, {
-			name: '<?php echo chart1_chart_serie3; ?>',
+			name: '<?php echo text_temp_waterIs; ?>',
 			color: '<?php echo $color_Tchaud; ?>',
             legendIndex: 2,
             visible: etat[3],
@@ -376,7 +373,7 @@ $(function() {
              },
 			data: []
 		}, {
-			name: '<?php echo chart1_chart_serie4; ?>',
+			name: '<?php echo text_temp_waterMust; ?>',
 			color: '<?php echo $color_Tchauddoit; ?>',
             legendIndex: 3,
             visible: etat[4],
@@ -388,7 +385,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo chart1_chart_serie5; ?>',
+			name: '<?php echo text_temp_smoke; ?>',
 			color: '<?php echo $color_fum; ?>',
             legendIndex: 12,
             visible: etat[5],
@@ -400,7 +397,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo chart1_chart_serie6; ?>',
+			name: '<?php echo text_temp_outdoor; ?>',
 			color: '<?php echo $color_Text; ?>',
             legendIndex: 10,
             visible: etat[6],
@@ -412,7 +409,7 @@ $(function() {
              },
 			data: []
 		}, {
-			name: '<?php echo chart1_chart_serie7; ?>',
+			name: '<?php echo text_oxyIs; ?>',
 			color: '<?php echo $color_O2; ?>',
             legendIndex: 13,
             visible: etat[7],
@@ -424,7 +421,7 @@ $(function() {
             },
 			data: []
 		}, {
-			name: '<?php echo chart1_chart_serie8; ?>',
+			name: '<?php echo text_oxyMust; ?>',
 			color: '<?php echo $color_O2doit; ?>',
             legendIndex: 14,
             visible: etat[8],
@@ -436,7 +433,7 @@ $(function() {
             },
 			data: [],
 		}, {
-			name: '<?php echo chart1_chart_serie9; ?>',
+			name: '<?php echo text_fan; ?>',
 			color: '<?php echo $color_extrac; ?>',
             legendIndex: 9,
             visible: etat[9],
@@ -448,7 +445,7 @@ $(function() {
             },
 			data: []
 		}, {
-			name: '<?php echo chart1_chart_serie10; ?>',
+			name: '<?php echo text_temp_tank; ?>',
 			color: '<?php echo $color_ECS_T; ?>',// ECS
             legendIndex: 15,
             visible: etat[10],
@@ -460,7 +457,7 @@ $(function() {
              },
 			data: []
 		}, {
-			name: '<?php echo chart1_chart_serie11; ?>',
+			name: '<?php echo text_wood; ?>',
 			color: '<?php echo $color_bois; ?>',
             legendIndex: 10,
             visible: etat[11],
@@ -472,7 +469,7 @@ $(function() {
             },
 			data: []
 		}, {
-			name: '<?php echo chart1_chart_serie12; ?>',
+			name: '<?php echo text_temp_outdoorAvg; ?>',
 			color: '<?php echo $color_TextM; ?>',
             legendIndex: 9,
             visible: etat[12],
@@ -484,7 +481,7 @@ $(function() {
              },
 			data: []
 		}, {
-			name: '<?php echo chart1_chart_serie13; ?>',
+			name: '<?php echo text_temp_indoor; ?>',
 			color: '<?php echo $color_Tint; ?>',
             legendIndex: 10,
             visible: etat[13],
@@ -496,7 +493,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo chart1_chart_serie14; ?>',
+			name: '<?php echo text_tempZ1_toHeaterIs; ?>',
 			color: '<?php echo $color_TdepE; ?>',
             legendIndex: 4,
             visible: etat[14],
@@ -508,7 +505,7 @@ $(function() {
              },
 			data: []
 		}, {
-			name: '<?php echo chart1_chart_serie15; ?>',
+			name: '<?php echo text_tempZ1_toHeaterMust; ?>',
 			color: '<?php echo $color_TdepD; ?>',
             legendIndex: 5,
             visible: etat[15],
@@ -520,7 +517,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo chart1_chart_serie16; ?>',// temp depart Z2 est
+			name: '<?php echo text_tempZ2_toHeaterIs; ?>',// temp depart Z2 est
 			color: '<?php echo $color_varF; ?>',
             legendIndex: 6,
             visible: etat[16],
@@ -532,7 +529,7 @@ $(function() {
              },
 			data: []
 		}, {
-			name: '<?php echo chart1_chart_serie17; ?>',// temp depart Z2 doit
+			name: '<?php echo text_tempZ2_toHeaterMust; ?>',// temp depart Z2 doit
 			color: '<?php echo $color_varK; ?>',
             legendIndex: 7,
             visible: etat[17],
@@ -544,7 +541,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo chart1_chart_serie18; ?>',
+			name: '<?php echo text_pell_consumDay; ?>',
 			color: '<?php echo $color_gran; ?>',
             legendIndex: 14,
             visible: etat[18],
@@ -556,7 +553,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo chart1_chart_serie19; ?>',
+			name: '<?php echo text_state_tank; ?>',
 			color: '<?php echo $color_ECS_etat; ?>',
             legendIndex: 16,
             visible: etat[19],
@@ -574,7 +571,7 @@ $(function() {
             },
 			data: []
 		}, {
-			name: '<?php echo chart1_chart_serie20; ?>',
+			name: '<?php echo text_suction; ?>',
 			color: '<?php echo $color_aspi; ?>',
             legendIndex: 18,
             visible: etat[20],
@@ -593,7 +590,7 @@ $(function() {
 			},
 			data: []
 		}, {
-			name: '<?php echo chart1_chart_serie21; ?>',
+			name: '<?php echo text_temp_returnIs; ?>',
 			color: '<?php echo $color_gran; ?>',
             legendIndex: 11,
             visible: etat[21],
@@ -605,7 +602,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo chart1_chart_serie22; ?>',
+			name: '<?php echo text_time_ash; ?>',
 			color: 'purple',
             legendIndex: 22,
             visible: etat[22],
@@ -617,7 +614,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo chart1_chart_serie23; ?>',
+			name: '<?php echo text_pell_inst_consum; ?>',
 			color: 'gray',
             legendIndex: 23,
             visible: etat[23],
