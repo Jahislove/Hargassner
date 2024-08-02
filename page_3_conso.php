@@ -2,7 +2,7 @@
 
 <div class="calendar">
     <div class="input-group date">
-        <input type="text" class="form-control" placeholder="90 derniers jours">
+        <input type="text" class="form-control" placeholder="<?php echo calendar_consum_title; ?>">
         <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
     </div>
 </div>
@@ -33,7 +33,7 @@
 // conso reelle / A = X  nouveau facteur Kg/h
 // 100 * (X/2.2) = % de correction a apporter en base
 
-    $chart1_name = ['kilo granulés par jour','cout granulés par jour','T° extérieure moyenne'];
+    // $chart1_name = ['kilo granulés par jour','cout granulés par jour','T° extérieure moyenne'];
     $chart2_name = ['T° départ consigne','T° départ','T° chaudière','T° extérieure','T° intérieure','Puissance','% bois'];
     $chart3_name = ['Sur la Saison'];
 
@@ -126,10 +126,10 @@ $(function() {
 $(function() {
     Highcharts.setOptions({
 		lang: {
-			months: <?php echo $months; ?>,
-			weekdays: <?php echo $weekdays; ?>,
-			shortMonths: <?php echo $shortMonths; ?>,
-			thousandsSep: <?php echo $thousandsSep; ?>,
+			months: <?php echo months; ?>,
+			weekdays: <?php echo weekdays; ?>,
+			shortMonths: <?php echo shortMonths; ?>,
+			thousandsSep: "''",
 		},
 		chart: {
 			zoomType: 'x',
@@ -235,7 +235,7 @@ $(function() {
 							val_precedente = this.x;
 
                             var jour = new Date(this.x);
-                            chart2.setTitle('',{ text: 'Pour la journée du ' + jour.toLocaleDateString() });
+                            chart2.setTitle('',{ text: jour.toLocaleDateString() });
                             $.ajax({
                                 dataType: "json",
                                 url: 'json_choix_jour.php',
@@ -261,7 +261,7 @@ $(function() {
         },
 
 		series: [{
-			name: '<?php echo $chart1_name[0]; ?>',
+			name: '<?php echo chart1_consum_kilo; ?>',
 			type: 'column',
 			color: '<?php echo $color_gran; ?>',
             pointPadding: 0,
@@ -279,7 +279,7 @@ $(function() {
              },
 			zIndex: 1,
 		}, {
-			name: '<?php echo $chart1_name[2]; ?>',
+			name: '<?php echo chart1_consum_outT; ?>',
 			type: 'line',
 			color: '<?php echo $color_TextM; ?>',
             dataLabels: {
@@ -296,7 +296,7 @@ $(function() {
              },
 			zIndex: 2,
 		},{
-			name: '<?php echo $chart1_name[1]; ?>',
+			name: '<?php echo chart1_consum_cost; ?>',
 			type: 'column',
 			color: '#ff9900',
             pointPadding: 0,
@@ -310,7 +310,7 @@ $(function() {
                 y: 7,
             },
             tooltip: {
-                valueSuffix: ' Kg',
+                valueSuffix: ' €',
              },
 			zIndex: 1,
 		}] 
@@ -327,7 +327,7 @@ $(function() {
 			},
 		},
 		title: {
-			text: 'Courbes des températures',
+			text: '<?php echo chart2_consum_title; ?>',
 	        align: 'left',
 	        x: 65,
 			style:{

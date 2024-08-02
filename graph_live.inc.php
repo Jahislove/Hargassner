@@ -56,10 +56,10 @@ for (var k=0;k<6;k++) {
 $(function() {
     Highcharts.setOptions({
 		lang: {
-			months: <?php echo $months; ?>,
-			weekdays: <?php echo $weekdays; ?>,
-			shortMonths: <?php echo $shortMonths; ?>,
-			thousandsSep: <?php echo $thousandsSep; ?>,
+			months: <?php echo months; ?>,
+			weekdays: <?php echo weekdays; ?>,
+			shortMonths: <?php echo shortMonths; ?>,
+			thousandsSep: "''",
 		},
 		global: {
 			useUTC: false
@@ -76,7 +76,7 @@ $(function() {
 			}
 		},
 		title: {
-			text: 'Courbes temps réel',
+			text: '<?php echo chart_home_title; ?>',
 			style:{
 				color: '#4572A7',
 			},
@@ -134,13 +134,13 @@ $(function() {
 		},
 
 		series: [{
-			name: 'etat',
+			name: '<?php echo text_state; ?>',
 			color: '#01AEE3',
             zIndex: 1,
             visible: etat[0],
 			data: [<?php echo $listeInit; ?>],
 		}, {
-			name: 'T° eau',
+			name: '<?php echo text_temp_waterIs; ?>',
 			color: '#E662CC',
             tooltip: {
                 valueSuffix: ' °',
@@ -149,25 +149,25 @@ $(function() {
             zIndex: 2,
 			data: [<?php echo $listeInit; ?>],
 		}, {
-			name: 'Extraction',
+			name: '<?php echo text_fan; ?>',
 			color: 'yellow',
             visible: etat[2],
 			zIndex: 3,
 			data: [<?php echo $listeInit; ?>],
 		}, {
-			name: '% bois',
+			name: '<?php echo text_wood; ?>',
 			zIndex: 4,
             visible: etat[3],
 			color: 'grey',
 			data: [<?php echo $listeInit; ?>],
 		}, {
-			name: 'puissance',
+			name: '<?php echo text_power; ?>',
 			zIndex: 0,
             visible: etat[4],
 			color: 'red',
 			data: [<?php echo $listeInit; ?>],
 		}, {
-			name: 'T° départ',
+			name: '<?php echo text_temp_toHeaterIs; ?>',
 			zIndex: 0,
             visible: etat[5],
 			color: 'lightblue',

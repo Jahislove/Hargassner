@@ -2,7 +2,12 @@
 <html lang="fr">
 <?php 
 	require_once("conf/config.inc.php");
+	if (!isset($language)) {
+	  $language = 'en';
+	}
+	include('locale/' . $language . '.php');
 ?>
+
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -104,12 +109,12 @@
     ?>
 	<nav>
         <ul class="fancyNav">
-            <li id="home">   <a href="index.php" class="homeIcon">Accueil</a></li>
-            <li id="chart">  <a href="page_1_24h.php">Données</a></li>
-            <li id="chart2"> <a href="page_2_courbes.php">Courbes</a></li>
-            <li id="chart3"> <a href="page_3_conso.php">Consommation</a></li>
-            <li id="setting"><a href="page_reglages.php">Réglages</a></li>
-            <li id="about">  <a href="about.php">a propos</a></li>
+            <li id="home">   <a href="index.php" class="homeIcon"><?php echo menu_home;?></a></li>
+            <li id="chart">  <a href="page_1_24h.php"><?php echo menu_data;?></a></li>
+            <li id="chart2"> <a href="page_2_courbes.php"><?php echo menu_graph;?></a></li>
+            <li id="chart3"> <a href="page_3_conso.php"><?php echo menu_consumption;?></a></li>
+            <li id="setting"><a href="page_reglages.php"><?php echo menu_settings;?></a></li>
+            <li id="about">  <a href="about.php"><?php echo menu_about;?></a></li>
         </ul>
 	</nav>
 
@@ -117,7 +122,7 @@
             <tr>
 				<th id="etat" >?</th>
 				<th class ="tooltipContainer">
-					<span class="tooltipEtat">Puissance</span> 
+					<span class="tooltipEtat"><?php echo text_power;?></span> 
 					<span id="puissance" ></span> 
 				</th>
 				<th class ="tooltipContainer">

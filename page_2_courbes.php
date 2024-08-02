@@ -12,7 +12,7 @@
 
 	// utilise json_chan-period-2.php
     $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','T° Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ z1 est','T° Départ z1 doit','T° Départ z2 est','T° Départ z2 doit','Conso du jour','Ballon ECS Etat','Aspiration','T° Retour','Temps décendrage','conso instantanée']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
-	// $chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c22,c24,c99,c92,c112,c12,c111"; // la 2 eme valeur (decendrage) est calculé d'apres c0
+	$chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,c27,c56,c7,c138,c21,c23,c22,c24,c99,c92,c112,c12,c111"; // la 2 eme valeur (decendrage) est calculé d'apres c0
     // => remplacé par conf/settings.inc.php
 	$chart2_name = ['allumage electrique'];
     
@@ -163,10 +163,10 @@ $(function() {
     // ************* options communes a tous les charts ******************************
     Highcharts.setOptions({
 		lang: {
-			months: <?php echo $months; ?>,
-			weekdays: <?php echo $weekdays; ?>,
-			shortMonths: <?php echo $shortMonths; ?>,
-			thousandsSep: <?php echo $thousandsSep; ?>,
+			months: <?php echo months; ?>,
+			weekdays: <?php echo weekdays; ?>,
+			shortMonths: <?php echo shortMonths; ?>,
+			thousandsSep: "''",
 		},
 		global: {
 			useUTC: false,
@@ -247,7 +247,7 @@ $(function() {
 			},
 		},
 		title: {
-			text: 'Fonctionnement',
+			text: '<?php echo chart1_chart_title; ?>',
 		},
 		legend: {
             itemDistance: 30,
@@ -276,10 +276,10 @@ $(function() {
 							}
 						}
 						moyenne = Math.round(cumul / nombre);
-						graphe_gauge2.setTitle({ text: 'Puissance moyenne zoom'});
+						graphe_gauge2.setTitle({ text: '<?php echo gauge2_chart_zoom; ?>'});
 						graphe_gauge2.series[0].points[0].update(moyenne);
 					}else{ 										//si zoom out
-						graphe_gauge2.setTitle({ text: 'Puissance Moy. en Chauffe'});
+						graphe_gauge2.setTitle({ text: '<?php echo gauge2_chart_unzoom; ?>'});
 						graphe_gauge2.series[0].points[0].update(PuissMoyFonc); // on restaure la valeur initiale
 					}
 				}
@@ -320,7 +320,7 @@ $(function() {
 		},
 
 		series: [{
-			name: '<?php echo $chart1_name[0]; ?>',
+			name: '<?php echo chart1_chart_serie0; ?>',
 			color: '<?php echo $color_etat; ?>',
             legendIndex: 0,
             visible: etat[0],
@@ -333,7 +333,7 @@ $(function() {
             },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[1]; ?>',
+			name: '<?php echo chart1_chart_serie1; ?>',
 			color: '<?php echo $color_decend; ?>',
             legendIndex: 17,
             visible: etat[1],
@@ -351,7 +351,7 @@ $(function() {
             },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[2]; ?>',
+			name: '<?php echo chart1_chart_serie2; ?>',
 			color: '<?php echo $color_puiss; ?>',
             lineWidth: 1,
             legendIndex: 1,
@@ -364,7 +364,7 @@ $(function() {
              },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[3]; ?>',
+			name: '<?php echo chart1_chart_serie3; ?>',
 			color: '<?php echo $color_Tchaud; ?>',
             legendIndex: 2,
             visible: etat[3],
@@ -376,7 +376,7 @@ $(function() {
              },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[4]; ?>',
+			name: '<?php echo chart1_chart_serie4; ?>',
 			color: '<?php echo $color_Tchauddoit; ?>',
             legendIndex: 3,
             visible: etat[4],
@@ -388,7 +388,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo $chart1_name[5]; ?>',
+			name: '<?php echo chart1_chart_serie5; ?>',
 			color: '<?php echo $color_fum; ?>',
             legendIndex: 12,
             visible: etat[5],
@@ -400,7 +400,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo $chart1_name[6]; ?>',
+			name: '<?php echo chart1_chart_serie6; ?>',
 			color: '<?php echo $color_Text; ?>',
             legendIndex: 10,
             visible: etat[6],
@@ -412,7 +412,7 @@ $(function() {
              },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[7]; ?>',
+			name: '<?php echo chart1_chart_serie7; ?>',
 			color: '<?php echo $color_O2; ?>',
             legendIndex: 13,
             visible: etat[7],
@@ -424,7 +424,7 @@ $(function() {
             },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[8]; ?>',
+			name: '<?php echo chart1_chart_serie8; ?>',
 			color: '<?php echo $color_O2doit; ?>',
             legendIndex: 14,
             visible: etat[8],
@@ -436,7 +436,7 @@ $(function() {
             },
 			data: [],
 		}, {
-			name: '<?php echo $chart1_name[9]; ?>',
+			name: '<?php echo chart1_chart_serie9; ?>',
 			color: '<?php echo $color_extrac; ?>',
             legendIndex: 9,
             visible: etat[9],
@@ -448,7 +448,7 @@ $(function() {
             },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[10]; ?>',
+			name: '<?php echo chart1_chart_serie10; ?>',
 			color: '<?php echo $color_ECS_T; ?>',// ECS
             legendIndex: 15,
             visible: etat[10],
@@ -460,7 +460,7 @@ $(function() {
              },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[11]; ?>',
+			name: '<?php echo chart1_chart_serie11; ?>',
 			color: '<?php echo $color_bois; ?>',
             legendIndex: 10,
             visible: etat[11],
@@ -472,7 +472,7 @@ $(function() {
             },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[12]; ?>',
+			name: '<?php echo chart1_chart_serie12; ?>',
 			color: '<?php echo $color_TextM; ?>',
             legendIndex: 9,
             visible: etat[12],
@@ -484,7 +484,7 @@ $(function() {
              },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[13]; ?>',
+			name: '<?php echo chart1_chart_serie13; ?>',
 			color: '<?php echo $color_Tint; ?>',
             legendIndex: 10,
             visible: etat[13],
@@ -496,7 +496,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo $chart1_name[14]; ?>',
+			name: '<?php echo chart1_chart_serie14; ?>',
 			color: '<?php echo $color_TdepE; ?>',
             legendIndex: 4,
             visible: etat[14],
@@ -508,7 +508,7 @@ $(function() {
              },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[15]; ?>',
+			name: '<?php echo chart1_chart_serie15; ?>',
 			color: '<?php echo $color_TdepD; ?>',
             legendIndex: 5,
             visible: etat[15],
@@ -520,7 +520,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo $chart1_name[16]; ?>',// temp depart Z2 est
+			name: '<?php echo chart1_chart_serie16; ?>',// temp depart Z2 est
 			color: '<?php echo $color_varF; ?>',
             legendIndex: 6,
             visible: etat[16],
@@ -532,7 +532,7 @@ $(function() {
              },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[17]; ?>',// temp depart Z2 doit
+			name: '<?php echo chart1_chart_serie17; ?>',// temp depart Z2 doit
 			color: '<?php echo $color_varK; ?>',
             legendIndex: 7,
             visible: etat[17],
@@ -544,7 +544,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo $chart1_name[18]; ?>',
+			name: '<?php echo chart1_chart_serie18; ?>',
 			color: '<?php echo $color_gran; ?>',
             legendIndex: 14,
             visible: etat[18],
@@ -556,7 +556,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo $chart1_name[19]; ?>',
+			name: '<?php echo chart1_chart_serie19; ?>',
 			color: '<?php echo $color_ECS_etat; ?>',
             legendIndex: 16,
             visible: etat[19],
@@ -574,7 +574,7 @@ $(function() {
             },
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[20]; ?>',
+			name: '<?php echo chart1_chart_serie20; ?>',
 			color: '<?php echo $color_aspi; ?>',
             legendIndex: 18,
             visible: etat[20],
@@ -593,7 +593,7 @@ $(function() {
 			},
 			data: []
 		}, {
-			name: '<?php echo $chart1_name[21]; ?>',
+			name: '<?php echo chart1_chart_serie21; ?>',
 			color: '<?php echo $color_gran; ?>',
             legendIndex: 11,
             visible: etat[21],
@@ -605,7 +605,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo $chart1_name[22]; ?>',
+			name: '<?php echo chart1_chart_serie22; ?>',
 			color: 'purple',
             legendIndex: 22,
             visible: etat[22],
@@ -617,7 +617,7 @@ $(function() {
              },
 			data: [],
 		}, {
-			name: '<?php echo $chart1_name[23]; ?>',
+			name: '<?php echo chart1_chart_serie23; ?>',
 			color: 'gray',
             legendIndex: 23,
             visible: etat[23],
@@ -637,13 +637,13 @@ $(function() {
 			renderTo: 'graphe2',
 		},
 		title: {
-			text: 'allumeur electrique',
+			text: '<?php echo chart2_chart_title; ?>',
 		},
 		xAxis: {
             tickInterval: 24*3600*1000,
 		 },
 		series: [{
-			name: '<?php echo $chart2_name[0]; ?>',
+			name: '<?php echo chart2_chart_title; ?>',
 			color: '<?php echo $color_extrac; ?>',
             type: 'column',
             tooltip: {
@@ -678,7 +678,7 @@ $(function() {
 			enabled: false
 		},
 	    title: {
-	        text: 'Puissance Moyenne journée',
+	        text: '<?php echo gauge1_chart_day; ?>',
 			style:{
 				fontSize: '10px'
 			},
@@ -827,7 +827,7 @@ $(function() {
 			enabled: false
 		},
 	    title: {
-	        text: 'Puissance Moy. en Chauffe',
+	        // text: 'Puissance Moy. en Chauffe',
 			style:{
 				fontSize: '10px'
 			},
@@ -923,7 +923,7 @@ $(function() {
 			series: {
 				events: {
 					mouseOver: function () {
-					bulle = chart1.renderer.label('Faites un zoom sur le <br>graphe pour afficher <br>la puissance moyenne <br>dans le zoom'  ,350, 50);
+					bulle = chart1.renderer.label('<?php echo gauge2_chart_tooltip; ?>'  ,350, 50);
 					bulle.attr({
 						fill: '#DBEDFF',
 						stroke: '<?php echo $color_gran; ?>',

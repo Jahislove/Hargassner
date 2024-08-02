@@ -39,10 +39,10 @@ $(document).ready(function(){
 //*** definition du graphe ******************************
     Highcharts.setOptions({
 		lang: {
-			months: <?php echo $months; ?>,
-			weekdays: <?php echo $weekdays; ?>,
-			shortMonths: <?php echo $shortMonths; ?>,
-			thousandsSep: <?php echo $thousandsSep; ?>,
+			months: <?php echo months; ?>,
+			weekdays: <?php echo weekdays; ?>,
+			shortMonths: <?php echo shortMonths; ?>,
+			thousandsSep: "''",
 		},
 		global: {
 			useUTC: false
@@ -132,15 +132,7 @@ $(document).ready(function(){
 	});
 //****************************************************************************************************
 //*** chargement des données en asynchrone *****************************<h3 style="text-align:left;"> 
-	var msg = ' \
-		Le tableau représente le contenu des données provenant en temps réel de la chaudière par telnet.<br/>\
-		En cliquant sur une case , cela affiche la courbe correspondant au telnet et a la colonne de la BDD.<br/>\
-		Dans les premiers firmware on avait donc telnet 10 (t10) = colonne 10 (c10)<br/>\
-		Cependant au fil des firmwares , Hargassner a modifier l\'ordre des paramètres<br/>\
-		et la colonne réelle de la BDD ne correspond plus au paramètre telnet,<br/>\
-		En cliquant , on affiche le numero du paramètre Telnet (t..), la colonne correspondante en BDD (c..) et sa description si connue\
-		';
-    chart_last24.showLoading(msg);
+    chart_last24.showLoading('<?php echo help_msg; ?>');
 
 //****************************************************************************************************
 //*** clic sur tableau *****************************
@@ -150,7 +142,7 @@ $(document).ready(function(){
 				document.getElementById(this.id).className = '';
 				chart_last24.get('t'+this.id).remove();
 				if (chart_last24.series.length == 0){
-					chart_last24.showLoading(msg);
+					chart_last24.showLoading('<?php echo help_msg; ?>');
 				};
 			} else {
 				chart_last24.hideLoading();
