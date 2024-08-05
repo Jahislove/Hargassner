@@ -66,30 +66,18 @@
     $data = mysqli_fetch_row($req3);
     $prix = $data[1];
 
-    // while($data = mysqli_fetch_row($req0)){
-        // $dateD = strtotime($data[0]) * 1000;
-        // $chart1_data1[] = "[$dateD, $data[1]]";//kg
-        // $chart1_data2[] = "[$dateD, $data[2]]";//temperature
-		// $cout = round($data[1]*$prix,1,PHP_ROUND_HALF_EVEN);
-        // $chart1_data3[] = "[$dateD, $cout]";//cout
-    // }
-    
-    // $chart1_data1 = join(',', array_reverse($chart1_data1));
-    // $chart1_data2 = join(',', array_reverse($chart1_data2));
-    // $chart1_data3 = join(',', array_reverse($chart1_data3));
-
     $data = mysqli_fetch_row($req1);
     $dateMin = [$data[0],$data[1]];
 
+	// pour decaler les mois d'une saison
+	$season = explode(',',months);	
+	for ($i=1;$i<9;$i++) { // decale de 9 mois
+		array_push($season, array_shift($season));
+	}
+	// echo implode(',', $season);	// affiche le contenu d'un array
+	
+	//pour les 3 bulles de moyenne
 	$moisNom = ['','Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
-	
-    // $regex = '/[\,]/';
-    // $moisNom = preg_split($regex, months);
-	// print_r ($moisNom);
-
-	// echo months;
-	// $moisNom = months;
-	
     while($data = mysqli_fetch_row($req2)){
 		$mois[] = $moisNom[$data[0]]; // transformation mois numerique en nom long
         $consoMoy[] = $data[1];
@@ -600,7 +588,7 @@ $(function() {
 				snap: true,
 				// width: 30,
 			},
-            categories: [<?php echo season; ?>],
+            categories: [<?php echo implode(',', $season); ?>], // afiche le contenu d'un array
 		 },
 		yAxis: [{
 			gridLineColor: '#CACACA', 
