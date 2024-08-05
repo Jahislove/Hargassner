@@ -59,7 +59,7 @@ $color_ECS_etat = '#B4EDFE';
 // $months = "['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre']";
 // $weekdays = "['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']";
 // $shortMonths = "['Janv', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin',  'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec']";
-// $thousandsSep = "''"; // thousands separator 
+$thousandsSep = "''"; // thousands separator 
 
 //*****ne pas modifier ci dessous/ do not modify below************************************************	
 $histo_live_shift = $histo_temps * 60 / $refresh; // nombre de valeur avant de shift

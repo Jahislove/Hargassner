@@ -39,10 +39,10 @@ $(document).ready(function(){
 //*** definition du graphe ******************************
     Highcharts.setOptions({
 		lang: {
-			months: <?php echo months; ?>,
-			weekdays: <?php echo weekdays; ?>,
-			shortMonths: <?php echo shortMonths; ?>,
-			thousandsSep: "''",
+			months: [<?php echo months; ?>],
+			weekdays: [<?php echo weekdays; ?>],
+			shortMonths: [<?php echo shortMonths; ?>],
+			thousandsSep: "",
 		},
 		global: {
 			useUTC: false

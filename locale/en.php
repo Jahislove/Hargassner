@@ -1,8 +1,9 @@
 <?php
 //Charts localization
-define("months", 		"['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']");
-define("weekdays", 		"['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']");
-define("shortMonths", 	"['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',  'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']");
+define("months", 		"'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'");
+define("season", 		"'September', 'October', 'November', 'December','January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'");
+define("weekdays", 		"'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'");
+define("shortMonths", 	"'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',  'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'");
 
 //header menu
 define("menu_home", 			"Home");
@@ -72,21 +73,23 @@ define("gauge2_chart_tooltip",	"Zoom on chart <br>to display power average <br>i
 
 //consumption page
 define("calendar_consum_title",	"90 last days");
+define("chart2_consum_title",	"Chart of selected day");
 
 define("chart1_consum_kilo",	"Pellet use by day");
 define("chart1_consum_cost",	"Pellet cost by day");
 define("chart1_consum_outT",	"Outdoor average temperature");
 
-define("chart2_consum_title",	"Chart of selected day");
-define("chart2_consum_serie0",	"T° Departure z1 must");
-define("chart2_consum_serie1",	"T° Departure z1 is");
-define("chart2_consum_serie2",	"T° boiler is");
-define("chart2_consum_serie3",	"T° Outdoor");
-define("chart2_consum_serie4",	"T° Indoor");
-define("chart2_consum_serie5",	"Power");
-define("chart2_consum_serie6",	"% wood");
+define("chart3_consum_Title",	"Annual consumption");
+define("chart3_consum_kilo",	"Annual Quantity");
+define("chart3_consum_cost",	"Annual Cost");
 
-// define("chart3_consum_title",	"");
+define("chart4_consum_Title",	"Consumption and Average temperature by month");
+define("chart4_consum_subT",	"For each season");
+define("chart4_consum_avg",		"Average");
+
+define("text_consum_help",		"Click on column above to display chart of this day here");
+define("text_consum_day",		"day");
+
 
 
 ?>

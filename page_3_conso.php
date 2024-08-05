@@ -34,8 +34,8 @@
 // 100 * (X/2.2) = % de correction a apporter en base
 
     // $chart1_name = ['kilo granulés par jour','cout granulés par jour','T° extérieure moyenne'];
-    $chart2_name = ['T° départ consigne','T° départ','T° chaudière','T° extérieure','T° intérieure','Puissance','% bois'];
-    $chart3_name = ['Sur la Saison'];
+    // $chart2_name = ['T° départ consigne','T° départ','T° chaudière','T° extérieure','T° intérieure','Puissance','% bois'];
+    // $chart3_name = ['Sur la Saison'];
 
     // recupere la conso des 90 derniers jours
     // $query0 = "SELECT dateB,conso,Tmoy FROM consommation 
@@ -82,6 +82,14 @@
     $dateMin = [$data[0],$data[1]];
 
 	$moisNom = ['','Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
+	
+    // $regex = '/[\,]/';
+    // $moisNom = preg_split($regex, months);
+	// print_r ($moisNom);
+
+	// echo months;
+	// $moisNom = months;
+	
     while($data = mysqli_fetch_row($req2)){
 		$mois[] = $moisNom[$data[0]]; // transformation mois numerique en nom long
         $consoMoy[] = $data[1];
@@ -126,10 +134,10 @@ $(function() {
 $(function() {
     Highcharts.setOptions({
 		lang: {
-			months: <?php echo months; ?>,
-			weekdays: <?php echo weekdays; ?>,
-			shortMonths: <?php echo shortMonths; ?>,
-			thousandsSep: "''",
+			months: [<?php echo months; ?>],
+			weekdays: [<?php echo weekdays; ?>],
+			shortMonths: [<?php echo shortMonths; ?>],
+			thousandsSep: "",
 		},
 		chart: {
 			zoomType: 'x',
@@ -391,44 +399,44 @@ $(function() {
 		},
 
 		series: [{
-			name: '<?php echo $chart2_name[0]; ?>',
+			name: '<?php echo text_tempZ1_toHeaterMust; ?>',
 			type: 'line',
 			color: '<?php echo $color_TdepD; ?>',
 			zIndex: 1,
 			data: []
 		}, {
-			name: '<?php echo $chart2_name[1]; ?>',
+			name: '<?php echo text_tempZ2_toHeaterIs; ?>',
 			type: 'line',
 			color: '<?php echo $color_TdepE; ?>',
 			zIndex: 2,
 			data: []
 		}, {
-			name: '<?php echo $chart2_name[2]; ?>',
+			name: '<?php echo text_temp_waterIs; ?>',
 			type: 'line',
 			color: '<?php echo $color_Tchaud; ?>',
 			zIndex: 2,
 			data: []
 		}, {
-			name: '<?php echo $chart2_name[3]; ?>',
+			name: '<?php echo text_temp_outdoor; ?>',
 			type: 'line',
 			color: '<?php echo $color_Text; ?>',
 			zIndex: 2,
 			data: []
 		}, {
-			name: '<?php echo $chart2_name[4]; ?>',
+			name: '<?php echo text_temp_indoor; ?>',
 			type: 'line',
 			color: '<?php echo $color_Tint; ?>',
 			zIndex: 2,
 			data: []
 		}, {
-			name: '<?php echo $chart2_name[5]; ?>',
+			name: '<?php echo text_power; ?>',
 			type: 'line',
             lineWidth: 1,
 			color: '<?php echo $color_puiss; ?>',
 			zIndex: 2,
 			data: []
 		}, {
-			name: '<?php echo $chart2_name[6]; ?>',
+			name: '<?php echo text_wood; ?>',
 			type: 'line',
             lineWidth: 1,
             visible: false,
@@ -449,7 +457,7 @@ $(function() {
 			enabled: true,
 		},
 		title: {
-			text: 'Consommation annuelle',
+			text: '<?php echo chart3_consum_Title; ?>',
 	        align: 'left',
 	        x: 65,
 			style:{
@@ -529,7 +537,7 @@ $(function() {
             },
 		},
 		series: [{
-			name: 'Quantité',
+			name: '<?php echo chart3_consum_kilo; ?>',
 			type: 'column',
 			// colors a synchro avec json_conso_annees.php
 			colors: ['rgba(230,126,34,1)','rgba(155,89,182,1)','rgba(41,128,185,1)','rgba(46,204,113,1)','rgba(241,196,15,1)','rgba(213,76,60,1)','rgba(230,126,255,1)','rgba(10,126,255,1)','rgba(150,150,150,1)','rgba(0,150,150,1)','rgba(150,150,10,1)'],
@@ -545,7 +553,7 @@ $(function() {
              },
 			zIndex: 1,
 		},{
-			name: 'coût',
+			name: '<?php echo chart3_consum_cost; ?>',
 			type: 'column',
 			// colors a synchro avec json_conso_annees.php
 			colors: ['rgba(230,126,34,0.6)','rgba(155,89,182,0.6)','rgba(41,128,185,0.6)','rgba(46,204,113,0.6)','rgba(241,196,15,0.6)','rgba(213,76,60,0.6)','rgba(230,126,255,0.6)','rgba(10,126,255,0.6)','rgba(150,150,150,0.6)','rgba(0,150,150,0.7)','rgba(150,150,10,0.7)'],
@@ -563,14 +571,14 @@ $(function() {
 			yAxis: 1,
 		}] 
 	});
-//*******chart 4 comparaison saison*************************************************************************
+//*******chart 4 conso par mois*************************************************************************
 	chart4 = new Highcharts.Chart({
 		chart: {
 			renderTo: 'conso_par_mois',
 			alignThresholds: true,
 		},
 		title: {
-			text: 'Consommation et temperature moyenne par mois',
+			text: '<?php echo chart4_consum_Title; ?>',
 	        align: 'left',
 	        x: 65,
 			style:{
@@ -580,7 +588,7 @@ $(function() {
 		subtitle: {
 	        align: 'left',
 	        x: 65,
-			text: 'Pour chaque saison',
+			text: '<?php echo chart4_consum_subT; ?>',
 			style:{
 				color: '#4572A7',
 			},
@@ -592,7 +600,7 @@ $(function() {
 				snap: true,
 				// width: 30,
 			},
-            categories: ['Septembre', 'Octobre', 'Novembre', 'Decembre','Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout'],
+            categories: [<?php echo season; ?>],
 		 },
 		yAxis: [{
 			gridLineColor: '#CACACA', 
@@ -846,7 +854,7 @@ $(function() {
 //***************************************************************************************************
 //***************************************************************************************************
 //*************affichage bulle conso moyenne*********************************************************
-chart1.renderer.label('Moyenne <?php echo $mois[2];?><br> = <?php echo $consoMoy[2];?> kg / jour',150, 10)
+chart1.renderer.label('<?php echo chart4_consum_avg; ?> <?php echo $mois[2];?><br> = <?php echo $consoMoy[2];?> kg/<?php echo text_consum_day;?>',150, 10)
 	.attr({
 		fill: '#DBEDFF',
 		stroke: '<?php echo $color_gran; ?>',
@@ -858,7 +866,7 @@ chart1.renderer.label('Moyenne <?php echo $mois[2];?><br> = <?php echo $consoMoy
 	})
 	.add()
 	.shadow(true);
-chart1.renderer.label('Moyenne <?php echo $mois[1];?><br> = <?php echo $consoMoy[1];?> kg / jour',300, 10)
+chart1.renderer.label('<?php echo chart4_consum_avg; ?> <?php echo $mois[1];?><br> = <?php echo $consoMoy[1];?> kg/<?php echo text_consum_day;?>',300, 10)
 	.attr({
 		fill: '#DBEDFF',
 		stroke: '<?php echo $color_gran; ?>',
@@ -871,7 +879,7 @@ chart1.renderer.label('Moyenne <?php echo $mois[1];?><br> = <?php echo $consoMoy
 	.add()
 	.shadow(true);
 	
-chart1.renderer.label('Moyenne <?php echo $mois[0];?><br> = <?php echo $consoMoy[0];?> kg / jour',450, 10)
+chart1.renderer.label('<?php echo chart4_consum_avg; ?> <?php echo $mois[0];?><br> = <?php echo $consoMoy[0];?> kg/<?php echo text_consum_day;?>',450, 10)
 	.attr({
 		fill: '#DBEDFF',
 		stroke: '<?php echo $color_gran; ?>',
@@ -974,7 +982,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
             chart4.addSeries({ // serie moyenne
 				type: 'line',
 				step: 'center',
-				name: 'Moyenne',
+				name: '<?php echo chart4_consum_avg; ?>',
 				lineWidth: 2,
 				lineColor: 'black',
 				color: 'black',

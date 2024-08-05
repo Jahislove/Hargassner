@@ -160,10 +160,10 @@ $(function() {
     // ************* options communes a tous les charts ******************************
     Highcharts.setOptions({
 		lang: {
-			months: <?php echo months; ?>,
-			weekdays: <?php echo weekdays; ?>,
-			shortMonths: <?php echo shortMonths; ?>,
-			thousandsSep: "''",
+			months: [<?php echo months; ?>],
+			weekdays: [<?php echo weekdays; ?>],
+			shortMonths: [<?php echo shortMonths; ?>],
+			thousandsSep: "",
 		},
 		global: {
 			useUTC: false,
