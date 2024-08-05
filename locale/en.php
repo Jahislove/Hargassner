@@ -2,7 +2,6 @@
 //define("CONSTANT_name<=doNotModify",	"word to translate");
 //Charts localization
 define("months", 		"'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'");
-// define("season", 		"'September', 'October', 'November', 'December','January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'");
 define("weekdays", 		"'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'");
 define("shortMonths", 	"'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',  'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'");
 

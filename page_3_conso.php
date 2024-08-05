@@ -77,9 +77,9 @@
 	// echo implode(',', $season);	// affiche le contenu d'un array
 	
 	//pour les 3 bulles de moyenne
-	$moisNom = ['','Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
+	$moisNom = explode(',',months);
     while($data = mysqli_fetch_row($req2)){
-		$mois[] = $moisNom[$data[0]]; // transformation mois numerique en nom long
+		$mois[] = $moisNom[$data[0]-1]; // transformation mois numerique en nom long
         $consoMoy[] = $data[1];
     }
 ?>
@@ -842,7 +842,7 @@ $(function() {
 //***************************************************************************************************
 //***************************************************************************************************
 //*************affichage bulle conso moyenne*********************************************************
-chart1.renderer.label('<?php echo chart4_consum_avg; ?> <?php echo $mois[2];?><br> = <?php echo $consoMoy[2];?> kg/<?php echo text_consum_day;?>',150, 10)
+chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[2];?><br> = <?php echo $consoMoy[2];?> kg/<?php echo text_consum_day;?>",150, 10)
 	.attr({
 		fill: '#DBEDFF',
 		stroke: '<?php echo $color_gran; ?>',
@@ -854,7 +854,7 @@ chart1.renderer.label('<?php echo chart4_consum_avg; ?> <?php echo $mois[2];?><b
 	})
 	.add()
 	.shadow(true);
-chart1.renderer.label('<?php echo chart4_consum_avg; ?> <?php echo $mois[1];?><br> = <?php echo $consoMoy[1];?> kg/<?php echo text_consum_day;?>',300, 10)
+chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[1];?><br> = <?php echo $consoMoy[1];?> kg/<?php echo text_consum_day;?>",300, 10)
 	.attr({
 		fill: '#DBEDFF',
 		stroke: '<?php echo $color_gran; ?>',
@@ -867,7 +867,7 @@ chart1.renderer.label('<?php echo chart4_consum_avg; ?> <?php echo $mois[1];?><b
 	.add()
 	.shadow(true);
 	
-chart1.renderer.label('<?php echo chart4_consum_avg; ?> <?php echo $mois[0];?><br> = <?php echo $consoMoy[0];?> kg/<?php echo text_consum_day;?>',450, 10)
+chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[0];?><br> = <?php echo $consoMoy[0];?> kg/<?php echo text_consum_day;?>",450, 10)
 	.attr({
 		fill: '#DBEDFF',
 		stroke: '<?php echo $color_gran; ?>',
