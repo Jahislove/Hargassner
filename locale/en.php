@@ -73,27 +73,28 @@ define("gauge2_chart_tooltip",	"Zoom on chart <br>to display power average <br>i
 
 
 //consumption page
-define("calendar_consum_title",	"90 last days");
-define("chart1_kiloDay",		"Pellet use per day");
-define("chart1_consum_cost",	"Pellet cost per day");
-define("chart1_consum_outT",	"Outdoor average temperature");
-define("chart2_consum_title",	"Chart of selected day");
-define("chart3_consum_Title",	"Annual consumption");
-define("chart3_consum_kilo",	"Annual Quantity");
-define("chart3_consum_cost",	"Annual Cost");
-define("chart4_consum_Title",	"Consumption and Average temperature per month");
-define("chart4_consum_subT",	"For each season");
-define("chart4_consum_avg",		"Average");
-define("chart5_consum_Title",	"Historic price purchase");
-define("chart5_consum_unit",	"per ton");
-define("chart6_consum_avgPrice","Historic average price in France");
-define("text_consum_help",		"Click on column above to display chart of this day here");
-define("text_consum_day",		"per day");
-define("text_consum_month",		"per month");
-define("text_consum_Tmin",		"Min temperature ever");
-define("text_consum_Tmax",		"Max temperature ever");
-define("text_consum_ECSavg",	"Average consumtion hot water");
-define("text_consum_ECStip",	"Calculated from Jun-Jul-Aug");
-define("text_consum_Pelletmax",	"Max pellet for a day");
+define("calendar_title",		"90 last days");
+define("chart1_kiloPerDay",		"Pellet use per day");
+define("chart1_costPerDay",		"Pellet cost per day");
+define("chart1_outTemp",		"Outdoor average temperature");
+define("chart2_title",			"Chart of selected day");
+define("chart3_title",			"Annual consumption");
+define("chart3_annualPellet",	"Annual Quantity");
+define("chart3_Annualcost",		"Annual Cost");
+define("chart4_title",			"Consumption and Average temperature per month");
+define("chart4_subTitle",		"For each season");
+define("chart4_avg",			"Average");
+define("chart4_avgTemp",		"T° avg");
+define("chart5_title",			"Historic price purchase");
+define("chart5_perTon",			"per ton");
+define("chart6_avgPrice",		"Historic average price in France");
+define("text_help",				"Click on column above to display chart of this day here");
+define("text_perDay",			"per day");
+define("text_perMonth",			"per month");
+define("text_Tmin",				"Min temperature ever");
+define("text_Tmax",				"Max temperature ever");
+define("text_hotWaterAvg",		"Average consumtion hot water");
+define("text_hotWaterTip",		"Calculated from Jun-Jul-Aug");
+define("text_Pelletmax",		"Max pellet consumption");
 
 ?>

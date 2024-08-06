@@ -2,7 +2,7 @@
 
 <div class="calendar">
     <div class="input-group date">
-        <input type="text" class="form-control" placeholder="<?php echo calendar_consum_title; ?>">
+        <input type="text" class="form-control" placeholder="<?php echo calendar_title; ?>">
         <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
     </div>
 </div>
@@ -257,7 +257,7 @@ $(function() {
         },
 
 		series: [{
-			name: '<?php echo chart1_kiloDay; ?>',
+			name: '<?php echo chart1_kiloPerDay; ?>',
 			type: 'column',
 			color: '<?php echo $color_gran; ?>',
             pointPadding: 0,
@@ -275,7 +275,7 @@ $(function() {
              },
 			zIndex: 1,
 		}, {
-			name: '<?php echo chart1_consum_outT; ?>',
+			name: '<?php echo chart1_outTemp; ?>',
 			type: 'line',
 			color: '<?php echo $color_TextM; ?>',
             dataLabels: {
@@ -292,7 +292,7 @@ $(function() {
              },
 			zIndex: 2,
 		},{
-			name: '<?php echo chart1_consum_cost; ?>',
+			name: '<?php echo chart1_costPerDay; ?>',
 			type: 'column',
 			color: '#ff9900',
             pointPadding: 0,
@@ -323,7 +323,7 @@ $(function() {
 			},
 		},
 		title: {
-			text: '<?php echo chart2_consum_title; ?>',
+			text: '<?php echo chart2_title; ?>',
 	        align: 'left',
 	        x: 65,
 			style:{
@@ -445,7 +445,7 @@ $(function() {
 			enabled: true,
 		},
 		title: {
-			text: '<?php echo chart3_consum_Title; ?>',
+			text: '<?php echo chart3_title; ?>',
 	        align: 'left',
 	        x: 65,
 			style:{
@@ -525,7 +525,7 @@ $(function() {
             },
 		},
 		series: [{
-			name: '<?php echo chart3_consum_kilo; ?>',
+			name: '<?php echo chart3_annualPellet; ?>',
 			type: 'column',
 			// colors a synchro avec json_conso_annees.php
 			colors: ['rgba(230,126,34,1)','rgba(155,89,182,1)','rgba(41,128,185,1)','rgba(46,204,113,1)','rgba(241,196,15,1)','rgba(213,76,60,1)','rgba(230,126,255,1)','rgba(10,126,255,1)','rgba(150,150,150,1)','rgba(0,150,150,1)','rgba(150,150,10,1)'],
@@ -541,7 +541,7 @@ $(function() {
              },
 			zIndex: 1,
 		},{
-			name: '<?php echo chart3_consum_cost; ?>',
+			name: '<?php echo chart3_Annualcost; ?>',
 			type: 'column',
 			// colors a synchro avec json_conso_annees.php
 			colors: ['rgba(230,126,34,0.6)','rgba(155,89,182,0.6)','rgba(41,128,185,0.6)','rgba(46,204,113,0.6)','rgba(241,196,15,0.6)','rgba(213,76,60,0.6)','rgba(230,126,255,0.6)','rgba(10,126,255,0.6)','rgba(150,150,150,0.6)','rgba(0,150,150,0.7)','rgba(150,150,10,0.7)'],
@@ -566,7 +566,7 @@ $(function() {
 			alignThresholds: true,
 		},
 		title: {
-			text: '<?php echo chart4_consum_Title; ?>',
+			text: '<?php echo chart4_title; ?>',
 	        align: 'left',
 	        x: 65,
 			style:{
@@ -576,7 +576,7 @@ $(function() {
 		subtitle: {
 	        align: 'left',
 	        x: 65,
-			text: '<?php echo chart4_consum_subT; ?>',
+			text: '<?php echo chart4_subTitle; ?>',
 			style:{
 				color: '#4572A7',
 			},
@@ -685,7 +685,7 @@ $(function() {
 			enabled: false,
 		},
 		title: {
-			text: '<?php echo chart5_consum_Title; ?>',
+			text: '<?php echo chart5_title; ?>',
 	        align: 'left',
 	        x: 65,
 			style:{
@@ -760,7 +760,7 @@ $(function() {
             },
             tooltip: {
                 valueSuffix: ' €',
-				pointFormat: '<span style="color:{point.color}">■ <?php echo chart5_consum_unit; ?> </span>: <b>{point.y}</b></span><br/>',
+				pointFormat: '<span style="color:{point.color}">■ <?php echo chart5_perTon; ?> </span>: <b>{point.y}</b></span><br/>',
              },
 			zIndex: 1,
 			//data: [0,10]
@@ -772,7 +772,7 @@ $(function() {
 			renderTo: 'prix_moyen_histo',
 		},
 		title: {
-			text: '<?php echo chart6_consum_avgPrice; ?>',
+			text: '<?php echo chart6_avgPrice; ?>',
 	        align: 'left',
 	        x: 65,
 			style:{
@@ -831,7 +831,7 @@ $(function() {
 		},
 
 		series: [{
-			name: '<?php echo chart5_consum_unit; ?>',
+			name: '<?php echo chart5_perTon; ?>',
 			type: 'line',
 			color: '<?php echo $color_TdepD; ?>',
 			zIndex: 1,
@@ -842,7 +842,7 @@ $(function() {
 //***************************************************************************************************
 //***************************************************************************************************
 //*************affichage bulle conso moyenne*********************************************************
-chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[2];?><br> = <?php echo $consoMoy[2];?> kg <?php echo text_consum_day;?>",150, 10)
+chart1.renderer.label("<?php echo chart4_avg; ?> <?php echo $mois[2];?><br> = <?php echo $consoMoy[2];?> kg <?php echo text_perDay;?>",150, 10)
 	.attr({
 		fill: '#DBEDFF',
 		stroke: '<?php echo $color_gran; ?>',
@@ -854,7 +854,7 @@ chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[2];?><b
 	})
 	.add()
 	.shadow(true);
-chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[1];?><br> = <?php echo $consoMoy[1];?> kg <?php echo text_consum_day;?>",300, 10)
+chart1.renderer.label("<?php echo chart4_avg; ?> <?php echo $mois[1];?><br> = <?php echo $consoMoy[1];?> kg <?php echo text_perDay;?>",300, 10)
 	.attr({
 		fill: '#DBEDFF',
 		stroke: '<?php echo $color_gran; ?>',
@@ -867,7 +867,7 @@ chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[1];?><b
 	.add()
 	.shadow(true);
 	
-chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[0];?><br> = <?php echo $consoMoy[0];?> kg <?php echo text_consum_day;?>",450, 10)
+chart1.renderer.label("<?php echo chart4_avg; ?> <?php echo $mois[0];?><br> = <?php echo $consoMoy[0];?> kg <?php echo text_perDay;?>",450, 10)
 	.attr({
 		fill: '#DBEDFF',
 		stroke: '<?php echo $color_gran; ?>',
@@ -916,7 +916,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 //***************************************************************************************************
 // ************* chargement asynchrone des graphes****************************************************
     chart1.showLoading('loading');
-    chart2.showLoading('<?php echo text_consum_help; ?>')
+    chart2.showLoading('<?php echo text_help; ?>')
     chart3.showLoading('loading');
     chart4.showLoading('loading');
     chart5.showLoading('loading');
@@ -965,16 +965,19 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 			}
 			for (var j = 0; j < 12; j=j+1){ // calcul de la moyenne de chaque mois de toutes les saisons
 				MoyMois[j] = Math.round(CumulMois[j] / ((objet.length+1)/2));// nombre saison
-			console.log(MoyMois[j]);
+			// console.log(MoyMois[j]);
 			}
             chart4.addSeries({ // serie moyenne
 				type: 'line',
 				step: 'center',
-				name: '<?php echo chart4_consum_avg; ?>',
+				name: '<?php echo chart4_avg;?>',
 				lineWidth: 2,
 				lineColor: 'black',
 				color: 'black',
 				data: MoyMois,
+				tooltip: {
+					valueSuffix: ' Kg',
+				},
 				marker: {
 					enabled: false,
 					lineWidth: 2,
@@ -1032,7 +1035,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 				var date = date2[0] +'-'+ date2[1] +'-'+ date2[2];// transforme DD/MM/YYYY en DD-MM-YYYY
 				document.getElementById('stat').innerHTML +='\
 					<tr>\
-						<th><?php echo text_consum_Tmin; ?></th> \
+						<th><?php echo text_Tmin; ?></th> \
 						<th>' + date + '</th> \
 						<td>' + objet[i].Data + '°</td>\
 					</tr>' ; 
@@ -1056,7 +1059,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 				var date = date2[0] +'-'+ date2[1] +'-'+ date2[2];// transforme DD/MM/YYYY en DD-MM-YYYY
 				document.getElementById('stat').innerHTML +='\
 					<tr>\
-						<th><?php echo text_consum_Tmax; ?></th> \
+						<th><?php echo text_Tmax; ?></th> \
 						<th>' + date + '</th> \
 						<td>' + objet[i].Data + '°</td>\
 					</tr>' ; 
@@ -1080,7 +1083,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 				var dateF = date[2] +'-'+ date[1] +'-'+ date[0];// transforme YYYY-MM-DD en DD-MM-YYYY
 				document.getElementById('stat').innerHTML +='\
 					<tr>\
-						<th><?php echo text_consum_Pelletmax; ?></th> \
+						<th><?php echo text_Pelletmax; ?></th> \
 						<th>' + dateF + '</th> \
 						<td>' + objet[i].Data + ' Kg</td>\
 					</tr>' ; 
@@ -1101,10 +1104,10 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 				document.getElementById('stat').innerHTML +='\
 					<tr>\
 						<th class ="tooltipContainer">\
-							<span class="tooltipStatEcs"><?php echo text_consum_ECStip; ?></span>\
-							<?php echo text_consum_ECSavg; ?>\
+							<span class="tooltipStatEcs"><?php echo text_hotWaterTip; ?></span>\
+							<?php echo text_hotWaterAvg; ?>\
 						</th> \
-						<th><?php echo text_consum_ECSavg; ?></th> \
+						<th><?php echo text_perMonth; ?></th> \
 						<td>' + objet[i].Data + ' Kg</td>\
 					</tr>\
 					<tr id="loading_temp">\

@@ -1,6 +1,10 @@
 ﻿<?php
 // appelé par ajax, renvoi les series de data pour toutes les saisons
-require_once("conf/config.inc.php");
+	require_once("conf/config.inc.php");
+	if (!isset($language)) {
+	  $language = 'en';
+	}
+	include('locale/' . $language . '.php');
 
 header("Content-type: text/json");
 
@@ -57,7 +61,7 @@ $tooltip_gran = ['valueSuffix' => ' Kg',
 				 'pointFormat' => '<b><span style="color:{point.color}">■ {series.name}</span></b>: <b>{point.y}</b></span> / ',
 				];
 $tooltip_temp = ['valueSuffix' => ' °C',
-				 'pointFormat' => '<span style="color:{point.color}">T° moy </span>: <b>{point.y}</b></span><br/>',
+				 'pointFormat' => '<span style="color:{point.color}">'. chart4_avgTemp .' </span>: <b>{point.y}</b></span><br/>',
 				];
 
 //creation des objets serie
