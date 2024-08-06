@@ -13,6 +13,8 @@ define("menu_consumption", 		"Consumption");
 define("menu_settings", 		"Settings");
 define("menu_about", 			"About");
 
+define("chart_home_title",		"Real time data");
+
 //chanel
 define("text_state", 			"State");
 define("text_power", 			"Power");
@@ -50,7 +52,6 @@ define("text_var_K", 			"Variable K");
 define("text_wood",				"% wood");
 define("text_suction",			"Suction");
 
-define("chart_home_title",		"Real time data");
 //data page
 define("help_msg",				"\
 		The array show real time data from telnet and is mainly use for debuging new firmware<br/>\
@@ -73,23 +74,26 @@ define("gauge2_chart_tooltip",	"Zoom on chart <br>to display power average <br>i
 
 //consumption page
 define("calendar_consum_title",	"90 last days");
-define("chart2_consum_title",	"Chart of selected day");
-
-define("chart1_consum_kilo",	"Pellet use by day");
-define("chart1_consum_cost",	"Pellet cost by day");
+define("chart1_kiloDay",		"Pellet use per day");
+define("chart1_consum_cost",	"Pellet cost per day");
 define("chart1_consum_outT",	"Outdoor average temperature");
-
+define("chart2_consum_title",	"Chart of selected day");
 define("chart3_consum_Title",	"Annual consumption");
 define("chart3_consum_kilo",	"Annual Quantity");
 define("chart3_consum_cost",	"Annual Cost");
-
-define("chart4_consum_Title",	"Consumption and Average temperature by month");
+define("chart4_consum_Title",	"Consumption and Average temperature per month");
 define("chart4_consum_subT",	"For each season");
 define("chart4_consum_avg",		"Average");
-
+define("chart5_consum_Title",	"Historic price purchase");
+define("chart5_consum_unit",	"per ton");
+define("chart6_consum_avgPrice","Historic average price in France");
 define("text_consum_help",		"Click on column above to display chart of this day here");
-define("text_consum_day",		"day");
-
-
+define("text_consum_day",		"per day");
+define("text_consum_month",		"per month");
+define("text_consum_Tmin",		"Min temperature ever");
+define("text_consum_Tmax",		"Max temperature ever");
+define("text_consum_ECSavg",	"Average consumtion hot water");
+define("text_consum_ECStip",	"Calculated from Jun-Jul-Aug");
+define("text_consum_Pelletmax",	"Max pellet for a day");
 
 ?>

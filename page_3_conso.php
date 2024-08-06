@@ -257,7 +257,7 @@ $(function() {
         },
 
 		series: [{
-			name: '<?php echo chart1_consum_kilo; ?>',
+			name: '<?php echo chart1_kiloDay; ?>',
 			type: 'column',
 			color: '<?php echo $color_gran; ?>',
             pointPadding: 0,
@@ -685,7 +685,7 @@ $(function() {
 			enabled: false,
 		},
 		title: {
-			text: 'historique tarif achat',
+			text: '<?php echo chart5_consum_Title; ?>',
 	        align: 'left',
 	        x: 65,
 			style:{
@@ -702,7 +702,7 @@ $(function() {
             //softMax: 1000,
 			min: 0,
 			labels: {
-				format: '{value} €/tonne',
+				format: '{value} €',
 				// style: {
 					// color: '<?php echo $color_gran; ?>',
 				// }
@@ -742,7 +742,7 @@ $(function() {
 		},
 
 		series: [{
-			name: 'par tonne',
+			// name: 'par tonne',
 			type: 'column',
             pointPadding: 0.3,
             groupPadding: 0.05,
@@ -760,7 +760,7 @@ $(function() {
             },
             tooltip: {
                 valueSuffix: ' €',
-				pointFormat: '<span style="color:{point.color}">■ par tonne </span>: <b>{point.y}</b></span><br/>',
+				pointFormat: '<span style="color:{point.color}">■ <?php echo chart5_consum_unit; ?> </span>: <b>{point.y}</b></span><br/>',
              },
 			zIndex: 1,
 			//data: [0,10]
@@ -772,7 +772,7 @@ $(function() {
 			renderTo: 'prix_moyen_histo',
 		},
 		title: {
-			text: 'Historique prix moyen en France',
+			text: '<?php echo chart6_consum_avgPrice; ?>',
 	        align: 'left',
 	        x: 65,
 			style:{
@@ -831,7 +831,7 @@ $(function() {
 		},
 
 		series: [{
-			name: 'prix à la tonne',
+			name: '<?php echo chart5_consum_unit; ?>',
 			type: 'line',
 			color: '<?php echo $color_TdepD; ?>',
 			zIndex: 1,
@@ -842,7 +842,7 @@ $(function() {
 //***************************************************************************************************
 //***************************************************************************************************
 //*************affichage bulle conso moyenne*********************************************************
-chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[2];?><br> = <?php echo $consoMoy[2];?> kg/<?php echo text_consum_day;?>",150, 10)
+chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[2];?><br> = <?php echo $consoMoy[2];?> kg <?php echo text_consum_day;?>",150, 10)
 	.attr({
 		fill: '#DBEDFF',
 		stroke: '<?php echo $color_gran; ?>',
@@ -854,7 +854,7 @@ chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[2];?><b
 	})
 	.add()
 	.shadow(true);
-chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[1];?><br> = <?php echo $consoMoy[1];?> kg/<?php echo text_consum_day;?>",300, 10)
+chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[1];?><br> = <?php echo $consoMoy[1];?> kg <?php echo text_consum_day;?>",300, 10)
 	.attr({
 		fill: '#DBEDFF',
 		stroke: '<?php echo $color_gran; ?>',
@@ -867,7 +867,7 @@ chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[1];?><b
 	.add()
 	.shadow(true);
 	
-chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[0];?><br> = <?php echo $consoMoy[0];?> kg/<?php echo text_consum_day;?>",450, 10)
+chart1.renderer.label("<?php echo chart4_consum_avg; ?> <?php echo $mois[0];?><br> = <?php echo $consoMoy[0];?> kg <?php echo text_consum_day;?>",450, 10)
 	.attr({
 		fill: '#DBEDFF',
 		stroke: '<?php echo $color_gran; ?>',
@@ -916,7 +916,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 //***************************************************************************************************
 // ************* chargement asynchrone des graphes****************************************************
     chart1.showLoading('loading');
-    chart2.showLoading('Cliquez sur une colonne ci dessus pour afficher le détail des courbes ici')
+    chart2.showLoading('<?php echo text_consum_help; ?>')
     chart3.showLoading('loading');
     chart4.showLoading('loading');
     chart5.showLoading('loading');
@@ -1032,7 +1032,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 				var date = date2[0] +'-'+ date2[1] +'-'+ date2[2];// transforme DD/MM/YYYY en DD-MM-YYYY
 				document.getElementById('stat').innerHTML +='\
 					<tr>\
-						<th>Température minimale enregistrée</th> \
+						<th><?php echo text_consum_Tmin; ?></th> \
 						<th>' + date + '</th> \
 						<td>' + objet[i].Data + '°</td>\
 					</tr>' ; 
@@ -1056,7 +1056,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 				var date = date2[0] +'-'+ date2[1] +'-'+ date2[2];// transforme DD/MM/YYYY en DD-MM-YYYY
 				document.getElementById('stat').innerHTML +='\
 					<tr>\
-						<th>Température maximale enregistrée</th> \
+						<th><?php echo text_consum_Tmax; ?></th> \
 						<th>' + date + '</th> \
 						<td>' + objet[i].Data + '°</td>\
 					</tr>' ; 
@@ -1080,7 +1080,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 				var dateF = date[2] +'-'+ date[1] +'-'+ date[0];// transforme YYYY-MM-DD en DD-MM-YYYY
 				document.getElementById('stat').innerHTML +='\
 					<tr>\
-						<th>Conso maximale granulés par jour</th> \
+						<th><?php echo text_consum_Pelletmax; ?></th> \
 						<th>' + dateF + '</th> \
 						<td>' + objet[i].Data + ' Kg</td>\
 					</tr>' ; 
@@ -1101,17 +1101,17 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 				document.getElementById('stat').innerHTML +='\
 					<tr>\
 						<th class ="tooltipContainer">\
-							<span class="tooltipStatEcs">calculée a partir des mois juin-juillet-aout</span>\
-							Consommation ECS moyenne\
+							<span class="tooltipStatEcs"><?php echo text_consum_ECStip; ?></span>\
+							<?php echo text_consum_ECSavg; ?>\
 						</th> \
-						<th>par mois</th> \
+						<th><?php echo text_consum_ECSavg; ?></th> \
 						<td>' + objet[i].Data + ' Kg</td>\
 					</tr>\
 					<tr id="loading_temp">\
 						<th class ="tooltipContainer">\
-							Recherche  températures...\
+							Searching min/max temp\
 						</th> \
-						<th>Patientez</th> \
+						<th>Please wait</th> \
 						<td>...</td>\
 					</tr>' ; 
 			}
