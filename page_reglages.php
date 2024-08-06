@@ -37,7 +37,7 @@ require_once("conf/settings.inc.php");
 		
 		if (mysqli_error($conn)) {
 			echo mysqli_error($conn);
-			echo '<BR>commencez par créer une saison avec le bouton "ajouter"<BR><BR><BR>';
+			echo '<BR>Start by adding a season with the button "add"<BR><BR><BR>';
 		}
 		mysqli_close($conn);
 
@@ -67,16 +67,16 @@ require_once("conf/settings.inc.php");
 <div class="ensemble">
 	<div class="boutons_radio">
 		<form name="form1" method="post" action="reglage_write_setting.php" >
-			<span>Choix de l'affichage sur la page d'accueil</span>
+			<span><?php echo sett_title; ?></span>
 			<div class="radio_chauffage">
-				<input type="radio" name="zone_chauffage" value="zone1" <?php echo ($zone_chauffage == "zone1") ? 'checked' : '';?> > Chauffage zone 1<BR>
-				<input type="radio" name="zone_chauffage" value="zone2" <?php echo ($zone_chauffage == "zone2") ? 'checked' : '';?> > Chauffage zone 2<BR>
-				<input type="radio" name="zone_chauffage" value="zone3" <?php echo ($zone_chauffage == "zone3") ? 'checked' : '';?> > Chauffage zone 3<BR>
+				<input type="radio" name="zone_chauffage" value="zone1" <?php echo ($zone_chauffage == "zone1") ? 'checked' : '';?> > <?php echo sett_heat; ?> 1<BR>
+				<input type="radio" name="zone_chauffage" value="zone2" <?php echo ($zone_chauffage == "zone2") ? 'checked' : '';?> > <?php echo sett_heat; ?> 2<BR>
+				<input type="radio" name="zone_chauffage" value="zone3" <?php echo ($zone_chauffage == "zone3") ? 'checked' : '';?> > <?php echo sett_heat; ?> 3<BR>
 			</div>
 			<div class="radio_ECS">
-				<input type="radio" name="zone_ecs" value="ballon1" <?php echo ($zone_ecs == "ballon1") ? 'checked' : '';?> > Ballon ECS 1<BR>
-				<input type="radio" name="zone_ecs" value="ballon2" <?php echo ($zone_ecs == "ballon2") ? 'checked' : '';?> > Ballon ECS 2<BR>
-				<input type="radio" name="zone_ecs" value="ballon3" <?php echo ($zone_ecs == "ballon3") ? 'checked' : '';?> > Ballon ECS 3<BR>
+				<input type="radio" name="zone_ecs" value="ballon1" <?php echo ($zone_ecs == "ballon1") ? 'checked' : '';?> > <?php echo text_temp_tank; ?> 1<BR>
+				<input type="radio" name="zone_ecs" value="ballon2" <?php echo ($zone_ecs == "ballon2") ? 'checked' : '';?> > <?php echo text_temp_tank; ?> 2<BR>
+				<input type="radio" name="zone_ecs" value="ballon3" <?php echo ($zone_ecs == "ballon3") ? 'checked' : '';?> > <?php echo text_temp_tank; ?> 3<BR>
 			</div>
 			<div class="radio_MODE">
 				<input type="radio" name="zone_mode_chauffage" value="modeChauffageA" <?php echo ($zone_mode_chauffage == "modeChauffageA") ? 'checked' : '';?> > Zone FR35 A<BR>
@@ -88,7 +88,7 @@ require_once("conf/settings.inc.php");
 				<input type="radio" name="zone_mode_chauffage" value="modeChauffage6" <?php echo ($zone_mode_chauffage == "modeChauffage6") ? 'checked' : '';?> > Zone FR35 6<BR>
 			</div>
 			<div class="radio_bouton">
-				<input type="submit" value=" Enregistrer ">
+				<input type="submit" value=" <?php echo sett_save; ?> ">
 			</div>
 		</form>
 	</div>
@@ -111,12 +111,12 @@ require_once("conf/settings.inc.php");
 				
 			</table>
 			<div class="tarif_bouton<?php echo $bouton_hidden ;?>">
-				<input type="submit" value="Enregistrer" >
+				<input type="submit" value=" <?php echo sett_save; ?> " >
 			</div>
 		</form>
 		<div class="onglet" >
 			<div class=tabs>
-				<div id=tab1> <a href="#tab1">Ajouter</a>
+				<div id=tab1> <a href="#tab1"><?php echo sett_add; ?></a>
 					<div>
 						<form class="form_ajout_saison" method="post" action="reglage_ajout_saison.php">
 							<datalist id="list_saison">
@@ -131,15 +131,17 @@ require_once("conf/settings.inc.php");
 								<option value="2023/2024">
 								<option value="2024/2025">
 								<option value="2025/2026">
+								<option value="2026/2027">
+								<option value="2027/2028">
 							</datalist>
-							<label><BR>Ajouter une saison</label>
+							<label><BR><?php echo sett_addSeas; ?></label>
 							<input placeholder="2015/2016" class="text_ajout_saison" name="saison" list="list_saison" type="text" pattern="(([0-9]){4,4})((\/))([0-9]){4,4}" required>
-							<input type="submit" value="Ajouter Saison">
+							<input type="submit" value="<?php echo sett_addSeas; ?>">
 						</form>
 					</div>
 				</div>
 
-				<div id=tab2> <a href="#tab2">Supprimer</a>
+				<div id=tab2> <a href="#tab2"><?php echo sett_del; ?></a>
 					<div>
 						<form name="form_delete" method="post" action="reglage_delete_saison.php">
 							<table class='TableTarif'>  
@@ -154,13 +156,13 @@ require_once("conf/settings.inc.php");
 								</tr>    
 								<?php } ?>
 							</table>
-							<input type="submit" value="Supprimer">
+							<input type="submit" value="<?php echo sett_del; ?>">
 						</form>
 					</div>
 				</div>
 
-				<div id=default2> <a href="#default2">info</a>
-					<div>pour chaque saison, indiquez le prix en euro par kilo de granulés<BR><BR>si vous avez des tarifs différents pendant la saison , indiquez le prix moyen<BR><BR>dans la partie droite vous pouvez ajouter ou supprimer des saisons. <BR><BR>La suppression ne concerne que la saison avec son tarif et n'a pas d'impact sur les données de la base</div>
+				<div id=default2> <a href="#default2"><?php echo sett_info; ?></a>
+					<div><BR><BR><?php echo sett_info2; ?><BR><BR><?php echo sett_info3; ?><BR><BR><?php echo sett_info4; ?></div>
 				</div>
 			</div>
 		</div>

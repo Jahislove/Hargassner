@@ -114,5 +114,6 @@ define("chart2_chart_title",	"allumage electrique");
 	12  =>'Nettoyage',
 	15	=>'Mode manuel',
 	17	=>'Assistant de combustion'
+					<div>pour chaque saison, indiquez le prix en euro par kilo de granulés<BR><BR>si vous avez des tarifs différents pendant la saison , indiquez le prix moyen<BR><BR>dans la partie droite vous pouvez ajouter ou supprimer des saisons. <BR><BR>La suppression ne concerne que la saison avec son tarif et n'a pas d'impact sur les données de la base</div>
 
 ?>

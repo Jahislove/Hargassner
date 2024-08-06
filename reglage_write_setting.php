@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	file_put_contents('conf/settings.inc.php',
 	'<?php
-		//ne pas modifier manuellement , les modifs se font par la page Reglages
+		//do not modify , modifications must be done in Settings page
 		$zone_chauffage = "'.$_POST['zone_chauffage'].'";
 		$zone_ecs = "'.$_POST['zone_ecs'].'";
 		$zone_mode_chauffage = "'.$_POST['zone_mode_chauffage'].'";

@@ -46,6 +46,17 @@ define("status_clean", 			"Cleaning");
 define("status_manu", 			"Manual mode");
 define("status_assist", 		"Combustion assist");
 
+//settings page
+define("sett_title", 			"parameters");
+define("sett_heat", 			"Heating zone");
+define("sett_save", 			"Save");
+define("sett_add", 				"Add");
+define("sett_addSeas", 			"Add a season");
+define("sett_del", 				"Delete");
+define("sett_info", 			"Info");
+define("sett_info2", 			"For each season, enter price/kilo of pellet");
+define("sett_info3", 			"if you have different price during season then use the average price");
+define("sett_info4", 			"deleting a season only delete the name of season and the price. all boiler data are preserved");
 
 
 //home page
@@ -81,7 +92,7 @@ define("text_time_ash", 		"Time for ash removal is");
 define("text_state_ash", 		"ash removal state");
 define("text_move_ash",			"Ashtray grid move");
 define("text_time_screw",		"Time screw since last suction");
-define("text_temp_tank", 		"Domestic hot water tank °C");
+define("text_temp_tank", 		"Domestic hot water tank");
 define("text_state_tank", 		"Domestic hot water state");
 define("text_var_F", 			"Variable F");
 define("text_var_K", 			"Variable K");
