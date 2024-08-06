@@ -14,23 +14,24 @@ CHANNEL id='8' name='Leistung' unit='%'/			c134
 le parametre N°8 recu du telnet est stocké dans la colonne c134
 
 ================================================================================================
-les differentes valeurs d'etat (chanel 0)*/
+les differentes valeurs d'etat (chanel 0)
+desciption dans locale/xx.php */
 $ETAT=[
-	0	=>'Initialisation',
-	1   =>'Arrêt',
-	2   =>'Init grille',
-	3   =>'Démarrage chaudière',
-	4   =>'Contrôle allumage résiduel',
-	5   =>'Allumage électrique', 
-	6   =>'Démarrage combustion',
-	7   =>'Combustion',
-	8   =>'Veille',
-	9   =>'Arrêt pour décendrage',
-	10  =>'Décendrage',
-	11  =>'Refroidissement : utilisation chaleur residuelle',
-	12  =>'Nettoyage',
-	15	=>'Mode manuel',
-	17	=>'Assistant de combustion'
+	0	=> status_init,
+	1   => status_stop,
+	2   => status_tray,
+	3   => status_start,
+	4   => status_prev,
+	5   => status_igni, 
+	6   => status_StComb,
+	7   => status_comb,
+	8   => status_Sleep,
+	9   => status_stopAsh,
+	10  => status_ash,
+	11  => status_cool,
+	12  => status_clean,
+	15	=> status_manu,
+	17	=> status_assist
 ];
 /*================================================================================================
 

@@ -234,27 +234,27 @@ function call_ajax_light(chanel){
 	switch ( chanel['modeCommand'] ) {
 		case 1: 
 			document.getElementById('modeCommand').className = 'modeCommandProgram';
-			document.getElementById('tooltipModeCommand').innerHTML = 'Mode Auto';
+			document.getElementById('tooltipModeCommand').innerHTML = modeCommand_auto;
 		break;
 		case 2: 
 			document.getElementById('modeCommand').className = 'modeCommandReduit';
-			document.getElementById('tooltipModeCommand').innerHTML = 'Réduit forcé';
+			document.getElementById('tooltipModeCommand').innerHTML = modeCommand_nigh;
 			break;
 		case 3: 
 			document.getElementById('modeCommand').className = 'modeCommandConfort';
-			document.getElementById('tooltipModeCommand').innerHTML = 'Confort forcé';
+			document.getElementById('tooltipModeCommand').innerHTML = modeCommand_comf;
 			break;
 		case 4: 
 			document.getElementById('modeCommand').className = 'modeCommandArret';
-			document.getElementById('tooltipModeCommand').innerHTML = 'Arret';
+			document.getElementById('tooltipModeCommand').innerHTML = modeCommand_stop;
 			break;
 		case 5: 
 			document.getElementById('modeCommand').className = 'modeCommandSoiree';
-			document.getElementById('tooltipModeCommand').innerHTML = "Soirée : mode confort<br>activé jusqu'au<br>prochain changement<br>d'état programmé";
+			document.getElementById('tooltipModeCommand').innerHTML = modeCommand_tmpComf;
 			break;
 		case 6: 
 			document.getElementById('modeCommand').className = 'modeCommandAbsence';
-			document.getElementById('tooltipModeCommand').innerHTML = "Absence : mode réduit<br>activé jusqu'au<br>prochain changement<br>d'état programmé";
+			document.getElementById('tooltipModeCommand').innerHTML = modeCommand_tmpNigh;
 			break;
 		default:
 			document.getElementById('modeCommand').innerHTML = chanel['modeCommand'];
@@ -263,35 +263,35 @@ function call_ajax_light(chanel){
 	switch ( chanel['modeChauff'] ) {
 		case 0: 
 			document.getElementById('modeChauff').className = 'modeCommandConfort';
-			document.getElementById('tooltipModeChauff').innerHTML = 'Mode été';
+			document.getElementById('tooltipModeChauff').innerHTML = modeChauff_Summ;
 			break;
 		case 1: 
 			document.getElementById('modeChauff').className = 'modeCommandConfort';
-			document.getElementById('tooltipModeChauff').innerHTML = 'Confort';
+			document.getElementById('tooltipModeChauff').innerHTML = modeChauff_Comf;
 			break;
 		case 2: 
 			document.getElementById('modeChauff').className = 'modeCommandReduit'; 
-			document.getElementById('tooltipModeChauff').innerHTML = 'Confort vers Réduit';
+			document.getElementById('tooltipModeChauff').innerHTML = modeChauff_Red;
 			break;
 		case 3: 
 			document.getElementById('modeChauff').className = 'modeCommandReduit';
-			document.getElementById('tooltipModeChauff').innerHTML = 'Réduit';
+			document.getElementById('tooltipModeChauff').innerHTML = modeChauff_Nigh;
 			break;
 		case 4: 
 			document.getElementById('modeChauff').className = 'modeCommandArret';
-			document.getElementById('tooltipModeChauff').innerHTML = 'Arrêt';
+			document.getElementById('tooltipModeChauff').innerHTML = modeChauff_Stop;
 			break;
 		case 5: 
 			document.getElementById('modeChauff').className = 'modeCommandArret';
-			document.getElementById('tooltipModeChauff').innerHTML = 'Arrêt sur temp ext';
+			document.getElementById('tooltipModeChauff').innerHTML = modeChauff_StopTemp;
 			break;
 		case 9: 
 			document.getElementById('modeChauff').className = 'modeCommandArret';
-			document.getElementById('tooltipModeChauff').innerHTML = 'Arrêt en cours';
+			document.getElementById('tooltipModeChauff').innerHTML = modeChauff_StopProg;
 			break;
 		default:
 			document.getElementById('modeChauff').innerHTML = chanel['modeChauff'];
-			document.getElementById('tooltipModeChauff').innerHTML = 'Code inconnu';
+			document.getElementById('tooltipModeChauff').innerHTML = 'Code unknown';
 	}
 // en cas d'erreur
 // la liste des erreurs est contenue dans TabErreur (js/codes_erreurs.js)
@@ -304,7 +304,7 @@ function call_ajax_light(chanel){
 		default:
 			document.getElementById('erreur').className = 'erreur erreurVisible';
 			if (typeof TabErreur[chanel['erreur']] == 'undefined') {
-				document.getElementById('erreurText').innerHTML = "erreur inconnue";
+				document.getElementById('erreurText').innerHTML = "unknown error";
 			}else{
 				document.getElementById('erreurText').innerHTML = TabErreur[chanel['erreur']];
 			}

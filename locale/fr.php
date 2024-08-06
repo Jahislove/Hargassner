@@ -99,5 +99,20 @@ define("chart2_chart_title",	"allumage electrique");
 
 
 
+	0	=> status_init,
+	1   => status_init,
+	2   =>'Init grille',
+	3   =>'Démarrage chaudière',
+	4   =>'Contrôle allumage résiduel',
+	5   =>'Allumage électrique', 
+	6   =>'Démarrage combustion',
+	7   =>'Combustion',
+	8   =>'Veille',
+	9   =>'Arrêt pour décendrage',
+	10  =>'Décendrage',
+	11  =>'Refroidissement : utilisation chaleur residuelle',
+	12  =>'Nettoyage',
+	15	=>'Mode manuel',
+	17	=>'Assistant de combustion'
 
 ?>

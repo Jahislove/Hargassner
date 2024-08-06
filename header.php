@@ -38,6 +38,23 @@
     <script src="js/exporting.js"></script>
 
 <script type="text/javascript" src="js/codes_erreurs.js">	</script>
+
+<script type="text/javascript">
+//stockage variable php pour utilisation dans call_ajax
+	var modeCommand_auto = '<?php echo modeCommand_auto; ?>';
+	var modeCommand_nigh = '<?php echo modeCommand_nigh; ?>';
+	var modeCommand_comf = '<?php echo modeCommand_comf; ?>';
+	var modeCommand_stop = '<?php echo modeCommand_stop; ?>';
+	var modeCommand_tmpComf = '<?php echo modeCommand_tmpComf; ?>';
+	var modeCommand_tmpNigh = '<?php echo modeCommand_tmpNigh; ?>';
+	var modeChauff_Summ = '<?php echo modeChauff_Summ; ?>';
+	var modeChauff_Comf = '<?php echo modeChauff_Comf; ?>';
+	var modeChauff_Red = '<?php echo modeChauff_Red; ?>';
+	var modeChauff_Nigh = '<?php echo modeChauff_Nigh; ?>';
+	var modeChauff_Stop = '<?php echo modeChauff_Stop; ?>';
+	var modeChauff_StopTemp = '<?php echo modeChauff_StopTemp; ?>';
+	var modeChauff_StopProg = '<?php echo modeChauff_StopProg; ?>';
+</script>
 <script type="text/javascript" src="js/call_ajax.js">	</script>
 
 <script type="text/javascript">	

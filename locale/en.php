@@ -1,4 +1,5 @@
 <?php
+//English localization
 //define("Constant_name<=doNotModify",	"word to translate");
 //Charts localization
 define("months", 		"'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'");
@@ -12,6 +13,40 @@ define("menu_graph", 			"Chart");
 define("menu_consumption", 		"Consumption");
 define("menu_settings", 		"Settings");
 define("menu_about", 			"About");
+
+define("modeCommand_auto", 		"Auto mode");
+define("modeCommand_nigh", 		"Night mode forced");
+define("modeCommand_comf", 		"Comfort mode forced");
+define("modeCommand_stop",		"Stop");
+define("modeCommand_tmpComf", 	"tmp comfort mode");
+define("modeCommand_tmpNigh", 	"tmp Night mode");
+
+define("modeChauff_Summ", 		"Summer mode");
+define("modeChauff_Comf", 		"Comfort mode");
+define("modeChauff_Red", 		"Comfort => Night mode");
+define("modeChauff_Nigh", 		"Night mode");
+define("modeChauff_Stop", 		"Stop");
+define("modeChauff_StopTemp", 	"Stop from outside temp");
+define("modeChauff_StopProg",	"Stop in progress");
+
+//status
+define("status_init", 			"Initialization");
+define("status_stop", 			"Stop");
+define("status_tray", 			"Init tray");
+define("status_start", 			"Starting boiler");
+define("status_prev", 			"Control previous fire");
+define("status_igni", 			"Electric igniter");
+define("status_StComb", 		"Starting combustion");
+define("status_comb", 			"Combustion");
+define("status_Sleep", 			"Sleep");
+define("status_stopAsh", 		"Stopping for ash removal");
+define("status_ash", 			"Ash removal");
+define("status_cool", 			"Cooling");
+define("status_clean", 			"Cleaning");
+define("status_manu", 			"Manual mode");
+define("status_assist", 		"Combustion assist");
+
+
 
 //home page
 define("chart_home_title",		"Real time data");

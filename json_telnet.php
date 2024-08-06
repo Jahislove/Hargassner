@@ -15,6 +15,10 @@
 	header("Content-type: text/json");
     require_once("conf/config.inc.php");
 	require_once("conf/settings.inc.php");
+	if (!isset($language)) {
+	  $language = 'en';
+	}
+	include('locale/' . $language . '.php');
 	require_once("conf/BDD_description_chanel.php");
 
 if ($mode_conn == 'serial'){ 
@@ -62,7 +66,7 @@ switch ($firmware) {
     case '10.2h': //chaudiere buche
 		$etat_desc = $ETAT[$data[22]];
 		if (!$etat_desc){
-			$etat_desc = 'Etat inconnu '.$data[22];
+			$etat_desc = 'Unknown Status '.$data[22];
 		}
 		$output = array(
 			'heure' 	=> time() * 1000,
@@ -113,7 +117,7 @@ switch ($firmware) {
 		);
 		$etat_desc = $ETAT[$data[0]];
 		if (!$etat_desc){
-			$etat_desc = 'Etat inconnu '.$data[0];
+			$etat_desc = 'Unknown Status '.$data[0];
 		}
 		$output = array( 
 			'heure' 	=> time() * 1000,	//hour
@@ -177,7 +181,7 @@ switch ($firmware) {
 		
 		$etat_desc = $ETAT[$data[0]];
 		if (!$etat_desc){
-			$etat_desc = 'Etat inconnu '.$data[0];
+			$etat_desc = 'Unknown Status '.$data[0];
 		}
 
 		$output = array(
@@ -237,7 +241,7 @@ switch ($firmware) {
 		
 		$etat_desc = $ETAT[$data[0]];
 		if (!$etat_desc){
-			$etat_desc = 'Etat inconnu '.$data[0];
+			$etat_desc = 'Unknown Status '.$data[0];
 		}
 
 		$output = array(
@@ -298,7 +302,7 @@ switch ($firmware) {
 		
 		$etat_desc = $ETAT[$data[0]];
 		if (!$etat_desc){
-			$etat_desc = 'Etat inconnu '.$data[0];
+			$etat_desc = 'Unknown Status '.$data[0];
 		}
 
 		$output = array(
@@ -359,7 +363,7 @@ switch ($firmware) {
 		
 		$etat_desc = $ETAT[$data[0]];
 		if (!$etat_desc){
-			$etat_desc = 'Etat inconnu '.$data[0];
+			$etat_desc = 'Unknown Status '.$data[0];
 		}
 
 		$output = array(
@@ -421,7 +425,7 @@ switch ($firmware) {
 		
 		$etat_desc = $ETAT[$data[0]];
 		if (!$etat_desc){
-			$etat_desc = 'Etat inconnu '.$data[0];
+			$etat_desc = 'Unknown Status '.$data[0];
 		}
 
 		$output = array(
