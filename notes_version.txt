@@ -3,6 +3,9 @@
 *** Auteur : Jahislove
 *** GPL-3.0-or-later
 ************************************************************************/
+v4.1 	06/08/2024
+	adding english/french translation
+	
 v4.0 	01/08/2024
 	optimisation de requetes(chargement plus rapide de la page consommation)
 	prise en charge firmware V14.0HAR.p

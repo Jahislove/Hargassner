@@ -1,10 +1,12 @@
 <?php
+//French localization
+//define("Constant_name<=doNotModify",	"word to translate");
 //Charts localization
-define("months", 		"['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre']");
-define("weekdays", 		"['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']");
-define("shortMonths", 	"['Janv', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin',  'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec']");
+define("months", 		"'Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'");
+define("weekdays", 		"'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'");
+define("shortMonths", 	"'Janv', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin',  'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec'");
 
-//home page
+//header menu
 define("menu_main", 			"Accueil");
 define("menu_data", 			"Données");
 define("menu_graph", 			"Courbes");
@@ -12,45 +14,89 @@ define("menu_consumption", 		"Consommation");
 define("menu_settings", 		"Réglages");
 define("menu_about", 			"A propos");
 
-define("tooltip_power", 		"Puissance");
-define("tooltip_fan", 			"Puissance du ventilateur d'extraction des fumées");
-define("tooltip_temp_smoke",	"Température des fumées");
-define("tooltip_temp_water",	"Température de l'eau");
-define("tooltip_temp_indoor", 	"Température intérieure");
-define("tooltip_temp_outdoor", 	"Température extérieure");
-define("tooltip_temp_toHeater", "température de départ chauffage");
-define("tooltip_pump_ECS", 		"Pompe eau chaude sanitaire");
-define("tooltip_pump_heater", 	"Pompe radiateur");
-define("tooltip_pellet_left", 	"Granulés restant");
-define("tooltip_feeder", 		"pourcentage d'amené de la vis à granulé et conso par heure");
+define("modeCommand_auto", 		"Mode auto");
+define("modeCommand_nigh", 		"Mode réduit forcé");
+define("modeCommand_comf", 		"Mode confort forcé");
+define("modeCommand_stop",		"Arrêt");
+define("modeCommand_tmpComf", 	"Mode confort temporaire");
+define("modeCommand_tmpNigh", 	"Mode réduit temporaire");
 
-define("array_gauche1", 		"O² Lambda");
-define("array_gauche2",			"T° interieur");
-define("array_gauche3",			"T° exterieur");
-define("array_gauche4",			"T° exterieur moy");
-define("array_gauche5", 		"T° depart est");
-define("array_gauche6", 		"T° depart doit");
-define("array_gauche7", 		"T° chaudière est");
-define("array_gauche8", 		"T° chaudière doit");
-define("array_gauche9", 		"T° retour est");
-define("array_gauche10",	 	"T° retour doit");
-define("array_droite1", 		"tps comb pour décend est");
-define("array_droite2",			"tps vis depuis aspi");
-define("array_droite3",			"Mouvement grille");
-define("array_droite4",			"Consommation granulés");
-define("array_droite5", 		"Granulés restants");
-define("array_droite6", 		"Ballon ECS °C");
-define("array_droite7", 		"Ballon ECS On/Off/recyc");
-define("array_droite8", 		"Variable F");
-define("array_droite9", 		"Variable K");
+define("modeChauff_Summ", 		"Mode été");
+define("modeChauff_Comf", 		"Mode confort");
+define("modeChauff_Red", 		"Confort => mode réduit");
+define("modeChauff_Nigh", 		"Mode réduit");
+define("modeChauff_Stop", 		"Arrêt");
+define("modeChauff_StopTemp", 	"Arrêt par temp ext");
+define("modeChauff_StopProg",	"Arrêt en cours");
 
+//status
+define("status_init", 			"Initialisation");
+define("status_stop", 			"Arrêt");
+define("status_tray", 			"Init grille");
+define("status_start", 			"Démarrage chaudière");
+define("status_prev", 			"Contrôle allumage résiduel");
+define("status_igni", 			"Allumage électrique");
+define("status_StComb", 		"Démarrage combustion");
+define("status_comb", 			"Combustion");
+define("status_Sleep", 			"Veille");
+define("status_stopAsh", 		"Arrêt pour décendrage");
+define("status_ash", 			"Décendrage");
+define("status_cool", 			"Refroidissement : utilisation chaleur residuelle");
+define("status_clean", 			"Nettoyage");
+define("status_manu", 			"Mode manuel");
+define("status_assist", 		"Assistant de combustion");
+
+//settings page
+define("sett_title", 			"paramètres");
+define("sett_heat", 			"Zone Chauffage");
+define("sett_save", 			"Enregistrer");
+define("sett_add", 				"Ajouter");
+define("sett_addSeas", 			"Ajouter une saison");
+define("sett_del", 				"Supprimer");
+define("sett_info", 			"Info");
+define("sett_info2", 			"pour chaque saison, indiquez le prix en euro par kilo de granulés");
+define("sett_info3", 			"si vous avez des tarifs différents pendant la saison , indiquez le prix moyen");
+define("sett_info4", 			"La suppression ne concerne que la saison avec son tarif et n'a pas d\'impact sur les données de la base");
+
+//home page
 define("chart_home_title",		"Données temps réel");
-define("chart_home_serie1", 	"Etat");
-define("chart_home_serie2",		"T° eau");
-define("chart_home_serie3",		"Extraction");
-define("chart_home_serie4",		"% bois");
-define("chart_home_serie5",		"Puissance");
-define("chart_home_serie6",		"T° départ");
+
+//chanel
+define("text_state", 			"Etat");
+define("text_power", 			"Puissance");
+define("text_fan", 				"Puissance du ventilateur extraction des fumées");
+define("text_temp_smoke",		"Température des fumées");
+define("text_temp_waterIs",		"Température eau est");
+define("text_temp_waterMust",	"Température eau doit");
+define("text_temp_indoor", 		"Température intérieure");
+define("text_temp_outdoor", 	"Température extérieure");
+define("text_temp_outdoorAvg",	"Température extérieure moyenne");
+define("text_tempZ1_toHeaterIs","Température départ radiateur Z1 est");
+define("text_tempZ1_toHeaterMust","Température départ radiateur Z1 doit");
+define("text_tempZ2_toHeaterIs","Température départ radiateur Z2 est");
+define("text_tempZ2_toHeaterMust","Température départ radiateur Z2 doit");
+define("text_pump_ECS", 		"Pompe eau chaude sanitaire");
+define("text_pump_heater", 		"Pompe radiateur");
+define("text_pellet_left", 		"Granulés restant");
+define("text_pell_consumTot",	"Consommation granulés totale");
+define("text_pell_consumDay",	"Consommation du jour");
+define("text_pell_inst_consum", "Consommation instantanée");
+define("text_feeder", 			"pourcentage amené de la vis à granulé et conso par heure");
+define("text_lambda", 			"O² Lambda");
+define("text_oxyIs",			"O² est");
+define("text_oxyMust",			"O² doit");
+define("text_temp_returnIs", 	"Température retour est");
+define("text_temp_returnMust",	"Température retour doit");
+define("text_time_ash", 		"Temps pour décendrage est");
+define("text_state_ash", 		"Etat décendrage");
+define("text_move_ash",			"Mouvement grille");
+define("text_time_screw",		"Temps vis depuis aspi");
+define("text_temp_tank", 		"Temperature Ballon ECS");
+define("text_state_tank", 		"Etat Ballon ECS");
+define("text_var_F", 			"Variable F");
+define("text_var_K", 			"Variable K");
+define("text_wood",				"% bois");
+define("text_suction",			"Aspiration");
 
 //data page
 define("help_msg",				"\
@@ -62,58 +108,49 @@ define("help_msg",				"\
 		En cliquant , on affiche le numero du paramètre Telnet (t..), la colonne correspondante en BDD (c..) et sa description si connue\
 		");
 
-
 //chart page
-define("chart1_chart_title",	"Fonctionnement du jour");
-define("chart1_chart_serie0",	"Etat");
-define("chart1_chart_serie1",	"Décendrage");
-define("chart1_chart_serie2",	"Puissance");
-define("chart1_chart_serie3",	"T° chaudiere est");
-define("chart1_chart_serie4",	"T° chaudiere doit");
-define("chart1_chart_serie5",	"T° fumée");
-define("chart1_chart_serie6",	"T° exterieur");
-define("chart1_chart_serie7",	"O² est");
-define("chart1_chart_serie8",	"O² doit");
-define("chart1_chart_serie9",	"Vitesse Extracteur");
-define("chart1_chart_serie10",	"T° Ballon ECS");
-define("chart1_chart_serie11",	"% bois");
-define("chart1_chart_serie12",	"T° exterieur Moy");
-define("chart1_chart_serie13",	"T° interieur");
-define("chart1_chart_serie14",	"T° Départ z1 est");
-define("chart1_chart_serie15",	"T° Départ z1 doit");
-define("chart1_chart_serie16",	"T° Départ z2 est");
-define("chart1_chart_serie17",	"T° Départ z2 doit");
-define("chart1_chart_serie18",	"Conso du jour");
-define("chart1_chart_serie19",	"Ballon ECS Etat");
-define("chart1_chart_serie20",	"Aspiration");
-define("chart1_chart_serie21",	"T° Retour");
-define("chart1_chart_serie22",	"Temps décendrage");
-define("chart1_chart_serie23",	"conso instantanée");
+define("chart1_titleDay",		"Fonctionnement du jour");
+define("chart2_titleIgni",		"Allumage electrique");
+define("gauge1_day",			"Puissance Moyenne journée");
+define("gauge2_zoom",			"Puissance moyenne zoom");
+define("gauge2_unzoom",			"Puissance Moy. en Chauffe");
+define("gauge2_tooltip",		"Faites un zoom sur le <br>graphe pour afficher <br>la puissance moyenne <br>dans le zoom");
 
-define("gauge1_chart_day",		"Puissance Moyenne journée");
-define("gauge2_chart_zoom",		"Puissance moyenne zoom");
-define("gauge2_chart_unzoom",	"Puissance Moy. en Chauffe");
-define("gauge2_chart_tooltip",	"Faites un zoom sur le <br>graphe pour afficher <br>la puissance moyenne <br>dans le zoom");
+//consumption page
+define("calendar_title",		"90 derniers jours");
+define("chart1_kiloPerDay",		"Consommation granulés par jour");
+define("chart1_costPerDay",		"Coût granulés par jour");
+define("chart1_outTemp",		"Temperature ext moyenne");
+define("chart2_title",			"Courbes du jour sélectionné");
+define("chart3_title",			"Consommation annuelle");
+define("chart3_annualPellet",	"Quantité annuelle");
+define("chart3_Annualcost",		"Coût annuel");
+define("chart4_title",			"Consommation et température moyenne par mois");
+define("chart4_subTitle",		"Pour chaque saison");
+define("chart4_avg",			"Moyenne");
+define("chart4_avgTemp",		"T° moy");
+define("chart5_title",			"historique prix achat");
+define("chart5_perTon",			"Par tonne");
+define("chart6_avgPrice",		"Historique prix moyen en France");
+define("text_help",				"Cliquez sur une colonne au dessus pour afficher les courbes du jour ici");
+define("text_perDay",			"Par jour");
+define("text_perMonth",			"Par mois");
+define("text_Tmin",				"Temperature minimale enregistrée");
+define("text_Tmax",				"Temperature maximale enregistrée");
+define("text_hotWaterAvg",		"consommation moyenne ECS");
+define("text_hotWaterTip",		"Calculer depuis Jun-Jul-Aug");
+define("text_Pelletmax",		"Consommation maximale de granulés");
 
-define("chart2_chart_title",	"allumage electrique");
-
-
-
-	0	=> status_init,
-	1   => status_init,
-	2   =>'Init grille',
-	3   =>'Démarrage chaudière',
-	4   =>'Contrôle allumage résiduel',
-	5   =>'Allumage électrique', 
-	6   =>'Démarrage combustion',
-	7   =>'Combustion',
-	8   =>'Veille',
-	9   =>'Arrêt pour décendrage',
-	10  =>'Décendrage',
-	11  =>'Refroidissement : utilisation chaleur residuelle',
-	12  =>'Nettoyage',
-	15	=>'Mode manuel',
-	17	=>'Assistant de combustion'
-					<div>pour chaque saison, indiquez le prix en euro par kilo de granulés<BR><BR>si vous avez des tarifs différents pendant la saison , indiquez le prix moyen<BR><BR>dans la partie droite vous pouvez ajouter ou supprimer des saisons. <BR><BR>La suppression ne concerne que la saison avec son tarif et n'a pas d'impact sur les données de la base</div>
-
+//page About
+define("text_desc1",			"site web permettant la visualisation en temps réel d'une chaudière à granulés Hargassner.");
+define("text_desc2",			"Ce site est personnel et n'engage aucunement la marque Hargassner");
+define("text_desc3",			"pre-requisite : ");
+define("text_desc4",			"- Chaudière Hargassner NanoPK raccordée sur le reseau");
+define("text_desc5",			"- MySQL/MariaDB10+ database");
+define("text_desc6",			"- apache/php7.4+ server");
+define("text_desc7",			"la page d'accueil est uniquement alimentée par le telnet de la chaudière et ne nécessite pas de base de données");
+define("text_desc8",			"toutes les autres pages ont besoin d'une  base de données SQL/MariaDB");
 ?>
+
+
+

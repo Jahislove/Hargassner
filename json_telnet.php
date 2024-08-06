@@ -14,11 +14,11 @@
 //very old boiler use serial port instead of ethernet, so we use mysql instead
 	header("Content-type: text/json");
     require_once("conf/config.inc.php");
-	require_once("conf/settings.inc.php");
 	if (!isset($language)) {
 	  $language = 'en';
 	}
 	include('locale/' . $language . '.php');
+	require_once("conf/settings.inc.php");
 	require_once("conf/BDD_description_chanel.php");
 
 if ($mode_conn == 'serial'){ 

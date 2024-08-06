@@ -58,7 +58,6 @@ define("sett_info2", 			"For each season, enter price/kilo of pellet");
 define("sett_info3", 			"if you have different price during season then use the average price");
 define("sett_info4", 			"deleting a season only delete the name of season and the price. all boiler data are preserved");
 
-
 //home page
 define("chart_home_title",		"Real time data");
 
@@ -117,7 +116,6 @@ define("gauge2_zoom",			"Average power in zoom");
 define("gauge2_unzoom",			"Average power in heating");
 define("gauge2_tooltip",		"Zoom on chart <br>to display power average <br>inside zoom");
 
-
 //consumption page
 define("calendar_title",		"90 last days");
 define("chart1_kiloPerDay",		"Pellet use per day");
@@ -143,4 +141,13 @@ define("text_hotWaterAvg",		"Average consumtion hot water");
 define("text_hotWaterTip",		"Calculated from Jun-Jul-Aug");
 define("text_Pelletmax",		"Max pellet consumption");
 
+//page About
+define("text_desc1",			"web site for real time vizualisation of an Hargassner Pellet Boiler");
+define("text_desc2",			"this is a personal web site and there is no link with official Hargasnner");
+define("text_desc3",			"pre-requisite : ");
+define("text_desc4",			"- Hargassner boiler pluged in your network");
+define("text_desc5",			"- MySQL/MariaDB10+ database");
+define("text_desc6",			"- apache/php7.4+ server");
+define("text_desc7",			"home page is only provided with fresh data from boiler telnet and will work even without database");
+define("text_desc8",			"all other page need a ySQL/MariaDB database");
 ?>
