@@ -1,5 +1,5 @@
 <?php
-//define("CONSTANT_name<=doNotModify",	"word to translate");
+//define("Constant_name<=doNotModify",	"word to translate");
 //Charts localization
 define("months", 		"'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'");
 define("weekdays", 		"'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'");
@@ -13,6 +13,7 @@ define("menu_consumption", 		"Consumption");
 define("menu_settings", 		"Settings");
 define("menu_about", 			"About");
 
+//home page
 define("chart_home_title",		"Real time data");
 
 //chanel
@@ -63,13 +64,12 @@ define("help_msg",				"\
 		");
 
 //chart page
-define("chart1_chart_title",	"Chart of the day");
-define("chart2_chart_title",	"Electric igniter");
-
-define("gauge1_chart_day",		"Average power for the day");
-define("gauge2_chart_zoom",		"Average power in zoom");
-define("gauge2_chart_unzoom",	"Average power in heating");
-define("gauge2_chart_tooltip",	"Zoom on chart <br>to display power average <br>inside zoom");
+define("chart1_titleDay",		"Chart of the day");
+define("chart2_titleIgni",		"Electric igniter");
+define("gauge1_day",			"Average power for the day");
+define("gauge2_zoom",			"Average power in zoom");
+define("gauge2_unzoom",			"Average power in heating");
+define("gauge2_tooltip",		"Zoom on chart <br>to display power average <br>inside zoom");
 
 
 //consumption page

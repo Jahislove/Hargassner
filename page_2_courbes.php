@@ -244,7 +244,7 @@ $(function() {
 			},
 		},
 		title: {
-			text: '<?php echo chart1_chart_title; ?>',
+			text: '<?php echo chart1_titleDay; ?>',
 		},
 		legend: {
             itemDistance: 30,
@@ -273,10 +273,10 @@ $(function() {
 							}
 						}
 						moyenne = Math.round(cumul / nombre);
-						graphe_gauge2.setTitle({ text: '<?php echo gauge2_chart_zoom; ?>'});
+						graphe_gauge2.setTitle({ text: '<?php echo gauge2_zoom; ?>'});
 						graphe_gauge2.series[0].points[0].update(moyenne);
 					}else{ 										//si zoom out
-						graphe_gauge2.setTitle({ text: '<?php echo gauge2_chart_unzoom; ?>'});
+						graphe_gauge2.setTitle({ text: '<?php echo gauge2_unzoom; ?>'});
 						graphe_gauge2.series[0].points[0].update(PuissMoyFonc); // on restaure la valeur initiale
 					}
 				}
@@ -634,13 +634,13 @@ $(function() {
 			renderTo: 'graphe2',
 		},
 		title: {
-			text: '<?php echo chart2_chart_title; ?>',
+			text: '<?php echo chart2_titleIgni; ?>',
 		},
 		xAxis: {
             tickInterval: 24*3600*1000,
 		 },
 		series: [{
-			name: '<?php echo chart2_chart_title; ?>',
+			name: '<?php echo chart2_titleIgni; ?>',
 			color: '<?php echo $color_extrac; ?>',
             type: 'column',
             tooltip: {
@@ -675,7 +675,7 @@ $(function() {
 			enabled: false
 		},
 	    title: {
-	        text: '<?php echo gauge1_chart_day; ?>',
+	        text: '<?php echo gauge1_day; ?>',
 			style:{
 				fontSize: '10px'
 			},
@@ -920,7 +920,7 @@ $(function() {
 			series: {
 				events: {
 					mouseOver: function () {
-					bulle = chart1.renderer.label('<?php echo gauge2_chart_tooltip; ?>'  ,350, 50);
+					bulle = chart1.renderer.label('<?php echo gauge2_tooltip; ?>'  ,350, 50);
 					bulle.attr({
 						fill: '#DBEDFF',
 						stroke: '<?php echo $color_gran; ?>',
