@@ -1,6 +1,6 @@
 <?php
 	//do not modify , modifications must be done in Settings page
-	$language="fr";
+	$language="en";
 	$zone_chauffage = "zone1";
 	$zone_ecs = "ballon1";
 	$zone_mode_chauffage = "modeChauffage1";

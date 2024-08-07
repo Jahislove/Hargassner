@@ -71,9 +71,9 @@ require_once("conf/settings.inc.php");
 			<div class="select_LANG">
 				<label for="lang">language</label>
 				<select name="lang" id="language">
-					<option value="en">English</<option>
-					<option value="fr">Français</<option>
-					<option value="de">Deutch</<option>
+					<option value="en" <?php echo ($language == "en") ? 'selected' : '';?> >English</<option>
+					<option value="fr" <?php echo ($language == "fr") ? 'selected' : '';?> >Français</<option>
+					<option value="de" <?php echo ($language == "de") ? 'selected' : '';?> >Deutch</<option>
 				</select>
 			</div>
 			<div class="radio_chauffage">
