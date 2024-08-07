@@ -28,8 +28,9 @@
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.js"></script>  -->
     <script src="js/jquery-3.6.0.min.js"></script>
     
-    <script src="js/datepicker/bootstrap-datepicker.min.js"></script><!-- utilisé uniquement pour le datepicker -->
-    <script src="js/datepicker/bootstrap-datepicker.fr.min.js" charset="UTF-8"></script><!-- utilisé uniquement pour le datepicker -->
+    <script src="js/datepicker/bootstrap-datepicker.js"></script><!-- utilisé uniquement pour le datepicker -->
+    <script src="js/datepicker/bootstrap-datepicker.fr.js" charset="UTF-8"></script><!-- utilisé uniquement pour le datepicker -->
+    <script src="js/datepicker/bootstrap-datepicker.de.js" charset="UTF-8"></script><!-- utilisé uniquement pour le datepicker -->
     
 	<!--<script src="https://code.highcharts.com/highcharts.js"></script> -->
     <!--<script src="https://code.highcharts.com/highcharts-more.js"></script> -->

@@ -2,7 +2,7 @@
     
 <div class="calendar">
     <div class="input-group date">
-        <input type="text" class="form-control" placeholder="Aujourd'hui">
+        <input type="text" class="form-control" placeholder="date">
         <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
     </div>
 </div>
@@ -129,7 +129,7 @@ $(function() {
         minViewMode: 0,
         daysOfWeekHighlighted: "6,0",
         todayBtn: 'linked',
-        language: "fr",
+        language: "<?php echo $language; ?>",
         autoclose: true    
     })
     .on('changeDate', function(e){

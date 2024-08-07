@@ -95,7 +95,7 @@ $(function() {
         startDate: new Date(<?php echo $dateMin[0]; ?>,<?php echo $dateMin[1]; ?> - 1,1),
         endDate: new Date(),
         minViewMode: 1,
-        language: "fr",
+        language: "<?php echo $language; ?>",
         autoclose: true    
     })
     .on('changeDate', function(e){
