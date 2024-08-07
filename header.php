@@ -2,6 +2,7 @@
 <html lang="fr">
 <?php 
 	require_once("conf/config.inc.php");
+	require_once("conf/settings.inc.php");
 	if (!isset($language)) {
 	  $language = 'en';
 	}

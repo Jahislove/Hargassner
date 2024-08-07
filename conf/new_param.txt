@@ -1,4 +1,0 @@
-// conserver cette ligne en premier, format : ligne 1 = valeur et ligne 2 = position(insert apres ce numero) fichier est lu a l'envers, puis renommer en .txt
-
-4
-$language="fr"; // fr, en, de

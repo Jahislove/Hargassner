@@ -56,7 +56,7 @@ define("sett_del", 				"Supprimer");
 define("sett_info", 			"Info");
 define("sett_info2", 			"pour chaque saison, indiquez le prix en euro par kilo de granulés");
 define("sett_info3", 			"si vous avez des tarifs différents pendant la saison , indiquez le prix moyen");
-define("sett_info4", 			"La suppression ne concerne que la saison avec son tarif et n'a pas d\'impact sur les données de la base");
+define("sett_info4", 			"La suppression ne concerne que la saison avec son tarif et n'a pas d'impact sur les données de la base");
 
 //home page
 define("chart_home_title",		"Données temps réel");

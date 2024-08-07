@@ -1,6 +1,7 @@
 ﻿<?php
 // appelé par ajax, renvoi les series de data pour toutes les saisons
 	require_once("conf/config.inc.php");
+	require_once("conf/settings.inc.php");
 	if (!isset($language)) {
 	  $language = 'en';
 	}

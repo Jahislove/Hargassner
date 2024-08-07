@@ -2,6 +2,7 @@
 // appelé par ajax, reçoit 1 channel en parametre et renvoi un objet serie
 // pour page_1_24h.php
 require_once("conf/config.inc.php");
+require_once("conf/settings.inc.php");
 	if (!isset($language)) {
 	  $language = 'en';
 	}

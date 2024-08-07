@@ -2,7 +2,6 @@
 <?php 
 require("header.php"); 
 ?>
-
     
 <script type="text/javascript">
 	requestData('call_ajax_light') // in header.php
@@ -68,6 +67,15 @@ require_once("conf/settings.inc.php");
 	<div class="boutons_radio">
 		<form name="form1" method="post" action="reglage_write_setting.php" >
 			<span><?php echo sett_title; ?></span>
+			<br>
+			<div class="select_LANG">
+				<label for="lang">language</label>
+				<select name="lang" id="language">
+					<option value="en">English</<option>
+					<option value="fr">Français</<option>
+					<option value="de">Deutch</<option>
+				</select>
+			</div>
 			<div class="radio_chauffage">
 				<input type="radio" name="zone_chauffage" value="zone1" <?php echo ($zone_chauffage == "zone1") ? 'checked' : '';?> > <?php echo sett_heat; ?> 1<BR>
 				<input type="radio" name="zone_chauffage" value="zone2" <?php echo ($zone_chauffage == "zone2") ? 'checked' : '';?> > <?php echo sett_heat; ?> 2<BR>

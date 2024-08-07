@@ -1,7 +1,6 @@
 <?php
 //****vos parametres **************************************************** 	
 // licence GPL-3.0-or-later
-$language="fr"; // fr, en, de
 
 $IPchaudiere = "192.168.0.198"; // indiquez l'IP de votre chaudiere /boiler IP
 // valeur possible voir dans stockBDD.php , si votre firmware est plus recent utilisez le dernier dispo

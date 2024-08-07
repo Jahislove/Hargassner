@@ -1172,7 +1172,7 @@ a:hover{
   display: inline-block;
   float: left;
 }
-.radio_chauffage, .radio_ECS, .radio_MODE{
+.radio_chauffage, .radio_ECS, .radio_MODE, .select_LANG{
   top: 50px;
   position: relative;
   /* width: 400px; */

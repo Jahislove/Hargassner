@@ -20,3 +20,4 @@ backup/
 update/*.*
 
 
+conf/settings.inc.php

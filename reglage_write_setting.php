@@ -7,10 +7,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	file_put_contents('conf/settings.inc.php',
 	'<?php
-		//do not modify , modifications must be done in Settings page
-		$zone_chauffage = "'.$_POST['zone_chauffage'].'";
-		$zone_ecs = "'.$_POST['zone_ecs'].'";
-		$zone_mode_chauffage = "'.$_POST['zone_mode_chauffage'].'";
+	//do not modify , modifications must be done in Settings page
+	$language="'.$_POST['lang'].'";
+	$zone_chauffage = "'.$_POST['zone_chauffage'].'";
+	$zone_ecs = "'.$_POST['zone_ecs'].'";
+	$zone_mode_chauffage = "'.$_POST['zone_mode_chauffage'].'";
 	'
 	);
 
@@ -42,13 +43,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 	file_put_contents('conf/settings.inc.php',
 	'
-		// page_1_24h.php
-		$chart_last24_chan = "'.$depart_chauffage_DOIT.','.$depart_chauffage_EST.',c3,c6,c7,c138,c134";
-		// page_2_courbes.php
-		$chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,'.$ballon_ECS.',c56,c7,c138,'.$depart_chauffage_EST.','.$depart_chauffage_DOIT.',c22,c24,c99,c92,c112,c12,c111"; // la 2 eme valeur (decendrage) est calculé d"apres c0
-		// json_conso_jour.php (via page_3_conso.php)
-		$json_conso_jour_chanel = "dateB,'.$depart_chauffage_DOIT.','.$depart_chauffage_EST.',c3,c6,c138,c134,c56";
-	',FILE_APPEND);
+	// page_1_24h.php
+	$chart_last24_chan = "'.$depart_chauffage_DOIT.','.$depart_chauffage_EST.',c3,c6,c7,c138,c134";
+	// page_2_courbes.php
+	$chart1_chan = "c0,c0,c134,c3,c4,c5,c6,c1,c2,c53,'.$ballon_ECS.',c56,c7,c138,'.$depart_chauffage_EST.','.$depart_chauffage_DOIT.',c22,c24,c99,c92,c112,c12,c111"; // la 2 eme valeur (decendrage) est calculé d"apres c0
+	// json_conso_jour.php (via page_3_conso.php)
+	$json_conso_jour_chanel = "dateB,'.$depart_chauffage_DOIT.','.$depart_chauffage_EST.',c3,c6,c138,c134,c56";
+',FILE_APPEND);
 
 	file_put_contents('conf/settings.inc.php','?>',FILE_APPEND);
 
