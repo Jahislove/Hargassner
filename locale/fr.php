@@ -165,6 +165,27 @@ define("text_gitko",			"impossible de joindre github.com , essayer plus tard");
 define("text_gitmsg",			"si le problème persiste vérifiez que votre serveur php est bien lancé avec les extensions openssl et zip");
 define("text_new",				"Nouvelle version disponible");
 
+// known error list
+define("TabErreur",	array(
+					0 => "OK",
+					5 => "Vider le cendrier",
+					6 => "Le cendrier est plein",
+					7 => "La grille ne s'ouvre pas",
+					9 => "Surintensité nettoyage échangeur",
+					15 => "Sonde Ballon 1 coupée",
+					27 => "Température de fumées trop basse",
+					29 => "Defaut de combustion, démarrage impossible",
+					32 => "Temps de Remplissage dépassé",	
+					49 => "Défaut extracteur de fumée",	
+					70 => "Niveau silo bas",
+					93 => "Cendrier ouvert",
+					229 => "Nettoyer/Contrôler le détecteur de niveau de granulés",
+					371 => "Vérifier l'encrassement du foyer, nettoyer si nécessaire",
+					7101 => "Temps Maxi de charge du Ballon dépassé. Contrôler les heures, la sonde, la pompe",
+					65402 => "Impossible d'ouvrir la connexion au serveur Web"
+					)
+		);
+
 ?>
 
 

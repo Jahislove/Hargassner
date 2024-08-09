@@ -39,8 +39,6 @@
 	<script src="js/highcharts-more.js"></script>  
     <script src="js/exporting.js"></script>
 
-<script type="text/javascript" src="js/codes_erreurs.js">	</script>
-
 <script type="text/javascript">
 //stockage variable php pour utilisation dans call_ajax
 	var modeCommand_auto = '<?php echo modeCommand_auto; ?>';
@@ -56,6 +54,8 @@
 	var modeChauff_Stop = '<?php echo modeChauff_Stop; ?>';
 	var modeChauff_StopTemp = '<?php echo modeChauff_StopTemp; ?>';
 	var modeChauff_StopProg = '<?php echo modeChauff_StopProg; ?>';
+	var TabErreur = <?php echo json_encode(TabErreur); ?>;
+	
 </script>
 <script type="text/javascript" src="js/call_ajax.js">	</script>
 
@@ -119,7 +119,7 @@
 
     if ($version < $version_github) {
         echo '<div id="new_version">';
-        echo text_new.' : '.$version_github.' - <a href="https://github.com/Jahislove/Hargassner/blob/master/notes_version.txt">Info</a> - <a href="auto-install.php">'.echo text_update.'</a>';
+        echo text_new .' : '.$version_github.' - <a href="https://github.com/Jahislove/Hargassner/blob/master/notes_version.txt">Info</a> - <a href="auto-install.php">'. text_update .'</a>';
         echo '</div>';
     }
 
