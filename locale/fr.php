@@ -150,6 +150,21 @@ define("text_desc5",			"- MySQL/MariaDB10+ database");
 define("text_desc6",			"- apache/php7.4+ server");
 define("text_desc7",			"la page d'accueil est uniquement alimentée par le telnet de la chaudière et ne nécessite pas de base de données");
 define("text_desc8",			"toutes les autres pages ont besoin d'une  base de données SQL/MariaDB");
+
+//installation new version
+define("text_OK",				"OK");
+define("text_ERROR",			"ERROR");
+define("text_download",			"Telechargement nouvelle version");
+define("text_cancel",			"Annulation de l'installation");
+define("text_extract",			"Extraction nouvelle version");
+define("text_delete",			"Purge ancienne sauvegarde");
+define("text_backup",			"Sauvegarde");
+define("text_update",			"Installation");
+define("text_help",				"Verifiez les droits du repertoire hargassner , le user ou group http doit avoir les droits en ecriture");
+define("text_gitko",			"impossible de joindre github.com , essayer plus tard");
+define("text_gitmsg",			"si le problème persiste vérifiez que votre serveur php est bien lancé avec les extensions openssl et zip");
+define("text_new",				"Nouvelle version disponible");
+
 ?>
 
 

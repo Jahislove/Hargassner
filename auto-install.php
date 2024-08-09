@@ -1,4 +1,11 @@
 <?php
+require_once("conf/config.inc.php");
+require_once("conf/settings.inc.php");
+if (!isset($language)) {
+  $language = 'en';
+}
+include('locale/' . $language . '.php');
+
 // installation nouvelle version automatique 
 
 $github = 'https://github.com/Jahislove/Hargassner/archive/master.zip';
@@ -44,48 +51,57 @@ function unlinkRecursive($source,$deleteRoot){
 
 /******* Telechargement nouvelle version ***********************/
 function download($source) {
+	echo text_download .' ';
     if (copy ($source,'update/master.zip')) {
-        echo 'Telechargement nouvelle version OK<br>';
+        echo text_OK .'<br>';
         return true;
     } else {
-        echo "Erreur de telechargement : annulation de l'installation , si l'erreur persiste verifiez les droits du repertoire hargassner , le user ou group http doit avoir les droits en ecriture";
+        echo text_ERROR .'<br>';
+        echo text_cancel .'<br>';
+        echo text_help .'<br>';
         return false;
     }
 }
 /******* unzip nouvelle version *******************************/
 function unzip() {
     $zip = new ZipArchive;
+    echo text_extract .'<br>';
     if ($zip -> open('update/master.zip')) {
         $zip -> extractTo('update/');
         $zip -> close;
-        echo 'Extraction nouvelle version OK<br>';
+        echo text_OK .'<br>';
         return true;
     } else {
-        echo "Erreur d'extraction : annulation de l'installation";
+        echo text_ERROR .'<br>';
+        echo text_cancel .'<br>';
         return false;
     }
 }
 /******* purge ancien backup***************************************/
 function purge() {
     $source = "update/backup";
+	echo text_delete .'<br>';
     if (unlinkRecursive ($source,false)) {
-        echo "Purge ancienne sauvegarde OK<br>";
+        echo text_OK .'<br>';
         return true;
     } else {
-        echo "Erreur purge ancienne sauvegarde : annulation de l'installation";
+        echo text_ERROR .'<br>';
+        echo text_cancel .'<br>';
         return false;
     }
 }
 /******* backup du site***************************************/
 function backup() {
     $source = ".";
+	echo text_backup .'<br>';
     $dest= "update/backup/$source";
     if (copyr ($source,$dest)) {
         copy("conf/config.inc.php","update/backup/conf/config.inc.php");
-        echo "Sauvegarde OK<br>";
+        echo text_OK .'<br>';
         return true;
     } else {
-        echo "Impossible de faire une sauvegarde : annulation de l'installation";
+        echo text_ERROR .'<br>';
+        echo text_cancel .'<br>';
         return false;
     }
 }
@@ -93,11 +109,13 @@ function backup() {
 function installation() {
     $source = "update/Hargassner-master";
     $dest= "."; 
+	echo text_update .'<br>';
 
     if (copyr ($source,$dest)) {
-        echo "Installation OK<br>";
+        echo text_OK .'<br>';
     } else {
-        echo "Erreur d'installation : annulation de l'installation";
+        echo text_ERROR .'<br>';
+        echo text_cancel .'<br>';
     }
 }
 
@@ -142,6 +160,6 @@ if (download($github)){
         }
     }
 }
-echo '<a href="index.php">Recharger le site</a> ';
+echo '<a href="index.php">Reload</a> ';
 
 ?>  

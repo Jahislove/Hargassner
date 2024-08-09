@@ -18,8 +18,8 @@ define("modeCommand_auto", 		"Auto mode");
 define("modeCommand_nigh", 		"Night mode forced");
 define("modeCommand_comf", 		"Comfort mode forced");
 define("modeCommand_stop",		"Stop");
-define("modeCommand_tmpComf", 	"tmp comfort mode");
-define("modeCommand_tmpNigh", 	"tmp Night mode");
+define("modeCommand_tmpComf", 	"Temporary comfort mode");
+define("modeCommand_tmpNigh", 	"Temporary Night mode");
 
 define("modeChauff_Summ", 		"Summer mode");
 define("modeChauff_Comf", 		"Comfort mode");
@@ -32,7 +32,7 @@ define("modeChauff_StopProg",	"Stop in progress");
 //status
 define("status_init", 			"Initialization");
 define("status_stop", 			"Stop");
-define("status_tray", 			"Init tray");
+define("status_tray", 			"Init tray"); //ash grid
 define("status_start", 			"Starting boiler");
 define("status_prev", 			"Control previous fire");
 define("status_igni", 			"Electric igniter");
@@ -150,4 +150,19 @@ define("text_desc5",			"- MySQL/MariaDB10+ database");
 define("text_desc6",			"- apache/php7.4+ server");
 define("text_desc7",			"home page is only provided with fresh data from boiler telnet and will work even without database");
 define("text_desc8",			"all other page need a ySQL/MariaDB database");
+
+//installation new version
+define("text_OK",				"OK");
+define("text_ERROR",			"ERROR");
+define("text_download",			"Downloading new version");
+define("text_cancel",			"Canceling installation");
+define("text_extract",			"Extraction new version");
+define("text_delete",			"Delete old backup");
+define("text_backup",			"Backup");
+define("text_update",			"Installation");
+define("text_help",				"Check right of directory hargassner , user or group http must have writing right");
+define("text_gitko",			"Can't reach github.com , try again later");
+define("text_gitmsg",			"If error persist, check if your php server is launched with openssl and zip extensions");
+define("text_new",				"New version available");
+
 ?>

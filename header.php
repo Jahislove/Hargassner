@@ -111,14 +111,15 @@
         fclose($config_github);
     } else {
 		echo '<div id="new_version">';
-		echo 'impossible de joindre github pour vérifier les mises a jour, ';
-		echo "si le problème persiste vérifiez que votre serveur php est bien lancé avec les extensions openssl et zip";
+		echo text_ERROR .'<br>';
+		echo text_gitko .'<br>';
+		echo text_gitmsg .'<br>';
         echo '</div>';
 	}
 
     if ($version < $version_github) {
         echo '<div id="new_version">';
-        echo 'Nouvelle version disponible : '.$version_github.' - <a href="https://github.com/Jahislove/Hargassner/blob/master/notes_version.txt">Notes de version</a> - <a href="auto-install.php">Installation</a>';
+        echo text_new.' : '.$version_github.' - <a href="https://github.com/Jahislove/Hargassner/blob/master/notes_version.txt">Info</a> - <a href="auto-install.php">'.echo text_update.'</a>';
         echo '</div>';
     }
 
