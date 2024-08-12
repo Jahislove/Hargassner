@@ -8,182 +8,184 @@ define("shortMonths", 	"'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',  'Jul', 'Aug'
 
 //header menu
 define("menu_home", 			"Home");
-define("menu_data", 			"Data");
-define("menu_graph", 			"Chart");
-define("menu_consumption", 		"Consumption");
-define("menu_settings", 		"Settings");
-define("menu_about", 			"About");
+define("menu_data", 			"Daten");
+define("menu_graph", 			"Messwerte");
+define("menu_consumption", 		"Verbrauch");
+define("menu_settings", 		"Einstellungen");
+define("menu_about", 			"Über");
 
-define("modeCommand_auto", 		"Auto mode");
-define("modeCommand_nigh", 		"Night mode forced");
-define("modeCommand_comf", 		"Comfort mode forced");
+define("modeCommand_auto", 		"Automatik-Modus");
+define("modeCommand_nigh", 		"manueller Nachtbetrieb");
+define("modeCommand_comf", 		"manueller Komfort-Modus");
 define("modeCommand_stop",		"Stop");
-define("modeCommand_tmpComf", 	"Temporary comfort mode");
-define("modeCommand_tmpNigh", 	"Temporary Night mode");
+define("modeCommand_tmpComf", 	"Temporärer Komfort-Modus");
+define("modeCommand_tmpNigh", 	"Temporärer Nachtbetrieb");
 
-define("modeChauff_Summ", 		"Summer mode");
-define("modeChauff_Comf", 		"Comfort mode");
-define("modeChauff_Red", 		"Comfort => Night mode");
-define("modeChauff_Nigh", 		"Night mode");
+define("modeChauff_Summ", 		"Sommerbetrieb");
+define("modeChauff_Comf", 		"Komfort-Modus");
+define("modeChauff_Red", 		"Komfort-Modus => Nachtbetrieb");
+define("modeChauff_Nigh", 		"Nachtbetrieb");
 define("modeChauff_Stop", 		"Stop");
-define("modeChauff_StopTemp", 	"Stop from outside temp");
-define("modeChauff_StopProg",	"Stop in progress");
+define("modeChauff_StopTemp", 	"Außentemperatur-Abschaltung");
+define("modeChauff_StopProg",	"Stopp läuft");
 
 //status
-define("status_init", 			"Initialization");
+define("status_init", 			"Initialisierung");
 define("status_stop", 			"Stop");
-define("status_tray", 			"Init tray"); //ash grid
-define("status_start", 			"Starting boiler");
-define("status_prev", 			"Control previous fire");
-define("status_igni", 			"Electric igniter");
-define("status_StComb", 		"Starting combustion");
-define("status_comb", 			"Combustion");
+define("status_tray", 			"Initialisierung Entaschung"); //ash grid
+define("status_start", 			"Kessel starten");
+define("status_prev", 			"Prüfung vorherige Feuerung");
+define("status_igni", 			"Elektrische Zündung");
+define("status_StComb", 		"Starten der Verbrennung");
+define("status_comb", 			"Verbrennung");
 define("status_Sleep", 			"Sleep");
-define("status_stopAsh", 		"Stopping for ash removal");
-define("status_ash", 			"Ash removal");
-define("status_cool", 			"Cooling");
-define("status_clean", 			"Cleaning");
-define("status_manu", 			"Manual mode");
-define("status_assist", 		"Combustion assist");
+define("status_stopAsh", 		"Stopp für Entaschung");
+define("status_ash", 			"Entaschung");
+define("status_cool", 			"Kühlung");
+define("status_clean", 			"Reinigung");
+define("status_manu", 			"Manueller Modus");
+define("status_assist", 		"Verbrennungsunterstützung");
 
 //settings page
-define("sett_title", 			"parameters");
-define("sett_heat", 			"Heating zone");
-define("sett_save", 			"Save");
-define("sett_add", 				"Add");
-define("sett_addSeas", 			"Add a season");
-define("sett_del", 				"Delete");
+define("sett_title", 			"Parameter");
+define("sett_heat", 			"Heizkreis");
+define("sett_save", 			"Sichern");
+define("sett_add", 				"Zufügen");
+define("sett_addSeas", 			"Eine Heizperiode zufügen");
+define("sett_del", 				"Löschen");
 define("sett_info", 			"Info");
-define("sett_info2", 			"For each season, enter price/kilo of pellet");
-define("sett_info3", 			"if you have different price during season then use the average price");
-define("sett_info4", 			"deleting a season only delete the name of season and the price. all boiler data are preserved");
+define("sett_info2", 			"Eingabe Pelletpreis / Kilo pro Heizperiode");
+define("sett_info3", 			"Wenn es während der Heizperiode unterschiedliche Preise gibt, nehmen Sie den Durschnittspreis");
+define("sett_info4", 			"Das Löschen der Werte pro Heizperiode löscht nur den Namen und den Preis. Alle Kesseldaten bleiben erhalten.");
 
 //home page
-define("chart_home_title",		"Real time data");
+define("chart_home_title",		"Echtzeitdaten");
 
 //chanel
-define("text_state", 			"State");
-define("text_power", 			"Power");
-define("text_fan", 				"Smoke Fan exhaust ");
-define("text_temp_smoke",		"Smoke Temperature");
-define("text_temp_waterIs",		"Boiler Temperature is");
-define("text_temp_waterMust",	"Boiler Temperature must");
-define("text_temp_indoor", 		"Indoor Temperature");
-define("text_temp_outdoor", 	"Outdoor Temperature");
-define("text_temp_outdoorAvg",	"Outdoor Temperature avg");
-define("text_tempZ1_toHeaterIs","Departure heater Z1 Temp is ");
-define("text_tempZ1_toHeaterMust","Departure heater Z1 Temp must");
-define("text_tempZ2_toHeaterIs","Departure heater Z2 Temp is ");
-define("text_tempZ2_toHeaterMust","Departure heater Z2 Temp must");
-define("text_pump_ECS", 		"Domestic hot water pump");
-define("text_pump_heater", 		"Heater pump");
-define("text_pellet_left", 		"Pellet left");
-define("text_pell_consumTot",	"Total Pellet consumption");
-define("text_pell_consumDay",	"Consumption of the day");
-define("text_pell_inst_consum", "Instant consumption");
-define("text_feeder", 			"Pellet screw feed and consumption per hour");
-define("text_lambda", 			"O² Lambda");
-define("text_oxyIs",			"O² is");
-define("text_oxyMust",			"O² must");
-define("text_temp_returnIs", 	"return Temperature is");
-define("text_temp_returnMust",	"return Temperature must");
-define("text_time_ash", 		"Time for ash removal is");
-define("text_state_ash", 		"ash removal state");
-define("text_move_ash",			"Ashtray grid move");
-define("text_time_screw",		"Time screw since last suction");
-define("text_temp_tank", 		"Domestic hot water tank");
-define("text_state_tank", 		"Domestic hot water state");
-define("text_var_F", 			"Variable F");
-define("text_var_K", 			"Variable K");
-define("text_wood",				"% wood");
-define("text_suction",			"Suction");
+define("text_state", 				"Status");
+define("text_power", 				"Power");
+define("text_fan", 					"Rauchabzug durch Ventilator");
+define("text_temp_smoke",			"Rauchgastemperatur");
+define("text_temp_waterIs",			"Kessel Temperatur Ist");
+define("text_temp_waterMust",		"Kessel Temperatur Soll");
+define("text_temp_indoor", 			"Innentemperatur");
+define("text_temp_outdoor", 		"Außentemperatur");
+define("text_temp_outdoorAvg",		"Außentemperatur gemittelt");
+define("text_tempZ1_toHeaterIs",	"Vorlauftemperatur Z1 ist");
+define("text_tempZ1_toHeaterMust",	"Vorlauftemperatur Z1 Soll");
+define("text_tempZ2_toHeaterIs",	"Vorlauftemperatur Z2 ist");
+define("text_tempZ2_toHeaterMust",	"Vorlauftemperatur Z2 Soll");
+define("text_pump_ECS", 			"Brauchwarmwasserpumpe");
+define("text_pump_heater", 			"Heizkreispumpe");
+define("text_pellet_left", 			"Lagerstand");
+define("text_pell_consumTot",		"Gesamtverbrauch Pellets");
+define("text_pell_consumDay",		"Verbrauch pro Tag");
+define("text_pell_inst_consum", 	"Aktueller Verbrauch");
+define("text_feeder", 				"Pelletschneckenförderung und Verbrauch / Stunde");
+define("text_lambda", 				"O² Lambda");
+define("text_oxyIs",				"O² Ist");
+define("text_oxyMust",				"O² Soll");
+define("text_temp_returnIs", 		"Rücklauf Temperatur Ist");
+define("text_temp_returnMust",		"Rücklauf Temperatur Soll");
+define("text_time_ash", 			"Time for ash removal is");
+define("text_state_ash", 			"Status Entaschung");
+define("text_move_ash",				"Bewegung Schieberost");
+define("text_time_screw",			"Zeit nach der letzten Ansaugung");
+define("text_temp_tank", 			"Brauchwasserspeicher");
+define("text_state_tank", 			"Status Brauchwasserspeicher");
+define("text_var_F", 				"Variable F");
+define("text_var_K", 				"Variable K");
+define("text_wood",					"% Holz");
+define("text_suction",				"Absaugung");
 
 //data page
 define("help_msg",				"\
-		The array show real time data from telnet and is mainly use for debuging new firmware<br/>\
-		by clicking on a case , it show a line coresponding to the Telnet chanel and his true column in the Database.<br/>\
-		for exemple , in the first firmwares we got  telnet chanel 10 (t10) = column 10 (c10)<br/>\
-		However, over the time, Hargassner has modified the order of the parameters inside the telnet<br/>\
-		so now, the column in the database is no longer always the same as the telnet chanel,<br/>\
-		it display the Telnet chanel (t..), his true column in the database (c..) and his desciption if known\
+		Das Array zeigt Echtzeitdaten von Telnet und wird hauptsächlich zum Debuggen neuer Firmware verwendet.<br/>\
+		Durch Klicken auf ein Kästchen wird eine Zeile angezeigt, die dem Telnet-Kanal und seiner wahren Spalte<br/>\
+		in der Datenbank entspricht. In den ersten Firmwares hatten wir beispielsweise Telnet-Kanal 10 (t10) = Spalte 10 (c10).<br/>\
+		Im Laufe der Zeit hat Hargassner jedoch die Reihenfolge der Parameter innerhalb des Telnet geändert,<br/>\
+		sodass die Spalte in der Datenbank jetzt nicht mehr immer mit dem Telnet-Kanal übereinstimmt.<br/>\
+		Sofern bekannt, werden der Telnet-Kanal (t..), seine wahre Spalte in der Datenbank (c..)<br/>\
+		und seine Beschreibung angezeigt.\
 		");
 
 //chart page
-define("chart1_titleDay",		"Chart of the day");
-define("chart2_titleIgni",		"Electric igniter");
-define("gauge1_day",			"Average power for the day");
-define("gauge2_zoom",			"Average power in zoom");
-define("gauge2_unzoom",			"Average power in heating");
-define("gauge2_tooltip",		"Zoom on chart <br>to display power average <br>inside zoom");
+define("chart1_titleDay",		"Tagesdiagramm");
+define("chart2_titleIgni",		"Electrische Zündung");
+define("gauge1_day",			"Durschnittliche Leistung pro Tag");
+define("gauge2_zoom",			"Durschnittliche Leistung in ");
+define("gauge2_unzoom",			"Durschnittliche Heizleistung ");
+define("gauge2_tooltip",		"Klicke auf das Diagramm<br>um die Durchschnittsleitung<br>anzuzeigen");
 
 //consumption page
-define("calendar_title",		"90 last days");
-define("chart1_kiloPerDay",		"Pellet use per day");
-define("chart1_costPerDay",		"Pellet cost per day");
-define("chart1_outTemp",		"Outdoor average temperature");
-define("chart2_title",			"Chart of selected day");
-define("chart3_title",			"Annual consumption");
-define("chart3_annualPellet",	"Annual Quantity");
-define("chart3_Annualcost",		"Annual Cost");
-define("chart4_title",			"Consumption and Average temperature per month");
-define("chart4_subTitle",		"For each season");
-define("chart4_avg",			"Average");
-define("chart4_avgTemp",		"T° avg");
-define("chart5_title",			"Historic price purchase");
-define("chart5_perTon",			"per ton");
-define("chart6_avgPrice",		"Historic average price in Deutchland");
-define("text_help",				"Click on column above to display chart of this day here");
-define("text_perDay",			"per day");
-define("text_perMonth",			"per month");
-define("text_Tmin",				"Min temperature ever");
-define("text_Tmax",				"Max temperature ever");
-define("text_hotWaterAvg",		"Average consumtion hot water");
-define("text_hotWaterTip",		"Calculated from Jun-Jul-Aug");
-define("text_Pelletmax",		"Max pellet consumption");
+define("calendar_title",		"letzte 90 Tage");
+define("chart1_kiloPerDay",		"Pelletverbrauch pro Tag");
+define("chart1_costPerDay",		"Pelletkosten pro Tag");
+define("chart1_outTemp",		"Durchnittsaußentemperatur ");
+define("chart2_title",			"Diagramm des ausgewählten Tages");
+define("chart3_title",			"jährlicher Verbrauch");
+define("chart3_annualPellet",	"jährliche Menge");
+define("chart3_Annualcost",		"jährliche Kosten");
+define("chart4_title",			"monatlicher Verbrauch und Durchnittstemperatur");
+define("chart4_subTitle",		"für jede Heizperiode");
+define("chart4_avg",			"Durchschnitt");
+define("chart4_avgTemp",		"Durchnittstemperatur");
+define("chart5_title",			"Historie Kaufpreis");
+define("chart5_perTon",			"pro Tonne");
+define("chart6_avgPrice",		"durchsnittlicher Pelletpreis in Deutschland");
+define("text_help",				"Klicke auf die Spalte oben um das Diagramm des Tages anzuzeigen.");
+define("text_perDay",			"pro Tag");
+define("text_perMonth",			"pro Monat");
+define("text_Tmin",				"niedrigste Temperatur aller Zeiten");
+define("text_Tmax",				"höchste Temperatur aller Zeiten");
+define("text_hotWaterAvg",		"durchsnittlicher Warmwasserverbrauch");
+define("text_hotWaterTip",		"berechnet von Jun-Jul-Aug");
+define("text_Pelletmax",		"max. Pelletverbrauch");
 
 //page About
-define("text_desc1",			"web site for real time vizualisation of an Hargassner Pellet Boiler");
-define("text_desc2",			"this is a personal web site and there is no link with official Hargasnner");
-define("text_desc3",			"pre-requisite : ");
-define("text_desc4",			"- Hargassner boiler pluged in your network");
-define("text_desc5",			"- MySQL/MariaDB10+ database");
-define("text_desc6",			"- apache/php7.4+ server");
-define("text_desc7",			"home page is only provided with fresh data from boiler telnet and will work even without database");
-define("text_desc8",			"all other page need a ySQL/MariaDB database");
+define("text_desc1",			"Diese Seite ist die Echtzeitanzeige des Hargassner Pellet Kessels");
+define("text_desc2",			"Die Seite ist lokal und hat keine Verbindung oder sonstige Links zum Hersteller");
+define("text_desc3",			"Systemvoraussetzungen: ");
+define("text_desc4",			"- Hargassner Kessel muss im lokalen Netzwerk erreichbar sein");
+define("text_desc5",			"- MySQL/MariaDB10+ Datenbank");
+define("text_desc6",			"- apache/php7.4+ Webserver");
+define("text_desc7",			"Die Startseite zeigt nur die aktuellen Daten an, die per Telnet vom Kessel kommen. Sei funktioniert auch ohne Datenbank");
+define("text_desc8",			"Alle anderen Seiten benötigen eine MySQL/MariaDB Datenbank");
 
 //installation new version
 define("text_OK",				"OK");
-define("text_ERROR",			"ERROR");
-define("text_download",			"Downloading new version");
-define("text_cancel",			"Canceling installation");
-define("text_extract",			"Unzipping new version");
-define("text_delete",			"Deleting old backup");
+define("text_ERROR",			"FEHLER");
+define("text_download",			"Herunterladen der neuen Version");
+define("text_cancel",			"Abbruch Installation");
+define("text_extract",			"Entpacken der neuen Version");
+define("text_delete",			"Löschen altes Backup");
 define("text_backup",			"Backup");
 define("text_update",			"Installation");
-define("text_help",				"Check right of directory hargassner , user or group http must have writing right");
-define("text_gitko",			"Can't reach github.com , try again later");
-define("text_gitmsg",			"If error persist, check if your php server is launched with openssl and zip extensions");
-define("text_new",				"New version available");
+define("text_help",				"Berechtigung vom Verzeichnis hargassner prüfen, user oder group http muss Schreibberechtigung haben");
+define("text_gitko",			"Kann github.com nicht erreichen, versuche es später noch einmal");
+define("text_gitmsg",			"Wenn der Fehler bestehen bleibt, überprüfe, dass der php-Server mit der openssl-Erweiterung und dass die zip Erweiterung installiert ist.");
+define("text_new",				"Neue Version verfügbar");
 
 // known error list
 define("TabErreur",	array(
 					0 => "OK",
-					5 => "Please empty ash tray",
-					6 => "Ash tray full",
-					7 => "Ash tray is stuck",
-					9 => "Overload cleaning motor (springs are stuck)",
-					15 => "tank 1 sensor problem",
-					27 => "Smoke temperature too low",
-					29 => "Combustion fault, start impossible",
-					32 => "Filling time exceeded",	
-					49 => "Smoke fan fault",	
-					70 => "Pellet stock low",
-					93 => "Ash tray open",
-					229 => "Check/clean pellet level sensor(inside boiler)",
-					371 => "Check fireplace, clean if necessary",
-					7101 => "Time max for domestic hot water exceeded. check hours, sensor, pump",
+					5 => "Aschelade entleeren",
+					6 => "Aschelade ist zu voll",
+					7 => "Aschebox verklemmt",
+					9 => "Überstrom Ascheschnecke",
+					15 => "Unterbrechung Boilerfühler 1",
+					27 => "Rauchgastemperatur unterschritten",
+					29 => "Verbrennungsstörung! Start nicht möglich",
+					32 => "Maximale Füllzeit überschritten",	
+					49 => "Saugzuggebläse Störung",	
+					70 => "Pelletslagerstand gering",
+					93 => "Aschelade offen",
+					229 => "Bitte Füllstandsmelder reinigen / kontrollieren",
+					371 => "Brennraum auf Verschmutzung prüfen, gegebenenfalls reinigen",
+					7101 => "Max. Boilerladezeit überschritten, Boilerladung träge! Fühlerposition prüfen, Durchfluss prüfen, Heizungsbauer verständigen",
 					65402 => "Can't connect to web server"
 					)
 		);
 
 ?>
+

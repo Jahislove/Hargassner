@@ -9,7 +9,7 @@ define("shortMonths", 	"'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',  'Jul', 'Aug',
 //header menu
 define("menu_home", 			"Home");
 define("menu_data", 			"Data");
-define("menu_graph", 			"Chart");
+define("menu_graph", 			"Charts");
 define("menu_consumption", 		"Consumption");
 define("menu_settings", 		"Settings");
 define("menu_about", 			"About");
@@ -54,9 +54,9 @@ define("sett_add", 				"Add");
 define("sett_addSeas", 			"Add a season");
 define("sett_del", 				"Delete");
 define("sett_info", 			"Info");
-define("sett_info2", 			"For each season, enter price/kilo of pellet");
-define("sett_info3", 			"if you have different price during season then use the average price");
-define("sett_info4", 			"deleting a season only delete the name of season and the price. all boiler data are preserved");
+define("sett_info2", 			"For each Heating period(Sept to Aug), enter price/kilo of pellets");
+define("sett_info3", 			"If prices vary during the Heating period then use the average price");
+define("sett_info4", 			"When you delete a Heating period, only the Heating period and the price are deleted. all boiler data remains intact");
 
 //home page
 define("chart_home_title",		"Real time data");
@@ -101,7 +101,7 @@ define("text_suction",			"Suction");
 //data page
 define("help_msg",				"\
 		The array show real time data from telnet and is mainly use for debuging new firmware<br/>\
-		by clicking on a case , it show a line coresponding to the Telnet chanel and his true column in the Database.<br/>\
+		by clicking on a box , it show a line coresponding to the Telnet chanel and his true column in the Database.<br/>\
 		for exemple , in the first firmwares we got  telnet chanel 10 (t10) = column 10 (c10)<br/>\
 		However, over the time, Hargassner has modified the order of the parameters inside the telnet<br/>\
 		so now, the column in the database is no longer always the same as the telnet chanel,<br/>\
@@ -142,14 +142,14 @@ define("text_hotWaterTip",		"Calculated from Jun-Jul-Aug");
 define("text_Pelletmax",		"Max pellet consumption");
 
 //page About
-define("text_desc1",			"web site for real time vizualisation of an Hargassner Pellet Boiler");
-define("text_desc2",			"this is a personal web site and there is no link with official Hargasnner");
+define("text_desc1",			"web site for realtime vizualisation of a Hargassner Pellet Boiler");
+define("text_desc2",			"This is a personal web site and there is no link with official Hargasnner");
 define("text_desc3",			"pre-requisite : ");
 define("text_desc4",			"- Hargassner boiler pluged in your network");
 define("text_desc5",			"- MySQL/MariaDB10+ database");
 define("text_desc6",			"- apache/php7.4+ server");
-define("text_desc7",			"home page is only provided with fresh data from boiler telnet and will work even without database");
-define("text_desc8",			"all other page need a ySQL/MariaDB database");
+define("text_desc7",			"Home page is only provided with fresh data from boiler telnet and will work even without database");
+define("text_desc8",			"all other pages need a ySQL/MariaDB database");
 
 //installation new version
 define("text_OK",				"OK");
@@ -160,7 +160,7 @@ define("text_extract",			"Unzipping new version");
 define("text_delete",			"Deleting old backup");
 define("text_backup",			"Backup");
 define("text_update",			"Installation");
-define("text_help",				"Check right of directory hargassner , user or group http must have writing right");
+define("text_help",				"Check permission of directory hargassner , user or group http must have write permission");
 define("text_gitko",			"Can't reach github.com , try again later");
 define("text_gitmsg",			"If error persist, check if your php server is launched with openssl and zip extensions");
 define("text_new",				"New version available");
