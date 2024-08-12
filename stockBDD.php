@@ -36,7 +36,6 @@ de cette manière , le reste du site continue a lire la puissance dans la c134
 */
 header("Content-type: text/json");
 require_once("conf/config.inc.php");
-include('simple_html_dom.php'); // load scraper librarie
 require_once("conf/firmware.inc.php");
 
 //*******************declaration des fonctions*******************************************************
@@ -73,18 +72,9 @@ function calcul_consommation($hostname, $database, $username, $password){
 }
 // recupere le prix moyen sur internet
 function scraper_prix_moyen($hostname, $database, $username, $password){
-	$html = file_get_html('https://www.proxi-totalenergies.fr/prix-pellets');
-
-	foreach($html->find('.unit-price') as $e) // recupere la valeur de la class .unit-price
-    // echo $e->innertext . '<br>';
-	preg_match_all('!\d+!', $e, $data);
-	$prix = $data[0][0];
+//doc https://simplehtmldom.sourceforge.io/docs/1.9/index.html
 	
-	foreach($html->find('p.cell') as $e) // recupere la valeur du selecteur p ayant class .cell
-    // echo $e->innertext . '<br>';
-	preg_match_all('!\d+!', $e, $data);
-	// print_r($date);
-	$date = $data[0][5].'-'.$data[0][4].'-'.$data[0][3]; //format date pour mysql
+	require_once("scraper_cost.php"); //scrap html page for local pellet cost
 
 	$query = "INSERT IGNORE INTO prix_moyen (dateB , prix) VALUES ('$date' , $prix )" ;
 

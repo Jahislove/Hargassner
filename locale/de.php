@@ -131,7 +131,7 @@ define("chart4_avg",			"Average");
 define("chart4_avgTemp",		"T° avg");
 define("chart5_title",			"Historic price purchase");
 define("chart5_perTon",			"per ton");
-define("chart6_avgPrice",		"Historic average price in France");
+define("chart6_avgPrice",		"Historic average price in Deutchland");
 define("text_help",				"Click on column above to display chart of this day here");
 define("text_perDay",			"per day");
 define("text_perMonth",			"per month");
