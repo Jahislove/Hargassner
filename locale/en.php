@@ -165,7 +165,7 @@ define("text_gitko",			"Can't reach github.com , try again later");
 define("text_gitmsg",			"If error persist, check if your php server is launched with openssl and zip extensions");
 define("text_new",				"New version available");
 
-// known error list
+// most common error list
 define("TabErreur",	array(
 					0 => "OK",
 					5 => "Please empty ash tray",
@@ -182,7 +182,8 @@ define("TabErreur",	array(
 					229 => "Check/clean pellet level sensor(inside boiler)",
 					371 => "Check fireplace, clean if necessary",
 					7101 => "Time max for domestic hot water exceeded. check hours, sensor, pump",
-					65402 => "Can't connect to web server"
+					65402 => "Can't connect to web server",
+					99999 => "Error : Check on boiler screen/manual" //all unknown error
 					)
 		);
 

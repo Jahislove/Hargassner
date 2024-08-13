@@ -294,7 +294,7 @@ function call_ajax_light(chanel){
 			document.getElementById('tooltipModeChauff').innerHTML = 'Code unknown';
 	}
 // en cas d'erreur
-// la liste des erreurs est contenue dans TabErreur (js/codes_erreurs.js)
+// la liste des erreurs est contenue dans TabErreur , qui provient de locale/fr.php
 	document.getElementById('erreurNumber').innerHTML = chanel['erreur'];
 	switch(chanel['erreur']) { 
 		case 0: 
@@ -304,7 +304,7 @@ function call_ajax_light(chanel){
 		default:
 			document.getElementById('erreur').className = 'erreur erreurVisible';
 			if (typeof TabErreur[chanel['erreur']] == 'undefined') {
-				document.getElementById('erreurText').innerHTML = "unknown error";
+				document.getElementById('erreurText').innerHTML = TabErreur['99999'];
 			}else{
 				document.getElementById('erreurText').innerHTML = TabErreur[chanel['erreur']];
 			}

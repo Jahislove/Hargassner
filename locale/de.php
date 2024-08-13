@@ -166,7 +166,7 @@ define("text_gitko",			"Kann github.com nicht erreichen, versuche es später noc
 define("text_gitmsg",			"Wenn der Fehler bestehen bleibt, überprüfe, dass der php-Server mit der openssl-Erweiterung und dass die zip Erweiterung installiert ist.");
 define("text_new",				"Neue Version verfügbar");
 
-// known error list
+// most common error list
 define("TabErreur",	array(
 					0 => "OK",
 					5 => "Aschelade entleeren",
@@ -183,7 +183,8 @@ define("TabErreur",	array(
 					229 => "Bitte Füllstandsmelder reinigen / kontrollieren",
 					371 => "Brennraum auf Verschmutzung prüfen, gegebenenfalls reinigen",
 					7101 => "Max. Boilerladezeit überschritten, Boilerladung träge! Fühlerposition prüfen, Durchfluss prüfen, Heizungsbauer verständigen",
-					65402 => "Can't connect to web server"
+					65402 => "Verbindung zum Webserver kann nicht hergestellt werden",
+					99999 => "Fehler: Überprüfen Sie den Kesselbildschirm/das Handbuch" //all unknown error
 					)
 		);
 
