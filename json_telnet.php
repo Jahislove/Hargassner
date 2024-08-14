@@ -13,15 +13,7 @@
 // pour les anciennes chaudiere ne disposant que du port serie , on remplace le telnet par une interrogation mysql
 //very old boiler use serial port instead of ethernet, so we use mysql instead
 	header("Content-type: text/json");
-    require_once("conf/config.inc.php");
-	$parameters = parse_ini_file('conf/settings.ini', true);
-	foreach ($parameters as $key => $settings) {
-			extract($parameters[$key]);//transform les key du tableau en nom de variable
-    }
-	if (!isset($language)) {
-	  $language = 'en';
-	}
-	include('locale/' . $language . '.php');
+	require_once("load_cfg.php");
 	require_once("conf/BDD_description_chanel.php");
 
 if ($mode_conn == 'serial'){ 

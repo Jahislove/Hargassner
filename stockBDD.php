@@ -35,7 +35,7 @@ mais si avec un autre firmware la puissance correspond au parametre telnet  50 ,
 de cette manière , le reste du site continue a lire la puissance dans la c134
 */
 header("Content-type: text/json");
-require_once("conf/config.inc.php");
+require_once("load_cfg.php");
 require_once("conf/firmware.inc.php");
 
 //*******************declaration des fonctions*******************************************************

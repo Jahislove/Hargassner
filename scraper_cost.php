@@ -1,13 +1,5 @@
 <?php 
-	require_once('simple_html_dom.php'); // load scraper librarie
-	$parameters = parse_ini_file('conf/settings.ini', true);
-	foreach ($parameters as $key => $settings) {
-			extract($parameters[$key]);//transform les key du tableau en nom de variable
-    }
-	if (!isset($language)) {
-	  $language = 'en';
-	}
-	include('locale/' . $language . '.php');
+require_once('simple_html_dom.php'); // load scraper librarie
 
 // this is a html scrapping , if web design change , it can break the code
 // and need to be recoded, please open a issue on github

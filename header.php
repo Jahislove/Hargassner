@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <?php 
-	require_once("conf/config.inc.php");
-	$parameters = parse_ini_file('conf/settings.ini', true);
-	foreach ($parameters as $key => $settings) {
-			extract($parameters[$key]);//transform les key du tableau en nom de variable
-    }
-	if (!isset($language)) {
-	  $language = 'en';
-	}
-	include('locale/' . $language . '.php');
+	require_once("load_cfg.php");
 ?>
 
 <head>
