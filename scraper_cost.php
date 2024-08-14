@@ -1,6 +1,9 @@
 <?php 
 	require_once('simple_html_dom.php'); // load scraper librarie
-	require_once("conf/settings.inc.php");
+	$parameters = parse_ini_file('conf/settings.ini', true);
+	foreach ($parameters as $key => $settings) {
+			extract($parameters[$key]);//transform les key du tableau en nom de variable
+    }
 	if (!isset($language)) {
 	  $language = 'en';
 	}

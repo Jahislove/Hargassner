@@ -8,8 +8,6 @@
 </div>
 
 <?php
-	require_once("conf/settings.inc.php");
-
     // => liste des chanel utilisés dans conf/settings.inc.php
 	// $chart1_name = ['Etat','Décendrage','Puissance','T° chaudiere est','T° chaudiere doit','T° fumée','T° exterieur','O² est','O² doit','Vitesse Extracteur','T° Ballon ECS','% bois','T° exterieur Moy','T° interieur','T° Départ z1 est','T° Départ z1 doit','T° Départ z2 est','T° Départ z2 doit','Conso du jour','Ballon ECS Etat','Aspiration','T° Retour','Temps décendrage','conso instantanée']; // etat et decendrage obligatoire , ne pas modifier ces 2 valeurs
     

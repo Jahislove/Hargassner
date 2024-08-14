@@ -1,7 +1,10 @@
 ﻿<?php
 // appelé par ajax, renvoi les series de data pour toutes les saisons
 	require_once("conf/config.inc.php");
-	require_once("conf/settings.inc.php");
+	$parameters = parse_ini_file('conf/settings.ini', true);
+	foreach ($parameters as $key => $settings) {
+			extract($parameters[$key]);//transform les key du tableau en nom de variable
+    }
 	if (!isset($language)) {
 	  $language = 'en';
 	}

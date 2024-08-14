@@ -1,6 +1,5 @@
 <?php 
 	require("header.php"); 
-	require_once("conf/settings.inc.php");
 	require_once("conf/firmware.inc.php");
 ?>
 <div id="chart_last24"></div>

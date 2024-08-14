@@ -8,8 +8,6 @@ require("header.php");
 </script>
 
 <?php 
-require_once("conf/settings.inc.php");
-
     $query0 = "SELECT * FROM tarif 
             ORDER BY saison ASC ";
 
