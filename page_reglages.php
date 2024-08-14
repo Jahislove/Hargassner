@@ -64,18 +64,31 @@ require_once("conf/settings.inc.php");
 ?>
 
 <div class="ensemble">
+	<div class="country">
+		<form name="form1" method="post" action="write_origin.php" >
+			<div class="select_LANG">
+				<label for="language">language</label>
+				<select name="language" id="language">
+					<option value="en" <?php echo ($language == "en") ? 'selected' : '';?> >English</<option>
+					<option value="fr" <?php echo ($language == "fr") ? 'selected' : '';?> >Français</<option>
+					<option value="de" <?php echo ($language == "de") ? 'selected' : '';?> >Deutsch</<option>
+				</select>
+			</div>
+			<div class="select_cost_locale">
+				<label for="cost">Price origin</label>
+				<select name="cost_origin" id="cost_id">
+					<option value="fr_1" <?php echo ($origin == "fr") ? 'selected' : '';?> >France</<option>
+					<option value="de_1" <?php echo ($origin == "de") ? 'selected' : '';?> >Deutschland</<option>
+				</select>
+			</div>
+			<div class="radio_bouton">
+				<input type="submit" value=" <?php echo sett_save; ?> ">
+			</div>
+		</form>
+	</div>
 	<div class="boutons_radio">
 		<form name="form1" method="post" action="reglage_write_setting.php" >
 			<span><?php echo sett_title; ?></span>
-			<br>
-			<div class="select_LANG">
-				<label for="lang">language</label>
-				<select name="lang" id="language">
-					<option value="en" <?php echo ($language == "en") ? 'selected' : '';?> >English</<option>
-					<option value="fr" <?php echo ($language == "fr") ? 'selected' : '';?> >Français</<option>
-					<option value="de" <?php echo ($language == "de") ? 'selected' : '';?> >Deutch</<option>
-				</select>
-			</div>
 			<div class="radio_chauffage">
 				<input type="radio" name="zone_chauffage" value="zone1" <?php echo ($zone_chauffage == "zone1") ? 'checked' : '';?> > <?php echo sett_heat; ?> 1<BR>
 				<input type="radio" name="zone_chauffage" value="zone2" <?php echo ($zone_chauffage == "zone2") ? 'checked' : '';?> > <?php echo sett_heat; ?> 2<BR>

@@ -30,6 +30,11 @@ p {
 	margin:  auto;
     width : 550px;
 }
+label {
+    padding: 20px;
+	margin:  auto;
+	font-weight: normal;
+}
 
 h1{
 	font-size: 40px;
@@ -1158,6 +1163,20 @@ a:hover{
   margin-left: auto;
   margin-right: auto;
 }  
+
+/********cadre pays******/
+.country {
+  width: 1150px;
+  height: 300px;
+  border: 1px solid;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 30px 30px;
+  margin:  auto;
+  /* position: absolute; */
+  display: inline-block;
+  float: left;
+}
 
 /********cadre reglage******/
 .boutons_radio {
