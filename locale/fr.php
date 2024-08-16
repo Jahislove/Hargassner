@@ -57,6 +57,10 @@ define("sett_info", 			"Info");
 define("sett_info2", 			"pour chaque saison, indiquez le prix en euro par kilo de granulés");
 define("sett_info3", 			"si vous avez des tarifs différents pendant la saison , indiquez le prix moyen");
 define("sett_info4", 			"La suppression ne concerne que la saison avec son tarif et n'a pas d'impact sur les données de la base");
+define("sett_lang", 			"Langage");
+define("sett_pell", 			"pays pour prix des granulés");
+define("pass_title", 			"Entrez le mot de passe");
+define("pass_default", 			"défaut : password <br/>a modifier dans conf/config.inc.php");
 
 //home page
 define("chart_home_title",		"Données temps réel");
@@ -183,7 +187,7 @@ define("TabErreur",	array(
 					371 => "Vérifier l'encrassement du foyer, nettoyer si nécessaire",
 					7101 => "Temps Maxi de charge du Ballon dépassé. Contrôler les heures, la sonde, la pompe",
 					65402 => "Impossible d'ouvrir la connexion au serveur Web",
-					99999 => "vérifier sur ecran chaudière/notice" //all unknown error
+					99999 => "Erreur : vérifier sur ecran chaudière/notice" //all unknown error
 					)
 		);
 		

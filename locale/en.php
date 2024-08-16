@@ -57,6 +57,10 @@ define("sett_info", 			"Info");
 define("sett_info2", 			"For each Heating period(Sept to Aug), enter price/kilo of pellets");
 define("sett_info3", 			"If prices vary during the Heating period then use the average price");
 define("sett_info4", 			"When you delete a Heating period, only the Heating period and the price are deleted. all boiler data remains intact");
+define("sett_lang", 			"Language");
+define("sett_pell", 			"Country for Pellet's price ");
+define("pass_title", 			"Enter password");
+define("pass_default", 			"default : password <br/>you need to modify it in conf/config.inc.php");
 
 //home page
 define("chart_home_title",		"Real time data");

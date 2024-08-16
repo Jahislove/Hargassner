@@ -1,5 +1,5 @@
 <?php
-require_once("conf/config.inc.php");
+require_once("load_cfg.php");
 
 ###############################################################
 # Page Password Protect 2.13
@@ -93,7 +93,7 @@ if(!function_exists('showLoginPasswordProtect')) {
 		?>
 		<html>
 		<head>
-		  <title>Entrez le mot de passe pour accéder aux réglages</title>
+		  <title><?php echo pass_title; ?></title>
 			<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 			<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 			<link rel="stylesheet" href="css/main.css" type="text/css"  />
@@ -102,19 +102,17 @@ if(!function_exists('showLoginPasswordProtect')) {
 			<div class="password_div">
 		  
 			  <form method="post">
-				<h3><BR/>Entrez le mot de passe pour accéder aux réglages</h3>
+				<h3><BR/><?php echo pass_title; ?></h3>
 				<BR/>
 				<?php
 				if (PASSWORD == 'password'){
-					echo 'défaut : password 
-					<BR/>
-					a modifier dans conf/config.inc.php';
+					echo pass_default;
 				}
 				?>
 				<font color="red"><?php echo $error_msg; ?></font><br />
 				<BR/>
 			<?php if (USE_USERNAME) echo 'Login:<br /><input type="input" name="access_login" /><br />Password:<br />'; ?>
-				<input type="password" name="access_password" /><p></p><input type="submit" name="Submit" value="Valider" />
+				<input type="password" name="access_password" /><p></p><input type="submit" name="Submit" value="OK" />
 			  </form>
 			  
 			</div>

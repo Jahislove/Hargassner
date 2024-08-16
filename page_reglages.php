@@ -63,9 +63,9 @@ require("header.php");
 
 <div class="ensemble">
 	<div class="country">
-		<form name="form1" method="post" action="write_origin.php" >
+		<form name="form1" method="post" action="reglage_write_ini.php" >
 			<div class="select_LANG">
-				<label for="language">language</label>
+				<label for="language"><?php echo sett_lang; ?></label>
 				<select name="language" id="language">
 					<option value="en" <?php echo ($language == "en") ? 'selected' : '';?> >English</<option>
 					<option value="fr" <?php echo ($language == "fr") ? 'selected' : '';?> >Français</<option>
@@ -73,10 +73,11 @@ require("header.php");
 				</select>
 			</div>
 			<div class="select_cost_locale">
-				<label for="cost">Price origin</label>
+				<label for="cost"><?php echo sett_pell; ?></label>
 				<select name="cost_origin" id="cost_id">
-					<option value="fr_1" <?php echo ($origin == "fr") ? 'selected' : '';?> >France</<option>
-					<option value="de_1" <?php echo ($origin == "de") ? 'selected' : '';?> >Deutschland</<option>
+					<option value="cost_fr_1" <?php echo ($cost_origin == "cost_fr_1") ? 'selected' : '';?> >France: <?php echo $cost_fr_1; ?></<option>
+					<option value="cost_de_1" <?php echo ($cost_origin == "cost_de_1") ? 'selected' : '';?> >Deutschland: <?php echo $cost_de_1; ?></<option>
+					<option value="cost_en_1" <?php echo ($cost_origin == "cost_en_1") ? 'selected' : '';?> >England: need website , using France instead: <?php echo $cost_de_1; ?></<option>
 				</select>
 			</div>
 			<div class="radio_bouton">

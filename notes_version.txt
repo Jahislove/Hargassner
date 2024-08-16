@@ -6,6 +6,7 @@
 v4.1 	06/08/2024
 	added english/french/german translation
 	added Germany average pellet cost
+	added a new config file :settings.ini for personalizing data from settings page
 	
 v4.0 	01/08/2024
 	optimisation de requetes(chargement plus rapide de la page consommation)

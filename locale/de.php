@@ -57,6 +57,10 @@ define("sett_info", 			"Info");
 define("sett_info2", 			"Eingabe Pelletpreis / Kilo pro Heizperiode");
 define("sett_info3", 			"Wenn es während der Heizperiode unterschiedliche Preise gibt, nehmen Sie den Durschnittspreis");
 define("sett_info4", 			"Das Löschen der Werte pro Heizperiode löscht nur den Namen und den Preis. Alle Kesseldaten bleiben erhalten.");
+define("sett_lang", 			"Sprache");
+define("sett_pell", 			"Land für Pellets Preis");
+define("pass_title", 			"Passwort eingeben");
+define("pass_default", 			"Standard : password <br/>Sie müssen es ändern conf/config.inc.php");
 
 //home page
 define("chart_home_title",		"Echtzeitdaten");

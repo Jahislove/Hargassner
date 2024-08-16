@@ -3,9 +3,9 @@ require_once('simple_html_dom.php'); // load scraper librarie
 
 // this is a html scrapping , if web design change , it can break the code
 // and need to be recoded, please open a issue on github
-switch ($language) {
-    case 'de':
-		$html = file_get_html('https://www.holzpellets.net/pelletspreise/');
+switch ($cost_origin) {
+    case 'cost_de_1':
+		$html = file_get_html($cost_de_1);
 		
 		//search for cost
 		$value=$html->find('.fw600',0); //search for text in the first element with class name...
@@ -17,11 +17,13 @@ switch ($language) {
 		$datefull=$html->find('.card_current_price_stand',0); //search for text in the first element with class name...
 		$datefull= $datefull->innertext ; // keep only text(remove balises html)
 		$dateTab = date_parse($datefull); // parse date
+		// echo $datefull;
+		// echo "<pre>". print_r($dateTab,true) . "</pre>";
 		$date = $dateTab['year'].'-'.$dateTab['month'].'-'.$dateTab['day'];// transform date in mySQL format
         break;
 		
-    case 'fr':
-		$html = file_get_html('https://www.proxi-totalenergies.fr/prix-pellets');
+    case 'cost_fr_1':
+		$html = file_get_html($cost_fr_1);
 		
 		$value=$html->find('.unit-price',0); 
 		$value= $value->innertext ; 
@@ -30,13 +32,13 @@ switch ($language) {
 		
 		$datefull=$html->find('p.cell',0); 
 		$datefull= $datefull->innertext ; 
-		$dateTab = date_parse($datefull); 
-		$date = $dateTab['year'].'-'.$dateTab['month'].'-'.$dateTab['day'];
+		preg_match_all('!\d+!', $datefull, $data);//preg au lieu de parse car phrase complete
+		$date = $data[0][2].'-'.$data[0][1].'-'.$data[0][0]; //format date pour mysql
         break;
 		
-    case 'en':
+    case 'cost_en_1':
 	//need GB ref , for now French is used instead
-		$html = file_get_html('https://www.proxi-totalenergies.fr/prix-pellets');
+		$html = file_get_html($cost_en_1);
 		
 		$value=$html->find('.unit-price',0); 
 		$value= $value->innertext ; 
@@ -45,9 +47,8 @@ switch ($language) {
 		
 		$datefull=$html->find('p.cell',0); 
 		$datefull= $datefull->innertext ; 
-		$dateTab = date_parse($datefull);
-		$date = $dateTab['year'].'-'.$dateTab['month'].'-'.$dateTab['day'];
-		// echo $date;
+		preg_match_all('!\d+!', $datefull, $data);//preg au lieu de parse car phrase complete
+		$date = $data[0][2].'-'.$data[0][1].'-'.$data[0][0]; //format date pour mysql
         break;
 		
 }
