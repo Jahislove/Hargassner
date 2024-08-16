@@ -86,7 +86,7 @@ require("header.php");
 		</form>
 	</div>
 	<div class="boutons_radio">
-		<form name="form1" method="post" action="reglage_write_setting.php" >
+		<form name="form1" method="post" action="reglage_write_ini.php" >
 			<span><?php echo sett_title; ?></span>
 			<div class="radio_chauffage">
 				<input type="radio" name="zone_chauffage" value="zone1" <?php echo ($zone_chauffage == "zone1") ? 'checked' : '';?> > <?php echo sett_heat; ?> 1<BR>
