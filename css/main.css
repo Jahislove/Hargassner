@@ -1191,7 +1191,7 @@ a:hover{
   display: inline-block;
   float: left;
 }
-.radio_chauffage, .radio_ECS, .radio_MODE, .select_LANG{
+.radio_chauffage, .radio_ECS, .radio_MODE{
   top: 50px;
   position: relative;
   /* width: 400px; */
@@ -1199,8 +1199,31 @@ a:hover{
   text-align: left;
   margin: 0px 30px 40px 0px ;
 }
+.select_country {
+  position: relative;
+  text-align: left;
+  margin: auto ;
+}
+#lang{
+  position: relative;
+  text-align: right;
+  width: 200px;
+  margin: 0px 0px 0px 100px ;
+} 
+#coun{
+  position: relative;
+  text-align: right;
+  width: 300px;
+  margin: auto ;
+}
+#firm{
+  position: relative;
+  text-align: right;
+  width: 200px;
+  margin: 0px 0px 0px 100px ;
+}
 .radio_bouton {
-  top: 50px;
+  top: 30px;
   position: relative;
   width: 200px;
   height: 100px;

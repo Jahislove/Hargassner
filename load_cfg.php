@@ -7,8 +7,11 @@ if (!file_exists('conf/settings.ini' )){
 	file_put_contents('conf/settings.ini',
 ';Do not modify
 [localization]
-    cost_origin = fr_1
     language = en
+    cost_origin = cost_fr_1
+    cost_de_1 = https://www.holzpellets.net/pelletspreise
+    cost_fr_1 = https://www.proxi-totalenergies.fr/prix-pellets
+    cost_en_1 = https://www.proxi-totalenergies.fr/prix-pellets
 
 [settings_boiler]
     zone_chauffage = zone1

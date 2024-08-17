@@ -64,20 +64,40 @@ require("header.php");
 <div class="ensemble">
 	<div class="country">
 		<form name="form1" method="post" action="reglage_write_ini.php" >
-			<div class="select_LANG">
-				<label for="language"><?php echo sett_lang; ?></label>
-				<select name="language" id="language">
+			<div class="select_country">
+				<label for="language" id="lang"><?php echo sett_lang; ?></label>
+				<select name="language">
 					<option value="en" <?php echo ($language == "en") ? 'selected' : '';?> >English</<option>
 					<option value="fr" <?php echo ($language == "fr") ? 'selected' : '';?> >Français</<option>
 					<option value="de" <?php echo ($language == "de") ? 'selected' : '';?> >Deutsch</<option>
 				</select>
 			</div>
-			<div class="select_cost_locale">
-				<label for="cost"><?php echo sett_pell; ?></label>
-				<select name="cost_origin" id="cost_id">
+			<div class="select_country">
+				<label for="cost_origin" id="coun" ><?php echo sett_pell; ?></label>
+				<select name="cost_origin" >
 					<option value="cost_fr_1" <?php echo ($cost_origin == "cost_fr_1") ? 'selected' : '';?> >France: <?php echo $cost_fr_1; ?></<option>
 					<option value="cost_de_1" <?php echo ($cost_origin == "cost_de_1") ? 'selected' : '';?> >Deutschland: <?php echo $cost_de_1; ?></<option>
-					<option value="cost_en_1" <?php echo ($cost_origin == "cost_en_1") ? 'selected' : '';?> >England: need website , using France instead: <?php echo $cost_de_1; ?></<option>
+					<option value="cost_de_2" <?php echo ($cost_origin == "cost_de_2") ? 'selected' : '';?> >Österreich: <?php echo $cost_de_2; ?></<option>
+					<option value="cost_en_1" <?php echo ($cost_origin == "cost_en_1") ? 'selected' : '';?> >England: need website: <?php echo $cost_fr_1; ?></<option>
+				</select>
+			</div>
+			<div class="select_country">
+				<label for="firmware" id="firm">Firmware</label>
+				<select name="firmware" >
+					<option value="4.3d" <?php echo ($firmware == "4.3d") ? 'selected' : '';?> >v4.3d</<option>
+					<option value="10.2h" <?php echo ($firmware == "10.2h") ? 'selected' : '';?> >v10.2h</<option>
+					<option value="14e" <?php echo ($firmware == "14e") ? 'selected' : '';?> >v14.0e</<option>
+					<option value="14f" <?php echo ($firmware == "14f") ? 'selected' : '';?> >v14.0f</<option>
+					<option value="14g" <?php echo ($firmware == "14g") ? 'selected' : '';?> >v14.0g</<option>
+					<option value="14i" <?php echo ($firmware == "14i") ? 'selected' : '';?> >v14.0i</<option>
+					<option value="14j" <?php echo ($firmware == "14j") ? 'selected' : '';?> >v14.0j</<option>
+					<option value="14k" <?php echo ($firmware == "14k") ? 'selected' : '';?> >v14.0k</<option>
+					<option value="14l" <?php echo ($firmware == "14l") ? 'selected' : '';?> >v14.0l</<option>
+					<option value="14m" <?php echo ($firmware == "14m") ? 'selected' : '';?> >v14.0m</<option>
+					<option value="14n" <?php echo ($firmware == "14n") ? 'selected' : '';?> >v14.0n</<option>
+					<option value="V14.0HAR.o" <?php echo ($firmware == "V14.0HAR.o") ? 'selected' : '';?> >v14.0HAR.o</<option>
+					<option value="V14.0HAR.o2" <?php echo ($firmware == "V14.0HAR.o2") ? 'selected' : '';?> >v14.0HAR.o2</<option>
+					<option value="V14.0HAR.p" <?php echo ($firmware == "V14.0HAR.p") ? 'selected' : '';?> >v14.0HAR.p</<option>
 				</select>
 			</div>
 			<div class="radio_bouton">

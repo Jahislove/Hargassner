@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$content['localization']['cost_de_1']= 'https://www.holzpellets.net/pelletspreise';
 		$content['localization']['cost_fr_1']= 'https://www.proxi-totalenergies.fr/prix-pellets';
 		$content['localization']['cost_en_1']= 'https://www.proxi-totalenergies.fr/prix-pellets';
+		$content['settings_boiler']['firmware']= $_POST['firmware'];
 	}
 
 	if ($_POST['zone_chauffage']) {

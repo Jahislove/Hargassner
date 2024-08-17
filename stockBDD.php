@@ -17,7 +17,7 @@
 // this script need to be executed every minute
 /* 	
 
-available firmware (if yours is not here , use the pellets last one ( modify in conf/config.inc.php)
+available firmware (if yours is not here , use the pellets last one ( modify in settings page)
 pellets  14e , 14f , 14g , 14i , 14j, 14k, 14l, 14m, 14n, V14.0HAR.o, V14.0HAR.o2, V14.0HAR.p
 wood 4.3d, 10.2h
 
