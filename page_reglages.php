@@ -1,6 +1,6 @@
-<?php include("password_protect.php"); ?>
 <?php 
-require("header.php"); 
+	include("password_protect.php");
+	require("header.php"); 
 ?>
     
 <script type="text/javascript">
@@ -58,7 +58,6 @@ require("header.php");
 		$tarif_hidden = ' hidden'; // cache le cadre tarif si pas de BDD
 		// die("Connection failed: " . mysqli_connect_error());
 	}
-
 ?>
 
 <div class="ensemble">
@@ -75,10 +74,9 @@ require("header.php");
 			<div class="select_country">
 				<label for="cost_origin" id="coun" ><?php echo sett_pell; ?></label>
 				<select name="cost_origin" >
-					<option value="cost_fr_1" <?php echo ($cost_origin == "cost_fr_1") ? 'selected' : '';?> >France: <?php echo $cost_fr_1; ?></<option>
-					<option value="cost_de_1" <?php echo ($cost_origin == "cost_de_1") ? 'selected' : '';?> >Deutschland: <?php echo $cost_de_1; ?></<option>
-					<option value="cost_de_2" <?php echo ($cost_origin == "cost_de_2") ? 'selected' : '';?> >Österreich: <?php echo $cost_de_2; ?></<option>
-					<option value="cost_en_1" <?php echo ($cost_origin == "cost_en_1") ? 'selected' : '';?> >England: need website: <?php echo $cost_fr_1; ?></<option>
+					<option value="cost_FRA" <?php echo ($cost_origin == "cost_FRA") ? 'selected' : '';?> >France: https://www.proxi-totalenergies.fr/prix-pellets</<option>
+					<option value="cost_DEU" <?php echo ($cost_origin == "cost_DEU") ? 'selected' : '';?> >Deutschland: https://www.holzpellets.net/pelletspreise</<option>
+					<option value="cost_AUT" <?php echo ($cost_origin == "cost_AUT") ? 'selected' : '';?> >Österreich: https://at.holzpellets.net/pelletspreise/</<option>
 				</select>
 			</div>
 			<div class="select_country">
@@ -95,9 +93,9 @@ require("header.php");
 					<option value="14l" <?php echo ($firmware == "14l") ? 'selected' : '';?> >v14.0l</<option>
 					<option value="14m" <?php echo ($firmware == "14m") ? 'selected' : '';?> >v14.0m</<option>
 					<option value="14n" <?php echo ($firmware == "14n") ? 'selected' : '';?> >v14.0n</<option>
-					<option value="V14.0HAR.o" <?php echo ($firmware == "V14.0HAR.o") ? 'selected' : '';?> >v14.0HAR.o</<option>
+					<option value="V14.0HAR.o"  <?php echo ($firmware == "V14.0HAR.o" ) ? 'selected' : '';?> >v14.0HAR.o</<option>
 					<option value="V14.0HAR.o2" <?php echo ($firmware == "V14.0HAR.o2") ? 'selected' : '';?> >v14.0HAR.o2</<option>
-					<option value="V14.0HAR.p" <?php echo ($firmware == "V14.0HAR.p") ? 'selected' : '';?> >v14.0HAR.p</<option>
+					<option value="V14.0HAR.p"  <?php echo ($firmware == "V14.0HAR.p" ) ? 'selected' : '';?> >v14.0HAR.p</<option>
 				</select>
 			</div>
 			<div class="radio_bouton">

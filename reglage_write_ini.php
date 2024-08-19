@@ -9,9 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($_POST['language']) {
 		$content['localization']['language']= $_POST['language'];
 		$content['localization']['cost_origin']= $_POST['cost_origin'];
-		$content['localization']['cost_de_1']= 'https://www.holzpellets.net/pelletspreise';
-		$content['localization']['cost_fr_1']= 'https://www.proxi-totalenergies.fr/prix-pellets';
-		$content['localization']['cost_en_1']= 'https://www.proxi-totalenergies.fr/prix-pellets';
 		$content['settings_boiler']['firmware']= $_POST['firmware'];
 	}
 
