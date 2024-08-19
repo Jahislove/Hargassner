@@ -47,7 +47,7 @@ define("status_manu", 			"Manueller Modus");
 define("status_assist", 		"Verbrennungsunterstützung");
 
 //settings page
-define("sett_title", 			"Parameter");
+define("sett_title", 			"Parameter fur<br>Startseite");
 define("sett_heat", 			"Heizkreis");
 define("sett_save", 			"Sichern");
 define("sett_add", 				"Zufügen");

@@ -1164,32 +1164,64 @@ a:hover{
   margin-right: auto;
 }  
 
-/********cadre pays******/
-.country {
+/********cadre parametres******/
+.parametres {
   width: 1150px;
-  height: 300px;
+  height: 500px;
   border: 1px solid;
   background-color: #f0f0f0;
   border-radius: 20px;
-  padding: 30px 30px;
+  padding: auto;
   margin:  auto;
   /* position: absolute; */
   display: inline-block;
   float: left;
 }
-
-/********cadre reglage******/
-.boutons_radio {
-  width: 400px;
-  height: 700px;
-  border: 1px solid;
+.country {
+  width: 850px;
+  /* height: 700px; */
+  /* border: 1px solid; */
   background-color: #f0f0f0;
   border-radius: 20px;
-  padding: 30px 30px;
-  margin:  auto;
+  padding: 30px 0px;
   /* position: absolute; */
-  display: inline-block;
+  margin:  auto;
+  /* display: inline-block; */
   float: left;
+}
+.select_liste {
+  position: relative;
+  text-align: left;
+  margin: 50px 0px ;
+  /* float: left; */
+}
+#lang, #firm{
+  position: relative;
+  text-align: right;
+  width: 200px;
+  margin: 0px 0px 0px 65px ;
+  padding: 4px 20px;
+  float: left;
+} 
+#coun{
+  position: relative;
+  text-align: right;
+  width: 265px;
+  padding: 4px 20px;
+  margin: auto ;
+  float: left;
+}
+.boutons_radio {
+  width: 290px;
+  /* height: 700px; */
+  /* border: 1px solid; */
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 30px 0px;
+  /* position: absolute; */
+  margin:  auto;
+  /* display: inline-block; */
+  float: right;
 }
 .radio_chauffage, .radio_ECS, .radio_MODE{
   top: 50px;
@@ -1199,31 +1231,7 @@ a:hover{
   text-align: left;
   margin: 0px 30px 40px 0px ;
 }
-.select_country {
-  position: relative;
-  text-align: left;
-  margin: auto ;
-}
-#lang{
-  position: relative;
-  text-align: right;
-  width: 200px;
-  margin: 0px 0px 0px 100px ;
-} 
-#coun{
-  position: relative;
-  text-align: right;
-  width: 300px;
-  margin: auto ;
-}
-#firm{
-  position: relative;
-  text-align: right;
-  width: 200px;
-  margin: 0px 0px 0px 100px ;
-}
-.radio_bouton {
-  top: 30px;
+.bouton_save {
   position: relative;
   width: 200px;
   height: 100px;
@@ -1248,12 +1256,12 @@ input[type=submit]:hover {
 /********************************************************************/	
 /********cadre tarif******/
 .tarif {
-  width: 750px;
-  min-height: 700px;
+  width: 1150px;
+  min-height: 600px;
   border: 1px solid;
-  background-color: #f0f0f0;
+  background-color: #cccccc;
   border-radius: 20px;
-  padding: 30px 30px;
+  padding: 30px 60px;
   margin: auto;
   position: relative;
   display : inline-block;
@@ -1329,10 +1337,9 @@ input[type=submit]:hover {
 /***ajouter/supprimer  onglet*******/
 .onglet {
   position: relative;
-  /* width: 200px; */
   height: 100px;
+  margin: 10px 100px 0px 0px;
   text-align: center;
-  /* display : inline-block; */
   float: right;
 }	
 .form_ajout_saison {
@@ -1349,14 +1356,18 @@ input[type=submit]:hover {
   text-align: center;
 }	
 div.tabs {
-  height: 650px;		
-  width: 300px;
+  height: 480px;		
+  width: 400px;
   position: relative;		/* Establish a containing block */
   line-height: 1;		/* Easier to calculate with */
   z-index: 0;
   }			
+#tab2 {
+  text-align: center;
+}
 div.tabs > div {
   display: inline;		/* We want the buttons all on one line */
+  text-align: left;
 }
 div.tabs > div > a {
   color: #5d5d5d;			/* Looks more like a button than a link */
@@ -1364,7 +1375,7 @@ div.tabs > div > a {
   padding: 0.2em;		/* Some breathing space */
   border: 0.1em outset #BBB;	/* Make it look like a button */
   border-bottom: 0.1em solid #CCC;  /* Visually connect tab and tab body */
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 0px 0px;
 } 
 div.tabs > div:not(:target) > a {
   border-bottom: none;		/* Make the bottom border disappear */
@@ -1372,7 +1383,7 @@ div.tabs > div:not(:target) > a {
 }		
 div.tabs > div:target > a,	/* Apply to the targeted item or... */
 :target #default2 > a {		/* ... to the default item */
-  border-bottom: 0.1em solid #CCC; /* Visually connect tab and tab body */
+  border-bottom: none; /* Visually connect tab and tab body */
   background: #f0f0f0; /* Active tab is light gray */
 }		
 div.tabs > div > div {
@@ -1382,9 +1393,9 @@ div.tabs > div > div {
   bottom: 0; right: 0;		/* Other sides flush with containing block */
   overflow: auto;		/* Scroll bar if needed */
   padding: 0.3em;		/* Looks better */
-  /*border: 0.1em outset #BBB; /* 3D look */
+  /* border: 0.1em outset #BBB; /* 3D look*/ 
   /* border: 1px solid #f0f0f0; */
-  border-radius: 0px 20px 20px 20px;
+  border-radius: 20px 20px 20px 20px;
 }	
 div.tabs > div:not(:target) > div { /* Protect CSS1 & CSS2 browsers */
   position: absolute ; /* All these DIVs overlap */

@@ -47,7 +47,7 @@ define("status_manu", 			"Mode manuel");
 define("status_assist", 		"Assistant de combustion");
 
 //settings page
-define("sett_title", 			"paramètres");
+define("sett_title", 			"paramètres pour affichage<br>page d'accueil");
 define("sett_heat", 			"Zone Chauffage");
 define("sett_save", 			"Enregistrer");
 define("sett_add", 				"Ajouter");
@@ -58,7 +58,7 @@ define("sett_info2", 			"pour chaque saison, indiquez le prix en euro par kilo d
 define("sett_info3", 			"si vous avez des tarifs différents pendant la saison , indiquez le prix moyen");
 define("sett_info4", 			"La suppression ne concerne que la saison avec son tarif et n'a pas d'impact sur les données de la base");
 define("sett_lang", 			"Langage");
-define("sett_pell", 			"pays pour prix des granulés");
+define("sett_pell", 			"pays pour prix granulés");
 define("pass_title", 			"Entrez le mot de passe");
 define("pass_default", 			"défaut : password <br/>a modifier dans conf/config.inc.php");
 

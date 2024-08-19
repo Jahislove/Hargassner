@@ -61,71 +61,68 @@
 ?>
 
 <div class="ensemble">
-	<div class="country">
+	<div class="parametres">
 		<form name="form1" method="post" action="reglage_write_ini.php" >
-			<div class="select_country">
-				<label for="language" id="lang"><?php echo sett_lang; ?></label>
-				<select name="language">
-					<option value="en" <?php echo ($language == "en") ? 'selected' : '';?> >English</<option>
-					<option value="fr" <?php echo ($language == "fr") ? 'selected' : '';?> >Français</<option>
-					<option value="de" <?php echo ($language == "de") ? 'selected' : '';?> >Deutsch</<option>
-				</select>
+			<div class="country">
+				<div class="select_liste">
+					<label for="language" id="lang"><?php echo sett_lang; ?></label>
+					<select name="language">
+						<option value="en" <?php echo ($language == "en") ? 'selected' : '';?> >English</<option>
+						<option value="fr" <?php echo ($language == "fr") ? 'selected' : '';?> >Français</<option>
+						<option value="de" <?php echo ($language == "de") ? 'selected' : '';?> >Deutsch</<option>
+					</select>
+				</div>
+				<div class="select_liste">
+					<label for="firmware" id="firm">Firmware</label>
+					<select name="firmware" >
+						<option value="4.3d" <?php echo ($firmware == "4.3d") ? 'selected' : '';?> >v4.3d</<option>
+						<option value="10.2h" <?php echo ($firmware == "10.2h") ? 'selected' : '';?> >v10.2h</<option>
+						<option value="14e" <?php echo ($firmware == "14e") ? 'selected' : '';?> >v14.0e</<option>
+						<option value="14f" <?php echo ($firmware == "14f") ? 'selected' : '';?> >v14.0f</<option>
+						<option value="14g" <?php echo ($firmware == "14g") ? 'selected' : '';?> >v14.0g</<option>
+						<option value="14i" <?php echo ($firmware == "14i") ? 'selected' : '';?> >v14.0i</<option>
+						<option value="14j" <?php echo ($firmware == "14j") ? 'selected' : '';?> >v14.0j</<option>
+						<option value="14k" <?php echo ($firmware == "14k") ? 'selected' : '';?> >v14.0k</<option>
+						<option value="14l" <?php echo ($firmware == "14l") ? 'selected' : '';?> >v14.0l</<option>
+						<option value="14m" <?php echo ($firmware == "14m") ? 'selected' : '';?> >v14.0m</<option>
+						<option value="14n" <?php echo ($firmware == "14n") ? 'selected' : '';?> >v14.0n</<option>
+						<option value="V14.0HAR.o"  <?php echo ($firmware == "V14.0HAR.o" ) ? 'selected' : '';?> >v14.0HAR.o</<option>
+						<option value="V14.0HAR.o2" <?php echo ($firmware == "V14.0HAR.o2") ? 'selected' : '';?> >v14.0HAR.o2</<option>
+						<option value="V14.0HAR.p"  <?php echo ($firmware == "V14.0HAR.p" ) ? 'selected' : '';?> >v14.0HAR.p</<option>
+					</select>
+				</div>
+				<div class="select_liste">
+					<label for="cost_origin" id="coun" ><?php echo sett_pell; ?></label>
+					<select name="cost_origin" >
+						<option value="cost_FRA" <?php echo ($cost_origin == "cost_FRA") ? 'selected' : '';?> >France: https://www.proxi-totalenergies.fr/prix-pellets</<option>
+						<option value="cost_DEU" <?php echo ($cost_origin == "cost_DEU") ? 'selected' : '';?> >Deutschland: https://www.holzpellets.net/pelletspreise</<option>
+						<option value="cost_AUT" <?php echo ($cost_origin == "cost_AUT") ? 'selected' : '';?> >Österreich: https://at.holzpellets.net/pelletspreise/</<option>
+					</select>
+				</div>
 			</div>
-			<div class="select_country">
-				<label for="cost_origin" id="coun" ><?php echo sett_pell; ?></label>
-				<select name="cost_origin" >
-					<option value="cost_FRA" <?php echo ($cost_origin == "cost_FRA") ? 'selected' : '';?> >France: https://www.proxi-totalenergies.fr/prix-pellets</<option>
-					<option value="cost_DEU" <?php echo ($cost_origin == "cost_DEU") ? 'selected' : '';?> >Deutschland: https://www.holzpellets.net/pelletspreise</<option>
-					<option value="cost_AUT" <?php echo ($cost_origin == "cost_AUT") ? 'selected' : '';?> >Österreich: https://at.holzpellets.net/pelletspreise/</<option>
-				</select>
+			<div class="boutons_radio">
+				<span><?php echo sett_title; ?></span>
+				<div class="radio_chauffage">
+					<input type="radio" name="zone_chauffage" value="zone1" <?php echo ($zone_chauffage == "zone1") ? 'checked' : '';?> > <?php echo sett_heat; ?> 1<BR>
+					<input type="radio" name="zone_chauffage" value="zone2" <?php echo ($zone_chauffage == "zone2") ? 'checked' : '';?> > <?php echo sett_heat; ?> 2<BR>
+					<input type="radio" name="zone_chauffage" value="zone3" <?php echo ($zone_chauffage == "zone3") ? 'checked' : '';?> > <?php echo sett_heat; ?> 3<BR>
+				</div>
+				<div class="radio_ECS">
+					<input type="radio" name="zone_ecs" value="ballon1" <?php echo ($zone_ecs == "ballon1") ? 'checked' : '';?> > <?php echo text_temp_tank; ?> 1<BR>
+					<input type="radio" name="zone_ecs" value="ballon2" <?php echo ($zone_ecs == "ballon2") ? 'checked' : '';?> > <?php echo text_temp_tank; ?> 2<BR>
+					<input type="radio" name="zone_ecs" value="ballon3" <?php echo ($zone_ecs == "ballon3") ? 'checked' : '';?> > <?php echo text_temp_tank; ?> 3<BR>
+				</div>
+				<div class="radio_MODE">
+					<input type="radio" name="zone_mode_chauffage" value="modeChauffageA" <?php echo ($zone_mode_chauffage == "modeChauffageA") ? 'checked' : '';?> > Zone FR35 A<BR>
+					<input type="radio" name="zone_mode_chauffage" value="modeChauffage1" <?php echo ($zone_mode_chauffage == "modeChauffage1") ? 'checked' : '';?> > Zone FR35 1<BR>
+					<input type="radio" name="zone_mode_chauffage" value="modeChauffage2" <?php echo ($zone_mode_chauffage == "modeChauffage2") ? 'checked' : '';?> > Zone FR35 2<BR>
+					<input type="radio" name="zone_mode_chauffage" value="modeChauffage3" <?php echo ($zone_mode_chauffage == "modeChauffage3") ? 'checked' : '';?> > Zone FR35 3<BR>
+					<input type="radio" name="zone_mode_chauffage" value="modeChauffage4" <?php echo ($zone_mode_chauffage == "modeChauffage4") ? 'checked' : '';?> > Zone FR35 4<BR>
+					<input type="radio" name="zone_mode_chauffage" value="modeChauffage5" <?php echo ($zone_mode_chauffage == "modeChauffage5") ? 'checked' : '';?> > Zone FR35 5<BR>
+					<input type="radio" name="zone_mode_chauffage" value="modeChauffage6" <?php echo ($zone_mode_chauffage == "modeChauffage6") ? 'checked' : '';?> > Zone FR35 6<BR>
+				</div>
 			</div>
-			<div class="select_country">
-				<label for="firmware" id="firm">Firmware</label>
-				<select name="firmware" >
-					<option value="4.3d" <?php echo ($firmware == "4.3d") ? 'selected' : '';?> >v4.3d</<option>
-					<option value="10.2h" <?php echo ($firmware == "10.2h") ? 'selected' : '';?> >v10.2h</<option>
-					<option value="14e" <?php echo ($firmware == "14e") ? 'selected' : '';?> >v14.0e</<option>
-					<option value="14f" <?php echo ($firmware == "14f") ? 'selected' : '';?> >v14.0f</<option>
-					<option value="14g" <?php echo ($firmware == "14g") ? 'selected' : '';?> >v14.0g</<option>
-					<option value="14i" <?php echo ($firmware == "14i") ? 'selected' : '';?> >v14.0i</<option>
-					<option value="14j" <?php echo ($firmware == "14j") ? 'selected' : '';?> >v14.0j</<option>
-					<option value="14k" <?php echo ($firmware == "14k") ? 'selected' : '';?> >v14.0k</<option>
-					<option value="14l" <?php echo ($firmware == "14l") ? 'selected' : '';?> >v14.0l</<option>
-					<option value="14m" <?php echo ($firmware == "14m") ? 'selected' : '';?> >v14.0m</<option>
-					<option value="14n" <?php echo ($firmware == "14n") ? 'selected' : '';?> >v14.0n</<option>
-					<option value="V14.0HAR.o"  <?php echo ($firmware == "V14.0HAR.o" ) ? 'selected' : '';?> >v14.0HAR.o</<option>
-					<option value="V14.0HAR.o2" <?php echo ($firmware == "V14.0HAR.o2") ? 'selected' : '';?> >v14.0HAR.o2</<option>
-					<option value="V14.0HAR.p"  <?php echo ($firmware == "V14.0HAR.p" ) ? 'selected' : '';?> >v14.0HAR.p</<option>
-				</select>
-			</div>
-			<div class="radio_bouton">
-				<input type="submit" value=" <?php echo sett_save; ?> ">
-			</div>
-		</form>
-	</div>
-	<div class="boutons_radio">
-		<form name="form1" method="post" action="reglage_write_ini.php" >
-			<span><?php echo sett_title; ?></span>
-			<div class="radio_chauffage">
-				<input type="radio" name="zone_chauffage" value="zone1" <?php echo ($zone_chauffage == "zone1") ? 'checked' : '';?> > <?php echo sett_heat; ?> 1<BR>
-				<input type="radio" name="zone_chauffage" value="zone2" <?php echo ($zone_chauffage == "zone2") ? 'checked' : '';?> > <?php echo sett_heat; ?> 2<BR>
-				<input type="radio" name="zone_chauffage" value="zone3" <?php echo ($zone_chauffage == "zone3") ? 'checked' : '';?> > <?php echo sett_heat; ?> 3<BR>
-			</div>
-			<div class="radio_ECS">
-				<input type="radio" name="zone_ecs" value="ballon1" <?php echo ($zone_ecs == "ballon1") ? 'checked' : '';?> > <?php echo text_temp_tank; ?> 1<BR>
-				<input type="radio" name="zone_ecs" value="ballon2" <?php echo ($zone_ecs == "ballon2") ? 'checked' : '';?> > <?php echo text_temp_tank; ?> 2<BR>
-				<input type="radio" name="zone_ecs" value="ballon3" <?php echo ($zone_ecs == "ballon3") ? 'checked' : '';?> > <?php echo text_temp_tank; ?> 3<BR>
-			</div>
-			<div class="radio_MODE">
-				<input type="radio" name="zone_mode_chauffage" value="modeChauffageA" <?php echo ($zone_mode_chauffage == "modeChauffageA") ? 'checked' : '';?> > Zone FR35 A<BR>
-				<input type="radio" name="zone_mode_chauffage" value="modeChauffage1" <?php echo ($zone_mode_chauffage == "modeChauffage1") ? 'checked' : '';?> > Zone FR35 1<BR>
-				<input type="radio" name="zone_mode_chauffage" value="modeChauffage2" <?php echo ($zone_mode_chauffage == "modeChauffage2") ? 'checked' : '';?> > Zone FR35 2<BR>
-				<input type="radio" name="zone_mode_chauffage" value="modeChauffage3" <?php echo ($zone_mode_chauffage == "modeChauffage3") ? 'checked' : '';?> > Zone FR35 3<BR>
-				<input type="radio" name="zone_mode_chauffage" value="modeChauffage4" <?php echo ($zone_mode_chauffage == "modeChauffage4") ? 'checked' : '';?> > Zone FR35 4<BR>
-				<input type="radio" name="zone_mode_chauffage" value="modeChauffage5" <?php echo ($zone_mode_chauffage == "modeChauffage5") ? 'checked' : '';?> > Zone FR35 5<BR>
-				<input type="radio" name="zone_mode_chauffage" value="modeChauffage6" <?php echo ($zone_mode_chauffage == "modeChauffage6") ? 'checked' : '';?> > Zone FR35 6<BR>
-			</div>
-			<div class="radio_bouton">
+			<div class="bouton_save">
 				<input type="submit" value=" <?php echo sett_save; ?> ">
 			</div>
 		</form>

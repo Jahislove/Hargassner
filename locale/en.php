@@ -47,18 +47,18 @@ define("status_manu", 			"Manual mode");
 define("status_assist", 		"Combustion assist");
 
 //settings page
-define("sett_title", 			"parameters");
+define("sett_title", 			"parameters for<br>home page");
 define("sett_heat", 			"Heating zone");
 define("sett_save", 			"Save");
 define("sett_add", 				"Add");
-define("sett_addSeas", 			"Add a season");
+define("sett_addSeas", 			"Add a heating period");
 define("sett_del", 				"Delete");
 define("sett_info", 			"Info");
-define("sett_info2", 			"For each Heating period(Sept to Aug), enter price/kilo of pellets");
+define("sett_info2", 			"For each heating period(Sept to Aug), enter price/kilo of pellets");
 define("sett_info3", 			"If prices vary during the Heating period then use the average price");
-define("sett_info4", 			"When you delete a Heating period, only the Heating period and the price are deleted. all boiler data remains intact");
+define("sett_info4", 			"When you delete a heating period, only the heating period and the price are deleted. all boiler data remains intact");
 define("sett_lang", 			"Language");
-define("sett_pell", 			"Country for Pellet's price ");
+define("sett_pell", 			"Country for Pellet's price");
 define("pass_title", 			"Enter password");
 define("pass_default", 			"default : password <br/>you need to modify it in conf/config.inc.php");
 
