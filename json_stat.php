@@ -1,5 +1,5 @@
 <?php
-require_once("conf/config.inc.php");
+	require_once("load_cfg.php");
 header("Content-type: text/json");
 
 switch($_POST['request']){

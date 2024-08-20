@@ -1,6 +1,6 @@
 <?php
 // appelé par ajax, renvoi les series de data pour toutes les saisons
-require_once("conf/config.inc.php");
+	require_once("load_cfg.php");
 
 header("Content-type: text/json");
 

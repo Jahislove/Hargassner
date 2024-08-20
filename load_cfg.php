@@ -8,9 +8,10 @@ if (!file_exists('conf/settings.ini' )){
 ';Do not modify
 [localization]
     language = en
-    cost_origin = cost_FRA
+    cost_origin = France
 
 [settings_boiler]
+    firmware = v14.0HAR.p
     zone_chauffage = zone1
     zone_ecs = ballon1
     zone_mode_chauffage = modeChauffage1

@@ -4,7 +4,7 @@
 //echo '<script>console.log('.$variable.')</script>';
 // print_r($monarray); affichage array
 
-require_once("conf/config.inc.php");
+	require_once("load_cfg.php");
 
 	header("Content-type: text/json");
 

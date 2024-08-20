@@ -1,7 +1,7 @@
 <?php
 //appelé par ajax, 
 
-require_once("conf/config.inc.php");
+	require_once("load_cfg.php");
  
 
 	header("Content-type: text/json");
