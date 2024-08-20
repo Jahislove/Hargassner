@@ -2,7 +2,7 @@
     
 <div class="calendar">
     <div class="input-group date">
-        <input type="text" class="form-control" placeholder="date">
+        <input type="text" class="form-control" placeholder="" >
         <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
     </div>
 </div>
@@ -119,7 +119,7 @@ for (var k=0;k<=23;k++) {
 
 
 //*****************Calendrier pickup********************************************************
-$(function() {
+$(document).ready(function() {
     $( ".input-group.date" ).datepicker({
         format: "DD dd MM yyyy",
         startDate: new Date(<?php echo $dateMin[0]; ?>,<?php echo $dateMin[1]; ?> - 1,<?php echo $dateMin[2]; ?>),
@@ -127,6 +127,7 @@ $(function() {
         minViewMode: 0,
         daysOfWeekHighlighted: "6,0",
         todayBtn: 'linked',
+		todayHighlight: true,
         language: "<?php echo $language; ?>",
         autoclose: true    
     })
@@ -151,6 +152,9 @@ $(function() {
                 }
             });
     });
+	var date = new Date();
+	var today = date.getDate()+' / '+ date.getMonth()+' / '+date.getFullYear();
+	$('.form-control').attr({placeholder: today});
 });
 
 // definition des graphiques
