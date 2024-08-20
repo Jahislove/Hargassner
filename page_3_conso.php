@@ -772,7 +772,7 @@ $(function() {
 			renderTo: 'prix_moyen_histo',
 		},
 		title: {
-			text: '<?php echo chart6_avgPrice; ?>',
+			text: '<?php echo chart6_avgPrice; echo $cost_origin?>',
 	        align: 'left',
 	        x: 65,
 			style:{

@@ -4,15 +4,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	//lecture du fichier ini et stockage dans tableau 2D
 	$content = parse_ini_file('conf/settings.ini', true);
 
-// echo "<pre>". print_r($content,true) . "</pre>";
-	// remplacement par nouvelles valeurs
+	// echo "<pre>". print_r($content,true) . "</pre>";
 	if ($_POST['language']) {
-		$content['localization']['language']= $_POST['language'];
-		$content['localization']['cost_origin']= $_POST['cost_origin'];
-		$content['settings_boiler']['firmware']= $_POST['firmware'];
-	}
-
-	if ($_POST['zone_chauffage']) {
 		switch ($_POST['zone_chauffage']){
 			case 'zone1':
 				$depart_chauffage_EST = 'c21';
@@ -38,6 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$ballon_ECS = 'c43';
 				break;
 		}
+	// remplacement par nouvelles valeurs
+		$content['localization']['language']= $_POST['language'];
+		$content['localization']['cost_origin']= $_POST['cost_origin'];
+		$content['settings_boiler']['firmware']= $_POST['firmware'];
 		$content['settings_boiler']['zone_chauffage']= $_POST['zone_chauffage'];
 		$content['settings_boiler']['zone_ecs']= $_POST['zone_ecs'];
 		$content['settings_boiler']['zone_mode_chauffage']= $_POST['zone_mode_chauffage'];
@@ -55,10 +52,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 		$newText .= "\n";
     }
-// echo "<pre>". print_r($newText,true) . "</pre>";
+	// echo "<pre>". print_r($newText,true) . "</pre>";
+	
 	// ecriture du fichier
 	file_put_contents('conf/settings.ini',$newText);
 }
-	require("page_reglages.php");
+require("page_reglages.php");
 
 ?>

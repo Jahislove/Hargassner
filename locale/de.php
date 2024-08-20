@@ -136,7 +136,7 @@ define("chart4_avg",			"Durchschnitt");
 define("chart4_avgTemp",		"Durchnittstemperatur");
 define("chart5_title",			"Historie Kaufpreis");
 define("chart5_perTon",			"pro Tonne");
-define("chart6_avgPrice",		"durchsnittlicher Pelletpreis in Deutschland");
+define("chart6_avgPrice",		"durchsnittlicher Pelletpreis in ");
 define("text_help",				"Klicke auf die Spalte oben um das Diagramm des Tages anzuzeigen.");
 define("text_perDay",			"pro Tag");
 define("text_perMonth",			"pro Monat");

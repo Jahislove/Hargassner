@@ -94,9 +94,9 @@
 				<div class="select_liste">
 					<label for="cost_origin" id="coun" ><?php echo sett_pell; ?></label>
 					<select name="cost_origin" >
-						<option value="cost_FRA" <?php echo ($cost_origin == "cost_FRA") ? 'selected' : '';?> >France: https://www.proxi-totalenergies.fr/prix-pellets</<option>
-						<option value="cost_DEU" <?php echo ($cost_origin == "cost_DEU") ? 'selected' : '';?> >Deutschland: https://www.holzpellets.net/pelletspreise</<option>
-						<option value="cost_AUT" <?php echo ($cost_origin == "cost_AUT") ? 'selected' : '';?> >Österreich: https://at.holzpellets.net/pelletspreise/</<option>
+						<option value="France" <?php echo ($cost_origin == "France") ? 'selected' : '';?> >France: https://www.proxi-totalenergies.fr/prix-pellets</<option>
+						<option value="Deutschland" <?php echo ($cost_origin == "Deutschland") ? 'selected' : '';?> >Deutschland: https://www.holzpellets.net/pelletspreise</<option>
+						<option value="Österreich" <?php echo ($cost_origin == "Österreich") ? 'selected' : '';?> >Österreich: https://at.holzpellets.net/pelletspreise/</<option>
 					</select>
 				</div>
 			</div>

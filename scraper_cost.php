@@ -4,9 +4,8 @@ require_once('simple_html_dom.php'); // load scraper librarie
 
 // this is a html scrapping , if web design change , it can break the code
 // and need to be recoded, please open a issue on github
-
 switch ($cost_origin) {
-    case 'cost_DEU':
+    case 'Deutschland':
 		$html = file_get_html('https://www.holzpellets.net/pelletspreise');
 		
 		//search for cost
@@ -22,7 +21,7 @@ switch ($cost_origin) {
 		$date = $dateTab['year'].'-'.$dateTab['month'].'-'.$dateTab['day'];// transform date in mySQL format
         break;
 		
-    case 'cost_AUT':
+    case 'Österreich':
 		$html = file_get_html('https://at.holzpellets.net/pelletspreise');
 		
 		//search for cost
@@ -38,7 +37,7 @@ switch ($cost_origin) {
 		$date = $dateTab['year'].'-'.$dateTab['month'].'-'.$dateTab['day'];// transform date in mySQL format
         break;
 		
-    case 'cost_FRA':
+    case 'France':
 		$html = file_get_html('https://www.proxi-totalenergies.fr/prix-pellets');
 		
 		$value=$html->find('.unit-price',0); 

@@ -135,14 +135,14 @@ define("chart4_avg",			"Moyenne");
 define("chart4_avgTemp",		"T° moy");
 define("chart5_title",			"historique prix achat");
 define("chart5_perTon",			"Par tonne");
-define("chart6_avgPrice",		"Historique prix moyen en France");
+define("chart6_avgPrice",		"Historique prix moyen en ");
 define("text_help",				"Cliquez sur une colonne au dessus pour afficher les courbes du jour ici");
 define("text_perDay",			"Par jour");
 define("text_perMonth",			"Par mois");
 define("text_Tmin",				"Temperature minimale enregistrée");
 define("text_Tmax",				"Temperature maximale enregistrée");
 define("text_hotWaterAvg",		"consommation moyenne ECS");
-define("text_hotWaterTip",		"Calculer depuis Jun-Jul-Aug");
+define("text_hotWaterTip",		"Calculé depuis Jun-Jul-Aug");
 define("text_Pelletmax",		"Consommation maximale de granulés");
 
 //page About
