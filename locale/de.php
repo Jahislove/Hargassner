@@ -48,6 +48,7 @@ define("status_assist", 		"Verbrennungsunterstützung");
 
 //settings page
 define("sett_title", 			"Parameter fur<br>Startseite");
+define("sett_vide", 			"Erstellen Sie zunächst eine Saison <BR>über die Schaltfläche Hinzufügen<BR>");
 define("sett_heat", 			"Heizkreis");
 define("sett_save", 			"Sichern");
 define("sett_add", 				"Zufügen");

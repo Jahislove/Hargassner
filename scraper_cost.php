@@ -4,6 +4,9 @@ require_once('simple_html_dom.php'); // load scraper librarie
 
 // this is a html scrapping , if web design change , it can break the code
 // and need to be recoded, please open a issue on github
+
+//doc https://simplehtmldom.sourceforge.io/docs/1.9/index.html
+// $cost_origin = 'Belgique';
 switch ($cost_origin) {
     case 'Deutschland':
 		$html = file_get_html('https://www.holzpellets.net/pelletspreise');
@@ -37,6 +40,23 @@ switch ($cost_origin) {
 		$date = $dateTab['year'].'-'.$dateTab['month'].'-'.$dateTab['day'];// transform date in mySQL format
         break;
 		
+    case 'Belgique':
+		$html = file_get_html('https://www.palette-pellets.be/prix-pellet/');
+	// echo 	file_get_html('https://www.palette-pellets.be/prix-pellet/')->plaintext;
+	// foreach($html->find('.elementor-element-b3d4140 .elementor-widget-container p strong') as $value)
+	// echo $value->plaintext . '<br>';
+	
+		$value = $html->find('.elementor-element-b3d4140 .elementor-widget-container p strong');
+	
+		preg_match_all('!\d+!', $value[2], $data, ); 
+		$prix = $data[0][0];
+		
+		$dateTab = date_parse($value[0]); // parse date
+		$date = $dateTab['year'].'-'.$dateTab['month'].'-'.$dateTab['day'];// transform date in mySQL format
+		// preg_match_all('!\d+!', $value[0], $data);//preg au lieu de parse car phrase complete
+		// $date = $data[0][2].'-'.$data[0][1].'-'.$data[0][0]; //format date pour mysql
+        break;
+		
     case 'France':
 		$html = file_get_html('https://www.proxi-totalenergies.fr/prix-pellets');
 		
@@ -54,6 +74,8 @@ switch ($cost_origin) {
 
 // echo "<pre>". print_r($dateTab,true) . "</pre>";
 // echo $date;
+// echo '<br>';
+// echo $prix;
 
 // https://simplehtmldom.sourceforge.io/docs/1.9/manual/finding-html-elements/
 // Find all element which id=foo

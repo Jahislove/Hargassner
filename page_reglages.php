@@ -48,7 +48,7 @@
 		if($obj_saison){
 			$nombre_saison = count($obj_saison);
 		} else {
-			$table_vide = 'commencez par créer une saison<BR>avec le bouton "ajouter"<BR>';
+			$table_vide = sett_vide;
 			$bouton_hidden = ' hidden'; // cache le bouton enregistrer si bdd vide
 		}
 		$tarif_hidden = '';
@@ -95,8 +95,9 @@
 					<label for="cost_origin" id="coun" ><?php echo sett_pell; ?></label>
 					<select name="cost_origin" >
 						<option value="France" <?php echo ($cost_origin == "France") ? 'selected' : '';?> >France: https://www.proxi-totalenergies.fr/prix-pellets</<option>
+						<option value="Belgique" <?php echo ($cost_origin == "Belgique") ? 'selected' : '';?> >Belgique: https://www.palette-pellets.be/prix-pellet</<option>
 						<option value="Deutschland" <?php echo ($cost_origin == "Deutschland") ? 'selected' : '';?> >Deutschland: https://www.holzpellets.net/pelletspreise</<option>
-						<option value="Österreich" <?php echo ($cost_origin == "Österreich") ? 'selected' : '';?> >Österreich: https://at.holzpellets.net/pelletspreise/</<option>
+						<option value="Österreich" <?php echo ($cost_origin == "Österreich") ? 'selected' : '';?> >Österreich: https://at.holzpellets.net/pelletspreise</<option>
 					</select>
 				</div>
 			</div>

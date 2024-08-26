@@ -47,7 +47,8 @@ define("status_manu", 			"Mode manuel");
 define("status_assist", 		"Assistant de combustion");
 
 //settings page
-define("sett_title", 			"paramètres pour affichage<br>page d'accueil");
+define("sett_title", 			"Paramètres pour affichage<br>page d'accueil");
+define("sett_vide", 			"Commencez par créer une saison<BR>avec le bouton ajouter<BR>");
 define("sett_heat", 			"Zone Chauffage");
 define("sett_save", 			"Enregistrer");
 define("sett_add", 				"Ajouter");

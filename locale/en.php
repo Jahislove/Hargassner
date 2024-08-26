@@ -47,7 +47,8 @@ define("status_manu", 			"Manual mode");
 define("status_assist", 		"Combustion assist");
 
 //settings page
-define("sett_title", 			"parameters for<br>home page");
+define("sett_title", 			"Parameters for<br>home page");
+define("sett_vide", 			"Start by adding a heating period<BR>with the add button<BR>");
 define("sett_heat", 			"Heating zone");
 define("sett_save", 			"Save");
 define("sett_add", 				"Add");
