@@ -4,7 +4,33 @@
 ?>
     
 <script type="text/javascript">
-	requestData('call_ajax_light') // in header.php
+	requestData('call_ajax_light'); // in header.php
+	
+	//history : display delete checkbox if country change
+	function displayDelete(object){
+		var original = '<?php echo $cost_origin; ?>';
+		var value = object.value;
+		if (value == original) {
+			document.getElementById('caseDelete').className = 'delete_histo nonVisible';
+		}else {
+			document.getElementById('caseDelete').className = 'delete_histo visible';
+		}
+	}
+	
+	///history : check if delete box is checked for confirmation message
+	function confirmation() {
+		var box_delete = document.getElementById("checkDel").checked;
+		if (box_delete == true){
+			if(confirm("<?php echo sett_confHisto; ?>")) {
+				return true;//confirmed: send to server
+			}else{
+				document.getElementById("checkDel").checked = false;
+				return false;// cancel and uncheck box
+			}
+		}else{
+			return true;// unchecked: directly send to server
+		}
+	}
 </script>
 
 <?php 
@@ -62,7 +88,7 @@
 
 <div class="ensemble">
 	<div class="parametres">
-		<form name="form1" method="post" action="reglage_write_ini.php" >
+		<form name="form1" method="post" action="reglage_write_ini.php" onsubmit="return confirmation()">
 			<div class="country">
 				<div class="select_liste">
 					<label for="language" id="lang"><?php echo sett_lang; ?></label>
@@ -93,12 +119,17 @@
 				</div>
 				<div class="select_liste">
 					<label for="cost_origin" id="coun" ><?php echo sett_pell; ?></label>
-					<select name="cost_origin" >
+					<select name="cost_origin" onchange="displayDelete(this)">
 						<option value="France" <?php echo ($cost_origin == "France") ? 'selected' : '';?> >France: https://www.proxi-totalenergies.fr/prix-pellets</<option>
 						<option value="Belgique" <?php echo ($cost_origin == "Belgique") ? 'selected' : '';?> >Belgique: https://www.palette-pellets.be/prix-pellet</<option>
 						<option value="Deutschland" <?php echo ($cost_origin == "Deutschland") ? 'selected' : '';?> >Deutschland: https://www.holzpellets.net/pelletspreise</<option>
 						<option value="Österreich" <?php echo ($cost_origin == "Österreich") ? 'selected' : '';?> >Österreich: https://at.holzpellets.net/pelletspreise</<option>
 					</select>
+					<br>
+					<div  id="caseDelete" class="delete_histo nonVisible">
+						<input type="checkbox" id="checkDel" name="deleteOK" value="coched">
+						<label for="checkDel"> <?php echo sett_delHisto; ?></label>
+					</div>
 				</div>
 			</div>
 			<div class="boutons_radio">

@@ -1,6 +1,13 @@
 <?php
 	// appelé par page_reglages.php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	// delete historic country average price
+	if ($_POST['deleteOK'] == 'coched') {
+		echo 'YES delete';
+	}else {
+		echo 'NO delete';
+	}
+	
 	//lecture du fichier ini et stockage dans tableau 2D
 	$content = parse_ini_file('conf/settings.ini', true);
 

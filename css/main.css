@@ -1211,6 +1211,16 @@ a:hover{
   margin: auto ;
   float: left;
 }
+.delete_histo {
+  margin: 0px 0px 0px 265px ;
+}
+.visible {
+    visibility: visible;
+}
+.nonVisible {
+    visibility: hidden;
+}
+
 .boutons_radio {
   width: 290px;
   /* height: 700px; */

@@ -60,6 +60,8 @@ define("sett_info3", 			"si vous avez des tarifs différents pendant la saison ,
 define("sett_info4", 			"La suppression ne concerne que la saison avec son tarif et n'a pas d'impact sur les données de la base");
 define("sett_lang", 			"Langage");
 define("sett_pell", 			"pays pour prix granulés");
+define("sett_delHisto", 		"Effacer l'historique ? (utile si vous changer le pays)");
+define("sett_confHisto", 		"Etes vous certain de vouloir effacer l'historique des prix moyens ?");
 define("pass_title", 			"Entrez le mot de passe");
 define("pass_default", 			"défaut : password <br/>a modifier dans conf/config.inc.php");
 

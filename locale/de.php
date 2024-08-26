@@ -60,6 +60,8 @@ define("sett_info3", 			"Wenn es während der Heizperiode unterschiedliche Preis
 define("sett_info4", 			"Das Löschen der Werte pro Heizperiode löscht nur den Namen und den Preis. Alle Kesseldaten bleiben erhalten.");
 define("sett_lang", 			"Sprache");
 define("sett_pell", 			"Land für Pellets Preis");
+define("sett_delHisto", 		"Verlauf löschen ? (nützlich, wenn Sie das Land wechseln)");
+define("sett_confHisto", 		"Möchten Sie den Durchschnittspreisverlauf wirklich löschen ?");
 define("pass_title", 			"Passwort eingeben");
 define("pass_default", 			"Standard : password <br/>Sie müssen es ändern conf/config.inc.php");
 

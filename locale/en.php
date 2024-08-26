@@ -60,6 +60,8 @@ define("sett_info3", 			"If prices vary during the Heating period then use the a
 define("sett_info4", 			"When you delete a heating period, only the heating period and the price are deleted. all boiler data remains intact");
 define("sett_lang", 			"Language");
 define("sett_pell", 			"Country for Pellet's price");
+define("sett_delHisto", 		"Delete history ? (usefull if you change country)");
+define("sett_confHisto", 		"Are you sure you want to clear average price history ?");
 define("pass_title", 			"Enter password");
 define("pass_default", 			"default : password <br/>you need to modify it in conf/config.inc.php");
 
@@ -134,9 +136,9 @@ define("chart4_title",			"Consumption and Average temperature per month");
 define("chart4_subTitle",		"For each season");
 define("chart4_avg",			"Average");
 define("chart4_avgTemp",		"T° avg");
-define("chart5_title",			"Historic price purchase");
+define("chart5_title",			"History price purchase");
 define("chart5_perTon",			"per ton");
-define("chart6_avgPrice",		"Historic average price in ");
+define("chart6_avgPrice",		"History average price in ");
 define("text_help",				"Click on column above to display chart of this day here");
 define("text_perDay",			"per day");
 define("text_perMonth",			"per month");
