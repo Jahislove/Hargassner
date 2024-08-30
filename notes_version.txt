@@ -10,7 +10,8 @@ v4.1 	30/08/2024
 	settings page : added english/french/german choice translation
 	settings page : added Germany , Austria, Belgium average pellet cost
 	settings page : added delete pellet price history option when you change country , to delete old value from old country
-	added a new config file conf/settings.ini for storing data from settings page
+	added : firmware version is now visible in footer
+	added : a new config file conf/settings.ini for storing data from settings page
 	moving $firmware parameter from config.inc.cfg to settings page:
 	$firmware is no longer used inside config.inc.cfg (but still visible as install can't modify it, you can delete the line manually), you must use the settings page to configure it
 	
