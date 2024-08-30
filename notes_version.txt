@@ -2,15 +2,17 @@
 *** Supervising Hargassner boiler
 *** Autor : Jahislove
 *** GPL-3.0-or-later
-*** for modification (new firmware, language, country ...)
+*** for modification/bug (new firmware, language, country ...)
 *** =>open an issue https://github.com/Jahislove/Hargassner/issues
 ************************************************************************/
-v4.1 	16/08/2024
+v4.1 	30/08/2024
+	all the website is now available in French, English and German (thx to NittyGritty for German)
 	settings page : added english/french/german website translation
-	settings page : added Germany average pellet cost
+	settings page : added Germany , Austria, Belgium average pellet cost
 	added a new config file :settings.ini for storing data from settings page
 	moving $firmware parameter from config.inc.cfg to settings page:
 	$firmware is no longer used inside config.inc.cfg , you must use the settings page to configure it
+	added : delete pellet price history option when you change country , to delete old value from old country
 	
 v4.0 	01/08/2024
 	optimisation de requetes(chargement plus rapide de la page consommation)
