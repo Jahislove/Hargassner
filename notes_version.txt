@@ -7,6 +7,7 @@
 ************************************************************************/
 v4.1 	30/08/2024
 	all the website is now available in French, English and German (thx to NittyGritty for German)
+	please use Shift-F5 to refresh pages without cache
 	settings page : added english/french/german choice translation
 	settings page : added Germany , Austria, Belgium average pellet cost
 	settings page : added delete pellet price history option when you change country , to delete old value from old country
