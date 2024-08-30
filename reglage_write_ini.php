@@ -1,11 +1,22 @@
 <?php
 	// appelé par page_reglages.php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	// delete historic country average price
+	// backup and delete historic country average price
 	if ($_POST['deleteOK'] == 'coched') {
-		echo 'YES delete';
-	}else {
-		echo 'NO delete';
+		require_once("load_cfg.php");
+		$query = "SELECT * FROM prix_moyen  ";
+		$text = "INSERT INTO `prix_moyen` (`dateB`, `prix`) VALUES \n";
+		$conn = mysqli_connect ($hostname, $username, $password, $database); 
+		$req = mysqli_query($conn, $query);
+		while($data = mysqli_fetch_row($req)){
+			$text .= "('$data[0]',$data[1]),\n";
+		}
+		$text = substr($text,0,-2);// remove last ,\n
+		$text .= ";";
+		file_put_contents("historic_cost_backup_". date('Y-m-d_Hi').".sql",$text);
+		$query = "truncate prix_moyen";
+		mysqli_query($conn, $query);
+		mysqli_close($conn);
 	}
 	
 	//lecture du fichier ini et stockage dans tableau 2D
