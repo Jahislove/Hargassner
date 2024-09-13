@@ -56,8 +56,53 @@ array_shift($data); // supprime le 1er parametre inutile(pm) pour aligner les nu
 // the array data contain all parameters from the telnet from 0 to 188+, the order change with each firmwares
 // the array output contain all parameters used by home page
 // so we can say which telnet parameter goes where
+
+//exemple de cheminement pour le 4.3d
+//call_ajax.js appelle ce fichier json_telnet.php
+//json_telnet.php inverse les parametres en fonction du firmware et il renvoi le resultat dans un tableau $output à call_ajax.js
+//call_ajax se sert du tableau pour mofifier les valerus de la page d'acceuil
+//par exemple le 26 eme parametre du telnet ($data[26]) est stocké dans l'index 'puissance' du tableau $output
+// si les affichages de la page d'acceuil sont erronés c'est donc ici qu'il faut corriger
+
 switch ($firmware) {
     case '4.3d':
+		$etat_desc = $ETAT[$data[0]];
+		if (!$etat_desc){
+			$etat_desc = 'Unknown Status '.$data[0];
+		}
+		$output = array(
+			'heure' 		=> time() * 1000,
+			'etat_num' 		=> $data[0],
+			'etat_desc' 	=> $etat_desc,
+			'lambda'		=> null, 		//O2 sonde lambda
+			'puissance' 	=> $data[20],	//puissance
+			'extract'		=> $data[12], 	// extracteur de fumée, ou 13 ?
+			'Fumee'			=> $data[3],	// temperature fumée
+			'chaudiereEst'	=> $data[2],	// temp chaudiere est
+			'chaudiereDoit'	=> null,
+			'Tint'			=> $data[14]-4,	//temperature interieur , me souvient plus pourquoi il faut retirer 4°C 
+			'Text'			=> $data[4],	//temperature exterieur
+			'TextMoy'		=> $data[5],	//temperature ext moyenne
+			'departEst'		=> $data[6],	//temp depart radiateur est
+			'departDoit'	=> $data[8],	//temp depart radiateur doit
+			'retourEst' 	=> null,
+			'retourDoit'	=> null,
+			'bois'			=> $data[16],	// % vis amené granulés ,  ou 56 ?
+			'TempECS'		=> $data[10],
+			'pompe-ECS'		=> $data[13],
+			'tempsDecend'	=> $data[111], 	// temps depuis dernier decendrage auto
+			'tempsVis'		=> null,		// temps rotation vis amené
+			'mvtGrille' 	=> $data[52],	// nombre mouvement grille
+			'PelletConso'	=> null,
+			'PelletRest' 	=> $data[115],
+			'variableK' 	=> null,
+			'variableF' 	=> null,
+			'modeChauff'	=> null,  // mode chauffage ( confort, réduit, arret)
+			'modeCommand'	=> null,  	//mode de commande => 1:  programmé, 2 reduit forcé, 3 confort forcé, 4 soirée , 5 absence brève
+			'consoHeure'	=> $consoHeure, // conso granulé par heure
+			'integral'		=> $data,
+		);
+        break;
     case '10.2h': //chaudiere buche
 		$etat_desc = $ETAT[$data[22]];
 		if (!$etat_desc){
