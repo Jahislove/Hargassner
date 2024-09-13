@@ -61,7 +61,7 @@ array_shift($data); // supprime le 1er parametre inutile(pm) pour aligner les nu
 //call_ajax.js appelle ce fichier json_telnet.php
 //json_telnet.php inverse les parametres en fonction du firmware et il renvoi le resultat dans un tableau $output à call_ajax.js
 //call_ajax se sert du tableau pour mofifier les valerus de la page d'acceuil
-//par exemple le 26 eme parametre du telnet ($data[26]) est stocké dans l'index 'puissance' du tableau $output
+//par exemple le 26 eme parametre du telnet ($data[20]) est stocké dans l'index 'puissance' du tableau $output
 // si les affichages de la page d'acceuil sont erronés c'est donc ici qu'il faut corriger
 
 switch ($firmware) {
