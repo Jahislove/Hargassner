@@ -94,7 +94,7 @@ define("text_oxyIs",				"O² Ist");
 define("text_oxyMust",				"O² Soll");
 define("text_temp_returnIs", 		"Rücklauf Temperatur Ist");
 define("text_temp_returnMust",		"Rücklauf Temperatur Soll");
-define("text_time_ash", 			"Time for ash removal is");
+define("text_time_ash", 			"Zeit für die Aschebeseitigung ist");
 define("text_state_ash", 			"Status Entaschung");
 define("text_move_ash",				"Bewegung Schieberost");
 define("text_time_screw",			"Zeit nach der letzten Ansaugung");

@@ -70,6 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 		$newText .= "\n";
     }
+	//debug affiche array
 	// echo "<pre>". print_r($newText,true) . "</pre>";
 	
 	// ecriture du fichier

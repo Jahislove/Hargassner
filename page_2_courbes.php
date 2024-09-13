@@ -32,6 +32,8 @@
 	if (empty($data[0])){
 		$dateMin = ['2017','01','01']; 
 	}
+	//debug affiche array
+	// echo "<pre>". print_r($newText,true) . "</pre>";
 ?>
 
 <div class="rel">

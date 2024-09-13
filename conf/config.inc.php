@@ -48,7 +48,7 @@ $color_ECS_T = '#b7950b';
 $color_ECS_etat = '#B4EDFE';
 
 //*****ne pas modifier ci dessous/ do not modify below************************************************	
-$mode_conn = 'telnet'; 
+$mode_conn = 'telnet'; //or  serial for old boiler
 $refresh = 10; //refresh main page / rafraichissement en seconde de l'etat de la chaudiere , ne pas descendre sous les 2 car le telnet de la chaudiere n'arrive plus a repondre assez vite
 $histo_temps = 30; //historique du graphique de la page d'accueil en mn
 $histo_live_shift = $histo_temps * 60 / $refresh; // nombre de valeur avant de shift

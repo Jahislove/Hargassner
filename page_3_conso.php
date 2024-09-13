@@ -82,6 +82,8 @@
 		$mois[] = $moisNom[$data[0]-1]; // transformation mois numerique en nom long
         $consoMoy[] = $data[1];
     }
+	//debug affiche array
+	// echo "<pre>". print_r($newText,true) . "</pre>";
 ?>
 
 <?php require("footer.php");?>
