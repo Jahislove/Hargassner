@@ -395,7 +395,7 @@ $(function() {
 			zIndex: 1,
 			data: []
 		}, {
-			name: '<?php echo text_tempZ2_toHeaterIs; ?>',
+			name: '<?php echo text_tempZ1_toHeaterIs; ?>',
 			type: 'line',
 			color: '<?php echo $color_TdepE; ?>',
 			zIndex: 2,

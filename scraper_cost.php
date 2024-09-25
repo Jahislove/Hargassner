@@ -1,12 +1,13 @@
 <?php 
 //called by stockBDD.php
+require("load_cfg.php");
 require_once('simple_html_dom.php'); // load scraper librarie
 
 // this is a html scrapping , if web design change , it can break the code
 // and need to be recoded, please open a issue on github
 
 //doc https://simplehtmldom.sourceforge.io/docs/1.9/index.html
-// $cost_origin = 'Belgique';
+// $cost_origin = 'France';
 switch ($cost_origin) {
     case 'Deutschland':
 		$html = file_get_html('https://www.holzpellets.net/pelletspreise');
@@ -59,7 +60,6 @@ switch ($cost_origin) {
 		
     case 'France':
 		$html = file_get_html('https://www.proxi-totalenergies.fr/prix-pellets');
-		
 		$value=$html->find('.unit-price',0); 
 		$value= $value->innertext ; 
 		preg_match_all('!\d+!', $value, $data, ); 
@@ -71,7 +71,6 @@ switch ($cost_origin) {
 		$date = $data[0][2].'-'.$data[0][1].'-'.$data[0][0]; //format date pour mysql
         break;
 }
-
 // echo "<pre>". print_r($dateTab,true) . "</pre>";
 // echo $date;
 // echo '<br>';
