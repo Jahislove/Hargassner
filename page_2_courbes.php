@@ -155,7 +155,7 @@ $(document).ready(function() {
             });
     });
 	var date = new Date();
-	var today = date.getDate()+' / '+ date.getMonth()+' / '+date.getFullYear();
+	var today = date.getDate()+' / '+ (date.getMonth()+1) +' / '+date.getFullYear();
 	$('.form-control').attr({placeholder: today});
 });
 
