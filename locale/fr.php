@@ -7,7 +7,7 @@ define("weekdays", 		"'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendre
 define("shortMonths", 	"'Janv', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin',  'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec'");
 
 //header menu
-define("menu_main", 			"Accueil");
+define("menu_home", 			"Accueil");
 define("menu_data", 			"Données");
 define("menu_graph", 			"Courbes");
 define("menu_consumption", 		"Consommation");
