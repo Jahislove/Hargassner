@@ -5,6 +5,13 @@
 *** for modification/bug (new firmware, language, country ...)
 *** =>open an issue https://github.com/Jahislove/Hargassner/issues
 ************************************************************************/
+v4.2 
+	bug correction : month in calendar pickup was wrong
+	bug correction : scraper for average price wasn't working
+	bug correction : French version wasn't working
+	added firmware V14.0HAR.n6
+	
+
 v4.1 	30/08/2024
 	all the website is now available in French, English and German (thx to NittyGritty for German)
 	please use Shift-F5 to refresh pages without cache
