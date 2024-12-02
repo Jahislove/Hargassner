@@ -273,6 +273,68 @@ switch ($firmware) {
 			'integral'	=> $data,
 		);
         break;
+	case 'V14.0HAR.n6'://Modif. by ABR pour une configuration avec ballon Tampon ou j'affiche la charge au lieu température
+		$depart_chauffage = array( 
+			'zone1' => ['est' => 64, 'doit' => 65, 'modeChauff' => 68, 'Tint' => 66],//Modif. by ABR puis 68
+			'zone2' => ['est' => 71, 'doit' => 72, 'modeChauff' => 75, 'Tint' => 73],//c22,c24,c86,c139
+			'zone3' => ['est' => 71, 'doit' => 72, 'modeChauff' => 75, 'Tint' => 73],// n'existe plus en 14n => on pointe sur zone2
+		);
+		$ballon_ECS = array( 
+			'ballon1' => ['est' => 14], // fonction selection de reglages ne marche pas on force en 97 devient 14
+			'ballon2' => ['est' => 97], // n'existe plus en 14n => on pointe sur 83
+			'ballon3' => ['est' => 97], // n'existe plus en 14n => on pointe sur 83
+			'ballonTC' => ['est' => 14], // Modif. ABR Température ballon ECS devient charge ballon TP % 97 devient 14
+
+		);
+		$mode_chauff = array( 
+			'modeChauffageA' => ['modeChauff' => 63],//c84
+			'modeChauffage1' => ['modeChauff' => 69],//c85
+			'modeChauffage2' => ['modeChauff' => 75],//c86
+			'modeChauffage3' => ['modeChauff' => 75],// n'existe plus en 14n => on pointe sur 73
+			'modeChauffage4' => ['modeChauff' => 75],// n'existe plus en 14n => on pointe sur 73
+			'modeChauffage5' => ['modeChauff' => 75],// n'existe plus en 14n => on pointe sur 73
+			'modeChauffage6' => ['modeChauff' => 75],// n'existe plus en 14n => on pointe sur 73
+		); // pense-bete : a prevoir , suppression des options directement dans la page reglages
+		
+		$etat_desc = $ETAT[$data[0]];
+		if (!$etat_desc){
+			$etat_desc = 'Etat inconnu '.$data[0];
+		}
+
+		$output = array(
+			'heure' 	=> time() * 1000,
+			'etat_num' 		=> $data[0],
+			'etat_desc' 	=> $etat_desc,
+			'lambda'	=> $data[1],
+			'chaudiereEst'=> $data[3],
+			'chaudiereDoit'=> $data[4],
+			'Fumee'		=> $data[8],
+			'extract'	=> $data[9],
+			'puissance' => $data[20],
+			'bois'		=> $data[21],
+			'Tint'		=> $data[$depart_chauffage[$zone_chauffage]['Tint']],
+			'Text'		=> $data[55],//Modif. by ABR 54 devient 55
+			'TextMoy'	=> $data[56],//Modif.by ABR 55 devient 56
+			'departEst' => $data[$depart_chauffage[$zone_chauffage]['est']],
+			'departDoit'=> $data[$depart_chauffage[$zone_chauffage]['doit']],
+			'retourEst' => $data[5],
+			'retourDoit'=> $data[6],
+			'TempECS'	=> $data[$ballon_ECS[$zone_ecs]['est']], 
+			'pompe-ECS'	=> $data[17],//Modif. by ABR 101 devient 17 pour charge decharge BT 
+			'tempsDecend'=> $data[38],
+			'tempsVis'	=> $data[37],
+			'mvtGrille' => $data[40],
+			'PelletConso'=> $data[43],//modif ABR 41 devient 43
+			'PelletRest' => $data[42],//modif ABR 40 devient 42
+			'variableK' => $data[27],
+			'variableF' => $data[28],
+			'modeChauff'=> $data[$mode_chauff[$zone_mode_chauffage]['modeChauff']],
+			'modeCommand'=> $data[69],//c101 Modif.by ABR 70 devient 69
+			'consoHeure'=> $consoHeure, 
+			'erreur' 	=> $data[30], //error code
+			'integral'	=> $data,
+		);
+        break;
 
 	case 'V14.0HAR.o':
 		$depart_chauffage = array( 
