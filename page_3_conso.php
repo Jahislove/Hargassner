@@ -966,7 +966,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
 				}
 			}
 			for (var j = 0; j < 12; j=j+1){ // calcul de la moyenne de chaque mois de toutes les saisons
-				MoyMois[j] = Math.round(CumulMois[j] / ((objet.length+1)/2));// nombre saison
+				MoyMois[j] = Math.round(CumulMois[j] / ((objet.length)/2));// nombre saison
 			// console.log(MoyMois[j]);
 			}
             chart4.addSeries({ // serie moyenne
