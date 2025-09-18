@@ -34,7 +34,7 @@
     // $dict = ['','arret','Allumage','Demarrage','Controle allumage','Allumeur','Demarrage combustion','Combustion','Veille','Arret pour decendrage','decendrage','Refroidissement','Nettoyage'];
     // $dict2= ['','0','0','0','0','0','0','0','0','100','100','0','100'];
     // $dict3= ['','Non','Non','Non','Non','Non','Non','Non','Non','En attente arrêt','Décendrage','Non','Nettoyage'];
-    $dict = ['null','Arrêt','Allumage','Démarrage','Contrôle allumage','Allumeur','Démarrage combustion','Combustion','Veille','Arrêt pour décendrage','décendrage','Refroidissement','Nettoyage','inconnu','inconnu','inconnu','inconnu','Assistant de combustion'];
+    $dict = ['null','Arrêt','Allumage','Démarrage','Contrôle allumage','Allumeur','Démarrage combustion','Combustion','Veille','Arrêt pour décendrage','décendrage','Refroidissement','Nettoyage','inconnu','inconnu','Mode manuel','inconnu','Assistant de combustion'];
     $dict2= ['0','0','0','0','0','0','0','0','0','100','100','0','100'];
     $dict3= ['null','Non','Non','Non','Non','Non','Non','Non','Non','En attente arrêt','Décendrage','Non','Nettoyage'];
 	$dict4= ['0','100','50']; // ballon ECS off/on/recyclage

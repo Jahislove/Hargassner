@@ -5,7 +5,11 @@
 *** for modification/bug (new firmware, language, country ...)
 *** =>open an issue https://github.com/Jahislove/Hargassner/issues
 ************************************************************************/
-v4.2 
+v4.3 18/09/2025
+	added firmware V14.0HAR.p
+	added firmware V14.0HAR.q
+	
+v4.2 03/12/2024
 	bug correction : month in calendar pickup was wrong
 	bug correction : scraper for average price wasn't working
 	bug correction : French version wasn't working

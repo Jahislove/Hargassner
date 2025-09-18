@@ -115,6 +115,7 @@
 						<option value="V14.0HAR.o"  <?php echo ($firmware == "V14.0HAR.o" ) ? 'selected' : '';?> >v14.0HAR.o</<option>
 						<option value="V14.0HAR.o2" <?php echo ($firmware == "V14.0HAR.o2") ? 'selected' : '';?> >v14.0HAR.o2</<option>
 						<option value="V14.0HAR.p"  <?php echo ($firmware == "V14.0HAR.p" ) ? 'selected' : '';?> >v14.0HAR.p</<option>
+						<option value="V14.0HAR.q"  <?php echo ($firmware == "V14.0HAR.q" ) ? 'selected' : '';?> >v14.0HAR.q</<option>
 					</select>
 				</div>
 				<div class="select_liste">
