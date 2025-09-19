@@ -5,6 +5,9 @@
 *** for modification/bug (new firmware, language, country ...)
 *** =>open an issue https://github.com/Jahislove/Hargassner/issues
 ************************************************************************/
+v4.4
+	
+
 v4.3 18/09/2025
 	added firmware V14.0HAR.p
 	added firmware V14.0HAR.q
