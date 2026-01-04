@@ -53,7 +53,7 @@ function download($source) {
     } else {
         echo text_ERROR .'<br>';
         echo text_cancel .'<br>';
-        echo text_help .'<br>';
+        echo text_help_perm .'<br>';
         return false;
     }
 }

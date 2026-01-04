@@ -27,14 +27,18 @@ while($data = mysqli_fetch_row($req1)){
     $mois = $data[1];
 	
     if ($mois > 8 ){
-        if ($serie[$annee] == false){ //pre-remplissage avec des null en cas d'année incomplete
+        // if ($serie[$annee] == false){ //pre-remplissage avec des null en cas d'année incomplete
+            // $serie[$annee] = [null,null,null,null,null,null,null,null,null,null,null,null]; 
+            // $serieTmoy[$annee] = [null,null,null,null,null,null,null,null,null,null,null,null]; 
+        // }
+        if (!isset($serie[$annee])){ //pre-remplissage avec des null en cas d'année incomplete
             $serie[$annee] = [null,null,null,null,null,null,null,null,null,null,null,null]; 
             $serieTmoy[$annee] = [null,null,null,null,null,null,null,null,null,null,null,null]; 
         }
         $serie[$annee][$saison[$mois]] = $data[2];
         $serieTmoy[$annee][$saison[$mois]] = $data[3];
     } else{
-        if ($serie[$annee-1] == false){ //pre-remplissage avec des null en cas d'année incomplete
+        if (!isset($serie[$annee-1])){ //pre-remplissage avec des null en cas d'année incomplete
             $serie[$annee-1] = [null,null,null,null,null,null,null,null,null,null,null,null]; 
             $serieTmoy[$annee-1] = [null,null,null,null,null,null,null,null,null,null,null,null]; 
         }

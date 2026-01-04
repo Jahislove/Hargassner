@@ -167,7 +167,7 @@ define("text_extract",			"Unzipping new version");
 define("text_delete",			"Deleting old backup");
 define("text_backup",			"Backup");
 define("text_update",			"Installation");
-define("text_help",				"Check permission of directory hargassner , user or group http must have write permission");
+define("text_help_perm",		"Check permission of directory hargassner , user or group http must have write permission");
 define("text_gitko",			"Can't reach github.com , try again later");
 define("text_gitmsg",			"If error persist, check if your php server is launched with openssl and zip extensions");
 define("text_new",				"New version available");

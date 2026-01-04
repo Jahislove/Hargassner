@@ -168,7 +168,7 @@ define("text_extract",			"Entpacken der neuen Version");
 define("text_delete",			"Löschen altes Backup");
 define("text_backup",			"Backup");
 define("text_update",			"Installation");
-define("text_help",				"Berechtigung vom Verzeichnis hargassner prüfen, user oder group http muss Schreibberechtigung haben");
+define("text_help_perm",		"Berechtigung vom Verzeichnis hargassner prüfen, user oder group http muss Schreibberechtigung haben");
 define("text_gitko",			"Kann github.com nicht erreichen, versuche es später noch einmal");
 define("text_gitmsg",			"Wenn der Fehler bestehen bleibt, überprüfe, dass der php-Server mit der openssl-Erweiterung und dass die zip Erweiterung installiert ist.");
 define("text_new",				"Neue Version verfügbar");

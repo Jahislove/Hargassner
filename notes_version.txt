@@ -5,7 +5,8 @@
 *** for modification/bug (new firmware, language, country ...)
 *** =>open an issue https://github.com/Jahislove/Hargassner/issues
 ************************************************************************/
-v4.4
+v4.4 04/01/2026
+	support for php 8.x (tested with 8.4)
 	
 
 v4.3 18/09/2025

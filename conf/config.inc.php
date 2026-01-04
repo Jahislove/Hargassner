@@ -17,7 +17,7 @@ $taille_silo = 4000; // silo max size / en kg ,  capacité max du silo
 $consoHeure = 38; // = parameter R8a in factory parameter of the boiler
 
 // MySQL config
-$hostname = "127.0.0.1:3307"; //127.0.0.1 si la BDD est sur la meme machine que le serveur web , sinon IP . 3306 MySQL 5 , 3307 MySQL 10
+$hostname = "192.168.0.222:3307"; //127.0.0.1 si la BDD est sur la meme machine que le serveur web , sinon IP . 3306 MySQL 5 , 3307 MySQL 10
 $database = "hargassner"; // nom de la BDD
 $username = "hargassner"; // utilisateur mysql
 $password = "password"; //  a personnaliser
