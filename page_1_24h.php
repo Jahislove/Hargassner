@@ -188,7 +188,7 @@ $(document).ready(function(){
 				echo '<tr>';
 				for($i=0;$i<10;$i++){
 					$id = 100+$i+$y*10;
-					if ($dict[$id]) {					
+					if (isset($dict[$id])) {					
 						echo '<td id="'.$id.'">&nbsp;</td>';
 					}else {
 						echo '<td id="'.$id.'" class="inactif">&nbsp;</td>';

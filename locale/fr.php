@@ -167,7 +167,7 @@ define("text_extract",			"Extraction nouvelle version");
 define("text_delete",			"Purge ancienne sauvegarde");
 define("text_backup",			"Sauvegarde");
 define("text_update",			"Installation");
-define("text_help",				"Verifiez les droits du repertoire hargassner , le user ou group http doit avoir les droits en ecriture");
+define("text_help_perm",		"Verifiez les droits du repertoire hargassner , le user ou group http doit avoir les droits en ecriture");
 define("text_gitko",			"impossible de joindre github.com , essayer plus tard");
 define("text_gitmsg",			"si le problème persiste vérifiez que votre serveur php est bien lancé avec les extensions openssl et zip");
 define("text_new",				"Nouvelle version disponible");

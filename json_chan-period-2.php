@@ -42,6 +42,7 @@
 	
 	
 	$prev = 1;
+	$pointeur = 0;
     $listePmoyFonc[]= '';
 	while($data = mysqli_fetch_row($req)){
 		$dateD = strtotime($data[0]) * 1000;
@@ -90,10 +91,9 @@
 		
 		//pour calcul puissance moyenne on n'utilise que la periode ou "chaudiere doit" est > 0 
 		if ( $data[5] > 0 ) {  
-			$listePmoyFonc[] = $data[3];
+			$listePmoyFonc[] = (int)$data[3];
 		}
     }
-	
 	
 	// calcul consommation journaliere a partir de la conso globale
 	// valeur de depart
@@ -104,7 +104,6 @@
 	}
 	
 	//    $liste0['name'] = 'Etat';  // a utiliser avec un update() en plus du setdata()
-
     $liste0['data'] = array_reverse($liste0['data']);// est un objet
     $liste1['data'] = array_reverse($liste1['data']); 
     $liste2 = array_reverse($liste2);//liste2... sont des array
@@ -134,9 +133,12 @@
 	$Pmoy2 = array_sum(array_column($liste2, 1))/count(array_column($liste2, 1));
 	$PmoyJour = round($Pmoy2, 0);
 	//calcul puissance moyenne en fonctionnement (chaudiere doit)
-	$Pmoy3 = array_sum($listePmoyFonc)/count($listePmoyFonc);
-	$PmoyFonc = round($Pmoy3, 0);
-	
+	// $PmoyFonc = 0;
+	$Pmoy3 = 0;
+	foreach($listePmoyFonc as $val) {  
+		$Pmoy3 = $Pmoy3 + (int)$val ;
+	}
+	$PmoyFonc = round($Pmoy3/count($listePmoyFonc), 0);
 	
     $tableau = [$liste0,$liste1,$liste2,$liste3,$liste4,$liste5,$liste6,$liste7,$liste8,$liste9,$liste10,$liste11,$liste12,$liste13,$liste14,$liste15,$liste16,$liste17,$liste18,$liste19,$liste20,$liste21,$liste22,$liste23,$PmoyJour,$PmoyFonc];
     echo json_encode($tableau, JSON_NUMERIC_CHECK);

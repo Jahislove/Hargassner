@@ -34,6 +34,7 @@
 </script>
 
 <?php 
+	$table_vide = "";
     $query0 = "SELECT * FROM tarif 
             ORDER BY saison ASC ";
 
