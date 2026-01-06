@@ -19,7 +19,7 @@ condition necessaire :
 
 1 - version simple (temps réel uniquement):
  - chaudiere hargassner avec regulation touchtronic branchée sur le reseau local
- - ce site web hébergé sur un serveur apache/PHP sur le meme reseau local
+ - ce site web hébergé sur un serveur apache/PHP7 ou 8 sur le meme reseau local
  
 2 - version avancé (temps réel + historique + courbes):
  - meme chose + 
@@ -45,7 +45,7 @@ what you need:
 
 1 - simple version (real time only, aka main page only):
  - hargassner boiler on local network
- - this web site hosted on apache/PHP server on same local network
+ - this web site hosted on apache/PHP7 or 8 server on same local network
 
 2 - full version (real time + history):
  - same as above +
