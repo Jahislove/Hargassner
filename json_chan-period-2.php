@@ -37,8 +37,8 @@
     $dict = ['null','Arrêt','Allumage','Démarrage','Contrôle allumage','Allumeur','Démarrage combustion','Combustion','Veille','Arrêt pour décendrage','décendrage','Refroidissement','Nettoyage','inconnu','inconnu','Mode manuel','inconnu','Assistant de combustion'];
     $dict2= ['0','0','0','0','0','0','0','0','0','100','100','0','100'];
     $dict3= ['null','Non','Non','Non','Non','Non','Non','Non','Non','En attente arrêt','Décendrage','Non','Nettoyage'];
-	$dict4= ['0','100','50']; // ballon ECS off/on/recyclage
-	$dict5= ['Arrêt','En chauffe','Recyclage']; // ballon ECS on/off
+	$dict4= ['0','100','50','','','','']; // ballon ECS off/on/recyclage / BUG php8 oblige a ajouter 4 key vide sinon la ligne $liste19 est KO
+	$dict5= ['Arrêt','En chauffe','Recyclage','','','','']; // ballon ECS on/off / BUG php8 oblige a ajouter 4 key vide sinon la ligne $liste19 est KO
 	
 	
 	$prev = 1;
@@ -65,7 +65,7 @@
         $liste16[] = [$dateD, $data[17]];
         $liste17[] = [$dateD, $data[18]];// conso
         $liste18[] = [$dateD, $data[19]];
-        $liste19['data'][] = ["x" => $dateD, "y" => $dict4[intval($data[20])],"valeur" => $dict5[intval($data[20])] ];
+        $liste19['data'][] = ["x" => $dateD, "y" => $dict4[intval($data[20])],"valeur" => $dict5[intval($data[20])] ]; //etat ECS
 		// $liste20
 		// il n'existe pas de parametre pour detecter l'aspiration
 		// mais il existe un compteur de tour de vis qui repasse a zero lors d'une aspi

@@ -129,6 +129,7 @@
 					</select>
 					<br>
 					<div  id="caseDelete" class="delete_histo nonVisible">
+						<input type="hidden" name="deleteOK" value="decoched">
 						<input type="checkbox" id="checkDel" name="deleteOK" value="coched">
 						<label for="checkDel"> <?php echo sett_delHisto; ?></label>
 					</div>
