@@ -5,6 +5,9 @@
 *** for modification/bug (new firmware, language, country ...)
 *** =>open an issue https://github.com/Jahislove/Hargassner/issues
 ************************************************************************/
+v5.0.0
+	new versioning
+
 v4.4 23/01/2026
 	support for php 8.x (tested with 8.4)
 	bug correction : page Consumption is now loading a lot faster
