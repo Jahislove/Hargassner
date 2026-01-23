@@ -105,7 +105,6 @@
 				}else {
 					$version_github = substr($version_github,2,-3); //new versionning  extrait la string entre les quotes
 				}
-				echo $version_github;								
 				break;
             }
         }
