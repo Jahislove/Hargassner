@@ -99,7 +99,13 @@
             $ligne = fgets($config_github); //lit chaque ligne du fichier
             $ligne_version = strstr($ligne,'version'); //recherche la chaine 'version'
             if ($ligne_version) {
-                $version_github = floatval(explode('=',$ligne_version)[1]); // explode en champ, et extrait la valeur en decimal du champ 1
+				$version_github = explode('=',$ligne_version)[1]; // explode en champ, et extrait la valeur du champ 1
+				if (floatval($version_github)) {
+					$version_github = floatval($version_github); //check ancien versionning pendant la transition
+				}else {
+					$version_github = substr($version_github,2,-3); //new versionning  extrait la string entre les quotes
+				}
+				echo $version_github;								
 				break;
             }
         }
@@ -111,8 +117,7 @@
 		echo text_gitmsg .'<br>';
         echo '</div>';
 	}
-
-    if ($version < $version_github) {
+    if ($version !== $version_github) {
         echo '<div id="new_version">';
         echo text_new .' : '.$version_github.' - <a href="https://github.com/Jahislove/Hargassner/blob/master/notes_version.txt">Info</a> - <a href="auto-install.php">'. text_update .'</a>';
         echo '</div>';
