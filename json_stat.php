@@ -52,13 +52,21 @@ $req = mysqli_query($conn, $query);
 mysqli_close($conn);
 
 // #########traitement query#####################################################################################
-while($data = mysqli_fetch_row($req)){
-	// $phpdate = strtotime($data[0]) ;
-	// $date = date( 'd/m/Y', $phpdate );
-	$objetDivers[] = ['Date'=> $data[0],
-					  'Data'=> $data[1],
-					 ];
-}
-
+switch($_POST['request']){
+	case 'prix_moyen':
+		while($data = mysqli_fetch_row($req)){
+			$dateD = strtotime($data[0]) * 1000;
+			$chart6_data[] = [$dateD, $data[1]];
+		}
+		$objetDivers = array_reverse($chart6_data);
+		break;
+	default :
+		while($data = mysqli_fetch_row($req)){
+			$objetDivers[] = ['Date'=> $data[0],
+							  'Data'=> $data[1],
+							 ];
+		}
+		break;
+}		
 echo json_encode($objetDivers, JSON_NUMERIC_CHECK);
 ?>

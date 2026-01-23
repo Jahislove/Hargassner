@@ -786,11 +786,11 @@ $(function() {
 		},
 		xAxis: {
 			type: 'datetime',
-			  labels: {
-				formatter: function() {
-				  return Highcharts.dateFormat('%d/%m/%Y', this.value);
-				}
-			  }
+			  // labels: {
+				// formatter: function() {
+				  // return Highcharts.dateFormat('%d/%m/%Y', this.value);
+				// }
+			  // }
 			// dateTimeLabelFormats: { 
 				// month: '%d. %b',
 				// year: '%b'
@@ -1010,13 +1010,9 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
         url: 'json_stat.php',
 		data: {request:"prix_moyen"},
         cache: false,
-        success: function(objet) {
-			for (var i = 0; i < objet.length; i=i+1){
-				var date = objet[i].Date;
-				var prix = objet[i].Data;
-				var dateT = new Date(date).getTime();//convert to timestamp
-				chart6.series[0].addPoint([dateT,prix]);
-			}
+        success: function(data) {
+			chart6.series[0].setData(data,false); 
+			chart6.redraw();
             chart6.hideLoading();
         }
     });
@@ -1028,8 +1024,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
         dataType: "json",
         url: 'json_stat.php',
         cache: false,
-        success: function(objet) {
-            // est un objet  , il est créé dans json_stat.php
+        success: function(objet) { // est un objet  , il est créé dans json_stat.php
 			compteur = Object.keys(objet).length;
 			for (i=0;i<compteur;i++){
 				var date1 = new Date(objet[i].Date).toLocaleDateString("fr"); // transforme YYYY-MM-DD hh:mm:ss en DD/MM/YYYY
@@ -1052,8 +1047,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
         dataType: "json",
         url: 'json_stat.php',
         cache: false,
-        success: function(objet) {
-            // est un objet  , il est créé dans json_stat.php
+        success: function(objet) { // est un objet  , il est créé dans json_stat.php
 			compteur = Object.keys(objet).length;
 			for (i=0;i<compteur;i++){
 				var date1 = new Date(objet[i].Date).toLocaleDateString("fr"); // transforme YYYY-MM-DD hh:mm:ss en DD/MM/YYYY
@@ -1076,8 +1070,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
         dataType: "json",
         url: 'json_stat.php',
         cache: false,
-        success: function(objet) {
-            // est un objet  , il est créé dans json_stat.php
+        success: function(objet) { // est un objet  , il est créé dans json_stat.php
 			compteur = Object.keys(objet).length;
 			for (i=0;i<compteur;i++){
 				var dateM = objet[i].Date;
@@ -1099,8 +1092,7 @@ chart1.renderer.image('img/kilo-icon.png', 100, 10, 40, 40)
         dataType: "json",
         url: 'json_stat.php',
         cache: false,
-        success: function(objet) {
-            // est un objet  , il est créé dans json_stat.php
+        success: function(objet) { // est un objet  , il est créé dans json_stat.php
 			compteur = Object.keys(objet).length;
 			for (i=0;i<compteur;i++){
 				document.getElementById('stat').innerHTML +='\
